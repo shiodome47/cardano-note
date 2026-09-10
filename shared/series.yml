@@ -1,0 +1,35 @@
+# シリーズ（チャンネル）の定義
+#
+# `episodes/<slug>/meta.yml` の `series:` は、必ずここのキーを使う。
+# **新しいチャンネルを足すときは、先にここへ書いてから meta.yml で参照する。**
+# tools/check.py が、ここにないキーを使っている回を落とす。
+#
+# このリポジトリは公開動画だけを扱うので chatham_default は常に false。
+# 1 本ごとに独立した収録なので通し番号は振らない（numbered: false）。
+#
+# シリーズはチャンネルで切る。番組名や話題（Leios など）でシリーズを作らない。
+# 話題は複数のチャンネルにまたがるので、glossary.md と open-questions.md で束ねる。
+
+midnight:
+  title_ja: Midnight
+  title_en: Midnight
+  blurb_ja: Midnight の公式 YouTube チャンネルで公開された動画。発言者は実名のまま扱います。
+  blurb_en: Videos published on Midnight's official YouTube channel. Speakers are named.
+  chatham_default: false
+  numbered: false
+
+iog:
+  title_ja: Input Output（IOG）
+  title_en: Input Output (IOG)
+  blurb_ja: Input Output の公式チャンネルで公開された動画。Leios や Peras などの技術解説はここに入ります。発言者は実名のまま扱います。
+  blurb_en: Videos published on Input Output's official channel, including the technical explainers on Leios and Peras. Speakers are named.
+  chatham_default: false
+  numbered: false
+
+charles-hoskinson:
+  title_ja: Charles Hoskinson
+  title_en: Charles Hoskinson
+  blurb_ja: Charles Hoskinson 本人のチャンネルで公開された動画。個人の見解として語られるものが多く、IOG や Cardano Foundation の公式見解ではありません。発言者は実名のまま扱います。
+  blurb_en: Videos from Charles Hoskinson's own channel. Much of it is personal opinion rather than the official position of IOG or the Cardano Foundation. Speakers are named.
+  chatham_default: false
+  numbered: false
