@@ -45,6 +45,26 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 
 **まとめでの書き方**：前半は誰の発言かを書く（TxPipe の立場と Foundation の立場は違う）。後半は Stevan の 1 人語りなので「〜と述べています」でよいが、監視エージェントは本人が作ったものなので、評価（「不安が減った」など）は本人の言葉として帰属させた。
 
+### 2026-09-02 Input Output — Block//45: Lace Wallet Interview with Nate Strang
+
+**話者 3 名。**字幕に話者名はなく、交代は ">>" の印だけ。
+
+| 表記 | 根拠 |
+| --- | --- |
+| **Wendy O**（司会） | "Welcome back to Block 45. I'm Wendy O." と名乗る。Nate に "Wendy" と呼びかけられる（9:19、33:41） |
+| **Crypto Crow**（司会） | 冒頭で "the Crypto Crow" と紹介。"Crow" と呼ばれ、"old man" とからかわれる。Cardano 寄りで Lace ユーザー |
+| **Nate Strang**（ゲスト、Lace） | 題名と冒頭の紹介。字幕は "Nate String"。肩書は公開プロフィール（Lace の Product Manager）から |
+
+**割り当ての方針**
+
+- Nate への質問は Wendy が「番組の進行」（経歴、いちばんの問題、年末のユースケース、ほかに触れたいこと、締め）、Crow が「ユーザーとしての不満と要望」（固まる、エージェント連携、Carbon で何が変わるか、利回りで返済、テーマ）という役割分担で読める
+- 1 行の中で話者が替わる箇所は 9 つ（発話番号 18, 31, 37, 41, 68, 69, 104, 119, 121）。切る位置は `gen_block45.py`（生成スクリプト）の SPLIT に記録。例：18 は "You know, I joke around a lot" から Crow、69 は "I think it's going to be important for the future, too" から Wendy（"old man, remember?" で終わるので Crow ではない）
+- ">>" が誤りとみられる箇所（同じ話者の続き）は結合した。例：30–31a（Nate）、60–62（Nate）、86–87（Nate）
+- **確度が低い箇所**：冒頭ダイジェストの短い掛け合い、2:16–2:21 の「本当に喧嘩だ」「あちらの人を一人もらった」「ええ」、9:13–9:16 の相づち、10:52–10:55、11:25 "don't I know it"、12:43–13:23 の司会 2 人の掛け合い（誰が「入り口」「いちばん重要」「ユーザーガイド」を言ったか）、18:11、20:56、28:25–28:33、そして 34:56 以降のマスコットの雑談。いずれも `(推定)` を付けた
+- 26 "for their jobs and I don't know anything" は文脈が取れない。Crow の茶々として `(推定)`
+
+**まとめでの書き方**：IOG の公式チャンネルなので、Nate Strang の発言は Lace の製品担当の説明として書ける。司会 2 人の評価（「美しいウォレット」「もっと儲かる」など）は本人の見解として帰属させる。**Crow の「もっと儲かる」を地の文にしない。**
+
 ### 2026-09-09 Charles Hoskinson — Navier-Stokes
 
 **1 人語り。**冒頭で "Hi, this is Charles Hoskinson" と名乗る。本人のチャンネル（@charleshoskinsoncrypto、oEmbed で確認）。話者の割り当ての問題はない。

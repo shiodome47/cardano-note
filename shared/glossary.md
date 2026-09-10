@@ -36,6 +36,18 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | Stan（Stevan への呼びかけ） | Stevan |
 | learning agent | alerting agent（2026-09-02。同じ動画の冒頭で "alerting agent" と言っている） |
 | sinking（検知ルールの列挙の中） | syncing |
+| Nate String | Nate Strang |
+| Soulflare, Salana | Solflare、Solana |
+| datalus | Daedalus |
+| Realy, Reali, Realfi, real（"and real I can take"） | RealFi |
+| poking（"poking credit market"） | Pogun |
+| USDCX | USDCx |
+| Ian Bolina | Ian Balina |
+| chatgbt, claude | ChatGPT、Claude |
+| rabbit hole（Ethereum の教育プラットフォームの文脈） | RabbitHole |
+| DRUPS, dereppp | DReps / DRep（dereppp は 2026-09-02 Block//45 の "my DRep load"） |
+| LA's, Lac's（Lace の所有格） | Lace's |
+| Trad（"what Trad wants"） | TradFi |
 
 **特定できなかった名前は聞こえたまま残し、まとめページで「名前だけ挙がって説明されなかった」と事実として書く。**
 
@@ -47,6 +59,15 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 
 - **link caps** — Santiago Carmuega が「Blockfrost チームと、Cardano エコシステムで活動するもう 1 つのチーム」としてスナップショットの共同署名の相手に挙げた名前。TxPipe と Demeter を共同運営している **Blink Labs** が候補だが、動画からは確かめられない。まとめでは「候補」として `補足` で書き、全文は聞こえたまま
 - **Midnight questing** — 終わりの告知で一言。何を指すかは動画で説明されていない
+
+### 2026-09-02 IOG Block//45（Lace、Nate Strang）
+
+- **dereppp**（4:32、Crypto Crow が Lace が固まる要因として挙げた語）— **DRep**。「自分の DRep の負荷」という文脈で、依頼者の判断でも DRep。上の表に登録
+- **Dimensions**（23:53 "Dimensions already setting in"）— dementia（認知症）の誤変換。固有名詞ではないので英語全文はそのまま、日本語は「認知症」
+- **bare markets** — bear markets（弱気相場）。同上
+- **2020**（"hindsight's 2020"）— 20/20。同上
+- **the car**（26:45 "first roll out of the car"）— 語尾が切れており、Carbon か carry trade か決められない。英語全文はそのまま
+- **収録と公開のずれ**に注意。動画内の「今年 5 月」「近日中」「今月後半」は 2026 年 7 月上旬の基準（`meta.yml` の recorded）
 
 ### 2026-09-09 Charles Hoskinson — Navier-Stokes
 
@@ -113,6 +134,18 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **Kupo / Ogmios** | Cardano の DApp 開発でよく組み合わせる補助ツール。Kupo はアドレスごとの UTXO の索引、Ogmios はノードとの WebSocket の橋渡し。Midnight のバリデータの初期の手順にも入っていた | 訳さない・初出で補う |
 | **Blockfrost** | Cardano のデータを読むための API サービス。「Blockfrost 互換 API」は、そのエンドポイントと同じ形で問い合わせられるという意味。公式: <https://blockfrost.io> | 訳さない |
 | **UTxO RPC** | UTXO 型チェーン向けの gRPC ベースのデータ API。TxPipe が仕様を出している | 訳さない |
+| **Lace** | Input Output が開発する Cardano のウォレット（ブラウザ拡張とモバイル）。**v2（2.0.0）は 2026-04-28**、2.1.0 は 07-09、2.2.0 は 07-23。公式: <https://www.lace.io>、リポジトリ: <https://github.com/input-output-hk/lace> | 訳さない |
+| **Lace Carbon** | Lace のユーザーインターフェースの刷新。2026-09-02 の動画（7 月収録）で「今月後半にオプトインで」と語られた。**提供開始の時期は 2026-09-10 時点で未確認** | 訳さない |
+| **Daedalus** | Cardano のフルノード型ウォレット。同期に時間がかかる、という文脈で出る | 訳さない |
+| **Solflare** | Solana のウォレット。Nate Strang の前職 | 訳さない |
+| **非カストディアル（non-custodial）** | 業者が鍵を預からず、ユーザー自身がリカバリーフレーズで鍵を持つウォレットの方式 | 非カストディアル（原語を添える）。**要点では「自分で鍵を持つ」と書く** |
+| **リカバリーフレーズ（recovery phrase）** | 12〜24 語の単語列。これから鍵が導かれ、これがあればウォレットを復元できる。**見た人は誰でも中身を動かせる** | リカバリーフレーズ |
+| **段階的開示（progressive disclosure）** | UI 設計の用語。初心者には基本だけを見せ、慣れるにつれて機能を出す。Lace Carbon のオンボーディングの方針として 2026-09-02 の動画で出た | 段階的開示（原語を添える） |
+| **キャリートレード（carry trade）** | 低い金利で借りて高い利回りで運用し、差を取る取引。差がプラスなら「ポジティブ・キャリー」。2026-09-02 の動画では「ADA を担保に Pogun で借り、RealFi にステーク」の意味で使われた。姉妹サイトの 2026-08-06 では Liqwid 経由の「ポジティブ・キャリー」が別の経路として出る。**数字を書くときは仮の数字だと分かる言葉を隣に置く** | キャリートレード（原語を添える） |
+| **P2P のクレジット市場（peer-to-peer credit market）** | 借り手と貸し手が金利・期間・担保を直接交渉する貸し借り。アルゴリズム型と違い、担保の値下がりで自動清算されず、支払いの不履行で清算される、と説明される（Pogun）。**リスクが消えるのではなく、貸し手側に移る**ことを `補足` で書く | 訳さない・初出で説明 |
+| **USDCx** | Circle の USDC を Cardano 上で使えるようにしたもの。2026 年 2 月に mainnet 稼働（姉妹サイトの用語集）。動画では借りるステーブルコインの例として出た | 訳さない |
+| **RabbitHole** | Ethereum の、報酬付きで使い方を学ばせる教育プラットフォーム。Nate Strang が成功例として挙げた | 訳さない |
+| **MCP / CLI** | AI エージェントがソフトウェアを操作するための接続口（Model Context Protocol、コマンドライン）。Crypto Crow が「エージェントを Lace につなぐ計画は」の文脈で挙げた | 訳さない・初出で補う |
 
 ## 数学・AI の用語（Charles Hoskinson のチャンネルで出るもの）
 
@@ -157,7 +190,9 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **Intersect** | Cardano のエコシステム組織（member-based organization）。ガバナンスの運営と、開発の調整を担う |
 | **Midnight Foundation** | Midnight の財団 |
 | **the Pentad** | Cardano の主要組織による共同の調整・実行体制。発足時は 5 組織（Input Output / Cardano Foundation / EMURGO / Midnight Foundation / Intersect）だが、**EMURGO の離脱後は 4 組織**。**「5 組織」と書く前に時点を確認する。**プロダクトでも新会社でもない |
-| **Pogun** | Input Output が進める、Cardano 向けのエンドツーエンド型 Bitcoin DeFi 構想。音声認識では "Pogen" と出る。**2026-08-01 時点の提案上のロードマップ**（詳細は `2026RealFi` の glossary） |
+| **Pogun** | Input Output が進める、Cardano 向けのエンドツーエンド型 Bitcoin DeFi 構想。音声認識では "Pogen" "Pogan" "poking" と出る。**2026-08-01 時点の提案上のロードマップ**（詳細は `2026RealFi` の glossary）。2026-09-02 の Block//45 では「ピアツーピアのクレジット市場」の側面が語られた |
+| **RealFi / USDR** | Input Output の取り組み。USDR は利回り付きのステーブルコイン。**2026-08-26 の投票でティッカーは USDrf / sUSDrf に改称と決まった**が、7 月収録の動画では USDR。各回の表記は動画のとおりにし、書き換えない。詳細は `2026RealFi` の glossary |
+| **Block//45** | Input Output Group の公式チャンネルにある番組。司会は Wendy O と Crypto Crow（外部の配信者）。回ごとに独立 |
 | **AlphaGrowth** | DeFi の成長支援の会社。ポッドキャスト「A Dose of Alpha」を運営し、Cardano の PRIME 提案を出している |
 | **TxPipe** | アルゼンチン拠点の Cardano 向け開発ツール企業。Pallas（Rust ライブラリ群）、Oura（インデクサ）、Dolos（データノード）、Demeter（ホスティング、Blink Labs と共同運営）。公式: <https://txpipe.io>。RealFi 側の glossary では監査の協力先として出る |
 | **Dolos** | TxPipe の Cardano「データノード」。1 バイナリで、ブロック生成・検証はせず、リレーにつないで台帳のコピーを組み込み DB に持ち、Blockfrost 互換・UTxO RPC・Kupo 互換・Ogmios 経由の API を出す。履歴は期間を決めて切り詰められる。公式ドキュメント: <https://docs.txpipe.io/dolos> |

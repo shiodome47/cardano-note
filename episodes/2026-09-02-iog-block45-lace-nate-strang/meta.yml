@@ -1,0 +1,37 @@
+slug: 2026-09-02-iog-block45-lace-nate-strang
+title: Block//45 — Lace は「配管」を作り直した。次は見た目と、2 クリックの DeFi（Nate Strang インタビュー）
+title_en: "Block//45 - Lace Wallet Interview with Nate Strang"
+date: 2026-09-02            # 動画の公開日（依頼者の指定「2026/09/10 の 8 日前」）
+recorded: 2026-07           # 推定。動画内で 2.1 が「近日中」、Carbon が「今月後半」、v2 が「今年 5 月」。実際の 2.1.0 は 2026-07-09 なので 7 月上旬とみられる
+series: iog                 # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: Input Output Group # YouTube 上の表示名（@InputOutputGroup）。依頼者の指定は「IOG チャンネル」
+official_channel: true      # oEmbed の author_url が https://www.youtube.com/@InputOutputGroup であることを確認
+duration: "36:05"           # 字幕の最終行の時刻から。動画の実尺は要確認
+video: https://www.youtube.com/watch?v=ZTuU9vwpmts
+
+speakers:
+  - Wendy O                 # 司会（Block//45）。自分で名乗っている。Crypto Wendy O として活動する配信者
+  - Crypto Crow             # 司会（Block//45）。動画では「Crow」。本名 Jason Appleton は公開情報から
+  - Nate Strang             # ゲスト。Lace。題名に名前があり、字幕では "Nate String"。肩書（Product Manager, Lace）は公開プロフィールから
+speaker_labels: inferred    # 字幕に話者名はない。">>" の交代印と文脈から割り当て
+timestamps: table           # 「時刻 / 字幕 / 機械翻訳」の 3 列の表。時刻は秒（"14s"）と分:秒（"1:02"）の混在。.turn-time は行の時刻を 00:MM:SS に直したもの
+proper_nouns_corrected_in_docs: true
+
+# 原本について
+# - 依頼者から本文に貼り付けで受領した表を、そのまま transcript.txt に置いた（3 列タブ区切り、498 行）
+# - 3 列目の機械翻訳は使っていない。日本語全文はこちらで訳し直したもの
+# - 話者の交代は ">>" で示されるが、1 行の中で交代する箇所（18, 31, 37, 41, 68, 69, 104, 119, 121 番目の発話）は手で分け、
+#   印が誤りとみられる箇所（同じ話者の続き）は結合した。詳細は shared/speakers.md
+# - "dereppp"（4:32）は DRep。「自分の DRep の負荷」という文脈と依頼者の判断から。docs/ 側で修正
+
+# 画面について
+# - 字幕だけを受領しており画面は確認していない。まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用
+
+# 裏取り（2026-09-10 時点）
+# - Lace の GitHub リリース: 2.0.0 = 2026-04-28、2.0.1〜2.0.4 = 5 月上旬、2.1.0 = 07-09、2.2.0 = 07-23、2.2.3 = 09-01
+# - Lace の X（2026 年 7 月）: Carbon を 2.1 経由のオプトインのベータとして「間もなく」提供、と投稿（検索結果の要約。原文の日付は未確認）
+# - Carbon が 2026-09-10 時点で提供されているかは未確認
+# - RealFi のティッカー改称（USDR → USDrf）は 2026-08-26 の投票で決定。姉妹サイト 2026-08-24 の回を参照

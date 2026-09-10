@@ -1,0 +1,500 @@
+Block//45 - Lace Wallet Interview with Nate Strang
+Time	Subtitle	Machine Translation
+0s	Lace Carbon will be released as an optional as an opt-in experience later	Lace Carbonは、今月後半にオプション機能としてリリースされる予定です
+4s	this month. First thing you'll notice as a user is completely new look and feel	。 ユーザーとしてまず最初に気づくのは、アプリケーションの見た目と操作感が完全に一新されていることでしょう
+9s	of the application. You can start staking and earning yield with Realy in	。 Realyを使えば、たった2クリックでステーキングを開始し、利回りを得ることができます
+14s	two clicks. >> Can you do them both simultaneously?	。 両方を同時に行うことはできますか？ それは、この企画の
+17s	>> So that's that's an exciting piece of this. So both the credit market and	興味深い点の一つです 。 つまり、クレジット市場と
+22s	RealFi exist and can stand on their own as exciting offerings. But when you	RealFiはどちらも存在し、それぞれが 魅力的なサービスとして独立して成り立つことができるのだ。 しかし、
+28s	combine them, something even cooler is is possible.	それらを組み合わせると、さらに素晴らしいことが 可能になります。 もっとたくさん
+31s	>> Make a lot more money. >> You can make a lot more money.	稼ぐ。 もっとたくさん稼げるよ 。
+33s	>> So, get on it. >> Yeah, get on [laughter] it.	さあ、取り掛かろう。 ああ、やってみよう（笑）。
+41s	>> Welcome back to Block 45. I'm Wendy O. We're here with the Crypto Crow and we	ブロック45へようこそ。ウェンディ・Oです。今日は クリプト・クロウと、そして
+46s	are also here with a special guest. We have Nate String from Lace and we're	スペシャルゲストをお迎えしています。 今回は Laceのネイト・ストリング氏をお迎えし、
+51s	also going to talk about everything Cardano. How you doing today, Nate?	カルダノに関するあらゆることについてお話します。 ネイト、今日の調子はどう？
+53s	>> I'm doing great. It's great to be here with you guys. We're going to fight by	元気です。 皆さんと一緒にいられて嬉しいです。 私たちは戦うつもりですが、番組内で
+56s	but so you know we're going to fight on the show.	戦うつもりです 。
+59s	>> Yeah. And there's going to be a little bit of controversy on this one, guys,	うん。 そして 皆さん、これはちょっと物議を醸しそうな話なのですが、
+1:02	because there was some strong words between the two boys outside. But don't	二人の少年が外で激しい言葉を交わしたんです。 でも
+1:06	worry, we're going to work it out. We're going to clarify some things. We're also	心配しないで、きっと解決できるよ。 いくつか明確にしておきたい点があります。 また、
+1:09	going to be talking about the future because there's a lot of exciting things	-
+1:11	coming to Gardano, especially with Lace and what you guys are building and what	ガルダノにはこれからたくさんのエキサイティングなことが待ち受けているので、将来についても話し合っていきたいと思います。特にLace や皆さんが構築しているもの、行っていることなど、非常に興味深いですね
+1:15	you guys are doing. And you Crow might just have to duke it out.	。 そして、カラスよ、お前は直接 対決しなければならないかもしれない。
+1:19	>> I'm a lover, not a fighter. Don't don't hurt me.	私は愛を重んじる人間であって、戦う人間ではない。 私を 傷つけないで。
+1:21	>> All good things come as a as a factor of adversity. I I personally I want to know	良いことはすべて、 逆境という要素から生まれる。 個人的には、あなたがどんな人なのかもう少し知りたいんです。
+1:25	a little bit more about who you are, right? Because we just met for the first	初対面なので、
+1:29	time and uh I'd like to get into a little bit about your background like	あなたの経歴について少しお伺いしたいのですが、
+1:33	why are you here and what do you do? Like what got you started into crypto?	なぜここにいるのか、そして普段は何をされているのかなど。 例えば、あなたが仮想通貨に興味を持ったきっかけは何ですか？
+1:36	>> Yeah, absolutely. So I've I've been in the web 3 space since early 2018. uh I	ええ、もちろんです。 私は 2018年初頭からWeb3の分野に携わっています。
+1:42	initially got into it just because I was fascinated by what the potential was for	最初は、この
+1:47	the technology to create new economies to increase access	技術が 新たな経済を生み出し、
+1:53	to financial instruments to financial services that you know we take for	金融商品や金融 サービスへのアクセスを拡大する可能性に魅了されたからです。ご存知のように、
+1:58	granted here in the United States but that a lot of the world doesn't have	アメリカでは当たり前のように享受できる金融サービスは、世界の 多くの地域では
+2:02	that same privilege and I actually got into the space uh working in a	同じような恩恵を受けていません。私は
+2:07	consulting capacity but very soon after uh joined a company called Soulflare	コンサルタントとしてこの分野に参入しましたが、その後すぐに
+2:12	which is a prominent wallet on the Salana uh blockchain.	Salanaブロックチェーン上の著名なウォレットであるSoulflareという会社に入社しました。
+2:16	>> Oh, we're really fighting. [laughter] >> No, we got one of theirs. That's fine.	ああ、私たちは本当に喧嘩している。 [笑い] いや、彼らのものを1つ手に入れたんだ。 それはいいです。
+2:20	That's fine. >> Yeah,	それはいいです。 そう、まさにその通り
+2:21	>> this is the thing. Being multi-chain is especially important, I feel like. And	。 マルチチェーンであることは 特に重要だと感じます。 そして、まさにそれが
+2:24	that's that's kind of what we're seeing now. We're starting to see a lot of	今私たちが目にしている状況なのです。
+2:27	interoperability. I feel like Cardano kind of led with that with Midnight just	相互運用性が大幅に向上し始めている。 Cardanoは Midnightで少しだけその方向性を先導したような気がする
+2:30	a tad. So, it's good. It's good that he's good that he knows about other	。 だから、良いことだ。 彼が 他の
+2:33	chains. He knows about Cardano. And me personally, I am not a chain maxi. I	チェーン店についてもよく知っているのは良いことだ。 彼はカルダノについて知っている。 そして私 自身は、チェーンマキシドレスは好みません。 私はそれが気に入りません
+2:37	don't like it. I just don't think it's fun that way because I feel like we're	。 そういうやり方は面白くないと思うんです。暗号通貨の世界では
+2:40	in so much competition in crypto, but a positive competition like consistently	競争が激しすぎるように感じるからです。でも、
+2:44	building the best version of everything to make the future of whatever this is,	-
+2:48	whether it's going to be AI or finance or blockchain, whatever that may be, to	AIであれ、金融であれ、ブロック チェーンであれ、何であれ、未来のあらゆるものにおいて常に最高のバージョンを構築していくような、建設的な競争の方が良いと思うんです。そうすることで、
+2:52	make it the best version so everybody continues to have equal access.	誰もが 平等にアクセスできる未来が実現すると思うんです。
+2:56	>> That's true. It's not a zero- sum game, right? That is very true. I should I	それは本当だ。 これはゼロサムゲームではないですよね ？ それは全くその通りです。 もう
+3:00	should be all grown up by now, but unfortunately, [laughter]	大人になっているはずなのに、 残念ながら（笑）、まだ
+3:03	I still struggle. It's the old days, you No, I'm I'm I'm kind of an OG, I guess	苦労しています。 昔の話だよ、 いや、僕は、僕は、まあ、OGみたいなものかな
+3:08	you could say. And uh I'm back I'm from the old school where we still have bar	。 ええと、私は戻ってきました。私は 昔ながらの人間で、今でも
+3:13	brawls over chain tribalism. >> And you know, I I agree that I don't	チェーンの部族主義をめぐって酒場で乱闘騒ぎが起きるような時代を生きています。 そして、私もそう思います。
+3:18	think that in the future, hopefully not too far distant future, there won't we	将来、願わくばそう 遠くない将来、
+3:22	won't be talking about chains. There won't be such siloed communities that	チェーンについて話すことがなくなることはないと思います。
+3:26	are doing different things in different ecosystems that all of it will converge	異なる エコシステムでそれぞれ異なる活動を行うような、孤立したコミュニティは存在しなくなり、すべてが収束し、
+3:30	and we won't even need to be talking about protocols or interoperability. But	プロトコルや相互運用性について議論する必要すらなくなるでしょう。 でも、
+3:34	we're even though it feels like we've been around for a while and we've been	私たちは長い間活動していて、
+3:37	doing this for a long time, we're still in very early days. And that it makes me	この仕事を長く続けているように感じますが、実際にはまだ始まったばかりなんです 。 そして、それが私を
+3:42	excited. Uh it also, you know, it makes me take pause when I look at things and	ワクワクさせるのです。 ええと、それはまた、 物事を見て、
+3:49	think that they should be different, think that things should work more	それらは違うべきである、物事は互いに もっと密接に連携するべきである、互いにうまく連携するべきであると考えるときに、立ち止まって考えるきっかけにもなります
+3:53	closely with each other, work better uh with each other. Um and so yeah, it's a	。 ええ、そうですね、ここは
+3:58	it's an exciting place to be in. You know, I joke around a lot, but I'm	刺激的な場所です。 よく冗談を言いますが、自分がやっていることの
+4:02	obviously pretty serious about a lot of the things that I do. And um I'm a lace	多くにはかなり真剣に取り組んでいます 。 えっと、私はレースの
+4:06	user, right? So, it it's like I my in the early days, I was using datalus, you	ユーザーですよね？ つまり、 初期の頃は、Datalusを使っていたようなものなんです。分かりますか
+4:12	know what I mean? So, anytime I wanted to do anything, I had to sit there for	？ だから、何かをしたいときはいつでも 、
+4:14	five and a half hours waiting for everything to sync up and download and	すべてが同期してダウンロードされるまで5時間半も座って待たなければなりませんでした。
+4:19	uh and and I I've used other wallets in the past. Um but now that I'm on Lace, I	そして、私は過去に他のウォレットを使用したことがあります 。 えっと、でも今はレースを使っているんですが、
+4:25	you know, it's like it sometimes it feels hit or miss, right? Okay. you	時々、当たり外れがあるような気がするんですよね。 わかった 。 …ほら
+4:29	know, it's like some days it works lickety split, I have no issues and then	、ある日はあっという間に動いて 、何の問題もないんだけど、
+4:32	other days depending on like my dereppp load or what I've got going on, it'll	別の日は、私のデレップ 負荷とか、私がやってることによっては、
+4:36	hang on me sometimes. Like what >> what what's happening right now to	時々フリーズするんだ。
+4:40	address some of the issues that that are part topic of discussion?	議論の対象となっている問題に対処するために、現在どのような取り組みが行われているのでしょうか？
+4:44	>> Yeah, that's a good question. Uh I think a good way to frame it is to talk about	ええ、それは良い質問ですね。 ええと、 この件を説明する良い方法は、
+4:50	something that we were working uh very deeply on for the last almost two years	私たちが過去 2 年間かけて非常に深く取り組んできたことについて話すことだと思います。それは、私たちが
+4:55	uh which was what we refer to as our our version two update which came out in in	バージョン 2 アップデートと呼んでいるもので、
+5:00	May of this year and like you like you alluded to uh we have	今年の 5 月にリリースされました。 ご指摘のとおり、その
+5:05	had some performance some stability issues uh that have followed that	-
+5:09	release and I think that's a a symptom of of a couple of things one being lace	リリース後にパフォーマンスや安定性の問題が発生しました。これはいくつかのことの症状だと思います。1 つは、 Lace
+5:15	v2 2 was a massive rewrite rearchitecture of the application. So we	v2 2 が アプリケーションの大規模な書き直しと再設計だったことです。 つまり、
+5:20	went from what was previously in v1 uh a single platform application uh you know	以前のv1にあった 単一プラットフォームアプリケーション、つまり単一のチェーンを
+5:26	a web extension platform that supported a single chain. We wanted to look to the	サポートするWeb拡張プラットフォームから移行したということです 。 私たちは将来を見据え、
+5:31	future and say well what do we need to do to be able to onboard new chains more	-
+5:36	quickly to support mobile applications and other platforms. Um, and how do we	モバイルアプリケーション やその他のプラットフォームをサポートするために、新しいチェーンをより迅速にオンボーディングするには何が必要かを考えたかったのです。 ええと、何か
+5:40	do that in a way that each time we want to do something new or build something	新しいことをしたり、
+5:44	new, we're not uh at risk of breaking things, of slowing our our entire	新しいものを構築したりするたびに、何かを壊したり、
+5:50	technology and our entire infrastructure down. And so V2 was was very much an	テクノロジーやインフラ全体を遅くしたりするリスクを負わないようにするには、どうすればいいのでしょうか 。 ですから、V2はまさに
+5:55	investment in kind of the foundation and I like to say the plumbing of the	-
+5:59	application. And there were some shortcomings with the release in terms	アプリケーションの基盤、いわば配管部分への投資だったと言えるでしょう。 また、 リリースにあたっては、本来あるべきほどスムーズに
+6:03	of things that weren't working as smoothly as they could be. Uh the on the	動作しない部分など、いくつかの欠点があった 。
+6:09	bright side, we are releasing a v2.1 update in the coming days. Um that's	良いニュースとしては、 近日中にバージョン2.1のアップデートをリリースする予定です。 ええ、
+6:16	>> okay. But by the time this goes out, >> by the time this is out, they'll they'll	大丈夫です。 しかし、これが公開される頃には、 これが公開される頃には、彼らは
+6:19	be live. And uh 2.1 fixes most if not all of those performance issues that we	ライブ配信しているだろう。 そして、2.1では、これまで発生していた パフォーマンスの問題
+6:26	had, the stability issues, um things like hanging transactions, not being	、安定性の問題、 トランザクションのハングアップ、
+6:29	able to connect to DAPs easily, things like that. All of those kind of uh	DAPへの接続の困難さなど、ほとんどすべての問題を修正しています 。 そういった、
+6:35	relatively minor but also frustrating uh issues are going to be fixed very soon.	比較的軽微ではあるものの、同時にイライラさせられるような 問題はすべて、間もなく解決される予定です。
+6:40	You know, ideally they would have been live for the release, but we really	理想を言えば、 リリースと同時に利用可能にしたかったのですが、とにかくできるだけ早く
+6:44	wanted to get the the update out into the hands of our users as quickly as we	ユーザーの皆様にアップデートをお届けしたかったのです
+6:48	could. hindsight's 2020. Maybe we we did it a little bit too soon, but you know,	。 後知恵は2020年ですね。 少し早すぎたかもしれませんが、
+6:54	on on another positive note, we were able to get feedback from the community	良い点としては、 コミュニティからフィードバックを得て、
+6:59	and [clears throat] figure out what was what was wrong, what the most important	何が 問題だったのか、優先すべき最も重要な
+7:01	things to prioritize were, which were actually different from, you know, what	ことは何かを把握することができました。それは、
+7:05	we were optimizing for before we before we rolled out the update. So,	アップデートを展開する前に最適化していたものとは実際には異なっていました。 つまり、
+7:08	>> well, and the important thing is that you pay attention to what the community	重要なのは、 コミュニティの意見に耳を傾けることですよね
+7:11	has to say, right? And and that's pretty much the nature of everything that	？ そして、それが
+7:14	that's related to Cardono, right? because we all know everybody loves to	カルドノに関係するすべてのことの本質と言えるでしょう？ なぜなら、カルダノのエコシステムでは、誰もが何らかの形で自分の意見を表明したいと思っていることを、私たちは皆知っているからです
+7:18	have their voices heard one way or another in the Cardano ecosystem. I	。
+7:21	mean, you know, granted, you can't be decentralized without taking the	つまり、関係者全員の意見を 取り入れずに分散化を実現することはできない
+7:24	opinions of everyone involved, right? So, that's a good thing.	、ということですよね？ それは 良いことだ。
+7:27	>> Well, Nate, it looks like the lace wallet mascot Dave has a few questions	さて、ネイト、レースウォレットの マスコットであるデイブがカーボンについていくつか質問があるようです
+7:31	about Carbon. Can you talk to us a little bit about that, please?	。 それについて少しお話いただけますか？
+7:35	>> Yeah, absolutely. So, Carbon is a really exciting initiative that we've been	ええ、もちろんです。 つまり、Carbonは私たちがV2をリリースして以来ずっと取り組んできた、非常に 刺激的な取り組みなのです
+7:39	working on essentially since we released V2. It represents a few different	。 それはいくつかの異なることを表している
+7:43	things. The first one is as I kind of talked about how V2 was an overhaul and	。 まず一つ目は、先ほども少し触れたように、 V2 …は
+7:49	a in a kind of rebuild of the foundation and the infrastructure of the	-
+7:54	application. Carbon is going to be a similar overhaul and investment in in	アプリケーションの基盤とインフラストラクチャを根本的に見直し、再構築したバージョンだったということです。 Carbonも 同様に大規模な改修と投資を行い、
+7:59	kind of modernizing the user interface of lace. So lace carbon will be released	Laceのユーザーインターフェースを現代化する予定です。 そのため、レースカーボンは
+8:05	as an optional as an opt-in experience later this month. And the first thing	今月末にオプション機能として、オプトイン方式でリリースされる予定です。
+8:10	you'll notice as a user is completely new look and feel of the application. So	ユーザーとしてまず最初に気づくのは、 アプリケーションの見た目と操作感が完全に一新されていることでしょう。
+8:17	since V2, we've been looking at and considering what should the app look	V2以降、私たちは アプリの外観
+8:22	like, how should it feel, what's the best way to kind of approach a design	、使用感、そして今後のLaceの デザイン言語への最適なアプローチ方法について検討を重ねてきました
+8:26	language for Lace going forward. And you will see that kind of uh representation	。
+8:32	or the the conclusion that we've released uh when Carbon rolls out. And	Carbonがリリースされると、そういった表現や結論を目にすることになるでしょう。 そして、
+8:36	we're we're really excited about what Carbon is going to do for how Lace	CarbonがLaceの
+8:42	is able to build things and and how we're able to kind of roll and shape	構築方法にどのような影響を与えるのか、また、今後どのように
+8:47	features into uh the new user experience going forward. So that that's kind of	機能を新しいユーザーエクスペリエンスに組み込んで形作っていくことができるのか、私たちは非常に楽しみにしています 。 それが、
+8:52	the first goal or pillar of what Lace Carbon is. But what it also is is it's a	レースカーボンの第一の目標、あるいは柱と言えるでしょう 。 しかし、これは同時に、
+8:58	representation of some questions that we were asking as a team about as we all	私たちがチームとして問いかけていたいくつかの疑問を表したものであるとも言えます。
+9:04	know AI is everywhere especially in software development. I personally have	ご存知の通り、AIは至るところに存在し、特に ソフトウェア開発においては顕著です。 私の周りには
+9:09	tons of friends that are software engineers and are worried about what the	ソフトウェアエンジニアの友人がたくさんいて、彼らは自分の
+9:13	future of their jobs >> for their jobs and I don't know anything	仕事の将来を心配していますが、 私自身は正確なところは何も知りません
+9:16	>> exactly. >> Here come the vibe coders.	。 雰囲気作りのプログラマーたちがやってくる。
+9:19	>> Stop it with the vibe coding. >> We're agentic engineers, Wendy. No, I'm	雰囲気作りのコーディングはやめてください。 私たちは主体性を持ったエンジニアなんだよ、ウェンディ。 いや、
+9:23	kidding. We're vibe coders. Yeah, [laughter]	冗談だよ。 私たちは雰囲気重視のプログラマーです。 ええ、 [笑い]
+9:26	we are all vibe coders. Um, no, but we wanted to we wanted to look at what do	私たちは皆、雰囲気重視のコーダーです。 いえ、そうではありませんが、
+9:33	these tools mean for us? You know, there's a lot of noise surrounding what	これらのツールが私たちにとってどのような意味を持つのかを検討したかったのです。
+9:36	you can do with AI, but there's also a lot of real value	AIで何ができるかについては様々な憶測が飛び交っていますが、
+9:39	>> in terms of the tools that are available to engineers. And so we looked at this	エンジニアが利用できるツールという点では、実際に大きな価値があるのも事実です。 そこで私たちは、
+9:45	kind of in terms of not asking [snorts] how can we use AI to build more quickly,	AIを使ってより迅速に開発するにはどうすればよいか、といったことでは
+9:50	but what do these tools mean as far as what the role of our software	なく、これらのツールは ソフトウェア
+9:55	development team is? What what are the roles of engineers?	開発チームの役割にどのような意味を持つのか、という観点から検討しました。 エンジニアの役割とは何ですか？
+10:00	What should those look like in the future? Is there anything being added to	将来、それらはどのような姿になるべきでしょうか ？ Laceに何か追加される
+10:04	Lace or or even a plan like um you know you have like the the MCPs, the	予定はありますか？ あるいは、MCPや
+10:11	CLIs, all that different stuff so that my my agents can connect to the wallet	CLIなど、 エージェントがウォレットに接続できるようにするための計画はありますか？現状では、そのようなことをするには、私の
+10:15	like right now I think it just has to take over my computer if I want to do	コンピューターを乗っ取るしかないと思います
+10:19	something like that. Is there anything that's going to facilitate that?	。 それを促進するようなものはありますか？
+10:23	>> Not in the immediate future. Um you know agentic trading is is certainly a hot	近い将来にはそうはならないだろう。 ええと、ご存知のように、 エージェント取引はWeb3分野では間違いなくホットな
+10:28	topic in in the web 3 space. Uh, it's not something that we're prioritizing on	話題です。 ええと、それは 私たちが最優先で
+10:33	shipping as soon as possible. Uh, I I personally I think that I'm I'm happy to	出荷しようとしているものではありません。 ええと、個人的には、
+10:40	let other players experiment it, experiment with it, see what works and	他のプレイヤーがそれを試したり、 実験したりして、何がうまくいって何がうまくいかないかを見極めるのを喜んで受け入れます。必ずしも
+10:44	see what doesn't, and you know, not necessarily be the first mover, but the	先駆者になる必要はありませんが、
+10:48	first improver so that we can come in and	最初に改善することで、私たちが参入して、
+10:52	>> hopefully avoid a lot of the mistakes that,	-
+10:55	>> you know, we've seen a few costly ones so far.	これまでに見てきたいくつかの大きな損失につながるような間違いの多くを回避できることを願っています。
+10:57	>> Sure. What do you think are some of the biggest key problems in crypto today	もちろん。 あなたがLaceでの活動を通して最終的に解決したいと考えている、 今日の暗号通貨における最も重要な問題点は何ですか
+11:01	that ultimately you would love to be able to solve through what you do in	-
+11:05	Lace? >> That's a good question. I think um	？ それは良い質問ですね。 今日の
+11:09	one problem that plagues any ecosystem today is there's such a disperate uh	あらゆるエコシステムを悩ませている問題の一つは、
+11:15	number of customer segments that interact with crypto. You have your pure	暗号通貨と関わる顧客セグメントが非常に多様であることだと考えています。 純粋な
+11:19	speculators, your folks that are coming in to get rich off of meme coins that	投機家もいるし、 ミームコインで金持ちになろうとやって来る人たちもいる
+11:25	are >> don't I know it. a lot of times bringing	。 多くの場合、エコ
+11:28	a ton of capital into the ecosystem that in some ways is detrimental, but in some	システムに莫大な資本が流入しますが、それはある意味では 有害ですが、ある意味では、
+11:32	ways is is valuable um all the way over to your users that are using digital	デジタル
+11:39	assets in place of their national currency to buy things to to send to	資産を自国の 通貨の代わりに使用して物を購入したり、
+11:44	their family members. And so I don't think we as a as a space, as a	家族に送ったりするユーザーにとって価値のあるものです。 ですから、 私たちコミュニティ全体として、あるいは集団として、
+11:50	collective group yet, have figured out how to serve those different groups	まだ それらの異なるグループに
+11:56	with the right types of applications. We have wallets. Wallets are an	適切な種類のアプリケーションを提供する方法を見つけ出せていないと思います。 私たちは財布を持っています。 ウォレットは、
+12:01	undoubtedly critical piece of the user experience in	-
+12:06	users using digital assets, interacting with blockchains. But right now, if I	デジタル資産を利用したり、ブロックチェーンとやり取りしたりするユーザーにとって、間違いなくユーザーエクスペリエンスの重要な要素である 。 しかし今、私がこの
+12:13	come into the space and I want to figure out how to	分野に参入して、
+12:17	benefit from this technology, if I want to figure out what's most important for	この技術からどのように利益を得られるか、
+12:21	me, what's going to what's in it for me? Um, I think it's very confusing to to a	私にとって何が最も重要なのか、私にとって何が得になるのかを理解したいと思うなら？ えっと …、
+12:27	user in understanding what to pay attention to and what's noise. Um so I	ユーザーにとって、何に 注意を払うべきか、何がノイズなのかを理解するのは非常に難しいと思います。 ええと、
+12:31	think the way we solve that problem is of course existing users are going to	その問題を解決する方法は、もちろん 既存ユーザーを
+12:37	remain the priority but should they be because if you think about it the wallet	優先し続けることですが、そうすべきでしょうか。 考えてみれば、
+12:43	especially with lace lace is a beautiful wallet. I mean it really is	特にレース付きのウォレットは美しい ウォレットです。 つまり、見た目的には本当に
+12:47	aesthetically it's it's very nice. I know it's getting ready to go through	素晴らしいということです。 もうすぐまた大規模な
+12:50	another overhaul and it's going to be even better which is great.	改修が行われる予定で、 さらに良くなるだろうと聞いています。素晴らしいですね。
+12:54	>> But effectively the wallet is the gateway to everybody right? It's it's	でも、実質的に財布は 誰にとっても入り口ですよね？ それは、いわば
+12:58	almost like the eyeballs to the soul in the sense that you know when you first	魂への目のようなもので、ブロックチェーンを 初めて
+13:02	start interacting with any blockchain the wallet is going to be your first	利用する際に、 ウォレットが最初の
+13:05	experience. >> I would even argue that the wallet's the	体験となることは誰もが知っている。 ウォレットこそが
+13:08	most important part of that particular blockchain because if you don't have a	そのブロックチェーンにおいて最も重要な部分だと私は主張したい。 なぜなら …、
+13:11	place to hold on to your stuff then what's the point of decentralization	自分のデータを保管する場所がなければ、 分散化の意味がなくなるからだ。
+13:15	>> right? Yeah. And yeah I would love to see what you know I I've always kind of	うん。 ええ、 あなたの知識をぜひ知りたいです。
+13:19	wondered why wallets don't ever have like a a very simplistic user guide	ウォレットに 非常にシンプルなユーザーガイドが
+13:23	built into them. >> Exactly. That's exactly what I was	組み込まれていないのはなぜだろうと、ずっと疑問に思っていました。 その通り。 まさに私が言いたかったのはそれです
+13:26	getting at. And I think the the reason that a wallet user experience	。 そして、 ウォレットのユーザーエクスペリエンスが、こうした
+13:32	has has lagged in terms of it serving all of those different types of	様々なタイプの
+13:37	customers and users is product research. Customer discovery, understanding what	顧客やユーザーのニーズを満たすという点で遅れている理由は、製品リサーチの不足にあると私は考えています。 顧客発見、つまり従来型の製品の観点から顧客のニーズを理解することは、
+13:44	customers need in a traditional product sense has has been and continues to be	-
+13:49	really difficult in web 3. New technology ships every day. user	Web 3の世界ではこれまでも、そしてこれからも非常に難しい課題です。新しい テクノロジーは日々登場しています。 ユーザーの
+13:53	sentiment, what what the loudest users say they want changes and it also a lot	感情、つまり最も声の大きいユーザーが何を望んでいるかは 変化するものであり、
+13:59	of times differs from what they actually need. And so I think that's manifested	多くの場合、彼らが実際に必要としているものとは異なっている 。 そのため、この
+14:04	in a lot of product teams in the space not giving up but not investing in that	分野の多くの製品チームは、 諦めてはいないものの、
+14:11	hard set of activities to understand and apply tried and trueue product	-
+14:16	methodologies to say what is the user experience that is most important. And	最も重要なユーザーエクスペリエンスとは何かを理解するために、実績のある製品開発手法を理解し適用するという、大変な作業に投資していないという形で現れているのだと思います。 そして、
+14:20	like you alluded to, a big part of solving and serving	あなたがほのめかしたように、
+14:25	different types of users is starts with onboarding in terms of understanding and	さまざまなタイプのユーザーに対応し、問題を解決する上で重要なのは、オンボーディングから始まります。つまり、
+14:32	allowing users to uh make uh statements, make selections about what their	ユーザーが自分の意図や
+14:38	intentions are, where they are in this massive space. So that you can as a	、 …この 広大な空間の中で自分がどこにいるのかについて、意見を述べたり、選択したりできるようにすることです。 つまり、
+14:43	wallet curate the experience and put really important guard rails on the a	ウォレットとしてユーザー体験をキュレーションし、
+14:50	lot of times users first fora into web 3 so that they are seeing the things that	多くの場合ユーザーが最初にWeb3にアクセスするフォーラムに非常に重要なガードレールを設けることで、ユーザーが必要とする ものだけを見ることができ、多額の損失につながる可能性のあるものや、場合によってはユーザーを怖がらせてしまう可能性のあるもの
+14:55	they need to see and are protected from things that are going to potentially	から保護されるということです
+15:00	lose them a lot of money and maybe even scare them away. Do you ever see AI	。 AIがレースのようなものに
+15:04	playing a direct role in something like lace where you know it it's like if	直接的な役割を果たすのを見たことがありますか？つまり、
+15:09	you're using any kind of AI model or anything you now the process is ask me	AIモデルなどを使用する場合、 プロセスは「
+15:14	about me and what I'm trying to do and do you ever see something like that	私について、そして私が何をしようとしているのかを尋ねてください」というようなものです。
+15:17	happening with a like a Cardano wallet? >> Yeah, I have I have mixed feelings about	カルダノウォレットのようなもので、そのようなことが起こるのを見たことがありますか？ ええ …、
+15:23	putting a chatbot into a wallet there. I think there are benefits to it, but I	チャットボットをウォレットに組み込むことについては、複雑な気持ちです。 それには メリットもあると思うけど、
+15:27	think also it's a bit lazy in terms of >> I'm a lazy man.	怠け者な私にとっては少し怠惰なやり方でもあると思う。
+15:31	>> Yeah. But I also feel like there's like an opsac risk there if you put a chatbot	うん。 しかし、 チャットボットを壁の中に配置した場合、オペレーションサックのリスクもあるように感じます。というのも、
+15:35	into a wall because you hear about again it doesn't happen often but you do hear	頻繁に起こるわけではありませんが、
+15:39	about these bots that they go rogue not because they want to go rogue but	ボットが暴走するという話を聞くことがあるからです。 暴走したいからではなく、
+15:44	because there's not enough there's not enough boundaries that's put in by	設定された境界線が不十分だったり、
+15:48	>> or they could be sidestepped and things. It's definitely	回避されたりする可能性があるためです。 確かにそうですが、
+15:51	>> but it's worth discussing like >> yeah and I I think you know the chatbot	議論する価値はあります。 チャット …ボットの
+15:57	interface that we all are too familiar with at this point whether it's chatgbt	インターフェース …は、 chatgbt
+16:02	or claude or or whatever model you like to use that's not the only solution and	や claude など、どのモデルを 使うにしても、現時点では誰もがよく知っているものですが、それが唯一の解決策ではなく、
+16:07	the only way to kind of manifest the benefits you can get from an an LLM in a	-
+16:13	wallet. Think if you think about an onboarding experience that is gathering	ウォレットで LLM から得られるメリットを実現する唯一の方法ではありません。 あなたの目標や経験レベルといった文脈を 収集するオンボーディング体験について考えてみてください。それは、
+16:17	context as far as what your goals are, what your experience level is, doesn't	-
+16:22	have to be a text box that you type into and get answers from. Uh you can you can	あなたが入力して 回答を得るためのテキストボックスである必要はありません。 ええと、
+16:28	build that LLM functionality and get the same benefits from it uh with a little	LLM機能を構築して、もう少し
+16:32	bit more of a intentional UX. >> Explain to me if I if I'm a new user, I	意図的なUXで同じメリットを得ることができます。 私が新規ユーザーである場合、またはLaceを使用している他のユーザーである場合、私に説明してください
+16:39	have a or or any user for that matter using Lace. Let's say I'm using it for	。 例えば、私がそれを
+16:43	the first time. What is Carbon going to what am I going to see? Like when I	初めて使うとしましょう。 炭素はどうなるのか ？私は何を目にすることになるのか？ 例えば、
+16:48	first I don't have a wallet. I've never used a wallet. A buddy of mine told me	初めて財布を持っていなかった時のように。 私は 財布を使ったことがない。 友人が
+16:53	to try this out or to pick up some Cardano, right?	これを試してみるか、 カルダノを買ってみるように勧めてくれたんだけど、そうだよね？
+16:57	>> What [clears throat] is carbon changing today that I'm used to seeing? How how	私が普段目にしているものの中で、炭素が今日変化させているものは何ですか？
+17:03	is the process going to be different? >> So the in terms of onboarding	プロセスはどのように変わるのでしょうか？ そこで、特にオンボーディングに関して言えば
+17:07	specifically, there are there are two main things that will be improved upon	、カーボンによって 改善される主な点が2つあります
+17:11	with carbon. The first is the, you know, how do you handle uh recording your	。 まず一つ目は、
+17:17	recovery phrase in a in a non-custodial wallet? That's been a a design question	非カストディアルウォレットにリカバリーフレーズを記録する場合、どのように対処するかということです。 それ …は
+17:21	since wallets came to be. Um, how we're going to handle it with carbon is	財布が誕生して以来、ずっとデザイン上の課題だった。 ええと、 炭素問題への対処方法は
+17:27	evolving. Um, some may see it as as devolving, but shifting to a security	進化し続けています。 ええと、人によっては 退化と捉えるかもしれませんが、セキュリティを
+17:32	first approach. There have been way too many attacks uh there are way too many	最優先するアプローチへの移行です。 攻撃が多すぎる、
+17:37	attack vectors with being lax or being open-ended in terms of how users secure	ユーザーがウォレットを保護する方法に関して緩慢であったり、無制限であったりすると、攻撃ベクトルが多すぎる
+17:43	their wallets. So we we're taking a very security-minded approach to when a new	。 そのため、 新規ユーザーがログインする際には、セキュリティを非常に重視したアプローチを取っています
+17:49	user comes in. They may not need to do it right away,	。 すぐに記録する必要はないかもしれません
+17:52	but at some point they need to record their phrase. They can't copy it to	が、いずれかの時点で フレーズを記録してもらう必要があります。 彼らはそれをクリップボードにコピーすることはできません
+17:56	their clipboard. >> Um so they're	。 ええと、だから絶対にそんなことはしないでください
+17:58	>> Don't ever ever do that. >> Don't do that.	。 そんなことはしないでください。
+18:00	>> Please don't do that. [laughter] Didn't Isn't that what And I could be wrong,	お願い、それはやめて。 [笑い] そうじゃなかった。それは、 私が間違っているかもしれない
+18:03	but isn't that what Ian Bolina did back in the day? He had copied it to his like	けど、それはイアン・ボリナが昔やったことじゃない ？ 彼はそれを
+18:07	cloud text or something and then that's how somebody got access to it.	クラウドテキストか何かにコピーしていて、それが原因で 誰かがそれにアクセスできたのだ。
+18:11	>> I am super paranoid about that stuff. Like I I Yeah, I don't do any	私はそういうことに関してはものすごく神経質なんです。 そうですね、私は何もしていません。
+18:16	>> I keep everything either locked away close to my gun or I have it stored in a	銃の近くに鍵をかけて保管するか、
+18:19	safety deposit box. I don't play around. That's why I told you earlier. I keep	貸金庫に保管しています。 私はふざけたりしない。 だからさっき 言ったんだよ。 私は
+18:22	everything in a vault somewhere else and then I plan out what I'm going to do. I	すべてのものを別の場所にある金庫に保管しておき、 それから自分の行動を計画します。 私は
+18:26	create a separate wallet specifically for that	そのために専用のウォレットを別に作成しています。なぜなら、
+18:28	>> because the thing is is like everybody is generally especially newcomers who	一般的に、特に私たちが長年経験してきたことを経験していない新規ユーザーは、
+18:33	haven't been through everything we've been through all the years they're going	-
+18:36	to take the easiest most frictionless approach to things they're not writing	物事に対して最も簡単で摩擦のないアプローチを取るからです。彼らはこれらのことをすべて書き留めません。
+18:41	all this stuff down >> I also think too as we see the rise of	また …、
+18:44	AI and the gentic payments and the microtransactions happening like a lot	AIや遺伝子決済、 マイクロトランザクションの台頭を見ると、多くの
+18:48	of people are going to get they're going to feel like their stuff is safe and	人が 自分のものが安全だと感じるでしょうが、そうではありません。
+18:50	it's not it's not even a w it's not even a lace's job or a wallet's job to kind	ウォレットやウォレットの仕事は、
+18:54	of protect them from that. But I feel like there's gonna be so many mistakes	それらを保護することではないのです。 でも、
+18:58	happening from people just letting their,	人々が
+19:00	>> you know, their AI kind of do what it's going to do and by using the same exact	自分のAIに好き勝手にやらせて、 同じ
+19:04	device to have all this stuff. >> Exactly.	デバイスを使ってこれらすべてを行うことで、たくさんの間違いが起こるような気がします。 その通り。
+19:07	>> If if I'm a newcomer to the space, I onboard to a wallet, I shouldn't be	もし私がこの分野の初心者で、 ウォレットに登録したばかりなら、初めて
+19:13	prompted to set up my own agent for the first time.	自分のエージェントを設定するように促されるべきではない 。 つまり、それは
+19:17	>> That is that's by no means an optimal or a secure or safe user experience. So	決して最適な、あるいは安全な ユーザーエクスペリエンスとは言えない。 つまり、
+19:22	what we're prioritizing with carbon is kind of uh what you can see as selective	カーボンに関して私たちが優先しているのは、 選択 …的
+19:27	disc disclosure or progressive disclosure in terms of I finish	開示または段階的 開示と見なせるもので、オンボーディングを完了したら、まず
+19:31	onboarding the first thing that I need to do is obviously fund my account. Um	最初 …に アカウントに資金を入金する必要があります。 そうすれば、
+19:36	once you do that you're not going to be faced with an infinite number of	無限の選択肢に直面することはなくなるでしょう
+19:40	options. So you're not going to be ever sitting	。 つまり、
+19:43	there as a user saying what do I do next? um kind of the capabilities and	ユーザーとして「 次に何をすればいいの？」と悩むことは決してないということですね。 ええと、ウォレットを通じてアクセスできる機能や
+19:48	the kind of web 3 experience which a lot of which is accessible through a wallet	Web 3 エクスペリエンスは、
+19:52	is going to be introduced to the user in a way that's accessible in a way that is	ユーザーに段階的に アクセスできるように導入される予定です。ですから、それは本当に
+19:57	kind of uh sequential and so I I think that I think that's really important	重要だと思います。非常に
+20:02	there there are some really successful protocols out there rabbit hole was was	成功している プロトコルがいくつかあります。ラビットホールは、
+20:06	the first one in the Ethereum world uh which is kind of an incentivized	イーサリアムの世界で最初のもので、インセンティブ付きの
+20:11	learning or incentivized education platform and that's something that I	学習またはインセンティブ付きの教育 プラットフォームのようなもので、
+20:16	don't think gets nearly enough attention in this world. There's a lot of new	この世界では十分な注目を集めていないと思います。 新しい
+20:21	language. There are a lot of new types of experiences and digital interactions	言葉がたくさんある。 あなたが生まれる前には想像もできなかったような、数多くの新しいタイプの 体験やデジタルインタラクションが
+20:25	that are possible that you had no idea about before you came into the world.	可能になっています 。
+20:30	And I think it's the wallet's job. It's everyone's job as a builder to take	そして、それは財布の役割だと思う。 建設者として、誰もが
+20:36	responsibility for being ushers of that type of education. And so that's that's	そのような 教育の推進役としての責任を負うべきだ。 ですから、それは私たちが今後も重点的に取り組んでいく
+20:42	a big priority that we're going to continue to to place emphasis on.	大きな優先事項です 。
+20:47	>> What do you see as is LA's number one use case by the end of 2026?	2026年末までに、ロサンゼルスで最も注目されるユースケースは何だとお考えですか？
+20:52	>> I wish I wish I had a crystal crystal ball. Um	水晶 玉があったらいいのに。 ええと、
+20:54	>> we're going to create one. We're going to create one.	私たちはそれを作ろうとしています。 私たちはそれを 作ろうとしている。
+20:56	>> Why don't we say 2030 >> because that's too far.	2030年というのは遠すぎるので、そう言わないではどうでしょう 。 私の身長は
+20:59	>> I'm seven foot. I'm like a great Dane. I want to make sure I'm around when all	7フィートです。 私はグレート・デーン犬のようなものだ。 私は、
+21:03	this stuff happens. So I I don't know what the primary use	こうした出来事が起こる時に必ずその場に居合わせたいのです。 ですから、
+21:08	case will be whether it's at the end of the year or the end of next year but	年末か来年末に主なユースケースが何になるかはわかりませんが、
+21:12	something that we are excited about building and and kind of being the	私たちが構築することに興奮しており、ある種の
+21:18	catalysts for is finally breathing some life into DeFi on the Cardano ecosystem	触媒となることは、 Cardanoエコシステム上でDeFiにようやく活気を与えることであり、私たちが
+21:24	or in the Cardano ecosystem and what that's going to look like as far as the	-
+21:29	first step that we're taking. Uh there are two actual also IO initiatives. One	最初にとるステップとしてそれがどのようなものになるかということです。 ええと、 実際には2つのIOイニシアチブがあります。 一つは、
+21:34	is the Pogan uh set of protocols. The other is RealFi. So Pogan has a couple	ポガンのプロトコル群です。 もう 一つはRealFiです。 Poganには、ピアツーピアのクレジット市場などを実現するための、いくつかの
+21:40	different uh protocols and smart contracts that allow that enable things	異なるプロトコルとスマート コントラクトがあります
+21:45	like uh a peer-to-peer credit market. So instead of an algorithmically governed	。 つまり、
+21:51	borrow lending protocol as exist uh on other platforms, uh the Pogan credit	他のプラットフォームに存在するようなアルゴリズムによって管理される貸借プロトコルとは異なり、Poganの信用
+21:56	market is is truly peer-to-peer. So what that means is there's a direct	市場は真のピアツーピアです。 つまり、それは
+22:01	negotiation and interaction between a desirable or a prospective borrower and	望ましい借り手または将来の借り手と
+22:06	a lender. And what that does importantly is it protects the borrower from	貸し手との間で直接的な交渉とやり取りが行われることを意味する。 そして、この仕組みの重要な点は、
+22:12	the thing that is riskiest about >> decentralized borrow lending uh	分散型 …融資
+22:17	protocols which is price volatility. So, within a a peer-to-peer uh lending	プロトコルにおいて最もリスクの高い要素である価格変動から借り手を保護することです。 つまり、 ピアツーピアの融資
+22:24	agreement, you're not vulnerable to massive price swings. The only thing	契約においては、 価格の大幅な変動の影響を受けにくいということです。
+22:29	that puts you at risk of being liquidated is if you are not making the	清算されるリスクがある唯一の理由は、合意された
+22:34	agreed upon payments uh on the agreed upon schedule. So that's a really	支払いを合意された スケジュールで行わない場合です。 これは、数年後のCardanoのDeFiエコシステムと業界にとって、非常に
+22:39	important and I I think a really exciting uh one piece to the DeFi	重要で、非常に エキサイティングな要素の一つだと思います
+22:45	ecosystem and industry on Cardano is going to look in a couple years. The	。
+22:51	other one that we're excited about building towards is RealFi. So Realfi is	私たちが 構築に向けて期待を寄せているもう一つの技術は、RealFiです。 つまり、Realfiは
+22:55	another IO initiative. Reali has an asset called USDR which is a	IOのもう一つの取り組みなのです。 Realiは USDRと呼ばれる資産を保有しており、これは
+22:59	yieldbearing stable coin. It functions a lot like a liquid liquid staking token	利回りをもたらすステーブルコインです。 これは、
+23:04	might uh on other ecosystems or other chains. The kind of benefit or or main	他のエコシステムや他の チェーンにおけるリキッドステーキングトークンと非常によく似た機能を持っています。 利回りを提供するステーブルコインの利点、あるいは主な
+23:12	difference with a yield bearing stable coin is similar to the credit market.	違いは、 クレジット市場におけるそれと似ている。
+23:18	You're earning a yield. You have that asset liquid to do with it as you	あなたは収益を得ているのです。 その 資産は流動性が高く、
+23:23	please, but it's not vulnerable to price swings of of whatever. I think	自由に使うことができますが、 価格変動などの影響を受けにくいという利点があります。 ス
+23:28	it's going to be important for the future, too, because stable coins are	テーブルコインが
+23:32	being produced like crazy. Yep. We're seeing a lot of interoperability with	ものすごい勢いで生産されているので、将来的にも重要になると思います。 はい。
+23:35	that. We know that's exactly what Trad wants. So, I think that it's actually a	それに関して、多くの相互運用性が見られます。 それがまさにトラッドが望んでいることだと私たちは知っています 。 ですから、それを
+23:38	br a brilliant idea to kind of integrate it in to what Lace is doing in within	-
+23:42	the Cardano ecos ecosystem, especially for DRUPS and everybody else. And since	Cardanoエコシステム内でLaceが行っていることに統合するのは、特に DRUPSや他のすべての人にとって、実に素晴らしいアイデアだと思います。 そして、
+23:46	you're able to going to be able to do everything on one interface with Lace	Laceを使えば、すべてを1つのインターフェースで行えるようになるので、
+23:49	and not have to go to a different wall like you were complaining about, old	-
+23:53	man, remember? >> I forgot. I'm too old. Dimensions	おじいさんが以前文句を言っていたように、別の壁まで行く必要がなくなることを覚えていますか？ 忘れた。 私は年を取りすぎている。
+23:57	already setting in. No, but but to have everything done there, but also have	すでに次元が確立されつつあります。いいえ、しかし、 そこですべてを済ませ、さらに
+24:00	access to that DeFi aspect. I think that's awesome. And I think that's also	DeFiの側面にもアクセスできるようにしたいのです。 それは 素晴らしいと思います。 そして、他の場所でDeFiを行う必要が
+24:03	going to attract users because you don't have to do DeFi elsewhere. You can do it	ないという点も、ユーザーを引き付ける要因になると思います 。 そこで
+24:06	all there and reap all the benefits. >> Exactly. And that's that's spot on. What	全てをこなし、全ての恩恵を受けることができます。 その通り。 まさにその通りです。
+24:12	we are prioritizing with these new kind of DeFi capabilities is simplicity. So	私たちがこれらの新しいタイプの DeFi機能において最も重視しているのは、シンプルさです。 その
+24:20	as some application may adopt these protocols and gear them towards a power	ため、一部のアプリケーションはこれらの プロトコルを採用し、パワーユーザー向けに最適化したり、
+24:26	user or or not invest in making the user experience around them simple. Within	ユーザー エクスペリエンスをシンプルにするための投資を行わなかったりする可能性があります。 Lace内では
+24:31	lace, you'll be able to access these new capabilities in a few clicks in an	、これらの新 機能に数回のクリックでアクセスできます。
+24:36	extremely simple and straightforward way that that's still attractive and	非常にシンプルで分かりやすい方法でありながら、
+24:41	beneficial to power users. But we are if we take the the realy example, you can	パワーユーザーにとっても魅力的で有益なものとなっています。 しかし、 実際の例を挙げると、
+24:47	start staking and earning yield with reali in two clicks.	2 クリックで Reali でステーキングを開始して利回りを得ることができます。
+24:51	>> Can you do them both simultaneously? >> So that's that's an exciting piece of	両方を同時に行うことはできますか？ それは、この企画の 興味深い点の一つです
+24:55	this. So both the credit market and reali exist and can stand on their own	。 つまり、クレジット市場と 不動産市場はどちらも存在し、それぞれ単独でも
+25:00	as exciting offerings, but when you combine them, something even cooler is	魅力的な商品として成立するが、 それらを組み合わせると、さらに素晴らしいものが生まれる
+25:06	is possible. >> Make a lot more money.	可能性があるのだ。 もっとたくさん 稼ぐ。 すごい
+25:08	>> You can make a lot more money because >> what a concept, [laughter]	発想ですよね？もっとたくさん稼げるんですよ（笑）。
+25:11	>> right? Well, that's that's what I'm getting at. It's not just a you have to	ええ、それが私が言いたいことなんです 。 どちらかを
+25:16	pick or choose. You can benefit from the ecosystem as it's built. So, that's why	選ばなければならないというわけではありません。 構築されていくエコシステムから恩恵を受けることができます 。 だから、その点について明確にしておきたかったのです
+25:20	I wanted to make sure we were clear on that.	。
+25:22	>> Yeah. So, the term carry trade is not new. It's it's been around for for	うん。 つまり、キャリートレードという用語は 新しいものではない。 それは、
+25:26	decades in the traditional finance world. So the way that the carry trade	伝統的な金融業界では何十年も前から存在している 。 つまり、キャリートレードは、
+25:30	will work um in the context of the poking credit market and real	信用市場と実際の状況において、
+25:35	I can take my ADA I can put it up as collateral in a loan agreement and	ADA …を 担保としてローン契約に預け、
+25:41	borrow a stable coin say USDCX. Just because that ADA is sitting as	例えばUSDCXなどのステーブルコインを借り入れることができるという仕組みです。 そのADAが
+25:47	collateral I can still earn staking rewards on it and I can still benefit	担保として保管されているからといって、ステーキング報酬を得ることはできますし、
+25:52	from what we hope are positive price movements. So, I'm earning a yield from	期待される価格 上昇からも利益を得ることができます。 つまり、私はADAから収益を得ているということです
+25:57	my ADA. I'm paying interest on the loan. But if we if we look at those two kind	。 私はローンの利息を支払っています。 しかし、
+26:02	of pieces of of the yield on the Pogan credit market side, I can then take that	Pogan クレジット市場側の利回りの2つの部分を見ると、
+26:08	stable coin that I've borrowed using my ADA as collateral and stake it within	ADAを担保として借りたステーブルコインをRealyにステーキングして
+26:12	Realy and start earning USDR yield. So the reason we call it a carry trade, I'm	USDRの利回りを得始めることができます。 つまり、 これをキャリートレードと呼ぶ理由は、
+26:19	putting up one asset to borrow against it, still earning a yield on that asset,	ある資産を担保に資金を借り入れ 、その資産から利回りを得ながら、さらにその資産を
+26:24	and now I can then go and take it and stake it with USDR and earn a second	USDRに預け入れて、2度目の
+26:30	yield. >> Is it what what is it possible then that	利回りを得ることができるからです。
+26:35	my liquid staking yield and then my USDR yield is combined to then make the	私の流動性ステーキング利回りとUSDR 利回りを組み合わせて、
+26:40	payment on the loan? >> Exactly. So that's that's not going to	ローンの返済に充てることが可能なのでしょうか？ その通り。 つまり、それはおそらく最初の発売時には
+26:45	be natively supported in likely in the first uh roll out of the car.	ネイティブにサポートされないでしょう 。
+26:51	>> Don't slack on me now. >> I'm just I'm just managing expectations.	今、気を抜くなよ。 ただ、 期待値を調整しているだけです。
+26:54	>> They have to make sure that it's done right so that you don't complain later.	後で苦情が出ないように、きちんと作業が行われるようにしなければならないのです。
+26:57	>> Move fast and break things. That's the way everyone else does it.	素早く行動し、常識を打ち破れ。 みんなそうやってるんだよ。
+27:00	>> Why can't we be like them? >> No.	なぜ私たちは彼らのようになれないのだろうか？ いいえ、違います。
+27:02	>> No. But that that that is the ultimate goal is to be able to take your yield	しかし、究極の 目標は、自分の利回りを使って
+27:06	and say, "Yep, I want to make payments on my loan using my real yield." So I	「はい、 実際の利回りでローンの返済をしたい」と言えるようになることです。 だから、
+27:12	want to automatically claim my rewards and without doing anything I can make	報酬を自動的に受け取りたいし、何もせずに
+27:17	those payments. It's essentially benefit of the benefit from the delta of the	支払いも済ませたいんです。 それは基本的に、利回りの 差から得られる利益の利益である
+27:21	yield. Make my payments everything is working beautifully and I never have to	。 支払いはすべて 問題なく行われており、私は何も
+27:25	touch anything. >> That's ultimately the way I see a lot of	操作する必要がありません。 結局のところ、多くの
+27:28	banks working effectively, right? Because I've always said and I've been	銀行が効果的に機能している方法はそういうものだと私は考えていますよね？ なぜなら、私はずっとそう言ってきたし、何
+27:32	saying it on X for years. Why don't we have a system that if these banks want	年も前からXでそう言い続けてきたからだ。 銀行 …が
+27:36	to adopt blockchain rails where if we're borrowing then we get our yield and it	ブロックチェーンの仕組みを採用すれば、私たちが 借り入れをする際に利回りを得て、その返済で
+27:41	pay it pays down our car note or pays down our mortgage and it it becomes more	自動車ローンや住宅ローンを返済できるようなシステムがあればいいのに。そうすれば、 より流動的なシステムになる。AIの時代になれば、
+27:45	fluid which let's face it with AI you know we're going to need as many	-
+27:50	different vehicles to try and offset our living expenses as possible. So it' be	生活費を相殺するためにできるだけ多くの異なる手段が必要になるだろう。 だから、
+27:53	great if we are able to get ahead of that. It sounds like making a step.	私たちがそれを先回りできれば素晴らしいでしょう 。 それは一歩踏み出したように聞こえる。
+27:57	>> Yeah. And you know, not to be a a decentralization evangelist, but the	うん …。 分散化の伝道師になるつもりはないのですが、
+28:03	reason that that's possible in this context is banks don't benefit by	この文脈でそれが可能な理由は、 銀行 …が
+28:09	allowing you to automate those types of things because	そういった種類の業務を自動化することで利益を得られないからです。なぜなら、
+28:12	>> then you don't you have fewer intermediaries, fewer financial services	そうすると 仲介者や金融サービスが少なくなり、
+28:16	that can step in and take a fee on those on those transactions. uh when we have	それらの取引に手数料を徴収する手段が減ってしまうからです。 ええと、
+28:20	one, two, or three players each serving a very specific role, um there there's	1人、2人、または3人の選手がそれぞれ 非常に特定の役割を担っている場合、ええと、そこには
+28:25	no one to say, "Hey, give me the fee." >> Right. That's that's actually a lot more	「おい、報酬をくれ」と言う人がいません。 右。 それは、私が
+28:30	exciting than I than I originally thought.	当初 考えていたよりもずっと面白いことだ。 いろいろ考えさせられたよ
+28:33	>> It's got my wheels turning. >> That's my favorite part. I feel like	。 そこが一番好きなところです。
+28:36	like I don't care about the upgrades, like all the stuff you're complaining	アップグレードとか、あなたが文句を言ってるようなことには、私は全く興味がないんです
+28:38	about. I want to be able to make that passive.	。 それを 受動的なものにしたい。
+28:40	>> Well, yeah, passive would be great if there's a way to facilitate that easily,	そうですね、もし 簡単に実現できる方法があれば、受動的な対応は素晴らしいでしょうが、それは
+28:44	but that's his job. >> Yeah.	彼の仕事ですからね。 うん。
+28:45	>> So, get on it. >> Yeah. Get on it. [laughter]	さあ、取り掛かろう。 うん。 さあ、取り掛かろう。 [笑い]
+28:49	So Nate, what are you most optimistic about when it comes to Cardano and Lac's	ではネイト、 カルダノとラックの
+28:53	future? Because you dropped a lot of alpha.	将来について、あなたが最も楽観視していることは何ですか？ アルファ値を大幅に下げたからです 。
+28:54	>> Mhm. I've been in the web 3 space, like I said, for eight years. That's	うん。 先ほども申し上げたように、私はWeb3の分野に 8年間携わっています。 それは
+29:00	I think four market cycles. I've been building in in the space for that time.	4つの市場サイクルに相当すると思います。 私はその間ずっと、その スペースにそれを構築してきました。
+29:05	And one thing that has become abundantly clear to me is while nobody likes bare	そして …、 私にとって非常に明確になったことは、誰も市場が閑散としている状態を好まないが
+29:12	markets, bare markets are when the important	、 重要 …な
+29:16	stuff gets built. >> It's when the noise quiets down. It's	ものが建設されるのはまさにそうした閑散とした市場においてだということである。 騒音が静まった時だ。 それは、
+29:20	when you can take your learnings, figure out what was	-
+29:24	working, what wasn't working from the the previous hype cycle when everyone	前回のブームサイクルで誰もが
+29:29	was flooding into the market and asking for things. This time is when we can	市場に殺到し、様々な ものを求めていた時に得た教訓を活かし、何がうまくいき、何がうまくいかなかったのかを見極めることができる時です。 今こそ、
+29:36	have some introspection and we can build what's going to be talked about in the	内省を深め、
+29:41	next bull run. And so I'm most excited to be working on the things that we've	次の強気相場で話題になるであろう事柄を構築できる時だ。 ですから、私が最も楽しみにしているのは、これまで
+29:46	talked about to have the time to to build those things, but also to	話し合ってきたことに取り組み、 それらを構築する時間を確保できること、そして今後
+29:53	as we roll these things out over the next 3 6 n months to start to usher in	3～6ヶ月かけてそれらを展開し、
+29:59	that next bull run to start to usher in the new chapter of what Cardono will	次の強気相場を到来させ、 Cardanoの新たな章を切り開き、
+30:05	look like and hopefully be a really positive force in terms of creating new	-
+30:11	experiences that I think people have have have waited a long time for on	-
+30:15	Cardano and beyond and finally kind of make those things a reality.	Cardano内外で人々が長い間待ち望んでいた新しい体験を生み出すという点で、非常にポジティブな力となり、最終的に それらを現実のものにすることです。
+30:20	>> So Nate, is there anything else that you wanted to touch on?	ではネイト、他に何か 触れておきたいことはありますか？
+30:23	>> Yeah, one thing that we didn't touch on directly is, you know, I talked about	ええ …、 直接触れなかった点の一つは、顧客を
+30:29	the importance of understanding customers and how I think historically	理解することの重要性についてお話ししたのですが、 歴史的に見て、
+30:34	that's been somewhat lacking in this world. We're rolling out a beta program	この世界ではそれがやや欠けていたように思います 。 Laceのベータプログラムを展開することで、
+30:38	for Lace to allow motivated or involved users to test	意欲的なユーザーや積極的に関わっているユーザーに早期にテストしてもらい、
+30:44	things early to give us feedback to give the team feedback before we release	リリース前にフィードバックをチームに提供してもらうことで、
+30:48	something so we can make the the things that	-
+30:52	if we were to wait until after release we were going to be hearing about first.	リリース後に初めて 耳にするであろう問題点を事前に把握し、改善することができます。
+30:55	>> That's a good dynamic I'm starting to see across the board. Everybody's	それは、私が全体的に見て見始めている良い流れです 。 最終決定する
+30:58	wanting to start putting some getting feedback before it's finalized. Getting	前に、皆がフィードバックを集め始めたいと思っている。
+31:02	feedback on proposals or developments or anything. It seems to be an ongoing	提案や開発、その他あらゆることについてフィードバックを得る 。 これは
+31:07	theme with all of IO and everybody. That's actually a really cool thing	IO全体、そしてあらゆる人々に共通するテーマのようだ。 それは本当に素晴らしいことだと思います。なぜなら、
+31:10	because I think it's going to alleviate a lot of tension and pressure because I	それは 多くの緊張とプレッシャーを和らげると思うからです。
+31:15	Yeah, that's a that's really cool. >> It feels like it's more transparent,	ええ、それは本当に素晴らしいことです。 突然降って湧いたような情報ではないので、 より透明性が高いように感じます
+31:18	too, because it's not just kind of dropped on you. Like people have time to	。 人々は、ただパニックになったり、何かに腹を立てたりするのではなく、
+31:21	hear the suggestions or to review things instead of just freaking out and being	提案を聞いたり、物事を検討したりする時間を持つべきだ
+31:25	like so upset about whatever. So they can make they could be like, "Hey, this	。 だから彼らは、 「これが
+31:29	is what we're thinking. This is what we want." And then	私たちの考えです。これが私たちの 望みです」と言えるようになるのです。 そして、
+31:31	>> the the opposing side can make changes if they want to or not. Yeah, and that's	相手側は望むと望まざるとにかかわらず、変更を加えることができる 。 ええ、そしてそれが
+31:36	that's my favorite part about building products is getting to talk to users,	私が製品開発で一番好きなところなんです。 ユーザーと話したり、
+31:41	getting to hear feedback, and then translating that into the experiences	フィードバックを聞いたりして、 それ …を
+31:45	that we then go and build for them. So, I'm excited that we're working more	私たちが彼らのために作り出す体験に反映させていくことができるからです。 ですから、 私たちがより積極的にこの問題に取り組み、これまでのような事後対応的なやり方から脱却しようとしていることに、私は興奮しています
+31:49	proactively on that and moving away from the kind of historically more reactive	-
+31:55	uh way of building things. So, if you're if you're watching this and you're a	。 ですから、もしあなたが この動画をご覧になっていて、すでに
+32:01	Lace user or if you're watching this and you're not yet a Lace user, I encourage	Laceユーザーである場合も、 まだLaceユーザーではない場合でも、ぜひ私たちの
+32:04	you to check us out on our socials. That's where we'll be publishing	ソーシャルメディアをチェックしてみてください。
+32:07	information about our beta program. We're also going to be uh rolling out	ベータプログラムに関する情報は、そこで公開する予定です。 また …、
+32:12	some focus groups, some targeted surveys to hear more about what people want in	人々の様々な要望をより深く理解するために、フォーカスグループや対象を絞ったアンケート調査も実施する予定です
+32:18	different ways. So, just encourage everyone to to get involved and to be	。 ですから、皆さんに積極的に参加して発言していただくよう促し、私たちは皆さんの声に耳を傾け、皆さんの意見を
+32:23	vocal and that just we're we're listening and that we're we're looking	-
+32:27	forward to hearing what >> I would like to make an official	聞くのを楽しみにしています
+32:29	suggestion if I might. >> Something I'd like to see postcarbon,	。もしよろしければ、私から正式な提案をさせていただきたいと思います。 脱炭素社会でぜひ見てみたいものです
+32:33	>> please. >> I want to be able to theme my wallets	。 用途に合わせて ウォレットのテーマをカスタマイズできるようにしたい
+32:35	based on what I'm using them for. Can you make that happen, sir?	。 それを実現していただけますか ？
+32:38	>> What is a What does a theme look like to >> I want a big crow on my wallet because	テーマとは何ですか？テーマはどのようなものですか？ 私は自分のエゴが大きいので、財布に大きなカラスを付けたいです
+32:42	my ego is so big. I want to remind myself every time I make a Cardano	。 カルダノの
+32:46	transaction. >> You know, I'm being somewhat bashful,	取引をするたびに、自分自身に言い聞かせたい。 ちょっと恥ずかしいのですが、
+32:50	but that's a a great use case for an LLM in a wallet. You know, Lace Lace isn't	それは財布に入ったLLMの素晴らしい活用例ですね 。 レースは、
+32:56	going to Lace isn't going to create backgrounds for all the different	-
+33:00	animals in the animal kingdom and everything that anyone may want. But	動物界のあらゆる動物の背景や、 誰もが望むあらゆるものを作成するわけではありません。 しかし、
+33:04	it's pretty easy to say, >> "Hey, user, what do you want your theme	「ユーザーさん、
+33:07	of this wallet to be?" And be like, "Crows." That's that's a that's a great	このウォレットのテーマは何にしたいですか？」と言うのはとても簡単です。 そして 「カラス」って感じで。 それは、それは、それは、法学修士（
+33:10	task for an LLM. >> You know what? I won't even make it that	LLM）にとって素晴らしい課題です。 あのね？ そんなに
+33:13	difficult cuz realistically I'm just thinking something that if I if I'm	難しくするつもりはないよ。現実的に考えて、
+33:17	using a particular wallet it would be easier for me to not have to look up at	特定のウォレットを使っている場合に、いちいち上部を 見なくても済むように、何か便利なものがあればいいなと思ってるんだ。
+33:21	the top but just something that's you know it kind of represents maybe if I'm	例えば …、
+33:26	using that wallet specifically for a DeFi app or I'm using it as my you know	そのウォレットを DeFiアプリ専用に使っているとか、他の用途に使っているとか、そういうことを表してくれるようなもの。例えば、
+33:30	for whatever it is but just like even a like a little selector where I can say	-
+33:34	okay well there's maybe five one of five different themes or something I can pick	5つの 異なるテーマの中から選べるような小さなセレクターがあって、そのうちの
+33:37	from long as one of them's crow themed and we're good. I like that.	1つがカラスのテーマだったらそれでいいんだ 。 私はそれが好きです。
+33:41	>> Wendy, any feature requests, desires from from you?	ウェンディさん、何か機能に関するご要望やご希望はありますか ？
+33:45	>> No, not at this time. I mean, I'm kind of taking everything in and and hearing	いいえ、現時点では予定していません。 つまり、私は あらゆることを吸収し、聞いているのですが、
+33:49	and what I'm just excited that you guys are working on all the features that are	皆さんが改善が必要な すべての機能に取り組んでいることにとても興奮しています
+33:52	making it like that need to be improved. And again,	。 そして、これも
+33:56	it's crypto and this is like newer technology. Plus, we have like this AI	暗号通貨であり、比較的新しい 技術です。 それに、AIの
+34:00	wave that kind of I mean, we knew that AI was coming, but it kind of shocked a	波のようなものがあって、 AIが来ることは分かっていたけれど、あまりにも速く進んでいるので、
+34:04	lot of people, I feel like, because it's happening so fast. So, it's nice to see	多くの人が驚いたと思う 。 ですから、
+34:07	that you guys are t taking the initiative to fix a lot of these things,	皆さんが 率先してこれらの問題の多くを解決しようとしているだけでなく、
+34:09	but also keeping an open mind and taking suggestions and also allowing for that	柔軟な姿勢で提案を受け入れ、
+34:13	program for people to come and say, "Hey, we want this. We don't like this.	人々が 「私たちはこれが欲しい。これは気に入らない。私たちにはこれが
+34:16	This is what we need." And I think it's going to be I think it's a lot different	必要なんだ」と言えるようなプログラムを設けているのは素晴らしいことです。 そして、これは世に出回っている他の財布とは かなり違うものになると思います
+34:19	than some of the other wallets that you see out there.	。
+34:21	>> Totally. >> Thank you so much to Nate from Lace for	完全に。 Laceのネイトさん、ご出演いただき本当にありがとうございました
+34:24	coming on. It was a pleasure chatting with you about everything Lace and a	。 Laceのこと、そして
+34:28	little bit of Cardano and AI. Of course, it's always a pleasure with Crow.	少しだけCardanoとAIについてもお話できて楽しかったです。 もちろん、 クロウと一緒だといつも楽しい。
+34:32	>> Of course, it is. [laughter] >> Thank you so much to Block 45. And if	もちろんそうです。 [笑い] Block 45 さん、本当にありがとうございました。Lace
+34:35	you want to learn more about Lace, where should they go?	についてもっと知りたい方は、どこに行けば いいでしょうか？
+34:37	>> If you want to find out more about Lace, you can check us out on our website,	Laceについてもっと詳しく知りたい場合は、 弊社のウェブサイト
+34:40	lace.io. Uh all of our trusted official social links are there, too. So, you can	lace.io をご覧ください。 ええ、私たちが信頼する公式の ソーシャルリンクもすべてそこにありますよ。 ですから、
+34:45	find us on our socials uh from our website and encourage you encourage you	当社のウェブサイトからソーシャルメディアで当社を見つけることができますので、ぜひそうすることをお勧めします
+34:49	to do so.	。
+34:56	>> What do you got to say about the mascot? I think I think a an iguana is a really	マスコットについて何か言いたいことはありますか？ イグアナ …を
+35:02	interesting mascot choice which I love thanks to our marketing team. Um because	マスコットに選んだのは本当に面白い選択だと思います 。マーケティングチームのおかげでとても気に入っています。 ええと、なぜなら
+35:07	[laughter] iguanas do two really interesting	[笑い] イグアナは2つの本当に面白い
+35:09	things. >> What is that?	ことをするからです。 それは 何ですか？
+35:10	>> They can lose their tail and they can regrow it.	彼らは尻尾を失っても、 再生させることができる。
+35:12	>> Lizards can too. >> Yeah.	トカゲもできる。 うん。 わかった
+35:14	>> Okay. >> But not all lizards can can change	。 しかし、すべてのトカゲが体色を変えられるわけではない
+35:17	colors. >> Not not all lizards can adapt and	。 すべてのトカゲが適応して
+35:19	camouflage themselves. >> No. All lizards	身を隠せるわけではない。 いいえ。すべてのトカゲはそれができますが、
+35:21	>> can can iguanas do that actually or is that just chameleons?	イグアナも実際にそれができるのでしょうか？それとも カメレオンだけでしょうか？ 私もそう
+35:24	>> That's what I thought. >> No.	思いました。 いいえ。
+35:26	iguanas can't change colors. So, >> but like he can change colors, so that's	イグアナは体色を変えることはできません。 でも、 彼は色を変えられるから、それは
+35:31	cool. Dave is a special kind of iguana. >> Well, Dave came with some spray paint.	すごいよね。 デイブは特別な種類のイグアナだ。 ええと、デイブはスプレー塗料を持ってきました。
+35:36	>> Dave actually came out of the research lab down the street, right?	デイブは実は、すぐ近くの研究 室から出てきたんだよね？
+35:39	>> Oh, [laughter] of Jurassic World.	ああ、[笑い] ジュラシック・ワールドの。
+35:40	>> So, he's got some special special skills.	つまり、彼は特別な スキルを持っているということだ。 わかった
+35:42	>> Okay. Yeah, he can he can uh he can change with the theme of the future lace	。 ええ、彼は 未来のレースウォレットのテーマに合わせて変更できます
+35:47	wallets.	。
+35:52	>> He's about to eat my private parts. [laughter]	彼は私の局部を食べようとしている。 [笑い]
+35:57	Did Dave sign a waiver, by the way? >> About to get a mouthful, Dave.	ところで、デイブは免責同意書にサインしたの？ デイブ、これから口いっぱいに何か食べさせられるぞ。
+36:02	[laughter]	[笑い声]
+36:05	Handcuff.	手錠。
