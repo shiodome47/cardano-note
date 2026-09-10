@@ -33,3 +33,11 @@ charles-hoskinson:
   blurb_en: Videos from Charles Hoskinson's own channel. Much of it is personal opinion rather than the official position of IOG or the Cardano Foundation. Speakers are named.
   chatham_default: false
   numbered: false
+
+alphagrowth:
+  title_ja: AlphaGrowth
+  title_en: AlphaGrowth
+  blurb_ja: DeFi の成長支援会社 AlphaGrowth のチャンネル（@alphagrowth）で公開された動画。番組「Dose of Alpha」など。AlphaGrowth は Cardano の PRIME 提案の運営主体でもあるので、Cardano の DeFi についての発言は当事者の見解として読みます。発言者は実名のまま扱います。
+  blurb_en: Videos published on the channel of AlphaGrowth (@alphagrowth), a DeFi growth firm, including its show "Dose of Alpha". AlphaGrowth also runs Cardano's PRIME programme, so what it says about Cardano DeFi is read as the view of an interested party. Speakers are named.
+  chatham_default: false
+  numbered: false
