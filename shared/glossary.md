@@ -48,6 +48,43 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 - **link caps** — Santiago Carmuega が「Blockfrost チームと、Cardano エコシステムで活動するもう 1 つのチーム」としてスナップショットの共同署名の相手に挙げた名前。TxPipe と Demeter を共同運営している **Blink Labs** が候補だが、動画からは確かめられない。まとめでは「候補」として `補足` で書き、全文は聞こえたまま
 - **Midnight questing** — 終わりの告知で一言。何を指すかは動画で説明されていない
 
+### 2026-09-09 Charles Hoskinson — Navier-Stokes
+
+本人のチャンネルのライブ配信。YouTube の自動字幕なので固有名詞の崩れが多い。
+
+| 誤変換 | 正しい表記 |
+| --- | --- |
+| Cray Institute | Clay Institute（Clay Mathematics Institute） |
+| ponor conjecture | Poincaré conjecture |
+| reman hypothesis | Riemann hypothesis |
+| nir stokes, neighbor Stokes, Nivier Stokes, nibier stokes | Navier–Stokes（英語全文では本人の言い方どおり "Navier Stokes"） |
+| Claude Louie Navier | Claude-Louis Navier |
+| GPT6 Astra | GPT-6 Astra |
+| Chad GPT, CHPT | ChatGPT |
+| open AAI | OpenAI |
+| Sam Alman | Sam Altman |
+| Daario | Dario（Amodei） |
+| enthropies | Anthropic |
+| Linets | Leibniz |
+| Larry's Page | Larry Page |
+| Carnegie Melon | Carnegie Mellon |
+| Jeremy Avagad | Jeremy Avigad |
+| automath | Automath |
+| lean | Lean |
+| Bob FSY, Bob Fos | Bob Fosse |
+
+**文脈から推定して直したもの**（全文に `(推定)` / `(inferred)` を付けた）。
+
+- **Peter Schwab** → **Peter Scholze**。「Lean を証明の正当な形式と認める本職の数学者」として Terry Tao と並べて挙げられた名前。Lean での形式化（Liquid Tensor Experiment）に関わった Scholze と読んだ
+- **managars paradox** → **Banach–Tarski paradox**。「Lean で形式化されて驚いた」集合論の結果として連続体仮説と並べて挙げられたもの
+- **health's tertinary gold injection proof** → **Helfgott's ternary Goldbach conjecture proof**。「正しいと分かっているのに手続きが追いつかない証明」の例。本人の専門（加法的整数論）と音の両方が合う
+
+**特定できず聞こえたまま残したもの**: **the uadidus manifesto**（直後に "the QED manifesto" と言い直しているので、同じものの言い間違いの可能性）。
+
+**直さなかった誤変換**（固有名詞ではないので英語全文はそのまま。日本語では正しく訳した）: PTEES / PTE（PDEs / PDE）、OD（ODE）、nextG（next-generation）、awake（a wake）、squirrel（squirt）、similacro（simulacrum）、parro（parrot）、open G。
+
+**動画の言い分と事実が違う固有名詞**: Jay Cummings を「UCSD の教授」と紹介しているが、本人の所属はカリフォルニア州立大学サクラメント校で、UCSD は博士号の取得先（2016 年）。docs/ では動画の言い分を残し、`補足` で事実を添えた。
+
 ## Cardano の基本用語
 
 | 用語 | 説明 | 訳し方 |
@@ -76,6 +113,23 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **Kupo / Ogmios** | Cardano の DApp 開発でよく組み合わせる補助ツール。Kupo はアドレスごとの UTXO の索引、Ogmios はノードとの WebSocket の橋渡し。Midnight のバリデータの初期の手順にも入っていた | 訳さない・初出で補う |
 | **Blockfrost** | Cardano のデータを読むための API サービス。「Blockfrost 互換 API」は、そのエンドポイントと同じ形で問い合わせられるという意味。公式: <https://blockfrost.io> | 訳さない |
 | **UTxO RPC** | UTXO 型チェーン向けの gRPC ベースのデータ API。TxPipe が仕様を出している | 訳さない |
+
+## 数学・AI の用語（Charles Hoskinson のチャンネルで出るもの）
+
+| 用語 | 説明 | 訳し方 |
+| --- | --- | --- |
+| **ミレニアム懸賞問題（Millennium Prize Problems）** | Clay Mathematics Institute（米国の私設の数学研究所）が 2000 年に発表した 7 つの未解決問題。各 100 万ドルの懸賞金。解決済みは Poincaré 予想のみ（2003 年、Perelman）。動画の字幕では "Cray Institute" | ミレニアム問題（原語を添える）。**要点では「数学で一番難しい問題のひとつ」と書く** |
+| **Navier–Stokes の存在と滑らかさ** | ミレニアム問題のひとつ。3 次元で滑らかな初期状態から始めた流体の方程式の解が、いつまでも滑らかか、有限時間で破綻しうるか。**公式の問題文はどちらの証明も認め、滑らかな外力を加えた設定も認めている。**2026-09-08 に OpenAI が「有限時間で破綻する」側の結果を、外力ありの設定で示したと発表（Clay は 09-10 時点で未解決のまま掲載） | Navier–Stokes（訳さない） |
+| **偏微分方程式（PDE）** | ある場所・時刻の値がまわりや少し前の値とどう関係するかを表す式。流体、熱、波など | 偏微分方程式（初出で補う）。**要点では「流体の方程式」と書く** |
+| **Lean** | 証明支援系（proof assistant）のひとつ。数学の主張と証明をプログラムのように書き、機械が検査する。Hoskinson は「テスト駆動開発のようなもの」と説明 | Lean（訳さない）。**要点では「証明を機械で検査する仕組み」と書く** |
+| **形式化（formalization）／形式数学** | 数学の証明を、機械が一行ずつ検査できる形に書き直すこと | 形式化 |
+| **Hoskinson Center for Formal Mathematics** | カーネギーメロン大学の形式数学センター。2021 年 9 月に Charles Hoskinson の 2,000 万ドルの寄付で設立発表。所長は哲学科の Jeremy Avigad。公式: <https://www.cmu.edu/hoskinson/> | 訳さない（初出で「形式数学センター」と補う） |
+| **QED マニフェスト** | 1994 年に出た、すべての数学を機械で検査できる形にしようという呼びかけ | 訳さない |
+| **Automath** | N. G. de Bruijn が始めた最初期の証明検査システム。一般には 1967〜68 年開始とされる（動画では 1970 年） | 訳さない |
+| **依存型（dependent types）／構成的数学** | 型に条件を書き込める型システム。「型が合う＝証明が通る」という対応を作れ、Lean はこの上に作られている。構成的数学は「存在する」なら実際に作って見せることを求める流儀 | 依存型／構成的数学（初出で補う） |
+| **ZFC** | 現代数学の大半が依拠する集合論の公理系 | 訳さない |
+| **信頼の半径（radius of trust）** | Hoskinson の言葉。数学の共著で「全部を理解し検証した」と信じられる相手の数（3〜5 人）。Lean があれば広がる、というのが 2021 年の本人の予測 | 信頼の半径（原語を添える） |
+| **ショットガン・ウェディング（shotgun wedding）** | Hoskinson の言葉。先取権の争いで双方に貢献があるとき、急ごしらえで共著にすること | そのまま片仮名で（初出で補う） |
 
 ## Midnight の用語
 
@@ -109,6 +163,11 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **Dolos** | TxPipe の Cardano「データノード」。1 バイナリで、ブロック生成・検証はせず、リレーにつないで台帳のコピーを組み込み DB に持ち、Blockfrost 互換・UTxO RPC・Kupo 互換・Ogmios 経由の API を出す。履歴は期間を決めて切り詰められる。公式ドキュメント: <https://docs.txpipe.io/dolos> |
 | **Demeter** | TxPipe と Blink Labs が運営する Cardano の DApp 向けインフラ基盤。2026-09-02 のデモでは「Demeter のリレー」が接続先の選択肢として出た。公式: <https://demeter.run> |
 | **Blink Labs** | Cardano のインフラ・ツール開発チーム。Demeter を TxPipe と共同運営。公式: <https://blinklabs.io>。2026-09-02 の動画で「link caps」と聞こえた名前の候補（未確認） |
+| **OpenAI** | 2026-09-08 に「AI が Navier–Stokes のミレニアム問題を解いた」と発表。投稿: <https://x.com/OpenAI/status/2097374640582668336>、解説: <https://openai.com/index/navier-stokes-solution/>。懸賞金は請求しないと表明 |
+| **Jay Cummings** | 数学の教科書で知られる数学者（カリフォルニア州立大学サクラメント校、PhD は UCSD 2016）。2026-09-08 に OpenAI の投稿を引用して「この証明に 1 年取り組んだのに、ただツイートされた」と投稿（<https://x.com/LongFormMath/status/2097404073406521691>）。Hoskinson はこれを字義どおりに読んだが、報道の先取権の話にこの名前は出てこない |
+| **Tristan Buckmaster / Levent Alpöge** | 報道で「先に取り組んでいた」として名前が出る 2 人（NYU の数学者と、Anthropic 所属の研究者）。2026 年 8 月に AI を使って Euler 方程式の関連する結果に到達、09-07 に公表。Hoskinson の動画には出てこない |
+| **Clay Mathematics Institute** | ミレニアム懸賞問題を出している米国の私設研究所。公式: <https://www.claymath.org/> |
+| **Monument Health** | サウスダコタ州を拠点にする医療システム。Hoskinson は「Mayo の関連機関」と紹介し、ワイオミング州 Gillette の自分たちの建物を引き継いでいると述べた（2026-09-09） |
 | **Cardano Foundation のリレー** | 2026-09-02 のデモで "CF relays" として、Demeter と並ぶ接続先の選択肢に出た |
 
 ## 数字を書くときの単位

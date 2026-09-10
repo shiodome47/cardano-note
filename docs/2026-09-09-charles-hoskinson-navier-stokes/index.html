@@ -1,0 +1,955 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navier-Stokes — Charles Hoskinson (2026-09-09)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Charles Hoskinson</p>
+<h1><span class="l-ja">Navier-Stokes — AI が最難関の証明を「出した」日に、それは誰の手柄かを本人が考える</span><span class="l-en">Navier-Stokes — the day an AI “published” a proof of a hardest problem, and whose work it really was</span></h1>
+<p class="meta">
+  <span>2026-09-09</span>
+  <span><span class="l-ja">YouTube（ライブ）</span><span class="l-en">YouTube (live)</span></span>
+  <span>18:40</span>
+  <span><span class="l-ja">Charles Hoskinson 本人のチャンネル · 1 人語り</span><span class="l-en">Charles Hoskinson's own channel · solo</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>OpenAI が「数学で一番難しい問題のひとつを AI が解いた」と投稿した翌日、Charles Hoskinson が本人の見解として語った 18 分です。<br>
+  主張は 3 つ。①その証明の土台は、ある数学者が ChatGPT に 1 年間打ち込んだ未完成の仕事だった<strong>ように見える</strong>。②だからクラウドの AI に入れたアイデアは自分のものでなくなる。<strong>Midnight はそのために作った</strong>。③それでも、機械が検査できる形で証明を書く時代は本当に来た。ただし①は本人の推測で、報道が伝える経緯とは食い違います（4 節）。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>きっかけは OpenAI の投稿。</strong>「Navier–Stokes のミレニアム懸賞問題の解を共有する。証明は GPT-6 Astra よりはるかに強い次世代モデルのエージェント群が作った」。100 万ドルの懸賞金が付いた、90 年来の未解決問題だと説明されました。</li>
+  <li><strong>「1 年取り組んだのに」という数学者の投稿。</strong>Jay Cummings という数学者が「この証明に 1 年取り組んだのに、彼らはただツイートした」と投稿した。本人は「彼にはチャットログがある」と読み、モデルが ChatGPT の内部ログにあった未完成の仕事を土台にしたように見える、と述べています。<span class="badge">補足</span>報道で先行研究者として名前が出ているのは別の 2 人で、この点は動画と食い違います。</li>
+  <li><strong>プロンプトに入れたものは持っていかれる。</strong>研究者も起業家も、クラウドの最先端モデルにアイデアを共有したら「もう自分のアイデアではない」。Midnight は AI を動かせる<strong>私的な環境</strong>を作るからこれを解決する、というのが本人の位置づけです。</li>
+  <li><strong>証明を機械で検査する時代は来た。</strong>本人が 2021 年にカーネギーメロン大学に設立した形式数学センターの話。証明を機械で検査できれば共同研究の「信頼の半径」が広がると予測していたが、AI 自身が証明を書くところまでは予想していなかった、と。</li>
+  <li><strong>中身は「少しハック」だという本人の見立て。</strong>実際の物理では出てこない退化したケースを許しているが、技術的には条件を満たす。Clay 研究所は論争を避けたければ逃げられる、と述べています。専門外だと断ったうえでの評価です。</li>
+  <li><strong>「すべては盗まれたもの」。</strong>Michael Jackson の動きは Bob Fosse から来ている、人間の発明の大半は反復と洗練だ、として、この証明の由来は誰なのかを視聴者への問いにして終わります。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か、どんな配信か</a></li>
+  <li><a href="#announce"><span class="n">02</span>何が発表されたのか — OpenAI の投稿とミレニアム問題</a></li>
+  <li><a href="#ns"><span class="n">03</span>Navier–Stokes とは — 本人の説明</a></li>
+  <li><a href="#credit"><span class="n">04</span>「1 年取り組んだのに」— 本人の見立てと、報道の経緯</a></li>
+  <li><a href="#midnight"><span class="n">05</span>「だから Midnight」— プロンプトに入れたものの行方</a></li>
+  <li><a href="#lean"><span class="n">06</span>形式数学センターと「信頼の半径」</a></li>
+  <li><a href="#accept"><span class="n">07</span>数学界は受け入れるのか、証明は「ハック」か</a></li>
+  <li><a href="#fosse"><span class="n">08</span>「すべては盗まれたもの」— Bob Fosse と Michael Jackson</a></li>
+  <li><a href="#overall"><span class="n">09</span>全体像</a></li>
+  <li><a href="#pending"><span class="n">10</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か、どんな配信か</h2>
+<p class="deck">本人のチャンネルからのライブ。すべて個人の見解として読む。</p>
+
+<p>Charles Hoskinson（Input Output の創業者、Cardano の創始者）が、自身の YouTube チャンネルからライブで語った約 18 分の 1 人語りです。ワイオミング州 Gillette の補助オフィスから、自分たちが建てた医療施設を Monument Health に引き継ぐ作業の合間に配信している、と冒頭で述べています。<span class="badge">補足</span>Monument Health はサウスダコタ州を拠点にする医療システムで、本人は「Mayo の関連機関」と紹介しています。この引き継ぎの詳細は動画では語られていません。</p>
+
+<p><strong>本人のチャンネルなので、ここで語られる評価や方針は個人の見解です。</strong>IOG や Cardano Foundation、Midnight Foundation の公式見解として書けるものはこの動画にはありません。Midnight についても「私たちが作った理由」という本人の位置づけとして読みます。</p>
+
+<p>配信は画面共有を交えています。OpenAI の投稿、Jay Cummings の投稿、そして Bob Fosse と Michael Jackson の映像が映っていることが発言から分かりますが、このページは音声で語られた範囲だけから作っています。</p>
+
+
+<h2 id="announce">2. 何が発表されたのか — OpenAI の投稿とミレニアム問題</h2>
+<p class="deck">100 万ドルの懸賞金、90 年来の未解決。「解いた」と言えば誰もが疑う問題。</p>
+
+<p>本人がまず画面に出したのは OpenAI の投稿です。読み上げられた内容は次のとおり。</p>
+
+<blockquote><p>Navier–Stokes のミレニアム懸賞問題の解を共有する。数学の最前線でもっとも深い問題のひとつ。証明はエージェントの群が、GPT-6 Astra よりはるかに高い能力を持つ OpenAI の次世代モデルを使って作った。この問題は、Navier–Stokes 方程式でモデル化された滑らかな 3 次元の流体運動の記述が破綻しうるかを問うもので、90 年間未解決だった。</p></blockquote>
+
+<p><span class="badge">補足</span>この投稿は OpenAI の公式アカウントが 2026 年 9 月 8 日（UTC 17:20）に出したもので、動画で読み上げられた文言と一致します。同日に OpenAI のサイトにも <a href="https://openai.com/index/navier-stokes-solution/">解説記事</a>が出ています。</p>
+
+<div class="term">
+<p class="term-name">ミレニアム問題 <small>動画の中の言葉</small></p>
+<p>本人の説明では、Clay 研究所という組織が 100 万ドルの懸賞金をかけた一群の問題で、数学全体でもっとも重要でもっとも難しいとされ、一部は物理学とも重なる。Poincaré 予想、Riemann 予想、Navier–Stokes が例として挙げられました。解けば「学術界のゴッドモード」が手に入る、というのが本人の言い方です。<span class="badge">補足</span>正式には Clay Mathematics Institute（米国の私設の数学研究所）が 2000 年に発表した 7 つの問題で、Poincaré 予想だけが解決済み（2003 年、Grigori Perelman）。動画の字幕では "Cray Institute" と出ますが Clay です。</p>
+</div>
+
+<p>本人は「Navier–Stokes を解いたと主張する人が出れば、それは大変なことで、多くの人が強い疑いの目を向ける」と前置きしています。この動画全体が、その「疑い」を本人なりに展開したものです。</p>
+
+
+<h2 id="ns">3. Navier–Stokes とは — 本人の説明</h2>
+<p class="deck">流体の方程式が「暴走しない」ことを示せるか。述べるのは簡単、論じるのは途方もなく難しい。</p>
+
+<p>Navier–Stokes は 19 世紀に Claude-Louis Navier と George Gabriel Stokes が作った偏微分方程式の系で、「流体はどう流れるか」を扱う、と本人は説明します。流体は水だけではなく、川の水、翼の上の空気、煙突の煙、体の中の血液もそうで、働くのは 3 つ——押す圧力、重力のような外からの力、そして流体自身の粘り気（粘性）。蜂蜜と水は違う注がれ方をする、コーヒーのクリームはすぐには消えない、船は航跡を残す、という例が挙げられました。</p>
+
+<p>問題の中身は、本人の言葉では「流体が動くとき、<strong>行儀よく振る舞う</strong>方程式を作れるか」。行儀がよいとは有限で滑らかなことで、解に無限の速度や無限に鋭い折れ曲がりが出ないことを示したい。そうでなければ系が物理から外れてしまうから、と。工学や物理を学べば必ず流体力学と偏微分方程式の授業に出会い、Navier–Stokes は「述べるのは簡単だが論じるのは途方もなく難しい」の典型例だと述べています。</p>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>そもそも「偏微分方程式」とは</h4>
+<p>「ある場所・ある時刻の値が、まわりの値や少し前の値とどう関係するか」を式にしたもの。天気、熱の伝わり方、波、流体など、空間と時間の両方で変わるものを扱うときに使います。Navier–Stokes は、流体の各点の速度と圧力がどう変わっていくかを決める式です。</p>
+<h4>何が問われているのか</h4>
+<p>式は 19 世紀からあり、飛行機やロケットの設計にも毎日使われています。問われているのは、<strong>3 次元で、滑らかな初期状態から始めたとき、解がいつまでも滑らかなままか、それとも有限の時間で「壊れる」（速度が無限大になるなど）ことがありうるか</strong>。どちらであっても証明できれば懸賞の対象です。本人の説明は「滑らかであることを示したい」の側に寄っていますが、公式の問題文は「壊れることを示す」側の証明も認めています。この点は 7 節で戻ります。</p>
+<h4>身近なものへのたとえ</h4>
+<p>自転車のスポークにひもを巻いていくとき、いくら回してもひもがほどけないのか、どこかで必ず絡まって止まるのか。式は「1 回転ごとに何が起きるか」を完璧に決めているのに、「永遠に回せるか」は誰にも言えていなかった、という状況です。</p>
+<h4>一言でまとめると</h4>
+<p>「使える式」と「式が絶対に破綻しないと保証された式」は別で、後者が 90 年間できていなかった。</p>
+</div>
+</details>
+
+
+<h2 id="credit">4. 「1 年取り組んだのに」— 本人の見立てと、報道の経緯</h2>
+<p class="deck">数学者の 1 文の投稿から、本人は「モデルがチャットログを読んだ」という筋を組み立てる。報道の経緯は別の話。</p>
+
+<p>本人が次に画面に出したのは、Jay Cummings という数学者の投稿です。読み上げられた趣旨は「私はこの証明に 1 年取り組んだのに、彼らはただツイートしてしまった」。本人はこの人物を「UCSD の教授。れっきとした数学者で、論文もたくさんある」と紹介し、「なぜ Jay は 1 年取り組んだと言っているのか。<strong>彼にはチャットログがあるからだ</strong>」と続けます。</p>
+
+<p>そこから本人が語る筋はこうです。OpenAI は「完全に独自に思いついた」と言っているが、<strong>そう見えるのは</strong>次のような経緯だ、と。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 318" role="img" aria-label="本人が語った見立ての流れ。不可能な課題を与えられたモデルが、解けないので ChatGPT の内部ログを探し、そこにあった数学者の未完成の仕事を土台にして、何千ものコピーで発展させ、Lean で検証して発表した、という 6 段階">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">① 不可能な課題</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">超知能のモデルに与える</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">創造性と洞察力を試すため</text>
+
+  <line x1="220" y1="63" x2="236" y2="63" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="240" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">② 解けない</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">モデルは最適化エンジン</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">「経路の最小化」を探す</text>
+
+  <line x1="444" y1="63" x2="460" y2="63" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="464" y="20" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">③ 内部ログを探す</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">ChatGPT のチャットログに</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">数学者の未完成の仕事</text>
+
+  <line x1="564" y1="110" x2="564" y2="136" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="464" y="140" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="168" class="d-t" text-anchor="middle">④ 置き換える</text>
+  <text x="564" y="192" class="d-s" text-anchor="middle">彼のアイデアが、モデルの</text>
+  <text x="564" y="212" class="d-s" text-anchor="middle">アプローチに影響、または代替</text>
+
+  <line x1="460" y1="183" x2="444" y2="183" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="240" y="140" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="168" class="d-t" text-anchor="middle">⑤ 何千ものコピー</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">次の段階へ進めて</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">Lean で検証する</text>
+
+  <line x1="236" y1="183" x2="220" y2="183" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="16" y="140" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="116" y="168" class="d-t" text-anchor="middle">⑥ 発表</text>
+  <text x="116" y="192" class="d-s" text-anchor="middle">「完全に独自に思いついた」</text>
+  <text x="116" y="212" class="d-s" text-anchor="middle">と OpenAI は言う</text>
+
+  <rect x="16" y="246" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="270" class="d-t" text-anchor="middle">これは本人の見立て（「そう見える」）</text>
+  <text x="340" y="290" class="d-s" text-anchor="middle">ログを読んだ証拠は動画では示されていない。根拠は Cummings の投稿と「彼にはログがある」の 2 点</text>
+</svg>
+<p class="figcap">Charles Hoskinson が音声で語った筋をそのまま 6 段に並べたものです。本人は "what it's looking like is"（そう見えるのは）という言い方をしており、断定はしていません。</p>
+</div>
+
+<p>本人はこれを「1 年分のノートを机に置いておいたら、別の数学者がそれを読んで触発され、全部書き出して発表し、自分が思いついたと言う」ことと同じだと言います。学術界では時々あることで、双方に実質的な貢献があれば「ショットガン・ウェディング」（急ごしらえの共著）に落ち着き、そうでなければ激しい対立になる。Newton と Leibniz の微積分の先取権争いが引かれました。この件も「おそらくショットガン・ウェディングになる。数週間待てばいろいろ出てくる」というのが本人の予想です。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「モデルが数学者のチャットログを読んだ」は、事実なのでは？ それとも推測？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>推測です。</strong>本人自身が「そう見える」と言っており、動画の中で示された根拠は、Cummings の 1 文の投稿と「彼にはチャットログがある」という本人の読みの 2 つだけです。「モデルが内部ログにアクセスできる」「解けなければログを探しに行く」という部分は、OpenAI の仕組みについての本人の想定であって、動画でその裏付けは示されていません。</p>
+<h4>本人の言い方が成り立つ要素に分解すると</h4>
+<ul>
+  <li>数学者が長期間 AI に取り組みを打ち込んでいた、という部分——これは投稿の文面から読める</li>
+  <li>その内容が「モデルの学習や改善に使われる」可能性——利用規約上ありうる話で、後述のとおり OpenAI 自身も「除外できない」と認めている</li>
+  <li>「証明を作っている最中のエージェントが、特定のユーザーのログを検索して読んだ」——ここは本人の想像で、報道でも OpenAI はこれを否定している</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>OpenAI が「個別ユーザーのデータにアクセスしたか」と「利用データがモデル改善に使われたか」を分けて答えているかどうかを見ます。前者の否定と後者の留保は両立します。</p>
+<h4>動画のあとに分かっていること（2026-09-10 時点）</h4>
+<p>下の「報道が伝える経緯」を参照してください。動画で語られた「1 年取り組んだ数学者」は、報道が伝える先行研究者とは別人です。</p>
+</div>
+</details>
+
+<p><span class="badge">補足</span><strong>報道が伝える経緯は、動画の説明と食い違います。</strong>両方を並べます（いずれも 2026 年 9 月 8〜10 日の報道と OpenAI の説明によるもので、本人の動画の翌日以降に確認したものです）。</p>
+
+<ul>
+  <li><strong>Jay Cummings の投稿は実在します。</strong>OpenAI の投稿を引用する形で 9 月 8 日に出され、本文は「1 年取り組んだのに、ただツイートされた」という 1 文だけです。Cummings は数学の教科書で知られる教授で、所属は<strong>カリフォルニア州立大学サクラメント校</strong>、博士号を 2016 年に UCSD で取得しています。動画の「UCSD の教授」は、この博士課程の経歴と合致します。投稿が本気の先取権の主張なのか、それ以外の意図なのかは、投稿からは読めません。</li>
+  <li><strong>報道で「先に取り組んでいた」として名前が出ているのは、NYU の Tristan Buckmaster と Anthropic に所属する Levent Alpöge の 2 人です。</strong>Cummings の名前は、こちらで確認した範囲の報道には出てきません。2 人は AI を使って 8 月に関連する結果（Euler 方程式）に到達し、9 月 7 日に公表。Buckmaster は、OpenAI が自分たちの進展を知って同じ道筋を取ったのではないか、自分の利用履歴がモデルに影響していないかと問うています。</li>
+  <li><strong>OpenAI の説明は、</strong>9 月 1 日に「うわさを聞いて」着手し、9 月 5 日に結果に至った、外部の研究者の仕事は公開されるまで「いかなる手段でも見ていない」「個別のユーザーデータにはアクセスしていない」、ただし「利用から派生した匿名化データがモデル改善に役立った可能性は、可能性は低いが除外できない」というものです。</li>
+  <li><strong>OpenAI は Clay の懸賞金を請求しないと述べています。</strong>Clay Mathematics Institute は 9 月 10 日時点で問題を「未解決」のまま掲載しており、検証は「急がず、厳密に」行うと述べたと報じられています。</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 350" role="img" aria-label="報道と OpenAI の説明にもとづく時系列。8 月中旬に Buckmaster と Alpöge が結果、9 月 1 日に OpenAI が着手、9 月 5 日に結果、9 月 7 日に 2 人が公表、9 月 8 日に OpenAI が投稿し同日 Cummings が引用投稿、9 月 9 日にこの配信">
+  <text x="340" y="24" class="d-s" text-anchor="middle">補足：報道と OpenAI の説明から組み立てた時系列（2026 年）。動画には出てこない</text>
+
+  <rect x="16" y="40" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="62" class="d-t" text-anchor="middle">8 月中旬</text>
+  <text x="150" y="62" class="d-s">Buckmaster と Alpöge が AI を使って関連する結果に到達（報道）</text>
+
+  <rect x="16" y="84" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="106" class="d-t" text-anchor="middle">9 月 1 日</text>
+  <text x="150" y="106" class="d-s">OpenAI が「うわさを聞いて」着手（OpenAI の説明）</text>
+
+  <rect x="16" y="128" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="150" class="d-t" text-anchor="middle">9 月 5 日</text>
+  <text x="150" y="150" class="d-s">OpenAI のエージェント群が結果に到達、その後 Lean で検証（同）</text>
+
+  <rect x="16" y="172" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="194" class="d-t" text-anchor="middle">9 月 7 日</text>
+  <text x="150" y="194" class="d-s">Buckmaster と Alpöge が Euler 方程式の結果を公表（報道）</text>
+
+  <rect x="16" y="216" width="120" height="34" rx="6" class="d-box-accent"/>
+  <text x="76" y="238" class="d-t" text-anchor="middle">9 月 8 日</text>
+  <text x="150" y="238" class="d-s">OpenAI が投稿。同日 Jay Cummings が「1 年取り組んだ」と引用投稿</text>
+
+  <rect x="16" y="260" width="120" height="34" rx="6" class="d-box-warn"/>
+  <text x="76" y="282" class="d-t" text-anchor="middle">9 月 9 日</text>
+  <text x="150" y="282" class="d-s">この配信。本人は Cummings の投稿だけを取り上げ、上の 2 人には触れていない</text>
+
+  <rect x="16" y="310" width="648" height="28" rx="7" class="d-box-plain"/>
+  <text x="340" y="329" class="d-s" text-anchor="middle">動画では「OpenAI は独自だと言うが、ログにあった数学者の仕事を土台にしたように見える」とだけ</text>
+</svg>
+<p class="figcap"><span class="badge">補足</span>時系列はすべてこちらで足したものです。日付は報道（Science、TechCrunch、Quanta、Axios、Fortune ほか）と OpenAI の説明によるもので、当事者間で争いがある部分（OpenAI が何をいつ知ったか）は「誰の説明か」を添えています。</p>
+</div>
+
+
+<h2 id="midnight">5. 「だから Midnight」— プロンプトに入れたものの行方</h2>
+<p class="deck">クラウドの AI に入れたアイデアは自分のものでなくなる。Midnight はその答えとして作った、という本人の位置づけ。</p>
+
+<p>本人がこの件から引き出す教訓は一つです。「ChatGPT のプロンプトに入れたものは何でも、彼らはそれを使う」。知的財産も、アイデアも。数学者にとって Navier–Stokes の解は「Google や Apple のアイデアと計画の全部を持っていて、Bill Gates になれる保証があるのと同じ」で、キャリア最大の業績であり、それを 1 年分のログごと持っていかれて Clay の賞まで取られるなら「かなり大きく、かなりひどい」と述べています。</p>
+
+<p>そのうえで、研究者にも起業家にも向けてこう言います。<strong>クラウドの最先端モデルにアイデアを共有したら、もう自分のアイデアではない。</strong>「いつでも OpenAI が持っていける」「Dario についても同じ。Claude を使えば Anthropic に渡る」と、OpenAI と Anthropic の両方を名指ししています。<span class="badge">補足</span>これは本人の一般論としての主張で、各社の利用規約や学習方針を動画の中で確かめたわけではありません。</p>
+
+<p>「なぜ Midnight がこれを解決するのか」への本人の答えは、<strong>AI を動かせる私的な環境</strong>を作るからです。彼らはログを読めない、推論の恩恵は全部得られて欠点はない、発明を共有する必要も知財を盗まれることもない、と。動画の冒頭でも「これこそ私たちが Midnight を作った理由で、何度もこの話に戻ってくる」と言っています。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — Midnight があれば、OpenAI 級のモデルを「私的に」使えるようになるのでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>動画からはそこまで言えません。</strong>本人が言っているのは「AI を動かせるプライベートな環境を作る」の 1 文で、<strong>どのモデルを、どこで動かすのか</strong>は説明されていません。ここが要点です。</p>
+<h4>要素に分解すると</h4>
+<ul>
+  <li>OpenAI や Anthropic の最先端モデルは各社のサーバーでしか動かない。「彼らがログを読めない」状態でそれらを使うには、各社が「見ない」約束をするか、暗号化された計算環境で動かすかのどちらかが要る</li>
+  <li>自分で動かせるオープンなモデルなら、私的な環境で動かすことは今日でも可能で、Midnight は必須ではない</li>
+  <li>Midnight が得意とするのは「データを開示せずに正しさだけを証明する」取引で、それが AI の推論をどう覆うのかは、この動画では語られていない</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>「そのプライベート環境で動くモデルは何か」を聞けば分かります。答えが「自分で持ち込んだモデル」なら Midnight 固有の価値は別のところにあり、「OpenAI のモデル」ならその会社との契約か暗号化計算の仕組みが要ります。</p>
+<h4>この動画で示されたこと・示されなかったこと</h4>
+<p>示されたのは「私的な環境」という方向だけです。仕組み、対象のモデル、時期はいずれも語られていません。</p>
+</div>
+</details>
+
+<p>本人はこれを「教訓になる出来事」「ものすごく物議を醸す」と評し、「暗号通貨の分野では私たちが彼らに勝っているが、ほんの少しの差」と付け加えています。<span class="badge">補足</span>この「勝っている」が何を指すかは説明されていません。</p>
+
+
+<h2 id="lean">6. 形式数学センターと「信頼の半径」</h2>
+<p class="deck">証明を機械で検査できれば共著の輪が広がる、と 2021 年に予測した。AI が証明を書くとは思っていなかった。</p>
+
+<p>本人は 2021 年にカーネギーメロン大学に形式数学のセンターを設立し、Jeremy Avigad が運営していると述べます。<span class="badge">補足</span>Hoskinson Center for Formal Mathematics。2021 年 9 月に本人の 2,000 万ドルの寄付で設立が<a href="https://www.cmu.edu/news/stories/archives/2021/september/hoskinson-center-for-formal-mathematics.html">発表</a>され、哲学科の Jeremy Avigad 教授（数理論理学、自動推論）が所長です。</p>
+
+<p>当時の予測は、<strong>依存型の言語による構成的数学</strong>——QED マニフェストや 1970 年の Automath が始めたもの——が大きくなる、というものでした。ソフトウェアのテストの技法を数学に持ち込む直接の道だから、と。<span class="badge">補足</span>QED マニフェストは 1994 年に出た「すべての数学を機械で検査できる形にしよう」という呼びかけ。Automath はオランダの N. G. de Bruijn が始めた最初期の証明検査システムで、一般には 1967〜68 年に始まったとされます（動画では 1970 年）。動画の字幕にはこの前にもう一つマニフェストの名前らしきものが出ますが、特定できませんでした。</p>
+
+<div class="term">
+<p class="term-name">Lean <small>動画の中の言葉</small></p>
+<p>本人の説明では「テスト駆動開発のソフトウェアのようなもの。証明が正しいことを証明できる」。Lean の証明がコンパイルされれば数学が正しいことになるので、誰も信じなくていい。<span class="badge">補足</span>Lean は証明支援系（proof assistant）と呼ばれるソフトウェアの一つ。数学の主張と証明をプログラムのように書き、機械が一行ずつ検査します。人が読んで納得する従来の証明と違い、「通ったかどうか」で決まります。</p>
+</div>
+
+<p>センター開設時の基調講演での本人の立場は、<strong>数学が協働に向かないのは「信頼の半径」が小さいから</strong>、というものでした。共著者がすべてを理解し検証できると信じるしかなく、本当に信じられるのは 3〜5 人。彼らの間違いは自分の間違いになる。Lean があれば、コンピュータサイエンスの世界で 50 人、500 人の貢献者がいるリポジトリが珍しくないように、はるかに大きな輪で協働できる、と。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="信頼の半径の対比。従来は 3〜5 人の共著者を信じるしかなかったのに対し、Lean があれば数百人の貢献者と Git で協働できる。ただし AI 自身が証明を書くことは予想していなかった">
+  <rect x="16" y="20" width="316" height="160" rx="8" class="d-box"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">従来 — 信頼の半径は 3〜5 人</text>
+  <text x="174" y="76" class="d-s" text-anchor="middle">共著者を信じるしかない</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">全部を理解し検証したと信じる</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">彼らの間違い ＝ 自分の間違い</text>
+  <text x="174" y="150" class="d-s" text-anchor="middle">「数学は協働に向かない分野」</text>
+
+  <rect x="348" y="20" width="316" height="160" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">Lean — 通れば正しい</text>
+  <text x="506" y="76" class="d-s" text-anchor="middle">証明が正しいことを証明できる</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">誰も信じなくていい</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">参加する方法は「何かを証明する」</text>
+  <text x="506" y="150" class="d-s" text-anchor="middle">50〜500 人のリポジトリと Git で</text>
+
+  <rect x="16" y="196" width="648" height="76" rx="7" class="d-box-plain"/>
+  <text x="340" y="222" class="d-t" text-anchor="middle">2021 年に予想していなかったこと</text>
+  <text x="340" y="244" class="d-s" text-anchor="middle">「デジタルの模造」までは想定していたが、AI そのものが証明を丸ごと書くのは「かなり突飛」だった</text>
+  <text x="340" y="262" class="d-s" text-anchor="middle">「LLM には本当に驚かされた」</text>
+</svg>
+<p class="figcap">2021 年の基調講演での立場として本人が語った対比を描いたものです。「信頼の半径」「協働の半径」は本人の言葉。</p>
+</div>
+
+<p>「AI がここまで入ってくる度合いは、まったく予想していなかった」というのが本人の感想です。デジタルの模造のようなものは可能になると分かっていたが、AI 自身が証明を丸ごと書くという考えは「かなり突飛」で、LLM には本当に驚かされた、と。そのうえで、数学の基礎をめぐる「戦争」——直観主義と構成的数学のあいだで、数学のどれだけが構成可能か、依存型のシステムがどれだけ強力か——に触れ、それらは ZFC 集合論で驚くほど強力なようだ、Banach–Tarski のパラドックスや連続体仮説が Lean で形式化されたのは自分にも驚きだった、と述べています。</p>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>「構成的数学」「依存型」とは</h4>
+<p>構成的数学は、「存在する」と言うなら実際に作って見せることを求める流儀。依存型は、プログラムの型（この値は整数、この値は文字列、のような分類）に「この整数は 0 より大きい」のような条件まで書き込めるようにした型システムで、これを使うと<strong>「型が合う＝証明が通る」</strong>という対応が作れます。Lean はこの対応の上に作られています。</p>
+<h4>なぜ「ソフトウェアのテスト」の話になるのか</h4>
+<p>ソフトウェアでは、書いたコードが要件を満たすかを自動テストで機械的に確かめます。証明を Lean で書けば、同じように「この証明は通るか」を機械が確かめられる。本人が「テスト駆動開発のようなもの」と言うのはこの意味です。</p>
+<h4>ZFC、Banach–Tarski、連続体仮説</h4>
+<p>ZFC は現代数学のほとんどが依拠する集合論の公理系。Banach–Tarski のパラドックスは「球を有限個に分けて組み直すと同じ球が 2 つできる」という、ZFC の選択公理から出る有名な定理。連続体仮説は「整数の個数と実数の個数の間に別の無限があるか」で、ZFC からは肯定も否定もできないことが証明されています。本人が驚いたのは、こうした集合論の深い結果まで Lean で形式化されていることです。<span class="badge">補足</span>字幕は "managars paradox" と出ており、文脈から Banach–Tarski と読みました。</p>
+<h4>身近なものへのたとえ</h4>
+<p>人が目で見て承認する経費精算と、システムが領収書の合計と規定を自動で突き合わせる経費精算の違いです。後者なら、承認者が知らない人からの申請でも通せます。</p>
+<h4>一言でまとめると</h4>
+<p>証明を「人が信じる」から「機械が通す」に変えると、知らない人と協働できる。本人はそこまでは読んでいたが、機械が証明を書く側に回るとは思っていなかった。</p>
+</div>
+</details>
+
+
+<h2 id="accept">7. 数学界は受け入れるのか、証明は「ハック」か</h2>
+<p class="deck">Lean の証明は正当か——本人は「そうだ」。中身は「少しハック」で、Clay は逃げられる、という見立て。</p>
+
+<p>「数学のコミュニティがこの種の証明を受け入れることをどう感じるかは分からない」と本人は言います。Lean は証明の正当な形式か。<strong>本人の答えは「そうだ」</strong>で、そのためにセンターを作った。ただし「自分は本職の数学者ではなく影響力もない」と断り、Peter Scholze と Terry Tao は同意してくれている、と名前を挙げます。<span class="badge">補足</span>字幕は "Peter Schwab" ですが、Lean での形式化に深く関わってきた数学者として Peter Scholze と読みました。Terence Tao は 2023 年以降、自身の結果の Lean 形式化を公開で進めています。いずれも「Lean を正当な形式と認めるか」についてで、この OpenAI の証明への評価ではありません。</p>
+
+<p>一方で「昔ながらの数学者の多くは好まない」「数論の学術誌は AI の貢献を受け付けない」として、これをめぐる「聖戦」があると述べます。そのうえでの本人の問いはこうです。<strong>AI の貢献を無視したとして、証明があって、それが正しかったらどうするのか。</strong>「未解決の解決済み問題」になって、人間の脳がそれをなぞって少しよい版を出すのを待つしかなくなる、と。例に挙げたのは Helfgott の三素数版 Goldbach 予想の証明です。<span class="badge">補足</span>字幕では "health's tertinary gold injection proof" と出ますが、本人の専門（加法的整数論）とも合うので Harald Helfgott の証明と読みました。2013 年に発表され、正式な出版までに長い時間がかかっていることで知られます。「正しいと分かっているのに、手続きの側が追いつかない」例として引かれています。</p>
+
+<p>本人は OpenAI の文書の一部に目を通したと述べたうえで、<strong>「Navier–Stokes の専門家ではない」</strong>と断っています（本人の分野は解析的整数論と加法的整数論）。そのうえでの見立てが次の 3 点です。</p>
+
+<ul>
+  <li>提案されている解は「少しハックのように見える」</li>
+  <li>実際の物理では出てこない退化したケースを許しているが、技術的には解の条件を満たしている</li>
+  <li>提案には十分な隙間があるので、論争全体を避けたければ Clay はうまく逃げられると思う</li>
+</ul>
+
+<p><span class="badge">補足</span>この見立ては、報道で伝えられている専門家の指摘と方向が合っています。OpenAI の結果は「解が有限の時間で破綻する」ことを、<strong>滑らかな外力を加えた設定</strong>で示したものと報じられています。Clay の公式の問題文はこの設定を認めていますが、多くの研究者が本当に知りたいのは外力なしの場合だ、という指摘です。本人の「退化したケース」「隙間」は、この点を指していると読めます。ただし本人はその中身を動画で説明していません。動画の 3 節で本人が「滑らかであることを示したい」と説明したのと、実際の結果が「破綻する場合がある」の側だったことも、ここで食い違いとして記しておきます。</p>
+
+<p>本人がこの件から引き出す結論は、評価とは別にあります。<strong>モデルは、賢い人の仕事を取り込み、改良し、反復し、難問を解くところまで形式化するやり方を知っている。</strong>「とても人間らしい振る舞い」で、今日それができるなら能力は指数関数的によくなる。創造性の源泉には哲学的な問いが残るが、「人間の発明の大部分は、何か別のものの反復と洗練だ」と。</p>
+
+
+<h2 id="fosse">8. 「すべては盗まれたもの」— Bob Fosse と Michael Jackson</h2>
+<p class="deck">オリジナルとは何か。答えを出さずに、視聴者への問いで終わる。</p>
+
+<p>「それを示すために」と本人が流したのは、Bob Fosse の映像です。1974 年に Michael Jackson に着想を与えた人物で、Jackson Five の Michael がそれを見て「あれをやるぞ」と言った。みんなが夢中になった Michael Jackson の動きは、あの「蛇」の動きは Bob Fosse から取ったものだと分かる、と。<span class="badge">補足</span>Bob Fosse は振付師・演出家で、1974 年の映画『星の王子さま』で蛇の役を演じており、その踊りが Michael Jackson のムーンウォークなどに影響したという話は広く知られています。字幕では "Bob FSY" と出ます。</p>
+
+<p>そこからの本人の言葉は「<strong>すべては盗まれたもの</strong>で、本当にオリジナルなものは何もない。そこがすばらしい。先にあったものを取り込んで、よりよくできる」。</p>
+
+<p>締めは問いの列挙です。この解は OpenAI の由来のものなのか——技術的には OpenAI の知識はすべてほかの数学者から来ている。それともチャットログにある未完成の解が本当の証明であり、本当の着想なのか。Michael Jackson は Bob を別の光で見せただけなのか、それとも新しくて違うものなのか。「言い切るのは難しい」で終わります。</p>
+
+
+<h2 id="overall">9. 全体像</h2>
+<p class="deck">出来事はひとつ。本人はそこから「知財は守れ」と「機械が証明を書く時代」の 2 本の線を引き、最後に「オリジナルとは何か」で束ねる。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="全体像。OpenAI の発表という一つの出来事から、本人が「チャットログの仕事が土台」という読みを経て Midnight の私的環境に至る線と、形式数学センターの予測から Lean 証明の受け入れを経て「すべては反復と洗練」に至る線の 2 本を引いていることを示した図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-t" text-anchor="middle">出来事：OpenAI「AI が Navier–Stokes を解いた」（9 月 8 日の投稿）</text>
+
+  <rect x="16" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="70" class="d-t" text-anchor="middle">本人の読み</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">数学者の 1 年分のログが</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">土台になった「ように見える」</text>
+
+  <line x1="220" y1="87" x2="236" y2="87" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="240" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="70" class="d-t" text-anchor="middle">教訓</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">クラウドの AI に入れた</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">アイデアは自分のものでない</text>
+
+  <line x1="444" y1="87" x2="460" y2="87" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="464" y="44" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="564" y="70" class="d-t" text-anchor="middle">だから Midnight</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">AI を動かせる私的な環境</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">（仕組みは語られず）</text>
+
+  <rect x="16" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="176" class="d-t" text-anchor="middle">2021 年の予測</text>
+  <text x="116" y="200" class="d-s" text-anchor="middle">機械が検査する証明で</text>
+  <text x="116" y="220" class="d-s" text-anchor="middle">「信頼の半径」が広がる</text>
+
+  <line x1="220" y1="193" x2="236" y2="193" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="240" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="176" class="d-t" text-anchor="middle">予想外</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">AI 自身が証明を書いた</text>
+  <text x="340" y="220" class="d-s" text-anchor="middle">数学界は受け入れるのか</text>
+
+  <line x1="444" y1="193" x2="460" y2="193" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="464" y="150" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="564" y="176" class="d-t" text-anchor="middle">「すべては反復と洗練」</text>
+  <text x="564" y="200" class="d-s" text-anchor="middle">Fosse と Jackson の例</text>
+  <text x="564" y="220" class="d-s" text-anchor="middle">由来は誰か、は問いのまま</text>
+
+  <rect x="16" y="256" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">すべて本人の見解。上の線の出発点（ログの話）は推測で、報道の経緯とは別</text>
+  <text x="340" y="302" class="d-s" text-anchor="middle">証明の中身は「少しハック、技術的には満たす」との評価。専門外だと本人が断っている</text>
+</svg>
+<p class="figcap">2 本の線に整理したのはこちらの読みです。動画の順序は、出来事 → ログの読み → Midnight → センターと Lean → 証明の評価 → Fosse の順で、本人が「2 本」と言っているわけではありません。</p>
+</div>
+
+
+<h2 id="pending">10. 答えが出なかったこと</h2>
+<p class="deck">質疑はない配信。本人が「分からない」と言ったこと、触れなかったこと。</p>
+
+<p>ライブ配信ですが、チャットからの質問を読み上げる場面はなく、締めの問いも視聴者に投げたままです。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">推測のまま</span>モデルは本当に数学者のチャットログを読んで土台にしたのか。</p>
+<p class="qa-a" data-by="「そう見える」">本人は "what it's looking like is" の言い方で、証拠は示していません。<span class="badge">補足</span>報道では OpenAI が「個別のユーザーデータにはアクセスしていない」と否定し、匿名化された利用データの影響は「除外できない」としています。決着はしていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">別人</span>本人が挙げた Jay Cummings と、報道の Buckmaster・Alpöge の関係。</p>
+<p class="qa-a" data-by="動画では触れられず">本人は Cummings の投稿だけを取り上げ、報道で先行研究者として名前が出ている 2 人には触れていません。Cummings の投稿が先取権の主張なのかどうかも、投稿からは読めません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">仕組みなし</span>Midnight の「AI を動かせる私的な環境」とは、どのモデルをどこで動かすものか。</p>
+<p class="qa-a" data-by="1 文のみ">「プライベートな環境を作るから彼らはログを読めない」の 1 文で、対象のモデル、仕組み、時期はいずれも語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">「分からない」</span>数学界はこの種の証明を受け入れるのか。</p>
+<p class="qa-a" data-by="本人も「分からない」">Lean を正当な形式と認めるかは「そうだ」と言い切りましたが、AI が書いた証明を数学界がどう扱うかは「分からない」「興味深い問い」で止まっています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">中身なし</span>「少しハック」「退化したケース」とは具体的に何か。</p>
+<p class="qa-a" data-by="説明なし">評価だけで、何がどう退化しているかは説明されていません。<span class="badge">補足</span>報道が伝える「滑らかな外力を加えた設定」がこれに当たると読めますが、本人がそう言ったわけではありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">説明なし</span>「暗号通貨の分野では私たちが彼らに勝っている、ほんの少しの差で」とは何の話か。</p>
+<p class="qa-a" data-by="一言のみ">この一言だけで、次の話題に移っています。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は Charles Hoskinson 本人の YouTube チャンネルで公開されているライブ配信 <a href="https://www.youtube.com/live/dcQxe9ohHOw">Navier-Stokes</a>（配信日 2026-09-09、約 18 分 40 秒。時間は字幕の最終時刻から）です。公開動画なので発言者は実名のまま書いています。<strong>本人のチャンネルなので、方針や評価はすべて個人の見解として書いています。</strong></p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回では OpenAI と Jay Cummings の投稿、Bob Fosse の映像が映っていますが、このページは音声で語られた範囲だけから作っているので、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>報道との照合</strong>として足したものは、OpenAI の投稿と説明、Jay Cummings の投稿、Buckmaster と Alpöge をめぐる報道、Clay Mathematics Institute の対応で、いずれも 2026 年 9 月 10 日時点で確認したものです。動画と食い違う点は、寄せずに両方を書いています。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>The day after OpenAI posted that an AI had solved one of the hardest problems in mathematics, Charles Hoskinson spent 18 minutes on it, speaking for himself.<br>
+  Three claims. First, the proof <strong>looks like</strong> it was built on a year of unfinished work a mathematician had typed into ChatGPT. Second, so anything you put into a cloud AI is no longer yours, and <strong>“this is why we built Midnight.”</strong> Third, even so, the age of machine-checked proofs has genuinely arrived. The first claim is his inference, and it does not match the account in the press (section 4).</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>The trigger is an OpenAI post.</strong> “We're sharing a solution to the Navier-Stokes Millennium Prize Problem,” produced by a group of agents on a next-generation model “significantly more capable than GPT-6 Astra.” A million-dollar bounty, unsolved for 90 years, as he explains it.</li>
+  <li><strong>A mathematician's post: “I worked on this proof for a year.”</strong> Jay Cummings posted that he had worked on it for a year “and they just tweeted it out.” Hoskinson's reading: “because he has the chat logs,” and the model looks to have built on unfinished work in ChatGPT's internal logs. <span class="badge">added</span> The researchers named in the press as having prior work are two other people; this is where the video and the reporting diverge.</li>
+  <li><strong>Anything you put in the prompt, they will use.</strong> Academics and entrepreneurs who share ideas with frontier models in the cloud should know “they're not your ideas anymore.” Midnight fixes this, in his framing, by creating <strong>private environments</strong> to run AI in.</li>
+  <li><strong>Machine-checked proofs have arrived.</strong> He recalls founding a formal-mathematics centre at Carnegie Mellon in 2021, predicting that machine-checkable proofs would widen the “radius of trust” for collaboration. What he did not predict was the AI writing the proof itself.</li>
+  <li><strong>The proof is “a little bit of a hack,” in his view.</strong> It permits degenerate cases that would not come up in real physics, but technically satisfies the problem, and Clay can “weasel its way out” if it wants to avoid the controversy. He says this while noting it is not his field.</li>
+  <li><strong>“Everything is stolen.”</strong> Michael Jackson's moves came from Bob Fosse; most human invention is iteration and refinement. He ends by putting the question of provenance to the viewer.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking, and what kind of stream this is</a></li>
+  <li><a href="#en-announce"><span class="n">02</span>What was announced: the OpenAI post and the Millennium problems</a></li>
+  <li><a href="#en-ns"><span class="n">03</span>What Navier–Stokes is, in his words</a></li>
+  <li><a href="#en-credit"><span class="n">04</span>“I worked on this for a year”: his reading, and the reported timeline</a></li>
+  <li><a href="#en-midnight"><span class="n">05</span>“This is why we built Midnight”: where your prompt goes</a></li>
+  <li><a href="#en-lean"><span class="n">06</span>The formal-mathematics centre and the radius of trust</a></li>
+  <li><a href="#en-accept"><span class="n">07</span>Will mathematicians accept it, and is the proof a hack?</a></li>
+  <li><a href="#en-fosse"><span class="n">08</span>“Everything is stolen”: Bob Fosse and Michael Jackson</a></li>
+  <li><a href="#en-overall"><span class="n">09</span>The whole picture</a></li>
+  <li><a href="#en-pending"><span class="n">10</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking, and what kind of stream this is</h2>
+<p class="deck">A live stream on his own channel. Everything here is personal opinion.</p>
+
+<p>Charles Hoskinson, founder of Input Output and of Cardano, speaking alone for about 18 minutes, live on his own YouTube channel. He opens from an “auxiliary office” in Gillette, Wyoming, in the middle of handing over a medical building his side built to Monument Health. <span class="badge">added</span> Monument Health is a South Dakota-based health system; he describes it as “a Mayo affiliate.” The handover itself is not discussed further.</p>
+
+<p><strong>Because this is his own channel, the assessments and positions here are his personal views.</strong> Nothing in the video can be written up as the official position of IOG, the Cardano Foundation or the Midnight Foundation. Midnight, too, appears only as “why we built” it, in his framing.</p>
+
+<p>He shares his screen: OpenAI's post, Jay Cummings's post, and a clip of Bob Fosse and Michael Jackson are visible, judging by what he says. This page is built only from what was spoken aloud.</p>
+
+
+<h2 id="en-announce">2. What was announced: the OpenAI post and the Millennium problems</h2>
+<p class="deck">A million-dollar bounty, unsolved for 90 years. The kind of claim everybody doubts.</p>
+
+<p>The first thing on screen is OpenAI's post. As he reads it out:</p>
+
+<blockquote><p>We're sharing a solution to the Navier–Stokes Millennium Prize problem, one of the deepest problems at the frontier of mathematics. The proof was produced by a group of agents using an OpenAI next-generation model significantly more capable than GPT-6 Astra. The problem concerns whether the description of smooth three-dimensional fluid motion modeled by the Navier–Stokes equations can break down; it remained unsolved for 90 years.</p></blockquote>
+
+<p><span class="badge">added</span> The post went out from OpenAI's official account on 2026-09-08 (17:20 UTC) and matches what he reads. A <a href="https://openai.com/index/navier-stokes-solution/">write-up</a> appeared on OpenAI's site the same day.</p>
+
+<div class="term">
+<p class="term-name">Millennium problems <small>his term</small></p>
+<p>In his telling: a bunch of problems that “an organization called Clay Institute put million-dollar bounties on,” considered the most important and hardest in all of mathematics with some overlap in physics. The Poincaré conjecture, the Riemann hypothesis and Navier–Stokes are his examples. Solve one and “you get basically god mode in academia.” <span class="badge">added</span> Formally, the seven problems announced in 2000 by the Clay Mathematics Institute, a private US institute; only the Poincaré conjecture has been resolved (2003, Grigori Perelman). The captions render the name as “Cray Institute.”</p>
+</div>
+
+<p>“Anybody who claims Navier–Stokes, that's a big deal and a lot of people have enormous skepticism behind it,” he says up front. The rest of the video is his own version of that skepticism.</p>
+
+
+<h2 id="en-ns">3. What Navier–Stokes is, in his words</h2>
+<p class="deck">Can the fluid equations be shown never to blow up? “Easy to state but ridiculously hard to talk about.”</p>
+
+<p>Navier–Stokes is a system of partial differential equations from the 19th century, named for Claude-Louis Navier and George Gabriel Stokes, about “how does fluid flow,” he explains. Fluid is not just water: water in a river, air over a wing, smoke through a chimney, the blood in your body. Three things work together: pressure pushing it, outside forces like gravity, and the fluid's own stickiness, its viscosity. Honey pours differently from water; cream in coffee takes a while to change the colour; a boat leaves a wake.</p>
+
+<p>The problem, in his words, is whether “when fluids move, can we create a series of equations that have <strong>well-behaved behavior</strong>.” Well-behaved means finite and smooth: you want to show the solution has no infinite speeds or infinitely sharp kinks, “because what would happen is the system breaks from physics.” Anyone who studies engineering or physics meets fluid dynamics and takes an ODE and a PDE class, and Navier–Stokes is “the canonical example of it's easy to state but ridiculously hard to talk about.”</p>
+
+<details class="explain">
+<summary>This section is dense with jargon — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<h4>What a “partial differential equation” is</h4>
+<p>An equation relating the value at one place and time to the values nearby and a moment earlier. Weather, heat, waves and fluids are all described this way. Navier–Stokes fixes how the velocity and pressure at every point of a fluid change.</p>
+<h4>What is actually being asked</h4>
+<p>The equations have been used daily since the 19th century, in aircraft and rocket design among other things. The open question is: <strong>in three dimensions, starting from smooth initial data, do solutions stay smooth forever, or can they “break” in finite time</strong> (a velocity going infinite, say)? A proof either way qualifies for the prize. His explanation leans toward “show it stays smooth,” but the official statement also accepts a proof that it can break. Section 7 returns to this.</p>
+<h4>An everyday analogy</h4>
+<p>Winding a string around a bicycle spoke: does it wind forever, or must it eventually snag and stop? The rule for each turn is perfectly known; whether it can go on forever was not.</p>
+<h4>In one line</h4>
+<p>An equation you can use and an equation guaranteed never to break down are different things, and the second had been missing for 90 years.</p>
+</div>
+</details>
+
+
+<h2 id="en-credit">4. “I worked on this for a year”: his reading, and the reported timeline</h2>
+<p class="deck">From a one-line post by a mathematician, he builds a story in which the model read the chat logs. The reported story is a different one.</p>
+
+<p>The next thing on screen is a post by a mathematician named Jay Cummings, paraphrased as “I worked on this proof for a year and they just tweeted it out.” Hoskinson introduces him as “a professor at UCSD, a proper mathematician, well published,” and continues: “Why is Jay saying he worked on this for a year? <strong>Because he has the chat logs.</strong>”</p>
+
+<p>From there he lays out the sequence he believes is behind it. OpenAI says it came up with this “totally independently,” but <strong>“what it's looking like is”</strong> the following.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 318" role="img" aria-label="The sequence as he tells it: a model is given an impossible task, cannot solve it, searches ChatGPT's internal logs, finds a mathematician's unfinished work, which replaces its approach; thousands of copies then develop it, verify it in Lean, and publish it as independent work">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">① Impossible task</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">given to a hyperintelligent model</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">to test creativity and insight</text>
+
+  <line x1="220" y1="63" x2="236" y2="63" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="240" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">② Cannot solve it</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">models are optimization engines</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">they look for path minimization</text>
+
+  <line x1="444" y1="63" x2="460" y2="63" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="464" y="20" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">③ Searches internal logs</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">ChatGPT chat logs hold</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">a mathematician's unfinished work</text>
+
+  <line x1="564" y1="110" x2="564" y2="136" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="464" y="140" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="168" class="d-t" text-anchor="middle">④ Replaces its approach</text>
+  <text x="564" y="192" class="d-s" text-anchor="middle">his ideas “influenced or</text>
+  <text x="564" y="212" class="d-s" text-anchor="middle">entirely replaced” the model's</text>
+
+  <line x1="460" y1="183" x2="444" y2="183" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="240" y="140" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="168" class="d-t" text-anchor="middle">⑤ Thousands of copies</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">take it to the next level</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">and verify it in Lean</text>
+
+  <line x1="236" y1="183" x2="220" y2="183" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="16" y="140" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="116" y="168" class="d-t" text-anchor="middle">⑥ Published</text>
+  <text x="116" y="192" class="d-s" text-anchor="middle">OpenAI says it came up with it</text>
+  <text x="116" y="212" class="d-s" text-anchor="middle">“totally independently”</text>
+
+  <rect x="16" y="246" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="270" class="d-t" text-anchor="middle">This is his reading (“what it's looking like is”)</text>
+  <text x="340" y="290" class="d-s" text-anchor="middle">No evidence of log access is shown; the basis is Cummings's post and “he has the chat logs”</text>
+</svg>
+<p class="figcap">The sequence exactly as Charles Hoskinson narrates it, in six steps. He frames it with “what it's looking like is,” not as established fact.</p>
+</div>
+
+<p>He compares it to leaving a year of notes on a table: another mathematician picks them up, is inspired, writes it all down, checks it, publishes it and “says they came up with it.” This happens in academia from time to time, he says, even in his own research group. Usually it ends in “a shotgun wedding,” both sides agreeing to be co-authors; sometimes in bitter rivalry, as with Newton and Leibniz over calculus. His forecast for this case: “probably gonna be a shotgun wedding. Wait a few weeks, a whole bunch of stuff is going to come out.”</p>
+
+<details class="explain">
+<summary>A naive question — is “the model read the mathematician's chat logs” a fact, or a guess?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>A guess.</strong> He says so himself (“what it's looking like is”), and the only grounds shown in the video are Cummings's one-line post and Hoskinson's own reading that “he has the chat logs.” The parts about the model having access to internal logs, and going to search them when stuck, are his assumptions about how OpenAI works; nothing in the video supports them.</p>
+<h4>Breaking his claim into parts</h4>
+<ul>
+  <li>A mathematician spent a long time working with an AI: readable from the post</li>
+  <li>That material could be used to train or improve models: plausible under typical terms, and OpenAI itself has said it cannot rule this out (see below)</li>
+  <li>Agents in the middle of producing the proof searched and read a specific user's logs: this is his imagination, and OpenAI has denied it in the press</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Watch whether OpenAI answers “did you access individual user data?” and “did usage data feed model improvement?” separately. A denial of the first and a hedge on the second can both be true.</p>
+<h4>What has emerged since (as of 2026-09-10)</h4>
+<p>See “the reported timeline” below. The “mathematician who worked on it for a year” in the video is not the person the press identifies as having prior work.</p>
+</div>
+</details>
+
+<p><span class="badge">added</span> <strong>The account in the press differs from the video.</strong> Both are set out here; the reporting and OpenAI's statements are from 8–10 September 2026, checked the day after the stream.</p>
+
+<ul>
+  <li><strong>Jay Cummings's post is real.</strong> It quotes OpenAI's post, on 8 September, and consists of the one sentence about having worked on it for a year. Cummings is a professor known for his mathematics textbooks, at <strong>California State University, Sacramento</strong>; his PhD is from UCSD (2016). The video's “professor at UCSD” matches the doctorate, not the current post. Whether the post is a serious priority claim or something else cannot be read from the post itself.</li>
+  <li><strong>The researchers the press names as having prior work are Tristan Buckmaster of NYU and Levent Alpöge, who is affiliated with Anthropic.</strong> Cummings does not appear in the coverage we checked. The two reached a related result (on the Euler equations) using AI in August and announced it on 7 September. Buckmaster has asked whether OpenAI took the same route after learning of their progress, and whether his usage history influenced the models.</li>
+  <li><strong>OpenAI's account</strong> is that it started on 1 September after “hearing a rumor,” reached its result on 5 September, did not see the outside work “through any means” before it was public, accessed no specific user data, but “cannot rule out that de-identified data derived from their usage of our products helped improve our models.”</li>
+  <li><strong>OpenAI says it will not claim the Clay prize.</strong> As of 10 September the Clay Mathematics Institute still lists the problem as unsolved and is reported to have said its evaluation will be unhurried and rigorous.</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 350" role="img" aria-label="Timeline assembled from the press and OpenAI's statements: Buckmaster and Alpöge reach a result in mid-August, OpenAI starts on 1 September, reaches its result on 5 September, the two announce on 7 September, OpenAI posts on 8 September and Cummings quotes it the same day, this stream on 9 September">
+  <text x="340" y="24" class="d-s" text-anchor="middle">Added: a timeline built from press reports and OpenAI's statements (2026). Not in the video</text>
+
+  <rect x="16" y="40" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="62" class="d-t" text-anchor="middle">mid-August</text>
+  <text x="150" y="62" class="d-s">Buckmaster and Alpöge reach a related result using AI (press)</text>
+
+  <rect x="16" y="84" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="106" class="d-t" text-anchor="middle">1 September</text>
+  <text x="150" y="106" class="d-s">OpenAI starts, after “hearing a rumor” (OpenAI's account)</text>
+
+  <rect x="16" y="128" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="150" class="d-t" text-anchor="middle">5 September</text>
+  <text x="150" y="150" class="d-s">OpenAI's agents reach the result; Lean verification follows (same)</text>
+
+  <rect x="16" y="172" width="120" height="34" rx="6" class="d-box-plain"/>
+  <text x="76" y="194" class="d-t" text-anchor="middle">7 September</text>
+  <text x="150" y="194" class="d-s">Buckmaster and Alpöge announce their Euler-equations result (press)</text>
+
+  <rect x="16" y="216" width="120" height="34" rx="6" class="d-box-accent"/>
+  <text x="76" y="238" class="d-t" text-anchor="middle">8 September</text>
+  <text x="150" y="238" class="d-s">OpenAI posts. The same day, Jay Cummings quotes it: “worked on this for a year”</text>
+
+  <rect x="16" y="260" width="120" height="34" rx="6" class="d-box-warn"/>
+  <text x="76" y="282" class="d-t" text-anchor="middle">9 September</text>
+  <text x="150" y="282" class="d-s">This stream. He discusses only Cummings's post, not the two above</text>
+
+  <rect x="16" y="310" width="648" height="28" rx="7" class="d-box-plain"/>
+  <text x="340" y="329" class="d-s" text-anchor="middle">The video says only: OpenAI claims independence, but it looks built on a mathematician's work in the logs</text>
+</svg>
+<p class="figcap"><span class="badge">added</span> The whole timeline is ours. Dates come from press reports (Science, TechCrunch, Quanta, Axios, Fortune and others) and from OpenAI's statements; where the parties disagree (what OpenAI knew, and when), each entry says whose account it is.</p>
+</div>
+
+
+<h2 id="en-midnight">5. “This is why we built Midnight”: where your prompt goes</h2>
+<p class="deck">Ideas typed into a cloud AI stop being yours. Midnight is the answer, in his framing.</p>
+
+<p>The lesson he draws is a single one: “anything you put into the prompt of ChatGPT, they're going to use that.” Your intellectual property, your ideas. For a mathematician, a Navier–Stokes solution is “the equivalent of having the idea for Google or Apple or Microsoft… and a guarantee that you're going to be Bill Gates,” the greatest accomplishment of a career; to have it taken, logs and all, and see someone else “get the prize from Clay” is “pretty big and pretty bad.”</p>
+
+<p>Then, to academics and entrepreneurs: <strong>share your ideas with frontier models in the cloud and “they're not your ideas anymore.”</strong> “At any time, OpenAI can go and take it and Sam Altman can make it his. And it's the same for Dario. And you'll get Anthropic if you use Claude.” Both companies are named. <span class="badge">added</span> This is a general assertion of his; the video does not examine either company's terms of service or training policy.</p>
+
+<p>His answer to “why does Midnight fix this?” is that it “creates the private environments that you can run the AI in.” They can't read your logs; you get all the upside of the inference and none of the downside; you don't have to share the invention or have your IP stolen. At the very start of the video he had already said: “this is why we built Midnight. We go back to it again and again and again.”</p>
+
+<details class="explain">
+<summary>A naive question — does Midnight mean you could use an OpenAI-class model “privately”?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>The video does not get that far.</strong> The whole claim is one sentence, “private environments that you can run the AI in,” and <strong>which model, running where</strong>, is never said. That is the crux.</p>
+<h4>Breaking it into parts</h4>
+<ul>
+  <li>OpenAI's and Anthropic's frontier models run only on those companies' servers. Using them in a way “they can't read” needs either a contractual promise not to look, or an encrypted computing environment</li>
+  <li>Open models you can run yourself can already be run privately today; Midnight is not required for that</li>
+  <li>Midnight's specialty is transactions that prove correctness without revealing data; how that would wrap AI inference is not explained in this video</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Ask which model runs inside the private environment. If it is a model you bring yourself, Midnight's specific value lies elsewhere; if it is OpenAI's, a contract or an encrypted-compute mechanism has to exist.</p>
+<h4>What was and was not shown</h4>
+<p>Only the direction, “private environments.” Mechanism, target models and timing are all absent.</p>
+</div>
+</details>
+
+<p>He calls it “a teachable moment” that will be “hyper controversial,” and adds: “we beat them in the cryptocurrency space, but just by a little.” <span class="badge">added</span> What “beat them” refers to is not explained.</p>
+
+
+<h2 id="en-lean">6. The formal-mathematics centre and the radius of trust</h2>
+<p class="deck">In 2021 he predicted machine-checked proofs would widen the circle of co-authors. He did not predict the AI writing the proof.</p>
+
+<p>He founded a centre for formal mathematics at Carnegie Mellon, run by Jeremy Avigad, “a great guy, brilliant mathematician,” he says. <span class="badge">added</span> The Hoskinson Center for Formal Mathematics, <a href="https://www.cmu.edu/news/stories/archives/2021/september/hoskinson-center-for-formal-mathematics.html">announced</a> in September 2021 with a $20 million gift from him and directed by Jeremy Avigad, a professor of philosophy working on mathematical logic and automated reasoning.</p>
+
+<p>The 2021 prediction was that <strong>constructive mathematics enabled by dependently typed languages</strong>, “the QED manifesto, or what Automath started in 1970,” was going to get really big, because it is “a direct line to apply the testing techniques of software in the mathematical community.” <span class="badge">added</span> The QED Manifesto (1994) called for all of mathematics to be put in machine-checkable form; Automath, begun by N. G. de Bruijn in the Netherlands, is usually dated to 1967–68 rather than 1970. The captions carry another manifesto name just before “QED” that could not be identified.</p>
+
+<div class="term">
+<p class="term-name">Lean <small>his term</small></p>
+<p>In his words, “it's like test-driven development software. You can prove that the proof is correct.” If the Lean proofs compile, the math is right, “so you don't have to trust anybody.” <span class="badge">added</span> Lean is a proof assistant: statements and proofs are written like a program and checked line by line by the machine. Unlike a proof a human reads and accepts, it is settled by whether it goes through.</p>
+</div>
+
+<p>His position at the centre's opening keynote, as he recalls it: <strong>mathematics is “an anti-collaborative field” because the radius of trust is small.</strong> You have to trust your co-authors to understand and verify everything, and that trust extends to three to five people; “they make mistakes and those become your mistakes.” With Lean, “you can go to a much larger collaborative set,” the way a computer-science repository with 50 or 500 contributors is unremarkable, managed with Git.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="The radius of trust contrasted: previously three to five co-authors you had to believe; with Lean, hundreds of contributors and Git, because a proof that compiles is correct. What he did not anticipate was the AI writing the proof itself">
+  <rect x="16" y="20" width="316" height="160" rx="8" class="d-box"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">Before: a radius of 3 to 5 people</text>
+  <text x="174" y="76" class="d-s" text-anchor="middle">You have to trust your co-authors</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">to understand and verify everything</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">Their mistakes become your mistakes</text>
+  <text x="174" y="150" class="d-s" text-anchor="middle">“An anti-collaborative field”</text>
+
+  <rect x="348" y="20" width="316" height="160" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">Lean: if it compiles, it is right</text>
+  <text x="506" y="76" class="d-s" text-anchor="middle">You can prove the proof is correct</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">“You don't have to trust anybody”</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">The way in is to prove something</text>
+  <text x="506" y="150" class="d-s" text-anchor="middle">Repos of 50 to 500 contributors, on Git</text>
+
+  <rect x="16" y="196" width="648" height="76" rx="7" class="d-box-plain"/>
+  <text x="340" y="222" class="d-t" text-anchor="middle">What was not anticipated in 2021</text>
+  <text x="340" y="244" class="d-s" text-anchor="middle">A “digital simulacrum” was expected; the AI itself fully writing the proof was “pretty far out”</text>
+  <text x="340" y="262" class="d-s" text-anchor="middle">“LLMs really surprised us”</text>
+</svg>
+<p class="figcap">The contrast as he describes his 2021 keynote position. “Radius of trust” and “radius of collaboration” are his phrases.</p>
+</div>
+
+<p>“We never anticipated the extent upon which AI would come in,” he says. A digital simulacrum, yes; “the idea of the AI itself would fully write the proof” was “pretty far out,” and “LLMs really surprised us.” He then touches on “a war at the foundations of mathematics,” intuitionistic versus constructive, over how much mathematics is constructible and how powerful dependently typed systems are; they “seem remarkably well-powered with ZFC set theory,” and it surprised him that things like the Banach–Tarski paradox and the continuum hypothesis have been formalized in Lean.</p>
+
+<details class="explain">
+<summary>This section is dense with jargon — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<h4>“Constructive mathematics” and “dependent types”</h4>
+<p>Constructive mathematics insists that to say something exists you must actually build it. Dependent types extend a programming language's types (this value is an integer, that one a string) so that conditions such as “this integer is positive” can be written into the type; this yields a correspondence in which <strong>“the types check” means “the proof goes through.”</strong> Lean is built on that correspondence.</p>
+<h4>Why this becomes a story about software testing</h4>
+<p>In software, automated tests check mechanically that code meets its requirements. Write a proof in Lean and the machine checks in the same way whether the proof goes through. That is what he means by “test-driven development.”</p>
+<h4>ZFC, Banach–Tarski, the continuum hypothesis</h4>
+<p>ZFC is the set-theoretic axiom system most of modern mathematics rests on. The Banach–Tarski paradox is the famous theorem, following from ZFC's axiom of choice, that a ball can be cut into finitely many pieces and reassembled into two balls of the same size. The continuum hypothesis asks whether there is an infinity strictly between the integers and the reals, and is proven to be neither provable nor refutable from ZFC. His surprise is that results this deep in set theory have been formalized in Lean. <span class="badge">added</span> The captions say “managars paradox”; Banach–Tarski is our reading from context.</p>
+<h4>An everyday analogy</h4>
+<p>Expense claims approved by a person who eyeballs them, versus a system that checks the receipts against the rules automatically. With the second, you can accept claims from people the approver has never met.</p>
+<h4>In one line</h4>
+<p>Move proofs from “a person believes it” to “the machine passes it” and you can collaborate with strangers. He saw that far; he did not see the machine writing the proofs.</p>
+</div>
+</details>
+
+
+<h2 id="en-accept">7. Will mathematicians accept it, and is the proof a hack?</h2>
+<p class="deck">Is a Lean proof legitimate? He says yes. The content, in his view, is “a little bit of a hack,” and Clay can weasel out.</p>
+
+<p>“I don't know how the mathematical community will feel about accepting this type of proof,” he says. Is Lean a legitimate format for proofs? <strong>“I would argue yes”</strong>; he created a centre to do exactly that. He adds that he is “obviously not a proper mathematician” with no sway, “although Peter Scholze and Terry Tao agree with me.” <span class="badge">added</span> The captions read “Peter Schwab”; Peter Scholze, who has been closely involved in Lean formalization, is our reading. Terence Tao has run public Lean formalizations of his own results since 2023. In both cases the agreement is about Lean as a legitimate format, not an endorsement of this OpenAI proof.</p>
+
+<p>Against that, “a lot of old school mathematicians do not like” it and “number theory journals do not accept, for example, AI contributions,” so “there's a holy war about all that.” His question: <strong>what do you do when there's a proof, you ignore the AI contribution, but it's right?</strong> Then it becomes “an unsolved solved problem,” and “we have to just wait for a human's fleshy brain to parrot it and come up with a slightly better version.” His example is Helfgott's proof of the ternary Goldbach conjecture. <span class="badge">added</span> The captions render this as “health's tertinary gold injection proof”; Harald Helfgott's proof, announced in 2013 and long in reaching formal publication, fits both the sound and his own field (additive number theory). It stands here as a case of a result known to be right while the process lags behind.</p>
+
+<p>He says he has looked through some of OpenAI's write-up, while stressing <strong>“I am not a domain expert on Navier–Stokes”</strong> (his own areas are analytic and additive number theory). His reading, in three points:</p>
+
+<ul>
+  <li>the solution they propose “seems to be a little bit of a hack”</li>
+  <li>it “permits some degenerate cases that would not come up in real physics, but it still technically satisfies” the problem</li>
+  <li>“there's enough air in the proposal that I think Clay can weasel its way out if they want to sidestep the entire controversy”</li>
+</ul>
+
+<p><span class="badge">added</span> This lines up with what experts are reported to be saying. OpenAI's result is reported to show that solutions can break down in finite time, <strong>in a setting with a smooth external force</strong>. The Clay statement permits that route, but many researchers say the question they really care about is the unforced case. His “degenerate cases” and “air” read as pointing at this, though he does not spell it out. One more discrepancy to record: in section 3 he explained the goal as showing the flow stays smooth, whereas the reported result is on the side of “it can break down.”</p>
+
+<p>His conclusion sits apart from the assessment. <strong>“A model is sufficiently advanced that it knows how to steal a smart person's work, take that work, improve it, iterate it, and formalize it to the extent that it actually solves a hard problem.”</strong> “That is very humanlike behavior,” and at the current rate of progress “the capabilities will be exponentially better.” There are open philosophical questions about the source of creativity, “but let's be honest here, the vast majority of human invention is iteration and refinement of something else.”</p>
+
+
+<h2 id="en-fosse">8. “Everything is stolen”: Bob Fosse and Michael Jackson</h2>
+<p class="deck">What counts as original? He ends on a question to the viewer, not an answer.</p>
+
+<p>“To show you guys that,” he plays a clip of Bob Fosse, “the one who inspired Michael Jackson back in 1974.” Michael of the Jackson Five saw it and said, “I'm gonna do that.” All that Michael Jackson material everyone was excited about, and “it turns out that he kind of took the snake from Bob Fosse.” <span class="badge">added</span> Bob Fosse, the choreographer and director, played the Snake in the 1974 film “The Little Prince,” and the dance's influence on Michael Jackson's moonwalk and other moves is widely noted. The captions render the name as “Bob FSY.”</p>
+
+<p>From there: “So, <strong>everything is stolen.</strong> Nothing is truly original. And that's the beauty of it. You can take what came before and you can make it better.”</p>
+
+<p>The close is a run of questions. Is this Navier–Stokes solution “the providence of OpenAI,” given that “technically all the knowledge of OpenAI comes from every other mathematician”? Or is the unfinished partial solution in the chat logs the real proof, the real inspiration? Is Michael Jackson just Bob in a different light, or something new and different? “Hard to say, right?”</p>
+
+
+<h2 id="en-overall">9. The whole picture</h2>
+<p class="deck">One event. He draws two lines from it, “protect your IP” and “machines now write proofs,” and ties them with “what is original?”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="The whole picture: from the single event of OpenAI's announcement, one line runs through his reading that a mathematician's chat logs were the foundation to Midnight's private environments; a second runs from the formal-mathematics centre's prediction through the question of accepting Lean proofs to everything is iteration and refinement">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-t" text-anchor="middle">The event: OpenAI, “an AI solved Navier–Stokes” (post of 8 September)</text>
+
+  <rect x="16" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="70" class="d-t" text-anchor="middle">His reading</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">a mathematician's year of logs</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">“looks like” the foundation</text>
+
+  <line x1="220" y1="87" x2="236" y2="87" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="240" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="70" class="d-t" text-anchor="middle">The lesson</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">ideas put into a cloud AI</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">“are not your ideas anymore”</text>
+
+  <line x1="444" y1="87" x2="460" y2="87" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="464" y="44" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="564" y="70" class="d-t" text-anchor="middle">Hence Midnight</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">private environments to run AI</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">(mechanism not described)</text>
+
+  <rect x="16" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="176" class="d-t" text-anchor="middle">The 2021 prediction</text>
+  <text x="116" y="200" class="d-s" text-anchor="middle">machine-checked proofs widen</text>
+  <text x="116" y="220" class="d-s" text-anchor="middle">the “radius of trust”</text>
+
+  <line x1="220" y1="193" x2="236" y2="193" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="240" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="340" y="176" class="d-t" text-anchor="middle">Not anticipated</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">the AI wrote the proof itself</text>
+  <text x="340" y="220" class="d-s" text-anchor="middle">will mathematicians accept it?</text>
+
+  <line x1="444" y1="193" x2="460" y2="193" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="464" y="150" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="564" y="176" class="d-t" text-anchor="middle">“Iteration, refinement”</text>
+  <text x="564" y="200" class="d-s" text-anchor="middle">the Fosse and Jackson example</text>
+  <text x="564" y="220" class="d-s" text-anchor="middle">provenance left as a question</text>
+
+  <rect x="16" y="256" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">All his own view; the top line rests on an inference at odds with the reporting</text>
+  <text x="340" y="302" class="d-s" text-anchor="middle">The proof itself: “a bit of a hack, technically satisfies,” said while noting it is not his field</text>
+</svg>
+<p class="figcap">Sorting it into two lines is our reading. The video's own order is event → the logs reading → Midnight → the centre and Lean → assessing the proof → Fosse; he does not describe it as two lines.</p>
+</div>
+
+
+<h2 id="en-pending">10. Left unanswered</h2>
+<p class="deck">No questions were taken. What he said he did not know, and what he did not touch.</p>
+
+<p>It is a live stream, but no chat questions are read out, and the closing questions are left with the viewer.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Still a guess</span>Did the model actually read a mathematician's chat logs and build on them?</p>
+<p class="qa-a" data-by="“What it's looking like is”">He frames it as an appearance and shows no evidence. <span class="badge">added</span> In the press OpenAI denies accessing any specific user data and says the influence of de-identified usage data “cannot be ruled out.” Not settled.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Different people</span>How does Jay Cummings, whom he cites, relate to Buckmaster and Alpöge, whom the press names?</p>
+<p class="qa-a" data-by="Not addressed">He discusses only Cummings's post and does not mention the two researchers the reporting identifies as having prior work. Whether Cummings's post is a priority claim at all cannot be read from the post.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No mechanism</span>What is Midnight's “private environment to run AI in”: which model, running where?</p>
+<p class="qa-a" data-by="One sentence">“It creates the private environments that you can run the AI in, so they can't read your logs.” No target model, mechanism or timing.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">“I don't know”</span>Will the mathematical community accept this kind of proof?</p>
+<p class="qa-a" data-by="His own answer: “I don't know”">He is firm that Lean is a legitimate format, but on how mathematicians will treat an AI-written proof he stops at “I don't know, it's an interesting question.”</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No detail</span>What are the “hack” and the “degenerate cases,” concretely?</p>
+<p class="qa-a" data-by="Assessment only">He gives the verdict but not what is degenerate about it. <span class="badge">added</span> The “smooth external force” setting reported in the press appears to be what he means, but he does not say so.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unexplained</span>“We beat them in the cryptocurrency space, but just by a little”: beat whom, at what?</p>
+<p class="qa-a" data-by="One remark">A single aside, after which he moves on.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is the live stream <a href="https://www.youtube.com/live/dcQxe9ohHOw">Navier-Stokes</a> on Charles Hoskinson's own YouTube channel, streamed 2026-09-09, about 18 min 40 s (from the last caption time). It is a public video, so the speaker is named. <strong>Because it is his own channel, every position and assessment here is written as his personal view.</strong></p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken aloud in the video. <span class="badge">on screen</span> would mark things shown but not said; OpenAI's and Jay Cummings's posts and the Bob Fosse clip appear on screen, but this page is built only from what was spoken, so the mark is not used here. <span class="badge">added</span> marks explanations we wrote; they are not in the video.</p>
+<p><strong>Cross-checking against the press</strong> covers OpenAI's post and statements, Jay Cummings's post, the reporting on Buckmaster and Alpöge, and the Clay Mathematics Institute's response, all as of 10 September 2026. Where the video and the reporting differ, both are given rather than reconciled.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/live/dcQxe9ohHOw">動画を見る</a></span><span class="l-en">Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/live/dcQxe9ohHOw">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>
