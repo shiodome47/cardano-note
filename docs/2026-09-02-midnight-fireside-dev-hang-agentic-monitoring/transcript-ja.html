@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fireside Dev Hang: Agentic Monitoring &amp; Infrastructure（2026-09-02）— 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Midnight</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-09-02</span>
+  <span>58:35</span>
+  <span>YouTube</span>
+  <span>Fireside Dev Hang: Agentic Monitoring &amp; Infrastructure</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>Midnight の公式 YouTube チャンネルで公開されている動画なので、発言者は実名のままです。<code>Stevan</code> は司会の Stevan Lohja（Midnight Foundation）、<code>Santiago</code> は Santiago Carmuega（TxPipe）です。動画の中では名前と所属だけが出てきます（「TxPipe の Santiago」「ありがとう、Stevan」）。姓は、動画で触れられた Midnight の問題提起の著者名と公開プロフィールから取ったもので、<strong>音声からの確定ではありません</strong>。</p>
+<p>原本は SRT なので<strong>タイムスタンプはありますが話者ラベルがありません</strong>。461 ブロックあります。話者の交代と話題の切れ目で割り直し、後半の 1 人語りは話題の切れ目で分けています。チャットを読んでいる場面（27:43〜27:52 ごろ）の短い 3 つのやり取りは言葉だけでは誰の声か決められないため <em>(推定)</em> を付けています。</p>
+<p>誤変換は用語集にしたがって直しています。<code>dollars</code> → Dolos、<code>block frost</code> → Blockfrost、<code>coupon</code> → Kupo、<code>Agmios</code> / <code>off-mirror</code> → Ogmios など。<strong>「link caps」と聞こえるチーム名は特定できなかったので、聞こえたまま残しています</strong>。</p>
+<p><strong>字幕には欠けがあります。</strong>38:44 から 40:00 までの約 75 秒、アラートの 2 段階の説明の途中が抜けています。その部分はここにもありません。</p>
+<p><strong>画面共有があった回です。</strong>スライド、ターミナル、チャットのチャンネルが映っていますが、<strong>ここに載っているのは音声で語られた内容だけ</strong>です。</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="ja-t-open">00:00:33 — 冒頭と今日の予定</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:00:33</span></div>
+  <div class="turn-body"><p>はい、配信が始まりました。みなさん、今日の Fireside Hang にご参加ありがとうございます。今日は 9 月 2 日水曜日、米国東部時間の 12 時 30 分です。さっきまで話していたのは、ある国の食べ物が別の国ではなぜあんなに高いのか、という話でした。今日の Fireside のテーマではありませんが、なかなか考えさせられる問いです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:01:08</span></div>
+  <div class="turn-body"><p>今日の予定ですが、TxPipe の Santiago に来てもらっています。Dolos についてたっぷり話してもらいます。あなたと Santiago から「db-sync の置き換えになりうる Rust 製のクライアントがある」と聞いたとき、とても興味を引かれました。Midnight のインフラをご存じの方なら分かると思いますが、db-sync は時々ほんとうに厄介で、Midnight のインフラの構成を減らせるなら、検討する価値があります。そこで TxPipe の Santiago に詳しく話してもらい、ほかにも見せてもらえるものがあれば見せてもらいます。そのあとは、前回私が話したアラートのエージェントの続きです。今は本番で動いていて、本番レベルのインシデントを、お楽しみとして起こします。いや、お楽しみというより、動くことを示すためです。ネットワークのインシデントに対する「平均認知時間」をリアルタイムで見て、ほかのアイデアも少し話せればと思います。では、ご参加ありがとうございます。Santiago を呼びましょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:02:35</span></div>
+  <div class="turn-body"><p>Santiago はドゥルセ・デ・レチェの故郷、偉大なる国アルゼンチンから参加しています。本当にすばらしいものなので、アルゼンチンに行くことがあれば、ぜひドゥルセ・デ・レチェを食べてください。私はアイスクリーム好きなのですが……ともかく Santiago、自己紹介をお願いします。Dolos の話を聞きたいです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:03:05</span></div>
+  <div class="turn-body"><p>はい、Stevan、ありがとうございます。呼んでいただいてありがとうございます。ドゥルセ・デ・レチェのアイスクリームは必食で、ほかの場所では手に入らないと思うので、アルゼンチンのブエノスアイレスに来てもらうしかありません。アルゼンチンのどこでも構いませんが。私は TxPipe の者です。私たちはブロックチェーン開発者向けのツールとサービスを提供していて、複数のブロックチェーンで日々ものを作る体験を、少しでも単純にしようとしています。セキュリティの面、開発者体験の面――アプリを作るときの日常の作業――に加えて、運用の面のツールやサービスも提供しています。それが今日のテーマ、つまり Midnight 側のインフラをどう運用するか、そして Dolos がその過程でどう役に立ちうるか、につながります。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-dbsync">00:04:09 — Midnight が Cardano から読むもの、そして db-sync の重さ</p>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:04:09</span></div>
+  <div class="turn-body"><p>ご存じだと思いますが、Midnight を動かすには Cardano 側で起きていることを観測する必要があります。多くはありません。Cardano で起きること全部を追う必要はなく、Midnight のコンセンサス側で必要になるのは薄い一枚のデータです。特定のスクリプトアドレスにある UTXO、各プールのステーク、チェーンのノンス、チェーンの tip がどこか。小さなものですが、Midnight のコンセンサスにとっては本当に重要です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:04:55</span></div>
+  <div class="turn-body"><p>そのために現状では、Midnight のオペレーターは db-sync を動かす必要があります。さっき言及されていたツールで、Cardano では有名です。チェーンのデータを探索するなら、これというツールです。フル機能の、非常に重量級のインデクサで、すべてを保存します。あらゆるトランザクション、あらゆる UTXO、ポリシー、アセット、DRep の投票、提案、すべてです。すばらしいのですが、汎用のインデクサです。自分たちでも「汎用インデクサ」と名乗っています。つまり、フル機能のエクスプローラを動かすにも、ウォレットにも、取引所のデータ分析にも使う、同じツールです。複数のユースケースに応えるという意味で、汎用に作られています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:05:55</span></div>
+  <div class="turn-body"><p>問題は、リソースをたいへん食うことです。db-sync を動かすには、まず自前の PostgreSQL が要ります。次に、すべてを PostgreSQL に書き込む更新処理を行う db-sync 本体。さらに、db-sync と同じ場所に Cardano ノードも要ります。この 3 つを足し上げると、だいたい RAM が 64GB、ディスクが 700GB、CPU が 5〜8 コアです。本当に重くて、リソースを食います。それだけでなく、運用の面でも管理が複雑です。正しく同期しているか、各コンポーネントがうまく連携しているかを確かめ、必要な性能を出すために PostgreSQL をチューニングしなければならない。同期して、遅れないようにすることも、ある意味フルタイムの仕事になることが多い。要するに、本当に重いということです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:07:17</span></div>
+  <div class="turn-body"><p>これは db-sync への批判ではありません。すばらしいソフトウェアです。ただ、Midnight が Cardano に求めるもの――Midnight が必要とするのは全部合わせてもギガバイトではなくメガバイトで測れるであろう薄い一枚――と、db-sync が提供するものと、それに必要なリソースの全部との間に、ある種の摩擦があるのが見えます。だから、代わりがあるかもしれない。別の種類の Cardano オブザーバー、もっと軽量で、Midnight ノードが必要とするものに合わせて要件を絞り込めるものがあるのではないか。そこで出てくるのが Dolos です。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-dolos">00:08:04 — Dolos — 1 バイナリの Cardano「データノード」</p>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:08:04</span></div>
+  <div class="turn-body"><p>Dolos は Cardano の「データノード」です。ブロック生成者ではなく、ブロックの検証もせず、ネットワークの中継もしません。やっているのは、リレーのネットワークに直接つないで、台帳の自分用のコピーを組み込みデータベースの中に保持することです。PostgreSQL はなく、何もありません。Dolos と並んで動くデータベースで、同じ 1 つのプロセスの中に、データを取り出すための API がひととおり入っています。Blockfrost とまったく同じ見た目のエンドポイントがあるので、Blockfrost に問い合わせるのと同じように Dolos に問い合わせられます。Dolos の上に Ogmios を載せて、Dolos 経由で Ogmios の API を使うこともできます。UTXO RPC もあります。UTXO 型ブロックチェーン向けの、gRPC ベースの非常に高性能な API です。これらの API がすべて同じプロセスに組み込まれています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:09:12</span></div>
+  <div class="turn-body"><p>この 1 つのプロセスで、db-sync が要求する PostgreSQL、db-sync 本体、ノード、の 3 つを置き換えます。全部を 1 つのバイナリに詰めたことには、SPO の視点から見て面白い利点があります。SPO なら喜ぶだろうと思うものです。まず、リソースの消費量がずっと小さい。Dolos を動かすのに要るのは RAM 約 3GB で、64GB ではありません。CPU は 0.5 コアを割り当てれば十分快適です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:10:11</span></div>
+  <div class="turn-body"><p>そしてディスクの面――私にとってはここがいちばん面白いのですが――チェーンの全履歴を保持する必要がないのです。Byron から今までの全部を保存する 700GB のディスクは要りません。チェーンの履歴を、スライディングウィンドウで持つことを選べます。チェーンが進むにつれて古いレコードを切り詰めて捨て、必要な分だけを残す。安定性ウィンドウ（stability window）が気になるなら数日分――Midnight はそうだと知っています。もう少し余裕を持って 6 週間前までロールバックできるようにしたいなら、それも可能です。設定で決められます。Dolos を立てるとき、このウィンドウをどれだけ持つかを決めると、そのウィンドウが tip に追随します。つまり、Midnight が求める薄い一枚のデータを提供するのに必要なディスク容量を、劇的に減らせます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:11:00</span></div>
+  <div class="turn-body"><p>最後に、Cardano ノードは要ります。何らかの情報源を信頼する必要はある。ただ、db-sync が要求するように、インデクサと同じ場所に置いた Cardano ノードである必要はありません。Dolos をネットワーク上のリレーノードに向ければ、Cardano の P2P プロトコルの中でもう 1 つのノードであるかのように振る舞います。SPO なら、すでにリレーノードを動かしているはずです。自分のノードは当然信頼できるので、Dolos をそのリレーに向ければ、db-sync の隣にもう 1 つ Cardano ノードを置くという発想をまるごと省けます。全部足し合わせると、リソース使用量と運用の両方の最適化――面倒を見るバイナリが 1 つだけになる――は、SPO の運用の視点から歓迎されるものだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:12:01</span></div>
+  <div class="turn-body"><p>いいですね。おっしゃったとおり、多くの SPO はすでに Cardano のリレーを持っています。本番の SPO なら、たいてい 2 つ以上のリレーがある。Midnight のバリデータになるなら、64GB より 3GB の RAM を用意するほうがずっと簡単です。これは大きい。本番で動かしている SPO は、たいてい少し余裕を持たせていますが、想定より 64GB 多い、ということはまずないでしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:12:42</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:12:43</span></div>
+  <div class="turn-body"><p>とても興味を引く価値提案だと思います。cardano-db-sync に 64GB という話をすると、db-sync をとりあえず動かしただけの人は「え？」となる。でも Midnight で実際に使うには、db-sync の同期に丸 1 か月待つのではなく、PostgreSQL のチューニングをたくさんやらなければならない。そして Midnight 向けに db-sync を立てて、同期が 100% 終わったと思ったら、「いや、sync 用のデータベースにもう一度すべてをインデックスし直さないといけない」となる。ノードを立ち上げるだけなのに、思ったよりずっと長くかかるわけです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:13:42</span></div>
+  <div class="turn-body"><p>ええ、まさにそうです。あのインデックス作成のステップにやられる。私も毎回やられます。私たちはやっていることの都合で、db-sync のインスタンスをたくさん動かしています。繰り返しますが、これは db-sync を叩く記事ではありません。すばらしいソフトウェアです。ただ本当に重量級で、特定のユースケースでは理にかなっている。Midnight が必要とするものに対しては、もっと適した選択肢があると、私はかなり確信しています。だからこそ私たちは――すみません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:14:13</span></div>
+  <div class="turn-body"><p>それと、Cardano エコシステム全体に対する一般的な解決策としても、大きな価値がありますよね。Blockfrost の API に頼っている人も多く、かなり人気があります。これは、そういう人たちも使えるものです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:14:33</span></div>
+  <div class="turn-body"><p>ええ、そのとおりです。開発用途では本当に面白い。1 つのプロセスで、非常に軽量で、開発、テスト、ストレステスト、DApp の実行に使えます。それに加えて、いくつかのチームは Dolos の Blockfrost API を外部に公開し、本番の mainnet のエンドポイントが Dolos に組み込まれたその Blockfrost API を直接叩いています。そうやって自分たちのインフラを自分で持てる。サービスプロバイダーにお金を払うほうがよいユースケースもあります。高可用性、エッジへの分散、動的なスケーリング。サービスプロバイダーを選ぶ理由はある。一方で、ユースケースが許すなら、自分のインデクサ、自分のインフラを持ちたい理由もあって、Dolos は本当に面白い選択肢です。DApp のバックエンドの問題に向き合っている方には、ぜひ試してみてほしい。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-mps">00:15:45 — MIPs リポジトリへの問題提起（MPS）</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:15:45</span></div>
+  <div class="turn-body"><p>いいですね。Dolos についてはまだ話すことがあると思います。最近、あなたたちが Midnight の MIPs リポジトリに問題提起（problem statement）を出したのを見ました。ご存じない方のために言うと、Midnight には改善提案（Midnight improvement proposal）のプロセスがあります。変更や改善を提案できる仕組みです。そのプロセスの一部が問題提起で、いま Santiago が話したことが、基本的にその問題提起の内容だと思います。リンクを出しましょう。MIPs のプロセスに関わりたい、コメントしたいという人のために、MPS の PR へのリンクを画面に出せると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:16:52</span></div>
+  <div class="turn-body"><p>断っておくと、私は MPS と MIPs のプロセスは初めてで、これが最初の 1 本です。ただ、とても理にかなったプロセスだと思います。まず問題提起から始める。解決策の変更とは無関係に、何が改善できると思うかを述べるだけで、どう改善するかは言わない。それが問題提起で、昨日投稿したものです。ほんの少し前にマージされたと思います。チームの速さを物語っていて、すばらしい。そこで述べているのは、今説明したとおり、db-sync は特定のユースケースではすばらしいが、Midnight のノードを動かす文脈では少し過剰かもしれない、ということです。提案しているのは、それを Dolos に置き換えることではありません。むしろ逆で、問題提起では解決策の話はしていない。言っているのは、Midnight ノードと「Cardano オブザーバー」が何であれ、その間のインターフェースを記述する、明確な契約――きちんと定義された仕様――があるべきだ、ということです。その境界をきちんと定義し、どのオブザーバーのバックエンドでも要求事項をすべて満たしているかを確かめられる適合テスト（conformance test）のスイートがあれば、「この SPO は db-sync の代わりに別の解を動かしたい」と考え始められる。それは Dolos かもしれないし、ほかにも適したバックエンドがあるかもしれない。問題提起が求めているのは、厳密な境界と明確に定義されたインターフェースで、ベンダーが入ってきて自分のバックエンドを提供できるようにすることです。それが承認されたら――まだドラフトですが――後半にあたる改善提案を出します。そこでは「このインターフェースができたので、db-sync の代わりに Dolos を使ってみてはどうか」と提案し、プロトコルの視点から要求される適合テストをすべて満たす努力をします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:19:21</span></div>
+  <div class="turn-body"><p>とてもいいですね。私自身とても楽しみにしています。ほかに見せたいものはありますか。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-demo">00:19:34 — デモ — Dolos のインストールと、同期の 3 つの入り口</p>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:19:34</span></div>
+  <div class="turn-body"><p>時間があれば、Dolos のインストールの仕方をごく簡単にデモします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:19:42</span></div>
+  <div class="turn-body"><p>ええ、もちろん。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:19:45</span></div>
+  <div class="turn-body"><p>画面を共有します。……これは単一のバイナリです。いくつか質問されます。まず、どのネットワークにつなぐか。mainnet にしましょう。Genesis ファイルを自分で用意するか、任せるかを聞かれます。セキュリティ上の判断に関わるので、選べます。私は「はい」にするので、Genesis ファイルが自動でインスタンスに含まれます。次に、データを引いてくるリモートのリレーを選びます。Demeter のリレーか、CF（Cardano Foundation）のリレーを使えます。Demeter にしましょう。ここが面白いところで、チェーンの履歴をどれだけディスクに残すか。さっき説明したことです。Genesis から今までの全部を残すか、1 日、1 週間、1 か月か。あとから別の値に設定し直すこともできます。1 日にしましょう。そして、説明したとおり、API の種類が豊富なので、どれを公開するかをここで決めます。UTXO RPC を出すか。Blockfrost のインターフェースを出すか。Kupo のインターフェース――Kupo であるかのように振る舞う――もあります。ここは全部入れてしまいましょう。ほかのノードのリレーになるかも聞かれます。「いいえ」にします。……すでにインスタンスがあるフォルダの中にいたので、これはエラーです。ただ、どう動くかは見てもらえたと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:21:53</span></div>
+  <div class="turn-body"><p>いいですね。多くの SPO が――昔の testnet を見ていた人たちですが――Kupo と Ogmios の接続を用意しなければならなかったのを覚えています。もうその必要はなくなりましたが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:22:12</span></div>
+  <div class="turn-body"><p>ええ、今は全部まとめて持てます。さっき失敗したのは、すでに Dolos のインスタンスがあるフォルダにいたからです。私のミスです。別のフォルダに移ったので、まっさらな状態から新しいインスタンスを作っています。最後のステップも重要で、どこから同期するかを選べます。同期はツールを使ううえで本当に重い部分で、数日、複数日かかることがあります。Dolos には 3 つの選択肢があります。1 つ目は Dolos のスナップショットで、数分で現在の状態をダウンロードします。「trust me bro（俺を信じろ）」と呼んでいて、そのデータが正しいことを私たちを信頼してもらう必要があるからです。お任せします。私たちを信頼したくなければ、Mithril のスナップショットをダウンロードできます。Dolos が Mithril のスナップショットからブロック全体を再生し、必要な状態と初期データを作って、完全に同期した状態になります。Mithril を使いたくなければ、上流のピアに行って、ノードのようにブロックを引き始めることもできます。以上です。Dolos のサービスを立てるのに必要なステップは、これで全部です。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-snapshots">00:23:30 — スナップショットと Mithril — 誰を信頼するか</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:23:30</span></div>
+  <div class="turn-body"><p>本当にいいですね。自分たちのスナップショットを提供するという選択肢を用意したのは、コミュニティへの大きな貢献です。Foundation の側でも、ごく近い将来、Midnight ノード向けに署名付きスナップショットを提供したいと考えています。みんなが知っている、とても信頼されている人たちが出している信頼できるスナップショットもたくさんあります。ただ、Mithril の話。私はいつも Mithril を推しています。誰かが Dolos を使うとして――私たちは機関と関わるので――法的に必須というほどではないにせよ、特定の IT 認証やコンプライアンスを維持するために、信頼を最小化したスナップショットが重要になる場面があるのです。いろいろな種類の認証がありますし、パートナーと仕事をするときも「そのスナップショットはどこから来て、誰が出したのか」と聞かれます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:24:22</span></div>
+  <div class="turn-body"><p>ええ、まさにそうです。私たちは Blockfrost チームと協力していて、彼らも自分たちのプラットフォームやシステムに Dolos を使っています。そして、Cardano エコシステムで活動するもう 1 つのチーム、link caps（聞こえたまま）とも一緒に、スナップショットに共同で署名を始める準備をしています。最初は複数の主体がスナップショットに署名し、ダウンロードして、その 3 者のどれかを信頼できるなら、それで使える、という考えです。ただ、SPO の証明書による保証がすべて付く Mithril は、保証の面で 1 段上です。問題は、Mithril のスナップショットが Cardano ノードの内部構造と強く結びついていることです。Dolos はダウンロードして検証したあと、そのまま使うことができません。インデックスに必要なデータをすべて得るために、ブロックを最初から処理し直さなければならない。少し余計に時間がかかるだけで、自分のリスクプロファイルと、いちばん筋の通るスナップショットを選べます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:25:56</span></div>
+  <div class="turn-body"><p>本当にいいですね。見せてくれて感謝します。私はとくに楽しみにしていて、まだ Dolos を触り始めたところです。MPS には必ずコメントしますし、これが MIPs のプロセスをどう進むか楽しみです。私は db-sync をよく使っていましたし、SPO が参加するときには登録のステップもあります。Dolos はおそらくそこにも使えると思う。まだ調べている途中ですが、大きな可能性があると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:26:41</span></div>
+  <div class="turn-body"><p>ええ。最後になりますが、オープンソースです。複数のチームから貢献をもらっています。調整が必要な点や、新しい種類の API が必要なら、貢献は歓迎で、後押ししています。アイデアや、行き詰まった点があれば、遠慮なく issue を出してください。やる気があれば PR も。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:27:14</span></div>
+  <div class="turn-body"><p>いいですね。リンクを――はい、これが QR コードのリンクです。詳しくはこちらへ。次の議題に移る前に、チャットで Santiago に質問したい人はいますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan <em>(推定)</em><span class="turn-time">00:27:43</span></div>
+  <div class="turn-body"><p>コメントを見ると、みんなかなり興味を持っているようです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago <em>(推定)</em><span class="turn-time">00:27:46</span></div>
+  <div class="turn-body"><p>ええ、コメントを見ています。見知った顔がいますね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:27:54</span></div>
+  <div class="turn-body"><p>Alex、John がいますね。ほかには。……直接の質問はないようです。とても良いか、とても悪いかのどちらかですが。あるいは MIPs に関わってコメントするのもいいでしょう。GitHub のリポジトリはオープンソースで、issue でも PR でも何でも。オープンソースのいいところは、いつでも参加する道があることです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:28:25</span></div>
+  <div class="turn-body"><p>あなた自身でも、あなたのエージェントでも。AI の PR も受け付けます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:28:29</span></div>
+  <div class="turn-body"><p>ですね。では、Santiago、ありがとうございました。みなさん、リンクを見て、Dolos を試して、感想を聞かせてください。この価値提案には本当にわくわくしていて、興味を引かれています。今後の Fireside Hang でもっと話して、ほかのものも見せられればと思います。Santiago、ありがとう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:28:57</span></div>
+  <div class="turn-body"><p>ありがとう、Stevan。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-why">00:28:59 — なぜアラートのエージェントか — 午前 3 時には誰も見ていない</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:28:59</span></div>
+  <div class="turn-body"><p>ありがとう。では、エージェントの話を少しします。前回の Fireside Hang で、私たちが持っているアラートのエージェントについて少し話しました。それが今は本番で動いています。今日はそれをもう少し短い形式で話し、本番レベルのインシデントも起こします。楽しいはずです。見せびらかすためにやります。画面を共有します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:29:39</span></div>
+  <div class="turn-body"><p>私たちのバリデータのアラートは、以前はブラウザのタブの中にありました。Grafana などです。動いてはいて、チャットに投稿もされて、それなりに役に立っていました。誰かがどこかでダッシュボードを開いていれば――午前 11 時なら、それでいい。でも日曜の午前 3 時には役に立たない。SRE や DevOps の人、ノードを動かしている人なら、何の話か分かるでしょう。あるテストネットワークで、ファイナリティ（確定）の停止が気づかれないままになったことがありました。最後にテレメトリを開いていた人がラップトップを閉じて寝てしまったからです。何も壊れてはいなかった。でも誰も見ていなかった。それが問題です。ブロックチェーンは 24 時間 365 日動くので、常に見ていなければならない。バリデータにも同じ期待があります。ブロックを生成していなければ、その時間内にブロックを生成していないということで、サービスは 24 時間 365 日動いている必要がある。そこで、見張るものを作りました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:30:57</span></div>
+  <div class="turn-body"><p>それが何で、いくらかかるかを見せて、そのあと本物のバリデータをわざと止めます。悪意ではなく、制御されたデモとして。次へ行きましょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:31:21</span></div>
+  <div class="turn-body"><p>問題は 4 つあって、技術的なのはそのうち 1 つだけです。アラートが機能するのは、メトリクスが開かれているときだけだった。時間外のカバーは、人間が 30 分ごとくらいにページを確認すること。ダッシュボードを開いておく。私の日課は、朝コーヒーを飲みながら、テレメトリを全部開いて動いているか確かめることです。それはそれでいいのですが、全員が常に見ているわけではない。つまり、ノードがシフトの大半、あるいは一瞬でも落ちていても、誰も知らないままになりうる。そういうものは捕まえられないことがある。ほかにそれを捕まえるツールもありますが、変化はすぐに認知される必要があります。エコシステムで仕事をしていると――いまはフェデレーテッド（連合型）のネットワーク全体があって、調整すべき相手がたくさんいます。最後の問題は、みんな忘れがちなことですが、ネットワークのテレメトリでノード名を見ることと、誰に電話すべきか知っていることは別だ、ということです。いま Midnight には、異なる組織が運用する 13 のバリデータがあります。画面上の名前は、誰の電話を鳴らすべきかを教えてくれない。その裏には人間のオペレーターがいる。ブロックチェーンから情報を引くだけでは、誰が問題を認知して解決できるかは分かりません。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-arch">00:33:20 — 仕組み — 判断は閾値、文章だけがモデル</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:33:20</span></div>
+  <div class="turn-body"><p>解決策は、基本的にはヘッドレスのサービスです。公開のテレメトリのフィードを購読し、落ちれば systemd が再起動し、起動のたびにシークレットを取り直します。重要なのは 2 点です。第一に、検知は決定論的です。前回も少し話しましたが、アラートを出すかどうか、どれだけ緊急かは、固定の閾値が決めます。このシステムには言語モデルが入っていて、あとで説明しますが、その判断は決してモデルがしません。第二に、アラートは事実にもとづき、宛先が付いています。右側に映っているのが、実際にチャットに届くものです。あとで実際に 1 回やります。バリデータの名前、責任のあるオペレーターの名前、ランブックへのリンクがあり、オペレーターにメンションして、Foundation の誰かにも CC する。やらないのは、推測です。原因も、修正案も出さない。「このバリデータは報告を止めた」は事実で、「サーバーが落ちた」は物語です。アラートに物語を入れると、人は信じなくなる。すべてが事実にもとづく必要があり、だから実際に事実として起きたことにしか反応しません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:35:13</span></div>
+  <div class="turn-body"><p>これがどうスケールするかもあとで少し話します。面白いことができて、ほかのチェーンも似たモデルを採用できるかもしれません。アーキテクチャです。6 つのステップがあります。フィードが入ってくる。検知が固定の閾値で走り、これがニュースかどうかを決める。名簿（roster）が、バリデータ名を人に変換する。モデル――同じマシンでセルフホストしている小さなオープンなモデル――が事実を受け取って、人間向けの 1 文を書く。もう少し情報が多いこともありますが、1 つのインシデントにつき、ふつうは 1 文です。ガードレールが、診断や対処の指示に読めるものを弾き、メンションや注入（injection）の試みも弾きます。モデルが遅かったり、間違ったり、落ちていたりすれば、代わりに定型文でアラートが出ます。アラートは決してモデルで詰まらない。LLM が落ちても――どんなエージェント型サービスにも言えることで、標準的な考え方であってほしいのですが――運用できていなければならない。だからこのシステムは LLM に依存していません。LLM は、より良い体験と、もしかするともっと多くの能力を提供するだけです。右側は、基本的に、入ってくる経路がまったくない小さな VM が 1 台。ステータスページはループバックの裏。シークレットは起動時に基本的なシークレット管理から取るので、永続ディスクにも Terraform のステートファイルにも決して残らない。Terraform で管理しているので。コンテナイメージはコンテンツハッシュで固定してあるので、再起動で動いているものが静かに変わることはありません。次へ。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-policy">00:36:52 — 検知のルールと、費用</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:36:52</span></div>
+  <div class="turn-body"><p>検知のポリシーには 5 つのルールがあります。不在（absent）、ファイナリティのギャップ、同期中（syncing）、フォーク、ピア不足。これまで DevOps や SRE の面接で「気にすべき 5 つのことは何か」と聞いてきましたが、これがその例です。即座に分かる健全性の指標だからです。追跡しているものはこれより多いのですが、何かがおかしい、壊れているとすぐに教えてくれる、手の届きやすいものです。数字が面白いところです。ファイナリティのギャップは 3 ブロックを超えたら発火しますが、2 サイクル連続の場合だけです。このデバウンスがあるのは、1 回の小さな揺れはインシデントではないからです。ブロックの再編成（reorg）は普通のことです。Bitcoin でも Ethereum でも起きる。ただ、ある閾値を超えると普通ではない、健全ではない振る舞いになる。Midnight 側では、3 ブロックを超えるファイナリティのギャップは、ふつう懸念すべきことです。1〜2 ブロックの再編成は、Substrate ベースのチェーンではごく普通で、Midnight は Substrate SDK で作られています。不在には、デバウンスがまったくありません。名簿にあるバリデータが消えるのは、決して普通ではないからです。誰かがいなくなった。いないのが見えるので、問題です。たとえば 13 のバリデータがあって、12 しか見えなければ、残りの 1 人はどこにいるのか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:38:28</span></div>
+  <div class="turn-body"><p>段階は 2 つで、5 段階の重大度の番号ではありません。「今すぐ呼び出す（page now）」は、コンセンサスが危険で、誰かが起こされる。「通知（notify）」は、朝に見ればいいもの。この人はピアが 1 つか 2 つ足りない、まだ動いてはいるが――（ここで字幕が約 1 分 15 秒欠けています）――ふつうに動いているが、午前 2 時に通知を浴びせるほどではない、というものです。ごく普通のことです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:40:15</span></div>
+  <div class="turn-body"><p>費用を見ると、面白いことに、技術的にはもっと安くできます。このアラートのエージェントは月 56 ドルほどで動いています。GCP での価格で、もっと安くできるのですが、今後もっと作り込むつもりです。注目してほしいのは「モデルの推論」の行で、ゼロです。すでに払っている CPU 上のセルフホストのモデルを使っているからです。請求の大半は、ほぼ遊んでいる容量です。検知そのものはほとんど何も要りません。マシンがその大きさなのは、推論が走る場所を確保するためです。インスタンスを見れば、モデルが立ち上がるときに上がる。常に必要なわけではないが、本番では、一般に思うより余裕が要る。正直に言うと、ホスト型のモデルなら技術的には月に数セントで、ページング（呼び出し）のプラットフォームはユーザーあたり数ドルから、ということもあります。私の解が最安ではないかもしれない。もっと安くできる。正直、必要より少し多めにリソースを使っています。LLM が立ち上がるときに推論の問題を起こしたくないからです。ただこれは、運用データとオペレーターの情報が、自分たちのプロジェクトから決して外に出ないバージョンです。月 56 ドルで、ネットワークを見張り、人に連絡し、モデルに人へ声をかけさせられる。それに追加費用はかかりません。PagerDuty のようなものはいろいろありますが、ここにあるのはインスタンスと、たとえば Discord を使っているなら Discord の webhook と、セルフホストのモデルだけ。多くのものと比べて、かなり費用対効果が高い。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-incident">00:43:03 — 本番で止めてみる — 認知まで 1 分</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:43:03</span></div>
+  <div class="turn-body"><p>次は、実際にインシデントを起こします。制御された、人為的なインシデントで、1 分だけ続きます。このアラートのエージェントを持っている理由の 1 つは、ほかのテレメトリやアラートの仕組みがあっても、DevOps や SRE では、平均認知時間（mean time to acknowledgement）と平均復旧時間（mean time to resolution）を良くしたいからです。平均認知時間は、「ここに問題がある」と認知するまでの時間で、重要な実際の指標です。標準的な慣行は――議論の余地はありますが、調べればいろいろ出てきますが――重要度の高いものなら 5〜15 分が良いとされ、中程度の懸念なら 30 分〜2 時間、それほど重要でなくてもいつかは認知すべきものなら 5 時間以上、といったところです。私の意見では、すべて 1 分以内に認知したい。ブロックのファイナリティが止まったら、すぐに知りたい。5 分も 15 分も待ちたくないし、2 時間も待つべきではないと思う。ブロックチェーンは 24 時間 365 日動くべきで、完璧に動いているべきで、そこを目指すべきです。このエージェントは平均認知時間に効きます。人間は寝ていることがあるが、エージェントは寝なくていい。少なくともインシデントを事実のデータとともに認知し、決定論的なランブックを示し、誰かがそれを見たときに、しかるべく進められる。面白いのは、本番に入ってまだ 2 週間ほどですが、何度か発火していることです。大したことではなく、どこかの計画メンテナンスなどです。実際、とても快適です。SRE や DevOps の視点、あるいはネットワークの健全性の監視という点で、私の不安が減る。必要なときには必ず電話が鳴ると分かっているので、Grafana を見ていなければ、という不安を持たなくていい。ほかのことに集中して、本当に大事なことが起きたら知らされると分かっている。アラートを起こしましょう。脱線してすみません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:46:00</span></div>
+  <div class="turn-body"><p>アラートを起こします。自分のインスタンスにいることを確かめて。悪いことをします。チェーン上の 13 ノードのうち 1 つを実際に止めます。やりましょう。見たいのは平均認知時間です。5 分がだいたい標準的ですが、1 分でできるか見てみましょう。systemctl で、止めます。もう 1 つ開いて、本当に止めたかテレメトリで確かめたい。今 1 時 18 分です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:47:22</span></div>
+  <div class="turn-body"><p>手元に電話があります。何が起きるかの証拠として、画面を見せておきます。やりました。頭の中で数えています。……あ、待って。1 秒。実はノードが止まっていなかった。何か抜けていた。承認のための sudo を忘れていました。よし、今度は動くはずです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:48:16</span></div>
+  <div class="turn-body"><p>では見てみましょう。平均認知時間が欲しい。……電話に通知が来ました。スワイプしてしまった。はい。今、バリデータは落ちました。まだ「報告なし」と出ています。この手のものを見るチャンネルを確認します。ここに「バリデータがダウンしているという重大なイベント」と出ています。それから再起動したので、ここで「復旧」と出ました。みなさんにも見えたと思います。「実際に解決した」と出て、必要な相手にタグを付けている。私ともう 1 人にタグを付けて、「maintenance のコンセンサスのアラート、重大度は 1（critical）。Foundation のノードがネットワークから XYZ ブロック遅れている」と教えてくれる。何ブロック遅れていたかも出て、ランブックを参照している。アラートのエージェントは今日の東部時間 1 時 19 分にこれを捕まえた。私が再起動したので、「重大なインシデントは解決した」と。ブロックが戻ったのが見え、エージェントは 1 時 20 分にそれを報告した。つまり、認知まで 1 分、次の 1 分で私がノードを再起動した。平均認知時間は 1 分です。いいですね。……プリンターが動いてしまったので、ミュートしました。ともかく、平均認知時間 1 分です。月 56 ドルで、とてもスケールし、追加費用なし。そして今、本番で動いています。共有まで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:50:55</span></div>
+  <div class="turn-body"><p>さっき話していたように、これを Terraform にすることを思い描いています。私たちがやりたいことの 1 つが、テンプレート化した Terraform です。一般的なインフラのための公開 Terraform テンプレートを作りたい。そこにエージェントのツールも入れたい。これは、その初期段階のようなものです。今の状況はこんなところです。チャットを見ます。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-chat">00:51:30 — チャットからの質問と、この先</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:51:30</span></div>
+  <div class="turn-body"><p>Johnny からいい質問です。「この可観測性（observability）は、Midnight チェーンを監視する仕事を負うガバナンスや選出された個人が使えて、そのコストはチェーンのトランザクション利用者が払う手数料から出せるのでは？」</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:51:45</span></div>
+  <div class="turn-body"><p>ええ、可観測性はガバナンスの目的に間違いなく使えると思います。ユースケースがあります。たとえば、これを作っているとき、Cardano を見ると、たくさんのステークプールがある。より公開されたチェーンなので、どのプールが引退（retire）しているかなどが見える。Cardano のガバナンスのプロセスはずっと成熟していて、かなり洗練されている。でも DRep、引退したプール、時には活動していない DRep がいる。監視エージェントがあったら面白くないですか。Cardano でこれをやるのは、そんなに費用がかからないと思う。ガバナンスのエージェントが「引退したプールがあるよ。連絡すべきか？」と。「あなたのプールは引退していて、何もしていない。委任はたくさんある。調子はどう？」と。その引退したプールに口を出せるわけではないが、ネットワークの健全性に対して能動的になれる。引退したプールが山ほどあって何もしていないなら、関わってもらうか、委任を別のところに移してもらうほうがいい。チェーン上の人と価値が生産的であるようにできる。ガバナンスに入れたら本当に面白いと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:53:40</span></div>
+  <div class="turn-body"><p>Cardano でこれがあったら本当に面白いと思う。今はこのエージェントをアラートが得意になるように作っていますが、そういうこともできるように広げたい。「チェーン上にこういうガバナンス提案がある」と。ネットワークの健全性を見ながら、どの提案がチェーン上にあるかを見て、状況の更新を受ける。Cardano では提案が一定の閾値を満たさなければならない。ネットワークを見ているなら、エージェントにそのイベントを見張らせて報告させられる。報告だけでなく、もっとインタラクティブにもできる。「このプールは投票していない。活動中で、連絡先もある。様子を聞いてみよう。投票があるのを忘れていませんか」と。おそらくかなり簡単です。いちばん難しいのは、正しい相手に連絡することを確かめること。調整の作業がたくさんあって、調整のデータが、そういうことを可能にするうえでいちばん重要です。Cardano にとってすばらしいユースケースだと思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:55:10</span></div>
+  <div class="turn-body"><p>アラートのエージェントは、ガバナンスに関わらせたい。アラートが本当に得意になったら、もっと持たせたい。モデルをスケールさせて、もっと大きな文脈を扱えるようにもできる。良いアラートができて、次の段階はノードのもっと多くの生の情報へのアクセスを与えることだと思います。ハードフォークをするとき――近い将来にやりますが――このエージェントの範囲を広げられたら本当に面白い。これが得意なのだから、範囲を広げよう。ハードフォークのとき、理論的にはエージェントにハードフォークの監視を手伝わせられる。ハードフォークの調整はかなり難しい。分散型のエコシステムには利害関係者が多く、バリデータのエコシステムが非常に大きいと、全員に更新してもらうのが難しい。そこで大いに役立ちうる。テストの面でも、ハードフォークでは古いチェーンのインスタンスを持って、更新済みのピアを識別したいことがある。それは本当にいい機能になる。Terraform のようなもので実現できるでしょう。たとえば、私が Ethereum Classic のエコシステムでハードフォークをやったときは、フォークしていない側とハードフォーク済みの側の両方を動かして、誰が更新していて誰が更新していないかを監視し、2 つのチェーンが並行して走るのを見ていました。エージェントが理論的には――脱線していたらすみませんが――「監視の仕組みがある。すべて良さそうだ。Terraform で立ち上げて、古いチェーンも調べて、更新が必要な人を特定できるか見よう」とできる。それはなかなか面白い。要は、ネットワークが健全で、全員が生きていて、チェーンを正しく追っていることを確かめることです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:57:45</span></div>
+  <div class="turn-body"><p>ほかに何か。チャットからほかに質問はありますか。何でも答えます。ないですね。では、今日水曜日の Fireside Hang にご参加いただいたみなさん、ありがとうございました。Dolos と、Santiago が共有してくれた価値提案に、わくわくして興味を持ってもらえたなら嬉しいです。ぜひ確認してください。それから Midnight のクエスト（questing）もありますし、開発者ハブに行って、今後のハッカソンをフォローしてください。Stephanie のコメントがいいですね。「あなた面白いね。それは脱線じゃない。本当の脱線を見せてあげる」。</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語の原文を訳したもの。誤変換は用語集にしたがって直してある。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 一覧</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Midnight · <a href="https://www.youtube.com/watch?v=PMXy70C1z2A">動画を見る</a></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fireside Dev Hang: Agentic Monitoring &amp; Infrastructure (2026-09-02) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Midnight</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-09-02</span>
+  <span>58:35</span>
+  <span>YouTube</span>
+  <span>Fireside Dev Hang: Agentic Monitoring &amp; Infrastructure</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> This is a publicly published video on Midnight's official YouTube channel, so the speakers are named. <code>Stevan</code> is Stevan Lohja of the Midnight Foundation, who hosts; <code>Santiago</code> is Santiago Carmuega of TxPipe. The video itself only gives first names and affiliations (“Santiago from TxPipe”; “Thanks, Stevan”). The surnames come from the authorship of the Midnight problem statement discussed in the video and from public profiles, not from the audio.</p>
+<p>The source is an SRT with <strong>timestamps but no speaker labels</strong>, 461 blocks. Turns are rebuilt at changes of speaker and topic; the second half is a single-speaker segment split at topic boundaries. Three short exchanges while the chat is being read (around 27:43–27:52) cannot be attributed by the words alone and are marked <em>(inferred)</em>.</p>
+<p><strong>Only obvious proper-noun misrecognitions are corrected</strong>: <code>dollars</code> → Dolos, <code>block frost</code> → Blockfrost, <code>coupon</code> → Kupo, <code>Agmios</code> / <code>off-mirror</code> → Ogmios, <code>TXPipe</code> → TxPipe, <code>Stan</code> → Stevan, <code>system D</code> → systemd, <code>MIT process</code> → MIPs process. One team name heard as <code>link caps</code> could not be identified and is left as heard. Everything else, mistranscriptions included, is unchanged. A leading colon on each caption from 45:30 onward is a formatting artefact and was dropped.</p>
+<p><strong>The captions have a gap</strong> of about 75 seconds between 38:44 and 40:00, in the middle of the explanation of the two alert tiers. Nothing from that stretch appears here.</p>
+<p><strong>Screens were shared.</strong> Slides, a terminal, and a chat channel appear in the video; only what was spoken aloud appears on this page.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-open">00:00:33 — Opening and today's agenda</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:00:33</span></div>
+  <div class="turn-body"><p>All right, we are live. All right, everybody, well, um, thank you for joining us on today's Fireside Hang. Um, it's Wednesday, September 2nd, um, 12:30, uh, Eastern time, uh, US Eastern time. And, um, yeah, you know what we were just talking about is why some foreign some country's foods are so expensive in other countries. That was a conversation we're just having. That's not what this fireside's going to be about, but it's a very thought-provoking question.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:01:08</span></div>
+  <div class="turn-body"><p>Um, but, uh, but also, um, today's, uh, today's agenda is going to be, um, we're going to be joined here with Santiago from TxPipe. He's going to talk a lot about Dolos. And I was very intrigued when, um, you and Santiago said, hey, we have a Rust client that's potentially a DB sync, um, uh, replacement, for example. And those that are familiar with Midnight's infrastructure, um, DB sync is a pain in the in the butt sometimes, and it's, uh, and if we can reduce the infrastructure, um, stack of of Midnight, that's worth exploring. So, um, so we're going to talk with Santiago from TxPipe, who's here to tell us more about it and maybe show show some other things, and after that, I'm going to talk about, um, more of a follow-up of the alerting agent stuff that I talked about, um, last time I was on. But it's now in production, and we're going to do a production level incident, uh, for fun. Uh, well, not for fun, but to demonstrate that it works and and, um, we're going to see in real time our mean time to acknowledgement, um, of incidents on the network, and maybe some ideation about some other things. Um, but yeah, without further ado, thank you all for coming, um, and I guess let's talk, let's bring on Santiago.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:02:35</span></div>
+  <div class="turn-body"><p>Santiago is joining us from the great nation of Argentina, home of Dulce de Leche. Which, um, I really, uh, which is fantastic, so if you ever go to Argentina, you guys got to get some Dulce de Leche. And, um, yeah, I'm an ice cream fan, but without anyway, Santiago, please feel free to introduce yourself and, um, you know, we want to we want to hear more about Dolos.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:03:05</span></div>
+  <div class="turn-body"><p>Yes, thanks, Stevan, and thanks for having me. Uh, so yes, Dulce de Leche ice cream, it's a must-have, and I don't think you would get it anywhere else, so, uh, you will have to come to Buenos Aires, Argentina for that. Or any part of Argentina for that matter. Um, so, yes, I'm from TxPipe. Uh, we provide tooling and services for blockchain developers, we try to make things simpler for the day-to-day experience of building, uh, within, uh, multiple blockchains. And we provide, uh, things, tools, services that try to accommodate from the side of security, from the side of the developer experience, what you do on your, uh, everyday activities when you're developing some sort of the app, but also from the side of operations, which, uh, brings up maybe to our topic, uh, for today, which is on the side of how to manage infrastructure on the Midnight side and maybe how Dolos could help out in that process.</p></div>
+</div>
+
+
+<p class="sec" id="t-dbsync">00:04:09 — What Midnight reads from Cardano, and what db-sync costs</p>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:04:09</span></div>
+  <div class="turn-body"><p>Uh, so, you're probably familiar with this, but running Midnight requires observing things that happen on the Cardano side. Not many things, it's not that you need to keep track of everything that happens in Cardano, but there's a thin slice of data, uh, that is required on the consensus side of Midnight. Uh, maybe some UTXOs in a particular script address, uh, the, uh, stake that different pools have, the nonces of the chain, what the tip is of the chain. These are little things, but are really important for the consensus side on Midnight.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:04:55</span></div>
+  <div class="turn-body"><p>So, for that, the current approach is that Midnight operators need to run DB sync, which is the tool that you were referring to, which is really famous in Cardano, uh, it's, uh, the go-to tool for anything that means exploring the data within the chain, uh, it's a full-blown, really, heavy-weight kind of indexer. It stores everything. Every little transaction, every little UTXO, every policy, every asset, every vote from the DRep, every proposal, everything. Now, uh, it's great, uh, but it's a general-purpose indexer. Uh, they are self-described as a as a general-purpose indexer, meaning that, uh, it's the same tool that you would use to run a full-blown explorer, maybe a wallet, maybe exchanges use it for their own, uh, data analytics. So it's, uh, meant to be, uh, general-purpose in the sense that it, uh, provides multiple use cases.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:05:55</span></div>
+  <div class="turn-body"><p>Now, uh, the problem with it is that it's really, uh, hungry on resources, running, uh, DB sync means, first of all, having your own PostgreSQL instance. Then you need the actual DB sync running the, uh, update process that puts everything on PostgreSQL. And then you also need a Cardano node co-located with the DB sync. That means that you have all these three things when you add them up. You probably are, uh, around 64 gigabytes of RAM, uh, 700 gigabytes of disk space. Between five and eight cores of CPU, so it's, uh, it's really heavy, it's hungry. Uh, and not only that, from the operations perspective, it's also, uh, complex to manage, uh, because you need to, uh, make sure that, uh, it's correctly synced, that all of these components are playing well together, that you need to fine-tune PostgreSQL, uh, so that it, uh, provides the performance that you require. Uh, syncing and, uh, making sure that it doesn't, uh, lag, it's also many times a full, uh, time job in a sense. Uh, so, it's, uh, the gist of what I said is that it's really heavy.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:07:17</span></div>
+  <div class="turn-body"><p>Now, uh, this is not a critique on DB sync. It's a it's a great piece of software. But, uh, you see some sort of friction between what Midnight requires from Cardano, which is just a thin slice of data, which can probably be measured in megabytes, not gigabytes, everything that Midnight requires. Versus all of the what DB sync provides and all of the resources that you require for that. So, maybe there is an alternative, maybe we can have, uh, a different type of Cardano observer. Something that is more lightweight and something that allows us to fine-tune the requirements in order to fulfill what the Midnight node requires.</p></div>
+</div>
+
+
+<p class="sec" id="t-dolos">00:08:04 — Dolos: a Cardano data node in one binary</p>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:08:04</span></div>
+  <div class="turn-body"><p>And that is where we are, uh, bringing up Dolos. Dolos is a Cardano data node. Uh, this means that it's not a block producer, it's not validating blocks, uh, it's not relaying the network, what it's doing is, it's connecting directly to the relay network. Keeping its own version of the ledger, uh, inside an embedded database, so it's there's no PostgreSQL, there's nothing. It's a database that, uh, runs side-by-side with, uh, Dolos, and within the same monolithic process, you get, uh, rainbow of APIs that you can use to, uh, consume the data. From an endpoint, an API that looks exactly like Blockfrost, so means that you can just be querying Dolos as if it were Blockfrost. Uh, you can put an Ogmios on top of Dolos and start consuming, uh, Ogmios API through Dolos. Uh, you also have UTXO RPC, which is a very, uh, performant GRPC-based API for, uh, UTXO blockchains. So, all of these APIs are all embedded into the same process.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:09:12</span></div>
+  <div class="turn-body"><p>So, by having this single monolithic process, now you're replacing what DB sync requires you to run in terms of a PostgreSQL database, the actual DB sync plus the node. Um, and that compaction of all of these features into a single binary has, uh, interesting advantages from the perspective of an SPO. Something that I know SPOs would appreciate. Uh, for starters, the whole, uh, resource footprint is much lower, meaning that to run a Dolos, the requirements are about three gigs of RAM, not the 64. Uh, and, uh, also you can be very comfortable with half a core, uh, just assigned for Dolos. Um, and also from the perspective of the disk, and this is for me the most interesting part, is that you don't have to keep the whole history of the chain, meaning that you don't have to have those 700 gigabytes of disk space storing everything from Byron, uh, to now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:10:11</span></div>
+  <div class="turn-body"><p>You can just, uh, choose to keep a sliding window of the history of the chain. That means that as you move forward in the chain, you will start truncating, you will start dropping the old, uh, records, and you will just keep whatever you need, uh, a couple of days if you care about the stability window, which I know Midnight does. Maybe you want a little bit more so that you can just roll back to six weeks, um, uh, from some time ago. Uh, that's configurable, so you when you set up Dolos, you decide how much of this sliding window you will keep, and that window will, uh, follow the tip as you move forward. That means that now you can drastically reduce the amount of disk space that you require to just provide that thin slice of data that Midnight requests.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:11:00</span></div>
+  <div class="turn-body"><p>And last but not least, um, you don't, you need a Cardano node, you need to be trusting some source of information, but it doesn't have to be a Cardano node co-located with the indexer as DB sync requires. Meaning that you can just point your Dolos instance to a relay node in the network, and it will act as if it were just another node in the peer-to-peer protocol from Cardano. Uh, that means that if you're an SPO, that you probably already has some sort of relay node running. And you trust your own node for obvious reasons, you can just point Dolos to that relay node and, uh, you then can skip altogether that idea of having to put yet another Cardano node side-by-side with DB sync. When you add all that up, I think that the optimization in terms of resource usage and operations, because you have just one single binary to take care of, uh, it's something that could be appreciated from the perspective of SPO operations.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:12:01</span></div>
+  <div class="turn-body"><p>That's pretty cool. And and I think that's, uh, what you said about, you know, because a lot of SPOs already, you know, they have Cardano relays, right? Ideally, um, most most production SPOs have maybe two or more two or more relays. So, um, if they're becoming a Midnight validator, it's it's a lot easier to resource three gigabytes of RAM than 64. So that's like a huge huge and I would say a lot of SPOs, I mean, generally you're running in production, you usually have a little bit extra capacity, but probably not 64 gigabytes more than you think you need.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:12:42</span></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:12:43</span></div>
+  <div class="turn-body"><p>Um, so I think that that's a that's a very intriguing value proposition. Um, and even when we talk about 64 gigabytes for Cardano DB sync, I mean, there's some people who they just get up and running with Cardano DB sync and they're like, um, oh, uh, and and but for Midnight, like to have an actual experience for Midnight and not wait for DB sync to take a whole month to sync. There's so much like PostgreSQL tuning that you have to do. Um, and yeah, and when setting up Cardano DB sync for for Midnight, you sync Cardano DB sync, and you think you're 100% sync, but it's like, oh, no, you have to re-index everything into the sync database too. And that's like, oh, crap, this take much longer than I needed to just to get the node up and running.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:13:42</span></div>
+  <div class="turn-body"><p>Yeah, yeah, exactly. It bites you that indexing step. It always bites me too. Uh, we run a lot of, uh, DB sync instances, uh, because of stuff that we do. Uh, this is not a hit piece on DB sync. Again, it's a great piece of software. Uh, but, uh, it's really, uh, heavy-weight, and it makes sense in certain use cases. For what Midnight requires, I'm, uh, pretty sure that, uh, there are options much more suitable. Um, that's what that's why we, sorry.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:14:13</span></div>
+  <div class="turn-body"><p>And and also just as a generalized solution in the Cardano ecosystem has a lot of value, right? Like because some people rely on, um, in Blockfrost API is quite popular. So, this is this is something people can can use as well.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:14:33</span></div>
+  <div class="turn-body"><p>Yeah, exactly. For development, it's really interesting, uh, because you can have, again, one single process, uh, very, uh, lightweight, and you can use it for, uh, development, for testing, uh, for stress test, for, uh, running your DApps. Uh, but also, uh, we have, uh, several teams which are using, uh, Dolos with the Blockfrost API exposed to the outside and their production mainnet endpoints just hit, uh, that Blockfrost API embedded inside Dolos, and they, uh, can then own their own infrastructure. Uh, there are use cases when you prefer to pay for a service provider, high availability, uh, edge distribution, uh, dynamic scaling. There are reasons why you would, uh, prefer something like a service provider, but, uh, there are also reasons if you just want to own and if your use case permits, your own indexer, your own infrastructure, and Dolos, it's, uh, it's a really interesting alternative, which I encourage everybody to check out if you're having to deal with this, uh, DApp backend, uh, problem.</p></div>
+</div>
+
+
+<p class="sec" id="t-mps">00:15:45 — The problem statement in the MIPs repository</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:15:45</span></div>
+  <div class="turn-body"><p>Cool. And I and, um, I know there's more about Dolos. I I saw recently there's a, uh, you guys created a Midnight problem statement in the Midnight, uh, in the MIPS repository. So those those of you aren't familiar or listening, there's a Midnight improvement proposal process. So this allows people to, um, propose changes or improvements, right? Um, and part of that process is a problem statement, and I think Santiago is basically everything Santiago just said, I think was the was basically the problem statement. But, um, maybe we can put the link, um, maybe we could share if if those who want to get involved in the MIPS process, comment, etc. Um, we do have a MPS link to, um, an MPS PR that we could probably put on the screen.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:16:52</span></div>
+  <div class="turn-body"><p>Uh, disclaimer, I'm new to the MPS, uh, and then MIPS process, this is my first one, uh, but I think it makes a lot of sense. Uh, the idea is that first you start with a problem statement, agnostic of any kind of change to the, uh, solution. You just start by stating what you think, uh, it's, uh, improvable. Without actually saying how to improve it. That's the problem statement, and that's what we, uh, just, uh, posted, uh, yesterday, and I think that it was, uh, merged, uh, just a few moments ago, which is really cool and speaks to the, uh, speed of the team. And there what we are describing is, yes, what I just, uh, explained, which is that DB sync is, uh, great, uh, within specific use cases. It might be, uh, a little bit too much in the context of running a Midnight, uh, node. So, what we are proposing there is not to substitute that with Dolos. Uh, on the contrary, we are not, uh, in the problem statement, we are not talking about a solution. But what we are saying is that it would make sense to have a specific contract, uh, a well-defined spec that describes what the interface is between the Midnight node and whatever the Cardano observer is. If we can have that boundary well-defined and we can have a suite of conformance tests that is, uh, uh, able to check that whatever observer backend you have, uh, complies with everything that is required. Then we can start thinking of, okay, maybe this SPO instead of running DB sync wants to run this other solution. It could be Dolos, but maybe there is also other backends that, uh, would be suitable. Uh, so the problem statement is trying to ask for that, for having a strict boundary and a well-defined interface, uh, so that vendors can come in and provide their own, uh, backends. Once we have that, uh, approved, it's still in draft, we will be submitting the second half, which is the improvement proposal, and there we will be asking, okay, now that we have this interface, uh, what if we, uh, try to use Dolos instead of DB sync, and, uh, we will make the effort to comply with all of these conformance tests that are required from the perspective of the protocol.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:19:21</span></div>
+  <div class="turn-body"><p>Very cool. Um, well, I'm very excited about it and, um, I guess is there, um, cool. Is there anything else you'd like to show us?</p></div>
+</div>
+
+
+<p class="sec" id="t-demo">00:19:34 — Demo: installing Dolos, and three ways to sync</p>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:19:34</span></div>
+  <div class="turn-body"><p>Well, uh, just a very brief quick, uh, demo of how you can install Dolos, maybe, if we have time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:19:42</span></div>
+  <div class="turn-body"><p>Oh yeah, sure.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:19:45</span></div>
+  <div class="turn-body"><p>So, share my screen. Cool. Uh, so, this is a single binary. And this will ask you a few questions, in this case, which is the network you want to connect to. Let's say that we want mainnet. It asks you if you want to provide the Genesis files or if you want to do that. Since it's a security sensible aspect, you can choose. I'm going to yellow it, so now the Genesis files are automatically included in my instance. Then you need to choose which is the remote relay that you're going to be connecting to to pull the data from. You can use Demeter relays or you can use the CF relays. Let's go for Demeter. And this is one of the interesting parts, how much history of the chain you want to keep on disk? This is what I was describing earlier, in the sense that you want to keep everything from Genesis until now. You want to keep a day, a week, a month, and this is afterwards configurable if you want to have some other custom option. Let's say that we just want one day. And also, as I was explaining, the you have a very rich and diverse surface of APIs. So here you can decide which ones you want to expose. Do you want UTXO RPC? Or not, do you want to provide the Blockfrost interface? You also have a Kupo interface, acting as if it were Kupo. So in this case, let's just go nuts and put everything. And here it's asking me if I want to be a relay for other nodes. I will say no. And okay. I was in an I was in an already existing instance. This is this is the error. But I think that you can see the how it works. Let me.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:21:53</span></div>
+  <div class="turn-body"><p>That is pretty cool. And um, I remember a lot of there's there's many SPOs that used to that have seen the old testnet, but used to have to have Kupo. And Ogmios connection. Um, that's no longer the case, but um, but yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:22:12</span></div>
+  <div class="turn-body"><p>Yeah, now you can have everything bundled together. So, it failed before because I was in a folder that already had a Dolos instance. My bad. Now I switched to a different folder, so I'm creating a new instance from scratch. The last step, which is also really important, is that you can choose where to sync from. Uh, because syncing, which is uh really uh a heavy aspect of using two, um, can take days, uh, multiple days. So here in Dolos you have uh three options. You have a Dolos snapshot, which in a few minutes you just download the current state, and it's called trust me bro because you need to trust us that that's the data. Uh, up to you. Uh, if you don't want to trust us, what you can do is you can download a Mithril snapshot, and Dolos will replay the whole set of blocks from the Mithril snapshot, and that will uh create the uh state and the data initial data that you need, and you will be fully synced. If you don't want to use Mithril, you can again go to the upstream peer and just start pulling blocks as if you were a node. And that's it. That's the whole set of uh steps that you need to go through uh for uh setting up a Dolos service.</p></div>
+</div>
+
+
+<p class="sec" id="t-snapshots">00:23:30 — Snapshots, Mithril, and who you have to trust</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:23:30</span></div>
+  <div class="turn-body"><p>That's really cool. I like how you guys went with the option of obviously providing your own snapshot, which is a great service to the community. And on the foundation side, we want to provide signed snapshots in the very near future for the midnight for the midnight node. And I know there's a bunch of trusted snapshots out there from very trusted people who everyone knows. But um, the Mithril thing. I'm always an advocate of Mithril because let's say someone uses Dolos, there's actually because we interact with institutions. There's instances where people are legally required to use um, not not to so much legally required, but in order to maintain certain IT certifications and other compliance stuff they have to go with, the trust minimized snapshot is a big deal. Um, yeah, so um, also some people are also doing there's all all kinds of different certifications there, but but um, or even when you're working with a partner, be like, where's the snapshot coming from? And who?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:24:22</span></div>
+  <div class="turn-body"><p>Yeah, exactly. We are working with the Blockfrost team, uh, which uh they are also using Dolos for their own platforms and systems. And uh, we are in the process of uh starting to uh sign this snapshots in a shared way, also uh with link caps, another team uh that works on the Cardano ecosystem. And the idea is to have these snapshots uh initially signed by different entities, and you can just download them, and if you trust uh any of those three, then you're good to go. Uh, but yes, Mithril with all of the guarantees from the SPO certificates, it's like a uh the next level in terms of uh guarantees. Now, the problem there is that the Mithril snapshots are very are very coupled with the internal structure of the Cardano node. That means that Dolos is not able to just take it and use it uh once it's downloaded and validated. We have to reprocess the blocks from scratch in order to get all of the data that we require for the indexing. But it just takes a little bit more, uh, but it's uh you can choose your risk profile and the snapshot that makes most sense for you.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:25:56</span></div>
+  <div class="turn-body"><p>That's really cool. Um, yeah, we really appreciate you showing that for to all of us. I'm particularly excited. I'm still getting my hands on Dolos. Um, and I'm definitely going to be commenting on the uh MPS and looking forward to see how this goes through the MIPs process and um, and yeah. So I I I have to I've used to use DB sync a lot and um, also an SPO's come aboard. There's a registration step as well. So, and I know that Dolos can probably be used for that. I'm still diving into it, but there's a lot yeah, I think there's a lot of opportunity here.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:26:41</span></div>
+  <div class="turn-body"><p>Yeah, and um, last but not least, it's open source. So and we're getting contributions from multiple teams. Uh, so if there is some aspect that needs to be adjusted or maybe some new type of API that needs to be added, uh, contributions are welcome and uh, we promote them. So, uh, any idea that you have or any blocker that you find, uh, please don't hesitate to submit an issue and even work on a PR if you're up to it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:27:14</span></div>
+  <div class="turn-body"><p>Sweet. And um, I'm going to see if you can put the Yeah, yeah, here's the link on the QR code to learn more everybody. So, um, So yeah, I guess before we transition to the next topic in the agenda, is there anyone in the chat that wants to ask Santiago any questions live while he's here?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan <em>(inferred)</em><span class="turn-time">00:27:43</span></div>
+  <div class="turn-body"><p>The comments seem like everyone's pretty interested into it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago <em>(inferred)</em><span class="turn-time">00:27:46</span></div>
+  <div class="turn-body"><p>Yeah, I'm checking the comments. So, um, I see some familiar faces. Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:27:54</span></div>
+  <div class="turn-body"><p>Yeah, we see Alex, John. Who else is here? All right. Well, there's no no direct questions everybody then. Either very good or very bad, but. Yeah, or even comment on get involved in the MIPs as well. The GitHub repository is open source. There's issue you can do issues, PRs, whatever it is. Um, that's the beauty of open source is um, there's always a way to to share.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:28:25</span></div>
+  <div class="turn-body"><p>You or your agents. We accept AI PRs.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:28:29</span></div>
+  <div class="turn-body"><p>Yeah, right. So, um, cool. All right, well, thank you, Santiago. Um, I encourage everyone to check out those links, check out Dolos and let us know what you think. Um, and um, yeah, I'm very excited and really intrigued about the value proposition here. So, and hopefully we can talk more about it in future fireside hangs and show other things off. Um, so yeah, I want to thank you, Santiago.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Santiago<span class="turn-time">00:28:57</span></div>
+  <div class="turn-body"><p>Thank you, Stevan. Yeah.</p></div>
+</div>
+
+
+<p class="sec" id="t-why">00:28:59 — Why an alerting agent: nobody is watching at 3 a.m.</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:28:59</span></div>
+  <div class="turn-body"><p>Thank you. And um, we will talk a little bit about some agent stuff. So, the last fireside hang, um, I talked a little bit about a learning a learning agent that we we have, and it's in production now. And I'm going to talk a little bit more about that in a shorter format, and also we will do um, a production level incident. which would be really fun. But I want to do it to show it off. So, what I'm going to do is share my screen here. All right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:29:39</span></div>
+  <div class="turn-body"><p>So, um, you know, our validator alerting used to be live in a browser tab. We had Grafana, other things, etcetera. And it worked and it posted to the uh, you know, posted to the chat and it was generally useful and and as long as somebody somewhere had um our dashboards open, you know, that's fine at 11:00 in the morning, but it's useless at 3:00 a.m. on a Sunday. Um, those of you who are in SRE and DevOps know or or running nodes and stuff, probably know what I'm talking about. Um, but on a test network, we had a finality stall go unnoticed and because the last person who had the telemetry up had closed their laptop, gone to bed, nothing was broke, uh, you know, nothing was broken, but nobody was watching. And that's a problem. Yeah, and blockchains run 24/7, so you have to constantly be watching them. Um, and it's the same expectation with um, with validators, right? If you're not producing blocks, you're not producing blocks within that given time, so you need your you need your services up and running 24/7. Um, so we built the thing that watches and um,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:30:57</span></div>
+  <div class="turn-body"><p>and yeah, and I'm also going to show you um what it is, what it costs, and then I'm going to stop a real validator on purpose. Uh, not maliciously, but in a controlled demonstration. So, um, so let's go on to the next thing.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:31:21</span></div>
+  <div class="turn-body"><p>So, um, there are four problems and only one of them is technically technical. So, um, the alerting only ran well, um, metrics were open. Um, off hours cover was a human being checking a page every like every uh 30 minutes or so, you know, you have your dashboards open. I mean, part of my daily routine is I wake up in the morning with my coffee, when I when I'm starting my thing, I open up all my telemetry to make sure things are working. And um, and that's good and all. Um, and uh, but not everyone's going to be checking all the time. So, uh, which means a node can be gone for most of a shift or or gap before anyone knows. Um, or even for a split second. So, um, sometimes you can't catch those things. Now we have other tools that do kind of catch that. But you need these things, but those changes uh need to be acknowledged quite quickly. And also when you're working with an ecosystem, um, like right now there's a whole federated network, there's lots of people to coordinate with. Um, and the last problem is um, is when people tend to forget, which is um, you know, seeing a node name, um, your on network telemetry is not the same as knowing who to call. Right? So, um, right now the final right now Midnight has 13 validators run by different organizations. And the name on the screen doesn't tell you whose phone should ring. Right? There's human operators behind these things. Um, and simply querying information from the blockchain is not going to tell you who can who can acknowledge and resolve a problem.</p></div>
+</div>
+
+
+<p class="sec" id="t-arch">00:33:20 — Architecture: thresholds decide, the model only writes</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:33:20</span></div>
+  <div class="turn-body"><p>So, um, So what the solution is is a basically just a headless service, um, um, and it subscribes to the public telemetry feed, you know, uh systemd restarts if it dies, and it refetches its own secrets on every boot. So, um, and two things about it matter more than the rest. So first is um detection is deterministic. I kind of talked about this in the last fireside hang, but um, fixed thresholds decide whether an alert fires and how urgent it is. And there's a language model in this system, and I'll come to it, but it never makes that decision. And um, second is the alert is factual and it's addressed. So on the right is um what actually lands in in our chat here. Um, and we're going to do one live as well. But it, you know, it names the validator, it names the operator responsible, it links to runbooks, and it mentions that the operator and uh copies someone from the foundation, for example. And what it doesn't do is guess. There's no uh no cause, no suggested fix. Um, like uh, hey, this validator stopped reporting is a fact or their server crashed is a story. And if you put stories in alerts, people stop kind of believing them. That everything has to be really fact-based, which is why it only responds when there's actual factual things that happen. Um, and I'll talk a little bit more about how this scales, because there's some cool stuff that can happen here. It probably other chains can maybe adopt a similar model and do some cool stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:35:13</span></div>
+  <div class="turn-body"><p>Um, but yeah, so let's talk a little bit about the architecture here. So, there's kind of six steps. So the feed comes in, detection runs on fixed thresholds and decides whether this is news. Um, and the raw and there's a roster that turns the validator name into a person. And the model, which is just a small open model, self-hosted on the same box, um, and it gets the facts and writes one human sentence or so. Sometimes it can be more information that's happening, but typically one sentence regarding the one incident. And guard rails reject anything that reads like a diagnosis or remediation instruction, and rejection and reject any uh any mentions and tries to inject. So, if it's slow or wrong or down, the alert goes out with a template sentence instead. So, the alert is never blocked on the model, because um, you know, if your LLM model goes down, this is for any agentic service out there. But um, I hope it's like a standard practice philosophy, but if your LLM goes down, you should still be operational. So, this is why the system doesn't rely on the LLM. The LLM actually just provides a better experience. Um, and possibly more capabilities as well. Um, but yeah, so and on the right hand side, it's um, basically just one small VM with no inbound path at all. And the status pages behind uh to loop back. And secrets come from, you know, basic secret management at boot, um, so they're never on the persistent disk and never in uh Terraform state file. Because I'm managing this via Terraform. Um, and the container image is pinned by uh content hash. So a reboot can't quietly um change what's running. Let's continue here.</p></div>
+</div>
+
+
+<p class="sec" id="t-policy">00:36:52 — Detection policy and what it costs</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:36:52</span></div>
+  <div class="turn-body"><p>All right. So, um, there's five rules when it comes to detection policy. And um, I would say if anyone's going to like, if you're in like, uh, yeah, I don't know. So there's five rules. So, there's absent, finality gap, sinking, fork, or low peers. And something I want to say is like, um, I've interviewed people before about DevOps SRE stuff, and I'm always like, what are five things that you're looking out for? These would be like an example of five things, because they give you some immediate health metrics. There's more than that he tracks, but these are like those low hanging fruit that immediately can immediately tell you something's wrong or defective. Um, but the numbers are the interesting part. So, the finality gap fires above three blocks, um, you know, for uh but only after two consecutive cycles. So, that debounce is there because a single um, a single blip is not an incident. Block reorganizations are normal. They happen on Bitcoin, Ethereum, etcetera. But there's a certain threshold where block reorganizations are not normal. Um, or um, not healthy behavior. So, uh, on the midnight side, you don't if you see finality gap above three blocks, that's usually cause for concern. Because one to two blocks, uh one to two block reorganizations is very normal for Substrate, um, based chains. Which is what Midnight is. You see built using a Substrate SDK. Um, and absence, um, has no debounce at all. So because a roster validator vanished, um, it's never normal, right? Someone's gone. So you can see they're missing, so that's a problem. Um, for example, we have 13 validators. If I only see 12, where's the other guy?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:38:28</span></div>
+  <div class="turn-body"><p>Um, and there's two tiers. Uh, not five severity numbers. So page now means uh consensus is at risk and someone uh gets woken up. So, and notifying means um, something you can look at in the morning. Like, hey, this person's like missing a peer or two. They're still running, but. normally, but it's not it doesn't warrant to uh for them for you to like uh blow them up with notifications at uh 2:00 in the morning, for example. Which is pretty normal. Um, normal normal.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:40:15</span></div>
+  <div class="turn-body"><p>Um, now if we look at the cost of all this, the cool thing is cost technically can be less. But, um, this alerting agent is kind of running at $56 a month, um, on GC uh, and this is particularly priced at GCP, and it can it could be less, but I'm probably going to build this out more in the future, but um, the line I want you to notice is model inference, which is zero, because we're using self-hosted model on a CPU, and we're already paying for. So, uh, um, most of that bill is pretty much idle capacity, and the detection time itself needs almost nothing, so the machine is that size, so there could be some inference, um, you know, your inference has somewhere to run. Um, because you could look at the instance and once the model goes up, it goes and you don't need that all the time, but it in production, you need more than you typically need generally. Um, and and to be honest about it, a hosted model would be um, technically cents a month, and a paging platform starts around heavily dollars per user sometimes. And, um, maybe my my solution is not the cheapest. I can make it cheaper because I have I I admittedly using slightly more resources than I need to because I want I don't want inference issues when the LM goes up. But, um, this is the version where um, where the operational data and our operators um, um, never leave our own projects. So, we're able to use this, contact people, reach out to people, watch the network, um, for $56 a month, and I can ping everybody and have the model reach out to people and stuff. There's no C cost to that. So, there's a lot of like there's a lot of things like PagerDuty and other things where here it's just, you know, there's an instance, there's um, for example, let's say you're using Discord, there's Discord uh webhook, and um, and you have a self-hosted model. It's actually pretty cost-effective, um, compared to a lot of things. And,</p></div>
+</div>
+
+
+<p class="sec" id="t-incident">00:43:03 — Live incident: one minute to acknowledgement</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:43:03</span></div>
+  <div class="turn-body"><p>Yeah, so the next thing is we're going to actually cause an incident. A controlled manufactured incident that will occur that will occur for only one minute. Um, so the first thing, so one of the reasons we also have this alerting agent is because even when it comes to other telemetry sources and alerting stuff, you're um, when it comes to DevOps SRE, you really want to have good um, mean time to acknowledgement and mean time to resolution. So, a mean time to acknowledgement, that's when like you acknowledge that there's a problem, right? Like, oh, there is a problem here. That's an actual metric that is important. Um, ideally, you want typical standard practice is like within, um, it's it's debatable. Um, you can Google what it whatever it is, but um, 5 to 15 minute is good for like high criticality stuff, um, and then there's like 30 minutes to two hours for I guess say more medium concerns, and then sometimes five hours or more for things that aren't that critical, but they should be acknowledged at some point. In my opinion, I like to have everything acknowledged within the minute, because if a let's say you have block finality stall, I want to know it immediately. I don't want to wait five minutes. I don't want to wait 15 minutes. I don't even think we should wait two hours for that. And, um, blockchains are supposed to be up 24/7, and they should be running perfectly, and um, that's what we should be aiming towards. So, this agent helps with mean time to acknowledgement, because sometimes humans are sleeping, and but uh my the an agent doesn't have to sleep. So, it can at least acknowledge, look at a uh acknowledge the incident with factual data, provide the deterministic runbook for it, and then when someone does see that, they're able to uh proceed accordingly. Um, and it's interesting because this has been in production for just I've shot two weeks now, and it has fired off a few times, not for anything crazy, but um, you know, some planned maintenance somewhere and stuff. And, um, yeah, it's actually quite nice. It reduces when it comes to someone when it comes to like a SRE DevOps perspective, or just monitoring network health, it reduces my anxiety when I know my phone's going to blow up every time I every time it needs to, and I don't have to have anxiety of like, I have to be watching Grafana or I have to be watching this stuff. Um, I could be focusing on my other things and know that I'm going to be notified when there's something that really matters to me, um, happens.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:46:00</span></div>
+  <div class="turn-body"><p>Um, yeah, let's trigger an alert. Sorry, I went on a tangent there. But yeah, let's trigger an alert. So, um, let me just make sure I'm in my instance. So, I'm going to I'm going to be naughty, and I'm actually going to stop the one out of the 13 nodes on chain. So, let's do that. And what we're trying to look for here is a mean time to acknowledgement. Five minutes is pretty standard practice, but let's see if we could do one minute. So, uh, system control, let's go, let's go stop this thing. All right. Um, I am going to open a another thing. I want to watch my telemetry just to verify I shut this thing down. All right. Cool. All right, so I'm going to what it's 1:18 right now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:47:22</span></div>
+  <div class="turn-body"><p>I have um, my phone here. And I want to show the screen just so we have a test station of what happens. So, let's do it. So, I just did it. So, I'm counting in my head. Oh, wait. Oh. One second. Actually didn't stop the node. I missed something there. All right. I forgot to do a little stop to authorize that. All right. All right, now this should work. All right.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:48:16</span></div>
+  <div class="turn-body"><p>All right, so let's see. We want a mean time to acknowledgement. Um, all right. Got the notification on my phone. I actually swiped it. There we go. So, right now the validator did go down. And now it's going still says not reporting. So, let me check my channel where I see this stuff. So, you can see here it says, hey, there's a critical event where the validator is down. And then I just did the restart and it just said live here. I'm guessing you guys saw it. It says, hey, it's actually resolved and it tags who it needs to. It tags me and another person, but um, yeah, it tells you, hey, the consensus alert on maintenance is one, which is critical. The uh Foundation node was XYZ blocks behind network. And it gives me the blocks that it was behind. References the runbook. And the alerting agent caught this today at 1:19 PM Eastern time. And I restarted it. So, it said that, oh, the critical incident was actually resolved. We see the uh the blocks are back, and the alerting agent reported that at 1:20 PM. So, we had one minute to acknowledgement, and the next minute I basically restarted the node. So, yeah, so our mean time to acknowledgement is one minute. So, that's cool. And my printer's gone. But, um, Sorry, I just muted it because my printer went off for some reason. But yeah, so there you have mean time to acknowledgement in in one minute. That's pretty cool. $56 a month, and very scalable, no C cost and everything. Um, and yeah, that's in production now. So, um, yeah, just sharing that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:50:55</span></div>
+  <div class="turn-body"><p>And as we were talking about, and I'm imagining this being Terraform. This kind of goes into some of the things we want to do, which is have like templated Terraform, um, We want to have like, we want to make public Terraform templates just for general infrastructure stuff. I'd love to provide some agent tooling in there too. So, this is kind of like the early stage of that stuff. Um, yeah, that's kind of where we are with everything. And I'm going to check the chat.</p></div>
+</div>
+
+
+<p class="sec" id="t-chat">00:51:30 — A question from the chat, and where this could go</p>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:51:30</span></div>
+  <div class="turn-body"><p>Oh, Johnny has a good thing. Wouldn't this observability be able to be used by governance and elected individuals whose job it is to monitor midnight chain and the overhead come from feed paid by chain transaction users.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:51:45</span></div>
+  <div class="turn-body"><p>Um, yeah, I think the observability can definitely be used for governance purposes. Um, yeah, it could definitely be used for governance and there's use cases there. Um, for example, when I was doing this, I was thinking if you look at Cardano, there's um, lots of stake pools and stuff. And, um, it's a more public chain, so you can see which pools are retired, etc. And there's a much much more mature governance process on Cardano, which is um, quite sophisticated. But you have DReps, retired pools, and sometimes inactive DReps. So, wouldn't it be cool if you had um, a monitoring agent? I don't even think it would cost that much to do this on Cardano. But you can have a governance agent go in and be like, hey, there's a retired pool here. Should we contact them? Like, hey, hey, dude, you're you're a retired pool here. You're not doing anything. You have a lot of delegation. How's everything going? And it's not necessarily that you have a say in that retired pool, but you can be proactive in the network health, right? Because if you have like so many retired pools not doing anything, wouldn't it be nicer to have them, um, involved or have their delegation go elsewhere? So, you're able to have, um, uh, ensure that the that the people and value on chain is being productive. Um, so there's I think this is really cool to have in governance.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:53:40</span></div>
+  <div class="turn-body"><p>Um, I think it'll be really cool to have this in in Cardano, technically. Because, um, because this uh, well, because right now I'm making this agent do really good at alerting. Um, but I want to scale it up to do that stuff as well. Like, oh, there's these governance proposals on chain. So, I can watch while I'm watching the network health, I can see what governance proposals proposals are on chain. Maybe get status updates on them, right? So, for example, in Cardano, you have governance proposals, and they have to meet a certain threshold. If you're watching the network, you can have an agent watching those those events and reporting on them. Um, and not only just reporting on them, you can have it be more interactive. Like, oh, these these pools haven't voted. They're active, and I have their contact information. Just do a wellness check. Hey, did you forget that there's a there's a voting or something like that? Um, that'd be probably quite trivial. I think the hardest thing would be making sure that your contact in the right people. There's a lot of coordination work, and, um, coordination data, that's the most important to enable those type of things. Um, but I I think that'd be an awesome use case for Cardano.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:55:10</span></div>
+  <div class="turn-body"><p>Um, with the alerting agent, um, I like it to get involved in governance. Um, and also once it's really good at alerting, I'll like to put it more give it more. You can even scale the models, so you have greater you have the model be able to do more have more greater context capability. So, you can have great alerting, and I think the next phase would be give it access to um, a lot more raw information on node. Um, because when we do hard forks, like we um, which which we will in the near future, um, it would be really cool, um, if you have this agent, you know, expand the scope of it, right? It's doing good at this this stuff. Let's expand the scope. So, when you're doing a hard fork, you could theoretically have the agent, um, help monitor the hard fork. Hard fork coordination can be quite difficult. Um, so and there's a lot of stakeholders involved in decentralized ecosystem. It's very hard to when you have a super large validator ecosystem. Um, it can be difficult to get um, get everyone updated. So, it can help a lot with that. And also when it comes to um, testing things, because when you're doing a hard fork, sometimes you want to have an instance of the old chain. And identify the peers who are updated. That would be a really cool feature. Um, um, and that probably be done with something like Terraform or something. Like you're doing the hard fork, um, for example, when we did it when I did hard forks in, um, the Ethereum Classic ecosystem, we ran both the non-fork and the hard-forked one to monitor who's not updated and who is updated. Um, and watching those chains run in parallel. Um, so an agent could theoretically be like, sorry if I'm going on tangent, but be like, all right. Let's we got a monitoring thing. Everything seems good. Let's Terraform up and do and inspect the old chain too and see if we can identify anybody who maybe needs to be updated. Um, that'd be kind of cool. Um, and all it is is making sure that the network is healthy. And everyone is lively and following the chain. Chain correctly.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Stevan<span class="turn-time">00:57:45</span></div>
+  <div class="turn-body"><p>Um, cool. I don't know if there's any other. Does anyone have any other questions from the chat? I'm happy to answer anything. No, all right. Well, anyways, um, I want to thank everyone for joining, um, today, Wednesday, for today's Fire Side Hang. I hope you were excited and intrigued about uh some of the stuff about uh Dolos and some of the value propositions that Santiago was sharing there. So, definitely check out that stuff. Um, and also uh, yeah, we had there's the Midnight questing, um, and go to the developer hub to make sure you're following any upcoming hackathons. Um, well, I like Stephanie's comment. You're so you're so funny. That is not a tangent. I can show you a tangent.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the proper-noun corrections noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Midnight · <a href="https://www.youtube.com/watch?v=PMXy70C1z2A">Watch the video</a></p>
+</footer>
+
+</div>
+</body>
+</html>

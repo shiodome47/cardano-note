@@ -24,4 +24,23 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 
 回を足すたびに、話者の割り当てと、確度が低かった箇所、制作で気づいたことをここに追記する。
 
-（まだ回がない）
+### 2026-09-02 Midnight — Fireside Dev Hang: Agentic Monitoring & Infrastructure
+
+**話者 2 名。**字幕に話者ラベルはない。
+
+| 表記 | 根拠 |
+| --- | --- |
+| **Stevan Lohja**（司会、Midnight Foundation） | 動画内では「Stevan」（"Yes, thanks, Stevan"）と "Thank you, Stan"（誤変換）。「Foundation の側で」と自称。**姓は公開プロフィール（Midnight Foundation の Developer Relations）から**で、音声にはない |
+| **Santiago Carmuega**（ゲスト、TxPipe） | 動画内では「TxPipe の Santiago」。動画で触れられる MPS-0038 の著者が GitHub の scarmuega（Santiago Carmuega）で、2026-09-02 に本人が「昨日投稿し、少し前にマージされた」と言っている内容と一致 |
+
+**割り当ての方針**
+
+- 前半（〜28:59）は 2 人の対話。Dolos の説明は Santiago、合いの手と MIPs の紹介は Stevan。79 番の "Yeah." だけは Stevan の発言の途中に入る Santiago の相づちとして独立させた
+- 171 番は 1 ブロックの中で話者が替わる。"And who?" までを Stevan、"Yeah, exactly. We are working with the Blockfrost team…" 以降を Santiago にした（TxPipe の取り組みを一人称で語っているため）
+- **確度が低い箇所**：チャットを読んでいる 27:43〜27:52 の 3 ブロック（189〜191 番）。「コメントを見ると興味を持っているようだ」「見知った顔がいる」は言葉だけではどちらとも取れる。Stevan → Santiago の順に割り当て、両方に `(推定)` を付けた
+- 198 番 "You or your agents. We accept AI PRs." は Dolos のリポジトリの話なので Santiago
+- 後半（28:59〜）は Stevan の 1 人語り。話題の切れ目で `.turn` を分けた
+
+**チャットの名前**：Alex、John（見知った顔として）、Johnny（質問）、Stephanie（コメント）。いずれもチャットの表示名で、それ以上は分からない。
+
+**まとめでの書き方**：前半は誰の発言かを書く（TxPipe の立場と Foundation の立場は違う）。後半は Stevan の 1 人語りなので「〜と述べています」でよいが、監視エージェントは本人が作ったものなので、評価（「不安が減った」など）は本人の言葉として帰属させた。

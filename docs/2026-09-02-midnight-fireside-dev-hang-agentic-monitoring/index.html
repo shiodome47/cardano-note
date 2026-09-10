@@ -1,0 +1,1193 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fireside Dev Hang: Agentic Monitoring &amp; Infrastructure — Midnight (2026-09-02)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Midnight</p>
+<h1><span class="l-ja">Fireside Dev Hang — Cardano を読む側を軽くし、ネットワークを見張る側を寝かせない</span><span class="l-en">Fireside Dev Hang — a lighter way to read Cardano, and a watcher that never sleeps</span></h1>
+<p class="meta">
+  <span>2026-09-02</span>
+  <span>YouTube</span>
+  <span>58:35</span>
+  <span><span class="l-ja">Midnight Network 公式チャンネル · Stevan Lohja、Santiago Carmuega</span><span class="l-en">Midnight's official channel · Stevan Lohja, Santiago Carmuega</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Midnight のノードを動かすには、Cardano 側に<strong>巨大な索引データベース（db-sync）</strong>が要る。その前提を外そう、という回です。<br>
+  前半は TxPipe の Santiago Carmuega が、1 つのバイナリで済む軽量な代替 Dolos と、その前段として「Midnight が Cardano から何を読むか」を仕様として切り出す問題提起（MPS-0038）を説明。後半は Midnight Foundation の Stevan Lohja が、自作の監視エージェントで<strong>本番のバリデータをわざと止め</strong>、1 分で通知が届くところを見せました。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>Midnight が Cardano から読むのは薄い一枚。</strong>特定のアドレスの UTXO、各プールのステーク、チェーンのノンス、先頭のブロック。全部でメガバイト単位だろう、と述べられました。それなのに今は cardano-node、db-sync、PostgreSQL の 3 点セットが要り、RAM 約 64GB、ディスク約 700GB、CPU 5〜8 コアを食う、という説明です。</li>
+  <li><strong>Dolos は 1 つのバイナリ。</strong>RAM 約 3GB、CPU 0.5 コア。チェーンの履歴は「1 日」「1 週間」など期間を決めて古い分を捨てられる。SPO ならすでに持っているリレーにつなぐだけで、隣にもう 1 台 Cardano ノードを置く必要がない。</li>
+  <li><strong>求めているのは「Dolos への置き換え」ではなく「境界」。</strong>動画の前日に出した問題提起は、Midnight ノードと Cardano を読む部品の間のインターフェースを仕様にし、適合テストを用意してほしい、というもの。それが通ったら次に Dolos を候補として出す、という 2 段構えです。</li>
+  <li><strong>同期の始め方は 3 つ。</strong>TxPipe のスナップショット（本人いわく「trust me bro」＝ 私たちを信じてもらう方式）、Mithril から作り直す、リレーから最初から引く。Blockfrost などと共同で署名したスナップショットも準備中と述べられました。</li>
+  <li><strong>監視エージェントは「判断は閾値、文章だけ言語モデル」。</strong>5 つの検知ルールと 2 段階の緊急度は固定の数値で決まり、モデルは事実から 1 文を書くだけ。モデルが落ちても定型文で通知が出る。月 56 ドル（GCP）、モデルの推論費用はゼロと述べられました。</li>
+  <li><strong>本番のノードを止めて、1 分で通知。</strong>13 台あるバリデータのうち Foundation の 1 台を停止し、1 時 19 分に検知、再起動後の 1 時 20 分に復旧報告。「平均認知時間は 1 分」という見せ方でした。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か</a></li>
+  <li><a href="#dbsync"><span class="n">02</span>Midnight が Cardano から読むもの、そして db-sync の重さ</a></li>
+  <li><a href="#dolos"><span class="n">03</span>Dolos — 1 バイナリの「データノード」</a></li>
+  <li><a href="#mps"><span class="n">04</span>「Dolos を入れてくれ」ではなく「境界を決めてくれ」</a></li>
+  <li><a href="#demo"><span class="n">05</span>デモ — 同期の 3 つの入り口と、誰を信じるか</a></li>
+  <li><a href="#why"><span class="n">06</span>監視エージェント — 何が問題だったか</a></li>
+  <li><a href="#arch"><span class="n">07</span>仕組み — 判断は閾値、文章だけがモデル</a></li>
+  <li><a href="#policy"><span class="n">08</span>検知ルールと費用</a></li>
+  <li><a href="#incident"><span class="n">09</span>本番で止めてみる — 認知まで 1 分</a></li>
+  <li><a href="#future"><span class="n">10</span>この先 — ガバナンス、ハードフォーク</a></li>
+  <li><a href="#overall"><span class="n">11</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">12</span>Q&amp;A</a></li>
+  <li><a href="#pending"><span class="n">13</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か</h2>
+<p class="deck">司会は Midnight Foundation、ゲストは Cardano のツール開発企業 TxPipe。</p>
+
+<p>Midnight Network の公式チャンネルが定期的に配信している開発者向けの雑談枠「Fireside Dev Hang」の 1 本です。動画の中で名乗られるのは名前と所属だけで、姓は動画には出てきません。</p>
+
+<ul>
+  <li><strong>Stevan Lohja</strong> —— 司会。Midnight Foundation。動画では「Stevan」とだけ呼ばれ、自身は「Foundation の側で」と話しています。後半の監視エージェントは本人が作って本番で動かしているもの。<span class="badge">補足</span>姓は公開プロフィールから補いました。</li>
+  <li><strong>Santiago Carmuega</strong> —— ゲスト。TxPipe。動画では「TxPipe の Santiago」。Dolos の説明とデモを担当。<span class="badge">補足</span>動画で触れられる問題提起 MPS-0038 の著者が本人（GitHub の scarmuega）なので、そこから姓を確認しています。</li>
+</ul>
+
+<p><span class="badge">補足</span>TxPipe はアルゼンチンを拠点にする Cardano 向けの開発ツール企業で、Rust 製のライブラリ群（Pallas）、インデクサ（Oura）、ホスティング基盤（Demeter）などを出しています。動画の中では「ブロックチェーン開発者向けのツールとサービスを提供している」とだけ自己紹介されています。</p>
+
+<p>司会が「db-sync は時々ほんとうに厄介」「Midnight のインフラの構成を減らせるなら検討する価値がある」と切り出し、前半 30 分がゲストの話、後半 30 分が司会自身のデモ、という構成です。</p>
+
+
+<h2 id="dbsync">2. Midnight が Cardano から読むもの、そして db-sync の重さ</h2>
+<p class="deck">必要なのはメガバイト。用意させられているのは 700 ギガバイト。</p>
+
+<p>Santiago Carmuega はまず、Midnight のノードが Cardano から何を読んでいるかを整理します。Cardano で起きること全部ではなく、コンセンサスに必要な<strong>薄い一枚</strong>だけだ、という説明です。挙げられたのは 4 つ。</p>
+
+<ul>
+  <li>特定のスクリプトアドレスにある UTXO</li>
+  <li>各ステークプールが持つステークの量</li>
+  <li>チェーンのノンス</li>
+  <li>チェーンの先頭（tip）がどこか</li>
+</ul>
+
+<p><span class="badge">補足</span>「なぜ Midnight が Cardano を読むのか」は動画では前提として飛ばされています。Midnight は Cardano のパートナーチェーン（Cardano の SPO とステークを借りて動く別チェーン）で、誰がブロックを作る番かを決めるのに Cardano 側のステークとノンスを使い、Cardano 上のスクリプトアドレスに置かれた登録情報を読みます。だから「薄い一枚」がコンセンサスに直結する、という話です。</p>
+
+<p>ところが現状、この一枚を読むために Midnight のオペレーターに求められているのは <strong>cardano-db-sync</strong> です。これは Cardano の全データを PostgreSQL に流し込む索引ツールで、自らも「汎用のインデクサ」と名乗っている、と Santiago は言います。エクスプローラにもウォレットにも取引所の分析にも使える代わりに、<strong>すべてを保存する</strong>。動かすには 3 つが要ります。</p>
+
+<ul>
+  <li>PostgreSQL のインスタンス</li>
+  <li>db-sync 本体（PostgreSQL に書き込み続ける更新処理）</li>
+  <li>それと同じ場所に置く cardano-node</li>
+</ul>
+
+<p>3 つを足し上げた目安として挙げられた数字が、RAM 約 64GB、ディスク約 700GB、CPU 5〜8 コアです。しかも同期の確認、部品どうしの連携、PostgreSQL のチューニング、遅れないようにする作業が「ある意味フルタイムの仕事」になる、と述べられました。司会も、db-sync の同期が終わったと思ったら Midnight 用のデータベースにもう一度索引を作り直す必要があり、「ノードを立ち上げるだけなのに、思ったよりずっと長くかかる」と実体験を重ねています。</p>
+
+<p>Santiago は 2 度、「これは db-sync への批判ではない」と断っています。すばらしいソフトウェアだが、Midnight が要るものとの間に<strong>摩擦</strong>がある、という言い方です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="現在の構成（cardano-node、db-sync、PostgreSQL）と Dolos を並べ、必要なリソースの違いを示した図">
+  <text x="340" y="24" class="d-s" text-anchor="middle">同じ「薄い一枚」を読むための 2 つの構成（数字は動画で述べられた目安）</text>
+
+  <rect x="16" y="40" width="316" height="196" rx="8" class="d-box"/>
+  <text x="174" y="68" class="d-t" text-anchor="middle">今の構成 — db-sync</text>
+  <text x="174" y="94" class="d-s" text-anchor="middle">cardano-node（同じ場所に置く）</text>
+  <text x="174" y="114" class="d-s" text-anchor="middle">＋ cardano-db-sync</text>
+  <text x="174" y="134" class="d-s" text-anchor="middle">＋ PostgreSQL（要チューニング）</text>
+  <text x="174" y="166" class="d-s" text-anchor="middle">RAM 約 64GB ／ ディスク約 700GB</text>
+  <text x="174" y="186" class="d-s" text-anchor="middle">CPU 5〜8 コア</text>
+  <text x="174" y="214" class="d-s" text-anchor="middle">Byron から今までの全部を保存</text>
+
+  <rect x="348" y="40" width="316" height="196" rx="8" class="d-box-accent"/>
+  <text x="506" y="68" class="d-t" text-anchor="middle">Dolos — データノード</text>
+  <text x="506" y="94" class="d-s" text-anchor="middle">1 つのバイナリ・組み込みのデータベース</text>
+  <text x="506" y="114" class="d-s" text-anchor="middle">既存のリレーにつなぐだけ</text>
+  <text x="506" y="134" class="d-s" text-anchor="middle">Blockfrost 互換・UTxO RPC・Kupo・Ogmios</text>
+  <text x="506" y="166" class="d-s" text-anchor="middle">RAM 約 3GB ／ CPU 0.5 コア</text>
+  <text x="506" y="186" class="d-s" text-anchor="middle">ディスクは残す期間しだい</text>
+  <text x="506" y="214" class="d-s" text-anchor="middle">履歴は期間を決めて古い分を捨てる</text>
+
+  <rect x="16" y="254" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="276" class="d-t" text-anchor="middle">Midnight が読むのは薄い一枚</text>
+  <text x="340" y="296" class="d-s" text-anchor="middle">特定アドレスの UTXO・プールのステーク・ノンス・先頭ブロック（「メガバイト単位だろう」）</text>
+</svg>
+<p class="figcap">左の数字は Santiago Carmuega が「だいたい」として挙げたもので、右の Dolos の数字も本人の説明です。<span class="badge">補足</span>動画の前日に提出された問題提起 MPS-0038 の文書では、db-sync 側の要件として 700GB の SSD に加えて 60,000 IOPS、mainnet の同期に約 2 日、と書かれています。</p>
+</div>
+
+<p><span class="badge">補足</span>RAM の要件は資料によって食い違います。MPS-0038 の文書は「Midnight の公式ドキュメントは 32GB、db-sync の README は 64GB を推奨」と両方を並べており、動画で Santiago が使ったのは 64GB のほうです。どちらが実運用の正解かは、動画でも文書でも決着していません。</p>
+
+
+<h2 id="dolos">3. Dolos — 1 バイナリの「データノード」</h2>
+<p class="deck">ブロックは作らない、検証もしない。読むことだけに特化したノード。</p>
+
+<p>Santiago は Dolos を Cardano の<strong>「データノード」</strong>と呼んでいるので、以下もその言葉で書きます。</p>
+
+<div class="term">
+<p class="term-name">データノード <small>動画の中の言葉</small></p>
+<p>ブロックを生成せず、ブロックの検証もせず、ネットワークの中継もしない。Cardano のリレーのネットワークに直接つないで、台帳の自分用のコピーを<strong>組み込みのデータベース</strong>に保持し、それを読み出す API を同じプロセスの中で提供する。<span class="badge">補足</span>ふつうの Cardano ノードは「合意に参加する」役と「データを持つ」役を兼ねています。Dolos は後者だけを切り出したもので、TxPipe の公式ドキュメントも「ブロック生成には対応しないし、今後もしない」と明記しています。</p>
+</div>
+
+<p>動画で挙げられた特徴は 4 つです。</p>
+
+<ul>
+  <li><strong>API がひととおり入っている。</strong>Blockfrost とまったく同じ見た目のエンドポイント、UTxO RPC（UTXO 型チェーン向けの gRPC ベースの API）、Kupo 互換のインターフェース、そして Ogmios を上に載せて使う経路。「Blockfrost に問い合わせるのと同じように Dolos に問い合わせられる」。</li>
+  <li><strong>資源が小さい。</strong>RAM 約 3GB、CPU 0.5 コアで「十分快適」。</li>
+  <li><strong>履歴を切り詰められる。</strong>Byron から今までを全部持つ必要はなく、「数日」「6 週間」など残す期間を設定で決める。この窓は先頭に追随し、古い分は捨てられていく。Santiago は「私にとってはここがいちばん面白い」と言っています。</li>
+  <li><strong>隣にノードが要らない。</strong>信頼できる情報源は必要だが、db-sync のように同じ場所に cardano-node を置く必要はない。SPO ならすでに動かしているリレーに Dolos を向ければよい。</li>
+</ul>
+
+<p><span class="badge">補足</span>Kupo と Ogmios は、Cardano の DApp 開発でよく組み合わせて使われる 2 つの補助ツールです。Kupo は「このアドレスに今ある UTXO」を素早く引くための索引、Ogmios はノードと WebSocket でやり取りするための橋渡し。司会が「昔の testnet では SPO が Kupo と Ogmios の接続を用意しなければならなかった」と振り返っているのは、Midnight のバリデータの初期の手順にこの 2 つが入っていたためです。</p>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>そもそも「履歴を切り詰める」とは</h4>
+<p>Cardano のチェーンは 2017 年（Byron 期）から今まで、すべてのブロックがつながっています。db-sync はその全部を索引にするので 700GB になる。Dolos は「直近 1 日分」「直近 6 週間分」のように<strong>残す幅を決めて、それより古いものを消す</strong>ことができます。動画ではこれを「スライディングウィンドウ」と呼んでいます。窓が先頭とともに動く、という意味です。</p>
+<h4>なぜ Midnight には数日で足りるのか</h4>
+<p>動画で「安定性ウィンドウ（stability window）が気になるなら数日分」と言われています。Cardano では、ある深さより古いブロックは覆らない（巻き戻しが起きない）と見なされる期間があり、それが安定性ウィンドウです。Midnight が読みたいのは「確定した最近の状態」なので、確定に必要な幅さえ残っていれば、それより古い履歴は読まなくてよい、という理屈です。</p>
+<h4>身近なものへのたとえ</h4>
+<p>新聞の縮刷版を全巻そろえておく（db-sync）のと、今週の分だけ手元に置いて古いものは捨てる（Dolos）の違いです。「今日の記事を読む」だけなら後者で足ります。</p>
+<h4>この動画では分からないこと</h4>
+<p>Midnight のノードに実際に必要な最小の幅が何日なのか、そして「6 週間」がどこから出た数字なのかは説明されていません。「Midnight は安定性ウィンドウを気にしていると知っている」という一言で、次の話題に移っています。</p>
+</div>
+</details>
+
+<p>用途は Midnight に限らない、という点も両者が強調しています。司会は Blockfrost の API に頼っている開発者が多いことを挙げ、Santiago は「いくつかのチームは Dolos に組み込まれた Blockfrost 互換 API を外部に公開して、本番の mainnet のエンドポイントとして直接叩いている」と述べました。高可用性やエッジへの分散が要るならサービスプロバイダーに払う理由はあるが、自分のインフラを自分で持ちたいなら Dolos は「本当に面白い選択肢」だ、という整理です。Dolos はオープンソースで、複数のチームからの貢献を受けているとも述べられました。</p>
+
+
+<h2 id="mps">4. 「Dolos を入れてくれ」ではなく「境界を決めてくれ」</h2>
+<p class="deck">問題提起は解決策を書かない。まず仕様と適合テストを求める。</p>
+
+<p>司会が、TxPipe が Midnight の改善提案のリポジトリに<strong>問題提起</strong>を出したことに触れます。Midnight には Midnight Improvement Proposal（MIP）という提案の仕組みがあり、その前段が問題提起（Midnight Problem Statement、MPS）です。</p>
+
+<div class="term">
+<p class="term-name">MPS と MIP <small>動画の中の言葉</small></p>
+<p>Santiago の説明では、<strong>MPS は「何が改善できると思うか」だけを述べ、どう改善するかは書かない</strong>。それが通ってから、解決策を書く MIP を出す。Santiago 自身「このプロセスは初めてで、これが最初の 1 本」と断っています。<span class="badge">補足</span>Cardano の CIP（Cardano Improvement Proposal）にも同じ「問題提起（CPS）→ 提案（CIP）」の 2 段構えがあり、Midnight の仕組みはそれを踏襲したものです。</p>
+</div>
+
+<p>問題提起の中身は、この動画の前半で語られたことそのもの、と司会も Santiago も言っています。ただし<strong>求めているものは Dolos の採用ではありません</strong>。Santiago の言葉では「むしろ逆で、問題提起では解決策の話はしていない」。求めているのは次の 2 つです。</p>
+
+<ul>
+  <li>Midnight ノードと「Cardano オブザーバー」（Cardano を読む部品が何であれ）の間のインターフェースを記述する、<strong>明確な契約</strong>——きちんと定義された仕様</li>
+  <li>どのオブザーバーのバックエンドでも要求事項を満たしているかを確かめられる、<strong>適合テストのスイート</strong></li>
+</ul>
+
+<p>この境界が決まれば「この SPO は db-sync の代わりに別の解を動かしたい」と考え始められる。それは Dolos かもしれないし、ほかのバックエンドかもしれない。ベンダーが入ってきて自分のバックエンドを提供できるようにするのが狙いだ、と述べられました。そのうえで、問題提起が承認されたら後半として改善提案を出し、「このインターフェースに Dolos を通してみてはどうか」と提案して適合テストを満たす努力をする、と予定を語っています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="問題提起 MPS-0038 が求めるもの（境界の仕様と適合テスト）と、その後に予定されている改善提案の 2 段構えを示した図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="300" height="118" rx="8" class="d-box-accent"/>
+  <text x="166" y="48" class="d-t" text-anchor="middle">① 問題提起 MPS-0038</text>
+  <text x="166" y="74" class="d-s" text-anchor="middle">動画の前日に提出、当日にマージ</text>
+  <text x="166" y="94" class="d-s" text-anchor="middle">「何が問題か」だけを書く</text>
+  <text x="166" y="114" class="d-s" text-anchor="middle">解決策は書かない</text>
+
+  <line x1="320" y1="79" x2="356" y2="79" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="364" y="20" width="300" height="118" rx="8" class="d-box"/>
+  <text x="514" y="48" class="d-t" text-anchor="middle">求めているもの</text>
+  <text x="514" y="74" class="d-s" text-anchor="middle">Midnight ノード ↔ Cardano を読む部品</text>
+  <text x="514" y="94" class="d-s" text-anchor="middle">その境界のインターフェース仕様</text>
+  <text x="514" y="114" class="d-s" text-anchor="middle">＋ 適合テストのスイート</text>
+
+  <line x1="514" y1="142" x2="514" y2="170" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="16" y="176" width="648" height="72" rx="7" class="d-box-plain"/>
+  <text x="340" y="204" class="d-t" text-anchor="middle">② 改善提案（MIP）— 「この境界に Dolos を通してみては」</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">①が承認されたら出す、と予定として語られた。Dolos 以外のバックエンドも通れる境界にするのが狙い</text>
+</svg>
+<p class="figcap">Santiago Carmuega の説明を 2 段に並べたものです。「まだドラフト」と本人が言っているとおり、マージは「議論の場に載った」ことを意味し、承認ではありません。</p>
+</div>
+
+<p><span class="badge">補足</span>問題提起は MPS-0038「Operational Cost of Cardano Observation」として 2026 年 9 月 2 日、つまり動画の当日に Midnight の改善提案リポジトリへマージされています（ステータスは Draft）。文書には動画にない数字も入っていて、Midnight の問い合わせが触るのは db-sync の約 80 テーブルのうち 11 だけ、という記述があります。求めている成果物は「観測の契約の仕様」「midnight-node での差し替え可能なデータソース」「適合テストのスイート」の 3 つで、動画の説明と一致します。</p>
+
+<p><span class="badge">補足</span>動画公開後の結果として一つ。同じリポジトリには 2026 年 3 月から、別のチームが Acropolis という Rust 製ノードで db-sync を置き換える改善提案を出していましたが、コミット署名の検証が通らないまま 9 月 9 日にクローズされています。動画ではこの提案には触れられていません。「db-sync を軽くしたい」という要望が TxPipe だけのものではない、という背景です。</p>
+
+
+<h2 id="demo">5. デモ — 同期の 3 つの入り口と、誰を信じるか</h2>
+<p class="deck">対話式の初期設定は 1 分。いちばん重いのは、最初のデータをどこから持ってくるか。</p>
+
+<p>Santiago は画面を共有し、Dolos の初期設定を対話式に進めました。聞かれるのは、つなぐネットワーク（mainnet）、Genesis ファイルを自分で用意するか、データを引くリレー（Demeter のリレーか Cardano Foundation のリレー）、残す履歴の幅（全部、1 日、1 週間、1 か月）、公開する API（UTxO RPC、Blockfrost 互換、Kupo 互換）、ほかのノードのリレーになるか。最初はすでにインスタンスがあるフォルダで実行してエラーになり、別のフォルダでやり直しています。</p>
+
+<p>最後に聞かれる<strong>「どこから同期するか」</strong>が、Santiago が「本当に重い部分」と呼ぶところです。3 つの選択肢が示されました。</p>
+
+<ul>
+  <li><strong>TxPipe のスナップショット。</strong>数分で現在の状態をダウンロードする。Santiago はこれを「trust me bro」と呼んでいます——そのデータが正しいことを TxPipe を信頼してもらう方式だから、と本人が説明しました。</li>
+  <li><strong>Mithril のスナップショット。</strong>TxPipe を信頼したくなければこちら。ただし Mithril のスナップショットは Cardano ノードの内部構造と強く結びついているので、Dolos はそのまま使えず、ブロックを最初から処理し直す。「少し余計に時間がかかる」。</li>
+  <li><strong>上流のピアから最初から引く。</strong>ノードと同じように、リレーからブロックを取ってくる。</li>
+</ul>
+
+<p>「自分のリスクプロファイルと、いちばん筋の通るスナップショットを選べる」というのが Santiago のまとめです。</p>
+
+<p>ここで司会が Mithril を推す立場を語ります。Foundation は機関と関わるので、法的に必須というほどではないにせよ、IT 認証やコンプライアンスを保つために<strong>信頼を最小化したスナップショット</strong>が重要になる場面がある。パートナーからも「そのスナップショットはどこから来て、誰が出したのか」と聞かれる、と。あわせて、Foundation の側でも「ごく近い将来」Midnight ノード向けの署名付きスナップショットを提供したい、と述べています。</p>
+
+<p>Santiago はそれに応えて、Blockfrost チーム（彼らも自分たちの基盤に Dolos を使っている、とのこと）と、もう 1 つのチームの 3 者で<strong>スナップショットに共同で署名</strong>する準備をしていると明かしました。3 者のどれかを信頼できるなら使える、という設計です。もう 1 つのチームの名前は字幕では「link caps」と聞こえ、動画の中では説明されていません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「trust me bro」で本番のノードを立ててよいのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、Santiago 自身がそう名付けているのは、そこを隠さないためです。</strong>スナップショットとは「誰かが同期し終えたデータのコピー」なので、その誰かが間違ったデータ（あるいは細工したデータ）を配っていたら、受け取った側は気づけません。</p>
+<h4>3 つの入り口は、信頼の相手が違う</h4>
+<ul>
+  <li>TxPipe のスナップショット —— TxPipe を信頼する。速い</li>
+  <li>共同署名のスナップショット（準備中）—— 3 者のうち 1 者でも信頼できればよい。1 社が単独で細工するのは難しくなる</li>
+  <li>Mithril —— Cardano の SPO たちがステークで署名した証明を信頼する。特定の会社を信頼しなくてよいが、Dolos では処理し直しが要る</li>
+  <li>リレーから最初から —— 自分のリレーを信頼する。いちばん遅い</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>「そのスナップショットの正しさを、誰の署名で確かめられるか」を聞けば足ります。答えが「配布元の 1 社」なら trust me bro、「複数の会社」なら共同署名、「チェーン上のステーク」なら Mithril です。</p>
+<h4>この動画で示されたこと・示されなかったこと</h4>
+<p>共同署名は「準備中」で、時期は述べられていません。Mithril のスナップショットから Dolos を作り直すのにどれくらいかかるかは「少し余計に」とだけで、数字はありません。<span class="badge">補足</span>TxPipe の公式ドキュメントには、Mithril から mainnet を初期化するのに「20 時間未満」とあります（2026 年 9 月時点の記載）。</p>
+</div>
+</details>
+
+<p>司会は最後に、SPO が Midnight に参加するときの<strong>登録のステップ</strong>にも Dolos が「おそらく」使えるだろう、と述べています。まだ調べている途中、という言い方でした。</p>
+
+
+<h2 id="why">6. 監視エージェント — 何が問題だったか</h2>
+<p class="deck">壊れていなかった。誰も見ていなかっただけ。</p>
+
+<p>後半は司会の Stevan Lohja が、前回の Fireside Dev Hang で話したアラートのエージェントの続きを語ります。前回は構想で、今回は「本番で動いている」。</p>
+
+<p>出発点はひとつの出来事です。Midnight のバリデータの監視は、以前は Grafana などをブラウザのタブで開いておくものだった。チャットにも投稿されていて、誰かがダッシュボードを開いていれば午前 11 時には十分だった。ところがあるテストネットワークで、<strong>ファイナリティ（ブロックの確定）が止まったのに誰も気づかなかった</strong>。最後にテレメトリを開いていた人がラップトップを閉じて寝てしまったからです。「何も壊れてはいなかった。でも誰も見ていなかった。それが問題」。</p>
+
+<p>Stevan は問題を 4 つに整理し、「技術的なのはそのうち 1 つだけ」と言っています。</p>
+
+<ul>
+  <li>アラートが働くのは、誰かがメトリクスの画面を開いているときだけだった</li>
+  <li>時間外のカバーは、人間が 30 分おきくらいにページを確認すること。全員が常に見ているわけではない</li>
+  <li>今の Midnight は連合型（federated）のネットワークで、調整すべき相手が多い</li>
+  <li>テレメトリでノード名を見ることと、<strong>誰に電話すべきか知っていること</strong>は別</li>
+</ul>
+
+<p>4 つ目を、Stevan は数字で説明しました。Midnight には今、異なる組織が運用する 13 のバリデータがある。画面上の名前は「誰の電話を鳴らすべきか」を教えてくれない。ブロックチェーンから情報を引くだけでは、誰が問題を認知して解決できるかは分からない、と。<span class="badge">補足</span>「13」は 2026 年 9 月 2 日時点で本人が述べた数で、どの組織が運用しているかは動画では挙げられていません。</p>
+
+
+<h2 id="arch">7. 仕組み — 判断は閾値、文章だけがモデル</h2>
+<p class="deck">言語モデルは入っているが、「アラートを出すか」は一度も決めない。</p>
+
+<p>作ったものは「ヘッドレスのサービス」だと説明されました。公開のテレメトリのフィードを購読し、落ちれば systemd が再起動し、起動のたびにシークレットを取り直す。Stevan が「ほかより重要」と言った 2 点は次のとおりです。</p>
+
+<ul>
+  <li><strong>検知は決定論的。</strong>アラートを出すかどうか、どれだけ緊急かは固定の閾値が決める。言語モデルは入っているが、「その判断は決してモデルがしない」。</li>
+  <li><strong>アラートは事実で、宛先がある。</strong>バリデータ名、責任のあるオペレーター名、ランブック（対応手順書）へのリンクが入り、オペレーターにメンションして Foundation の誰かにも CC する。原因も修正案も出さない。「このバリデータは報告を止めた」は事実で、「サーバーが落ちた」は物語。物語を入れると人はアラートを信じなくなる、と。</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 318" role="img" aria-label="監視エージェントの 6 段階（フィード、検知、名簿、モデル、ガードレール、送信）と、モデルが落ちたときに定型文で送る迂回路を示した図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">① フィード</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">公開テレメトリを購読</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">入ってくる経路はこれだけ</text>
+
+  <line x1="220" y1="63" x2="236" y2="63" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="240" y="20" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">② 検知</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">固定の閾値で判定</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">出すか・緊急かはここで決まる</text>
+
+  <line x1="444" y1="63" x2="460" y2="63" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="464" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">③ 名簿</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">バリデータ名 → 担当者</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">誰の電話を鳴らすか</text>
+
+  <line x1="564" y1="110" x2="564" y2="136" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="464" y="140" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="168" class="d-t" text-anchor="middle">④ モデル</text>
+  <text x="564" y="192" class="d-s" text-anchor="middle">事実から人間向けの 1 文</text>
+  <text x="564" y="212" class="d-s" text-anchor="middle">同じ VM の小さなオープンなモデル</text>
+
+  <line x1="460" y1="183" x2="444" y2="183" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="240" y="140" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="340" y="168" class="d-t" text-anchor="middle">⑤ ガードレール</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">診断・修正案に読めるものを弾く</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">メンション・注入の試みも弾く</text>
+
+  <line x1="236" y1="183" x2="220" y2="183" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="16" y="140" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="116" y="168" class="d-t" text-anchor="middle">⑥ 送信</text>
+  <text x="116" y="192" class="d-s" text-anchor="middle">チャットに投稿、担当者にメンション</text>
+  <text x="116" y="212" class="d-s" text-anchor="middle">スマホに通知が届く</text>
+
+  <rect x="16" y="246" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="270" class="d-t" text-anchor="middle">モデルが遅い・間違う・落ちている → 定型文で送る</text>
+  <text x="340" y="290" class="d-s" text-anchor="middle">「アラートは決してモデルで詰まらない」。モデルは体験を良くするだけで、依存はしていない</text>
+</svg>
+<p class="figcap">Stevan Lohja が「6 つのステップ」として説明した流れを描いたものです。動画ではスライドが映っていますが、この図はスライドを写したものではなく、音声の説明から組み立てています。</p>
+</div>
+
+<p>モデルは「同じマシンでセルフホストしている小さなオープンなモデル」で、事実を受け取って人間向けの 1 文を書く。ガードレールが、診断や対処の指示に読めるもの、メンション、注入（injection）の試みを弾く。そしてモデルが遅い・間違う・落ちているときは<strong>定型文でアラートが出る</strong>。「LLM が落ちても運用できていなければならない。どんなエージェント型サービスにも言えることで、標準的な考え方であってほしい」と述べられました。</p>
+
+<p>運用面では、入ってくる経路がまったくない小さな VM が 1 台、ステータスページはループバックの裏、シークレットは起動時に取るので永続ディスクにも Terraform のステートファイルにも残らない、コンテナイメージはコンテンツハッシュで固定してあるので再起動で中身が静かに変わることはない、と挙げられています。</p>
+
+
+<h2 id="policy">8. 検知ルールと費用</h2>
+<p class="deck">5 つのルール、2 段階の緊急度、月 56 ドル。</p>
+
+<p>検知のルールは 5 つです。Stevan は「SRE や DevOps の面接で『気にすべき 5 つは何か』と聞いてきたが、これがその例」と言っています。</p>
+
+<ul>
+  <li><strong>不在（absent）</strong>—— 名簿にあるバリデータが消えた。デバウンス（連続確認）なし。「決して普通ではない」から</li>
+  <li><strong>ファイナリティのギャップ</strong>—— 確定が遅れている。3 ブロックを超え、かつ 2 サイクル連続のときだけ発火</li>
+  <li><strong>同期中（syncing）</strong></li>
+  <li><strong>フォーク</strong></li>
+  <li><strong>ピア不足</strong></li>
+</ul>
+
+<p>後ろ 3 つは名前だけで、閾値は語られていません。数字の説明があったのはファイナリティのギャップだけで、1〜2 ブロックの再編成（reorg）は Substrate ベースのチェーンではごく普通、3 ブロックを超えたら Midnight では懸念すべきこと、という線引きです。<span class="badge">補足</span>Midnight のノードは Substrate（Polkadot 系のブロックチェーン開発フレームワーク）で作られている、と動画でも述べられています。</p>
+
+<p>緊急度は 2 段階で、「5 段階の重大度の番号ではない」と強調されました。「今すぐ呼び出す」はコンセンサスが危険で誰かが起こされる。「通知」は朝に見ればいいもので、たとえばピアが 1〜2 つ足りないが動いている、といった状態。<span class="badge">補足</span>この 2 段階の説明の途中、38:44 から 40:00 までの約 75 秒は字幕が欠けています。</p>
+
+<p>費用は<strong>月 56 ドル</strong>（GCP での価格）と示されました。Stevan が注目してほしいと言ったのは「モデルの推論」の行がゼロであること——すでに払っている CPU 上でモデルを動かしているから。請求の大半は遊んでいる容量で、モデルが立ち上がるときのために余裕を持たせている、とも。正直に言えばホスト型のモデルなら月に数セント、呼び出し用のプラットフォームはユーザーあたり数ドルから、なので「私の解が最安ではないかもしれない」。ただこれは運用データとオペレーターの情報が<strong>自分たちのプロジェクトから外に出ない</strong>版だ、というのが本人の位置づけです。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 判断を全部閾値でするなら、言語モデルは要らないのでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しい</strong>ので、Stevan 自身が「モデルは体験を良くするだけで、依存していない」と言っています。モデルが落ちれば定型文で送る、と設計している時点で、モデルは必須部品ではありません。</p>
+<h4>それでも入れている理由（動画から読み取れる範囲）</h4>
+<ul>
+  <li>「事実から人間向けの 1 文を書く」—— 数値の羅列を、担当者が寝ぼけていても読める文にする</li>
+  <li>「もっと多くの能力」の入り口 —— 後半でガバナンスやハードフォークの監視に広げたい、と語られており、そのときはモデルの役割が増える想定</li>
+  <li>費用がかからない —— セルフホストなので推論の追加費用がゼロ。「入れておいて損はない」構成</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>「モデルを止めたときにアラートが出るか」を試せば分かります。出るなら判断は閾値側にあり、出ないならモデルに依存しています。Stevan の説明では前者です。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>使っているモデルの名前もサイズも述べられていません。「小さなオープンなモデル」「CPU で動かしている」だけです。ガードレールが具体的にどう判定しているか（正規表現なのか、別のモデルなのか）も語られていません。</p>
+</div>
+</details>
+
+
+<h2 id="incident">9. 本番で止めてみる — 認知まで 1 分</h2>
+<p class="deck">13 台のうち 1 台を stop し、スマホが鳴るまでを画面で見せた。</p>
+
+<div class="term">
+<p class="term-name">平均認知時間 <small>mean time to acknowledgement、動画の中の言葉</small></p>
+<p>問題が起きてから「ここに問題がある」と誰かが認知するまでの時間。Stevan は、重要度の高いものなら 5〜15 分が良いとされ、中程度なら 30 分〜2 時間、低ければ 5 時間以上、と「調べればいろいろ出てくる」相場を挙げたうえで、<strong>自分は全部 1 分以内にしたい</strong>と述べています。<span class="badge">補足</span>「復旧までの時間」（mean time to resolution）とは別の指標です。今回の実験で測ったのは前者で、復旧は Stevan が手で再起動しています。</p>
+</div>
+
+<p>Stevan は「悪いことをします」と言って、チェーン上の 13 ノードのうち Foundation の 1 台を systemctl で停止しました。1 回目は sudo を忘れて止まっておらず、やり直しています。時刻は東部時間 1 時 18 分。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 232" role="img" aria-label="1 時 18 分にノードを停止、1 時 19 分にエージェントが検知して通知、再起動後の 1 時 20 分に復旧を報告した時系列の図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <line x1="40" y1="150" x2="648" y2="150" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="16" y="30" width="208" height="90" rx="8" class="d-box-warn"/>
+  <text x="120" y="56" class="d-t" text-anchor="middle">1:18 停止</text>
+  <text x="120" y="80" class="d-s" text-anchor="middle">13 台のうち Foundation の 1 台</text>
+  <text x="120" y="100" class="d-s" text-anchor="middle">sudo を忘れて 2 回目で成功</text>
+  <line x1="120" y1="124" x2="120" y2="146" class="d-line"/>
+
+  <rect x="236" y="30" width="208" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="56" class="d-t" text-anchor="middle">1:19 検知・通知</text>
+  <text x="340" y="80" class="d-s" text-anchor="middle">スマホに通知、チャットに投稿</text>
+  <text x="340" y="100" class="d-s" text-anchor="middle">2 名にメンション、ランブック付き</text>
+  <line x1="340" y1="124" x2="340" y2="146" class="d-line"/>
+
+  <rect x="456" y="30" width="208" height="90" rx="8" class="d-box"/>
+  <text x="560" y="56" class="d-t" text-anchor="middle">1:20 復旧を報告</text>
+  <text x="560" y="80" class="d-s" text-anchor="middle">Stevan が手で再起動</text>
+  <text x="560" y="100" class="d-s" text-anchor="middle">「解決した」と自動で追記</text>
+  <line x1="560" y1="124" x2="560" y2="146" class="d-line"/>
+
+  <text x="120" y="176" class="d-s" text-anchor="middle">人が止める</text>
+  <text x="340" y="176" class="d-s" text-anchor="middle">エージェントが認知（約 1 分）</text>
+  <text x="560" y="176" class="d-s" text-anchor="middle">人が直す、エージェントが確認</text>
+  <text x="340" y="212" class="d-t" text-anchor="middle">「平均認知時間は 1 分」——時刻は動画で読み上げられたもの</text>
+</svg>
+<p class="figcap">時刻はいずれも Stevan Lohja が画面を見ながら読み上げたもので、米国東部時間です。通知の本文は「maintenance のコンセンサスのアラート、重大度は 1（critical）。Foundation のノードがネットワークから XYZ ブロック遅れている」と読み上げられ、遅れたブロック数は「XYZ」と伏せて読まれました。</p>
+</div>
+
+<p>通知は Stevan のスマホに届き、チャットのチャンネルには「バリデータがダウンしているという重大なイベント」が投稿され、Stevan ともう 1 人にタグが付き、ランブックが参照されていた、と読み上げられました。再起動すると「重大なインシデントは解決した」と追記され、その時刻が 1 時 20 分。「認知まで 1 分、次の 1 分で私がノードを再起動した」というまとめです。</p>
+
+<p>このエージェントは本番に入って「2 週間ほど」で、何度か発火しているが「大したことではなく、どこかの計画メンテナンスなど」とのこと。効果として本人が挙げたのは指標ではなく、<strong>不安が減った</strong>ことでした。必要なときは必ず電話が鳴ると分かっているので、Grafana を見ていなければという不安を持たなくてよい、と。</p>
+
+<p>このあと Stevan は、この構成を Terraform のテンプレートにして公開したい、そこにエージェントのツールも入れたい、と述べています。「初期段階」という言い方で、時期は語られていません。</p>
+
+
+<h2 id="future">10. この先 — ガバナンス、ハードフォーク</h2>
+<p class="deck">アラートが得意になったら、次はもっと広い範囲を見張らせたい。すべて構想として。</p>
+
+<p>チャットの質問（次節）をきっかけに、Stevan はエージェントの使い道を広げる構想を語ります。いずれも「面白いと思う」「理論的には」という言い方で、決まったものではありません。</p>
+
+<ul>
+  <li><strong>Cardano のガバナンス。</strong>引退したステークプールや活動していない DRep に対して、エージェントが「あなたのプールは引退していて委任が残っているが、調子はどうか」と声をかける。ガバナンス提案が閾値を満たしているかを見張り、投票していないプールに「忘れていないか」と連絡する。「おそらくかなり簡単」で、いちばん難しいのは正しい相手に連絡すること——<strong>調整のデータ</strong>がいちばん重要、と。</li>
+  <li><strong>ハードフォークの監視。</strong>Midnight は「近い将来」ハードフォークをする、と述べられました。バリデータが多いと全員に更新してもらうのが難しい。Ethereum Classic のエコシステムでハードフォークを担当したときは、フォーク前後の両方のチェーンを並行して動かし、誰が更新していないかを監視したそうで、同じことをエージェントに Terraform で立ち上げさせる構想です。</li>
+  <li><strong>ノードの生の情報へのアクセス。</strong>モデルを大きくして扱える文脈を増やし、アラートの次の段階として与えたい、と。</li>
+</ul>
+
+<p><span class="badge">補足</span>「ハードフォーク」の時期は「近い将来」以上には語られていません。何を変えるフォークなのかも動画では触れられていません。</p>
+
+
+<h2 id="overall">11. 全体像</h2>
+<p class="deck">前半と後半は別の話に見えて、どちらも「バリデータを運用する人の負担」を減らす話。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="前半（Cardano を読む側を軽くする）と後半（ネットワークを見張る側を自動にする）が、どちらもバリデータ運用者の負担を減らすことに向かっていることを示した図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="166" y="24" class="d-t" text-anchor="middle">前半 — Cardano を読む側を軽くする</text>
+  <text x="514" y="24" class="d-t" text-anchor="middle">後半 — 見張る側を自動にする</text>
+
+  <rect x="16" y="40" width="300" height="60" rx="8" class="d-box"/>
+  <text x="166" y="64" class="d-t" text-anchor="middle">読むのは薄い一枚</text>
+  <text x="166" y="86" class="d-s" text-anchor="middle">それなのに db-sync の 3 点セットが要る</text>
+
+  <line x1="166" y1="104" x2="166" y2="126" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="16" y="130" width="300" height="60" rx="8" class="d-box-accent"/>
+  <text x="166" y="154" class="d-t" text-anchor="middle">まず境界を仕様にする（MPS-0038）</text>
+  <text x="166" y="176" class="d-s" text-anchor="middle">インターフェース＋適合テスト</text>
+
+  <line x1="166" y1="194" x2="166" y2="216" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="16" y="220" width="300" height="60" rx="8" class="d-box"/>
+  <text x="166" y="244" class="d-t" text-anchor="middle">Dolos などを差し替え可能に</text>
+  <text x="166" y="266" class="d-s" text-anchor="middle">1 バイナリ、約 3GB、既存リレーに接続</text>
+
+  <rect x="364" y="40" width="300" height="60" rx="8" class="d-box"/>
+  <text x="514" y="64" class="d-t" text-anchor="middle">午前 3 時には誰も見ていない</text>
+  <text x="514" y="86" class="d-s" text-anchor="middle">名前を見ても誰を呼ぶか分からない</text>
+
+  <line x1="514" y1="104" x2="514" y2="126" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="364" y="130" width="300" height="60" rx="8" class="d-box-accent"/>
+  <text x="514" y="154" class="d-t" text-anchor="middle">閾値で検知し、人に宛てる</text>
+  <text x="514" y="176" class="d-s" text-anchor="middle">モデルは 1 文を書くだけ。落ちても定型文</text>
+
+  <line x1="514" y1="194" x2="514" y2="216" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="364" y="220" width="300" height="60" rx="8" class="d-box"/>
+  <text x="514" y="244" class="d-t" text-anchor="middle">本番で止めて、1 分で認知</text>
+  <text x="514" y="266" class="d-s" text-anchor="middle">月 56 ドル、推論費用ゼロ</text>
+
+  <rect x="16" y="296" width="648" height="28" rx="7" class="d-box-plain"/>
+  <text x="340" y="315" class="d-s" text-anchor="middle">どちらも「SPO・オペレーターが Midnight のバリデータを持つ負担」を減らす話（この束ね方はこちらの読み）</text>
+</svg>
+<p class="figcap">2 つの話題を並べたのはこちらの読みで、動画の中で両者をつなげる発言はありません。<span class="badge">補足</span>ただし司会が前半で「Midnight のバリデータになるなら、64GB より 3GB を用意するほうがずっと簡単」と言い、後半で「13 のバリデータ、その裏には人間のオペレーター」と言っているので、どちらも運用者の側から見た話ではあります。</p>
+</div>
+
+
+<h2 id="qa">12. Q&amp;A</h2>
+<p class="deck">チャットからの質問は 1 つ。前半のゲストへの質問は出なかった。</p>
+
+<p>Santiago のパートの終わりに司会が「チャットで質問したい人は」と呼びかけましたが、「直接の質問はない」まま次に進んでいます。後半に 1 つだけ、司会がチャットの質問を読み上げました。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Johnny（チャット）</span>この可観測性（observability）は、Midnight チェーンを監視する仕事を負うガバナンスや選出された個人が使えて、そのコストはチェーンのトランザクション利用者が払う手数料で賄えるのでは？</p>
+<p class="qa-a" data-by="Stevan Lohja が回答（前半のみ）">「可観測性はガバナンスの目的に間違いなく使える」と答え、Cardano での使い道を長く語りました（前節）。引退したプールへの声かけ、投票していないプールへの連絡、提案の閾値の監視など。<br><strong>質問の後半、「手数料で賄う」については触れていません。</strong>費用の話は前節の「月 56 ドル」と「Cardano でやるのもそんなに費用はかからないと思う」だけです。</p>
+</div>
+
+
+<h2 id="pending">13. 答えが出なかったこと</h2>
+<p class="deck">名前だけ挙がったもの、「近い将来」で止まったもの。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">名前のみ</span>共同署名に加わる 3 つ目のチームは誰か。</p>
+<p class="qa-a" data-by="特定できず">Santiago は Blockfrost チームと「Cardano エコシステムで活動するもう 1 つのチーム」の名を挙げましたが、字幕では「link caps」と聞こえ、説明はありません。<span class="badge">補足</span>TxPipe と共同で Demeter を運営している Blink Labs が候補として思い浮かびますが、動画からは確かめられないので、聞こえたまま残しています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>共同署名のスナップショットと、Foundation の署名付きスナップショットはいつ出るのか。</p>
+<p class="qa-a" data-by="「準備中」「ごく近い将来」">前者は「始める準備をしている」、後者は「ごく近い将来に提供したい」とだけ。どちらも日付はありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未回答</span>監視の費用をチェーンの手数料で賄う、という質問の後半。</p>
+<p class="qa-a" data-by="触れられず">Johnny の質問の前半（ガバナンスでの利用）には答えましたが、後半には触れないまま構想の話に移っています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>Midnight のノードが必要とする履歴の幅は、実際に何日なのか。</p>
+<p class="qa-a" data-by="「数日」「6 週間」">Santiago は「安定性ウィンドウが気になるなら数日」「6 週間前まで戻れるようにしたいならそれも」と例を挙げましたが、Midnight の要件としての数字は出ていません。MPS-0038 の文書も「観測の契約の仕様」でこれを定義するよう求めている段階です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">名前なし</span>エージェントが使っている言語モデルは何か。</p>
+<p class="qa-a" data-by="「小さなオープンなモデル」">「同じマシンでセルフホストしている小さなオープンなモデル」「CPU で動かしている」以上のことは述べられていません。ガードレールの実装方法も同様です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">「おそらく」のみ</span>SPO が Midnight に登録するステップにも Dolos は使えるのか。</p>
+<p class="qa-a" data-by="調査中">司会が「おそらく使えると思う。まだ調べている途中」と述べただけで、Santiago は答えていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">「近い将来」のみ</span>Midnight のハードフォークはいつ、何を変えるのか。</p>
+<p class="qa-a" data-by="日付も内容もなし">「近い将来にやる」と述べられ、エージェントで監視を手伝わせる構想が語られましたが、時期も中身も出ていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は Midnight Network の公式 YouTube チャンネルで公開されている動画 <a href="https://www.youtube.com/watch?v=PMXy70C1z2A">Fireside Dev Hang: Agentic Monitoring &amp; Infrastructure | September 2nd, 2026</a>（公開日 2026-09-02、58 分 35 秒）です。公開動画なので発言者は実名のまま書いています。</p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回ではスライド・ターミナル・チャットが映っていますが、このページは音声で語られた範囲だけから作っているので、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>動画公開後の結果</strong>として足したものは、問題提起 MPS-0038 のマージと、別チームの提案がクローズされたことの 2 点で、いずれも <span class="badge">補足</span> を付け、日付を添えています。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Running a Midnight node means running a <strong>huge indexing database (db-sync)</strong> on the Cardano side. This session is about dropping that assumption.<br>
+  Santiago Carmuega of TxPipe presents Dolos, a single-binary alternative, and the problem statement (MPS-0038) that asks Midnight to first specify exactly what it reads from Cardano. Then Stevan Lohja of the Midnight Foundation <strong>stops a production validator on purpose</strong> and shows his alerting agent paging him within a minute.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Midnight reads a thin slice of Cardano.</strong> UTXOs at a few addresses, pool stake, the chain nonces, the tip. “Probably measured in megabytes,” he said. Yet today that needs cardano-node, db-sync and PostgreSQL together: around 64 GB of RAM, 700 GB of disk and five to eight cores, by his account.</li>
+  <li><strong>Dolos is one binary.</strong> About 3 GB of RAM and half a core. Chain history can be kept as a window (“a day, a week, a month”) with older records dropped. An SPO can point it at a relay they already run, so no second Cardano node next to it.</li>
+  <li><strong>The ask is a boundary, not a swap.</strong> The problem statement filed the day before asks for a specified interface between the Midnight node and whatever reads Cardano, plus a conformance test suite. Only once that exists would a second proposal put Dolos through it.</li>
+  <li><strong>Three ways to sync.</strong> A TxPipe snapshot (“trust me bro,” in his words), a rebuild from a Mithril snapshot, or pulling blocks from a relay from scratch. Snapshots co-signed with Blockfrost and a third team are being prepared, he said.</li>
+  <li><strong>The alerting agent: thresholds decide, the model only writes.</strong> Five detection rules and two urgency tiers are fixed numbers; a language model turns the facts into one sentence, and a template sentence goes out if the model is down. $56 a month on GCP, with model inference at zero, he said.</li>
+  <li><strong>A production node stopped, acknowledged in one minute.</strong> One of 13 validators, the Foundation's own, was stopped at 1:18 pm Eastern; the agent posted at 1:19 and reported the recovery at 1:20 after a manual restart.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking</a></li>
+  <li><a href="#en-dbsync"><span class="n">02</span>What Midnight reads from Cardano, and what db-sync costs</a></li>
+  <li><a href="#en-dolos"><span class="n">03</span>Dolos: a “data node” in one binary</a></li>
+  <li><a href="#en-mps"><span class="n">04</span>“Define the boundary,” not “adopt Dolos”</a></li>
+  <li><a href="#en-demo"><span class="n">05</span>Demo: three ways to sync, and whom you trust</a></li>
+  <li><a href="#en-why"><span class="n">06</span>The alerting agent: what the problem was</a></li>
+  <li><a href="#en-arch"><span class="n">07</span>Architecture: thresholds decide, the model only writes</a></li>
+  <li><a href="#en-policy"><span class="n">08</span>Detection rules and cost</a></li>
+  <li><a href="#en-incident"><span class="n">09</span>Stopping a production node: one minute to acknowledgement</a></li>
+  <li><a href="#en-future"><span class="n">10</span>Where next: governance, hard forks</a></li>
+  <li><a href="#en-overall"><span class="n">11</span>The whole picture</a></li>
+  <li><a href="#en-qa"><span class="n">12</span>Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">13</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking</h2>
+<p class="deck">A Midnight Foundation host and a guest from TxPipe, a Cardano tooling company.</p>
+
+<p>One episode of “Fireside Dev Hang,” the developer-facing live stream on Midnight Network's official channel. Only first names and affiliations are given in the video; the surnames do not appear on screen or in the audio.</p>
+
+<ul>
+  <li><strong>Stevan Lohja</strong> — host, Midnight Foundation. Addressed only as “Stevan”; he refers to himself as being “on the foundation side.” The alerting agent in the second half is his own, running in production. <span class="badge">added</span> The surname comes from public profiles.</li>
+  <li><strong>Santiago Carmuega</strong> — guest, TxPipe. Introduced as “Santiago from TxPipe.” Presents and demos Dolos. <span class="badge">added</span> He is the author of the problem statement MPS-0038 discussed in the video (GitHub: scarmuega), which is how the surname is confirmed.</li>
+</ul>
+
+<p><span class="badge">added</span> TxPipe is an Argentina-based developer-tooling company for Cardano, behind the Rust libraries (Pallas), the indexer Oura and the hosting platform Demeter. In the video he introduces the company only as providing “tooling and services for blockchain developers.”</p>
+
+<p>The host frames it at the start: “DB sync is a pain in the butt sometimes, and if we can reduce the infrastructure stack of Midnight, that's worth exploring.” The first half hour is the guest's, the second half is the host's own demo.</p>
+
+
+<h2 id="en-dbsync">2. What Midnight reads from Cardano, and what db-sync costs</h2>
+<p class="deck">Megabytes are needed. Seven hundred gigabytes are provisioned.</p>
+
+<p>Santiago Carmuega starts from what a Midnight node actually reads from Cardano. Not everything that happens on Cardano, but a <strong>thin slice</strong> the consensus side needs. He names four things.</p>
+
+<ul>
+  <li>UTXOs in a particular script address</li>
+  <li>the stake that different pools have</li>
+  <li>the nonces of the chain</li>
+  <li>what the tip of the chain is</li>
+</ul>
+
+<p><span class="badge">added</span> Why Midnight reads Cardano at all is taken for granted in the video. Midnight is a Cardano partner chain, a separate chain that borrows Cardano's SPOs and stake: it uses Cardano's stake and nonces to decide who produces the next block, and reads registration data held at script addresses on Cardano. That is why the “thin slice” matters to consensus.</p>
+
+<p>What operators are asked to run today to get that slice is <strong>cardano-db-sync</strong>, which pours the whole of Cardano into PostgreSQL and, in his words, is “self-described as a general-purpose indexer.” It serves explorers, wallets and exchange analytics, and to do so it <strong>stores everything</strong>. Running it takes three things.</p>
+
+<ul>
+  <li>a PostgreSQL instance</li>
+  <li>db-sync itself, the process that keeps writing into PostgreSQL</li>
+  <li>a Cardano node co-located with it</li>
+</ul>
+
+<p>His rough total for the three: around 64 GB of RAM, 700 GB of disk, five to eight cores. On top of that, keeping it synced, keeping the parts playing together and tuning PostgreSQL is “many times a full-time job, in a sense.” The host adds his own experience: after db-sync finishes syncing you find you still have to re-index everything into Midnight's own database, and “this takes much longer than I needed to just to get the node up and running.”</p>
+
+<p>Twice, Santiago says “this is not a critique on DB sync.” It is a great piece of software; the problem is the <strong>friction</strong> between what Midnight needs and what it provides.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="The current stack (cardano-node, db-sync, PostgreSQL) next to Dolos, comparing the resources each needs">
+  <text x="340" y="24" class="d-s" text-anchor="middle">Two ways to read the same thin slice (figures are the rough ones given in the video)</text>
+
+  <rect x="16" y="40" width="316" height="196" rx="8" class="d-box"/>
+  <text x="174" y="68" class="d-t" text-anchor="middle">Today — db-sync</text>
+  <text x="174" y="94" class="d-s" text-anchor="middle">cardano-node (co-located)</text>
+  <text x="174" y="114" class="d-s" text-anchor="middle">+ cardano-db-sync</text>
+  <text x="174" y="134" class="d-s" text-anchor="middle">+ PostgreSQL (needs tuning)</text>
+  <text x="174" y="166" class="d-s" text-anchor="middle">~64 GB RAM / ~700 GB disk</text>
+  <text x="174" y="186" class="d-s" text-anchor="middle">5–8 CPU cores</text>
+  <text x="174" y="214" class="d-s" text-anchor="middle">Everything from Byron to now</text>
+
+  <rect x="348" y="40" width="316" height="196" rx="8" class="d-box-accent"/>
+  <text x="506" y="68" class="d-t" text-anchor="middle">Dolos — data node</text>
+  <text x="506" y="94" class="d-s" text-anchor="middle">One binary, embedded database</text>
+  <text x="506" y="114" class="d-s" text-anchor="middle">Points at a relay you already run</text>
+  <text x="506" y="134" class="d-s" text-anchor="middle">Blockfrost-compatible, UTxO RPC, Kupo, Ogmios</text>
+  <text x="506" y="166" class="d-s" text-anchor="middle">~3 GB RAM / half a core</text>
+  <text x="506" y="186" class="d-s" text-anchor="middle">Disk depends on the window kept</text>
+  <text x="506" y="214" class="d-s" text-anchor="middle">Old history is dropped as it goes</text>
+
+  <rect x="16" y="254" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="276" class="d-t" text-anchor="middle">Midnight reads a thin slice</text>
+  <text x="340" y="296" class="d-s" text-anchor="middle">UTXOs at known addresses, pool stake, nonces, the tip (“measured in megabytes, not gigabytes”)</text>
+</svg>
+<p class="figcap">The figures on the left are the ones Santiago Carmuega gave as “probably around”; the Dolos figures on the right are his too. <span class="badge">added</span> The problem statement MPS-0038, filed the day before, adds to the db-sync side: 700 GB of SSD with 60,000 IOPS, and about two days to sync mainnet.</p>
+</div>
+
+<p><span class="badge">added</span> The RAM figure differs by source. MPS-0038 lists both: Midnight's own docs say 32 GB, the db-sync README recommends 64 GB. In the video Santiago uses 64. Neither the video nor the document settles which reflects real operation.</p>
+
+
+<h2 id="en-dolos">3. Dolos: a “data node” in one binary</h2>
+<p class="deck">No block production, no validation. A node that only reads.</p>
+
+<p>Santiago calls Dolos a Cardano <strong>“data node,”</strong> and that term is used below.</p>
+
+<div class="term">
+<p class="term-name">Data node <small>the speaker's term</small></p>
+<p>“It's not a block producer, it's not validating blocks, it's not relaying the network.” It connects directly to the relay network, keeps its own copy of the ledger in an <strong>embedded database</strong>, and serves the query APIs from the same process. <span class="badge">added</span> A normal Cardano node both takes part in consensus and holds the data. Dolos splits off only the second role; TxPipe's own documentation states it “does not support block production and never will.”</p>
+</div>
+
+<p>Four features are called out in the video.</p>
+
+<ul>
+  <li><strong>A “rainbow of APIs” in one process.</strong> An endpoint “that looks exactly like Blockfrost,” UTxO RPC (a gRPC API for UTXO chains), a Kupo-compatible interface, and Ogmios layered on top. “You can just be querying Dolos as if it were Blockfrost.”</li>
+  <li><strong>A small footprint.</strong> About 3 GB of RAM; “you can be very comfortable with half a core.”</li>
+  <li><strong>Truncated history.</strong> No need to keep everything from Byron. You pick a window (“a couple of days,” “six weeks”), it follows the tip, and older records are dropped. “For me the most interesting part.”</li>
+  <li><strong>No node next to it.</strong> You still trust some source, but it need not be a co-located cardano-node. An SPO can point Dolos at the relay they already run.</li>
+</ul>
+
+<p><span class="badge">added</span> Kupo and Ogmios are two helper tools often paired in Cardano DApp development: Kupo is a fast index of “which UTXOs sit at this address now,” Ogmios a WebSocket bridge to the node. The host's remark that SPOs on “the old testnet” had to set up Kupo and Ogmios refers to the early Midnight validator instructions, which included both.</p>
+
+<details class="explain">
+<summary>Dense section — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<h4>What “truncating history” means</h4>
+<p>Cardano's chain runs unbroken from 2017 (the Byron era) to today, and db-sync indexes all of it, hence 700 GB. Dolos lets you <strong>keep a fixed width, say the last day or the last six weeks, and delete what falls behind it</strong>. The video calls this a sliding window: the window moves with the tip.</p>
+<h4>Why a few days is enough for Midnight</h4>
+<p>“A couple of days if you care about the stability window,” he says. Cardano treats blocks older than a certain depth as settled, meaning they will not be rolled back; that depth is the stability window. Midnight wants recent, settled state, so as long as the window covers that depth, anything older need not be readable.</p>
+<h4>An everyday comparison</h4>
+<p>Keeping every back issue of a newspaper (db-sync) versus keeping this week's and recycling the rest (Dolos). If all you read is today's paper, the second is enough.</p>
+<h4>What the video does not say</h4>
+<p>The minimum width a Midnight node actually needs, and where “six weeks” comes from, are not explained. “I know Midnight does” care about the stability window is the whole of it, and he moves on.</p>
+</div>
+</details>
+
+<p>Both speakers stress the use is not limited to Midnight. The host points out how many developers lean on the Blockfrost API; Santiago says “several teams” expose the Blockfrost API embedded in Dolos and “their production mainnet endpoints just hit” it. There are reasons to pay a service provider — high availability, edge distribution, dynamic scaling — but if you want to own your infrastructure and your use case permits, Dolos is “a really interesting alternative.” It is open source and takes contributions from multiple teams, he adds.</p>
+
+
+<h2 id="en-mps">4. “Define the boundary,” not “adopt Dolos”</h2>
+<p class="deck">A problem statement contains no solution. It asks for a spec and a conformance suite.</p>
+
+<p>The host brings up the <strong>problem statement</strong> TxPipe filed in Midnight's improvement-proposal repository. Midnight has a Midnight Improvement Proposal (MIP) process, and a problem statement (Midnight Problem Statement, MPS) comes first.</p>
+
+<div class="term">
+<p class="term-name">MPS and MIP <small>terms used in the video</small></p>
+<p>In Santiago's description, <strong>an MPS states “what you think is improvable, without actually saying how to improve it.”</strong> Once that is accepted, a MIP proposes the how. He adds a disclaimer: “I'm new to the MPS and MIPs process, this is my first one.” <span class="badge">added</span> Cardano's CIP process has the same two-stage shape, problem statement (CPS) then proposal (CIP), and Midnight's process follows it.</p>
+</div>
+
+<p>Both agree the content of the statement is what the first half of the video said. But <strong>it does not ask for Dolos</strong>. “On the contrary, in the problem statement we are not talking about a solution.” It asks for two things.</p>
+
+<ul>
+  <li>“a specific contract, a well-defined spec that describes what the interface is between the Midnight node and whatever the Cardano observer is”</li>
+  <li>“a suite of conformance tests that is able to check that whatever observer backend you have complies with everything that is required”</li>
+</ul>
+
+<p>With that boundary in place, “maybe this SPO instead of running DB sync wants to run this other solution. It could be Dolos, but maybe there is also other backends that would be suitable.” The aim is that vendors can come in with their own backends. Only after the statement is approved — “it's still in draft” — would TxPipe submit the second half, an improvement proposal asking to try Dolos through that interface and committing to pass the conformance tests.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="The two stages: problem statement MPS-0038 asking for an interface spec and conformance tests, followed by a planned improvement proposal to put Dolos through it">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="300" height="118" rx="8" class="d-box-accent"/>
+  <text x="166" y="48" class="d-t" text-anchor="middle">① Problem statement MPS-0038</text>
+  <text x="166" y="74" class="d-s" text-anchor="middle">Filed the day before, merged on the day</text>
+  <text x="166" y="94" class="d-s" text-anchor="middle">States only what is wrong</text>
+  <text x="166" y="114" class="d-s" text-anchor="middle">No solution proposed</text>
+
+  <line x1="320" y1="79" x2="356" y2="79" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="364" y="20" width="300" height="118" rx="8" class="d-box"/>
+  <text x="514" y="48" class="d-t" text-anchor="middle">What it asks for</text>
+  <text x="514" y="74" class="d-s" text-anchor="middle">Midnight node ↔ whatever reads Cardano</text>
+  <text x="514" y="94" class="d-s" text-anchor="middle">a specified interface at that boundary</text>
+  <text x="514" y="114" class="d-s" text-anchor="middle">+ a conformance test suite</text>
+
+  <line x1="514" y1="142" x2="514" y2="170" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="16" y="176" width="648" height="72" rx="7" class="d-box-plain"/>
+  <text x="340" y="204" class="d-t" text-anchor="middle">② Improvement proposal (MIP) — “what if we try Dolos instead of DB sync”</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">To be filed once ① is approved, as a plan. The boundary is meant to admit other backends too</text>
+</svg>
+<p class="figcap">Santiago Carmuega's explanation laid out as two stages. As he says, it is “still in draft”: being merged means it is on the table, not that it is approved.</p>
+</div>
+
+<p><span class="badge">added</span> The statement is MPS-0038, “Operational Cost of Cardano Observation,” merged into Midnight's proposals repository on 2 September 2026, the day of the video, with status Draft. The document carries figures the video does not: Midnight's queries touch 11 of db-sync's roughly 80 tables. Its three requested deliverables — an observation-contract specification, a pluggable main-chain data source in midnight-node, and a conformance test suite — match what is said in the video.</p>
+
+<p><span class="badge">added</span> One post-publication note. The same repository had held, since March 2026, a separate team's proposal to replace db-sync with a Rust node called Acropolis; it was closed on 9 September 2026 with commit-signature checks still unresolved. The video does not mention it. It shows the wish for a lighter db-sync is not TxPipe's alone.</p>
+
+
+<h2 id="en-demo">5. Demo: three ways to sync, and whom you trust</h2>
+<p class="deck">The interactive setup takes a minute. The heavy part is where the first data comes from.</p>
+
+<p>Santiago shares his screen and walks through Dolos's interactive setup. It asks which network (mainnet), whether to supply your own genesis files, which relay to pull from (Demeter's or the Cardano Foundation's), how much history to keep (everything, a day, a week, a month), which APIs to expose (UTxO RPC, Blockfrost, Kupo), and whether to act as a relay for other nodes. The first run fails because the folder already holds an instance; he switches folders and starts over.</p>
+
+<p>The last question, <strong>where to sync from</strong>, is what he calls “a really heavy aspect,” since syncing “can take days, multiple days.” Three options are shown.</p>
+
+<ul>
+  <li><strong>A TxPipe snapshot.</strong> Download the current state in a few minutes. He calls it “trust me bro,” “because you need to trust us that that's the data.”</li>
+  <li><strong>A Mithril snapshot.</strong> “If you don't want to trust us.” But Mithril snapshots are “very coupled with the internal structure of the Cardano node,” so Dolos cannot use one directly and has to reprocess the blocks from scratch. “It just takes a little bit more.”</li>
+  <li><strong>The upstream peer.</strong> Pull blocks from a relay “as if you were a node.”</li>
+</ul>
+
+<p>His summary: “you can choose your risk profile and the snapshot that makes most sense for you.”</p>
+
+<p>The host then makes the case for Mithril. The Foundation deals with institutions; not quite “legally required,” but to keep certain IT certifications and compliance, “the trust minimized snapshot is a big deal,” and partners ask “where's the snapshot coming from, and who?” He adds that the Foundation wants to provide signed snapshots for the Midnight node “in the very near future.”</p>
+
+<p>Santiago replies that TxPipe is working with the Blockfrost team (who “are also using Dolos for their own platforms”) and a third team to <strong>sign snapshots in a shared way</strong>: “if you trust any of those three, then you're good to go.” The third team's name is heard as “link caps” in the captions and is not explained in the video.</p>
+
+<details class="explain">
+<summary>A fair question — is “trust me bro” acceptable for a production node?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<p><strong>The question is fair, and Santiago's nickname for the option is there precisely so nobody misses it.</strong> A snapshot is a copy of someone else's finished sync. If that someone shipped wrong or tampered data, the recipient cannot tell.</p>
+<h4>The three entry points trust different parties</h4>
+<ul>
+  <li>TxPipe snapshot — trust TxPipe. Fast</li>
+  <li>Co-signed snapshot (in preparation) — trust any one of three teams. A single company tampering alone becomes hard</li>
+  <li>Mithril — trust a certificate signed by Cardano's SPOs with their stake. No single company to trust, but Dolos must reprocess</li>
+  <li>From a relay — trust your own relay. Slowest</li>
+</ul>
+<h4>How to tell them apart</h4>
+<p>Ask whose signature vouches for the snapshot. “The one company that published it” is trust-me-bro; “several companies” is co-signing; “stake on the chain” is Mithril.</p>
+<h4>What the video gives, and what it does not</h4>
+<p>Co-signing is “in the process of starting,” with no date. How long a Mithril-based rebuild takes for Dolos is only “a little bit more,” with no number. <span class="badge">added</span> TxPipe's documentation puts a Mithril-based mainnet initialisation at “under 20 hours” (as of September 2026).</p>
+</div>
+</details>
+
+<p>Finally, the host notes that SPOs joining Midnight also go through a <strong>registration step</strong>, and that Dolos “can probably be used for that.” He is “still diving into it.”</p>
+
+
+<h2 id="en-why">6. The alerting agent: what the problem was</h2>
+<p class="deck">Nothing was broken. Nobody was watching.</p>
+
+<p>The second half is Stevan Lohja following up on the alerting agent he described at the last Fireside Dev Hang. Then it was a plan; “it's now in production.”</p>
+
+<p>It starts from one incident. Validator alerting “used to live in a browser tab,” Grafana and the like, posting to chat, fine at 11 in the morning “but useless at 3 a.m. on a Sunday.” On a test network, <strong>a finality stall went unnoticed</strong> because the last person with the telemetry open had closed their laptop and gone to bed. “Nothing was broken, but nobody was watching. And that's a problem.”</p>
+
+<p>He lists four problems, “and only one of them is technical.”</p>
+
+<ul>
+  <li>Alerting only ran while someone had the metrics open</li>
+  <li>Off-hours cover was a human checking a page every 30 minutes or so; not everyone checks all the time</li>
+  <li>Midnight is currently a federated network with many parties to coordinate</li>
+  <li>Seeing a node name in telemetry is not the same as <strong>knowing who to call</strong></li>
+</ul>
+
+<p>He puts a number on the fourth: Midnight has 13 validators run by different organisations, “and the name on the screen doesn't tell you whose phone should ring.” Querying the blockchain will not tell you who can acknowledge and resolve a problem. <span class="badge">added</span> “13” is his figure as of 2 September 2026; the operating organisations are not named in the video.</p>
+
+
+<h2 id="en-arch">7. Architecture: thresholds decide, the model only writes</h2>
+<p class="deck">There is a language model in the loop, but it never decides whether an alert fires.</p>
+
+<p>What he built is “basically just a headless service.” It subscribes to the public telemetry feed, systemd restarts it if it dies, and it refetches its own secrets on every boot. The two things he says “matter more than the rest”:</p>
+
+<ul>
+  <li><strong>Detection is deterministic.</strong> “Fixed thresholds decide whether an alert fires and how urgent it is. And there's a language model in this system, and I'll come to it, but it never makes that decision.”</li>
+  <li><strong>The alert is factual and addressed.</strong> It names the validator, names the operator responsible, links to runbooks, mentions the operator and copies someone from the Foundation. It does not guess: no cause, no suggested fix. “This validator stopped reporting is a fact; their server crashed is a story. And if you put stories in alerts, people stop believing them.”</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 318" role="img" aria-label="The agent's six steps (feed, detection, roster, model, guardrails, send) and the bypass that sends a template sentence when the model is down">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">① Feed</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">Subscribes to public telemetry</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">The only way in</text>
+
+  <line x1="220" y1="63" x2="236" y2="63" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="240" y="20" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">② Detection</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">Fixed thresholds</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">Decides if it fires and how urgent</text>
+
+  <line x1="444" y1="63" x2="460" y2="63" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="464" y="20" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">③ Roster</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">Validator name → a person</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">Whose phone should ring</text>
+
+  <line x1="564" y1="110" x2="564" y2="136" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="464" y="140" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="168" class="d-t" text-anchor="middle">④ Model</text>
+  <text x="564" y="192" class="d-s" text-anchor="middle">Facts in, one human sentence out</text>
+  <text x="564" y="212" class="d-s" text-anchor="middle">Small open model on the same VM</text>
+
+  <line x1="460" y1="183" x2="444" y2="183" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="240" y="140" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="340" y="168" class="d-t" text-anchor="middle">⑤ Guardrails</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">Reject diagnosis or remediation</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">Reject mentions and injection</text>
+
+  <line x1="236" y1="183" x2="220" y2="183" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="16" y="140" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="116" y="168" class="d-t" text-anchor="middle">⑥ Send</text>
+  <text x="116" y="192" class="d-s" text-anchor="middle">Post to chat, mention the operator</text>
+  <text x="116" y="212" class="d-s" text-anchor="middle">Phone notification</text>
+
+  <rect x="16" y="246" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="270" class="d-t" text-anchor="middle">Model slow, wrong or down → a template sentence goes out</text>
+  <text x="340" y="290" class="d-s" text-anchor="middle">“The alert is never blocked on the model.” The model improves the experience; nothing depends on it</text>
+</svg>
+<p class="figcap">The flow Stevan Lohja described as “kind of six steps.” Slides are on screen in the video, but this figure is built from the spoken explanation, not copied from a slide.</p>
+</div>
+
+<p>The model is “just a small open model, self-hosted on the same box”; it “gets the facts and writes one human sentence or so.” Guardrails “reject anything that reads like a diagnosis or remediation instruction,” and reject mentions and injection attempts. If the model is slow, wrong or down, “the alert goes out with a template sentence instead.” His general point: “if your LLM goes down, you should still be operational. I hope it's like a standard practice philosophy.”</p>
+
+<p>Operationally: one small VM with no inbound path at all, status pages behind loopback, secrets fetched at boot so they are never on persistent disk or in the Terraform state file, and a container image pinned by content hash “so a reboot can't quietly change what's running.”</p>
+
+
+<h2 id="en-policy">8. Detection rules and cost</h2>
+<p class="deck">Five rules, two tiers, $56 a month.</p>
+
+<p>There are five detection rules. He frames them as the answer he looks for when interviewing SRE and DevOps candidates about “five things that you're looking out for.”</p>
+
+<ul>
+  <li><strong>Absent</strong> — a roster validator has vanished. No debounce at all, “because a roster validator vanishing is never normal”</li>
+  <li><strong>Finality gap</strong> — fires above three blocks, but only after two consecutive cycles</li>
+  <li><strong>Syncing</strong></li>
+  <li><strong>Fork</strong></li>
+  <li><strong>Low peers</strong></li>
+</ul>
+
+<p>The last three are named only; no thresholds are given. The one number explained is the finality gap: one- to two-block reorganisations are “very normal for Substrate-based chains, which is what Midnight is,” and above three “is usually cause for concern.” <span class="badge">added</span> The video itself states the Midnight node is built with the Substrate SDK, the Polkadot-lineage blockchain framework.</p>
+
+<p>Urgency has two tiers, “not five severity numbers.” “Page now” means consensus is at risk and someone gets woken up. “Notify” is something to look at in the morning, such as a validator missing a peer or two but still running. <span class="badge">added</span> The captions have a gap of about 75 seconds, 38:44 to 40:00, in the middle of this explanation.</p>
+
+<p>Cost is given as <strong>$56 a month</strong>, priced on GCP. The line he wants noticed is “model inference, which is zero,” because the model runs on CPU already paid for. Most of the bill is idle capacity kept so “your inference has somewhere to run.” “To be honest about it, a hosted model would be technically cents a month, and a paging platform starts around dollars per user,” so “maybe my solution is not the cheapest.” What it is, in his framing, is the version where the operational data and the operators <strong>“never leave our own projects.”</strong></p>
+
+<details class="explain">
+<summary>A fair question — if thresholds make every decision, why have a language model at all?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<p><strong>The question is fair, and Stevan says as much: “the LLM actually just provides a better experience.”</strong> A design that falls back to a template sentence when the model is down has, by definition, made the model optional.</p>
+<h4>Why it is there anyway (as far as the video shows)</h4>
+<ul>
+  <li>“Writes one human sentence” — turning a row of numbers into something an operator can read half-asleep</li>
+  <li>A door to “more capabilities” — the later ambitions (governance, hard-fork monitoring) would give the model more to do</li>
+  <li>It costs nothing extra — self-hosted, inference at zero; there is no bill to justify</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Switch the model off and see whether alerts still arrive. If they do, the decision sits in the thresholds; if not, it depends on the model. By his account, the former.</p>
+<h4>What the video does not say</h4>
+<p>Neither the model's name nor its size is given, only “small open model” on CPU. How the guardrails actually judge a sentence, whether by pattern matching or another model, is not described either.</p>
+</div>
+</details>
+
+
+<h2 id="en-incident">9. Stopping a production node: one minute to acknowledgement</h2>
+<p class="deck">One of 13 nodes stopped, and the screen shared until the phone buzzed.</p>
+
+<div class="term">
+<p class="term-name">Mean time to acknowledgement <small>the speaker's term</small></p>
+<p>The time from a problem occurring to someone acknowledging “there is a problem here.” He cites the range you can Google: 5 to 15 minutes “for high criticality stuff,” 30 minutes to two hours for medium, five hours or more for low. His own view: <strong>“I like to have everything acknowledged within the minute.”</strong> <span class="badge">added</span> This is distinct from mean time to resolution. The experiment measured the former; the resolution here was a manual restart.</p>
+</div>
+
+<p>“I'm going to be naughty,” he says, and stops one of the 13 nodes on chain, the Foundation's own, with systemctl. The first attempt does nothing because he forgot sudo; he runs it again. The clock reads 1:18 pm Eastern.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 232" role="img" aria-label="Timeline: node stopped at 1:18, detected and alerted at 1:19, recovery reported at 1:20 after a manual restart">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <line x1="40" y1="150" x2="648" y2="150" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="16" y="30" width="208" height="90" rx="8" class="d-box-warn"/>
+  <text x="120" y="56" class="d-t" text-anchor="middle">1:18 stopped</text>
+  <text x="120" y="80" class="d-s" text-anchor="middle">The Foundation's node, one of 13</text>
+  <text x="120" y="100" class="d-s" text-anchor="middle">systemctl stop (retried with sudo)</text>
+  <line x1="120" y1="124" x2="120" y2="146" class="d-line"/>
+
+  <rect x="236" y="30" width="208" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="56" class="d-t" text-anchor="middle">1:19 detected, alerted</text>
+  <text x="340" y="80" class="d-s" text-anchor="middle">Phone notification, chat post</text>
+  <text x="340" y="100" class="d-s" text-anchor="middle">Two people tagged, runbook linked</text>
+  <line x1="340" y1="124" x2="340" y2="146" class="d-line"/>
+
+  <rect x="456" y="30" width="208" height="90" rx="8" class="d-box"/>
+  <text x="560" y="56" class="d-t" text-anchor="middle">1:20 recovery reported</text>
+  <text x="560" y="80" class="d-s" text-anchor="middle">Restarted by hand</text>
+  <text x="560" y="100" class="d-s" text-anchor="middle">“Resolved” appended automatically</text>
+  <line x1="560" y1="124" x2="560" y2="146" class="d-line"/>
+
+  <text x="120" y="176" class="d-s" text-anchor="middle">A human stops it</text>
+  <text x="340" y="176" class="d-s" text-anchor="middle">The agent acknowledges (~1 min)</text>
+  <text x="560" y="176" class="d-s" text-anchor="middle">A human fixes it, the agent confirms</text>
+  <text x="340" y="212" class="d-t" text-anchor="middle">“Our mean time to acknowledgement is one minute” — times as read out in the video</text>
+</svg>
+<p class="figcap">All times are what Stevan Lohja read off his screen, US Eastern. He read the alert aloud as “consensus alert on maintenance is one, which is critical. The Foundation node was XYZ blocks behind network,” leaving the block count as “XYZ.”</p>
+</div>
+
+<p>The notification reached his phone; the chat channel showed “a critical event where the validator is down,” tagged him and one other person, and referenced the runbook. After the restart the thread gained “the critical incident was actually resolved,” timestamped 1:20. “One minute to acknowledgement, and the next minute I basically restarted the node.”</p>
+
+<p>The agent has been in production “two weeks now” and has fired a few times, “not for anything crazy, some planned maintenance somewhere.” The benefit he names is not a metric but <strong>less anxiety</strong>: knowing “my phone's going to blow up every time it needs to,” so he need not keep watching Grafana.</p>
+
+<p>He closes the segment with a plan to publish the setup as Terraform templates with agent tooling included, calling this “the early stage of that stuff.” No timing is given.</p>
+
+
+<h2 id="en-future">10. Where next: governance, hard forks</h2>
+<p class="deck">Once alerting is solid, point the same agent at wider things. All of it as ideas.</p>
+
+<p>Prompted by the chat question (next section), Stevan sketches where the agent could go. Everything is “I think that'd be cool” or “theoretically,” not a decision.</p>
+
+<ul>
+  <li><strong>Cardano governance.</strong> An agent that notices retired stake pools or inactive DReps and does “a wellness check”: “you're a retired pool, you're not doing anything, you have a lot of delegation, how's everything going?” Or watches governance proposals against their thresholds and nudges pools that have not voted. “Probably quite trivial”; the hard part is contacting the right people, and <strong>“coordination data”</strong> is what matters most.</li>
+  <li><strong>Hard-fork monitoring.</strong> Midnight will hard fork “in the near future,” he says. With a large validator set it is hard to get everyone updated. When he ran hard forks in the Ethereum Classic ecosystem, they ran both the non-forked and forked chains in parallel to see who had not updated; an agent could spin that up with Terraform.</li>
+  <li><strong>More raw node data.</strong> Scale the model up for more context and give it access to more information from the node as “the next phase.”</li>
+</ul>
+
+<p><span class="badge">added</span> The hard fork is dated only as “in the near future,” and what it would change is not mentioned in the video.</p>
+
+
+<h2 id="en-overall">11. The whole picture</h2>
+<p class="deck">Two topics that look unrelated, both about the burden on the people who run validators.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="The first half (a lighter way to read Cardano) and the second half (automating the watching) both reducing the burden on validator operators">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="166" y="24" class="d-t" text-anchor="middle">First half — reading Cardano, lighter</text>
+  <text x="514" y="24" class="d-t" text-anchor="middle">Second half — watching, automated</text>
+
+  <rect x="16" y="40" width="300" height="60" rx="8" class="d-box"/>
+  <text x="166" y="64" class="d-t" text-anchor="middle">Only a thin slice is read</text>
+  <text x="166" y="86" class="d-s" text-anchor="middle">Yet the full db-sync stack is required</text>
+
+  <line x1="166" y1="104" x2="166" y2="126" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="16" y="130" width="300" height="60" rx="8" class="d-box-accent"/>
+  <text x="166" y="154" class="d-t" text-anchor="middle">Specify the boundary (MPS-0038)</text>
+  <text x="166" y="176" class="d-s" text-anchor="middle">Interface + conformance tests</text>
+
+  <line x1="166" y1="194" x2="166" y2="216" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="16" y="220" width="300" height="60" rx="8" class="d-box"/>
+  <text x="166" y="244" class="d-t" text-anchor="middle">Dolos and others become pluggable</text>
+  <text x="166" y="266" class="d-s" text-anchor="middle">One binary, ~3 GB, an existing relay</text>
+
+  <rect x="364" y="40" width="300" height="60" rx="8" class="d-box"/>
+  <text x="514" y="64" class="d-t" text-anchor="middle">Nobody is watching at 3 a.m.</text>
+  <text x="514" y="86" class="d-s" text-anchor="middle">A node name does not say whom to call</text>
+
+  <line x1="514" y1="104" x2="514" y2="126" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="364" y="130" width="300" height="60" rx="8" class="d-box-accent"/>
+  <text x="514" y="154" class="d-t" text-anchor="middle">Threshold detection, addressed alerts</text>
+  <text x="514" y="176" class="d-s" text-anchor="middle">The model writes one line; template if down</text>
+
+  <line x1="514" y1="194" x2="514" y2="216" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="364" y="220" width="300" height="60" rx="8" class="d-box"/>
+  <text x="514" y="244" class="d-t" text-anchor="middle">Stopped in production, seen in 1 min</text>
+  <text x="514" y="266" class="d-s" text-anchor="middle">$56 a month, zero inference cost</text>
+
+  <rect x="16" y="296" width="648" height="28" rx="7" class="d-box-plain"/>
+  <text x="340" y="315" class="d-s" text-anchor="middle">Both lower the cost of an SPO or operator running a Midnight validator (this pairing is our reading)</text>
+</svg>
+<p class="figcap">Placing the two halves side by side is our reading; nothing in the video links them explicitly. <span class="badge">added</span> The host does say, in the first half, that “it's a lot easier to resource three gigabytes of RAM than 64” for a would-be validator, and in the second, that behind the 13 validators “there's human operators,” so both halves are told from the operator's side.</p>
+</div>
+
+
+<h2 id="en-qa">12. Q&amp;A</h2>
+<p class="deck">One question from the chat. None came for the guest.</p>
+
+<p>At the end of Santiago's segment the host asked whether anyone in the chat had questions; “there's no direct questions,” and the session moved on. One chat question was read out in the second half.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Johnny (chat)</span>Couldn't this observability be used by governance and elected individuals whose job it is to monitor the Midnight chain, with the overhead paid from fees by chain transaction users?</p>
+<p class="qa-a" data-by="Stevan Lohja, first half only">“I think the observability can definitely be used for governance purposes,” followed by the long sketch of Cardano use cases in the previous section: checking in on retired pools, nudging non-voters, watching proposal thresholds.<br><strong>The second half of the question, funding it from fees, is not addressed.</strong> The only cost remarks are the “$56 a month” and “I don't even think it would cost that much to do this on Cardano.”</p>
+</div>
+
+
+<h2 id="en-pending">13. Left unanswered</h2>
+<p class="deck">Names dropped without explanation, and things dated only “in the near future.”</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Name only</span>Who is the third team co-signing snapshots?</p>
+<p class="qa-a" data-by="Not identified">Santiago names the Blockfrost team and “another team that works on the Cardano ecosystem”; the captions render the name as “link caps,” and it is not explained. <span class="badge">added</span> Blink Labs, which runs Demeter jointly with TxPipe, is a plausible candidate, but the video does not confirm it, so the name is left as heard.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When do the co-signed snapshots, and the Foundation's signed snapshots, arrive?</p>
+<p class="qa-a" data-by="“Starting,” “very near future”">The first is “in the process of starting,” the second something the Foundation wants “in the very near future.” No dates for either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not answered</span>The second half of the chat question: paying for monitoring out of chain fees.</p>
+<p class="qa-a" data-by="Not addressed">The governance part was answered; the funding part was not, and the answer moved on to future ideas.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No figure</span>How much history does a Midnight node actually need?</p>
+<p class="qa-a" data-by="“A couple of days,” “six weeks”">Santiago gives examples but no requirement. MPS-0038 asks for exactly this to be defined in an “observation contract specification,” so it is still open in the document as well.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No name</span>Which language model does the agent use?</p>
+<p class="qa-a" data-by="“A small open model”">Nothing beyond “a small open model, self-hosted on the same box,” on CPU. The guardrail implementation is not described either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">“Probably”</span>Can Dolos also serve the SPO registration step?</p>
+<p class="qa-a" data-by="Being looked into">The host says it “can probably be used for that” and that he is “still diving into it.” Santiago does not answer.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">“Near future”</span>When is Midnight's hard fork, and what does it change?</p>
+<p class="qa-a" data-by="No date, no scope">“We will in the near future,” with the idea of having the agent help monitor it. Neither timing nor content is given.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is <a href="https://www.youtube.com/watch?v=PMXy70C1z2A">Fireside Dev Hang: Agentic Monitoring &amp; Infrastructure | September 2nd, 2026</a>, published on Midnight Network's official YouTube channel on 2026-09-02, 58 min 35 s. It is a public video, so speakers are named.</p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken aloud in the video. <span class="badge">on screen</span> would mark things shown but not said; slides, a terminal and a chat channel appear in this video, but this page is built only from what was spoken, so the mark is not used here. <span class="badge">added</span> marks explanations we wrote; they are not in the video.</p>
+<p><strong>Post-publication outcomes</strong> added here are two: the merge of MPS-0038, and the closing of another team's proposal. Both carry <span class="badge">added</span> and a date.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — Midnight · <a href="https://www.youtube.com/watch?v=PMXy70C1z2A">動画を見る</a></span><span class="l-en">Cardano note — Midnight · <a href="https://www.youtube.com/watch?v=PMXy70C1z2A">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>

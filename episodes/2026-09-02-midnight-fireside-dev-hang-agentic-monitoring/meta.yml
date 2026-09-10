@@ -1,0 +1,35 @@
+slug: 2026-09-02-midnight-fireside-dev-hang-agentic-monitoring
+title: Fireside Dev Hang — Cardano を読む側を軽くし、ネットワークを見張る側を寝かせない（Dolos と監視エージェント）
+title_en: "Fireside Dev Hang: Agentic Monitoring & Infrastructure | September 2nd, 2026"
+date: 2026-09-02            # 動画の公開日。収録もライブ配信で同日（動画内で「9 月 2 日水曜日」と発言）
+series: midnight            # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: Midnight           # YouTube 上の表示名は「Midnight」（@midnight.network）。依頼者の指定は「Midnight Network（公式）」
+official_channel: true      # 依頼者の指定に加え、oEmbed の author_url が https://www.youtube.com/@midnight.network であることを確認
+duration: "58:35"           # 字幕の最終ブロックの終了時刻から。動画の実尺は要確認
+video: https://www.youtube.com/watch?v=PMXy70C1z2A
+
+speakers:
+  - Stevan Lohja            # 司会。Midnight Foundation。動画では「Stevan」とだけ呼ばれ、「Foundation の側で」と自称。姓は公開プロフィールから
+  - Santiago Carmuega       # ゲスト。TxPipe。動画では「TxPipe の Santiago」。MPS-0038 の著者（GitHub: scarmuega）で姓を確認
+speaker_labels: inferred    # 字幕に話者ラベルはない。話者の交代と自己紹介・呼びかけから割り当て
+timestamps: srt             # .srt の時刻を .turn-time に使用
+proper_nouns_corrected_in_docs: true
+
+# 原本について
+# - 461 ブロック。CRLF。303 番以降は各行の先頭に ": " が付いている（書式の癖。docs/ 側では落とした）
+# - 38:44（278 番）から 40:00（279 番）まで約 75 秒の欠け。アラートの 2 段階の説明の途中
+# - 171 番は 1 ブロックの中で話者が替わる（"And who?" まで Stevan、"Yeah, exactly." から Santiago）
+
+# 画面について
+# - スライド、ターミナル（Dolos の対話式セットアップ、systemctl）、チャットのチャンネル、スマホの通知が映る
+# - 字幕だけを受領しており画面は確認していないので、まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用
+# - Confidential 表示の資料が映ったかどうかは未確認（字幕からは判断できない）
+
+# 裏取り（2026-09-10 時点）
+# - MPS-0038 "Operational Cost of Cardano Observation": midnightntwrk/midnight-improvement-proposals PR #296、
+#   著者 scarmuega、2026-09-02 にオープン・同日マージ（nstanford5）。ステータス Draft
+# - 同リポジトリ PR #69（Acropolis で db-sync を置き換える MIP、2026-03-30 オープン）は 2026-09-09 にクローズ。動画では言及なし
+# - Dolos の公式ドキュメント: https://docs.txpipe.io/dolos （Mithril からの初期化「20 時間未満」の記載）
