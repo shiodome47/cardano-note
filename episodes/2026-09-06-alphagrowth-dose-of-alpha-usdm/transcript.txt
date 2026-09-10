@@ -1,0 +1,939 @@
+Why Real Stablecoins Don't Pay Yield | Interview w James & Marco at USDM | Dose of Alpha - Ep. 16
+Time	Subtitle	Machine Translation
+0s	you think about stable coins, there's a handful of ways you can build a stable	ステーブルコインについて考えると、ス テーブルコインを構築する方法はいくつかあります
+3s	coin coins. Some are not stable coins in my opinion. They're more yield coins.	。 私の意見では、中には安定コインとは言えないものもある。 それらは利回りの高いコインです。 私が
+6s	I'll set. But I was always interested in the fiat backstable coins. I thought	設定します。 しかし、私は常に法定通貨の裏金に興味を持っていた 。
+10s	that was the most straightforward and safest use case.	それが最も単純で 安全な使用例だと考えました。
+13s	>> Took me 3 days to answer. It's the first time I actually thought about something	回答するのに3日かかりました。
+15s	ahead of time. Uh really for the most part. And um I got three people telling	事前に何かをちゃんと考えたのは、これが初めてだ。 ええ、ほとんどの場合そうですね 。 そして、３人から
+20s	me, "Are you sure?" Cuz it's real money. You got to produce real, you know, uh	「本当に大丈夫？」と聞かれました。 だって、それは本物のお金だから。 実際 …に
+24s	value coming in. People got to invest in you. Because who wants to put all of	価値を生み出す必要がある。人々があなたに投資するには、それが必要だ 。 だって、誰が
+28s	their asset movement from their treasury on chain in a public fashion? That's not	自分の資金運用におけるすべての資産の動きを、 公の場で記録に残したいと思うだろうか？ それは
+32s	something you want to do. If you're running a small private company or a	あなたがやりたいことではありません。 あなたが 小規模な非公開企業を経営している場合でも、
+34s	large public company, you don't want everyone to see where what your money's	大規模な公開企業を経営している場合でも、 資金がどこでどのように使われているかを皆に知られたくないでしょう
+37s	doing and how it's moving. I I don't want to be doing that if I'm running a	。 もし私が
+39s	company. >> Today on a Dose of Alpha, we have very	会社を経営する立場なら、そんなことはしたくない。 今日の「ドーズ・オブ・アルファ」には、
+42s	special guests from USDM. We have James and Marco. Guys, welcome.	USDMから特別なゲストをお迎えしています。 ジェームズ とマルコがいます。 皆さん、ようこそ。
+46s	>> I've got no audio. I just >> I knew it was going to drop on me.	音声がありません。 とにかく、それが 自分に降りかかってくるだろうと分かっていたんです。 はい
+49s	>> All right, that's okay. We can restart. [laughter]	、大丈夫です。 再開できます。 [笑い]
+52s	>> As soon as it went live, James has totally dropped. Typical. I told you	公開された途端、ジェームズは 完全に落ち込んだ。 典型的な。 ほら、言った通りだろ
+55s	that was going to happen. >> Leave a little bit of hanging.	。 少しだけ余計なことを残しておく。
+57s	>> We're not live live, are we? >> Yeah, we are.	生放送じゃないですよね？ ええ、そうです。
+58s	>> No, like live streaming. >> Oh, no	いいえ、ライブストリーミングのようなものです。 ああ、まったくだ。
+1:02	[laughter] >> I thought this was a pre-recorded one.	[笑い] これは事前に録音されたものだと思っていました。
+1:05	All right, Marco, how you doing, man? >> I'm good. How are you? I don't think	よし、マルコ、調子はどうだい？ 私は大丈夫です。 元気ですか？ 私たちはまだ釣り合っていないと思います
+1:07	we've matched. It's nice to meet you. >> It is nice to meet you. Tell us a little	。 お会い出来て嬉しいです。 お会いできて嬉しいです。
+1:10	bit about USDM. I know you guys are like one of the first uh stable coins on	USDMについて少し教えてください。 皆さんは
+1:13	Cardano. Like, how did you get here? What did you do? What's going on with	Cardanoにおける最初のステーブルコインの一つだと知っています。 えっと、どうやってここに来たの？ あなたは何をしましたか？
+1:16	this? >> Sure. And if it helps, I'll give you	これは一体どういうこと？ もちろん。 もし参考になるようでしたら、私の経歴
+1:18	some background on myself because I don't work as directly at for USDM as	について少しお話しします。というのも、私は
+1:23	James does. I actually sit on the board of directors there. I've um been in	ジェームズほどUSDMに直接勤務しているわけではないからです。 実は、私は そこの取締役会のメンバーなんです。 私は、
+1:27	crypto for I don't know since 2020 give or take. COVID hit, got bored and delved	2020年頃から仮想通貨に関わっています 。 コロナ禍が始まって暇を持て余し、本格的に仕事に没頭しました
+1:32	right in. I've been all over a lot of different chains just doing more	。これまで様々な チェーン店を渡り歩き、
+1:36	research and advisory work, I'd say. So, some EVM stuff, some SVM stuff, and	調査やアドバイス業務に力を入れてきたと言えるでしょう。 つまり、 EVM関連のもの、SVM関連のもの、そして
+1:40	definitely stuff in the Cardano ecosystem. And through some of the work	間違いなくCardano エコシステム関連のものですね。 そして、
+1:44	I was doing with Min Swap, kind of started talking to Jim over here, who's	私がMin Swapで行っていた仕事を通して、今は亡き ジムと話をするようになったんです
+1:49	no longer with us. Uh, [laughter] and you know, actually the uh, founder	。 ええと、[笑い] 実は …、
+1:54	who passed a couple years ago, Matt, I started talking to him as we were	数年前に亡くなった創設者のマットとは、
+1:57	launching USDM. He's trying to do some background cuz you think about stable	USDMを立ち上げるときに話をし始めたんです。 彼はス テーブルコインについて考えると、背景知識を身につけようとしているんだ
+2:00	coins. There's a handful of ways you can build a stable coin and we could call	。 ステーブルコインを構築する方法はいくつかあり、
+2:03	them stable coins. Some are not stable coins in my opinion. They're more yield	それらをステーブルコインと呼ぶことができます。 私の意見では、中には安定コインとは言えないものもある。 これらは利回りの高い
+2:07	coins. Uh, I I'll say but um, I was always interested in the fiat back	コインです。 ええと、そうですね、私は以前から法定通貨に裏付けられたステーブル
+2:10	stable coins. I thought that was the most straightforward and safest use	コインに興味がありました。 それが 最も単純で安全な使用
+2:14	case. So, I started digging into USDM, seeing what they were doing,	例だと考えました。 そこで私はUSDMについて調べ始め、 彼らが何をしているのか、
+2:17	understanding the reserves, their management of the of the backing of the	準備金、トークンの 裏付けの管理方法などを理解し、
+2:20	token and got pretty comfortable with it and through conversations with uh Matt	かなり慣れてきました。そして
+2:24	back at the time and then Jim more recently thought maybe I could help out	当時マットと、そして 最近ではジムと話をする中で、私が少し手助けできるかもしれないと考えました
+2:28	a little bit here and there. So, I've jumped on the board and just trying to	。 それで、私は 役員会に参加し、
+2:31	help out where I can with talking a lot to Jim and the team and Jillian who's	ジムやチーム、そして
+2:35	the CEO now. You're in, Jim. >> I am finally good. Can you guys hear me?	今はCEOを務めるジリアンとたくさん話をして、できる限りのことを手伝おうとしています。 ジム、君は合格だ。 やっと元気になった 。 聞こえますか？
+2:39	>> I was lost in another land with no camera, no microphone, no nothing. I	私はカメラもマイクも何も持たずに、異国の地で迷子になった 。 何が
+2:43	don't know what happened, but uh what did I miss?	起こったのか分からないけど、えっと、 私は何を見逃したの？
+2:45	>> How did you get involved with USDM? >> Boy, that's a great that's a great	USDMに関わるようになったきっかけは何ですか？ いやあ、それは素晴らしい
+2:48	story. I had no intent on being part of a stable coin company. Anyway, I came	話ですね。 私はス テーブルコイン会社の一員になるつもりは全くありませんでした。 とにかく、私が仮想通貨の世界に足を踏み入れたのは、
+2:52	into this uh into crypto just to make sure that my investment was okay. So, in	自分の投資が問題ないことを確認するためでした。 だから、
+2:56	order to know blockchain and know where I was putting all my money in this	ブロックチェーンを理解し、 この投資で自分の資金をどこに投入するのかを把握するためには
+2:59	investment, I needed to make sure the people I was working with had my back or	、一緒に仕事をしている人たちの信頼を得る必要があった。
+3:03	at least I had some intel ahead of time just to make sure in case everybody was	少なくとも、 皆が
+3:06	exiting the building, I was getting out before everybody else did. So I just	ビルから出て行くような事態に備えて、自分だけが他の 誰よりも先に脱出できるよう、事前に何らかの情報を入手しておく必要があったのだ。 それで、その後はずっと
+3:09	after that just kept running my mouth over and over again and like hey you	口を滑らせて、「 君は
+3:13	might be good doing this and next thing you know I was doing that so I became a	これをやればうまくいくかもしれない」と言い続け、気づいたら 私はこれをやっていました。それで私は
+3:16	co-host of Cardona coffee met Matt Plowman then we started working together	Cardona Coffeeの共同ホストになり、Matt Plowmanと出会い、当時CTOだったStevenと一緒にFreeloadersというプロジェクトで一緒に働き始めました。それが私たちの
+3:20	with a project called Freeloaders with Steven our CTO at the time that's how we	-
+3:24	started working then Matt had an idea one day of calling out Jed and its	仕事の始まりでした。ある 日、MattはJedとその資本の非
+3:27	capital inefficiencies and got a spotlight on Army of Spies and he took	効率性を指摘するというアイデアを思いつき、 Army of Spiesで注目を浴び、彼は
+3:32	off and everybody was talking about him good or bad it really didn't matter but	飛び出し、みんなが彼のことを 良いか悪いかで話していました。実際には問題ではありませんでしたが、彼は
+3:35	the fact that he worked for DWS which is some Syria Deutsche Bank and so	DWSで働いていました。DWSは シリアのドイツ銀行で、
+3:40	multi-billion dollar client. I mean he did it all and he found himself right in	数十億ドルのクライアントです。 つまり、彼は すべてをやり遂げ、自分が望んでいたであろう脚光を浴びる立場になり、ある
+3:44	the limelight where he I think he wanted to be quite honestly and started a	-
+3:48	stable coin company sent me a message one day and said hey would you like to	日ステーブルコイン会社を立ち上げ、私にメッセージを送ってきて、「ス
+3:50	be part of a stable coin company and it took me 3 days to answer. It's the first	テーブルコイン会社に参加してみませんか？」と尋ねてきたのですが、 私が返事をするのに3日かかりました。
+3:53	time I actually thought about something ahead of time uh really for the most	実際に事前に何かを考えたのはこれが初めてで、ほとんどの場合、
+3:57	part and um I got three people telling me are you sure uh you want to do that	3人から「本当にそれをやり たいの？だって、
+4:01	cuz it's like real money. You got to produce real you know uh value coming	それは本当のお金になるんだから」と言われました。 実際に価値を生み出す必要がある
+4:05	in. People got to invest in you. this is not creating some sort of NFT you could	。人々があなたに投資するには、それが必要だ。 これは、
+4:09	sell uh and uh just you know make some decent dime you know off of that right	販売できるようなNFTを作成して、そこからちょっとした利益を得るというものではありません。3つ目が終わった後、
+4:14	and uh after the third one I took it as a challenge and told Matt yeah	私はそれを 挑戦と捉え、マットに「もちろんやるよ」と言いました。そして、当時彼の仕事は
+4:17	definitely down and uh became his at the time wasn't business development it was	事業開発ではなく、主に
+4:23	mostly just to set up the uh team get everybody on board and get everybody	チームを立ち上げ、 全員を巻き込み、全員が
+4:27	started working towards the same goal uh which typically pretty good at uh so	同じ目標に向かって働き始めるようにすることでした。彼は 通常、それが得意なので、まあ、そういう
+4:32	yeah that's kind of the story there Matt just kind of laid it on me and and um	話です。マットが 私にそれを持ちかけてきて、
+4:36	want to be a part of something and uh he's one of those guys who's hard to say	何かに参加したいと思ったのですが、彼は断るのが 難しいタイプの人です
+4:39	no to, you know, cuz he's just really good at what he did. And so yeah, and	。なぜなら、彼は自分の仕事にとても長けているからです。 そう、そしてあとは
+4:43	the rest is history. Here I am. >> You mentioned not being a an NFT project	歴史が物語るとおりだ。 ここにいるよ。 あなたはNFTプロジェクトではないとおっしゃっていましたが、当時は
+4:46	and back in the time every project was pre-revenue. No one was talking about	どのプロジェクトも 収益化前でした。 当時、誰も収益について話していなかった
+4:50	revenue yet. No one was talking about real business and institutions just kind	。 誰も 実際のビジネスや組織について話してはいませんでした。ただ、いずれはすべて
+4:54	of a kind of as like oh eventually this is all going to translate there, but	そこに繋がるだろうというような漠然とした話で、
+4:58	everything was you know culture and science fair projects. So, you went into	すべては文化や 科学フェアのプロジェクトばかりでした。 つまり、
+5:02	the like most like real like even to date as Marco mentioned um stable coins	マルコが言ったように、今日に至るまで、ステーブルコインは
+5:07	are often yield coins or business deals wrapped to look like stable coins. You	利回りコインや ステーブルコインのように見えるように包装されたビジネス取引であることが多い、という点に着目したわけです。 あなたは
+5:11	went as as deep as you could into the most trady thing possible. Um [laughter]	可能な限り最も卑劣な事柄に深く入り込んだ。 えっと（笑）、
+5:17	what was what was some of the the push back that you got dealing with the the	-
+5:21	NFT projects, the flash in the pans that aren't here as much today anymore? Like	NFTプロジェクト、つまり今ではあまり見かけなくなった一過性の流行に対して、どのような反発があったのでしょうか ？
+5:25	how was the culture mix? >> When you talk about culture mix, I mean	文化的な多様性はどうでしたか？ 文化の融合について話すとき、それは既存の文化
+5:28	compared to what was out there. So you get a bunch of DJs just trying to make	と比較したという意味です。 だから、 たくさんのDJが
+5:33	uh you know put JPEGs on [laughter] on chain and and sell them right and and	JPEG画像をチェーンに載せて[笑] 販売して、それを
+5:38	make a business out of it. And it was just a social experiment the way I	ビジネスにしようとしているんです。 私にとってそれは単なる 社会実験だった
+5:41	looked at it. And it was also to me it never really made any sense uh unless it	。 そして、
+5:45	had any real utility like if an artist were to use it to engage with their	アーティストが自分のコミュニティ、つまり
+5:49	community, their people who love their music and then gave them a GPS	自分の音楽を愛してくれる人々と交流するためにそれを使用し、 次にサプライズショーを行う場所に
+5:53	coordinated uh coordination uh based on you know where they're [clears throat]	基づいてGPSで調整された調整を提供するなど、実際の有用性がない限り、私には全く意味がありませんでした
+5:57	going to be next for some surprise show that they were doing or something like	-
+6:00	that. Had to have utility outside of that. It was literally like swap meat,	。 それ以外にも何らかの有用性が必要だった 。 それは文字通り肉の交換みたいなもので、
+6:04	you know, and no shade to NFTt projects, the board a club or anybody else, but I	NFTtプロジェクトや 掲示板クラブ、その他誰かを批判するつもりはないけど、私には
+6:09	just didn't see it as being of value. And then trying to sell them were just	価値があるとは思えなかった。 そして、それらを売ろうとするのは、とてつもなく
+6:14	it was ridiculously hard. Uh you're in a marketplace. It was literally like a	困難だった。 ええと、ここは 市場です。 まるで
+6:17	swap meet. You know, what I wanted is I wanted DeFi. You know, I wanted to	フリーマーケットのようだった。 私が望んでいたのは、 DeFiだったんです。 ご存知の通り、私は
+6:21	centralized finance. You know, I set up my first wallet and the wallet was	金融を中央集権化したかったのです。 ほら、私が 最初に作ったウォレットの
+6:25	called um you know, empowerment, right? it was something that was going to give	名前は、えーと、エンパワーメントだったよね？ それは、私が望んでいた
+6:29	me uh self- sovereignty right um financial freedom which is what I wanted	自己主権、つまり 経済的自由を与えてくれるものでした。
+6:34	to have and I didn't want to have any central authority you know controlling	中央集権的な権威に自分のやりたいことをコントロールされたくなかったのです。自分の力で
+6:37	what it is that I wanted to do wanted to live and do this on my own uh and then	生き、これを成し遂げ、それを
+6:41	be able to pass that through my kids right which is the other thing you know	子供たちに引き継ぐことができるようにしたかったのです。それがもう一つの重要な点です。つまり、レガシーのようなものですね。それが
+6:44	so legacy things like that so that's what DeFi represents to me and it still	私にとってのDeFiの意味であり、私が
+6:49	represents that to me today even though we've been through a lot you know over	-
+6:52	the last seven years that I've been here but yeah	ここにいる過去7年間で多くのことを経験してきたにもかかわらず、今でも私にとってそれは意味しています。私たちは明らかに
+6:54	>> so we've been we've been diving into the Cardano ecosystem obviously extremely	Cardanoエコシステムに深く入り込んできました。完全にフルタイム、
+6:58	extremely uh all the way full-time fuller time than full-time and in this	フルタイム以上です。その中で、
+7:03	talking to some of the teams like we've been learning about you know CIP113	CIP113について学んできたチームや
+7:07	uh talking to the Cardono Foundation and other pentad groups and um one of the	Cardano Foundation、 その他の5つのグループと話してきました。彼らが提起したことの1つは、
+7:11	things that they brought up was that when building things EVM there's like a	EVMを構築する際には、
+7:16	an asset issuer through these token standards as opposed to native tokens	ネイティブトークンではなく、これらのトークン標準を通じて資産発行者が存在するということです。
+7:19	and because somebody has to manage or maintain that smart contract uh that	スマートコントラクトを管理または維持すると、
+7:24	gives regulatory risk to the circles the tethers of this world that don't apply	-
+7:29	if you launch a native token and the asset issuer is fully removed. Um can	ネイティブトークンを発行して 資産発行者が完全に削除された場合に適用されない、この世界のサークルやテザーに規制リスクが生じます。 ええと、
+7:31	you talk to me about kind of the regulatory considerations as you you	-
+7:34	mentioned right now like you don't want a central party um pushing this kind of	先ほどおっしゃった規制上の考慮事項についてお話いただけますか？ 中央機関がこのようなものを押し付けるのは望ましくない一方で、同時に
+7:37	stuff in but at the same time you're launching like a Mika compliant stable	Mikaに準拠したステーブル
+7:40	coin. Where does this dichotomy like diverge?	コインをローンチしようとしている、といったことでしょうか。 この二分法はどこで 分岐するのでしょうか？
+7:43	>> Well, the beauty of it is in Cardano is Cardano native asset. Uh I call it	カルダノの素晴らしいところは、カルダノが カルダノのネイティブアセットであるという点です。 ええと、私はそれを
+7:47	freerange chicken. You're allowed to be able to go wherever you want within the	放し飼いの鶏と呼んでいます。 あなたは、 その
+7:50	ecosystem. uh the centralized portion of USDM is at the the on at the app itself	生態系内であればどこへでも自由に行くことができます。 ええと、USDMの中央集権的な部分は、
+7:58	where you're minting and burning. So each user um is has to go through KYC	ミントとバーンを行うアプリ自体にあります。 つまり、 各ユーザーは、
+8:03	KYB if they're having a business included in that. Uh and so we are of	事業を営んでいる場合はKYCまたはKYBを経る必要があります 。 ええと、もちろん私たちは
+8:07	course you know regulated uh and we can freeze when it is uh that we need to	規制を受けており、
+8:13	based on a regulator regulator's request. So the beauty is is that you	規制当局の 要請に基づいて、必要に応じて凍結することができます。 つまり、現状では両方を手に入れることができるというのが素晴らしい点です
+8:17	can have both uh with the current state of things. SIP 113 which currently isn't	。 SIP 113は現在、まだ
+8:23	really completely built out yet. Uh some developers would tell you that that	完全に構築されていません。 ええと、一部の 開発者は、その
+8:27	standard is not completely nailed down and so I wouldn't bank on it being just	標準は完全に確定しているわけではないと言うでしょうから、
+8:31	exactly the way it's written today. It might change. Uh but it does allow for	今日書かれている通りの形で将来も通用するとは限らないと考えた方がいいでしょう。 変わるかもしれない。 ええと、そうすることで、規制当局が
+8:36	you to then be compliant with regulators when it comes to that thing if they	-
+8:41	require it. Matt Plman's idea was is that we'll wait till they put the gun to	要求した場合に、その件に関して規制当局の要件を満たすことができるようになります。 マット・プルマンの考えは、 銃を突きつけられるまで待つということだった。つまり、
+8:46	our head in order to do it, you know, and that was literally his statement,	文字通り彼が私たちに言った言葉で、だから
+8:49	you know, uh to us and so we're just going to wait till they put a gun to our	私たち …は 銃を突きつけられるまで待つということだった
+8:52	head uh to do that. Outside of that, we're really not interested and we'll	。 それ以外のことには、 私たちは特に興味がなく、
+8:56	continue to work in the gray area a little bit, you know, because there's no	グレーゾーンで活動を続けていくつもりです。というのも、凍結可能であることと、
+8:59	real rule or regulation surrounding that outside of the fact that it needs to be	-
+9:03	freezable and it can be at the app itself. So, you know, we had an instance	アプリ 自体で凍結できる必要があること以外に、それに関する明確な規則や規制がないからです。 それで、ついさっき、
+9:08	just a little bit ago having to do with that Nighthawk uh that was going on	ナイトホークに関連した事例があったんですが、
+9:10	there and one of the larger stakeholders here in Cardono uh sent us a message and	カルドノの主要関係者の1人がメッセージを送ってきて、
+9:15	made sure that we could freeze and we said absolutely we can. So, you know, we	凍結できるかどうか確認してきたので、 もちろんできると答えました。 つまり、私たちは
+9:18	are regulatory compliant just not necessarily the way some people would	規制を遵守していますが、必ずしも 一部の人々が望むようなやり方ではないということです
+9:21	like it to be. >> Yeah. Some some context for viewers who	。 うん。
+9:24	are maybe a little bit less familiar with Cardono jargon. Uh SIP 1113 would	カルドノの専門用語にあまり馴染みのない視聴者のために、少し背景説明をしましょう。 SIP 1113は、
+9:27	be CIP similar to ERC from uh you know overall standards for Cardono	Cardonoの改善に関する全体的な標準規格であるERCと同様のCIPです
+9:32	improvement. um it's enables you know program programmability around the	。 ええと、これはCardono
+9:36	native assets that are launched on Cardono. So things like season freeze	上で起動されるネイティブアセットに関するプログラムのプログラマビリティを可能にします 。 そのため、シーズン凍結のような機能は、
+9:39	can be added from a new token launch that otherwise doesn't exist on Cardono	Cardonoでは本来存在しないものですが、新しいトークンのローンチから追加できます。
+9:43	because everything's native as native as ADA is. So um yeah, thank you James and	なぜなら、すべてが ADAと同様にネイティブだからです。 ええ、ジェームズさん、ありがとうございます。
+9:47	very very interesting to see um how something so intertwined with the chain	チェーン
+9:51	itself becomes programmable whereas you know this kind of programmability was	自体と密接に結びついているものがプログラム可能になる様子を見るのは非常に興味深いですね。一方、
+9:55	for better and worse built in at the base layer for Ethereum. I love it and I	イーサリアムでは、良くも悪くも、この種のプログラム可能性がベースレイヤーに組み込まれていました。 私はそれが大好きですし、
+9:59	I love Charles reference to it is it's just we have a first class citizen you	チャールズが言及しているように、 私たちは一流の市民を持っているということです。
+10:03	know and each one of them when you create a new CNT it is a first class	新しい CNT を作成すると、それぞれが一流の
+10:06	citizen you're allowed to be able to do what you want here and that's one of the	市民となり、 ここでやりたいことをすることができます。そして、それが私が
+10:10	things I absolutely love you know if you have freedom flexibility to be able to	本当に好きなことの 1 つです。 自由と柔軟性があれば、
+10:12	do that uh but at the same time still work within the guardrails and	そうすることができますが、同時に規制
+10:16	guidelines that you know regulators have then you know we should continue on with	当局が設けているガードレールとガイドラインの範囲内で作業する必要があります。そうであれば、私はそれを続けるべきだと考えています。
+10:19	that you know in my mind so >> James Marco the stable coin like	ジェームズ マルコ、Cardono 内のステーブル コインのようなエコ
+10:23	ecosystem within Cardono is is around $60 million I think you know there's	システムは、約 6,000 万ドルだと思います。
+10:28	like new entrance new things how how do you guys think about you know pushing	新しい参入や新しいものがありますが、エコ
+10:32	USDM forward throughout the ecosystem into DAPs and what what do you see on	システム全体で USDM を DAP に推進することについて、皆さんはどのように考えていますか。また、
+10:37	your road map and timelines like that get or get gets you guys excited?	ロード マップやタイムラインで、 皆さんが興奮するものは何ですか? まず最初に、
+10:40	>> So I I'll take the first uh first off uh USM is payment uh stable. So what I'd	USMの支払いは安定しているという点から始めます。 私が望むのは、
+10:46	like to see is is that there is direct relationship between a payment stable	支払安定性
+10:50	and a yield bearing stable. Uh so you think about it from the point of view to	と利回り安定性の間に直接的な関係が存在することです。 ええと、
+10:54	where you can transfer value is in easy share or store of value uh is what USDM	価値を簡単に 共有したり保存したりできるという観点から考えると、USDMはまさにそのようなものです
+11:00	is. Um and if you then combine that with another product that might be a yield	。 そして、それを 別の収益性のある製品と組み合わせれば、
+11:06	bearing product then you could work those two in tandem or in synergy	その2つを連携させて、あるいは相乗効果を発揮させることができるでしょう
+11:10	together. Uh this way you know unless they come up with a a new idea. I'm sure	。 ええと、こうすれば、 彼らが新しいアイデアを思いつかない限りは。
+11:14	that they'll probably come up with a few. uh but you could then get exposure	彼らはきっといくつか思いつくでしょう 。 ええと、そうすれば、
+11:18	to a yield bearing asset uh like a stable that you know like say let's say	-
+11:21	realy for example USDR which is the SUSDR when you go ahead and stake that	例えばUSDR（つまり SUSDR）のようなステーブルコインのような利回り資産に投資することができます。それを
+11:25	into their protocol uh you can get that particular yield uh but when you want to	プロトコルにステーキングすると、その 特定の利回りを得ることができます。しかし、
+11:30	transfer or send a payment or do something along those lines it would be	送金や支払い、 その他同様のことをしたい場合、法定通貨に裏付けられた
+11:33	good to have a payment stable included in that you know that's fiatbacked so	支払いステーブルコインが含まれていると良いでしょう。つまり、1対1で法定通貨に裏付けられており、どこに
+11:37	that it's solid in you know it's onetoone backed fiatbacked and it's	-
+11:42	represents a dollar wherever you go right so um familiarity ities. One, two,	行ってもドルを表すので、 信頼性があります。 一つ目は
+11:46	is ease of use and payment. >> Yeah. Met with uh this just yesterday	使いやすさ、二つ目は支払いのしやすさです。 うん。 昨日、この人と会いました。
+11:51	and two days ago met with uh Tala Emali. Have you heard of these guys?	そして2日前には、タラ・エマリと会いました。 この人たちのこと、聞いたことありますか？
+11:55	>> No. >> They're in the they're in the Japer	いいえ。 彼らは今、ジェイパー・
+11:57	Draper Orion like accelerator right now. And uh similar but different. So they	ドレイパー・オリオンのような加速器の中にいます。 似ているようで 違う …。
+12:02	have like the Zar which is the like the South African currency and they as a	南アフリカの通貨であるZARのようなものがあり、
+12:06	payment stable they started doing payment processing and so all the	決済ステーブルとして 決済処理を開始しました。そのため、南アフリカ国内のアプリケーション
+12:09	payment processing that happens within um their application within South Africa	内で行われるすべての決済処理は
+12:15	is like basically that's like the stable that's going to be like on chain I think	基本的に、オン チェーンになるステーブルコインのようなものです。これは、決済を理解するという点で、
+12:18	that's really like awesome exposure um in terms of figuring out payments I mean	本当に素晴らしい露出だと思います。 つまり …、
+12:23	there's a lot of activity in payments right now what are what are you guys	現在決済には多くの活動がありますが、
+12:26	looking at in terms of like the payment stable coin adoption	決済ス テーブルコインの採用に関して、皆さんは何に注目していますか。
+12:29	>> so I think when it comes to payment stable coins this is very interesting	決済ス テーブルコインに関しては、これは非常に興味深い
+12:32	topic because we have a company right now that we've been working with that is	トピックだと思います。なぜなら、 現在 …、
+12:35	in the airline services industry and they work in 13 different countries. Um	航空サービス業界で協力している会社があり、 13か国で事業を展開しているからです。
+12:40	what they were looking for is a stable coin. You think about it from almost	彼らが求めていたのは、ステーブル コインです。
+12:44	like a closed loop solution for them. So they get a prepayment uh you can work	彼らにとっては、ほぼ閉ループ型の解決策として捉えるべきでしょう。 つまり、 前払い金を受け取ることで、13種類の異なる通貨ではなく、
+12:49	with one specific currency for everybody instead of working for 13 different	全員に対して1つの特定の通貨で作業できるようになります
+12:53	ones. they have, you know, the Nigerian beer which is a, you know, a very	。 彼らはナイジェリアの ビールを扱っているが、ナイジェリアは
+12:57	difficult uh region of the country to or in the world to work with. Uh, and	国内でも世界でも非常に扱いが難しい地域だ 。 ええと、そこにはたくさんの
+13:03	there's a lot of regulation and things going on there. It's very difficult to	規制や事情があります 。 道順が非常に分かりにくい
+13:07	navigate. And they would like it to where they could actually be able to	。 そして彼らは、
+13:10	from the CF CFO's point of view be able to use one specific currency that	CFのCFOの視点から見て、
+13:15	everybody uses to make payments, prepayment, things like that. Uh, within	誰もが支払い、前払いなどを行う際に使用する特定の通貨を実際に使用できるようにしたいと考えています 。 ええと、
+13:19	that particular services, you know, airline services industry that they're a	彼らが属している航空サービス業界という特定のサービスの中で
+13:22	part of. uh this would make it exceedingly uh better for uh one the CFO	。 ええと、これは、
+13:26	I'm sure pulling his hair out over 13 different currencies you could imagine	13 種類もの通貨で頭を抱えているであろう CFO にとって非常に良いことであり、
+13:30	uh and then also allow them to be able to market it in a way that it makes it a	また、他のすべての人にとってずっと
+13:34	lot easier for everybody else. So they just get on board they use one specific	簡単になるような方法でマーケティングすることも可能になります。 つまり、 彼らが特定の
+13:38	currency and we're going to create a stable coin specifically for that for	通貨を使うようになれば、私たちは彼らの ために専用のステーブルコインを作成するということです
+13:41	them. So, a white label solution that they would then uh have in order to be	。 つまり、彼らが計画している用途に使用できるホワイトラベルソリューションを提供するということです
+13:44	able to use for what it is they plan on using. Which what's interesting about	。 ここで興味深いのは、
+13:48	this is is that when they started talking to people who BC investors and	BCの投資家や他の人たちが話していた人たちと話し始めたとき、彼らが
+13:52	other people were talk uh that they were talking to, they become their ears	-
+13:55	perked up quite a bit when they started talking about using a stable coin for	-
+14:00	their ser for what they're doing, you know, uh in the airline services. uh and	航空サービスで行っていることのためにステーブルコインを使用することについて話し始めると、彼らはかなり耳をそばだてたということです。 ええと、
+14:05	investors were uh a little bit more interested in investing in that	投資家たちは その特定の会社への投資に少し興味を示していて、それは
+14:09	particular company which was which was very interesting to me. So I think it's	私にとって非常に興味深いことでした。 ですから、これは
+14:13	an untapped area and there's quite a few like that in different areas where you	未開拓の分野だと思いますし、 さまざまな分野でまさにそのようなことが
+14:16	can do just exactly that and create your own payment solutions specifically for	可能で、 独自のクローズドループ専用の決済ソリューションを作成し、さらに
+14:21	you closed loop and then potentially also connect it to where you can still	-
+14:24	be connected to the uh larger ecosystem like USDC US things like that.	USDC USのようなより大きなエコシステムに接続することもできる可能性があります。 けっこうだ
+14:28	>> Fair enough. Marco um you mentioned [snorts] you've done work in EVM and	。 マルコ、えっと、 あなたはEVMと
+14:32	Salana as well. Where do you see as the biggest bottleneck in terms of stable	Salanaでも仕事をしたことがあると言っていましたね。 カルダノにおける ステーブルコインに関して、最大のボトルネックはどこだとお考えですか
+14:37	coins on Cardano? Is it like minting, redemption, dex? What does it take in	？ それは、鋳造、 交換、デックスのようなものですか？
+14:41	your perspective to make this competitive and usable for real	あなたの視点から見て、これを 競争力があり、実際のビジネスで活用できるものにするには、何が必要だと考えますか
+14:44	business? >> Yeah, it's a it's a great question. I	？ ええ、それは素晴らしい質問ですね。
+14:46	think depth is probably the the hardest one to come by now um for for Cardano	今のところ、深みを得るのが最も難しいのはおそらくカルダノでしょう
+14:52	specifically. I mean, you look at where most of the stable coin TVL ignoring	。 つまり、ボリュームを一旦 無視して、ステーブルコインのTVLの大部分がどこに集中しているかを見てみるといいですよね
+14:57	volume for a second sits, right? It's in DeFi protocols. It's trying to earn	？ それは DeFiプロトコルの中にあります。
+15:01	yield. Um, and the the challenge is it kind of the liquidity begets liquidity,	収益を上げようとしている。 ええと、問題は、 流動性が流動性を生み出すという点ですよね
+15:07	right? Like it only works if if there's things to do there, which Cardano	？ つまり、そこにやるべきことがある場合にのみ機能するということであり 、カルダノにはやるべきことはある
+15:11	there's things to do, but it it's not the same level of things to do as there	が、
+15:14	are in other ecosystems. I think that's growing. Um, but it happens to be kind	他のエコシステムにあるようなレベルのやるべきことではない。 それは 成長していると思います。 ええと、でもそれはある意味、ネイティブの
+15:18	of native onchain users. You're just not seeing that that off-chain user coming	オンチェーンユーザーなんです。 オフチェーンのユーザーが
+15:23	in anywhere, not just on Cardano, but any any chain. Maybe now you're starting	どこにも現れていないのが現状です。カルダノだけでなく、どの チェーンでも同じです。
+15:27	to see it a bit with tokenized products. Um, so I think you know, you know, first	トークン化された商品で、その兆候が少しずつ見られるようになってきたのかもしれません。 えっと、まず最初に、
+15:32	first things first is like depth matters, but really like what are you	深さが重要だということは分かります が、実際には
+15:36	going to do with it? Just just tokenizing a dollar doesn't that because	それをどう活用するつもりですか？ ドルをトークン化するだけではダメなのではないでしょうか
+15:39	that's what a stable coin is, right? It's a tokenized dollar. Um, doesn't	？それがステーブルコインですよね？ それはトークン化されたドルです。 ええと、
+15:42	really do anything or or even better, it's like a tokenized treasury that pays	実際には何も機能しないか、あるいはもっと言えば、
+15:46	you no yield for a fiat back stable coin. Like that's not always the easiest	法定通貨に裏付けられたステーブルコインに対して何の利回りも得られないトークン化された国庫のようなものです 。 それって、必ずしも簡単に
+15:49	sell, right? So if I want to earn yield, I have to go and deposit it into some	売れるものではないですよね？ つまり、利回りを得たいなら、 何らか …の
+15:53	lending protocol. um taking a bunch of risks that a traditional investor like	融資プラットフォームに資金を預け入れる必要があるということだ。
+15:57	myself, you know, I I work in Treadfi, like I couldn't convince anyone to put	ええと、私のような伝統的な投資家が、つまり、私はTreadfiで働いているのですが、
+16:01	their dollars on chain to earn basically so far or less most of the time uh while	これまで誰にも、基本的に利益を得るために自分のドルをブロックチェーンに預けるように説得できなかったか、ほとんどの場合、
+16:06	taking a bunch of more risk that they don't fully understand. So like there	彼らが 完全に理解していない多くのリスクを負っているのです。 つまり、
+16:10	needs to be one the opportunity uh or the utility and I think that's kind of	機会 …や 有用性が一つ必要で、それが現在、
+16:14	where most of the ecosystem across across different ecosystems lacks	さまざまなエコシステム全体にわたって欠けている点だと私は考えています
+16:18	currently. Um, you know, I'm I'm hopeful that the idea of tokenization actually	。 えっと、 トークン化のアイデアによって、オフチェーンに
+16:22	brings more capital onchain that exists offchain cuz right now it's the same	存在する資本がオンチェーンにもっと流入することを期待しています。 現状では、同じ
+16:26	money just chasing chasing yield flipping between it's getting easier to	お金が利回りを追い求めて、チェーン間を行き来しているだけですが、
+16:30	bridge across chains, right? Like it's getting easier to move your money. I can	チェーン間を橋渡しするのが簡単になってきているんですよね？ お金の移動が以前より簡単になっているような感じだ。
+16:34	move it from base to ETH mainet to Salana to whatever uh just to chase, you	ベースからETHメインネット、 Salana、その他何でも、
+16:40	know, an extra point or two of yield. Like that's that's the money that you're	利回りを1、2ポイントでも上げるために、それを移動させることができます。 つまり、それが
+16:43	seeing right now. Like sure, so sure you could bring that money in to Cardano.	今あなたが見ているお金の額です。 もちろん、 そのお金をカルダノに持ち込むことは可能です。
+16:46	you're going to be paying incentives in some form or fashion because the native	国内需要が必ずしも存在するとは限らないため、何らかの形でインセンティブを支払う必要が生じるでしょう
+16:49	demand isn't there necessarily. Most of the time you need that borrow demand. So	。 ほとんどの場合、 借り入れ需要が必要になります。
+16:53	who's going to borrow if there's no things to do with that borrowed money	借りたお金の使い道がないなら、誰が借りるっていうんだ？つまり、
+16:57	anyways, you know, like so it's kind of a little bit circular is the way I see	ちょっと循環論法みたいなものだと思う
+17:00	it. So you need one of two things. One, you need to either attract existing	。 つまり、あなたには2つのうちどちらか一方が必要です。 1つ目は、 既存の
+17:04	onchain capital to Cardano, which is expensive in my opinion. um or you need	オンチェーン資本をカルダノに呼び込む必要があるが、 私の意見ではそれは費用がかかる。 あるいは、
+17:09	to create new um you know distinct utility there on the Cardano ecosystem	Cardanoエコシステム上で新しい独自のユーティリティを作成して
+17:14	to to attract that onchain capital or you got to figure out how to bring	オンチェーン資本を引き付けるか、
+17:17	offchain capital. I think that's the golden grill. That's the golden goose.	オフチェーン資本をどのように呼び込むかを考え出す必要があります。 あれは 黄金のグリルだと思う。 それは金の卵を産むガチョウだ。
+17:19	No one's figured that out yet. It's TBD. I think some of these real world assets	まだ誰もその答えを見つけていない。 未定です。 こうした現実世界の資産が
+17:24	might help. I think some of the privacy stuff might help at some point in time.	役に立つかもしれないと思う。 プライバシーに関する対策は、いずれ役に立つかもしれないと思う 。
+17:28	I think that's going to be a big um unlock for certain institutions because	これは特定の 機関にとって大きな突破口になると思います。なぜなら、
+17:32	who wants to put their, you know, who wants to put their um all of their asset	誰が、つまり、誰が、
+17:37	movement from their treasury on chain in a public fashion? Like that's not	財務部門からの資産移動のすべてを公の場でブロックチェーン上に公開したいと思うでしょうか ？ それは
+17:40	something you want to do, right? Like if you're running a small private company	あなたがやりたいことではないですよね？ 例えば、 あなたが小規模な非公開企業を経営している場合
+17:43	or a large or large public company, you don't want everyone to see where what	でも、大規模な公開企業を経営している場合でも、
+17:47	your money's doing and how it's moving. Like you can just go and you can see all	自分のお金がどこでどのように使われているかを皆に見られたくないでしょう。 例えば、
+17:50	the wallet tags of all the large exchanges, right? Like that's I don't I	大手取引所のウォレットタグを全部見ることができる、みたいなことですよね ？ つまり、
+17:53	don't want to be doing that if I'm running the company. there you mentioned	私が 会社を経営する立場なら、そういうことはしたくないということです。 そこであなたは、やるべきことが必要だとか、収益ポイントを追い求める必要があるとか言っていましたね
+17:56	needing things to do and chasing points of yield and whatnot. Uh something that	。 ええと、
+18:00	I I'll bring this to is this kind of dichotomy of um scalability versus	私がここで取り上げたいのは、 拡張性と
+18:05	security and things that are infinitely secure don't scale and things that are	セキュリティという二分法です。無限に 安全なものは拡張性がなく、
+18:08	infinitely scalable aren't secure. Uh the issue is scalability is what gets	無限に拡張可能なものは安全ではありません。 問題は、拡張性こそが
+18:12	adoption um and growth because all it is is growth. This is the USS the teras of	採用と成長につながるということです。なぜなら、すべては 成長だからです。 これは、非常に
+18:17	the world that promise crazy high yields probably what we're going to see in the	高い利回りを約束する世界のUSSテラであり、おそらく
+18:20	whole private credit scape now where defaults are possible and people are	今後 …、 デフォルトが発生する可能性があり、人々が利回りを
+18:24	going to outpace you know yield and think of stream um we were lucky um I	上回っ …て ストリームを考えるようになるプライベートクレジットの風景全体で見られるものになるでしょう。私たちは幸運でした。
+18:29	mean luck skill a little bit of mix but that our markets were safe from 1010en	つまり、幸運とスキルが少し混ざり合っていましたが、 私たちの市場は1010enから安全でした。
+18:32	the ones that we're personally curating um that we didn't have um steam stream	私たちが個人的にキュレーションしているものは、 ストリームへの
+18:36	exposure but so many things did in different capacities and there's not	エクスポージャーがありませんでした。しかし、さまざまな形で多くのものがそうでした。 そして、実際に
+18:40	really this ability to to go bankrupt and to get your your whole, you know,	破産して
+18:45	covered on the balance sheet. It just kind of completely disrupts projects.	バランスシートですべてをカバーできる能力は実際にはありません。 それは プロジェクトを完全に阻害してしまう。
+18:49	Um, but if you're infinitely scalable or infinitely secure, then you're not able	ええと、もしあなたが無限に拡張可能であったり、 無限に安全であったりするなら、
+18:52	to get the adoption for people to even care that nobody um that nobody got hurt	-
+18:56	in your protocol. So, there's got to be some kind of middle ground of like	あなたのプロトコルで誰も傷つかなかったことを気にする人がいなくなるため、採用を得ることができません。 だから、ある程度
+19:00	scalableish with secure enough. How do how do you guys see this dichotomy? So	拡張性がありつつ、十分なセキュリティも備えた、何らかの中間的な解決策が必要になるはずだ。 皆さんはこの二分法をどのように捉えていますか？ だから
+19:05	for me personally, I think it starts with first creating confidence in the	私個人としては、まずエコシステム に対する信頼を築くことから始めるべきだと考えており、初期
+19:10	ecosystem and a lot of people came in in the beginning. They were looking for	段階では多くの人が参加してくれました。 彼らは
+19:15	10x, 100x,000x gains uh and in the crypto space because that's what	10倍、10万倍、000倍の利益を求めていました。 暗号通貨の分野に
+19:20	attracted them. And so you had people joining in droves because they're like,	惹かれたのはそのためです。 だから、「たった100ドルの取引で1万ドル稼いだぞ！」なんて言う人が 大勢参加してきたんです。 ええと、それは
+19:24	"Hey, I just made a, you know, $10,000 off a, you know, $100 trade." uh you	-
+19:29	know it was crazy you know and so Robin Hood you know made that a reality for a	クレイジーでしたよね。それで、ロビンフッドはそれを多くの
+19:34	lot of people and most people didn't realize in Robin Hood that you never own	人にとって現実のものにしました。ほとんどの人は、 ロビンフッドでは、
+19:37	the underlying asset you know in crypto you were basically trading it uh but it	暗号通貨の原資産を所有することはないということに気づいていませんでした。暗号通貨では、 基本的にそれを取引していましたが、それは
+19:41	was a synthetic version of when you think about it it wasn't something you	合成バージョンでした。 考えてみれば、それは
+19:44	could take somewhere else and go trade you know uh they're on some	他の場所に持って行って取引できるものではありませんでした。たとえば、
+19:48	decentralized exchange let's say for example um but they were making money	分散型取引所にあるとしましょう。しかし、 彼らはお金を稼いでいたので、
+19:52	and so you had people coming in by the droves in order to be able to do that	-
+19:54	over time what happened though is is that more and more people started losing	時間が経つにつれて、それをできるようにするために大勢の人が集まりました。しかし、何が起こったかというと、ますます多くの 人がお金を失い始めたり、
+19:58	money or they started being taken advantage of on a regular basis and you	定期的に悪用され始めたりし始め、時間の経過とともに
+20:02	started losing traction over a period of time and for whatever reason crypto	勢いを失い始めました。 そして、何らかの理由で、暗号通貨は
+20:06	wasn't really ready to grow up and it didn't change uh that particular culture	実際には成長する準備ができておらず、 その特定の文化を変えることなく、そのまま続きました
+20:10	and just kept on with it. Um so over a period of time you had less and less	。 ええと、時間が経つにつれて、
+20:13	people actually engaging. You know it literally my entire group of friends	実際に参加する人がどんどん減っていきました。 ご存知の通り、 私の友人グループ全員の中で、
+20:18	that I had no one wanted to talk about crypto. I was actually even told hey	暗号通貨について話したがる人はいませんでした。 実際、パーティーで
+20:21	stop talking to our wives about wives were telling my wife hey stop talking to	妻たちに「うちの妻たちに仮想通貨の話をするのをやめて」と言われたんです。妻たちが夫たちに仮想通貨の話をするのをやめて、
+20:26	uh our husbands about crypto uh at a party you know because they didn't want	-
+20:31	to talk about it anymore because they didn't want their husbands putting any	-
+20:33	money into it and losing their money there you know which is that's pretty	お金を失うのを恐れて、もうその話はしたくないと言っていたんです。
+20:37	bad you know when you think about it right. Uh it feels as though we're kind	よく考えてみると、それはかなりひどいことですよね。 うーん、なんだか
+20:40	of growing up a little bit. I don't know if anybody was at Consensus Miami or	少しずつ成長しているような感じがする。 コンセンサス・マイアミに誰かが参加していたかどうかは分かりませんが
+20:43	not, but uh that looked like a Trevy event to me. I mean, the NA CEO of	、あれはトレヴィの イベントのように見えました。 つまり、NASDAQの北米CEOが
+20:48	NASDAQ was there being interviewed, right? So, it we changed quite a bit	インタビューを受けていたんですよね ？ だから、私たちは長い時間をかけてかなり変化してきたけれど
+20:52	over a period of time, but there's still a lot of growing up to do, I think.	、まだまだ 成長すべき点がたくさんあると思う。
+20:55	>> Yeah. I feel seven years ago I was the youngest person at a conference and now	うん。 7年前は 会議で自分が最年少だったのに、今は自分が
+20:58	I'm the oldest or seven years ago it's the oldest. Now I'm the youngest. It's	最年長になったような気がする。あるいは、7年前は自分が 最年長だったような気がする。 今は私が最年少です。 一番
+21:01	>> that is the youngest. Yeah. Yeah. I a lot of people like me show up, you know,	若いのは彼です。 うん。 うん。 私みたいな 人はたくさんいるんですよ、
+21:04	with the snow on top of the hair and a suit everywhere. Yeah. Yeah. So yeah,	ほら、髪の上に雪が積もってて、スーツ姿で。 うん。 うん。 ええ、
+21:08	it's definitely changed quite a bit, but you know,	確かにかなり変わりましたが、
+21:10	>> amazing guys, we we have a fun portion of the the dose of alpha that we do	素晴らしい皆さん、私たちは
+21:15	every episode. I don't know if you know this one yet or not. And um are you	毎回のエピソードでアルファの楽しい部分を担当しています。 あなたが これを知っているかどうかはわかりませんが。 えっと、
+21:19	familiar with uh f Mary kill? We're going to do fad merry kill. So from	F・メアリー・キルってご存知ですか？ 私たちは流行りのメリーキルをやります 。 つまり、
+21:24	excited, bullish to bearish. We're going to three crypto narratives and I want	興奮と強気から一転、弱気へと転じたということだ。 これから 3つの暗号通貨に関する物語を取り上げますので、
+21:28	you guys to categorize them. Maybe we'll like do a little banter back and forth.	皆さんにそれらを分類していただきたいと思います。 もしかしたら、 ちょっとした軽口の応酬をするかもしれませんね。
+21:31	Okay, so we have three different narratives that are very very spicy	さて、今、 非常に刺激的な3つの異なるストーリーが展開されていますよね
+21:35	right now, right? So, RWAS and tokenized securities, right? That's one. We have	？ つまり、RWASとトークン化された 証券ということですね？ それが一つ目です。 私たちは
+21:39	AI and AI tokens and the AI how AI is going to play with crypto. And we have	AIとAIトークン、そしてAIが 暗号通貨とどのように関わっていくのかという問題を抱えています。 そして、
+21:44	the DeFi mallet. So, this would be like a Coinbase Earn or like OKX, you know,	DeFiのハンマーもあります。 つまり、これは Coinbase EarnやOKXのようなもので、
+21:49	CFI in the front, DeFi in the back. If you guys had to categorize,	表にはCFI、裏にはDeFiがある、といった感じですね。 もし 分類するとしたら、
+21:53	James or or Marco, hop in. What's what's FAD? What's uh what's what's going to	ジェームズかマルコのどちらかにしてください。FADって何ですか ？ 何が
+21:59	die? And then what's going to be here for the the long road?	死ぬんだろう？ そして、これから先、何がここに残るのだろうか ？
+22:02	>> So, we've got AI, right? Yeah. You've got tokenized assets or RWAS. And then	つまり、AIは既にあるということですよね？ うん。 トークン化された資産、つまりRWASをお持ちですね。 では、
+22:07	what's the third one? >> The DeFi mullet.	3つ目は何でしょう？ DeFiのマレットヘア。
+22:08	>> DeFi mullet. And the DeFi mullet is because Eric has said this to me once	DeFiのマレットヘア。 そして、DeFiのマレットヘアは、 エリックが以前私にそう言ったことがあるからです
+22:12	before. What's it? It's part because I know it's, you know, party in the front.	。 それは何ですか？ それは、ほら、表舞台で パーティーが開かれるってことだから、そういう意味もあるんだよ。
+22:15	>> CFI in the front. >> Ci, DeFi in the back.	先頭にCFI（教官）がいる。 Ci、DeFiは奥にある。
+22:18	>> Yeah. Yeah. Um, well, I'm really hoping that the fat isn't the DeFi part. Uh,	うん。 うん。 ええと、 その脂肪がDeFiの部分ではないことを本当に願っています。 ええと、
+22:23	and this continues on. So, I'm really hoping that the uh the mullet continues.	これはまだ続いています。 だから、あのマレット ヘアが今後も続いてくれることを本当に願っています。
+22:28	Uh, no question. Um, I don't see AI being a fad. I see that actually	ええ、間違いなくそうです。 ええと、私はAIが一時的な流行になるとは思っていません 。 私はそれが実際に
+22:34	growing. Me and Erica had quite a few conversations about aging to agent uh	成長しているのを見ています。 私とエリカは、 エージェントとしての年齢を重ねること、
+22:38	and where that's going. Uh and more than likely where our future really is being	そしてそれが今後どうなるかについて、かなり何度も話し合いました。 そしておそらく、 私たちの未来は、
+22:43	agents are going to be doing every aspect of our life almost. You know, I	エージェントが 私たちの生活のほぼあらゆる側面を担うようになるでしょう。 ねえ、
+22:45	can't wait to buy Padre tickets with an agent. Uh and then letting me know	エージェントを通してパドレスのチケットを買うのが待ち遠しいよ。 それから、
+22:50	they've got me uh great seats. Um and then you know when it comes to um RWA	素晴らしい席を用意してくれたと教えてくれました。 えーと、 RWAに関しては、それは
+22:56	that's an interesting subject uh because you could tokenize everything and bring	興味深いテーマです。なぜなら、 すべてをトークン化して
+22:59	on real world assets, but what does it mean? you know, um I'm not sure any one	現実世界の資産を取り込むことはできますが、それは一体何を 意味するのでしょうか？ ええと、正直言って、どれも一過性の流行だとは思えないんです
+23:04	of them is a fad to be quite honest. Uh in my mind right now, just running it	。 ええと、今 私の頭の中では、今まさにそれを考えているところです
+23:08	through my mind right now. Uh Marco, >> I guess [clears throat] I'd more put	。 えっと、マルコ、 たぶん[咳払い]
+23:14	timelines on things if anything, right? So like AI, if I had to if I had to kill	何かするなら、物事にタイムラインをつける方がいいと思うんだけど、そうだよね？ だから、AIと同じように、もし
+23:18	something, it would be that right now. I don't I don't think we're there yet. I	何かを殺さなければならないとしたら、今すぐにでもそれを殺したい。 まだそこまでには至っていないと 思います。
+23:21	think it's still exploding, but it's all offchain. So like that doesn't have to	今も爆発的に成長していると思うけど、すべて オフチェーンで行われている。 つまり、それは
+23:26	do with crypto per se. like I I've you know over the past couple weeks set up	暗号通貨そのものとは直接関係ないということです。 過去数週間で、自分のパソコンに
+23:30	Hermes or Hermes or however you say that on my personal computer and I have a	Hermes または Hermes またはどう呼ぶかはわかりませんが、設定しました。
+23:34	bunch of profiles and I'm routing it through open router and I'm paying with	プロファイルがいくつかあり、それを Open Router 経由でルーティングし、USDC で支払っています。USDC を保有していますが、
+23:39	USDC because I have some USDC but you know I'm swapping it to you know I'm	それをアンステーキングしたり、
+23:44	unstaking it or you know taking it out of lending protocol putting it into a	レンディング プロトコルから取り出してウォレットに入れ、支払いに使用しています。これは少し
+23:47	wallet and paying that like that's kind of annoying like it would be nice to	面倒なので、自動化されているといいのですが。
+23:50	>> I call it automated >> before you have it set up I have it	設定する前に
+23:52	Hermes and then after it starts printing for me it's Hermes.	Hermes を設定し、印刷が開始されると Hermes になります。
+23:55	>> Yeah I like that. I like that. Yeah. Yeah. It's uh it's been it's been	うん、それいいよね。 私はそれが好きです。 うん。 うん。 ええと、
+23:59	interesting. My wife is not happy that I've set up a group chat between me,	興味深いものでした。 妻は、 私と妻とエージェントの3人でグループチャットを設定したことに不満を持っています。
+24:02	her, and an agent, and I'm trying to have stuff help us help us around the	私は、
+24:05	house with the kids. And she's like, I I don't understand what the hell I know	子供たちの世話など、家事を手伝ってくれるようなものを集めようとしているのですが。 そして彼女は、「
+24:08	Telegram. Um I was like, yes, you do. Uh so that's been it's been an interesting	テレグラムで一体何を知っているのか、私にはさっぱりわからない」という感じでした。 ええと、私は「そうですね」って感じでした。 ええと、それは 興味深い簡単な話でした
+24:12	>> quick on that. Like 10 years ago, we had this automated system and it would like	。 10年くらい前、毎週
+24:17	run like every Thursday at like noon and I had it text me and remind me to flirt	木曜日の正午頃に自動システムが作動して、
+24:22	with my wife. >> Yeah, that's smart. I I should	妻にちょっかいを出すように私にテキストメッセージを送ってリマインダーを送ってくれるように設定していたんです。 うん、それは賢いね。 私はそうするべきですね
+24:24	[laughter] be doing that. We should be doing Haven't scheduled a date.	（笑）。 私たちはやるべきなのに、まだ 日程を決めていません。
+24:28	>> What are you doing? >> Yeah, that's actually [laughter] I	何してるの？ うん、それは確かに（笑）私も
+24:31	should do that one. I'll put that in the group chat, though.	やるべきだね。 それは グループチャットに書いておきます。
+24:34	>> See, I just had the agent impersonate me and flirt with my wife for me, but then	ほら、さっきエージェントに俺のふりをさせて 妻に色目を使ったんだけど、
+24:37	I get jealous of it, which makes me a better husband. I [laughter] hope	それを見て嫉妬しちゃって、結果的に俺はもっと いい夫になったんだ。 [笑い]
+24:41	>> I I really wish my wife to the left of me was listening to this cuz she'd be	左にいる妻が これを聞いていたらいいのにと思います。彼女は
+24:45	like, "What the hell are you guys even talking about right now?" That's	「一体あなたたちは 今何を話しているの？」と言うでしょうね。 それは
+24:47	absolutely hilarious, though. Oh my gosh.	本当に面白いですね。 ああ、なんてことだ 。
+24:50	>> So, um I'll bring it back. [laughter] Uh, so I think the AI stuff is going to	じゃあ、えっと、それを返してあげます。 [笑い] ええと、AI関連のことは実現すると思いますが、
+24:56	happen, but it's not there yet for the crypto related piece. Um, you know, like	暗号通貨関連の分野ではまだそこまでには至っていません。 ええと、つまり、
+25:00	all >> we're short-term kill AI. All right.	私たちは短期的にAIを殺戮するんです。 よし。
+25:03	>> Yeah, short-term kill AI. Longterm it'll it'll happen, but I don't know when. Um,	ええ、短期的にはAIを倒すということですね。 長期的にはそうなるだろうが、いつになるかは分から ない。 ええと、
+25:06	the DeFi mullet is interesting, but I don't think there's that much	DeFiのマレットヘアは面白いですが、今の
+25:09	interesting in DeFi right now. Personally, I don't think the riskreward	DeFiにはそれほど面白い要素はないと思います。 個人的には、リスクとリターンのバランスが取れていないと思う
+25:12	is there. Personally, um, like I still have stuff um on chain, but I've taken	。 個人的には、まだ チェーンに何か付いているけど、ここ
+25:17	I've taken stuff out in the past six months. Part of it is because of the AI	半年でいくつか外したんだ。 その理由の一つは、AIの性能が非常に向上したことにある
+25:20	has gotten so good. I don't know what is hackable or not hackable like right like	。 何が ハッキング可能で何がハッキング不可能か、私にはわかりません。
+25:26	if you're not a if you're a protocol and you're not running um like pen tests and	プロトコルではなく、 ペネトレーションテストや
+25:30	all those tests with AI like as top top um frontier models all the time like	AIを使った最先端のモデルを使ったテストを常に実行していないと、いつかは痛い目に遭うでしょう。
+25:35	you're going to get screwed at some point like the Lindy effect is not Lindy	-
+25:38	anymore in my opinion if anything it's a bigger honeypot. Um so the the DeFi	私の意見では、リンディ効果はもはやリンディではなく、むしろより 大きなハニーポットです。 えっと、DeFiの
+25:42	mullet I think is a really cool idea. I just don't think there's that much in	マレットヘアはすごくクールなアイデアだと思うんです。
+25:46	DeFi yet for it to be worth it. The RWA stuff I'm very interested in. I come	DeFiにはまだそれほど大きな価値があるとは思えません。 RWA関連のことには とても興味があります。私は
+25:50	from a trifi background. I I help out with my firm's crypto strategy, DeFi,	トリフィケーションのバックグラウンドを持っています。 私は、RWA戦略のようなDeFiではなく、 DeFiに関する会社の暗号通貨戦略を支援しています
+25:56	not DeFi, like RWA strategy. We haven't tokenized anything yet, but but we've	。 …まだ 何もトークン化していませんが、
+26:00	thinking about it. Um, we have something in the pipeline. The tokenization stuff,	検討中です。 ええと、現在開発中のものがあります 。 トークン化に関しては、
+26:04	like, you know, a couple years ago, it was all private markets. I think that's	数年前までは、 すべてプライベート市場だったんです。
+26:07	the wrong first step personally. Like, I don't think you can put a liquid wrapper	個人的には、それは間違った第一歩だと思う。 つまり、流動性の
+26:11	on an illquid asset and make it liquid. Like, that's just not how things work.	低い資産に流動性のあるラッパーを被せたところで、それが流動性のある資産になるとは思えないんです。 そんな風には 物事は進まないよ。
+26:14	It's still illquid underneath the hood. If anything, you're going to get screwed	ボンネットの下はまだ液漏れしている。 むしろ、 あなたは損をするでしょう。
+26:17	because you don't understand what the redemption frequency and cycle is and	なぜなら、あなたは 償還頻度やサイクルを理解しておらず、
+26:21	you don't understand how things are gated and lock like so like it's its own	物事がどのように制限され、ロックされているかを理解していないからです
+26:24	can of worms. It's it's very challenging and I don't think people fully	。まるでパンドラの箱のようなものです。 それは非常に困難なことで、 人々はそれを十分に理解していないと思います
+26:27	understand that. You know, putting a tokenized money market fund on chain.	。 つまり、 トークン化されたマネーマーケットファンドをブロックチェーン上に載せるということです。
+26:31	Cool. Yeah. Like that's a great idea. I don't know what the use case is though.	いいね。 うん。 それは素晴らしいアイデアですね。 どのような用途が考えられるのかは分かりませんが 。 正直、
+26:34	Like I don't really know what people are doing with that. Sure, you can post it	みんながそれで何をしているのかよくわからない 。 はい、
+26:37	as margin. You can still earn yield. Like great. Like I maybe that's a use	余白として投稿できますよ。 それでも利回りを得ることは可能です。 素晴らしいですね。 例えば、それはユース
+26:40	case. So I I think at some point you will see the idea of like a stable coin	ケースの一つかもしれない。 だから、いずれはス テーブル …コイン
+26:45	sandwich where it would be nice for me. I don't have to put my money in	サンドイッチのようなアイデアが出てくると思うし、それは私にとっては良いことだと思う。 私は、より多くのリスクを負って、
+26:48	something earning 4% or 4 and a.5% on chain taking a bunch more risk. I can	4％または4.5％の利回りを得られるものにお金を投資する必要はありません 。 私はトークン化
+26:53	keep my money on chain in a tokenized money market fund. And then if I want to	された マネーマーケットファンドに資金を預けておくことができます。 そして、私が
+26:57	pay for it, I swipe a card and it goes from money market fund to stable coin to	支払いをしたい場合は、カードをスワイプすると、資金は マネーマーケットファンドからステーブルコインに送られ、
+27:01	the vendor that I paid and maybe they go right back into the money market fund.	私が支払った販売業者に渡され、場合によっては販売業者は すぐにマネーマーケットファンドに資金を戻すことになります。
+27:04	So the stable coin sits there. It's a payment rail. It sits in the middle.	つまり、ステーブルコインはそこに置かれているということだ。 これは 決済システムです。 それは真ん中に位置する。
+27:07	Most of the time you're keeping your assets yield bearing in some form or	ほとんどの場合、 資産は何らかの形で利回りを生み出す形で保有されますが、
+27:10	fashion in the safest yield that you can find in my opinion which is you know	私の意見では、最も安全な利回り、つまり
+27:13	call it treasuries. You could obviously increase that risk. You could go to	国債と呼ばれるものに投資するのが良いでしょう。 当然、 そのリスクを高める可能性もある。 AAAL格付けの債券を選ぶこともできますし、
+27:16	AAAL's you could go down the down the credit stack or further out in duration	信用格付けの低い債券を選ぶことも、デュレーションの長い債券を選ぶこともできます
+27:20	however you want to manage your assets. But to me that's that's an interesting	。資産運用は、ご自身の希望に応じて自由に選択できます。 しかし、私にとってそれは興味深い
+27:23	use case. I think the market got it backwards though. They started with	ユースケースです。 市場は 逆のことを言っていると思う。 彼らは
+27:26	privates and liquids. That's not the right that's not the right way to do it.	プライベートと液体から始めた。 それは正しいやり方ではない 。
+27:29	You should have started with liquid assets. You're starting to see stuff	流動資産から始めるべきだった 。 株式
+27:31	with the stocks right now. Tokenized stocks and then you look at Robin Hood	市場では、今まさに変化が見られ始めています。 トークン化された 株式を見て、それからロビンフッドチェーンを見ると、一体
+27:34	chain and like what the hell is happening over there? like they're	あそこで何が起こっているのかと思うでしょう？
+27:36	pairing tokenized stocks with memecoins and like somehow that's affecting maybe	トークン化された株とミームコインを組み合わせていて、それが何らかの形で
+27:40	the price like I was looking at Twitter today and they were talking about I	価格に影響を与えているようです。今日Twitterを見ていたら、何の
+27:43	forget what even the firm was. I've never even heard of it. They paired it	会社だったか忘れましたが、その会社について話していました。 聞いたこともない 。 彼らはそれを組み合わせているので、
+27:46	you know so you're starting to blend DGEN crypto plus you know traditional	DGEN暗号通貨と従来の資産を融合させ始めています。
+27:50	assets is it's own it own camp forms but to me I do think that's happening and	独自の陣営が形成されていますが、私は それが起こっていると思います。
+27:55	then I think you get the RWA stuff that actually happens. It's legit assets	そして、実際に起こるリスク加重資産（RWA）の問題が発生すると思います 。 正当な資産が
+27:59	being tokenized in a legit rapper which is always a question mark too. what's	正当なラッパーによってトークン化されるというのは、 常に疑問符が付く点でもある。
+28:02	the rapper and how does that work and where do the assets custody and do you	ラッパーとは何ですか、それはどのように機能しますか、 資産の保管はどこで行われますか、
+28:05	actually have rights the same rights you would if you owned it in a traditional	実際に 従来の
+28:08	brokerage account and that will enable the DeFi mullet because at some point	証券口座で所有する場合と同じ権利がありますか、そしてそれが DeFiマレットを可能にします。なぜなら、ある時点で
+28:12	you want you want DeFi yields to be directly competitive with stratfi yields	DeFi利回りが Stratfi利回りと直接競争することを望むからです。
+28:17	right like there's no reason a should pay you sub so sofur in my opinion like	つまり …、 私の意見では、サブスクリプションを支払う理由はありません。それは
+28:20	you're not that's that makes no sense uh unless you have to keep your money on	意味がありません。
+28:23	chain for some reason which for an individual you shouldn't have to unless	何らかの理由でお金をオンチェーンに保持する必要がある場合を除きますが、 個人の場合、税金を支払いたく
+28:27	you earned it in some way that you don't want to pay taxes on um	ない方法で稼いだ場合を除き、そうする必要はありません。
+28:31	>> so you you need that to be competitive. You need to have there there should be a	したがって、競争力が必要です。
+28:35	higher correlation between onchain yields and offchain yields in my	私の意見では、オンチェーン利回りとオフチェーン利回りの間には、より高い相関関係があるべきだと私は考えています
+28:38	opinion. >> Have you guys seen three Jane's new	。 皆さんは、基本的にキャップコールが不要なジェーンの新製品3つをご覧になりましたか
+28:40	product where they're basically no cap calls?	？
+28:42	>> Yeah, I thought that was a really cool idea. We've talked about it internally	うん、それは本当に素晴らしい アイデアだと思ったよ。 私の会社では、そのことについて社内で話し合いました
+28:44	at my firm. Um we have private, you know, closed end private funds. Like is	。 ええと、弊社にはプライベートファンド、つまり クローズドエンド型のプライベートファンドがあります。
+28:50	there a way to make that a little bit more streamlined? You know, if you're an	もう少し効率化する方法はないでしょうか ？ ご存知のとおり、もしあなたが機関投資家で、
+28:53	institution in in uh investing a private fund, you're you're probably doing it on	プライベート ファンドに投資しているなら、おそらく
+28:57	the last day of the cap call anyways. You're pretty streamlined. So, I don't	キャップコール最終日に投資することになるでしょう。 あなたはとても効率的ですね。 だから、
+29:00	think it helps for an institutional framework, but like for individuals,	制度的な枠組みには役立たないと思う けど、個人にとっては役に立つと思う
+29:04	yes. Like I do think that type of structure is is a really cool idea. Um,	。 …ああいう 構造は本当に素晴らしいアイデアだと思う。 ええと、
+29:08	and like keep it yield bearing up until the last second essentially. Like I I	基本的には最後の瞬間まで利回りを維持するということです。 私は
+29:11	love that idea. >> It's really smart. Yeah. Especially with	そのアイデアが大好きです。 それは本当に賢い。 うん。 特に、シームレスで、
+29:13	the payment rails that are like like it's seamless and it's and you know the	-
+29:17	the ability to carry like a little bit of a balance sheet for these um card	カードアプリケーションのために少しのバランスシートを保持できるような決済レールに関しては、
+29:20	applications like the neo banks obviously everybody's kind of racing to	ネオバンクのように、 誰もが
+29:24	that space with the with the brain and etherfine now. Um what was it? Athena	ブレインやイーサファインを使ってその分野に競い合っています 。 えっと、何でしたっけ？ アテナは
+29:28	Pay yesterday. Athena. Yes. >> Yeah. It's wild. It's wild. It	昨日支払いました。 アテナ。 はい。 うん。 すごいね。 すごいね。 それは
+29:33	>> That's a It's a really smart move. And either either you sell to swipe your	本当に賢い動きだ。 そして、
+29:37	card or you borrow to swipe your card. I think like that there was a chain.com	カードをスワイプするために売るか、カードを借りるかのどちらかです。
+29:42	like 2014 2015 they raised a a bucket of money to do this and and now we're	2014年か2015年頃にchain.comという会社があって、彼らはこのために多額の 資金を集め、今まさにそれが実現しようとしているのを目にしていると思います。つまり、私は
+29:47	actually see it come to fruition, which is like I hold my Apple stock, I swipe	Apple株を保有していて、
+29:50	my card, I borrow against my Apple stock or I sell depending upon my settings and	カードをスワイプして、Apple株を担保に借り入れたり、 設定に応じて売却したりできるということです。
+29:54	that's it. >> That's smart. That's it's the right way	それだけです。 それは賢明だ。 それが正しいやり方だ
+29:55	to do it. You do have to hope that you're getting best execution if you're	。
+29:59	selling underneath the hood. The borrow rate is legit. But like you said all	裏側を売る場合、最良の実行結果が得られることを願うしかない。 借入 金利は適正です。 でも、あなたが言った通りですよね
+30:02	that stuff up, right? It is a much better UI or really UX, right? Like then	？ これは UI、いやUXがずっと良くなったと言えるでしょう？ その時、
+30:06	we've seen. So I like I love the way things are going. Like I said, I think	私たちはそれを見てきました。 だから、今の状況はとても気に入っています 。 前にも言ったように、
+30:10	RWAS are good and they're going to here to stay. They were done wrong initially.	RWASは良いチームだと思うし、今後も 存続していくと思う。 当初のやり方が間違っていた。
+30:13	I think they're they're moving in the right direction now.	彼らは 今、正しい方向に進んでいると思う。 まだ
+30:15	>> I still too permissioned and it was too too OTC, right? Yes.	許可が下りていないし、あまりにも OTCすぎたよね？ はい。
+30:20	>> Very limited amount of flow, right? It's like if if blockchain is like the	流量が非常に限られているんですよね？ ブロックチェーンが
+30:25	world's best secondary market, you got to let the secondary market like	世界最高の二次市場だとすれば、 二次市場の
+30:28	liquidity flow otherwise, but then you get into like all these regulatory	流動性を確保する必要があるが、そうすると 規制の
+30:31	stuff. It's a challenge. RWS are a big challenge. I right now I'm thinking like	問題に巻き込まれてしまう。 それは難しい課題だ。 RWSは大きな 課題です。 今のところ、一番
+30:35	that's the one that's going to be the hardest on the longest time horizon to	長期的に見て、
+30:39	to kind of figure that out. But, uh, you know, Robin Hood speedrunning it. If	それを解明するのが一番難しいだろうと思っています。 でも、ほら、 ロビン・フッドがスピードランでクリアするんだよ。 もし
+30:42	they can continue to do that with this tokenized meme stocks, I mean, you know,	彼らがこの トークン化されたミーム株でそれを続けられるなら、まあ、ほら、
+30:45	petty stocks have been around forever. There's there's a lot of volume. There's	くだらない株は昔からあるからね。 音量がかなり大きいですね。
+30:48	a lot of volatility. But, uh, let's see. They're the memes like right they really	変動性が非常に高い。 でも、ええと、見てみましょう。 まさに ミームですね。本当にそうです。
+30:52	are. >> Yeah.	うん。
+30:54	>> Yeah. Exactly. >> But guys, what's on your road map? Um	うん。 その通り。 皆さん、今後の計画はどのようなものですか？
+30:57	how is Manetta going to grow, scale? What are you guys building, deploying,	マネッタはどのように成長、規模拡大していくのでしょうか？ 皆さんはどんなものを開発したり、展開したり、
+31:02	contributing? What painoints do you have?	貢献したりしていますか？ どのような痛みがありますか ？ 現状の
+31:03	>> I'd say pain points are right now interoperability uh with other chains.	課題は、 他のチェーンとの相互運用性にあると言えるでしょう。
+31:09	Um, we are working with Vlabs and you can think of it similar to the CCTP that	ええと、私たちはVlabsと協力していますが、
+31:15	Circle does uh crosschain transfer protocol basically for anybody that	Circleが行っているCCTP（クロスチェーン転送 プロトコル）に似ていると考えてください
+31:19	doesn't know what that means. Um, and we're working to actually we already	。それが何を意味するのか知らない人のために簡単に説明すると、CCTPのことです。 ええと、 私たちは実際に
+31:23	have a live live ability to be able to transfer USDM over into the midnight	USDMをミッドナイトチェーンに移行できるライブ機能を既に実装できるよう取り組んでいます
+31:28	chain. Um, midnight chain's really not uh completely ready for uh assets of	。 ええと、ミッドナイトチェーンはまだ 資産価値を完全に扱う準備ができていませんし
+31:33	value yet, nor are they really uh kind of pushing that. uh it's still maybe	、積極的にそうしようとしているわけでもありません 。 ええと、まだ
+31:39	about 2 3 months off. Uh but the idea is to be able to you know transfer value	2、3ヶ月くらい先だと思います。 ええと、そのアイデアは、 価値 …を
+31:43	over into another chain and do it in relatively safe manner. I hate using a	別のチェーンに 比較的安全な方法で移転できるようにすることです。 私は、
+31:47	bridge uh in any way or the name bridge in in any way just simply because of the	橋をいかなる形であれ使用すること、あるいは橋という名前をいかなる 形であれ使用することが嫌いです。それは単純に、
+31:52	amount of exploits that have happened uh over the years uh with bridges. Um so	長年にわたって橋で発生した不正行為の数々があるからです。 ええと、
+31:57	this is similar to a bridge. It's a little different messaging service. So	これは橋に似ています。 これは 少し変わったメッセージングサービスです。 ですから、その
+32:00	think about it in that particular way. Uh but uh we'd love to be able to see	ように考えてみてください。 ええと、でも、
+32:04	more interoperability with other chains. So as far as a roadmap goes, that's one	他のチェーンとの相互運用性がもっと高まれば嬉しいですね。 ロードマップに関しては、現在
+32:08	thing that we're working on. Vlabs has been able to facilitate that for us. Uh	取り組んでいることの一つです。 Vlabsのおかげで、 それが実現できました。 ええ、それは
+32:12	which has been great. Um payment solutions is another uh we have MBX is a	素晴らしいことでした。 ええと、決済 ソリューションは、MBXが
+32:17	u strategic partner. They're also a co-issuer of USDM and uh they're working	戦略的パートナーであるもう1つのものです。 彼らは USDMの共同発行者でもあり、
+32:23	along with us on a relationship with Visa Flex. Uh Visaflex is a new style or	Visa Flexとの関係構築においても私たちと協力しています。 Visaflexは、新しい支払い方法、あるいは
+32:30	new way of being able to make payments. So you can think about it in a way where	新しい支払いスタイルです。 つまり、
+32:33	you show up with your Visa Flex card. you're at the grocery store,	Visa Flexカードを持って行くようなものだと考えてください。 あなたはスーパーマーケットにいて、
+32:36	everything's going through, but turns out you don't have enough money in your	すべて順調に進んでいるのに、銀行口座 に十分なお金がないことに気づく
+32:39	bank account. So, a isn't going to work right at that moment, right? So, you can	。 つまり、 その時点ではaはうまく機能しないということですよね？ ですから、
+32:42	instead use uh the credit portion of that as well. Or you might even have	代わりにそのクレジット部分もご利用いただけます 。 あるいは、
+32:48	points on there based on a closed loop uh system that they've got for rewards	-
+32:52	based on shopping there for loyalty, things like that nature, right? And so	そこで買い物をすることで得られるロイヤルティ報酬など、クローズドループシステムに基づいたポイントが付与される場合もあるかもしれませんね。 そのため、
+32:55	all these can be incorporated into that and USCM will be custodied there in	これらすべてをそこに組み込むことができ、 USCMはそこで保管され、
+33:00	order to be able to be used. So giving utility to people who are holding USCM	使用できるようになる。 つまり、 USCMを保有している人々に有用性を与えることは、
+33:04	that has been one of the main goals uh in in my mind that we need in order to	-
+33:09	make USM attractive in order for it to um for other people to adopt it. Uh so	USMを魅力的にして 他の人々が採用できるようにするために必要な主要な目標の1つだと私は考えています。 ええと、
+33:15	MBX has been a a really great partner in that regard. Uh there's a couple other	その点においてMBXは本当に素晴らしいパートナーでした。 ええと、
+33:19	companies we're working with now that solely work in payment solutions and	現在弊社が提携している企業の中には、 決済ソリューションのみを専門に扱っていて、
+33:23	they will custody the assets for you. Uh so you don't even have to create the	お客様の資産を保管してくれる会社がいくつかあります。 ええと、変換を行うため
+33:26	vault the private vault necessary in order to be able to do the conversions	に必要なプライベート金庫を作成する必要すらありません。そして、
+33:29	and they convert it into any fiat that they're currently available to be able	現在利用可能なあらゆる法定通貨に変換して、利用可能な
+33:33	to in the markets they're available in uh and USDM can be utilized there. So	市場で利用できるようにします。USDMも そこで利用できます。 つまり、
+33:38	that's giving further utility to USDM uh as a saving point. Um so on on the road	USDM …は 節約ポイントとしてさらに有用性を持つということです。 ええと、ロード
+33:43	map we're working there also working within the governance structure uh	マップに沿って作業を進めており、
+33:46	within Cardano's ecosystem. uh we are working with intersect MBO and others	カルダノのエコシステム内のガバナンス構造内でも作業しています。 ええと、私たちは インターセクトMBOや、例えばAlphaGoのような
+33:52	that are getting grant funding say for example even like yourselves right with	助成金を受けている他の企業と協力しています。そこには
+33:55	AlphaGo for example uh where there's a certain structure the way it works it's	特定の構造があり、
+33:59	called the TRC or Treasury reserve contract typically what happens is a	TRCまたは財務省準備 契約と呼ばれています。通常、
+34:03	grant proposal gets something uh gets the funding in and then it's held there	助成金の提案が何らかの資金を受け取り、
+34:06	until they hit their deliverables and they get dispersal you know what happens	成果物を達成して分配されるまで資金はそこに保持されます。
+34:09	during that particular time well you know you potentially uh use USDM or I	その特定の期間に何が起こるかは、
+34:14	think USDCX right now currently in order to be safe be able sit in and hedge	安全を確保し、下落リスクをヘッジするために、USDMまたは現在ではUSDCXを使用する可能性があります
+34:19	against downside. Uh especially when you're sitting in a maybe a six or 12	。 特に、 6ヶ月または12ヶ
+34:24	month uh deliverable period uh and the volatility of a particular asset like	月の納品期間にいて、
+34:28	ADA isn't exactly something you want to you want to sit in for very long. Um	ADAのような特定の資産の変動性が、それほど 長く続くことを望むものではない場合。 ええと、
+34:33	this also helps the ecosystem grow because if the grant uh person who	これはエコシステムの成長にも役立ちます。 なぜなら …、
+34:37	receives the grant funding gets something that is of stable value the	助成金を受け取る人が、常に 安定した価値を持つものを手に入れれば、
+34:41	entire time they can definitely achieve all the deliverables that they need to	必要な成果物を確実にすべて達成できるからです
+34:45	to meet. if they don't and ADA goes down in value and they choose ADA instead and	。 もし彼らがそうせず、ADAの 価値が下がり、代わりにADAを選んだ場合、ADAの価値は
+34:50	it drops by 50%. How does that work? You know, when they're able to try when	50%下落する。 それはどういう仕組みですか？ ほら 、彼らが
+34:54	they're trying to pay people, you know, with a a volatile asset, right, like	人々に支払いをしようとするとき、つまり、 不安定な資産を使って支払おうとするとき、そうでしょう？
+34:57	that. So, these are all these are all spots that we're currently working on.	これらはすべて、 現在私たちが取り組んでいる場所です。
+35:01	And then there's a few others that we're working on as well.	そして、他にもいくつか現在取り組んでいるプロジェクトがあります 。
+35:03	>> It's amazing. Yeah, we're we're going through that challenge right now and	素晴らしいですね。 ええ、私たちは今まさに その課題と機会に取り組んでおり、
+35:06	that opportunity of like going to make sure to uh hedge the exposure to ADA so	ADAへのエクスポージャーを確実にヘッジして、
+35:10	we can successfully get through the prime project um for the year. and we	今年の主要プロジェクトを成功裏に完了できるようにしています。 そして、
+35:14	had a little bit of a bump in price which is which is awesome but helpful	価格が少し上昇しました。これは 素晴らしいことですが、役に立つことです。上がったものは
+35:17	>> what goes up yeah >> can't go down right so we gota we got to	下がらないので、
+35:20	do hedging that's that's awesome James Marco this has been great thank you for	ヘッジを行う必要があります。 これは素晴らしいことです。ジェームズ・マルコ、
+35:23	uh joining uh a dose of alpha today we're going to stick around and do a	今日は素晴らしい時間でした。アルファのドーズに参加していただきありがとうございます。私たちはもう少し残って、
+35:28	couple cardono prime updates before we go what's the best way to reach you get	カルドノプライムのアップデートをいくつか行います。 あなたたちに連絡する最良の方法は何ですか？
+35:32	a hold of you guys >> yeah so mana global is your best spot	はい、マナグローバルが最良の場所です。
+35:35	that you can go you can also go in uh through my exac account at blockjack	また …、 ブロックジャック2017の私の正確なアカウントからもアクセスできます。
+35:40	2017 reach me there uh we also have an app It's at app a.mmonetta.global.	そこで私に連絡してください。また、 アプリもあります。app a.mmonetta.globalです。
+35:46	Uh there you can go in and mint. We're available in 20 states. Uh if you can't	ええと、そこに入ってミントを入手できます。 当社は 20州でサービスを提供しています。
+35:51	get us through our app, then you can go to MBX. They are actually pretty much	アプリから連絡が取れない場合は、 MBX にアクセスしてください。 実際、それらはほぼ
+35:56	worldwide. Uh worldwide. So uh anybody that's looking to be able to mint USM,	世界中に存在している。 ええと、世界中で。 ええと、 USMをミントしたい方は、
+36:01	you can reach uh you can go ahead and mint through MBX as well through our	MBXを通じて、または当社の
+36:04	partners. So, um, that's probably our best spots for for anybody that's	パートナーを通じてミントすることができます。 つまり、
+36:08	interested in minting USDM and then putting to work in our DeFi EOS	USDMをミントして、それを DeFi EOSエコシステムで活用することに興味のある方にとって、おそらくこれが最適な場所でしょう
+36:13	ecosystem. Please, please, please mint USDM and go into our DeFi space like	。 どうか、どうか、USDMを発行して、
+36:19	Strike, like Bodega, like Fluid, and others that are working their asses off	StrikeやBodega、Fluidなど、
+36:23	here in this ecosystem to try and give the best possible UIUX to its users. Uh,	このエコシステムで ユーザーに最高のUI/UXを提供しようと懸命に努力している他のDeFiプラットフォームのように、私たちのDeFi分野に参入してください。 ええ、
+36:28	and they're using USM on a regular basis in order to be able to do that. So,	そして彼らはそれを実現するためにUSMを定期的に利用しているんです 。 ですから、彼らを
+36:32	we're excited to have them as partners. And uh so the the more the marrier when	パートナーとして迎えられることを大変嬉しく思っています。 ですから、
+36:36	it comes to that and adding liquidity there would be absolutely amazing.	その点に関しては多ければ多いほど良いですし、そこに流動性を加えることは 本当に素晴らしいことです。
+36:38	>> It's awesome. James Marco, thank you for joining the dose of Alpha.	最高だ。 ジェームズ・マルコさん、 アルファの教えにご参加いただきありがとうございます。
+36:41	>> Thanks guys. >> Great to see you guys.	ありがとう、みんな。 皆さんに会えて嬉しいです。 気をつけて
+36:42	>> Take care. >> It's awesome. All right, Eric, as we	。 最高だ。 さて、エリック、
+36:44	move on to the next segment, that was really cool. And the a lot of people	次のコーナーに移りましょう。 本当に素晴らしかったです。 そして、
+36:48	think in the world like things just happen. It takes two people, you know,	世の中には物事がただ 起こるものだと考える人がたくさんいる。 必要なのは2人、つまり既成概念を
+36:52	it takes people just willing to like break the mold and say, "Okay, I want to	打ち破って「よし、
+36:55	I want to get this out there. I want to hedge exposure. I want to like get	これを世に出したい。 リスクをヘッジしたい。DeFi
+36:58	involved with the DeFi ecosystem." Like things just don't happen. It takes the	エコシステムに関わりたい」と言える人です。 まるで 物事が起こらないかのように。
+37:01	will of people to just like push and push and push and iterate. It's uh it's	人々がひたすら努力し、努力し、努力し、 そして繰り返していく意志が必要なのです。 それは、ええと、
+37:06	inspiring. >> Yeah. And building things that are, you	刺激的です。 うん。 そして、
+37:08	know, Mika compliant, genius compliant, and constantly moving around. It's uh	ミカの要求に応え、天才の要求にも応え、 常に動き回っているようなものを作る。 それは、
+37:12	takes funding, resources, partnerships, um and a heck of a lot of willpower in a	資金、リソース、パートナーシップ、 そして、リモートワークというだけでなく
+37:17	a place where it's not just remote work, but it's like remote from everyone else	、これまで一緒に
+37:20	you're ever working with work. All right, let's um there's been some	仕事をしてきたすべての人から離れた場所で、非常に強い意志を必要とするものです。 さて 、ソーシャルメディアでは
+37:23	chatter out on the socials about what's going on with uh Cardono Prime and Alpha	Cardono PrimeとAlpha
+37:27	Growth and uh let's why don't we take like five or 10 minutes here to like go	Growthの現状についていろいろと話題になっているので、 ここで5分か10分ほど時間を取って、私たちが
+37:31	over some highle stuff that we've been working on and uh and drive some uh	取り組んできた主な内容について説明し、
+37:36	transparent exposure. I think we should do this more often like to be like	透明性を高めていきたいと思います。 フランクみたいに、 もっと頻繁にこういうことをするべきだと思うんだけど、
+37:38	frank, you know what I mean? >> Yeah, I I think we're we're setting	わかる？ ええ、私たちは
+37:41	things up so that we can uh every two weeks come out on Cardono uh over coffee	2 週間ごとにカルドノの番組に出演して、コーヒーを飲みながら、そこで解説できるように準備を進めているところです
+37:45	uh and you know be available there and give some breakdowns there. I know Yoda	。 ヨーダが
+37:50	did a good job of opening up the DREApp council to D5 participants as well where	DREApp 評議会をD5の参加者にも開放してくれたのは素晴らしいことだと思います。
+37:54	we're going to do like a monthly like more deep dive that's for more than just	-
+37:57	the operating group. Um yeah, I we need to get more people being more social,	運営グループだけでなく、もっと多くの人が参加できるような、より詳細な議論を毎月行う予定です。 ええ、もっと多くの 人がもっと社交的になる必要があると思います
+38:01	but uh it's been it's been cooking, man. It's been fun.	が、まあ、うまくいっていますよ。 楽しかったよ 。
+38:03	>> Yeah, I was in um San Francisco this yesterday in Monday and yesterday for	ええ、プレゼンテーションのために、昨日 月曜日と昨日、サンフランシスコにいました
+38:07	the presentation. Tim Draper got up there and got everybody dancing into the	。 ティム・ドレイパーがステージに上がり、
+38:12	uh the pitch competition. That was pretty wild. Some really cool projects.	ピッチコンテストに向けてみんなを踊らせた。 あれは かなり衝撃的だった。 いくつか本当に素晴らしいプロジェクトがあります。 それについては
+38:15	We can go over that. I really, you know, sat down with like Draper and the	話し合いましょう。 本当に、 ドレイパー氏や
+38:18	Enriion Fund. It was, it was a really cool experience. I mean, they have they	エンリオン・ファンドの方々とじっくり話し合ったんです。 本当に 素晴らしい経験でした。 つまり、彼らは
+38:22	have the setup and the infrastructure for like the pipeline, like get a	パイプラインのようなもののためのセットアップとインフラストラクチャを持っていて、
+38:26	project like punch them up, get them ready for like investors and investment	プロジェクトを立ち上げて、 投資家や投資のために準備を整え、
+38:29	and just like the energy in the room and how much like excitement there was. It	部屋のエネルギーと 興奮の大きさを感じました。 それは
+38:34	it was really a beautiful thing. Um, probably like there was there was two	本当に美しい出来事だった。 えーと、特に
+38:38	projects in particular that I was like really uh interested in. totally did not	興味があったプロジェクトが2つありました。全く
+38:42	expect it, but there's um like a South African payments processing company	予想していなかったのですが、 南アフリカの決済処理会社が
+38:47	that's coming to Cardono. So, they have like over 37 stores, like over 10,000	Cardonoに参入する予定です。 つまり、 37以上の店舗があり、1万
+38:51	people that have used it. And uh effectively a payment processing, it's a	人以上が利用しているということです。 そして、 実質的には支払い処理であり、それは
+38:55	ZAR, which is like South African currency. You know how I love like	南アフリカの 通貨であるZARです。 私が外国通貨をどれほど愛しているか、あなたはご存知でしょう
+38:58	foreign currencies. I think that's the rate discovery in foreign currencies is	。 外貨におけるレート発見は、
+39:01	going to be amazing. And then being able to bring other foreign currencies uh to	素晴らしいものになると思う。 そして、 他の外貨をカルダノに取り込めるようになることは、
+39:05	Cardano is is something I'm very excited for. Um we could go over like that. We	私が非常に楽しみにしていることです 。 ええと、そういう風に話を進めてもいいかもしれませんね。
+39:10	could go over the projects. We could go over like the high of level	プロジェクトについて話し合いましょう。
+39:12	infrastructure audits, some of the things that we're seeing. Maybe a little	インフラ監査の高レベルな内容や、私たちが目にしているいくつかの 事柄について説明できます。
+39:16	bit of like the good, the bad, and the ugly. Um, I'm happy to go any direction.	善玉、悪玉、 醜玉といった感じでしょうか。 ええと、どの方向でも構いません。
+39:20	I'll lean lean on you. What do you want to do first?	あなたに頼ります。 まず最初に何をしたいですか ？
+39:21	>> So, so our prop I I think most people um don't see all three phases kind of	ですから、私たちの提案は、ほとんどの人が 3つのフェーズが
+39:25	mixing together. They mostly see like, hey, infrastructure audit and then build	混ざり合っているとは考えていないと思います。 彼らは主に、インフラ ストラクチャ監査を行い、その後構築して
+39:29	uh and deploy. Uh the infrastructure audit, I think internally we have like	デプロイするという作業を行います。 ええと、インフラ 監査については、
+39:32	77 something pages at this point. Yeah. Uh so many video breakdowns, UX	現時点で社内では77ページくらいになっていると思います。 うん。 ええと、たくさんのビデオ分析、UX
+39:37	breakdowns, all kinds of stuff. But um uh things that are flagging like we were	分析、あらゆる種類のもの。 しかし、ええと、問題となっているのは、
+39:41	aware coming in that there were going to be these hiccups and holdups but it's	こうした問題や遅延が発生することは承知していたものの、
+39:45	that everyone has had to build their own infrastructure and they haven't had the	誰もが独自のインフラを構築しなければならず、
+39:49	building blocks the Lego pieces that um teams are used to having available and	チームが通常利用できるレゴブロックのような構成要素がなかったことです。
+39:53	that means that the barrier of entry for new projects is still incredibly high	つまり、新しいプロジェクトへの参入障壁は依然として非常に 高く、どこから
+39:57	because they don't have anywhere to start. So, even things like	始めればよいのか分からないということです。 つまり、
+39:59	standardizing like like vault standards or um working with zip 1113 and and	金庫の標準規格のようなものを標準化したり、 zip 1113 と連携したり、
+40:04	figuring out how to do more token standards and get those integrated into	トークンの標準規格をさらに増やして、
+40:08	distribution partners like wallets and uh bringing in distribution partners	ウォレットなどの流通パートナーに統合したり、
+40:11	where there's no like Merkel or Turtle Clubs of the world. Um it's it's a lot.	Merkel や Turtle Club のような流通パートナーがいない地域に流通パートナーを取り込んだりすることなどです。 ええと、それはたくさんあります。
+40:16	Um but we're finding that out now and we're already sprinting with um just	ええと、でも私たちは今まさにそれを発見しているところで、すでに
+40:19	brilliant partners. I was in a call today with uh I think four different	素晴らしいパートナーたちと全力で取り組んでいます。 今日は、4つの異なる
+40:22	apps representing like how to best like tackle the whole vault standardization	アプリの担当者と電話会議をしました。彼らは、 Vaultの標準化
+40:26	stuff and scooper standardization stuff so that it can work for everybody.	やScooperの標準化といった問題にどう取り組むのが最善か、そしてそれが 誰にとってもうまく機能するようにするにはどうすればよいかについて話し合いました。
+40:30	>> Yeah. Yeah. I think like if you kind of think about like some of the strategy	うん。 うん。 例えば、
+40:33	like bringing it out into the public is uh is like there's major challenges,	それを一般に公開するという戦略について考えてみると、 大きな課題があると思いますよね
+40:37	right? So one of the major challenges is like how much is going to be asset	？ つまり、大きな課題の一つは、
+40:40	issuance internally with Cardono and how many assets that we're going to bring	Cardono社内でどれだけの資産を発行し、どれだけの 資産を
+40:43	externally, right? So if you kind of want to map that out, the first thing is	外部から調達するかということですよね？ ですから、それを 地図に描き出すとしたら、まず最初に
+40:47	the bridge. So we're getting involved with some of the layer zero	橋が見えます。 そこで私たちは、 レイヤーゼロに関する
+40:50	conversations trying to figure out how to time that appropriately along with	議論に関わり、
+40:54	like the incentivization of different assets. So we're talking about like	さまざまな資産へのインセンティブ付与などと並行して、それをどのように適切なタイミングで行うかを検討しています 。 つまり、リスク
+40:58	RWAs, yield bearing assets, some major commodities, you know, think like gold,	加重資産（RWA）、利回りを生み出す資産、主要な 商品、例えば金、
+41:03	silver, oil, these types of things. And then we're also having conversations	銀、石油といった類のことです。 そして、特定の
+41:06	with uh trying to expand adoption within uh particular nation states and	国家や
+41:11	countries. So there's conversations going on with the uh the UAE and some	国々における導入を拡大するために、様々な方面と協議を進めています。 それで、 UAE …や
+41:15	other you know stable coins there as well as uh Japan um and and the yen. So	他のいくつかのステーブルコイン、そして 日本と円との間で話し合いが行われています。 つまり、
+41:20	things around the Japanese cherry carry trade that are going to go on probably	-
+41:23	over the next 6 months to a year. There's going to be a lot of volume a	今後6ヶ月から1年の間に起こりそうな日本のチェリーキャリートレードに関する事柄です。 取引量と価格
+41:26	lot of volatility building strategies building products that kind of take	変動が非常に大きくなるため、それをうまく利用する戦略や 商品を構築することが、最優先
+41:30	advantage of that is something that's you know front point and center. But	事項となるでしょう 。 しかし、
+41:34	basic stuff like oracles, indexers, subgraphs, even even the multi-IG	オラクル、インデクサー、サブグラフといった基本的なもの、さらには私たちが現在行っている マルチIGの
+41:39	conversations that we have going on. There's, you know, three or four	会話なども含まれます。
+41:41	different multi-yc providers. Which one and why? So, as we bring new projects,	複数年契約を提供するプロバイダーは、3つか4つあります。 どちらを選びますか？ また、その理由は？ ですから、新しいプロジェクトを導入する際には、
+41:45	here's your Oracle, here's your bridge, here's your multi-IG, here's your RPC	Oracle、ブリッジ、 マルチ …IG、RPC
+41:49	provider. like these types of like blocking and tackling. We need to	プロバイダなど、必要なものがすべて揃っています。 ブロックやタックルといった類のものです。
+41:53	streamline it and and they still haven't been 100% figured out what's going to be	それを合理化する必要があるのですが、
+41:57	the best and breed chosen per multi-pig per uh indexer, per RPC, per um bridge	マルチピッグ、インデクサー、RPC、ブリッジごとに最適な品種が何であるかをまだ100％解明できていません。それが
+42:03	and like that's that's a lot of the blocking and tackling in the	-
+42:06	infrastructure audit. Uh there's other things like uh portfolio management um	インフラストラクチャ監査における多くの障害物です。 ええと、 ポートフォリオ管理など他にもありますが、
+42:11	we did I don't know I can't should release that or not. There's some	それを公開すべきかどうかわかりません。
+42:14	portfolio management stuff coming that which is very interesting like how to do	ポートフォリオ管理に関する 非常に興味深い機能がいくつか登場する予定です。
+42:17	like wallet and wallet tracking um that that's necessary. So any kind of	例えば、ウォレットやウォレットの追跡方法など、 必要な機能です。 つまり、
+42:21	somebody that's not going to roll their own type of infrastructure um but	独自のインフラストラクチャを構築しないタイプの人、例えば
+42:25	they're like a proumer or retail how do they keep track of all their tokens and	プローマーやリテールなどは、どのようにして 自分のトークンをすべて追跡し、それらがどこにあるかを把握するのでしょうか
+42:28	where they're at. Uh currently there's not an amazing solution for that. So	。 ええと、今のところ それに対する素晴らしい解決策はありません。 それは
+42:32	that's a big one. Um I know I'm missing a ton but like just from like an	大きな問題ですね。 ええと、まだまだたくさん抜けているのは分かっていますが、
+42:35	infrastructure high level that's a lot of the work. And then there's kind of	インフラの全体像だけでも、 作業の大部分を占めています。 そして、そこには大きく分けて
+42:39	two different components. there's kind of a high-risk highreward uh type of	2つの異なる要素があります。 ハイ リスク・ハイリターンの
+42:44	strategies and components and maybe venture style bets if you will, but in	戦略や要素、あるいは ベンチャー投資のようなものもあるでしょうが、
+42:49	working with Orion and working with uh the Cardano Foundation on what do they	Orion …や Cardano Foundationと協力して、彼らはどのような
+42:53	have in their pipeline? And then there's how do we turn DeFi into like	パイプラインを持っているのでしょうか？ そして、 DeFiをいかにして
+42:58	sustainable yield products as well. Eric, you want to talk a little bit	持続可能な利回り商品に変えていくかという問題もあります。 エリック、
+43:01	about that? Yeah, I I we just talked with, you know, James and Marco about,	それについて少し話してみないか？ ええ、 ジェームズとマルコと、
+43:04	you know, the dichotomy between security and scalability and how do we get things	セキュリティ とスケーラビリティの二律背反について、そして、よりスケーラブルでありながら、セキュリティを損なわないようなものを作るにはどうすればよいかについて話し合ったところです
+43:08	that are, you know, more scalable but not so scalable they're not secure. And	。 そして、
+43:11	this is what they'll call yield coins where you're able to get these, you	これが利回りコインと呼ばれるもので 、
+43:15	know, higher yielding opportunities but things that don't blow up or you you're	より高い利回りを得られる機会が得られる一方で、価格が 急騰したり、
+43:18	able to track the redemption or the windfall type stuff. Uh that's more	償還や 臨時収入のようなものを追跡したりできるものです。 ええと、それは
+43:21	aggressive than things like T- billill yield which are common and and are	T-ビリル収量のようなものよりも攻撃的で、それらは 一般的で、
+43:24	difficult to do cool things like looping and are less interesting. Uh so we have	ループのようなクールなことをするのが難しく、あまり 面白くありません。 ええと、
+43:28	some really cool um deal flow pipeline um that we're seeing with with	-
+43:32	reinsurance. Uh we're also um yeah I was in San Francisco as well. So both of us	再保険に関して、本当に素晴らしい案件の流れがいくつか見えてきています。 ええと、私も サンフランシスコにいました。 それで、私たち二人は
+43:37	have have done gotten to meet the Draper team and worked on establishing that	ドレイパーの チームと会って、
+43:40	pipeline so we can all work together uh in kind of a unified direction and there	皆が統一された方向で協力できるようにパイプラインを確立するために取り組みました。 そこ …で
+43:44	I was able to meet some hedge funds that are doing some really really cool deal	私は、非常に素晴らしいディールフローを行っているヘッジファンドと会うことができ、それを
+43:48	flow that I was able to talk about bringing to Cardono um and making	カルドノに持ち込んでアクセスし
+43:51	accessible decentralizing it. basically take these bulk deals that are usually	やすく分散化することについて話し合うことができました。 基本的に、 通常 …は
+43:55	reserved for niches and private companies um and private banks even and	ニッチな分野や民間 企業、さらには民間銀行向けに確保されているこれらの一括取引を、
+43:59	make it accessible to the general public who can kind of bootstrap and come in	一般の人々がアクセスできるようにし、
+44:02	together similar to how angels will you know um replace venture in some capacity	エンジェル投資家がベンチャーキャピタルをある程度置き換えるのと同様に、ブートストラップして一緒に参加できるようにします。
+44:07	but decentralizing access to cool deal flow that's high yield opportunity and I	高利回りの機会であるクールな取引の流れへのアクセスを分散化します。
+44:11	I think the pipeline's looking good >> yeah from a from a category perspective	パイプラインは良好に見えます。 カテゴリの観点からは、
+44:14	we're looking at isolated money markets uh obvious we probably going to do a	孤立したマネーマーケットを検討しています。おそらく、
+44:18	game with uh indigo potentially looking at like other types of CD DP mechanics	Indigo とゲームを作成し、 他のタイプの CD DP メカニズムも検討する可能性があります
+44:23	as well. Um, uh, DEXes would that allow for like rehypothecation. So like unis	。 えっと、DEXは 再担保を可能にするのでしょうか。 つまり、Unis
+44:29	swap v4 style approach where the capital can be sitting in an LP position and	Swap v4 スタイルのアプローチのように、資本を LP ポジションに置いておき、
+44:34	then earning uh on on a money market behind the scenes so it it can juice the	舞台裏でマネーマーケットで収益を得ることで、
+44:39	yields high enough so it makes sense to put in a DEX. Um, I think like	利回りを十分に高め、 DEX に投資する意味を持たせることができるのです。 ええと、間違いなく
+44:44	definitely a launchpad. I know we've been going back and forth on that. Like	発射台だと思います。 その件については、これまで何度も議論を重ねてきたことは承知しています。
+44:48	some if we're doing like, you know, four or five different potential new	例えば、来年TGESを搭載する可能性のある4つか 5つの異なる新しい
+44:51	primitives that are going to have TGES in the next year, we gota we got to have	プリミティブを開発する場合 、
+44:54	an awesome launchpad. Um some of these we're going to put out as uh like RFPs	素晴らしいローンチパッドが必要になります。 ええと、これらのうちいくつかは RFP（提案依頼書）として公開する予定で、すでに何人かの方が
+44:58	and some of them some people have already kind of like raised their hand.	手を挙げてくださっています。 オン
+45:01	I think uh onchain insurance and reinsurance is something that's like	チェーン保険と 再保険は、
+45:06	pinnacle the whole entire industry needs and and you know people have been like	業界全体が必要としている頂点のようなものだと思いますし、 人々は長い間
+45:10	working on this for a while. Uh we did a project uh re previously with um red.xyz	これに取り組んできました。 ええと、 以前red.xyzとプロジェクトを行ったのですが、
+45:16	and they're cranking and killing it, but there's that's just like one sliver of	彼らはそれを大成功させていますが、それは
+45:20	the potentiality of like insurance and reinsurance. And I know Eric, you've	保険や再保険の可能性のほんの一端に過ぎません 。 エリック、君も
+45:25	done a ton on kind of like this as restaking style approach of insurance as	保険の再設定というアプローチに関して、これと似たようなことをたくさんやってきたよね
+45:29	well. So there's some like cool mechanics that have been theoretical but	。 つまり、
+45:33	now can like come to the table and stake your ADA for potential reinsurance yield	これまで理論上のものだったクールな仕組みがいくつかあり、テーブルに着いて 潜在的な再保険利回りのためにADAを賭けたり、
+45:38	or stake you know your dollars in a junior trunch or you can so we'll come	ジュニア・トランシュにドルを賭けたりすることができます。つまり、これまで
+45:41	up with some like really interesting um mechanics that previously will be	-
+45:46	theoretical but now start to approach it um what else the other big one is like	理論上のものだった非常に興味深い仕組みをいくつか考案し、アプローチを開始することができます。他に何が 大きなものでしょうか。
+45:51	insurance and then it would be fixed rate interest so pendle or pendleike	保険のようなもので、固定 金利です。ペンドルまたはペンドルのような
+45:54	type of implementation there's a project uh that talking to on how to turn uh you	実装です。
+46:01	know existing money markets or variable rate money markets into fixed rate yield	既存のマネーマーケットまたは変動金利マネー マーケットを固定金利利回りの
+46:05	opportunities. So fixed rate yield with insurance you're getting into a point	機会に変える方法について話しているプロジェクトがあります。 つまり、 保険付きの固定利回りでは、歴史的に
+46:09	where you are so there's three big major things that block traditional finance	伝統的な金融を阻害してきた3つの大きな要因、つまり
+46:13	historically which was regulation security and fixed rates. That's when	規制、 セキュリティ、固定金利という点にたどり着きます。 そういう時に
+46:17	the big capital can come in. So you know piling that on uh together we're we're	大口資本が投入されるんです。つまり、 それらを積み重ねていくと、
+46:21	looking at those same type of strategies. It's not just access and	同じような 戦略を検討しているわけです。 アクセスや
+46:24	rails. there has to be something there that feels secure that has a lot of	レールだけの問題ではない。 そこには、 安心感があり、多額の
+46:29	capital in it and it it starts the ball rolling and then of course we're playing	資金が投入されている何かが必要で、それが物事を始動させるきっかけとなり、 そしてもちろん、私たちは、
+46:32	with um there's a lot of like a lot of like hotness around this AI narrative as	このAIの物語の周りにも非常に多くの熱狂があるという点にも取り組んでいます
+46:38	well. So Agentic Finance, Agentic Wallets, there's a there's a lot of	。 つまり、Agentic Finance、Agentic Walletsなど、そこにはたくさんの
+46:42	games to be played there and um there was a cool project uh agent to agent and	ゲームがあり、エージェント同士の クールなプロジェクトもありました。それは
+46:47	that was at Draper uh who is submitting and going through the process to bring	Draperで行われ、
+46:51	X42 to Cardano and and that's awesome, right? So because like once you get into	X42をCardanoに導入するための申請と手続きを進めているのですが、それは素晴らしいことですよね ？ つまり、
+46:55	that standard that means every single DAP and every single token can get	その標準規格に一度組み込まれると、すべての DAPとすべてのトークンが
+46:58	involved with a agent expandments and and X42 into a new internet standard. So	エージェント拡張や X42に関与し、新しいインターネット標準規格に参加できるようになるということです。 では、
+47:03	those are >> what project was that?	それらは一体 どのプロジェクトだったのでしょうか？
+47:05	>> Oh shoot I think it was called agent to agent but it's uh that was their that	ああ、しまった、確かエージェント・トゥ・エージェントって呼ばれてたと思うんだ けど、えっと、それが彼らの
+47:09	was their public name. >> Msumi and Sakosumi. I think those are	正式名称だったんだ。 ムスミとサコスミ。 その
+47:12	the two names. Apologies if I'm not saying them right but uh uh they're	2つの名前だと思います。 正しく発音できていなかったら申し訳ないのですが、えーっと、彼らは
+47:16	doing X42 stuff right now. >> Yes. So there's two companies doing that	今X42関連のことをやっているんです。 はい。 つまり、カルダノ上でそれを行っている企業が2社あるということですね
+47:19	on Cardano, right? So the the company was called agent dynamics uh and they're	？ その会社は エージェントダイナミクスと呼ばれ、
+47:23	agent to aagent.xyz is their URL and they're going through the x42 I don't	URLはエージェントからエージェント.xyzで、 x42 を経由していました。
+47:30	know if they're help that was one of the questions in the feedback of the pitch	彼らが助けているかどうかはわかりませんが、 ピッチコンペのフィードバックの質問の 1 つは、
+47:33	competition is is this competitive or is this cooperative and it seemed to be uh	これは競争的か 協力的かということでしたが、
+47:38	more cooperative than competitive like one was more of like a B2B style play	競争的というよりは協力的であるように見えました。 一方は B2B スタイルのプレイのようで、
+47:42	and this was almost like more of like a a B TOC style play. I think there's a	こちらは B TOC スタイルのプレイのようでした。
+47:46	lot of opportunity there and where they started to kind of like drip on this is	そこには多くのチャンスがあると思いますし、彼らが少しずつ展開し始めたのは、
+47:50	like a really like highlevel um idea. This isn't my idea. This is like apology	本当に高度なアイデアだったと思います。 これは私のアイデアではありません。 これは、
+47:56	you know from the network state. He talks about early internet right and	ネットワークの状態から得られる謝罪のようなものです。 彼は 初期のインターネットについて話していますが、
+47:59	when he talks about early internet I I'll bring it back. It'll make sense in	彼が初期のインターネットについて話すとき、私はそれを持ち帰ります 。 すぐにわかると思いますが、
+48:02	a second that that the early internet speedrun regulation right so they had to	初期のインターネットの スピードラン規制は、
+48:06	come up with a new way to do regulation called cloud regulation. And my inkling	クラウド規制と呼ばれる新しい規制方法を考案する必要があったのです。 そして、
+48:11	on this agent to agent XYZ is kind of what agent do you pay? How do you pay	このエージェントからエージェントXYZへの私の直感的な質問は、どの エージェントに報酬を支払っているのか、ということです。 支払い方法は
+48:16	it? Why do you pay it? And what is their reputation score, right? Do we need	？ なぜ支払うのですか？ そして、彼らの 評判スコアはどうでしょうか？ Oracleベースの配信
+48:20	smart contracts and escrow for oraclebased delivery? Or is it going to	には、スマートコントラクトとエスクローが必要でしょうか ？ それとも、
+48:24	be like a Yelp style, you know, five-star rec reputation score with	Yelpのような、
+48:28	reviews, right? Cuz like I go on X42, I have my my bot buy from your bot. What	レビュー付きの5つ星評価の評判スコアみたいなものになるのかな？ だって、私がX42に行くとき、私の ボットがあなたのボットから商品を買うようにしているから。 もし期待通りの成果が得られなかったらどうなるのか
+48:33	if it doesn't deliver? And how do you how do you handle that whole entire	？ では、 そのプロセス全体をどのように処理するのですか
+48:36	process? How do you do chargebacks? Exactly. Exactly. So I think there's	？ チャージバックはどのように処理するのですか？ その通り。 その通り。 ですから、
+48:40	like a lot of opportunity in that in terms of cloud regulation escrow. We	クラウド規制エスクローという観点から見ると、そこには大きなチャンスがあると思います。
+48:44	don't have a like a standard game on like I make an X42 payment. What they it	X42の支払いを行うような標準的なゲームはありません。 彼らが提供しないものは、
+48:49	doesn't it delivers me in null value right back. What do I do? I complain I	私にとって何の価値もありません 。 私は何をしますか？ 私は不満を言うために手を挙げる
+48:52	raise my hand. What's customer support? How does that not get flooded by bots?	。 カスタマーサポートとは何ですか？ どうしてボットによる攻撃を受けないのでしょうか？
+48:55	Right. So this uh this idea of cloud regulation on agentto agent commerce I	右。 ですから、エージェント間 取引におけるクラウド規制というこのアイデアは、
+48:59	think is is incredibly needed and creative.	非常に必要で 独創的だと思います。
+49:02	>> Yeah. We've been asked to share more about yeah what what it is we've been	うん。 私たちは、これまで何をしてきたのかについて、もっと詳しく話してほしいと頼まれました
+49:06	doing. Obviously infrastructure audit. We're going to come out with a whole	。 もちろん、インフラ監査は必要だ。 近いうちに詳しい
+49:08	bunch of details soon. Um, but I'm going to say obviously our our goal is to	情報をお伝えします。 ええと、もちろん、私たちの 目標 …は
+49:11	bring a quarter billion dollars in TVL to Cardono. Uh, we're going to do it.	カルドノに2億5000万ドルのTVLをもたらすことです。 ええ、やりますよ。
+49:15	Part of the path we're doing this I'm going to call B2B4C.	私たちがこの取り組みを進めている過程の一部を、私は B2B4Cと呼ぶことにします。
+49:19	Um, the deal sizes that are big enough to move the needle are B2B type business	ええと、大きな影響を与えるほどの規模の取引というのは、 B2Bタイプのビジネス
+49:25	deals. But the goal of using crypto and Cardono and decentralization is to make	取引ですね。 しかし、暗号通貨やCardono、分散化を利用する目的は、
+49:30	those deals available for retail for individual people and businesses can	個人や企業が
+49:34	participate and individuals can participate and all of it's available.	参加できる小売取引を可能にし、個人も 参加できるようにすることです。
+49:37	And what I love, like the vision of this, why it expands bigger than a4	そして私が気に入っているのは、 このビジョン、なぜこれが40億ドル以上に拡大するのか
+49:41	billion dollars, why this can change the world is all it takes is getting each	、なぜこれが 世界を変えることができるのか、必要なのは各
+49:45	business to connect to crypto once. And then you can establish an entire new	企業が一度暗号通貨に接続するだけ、という点です。 そして、
+49:48	pipeline of partners, of deal flow, of velocity of capital to that business to	パートナー、取引の流れ、 資本の流通速度といった、ビジネスにとって全く新しいパイプラインを構築することができ、最終的には、
+49:53	the point where that one endpoint of their connection to crypto, ideally	理想的にはCardonoを介した暗号通貨とのつながりという一つのエンドポイントだけで、あらゆる
+49:56	through Cardono, is all it takes for them to handle business with anybody and	相手 …と
+50:01	everybody long term. So, as long as we can start getting more and more	長期的にビジネスを行うことができるようになるのです。 ですから、より多くの
+50:04	businesses to make that first touch point, um the the flywheel that comes	企業が最初の 接点を持つようになれば、
+50:07	from that is massive. >> Did you got to coin your monopoly term?	そこから生まれる好循環は非常に大きくなります。 独占用語を自分で考案できましたか？
+50:10	Your monopoly theory. >> Oh, uh yeah. Yeah. [laughter] Um so, I	あなたの独占理論。 ああ、うん。 うん。 [笑い] ええと、私はこれ
+50:14	have won like every game of Monopoly ever, like a lot. And my monopoly	までモノポリーのゲームでほぼすべて勝ったことがあります。 そして、私が子供の頃に資本
+50:18	theory, which got me into capitalistic philosophy back when I was a kid, was	主義哲学に興味を持つきっかけとなった独占理論は、「
+50:22	whoever makes the most trades wins. Um it is just shots on goals. It's not, oh,	最も多くの取引を行った者が勝つ」というものだった。 ええと、 それは単にゴールへのシュートのことです。 それは、「ああ、
+50:26	I have to make more from this trade than my counterparty in the trade. Every	この取引で相手よりも多く稼がなければならない」ということではありません 。 すべての
+50:30	trade is a win-win. I didn't have the, you know, um the reading. I'm blanking	取引は双方にとって利益となる。 私は、ええと 、読書をしていませんでした。
+50:34	on, uh not Adam Smith, who's the the founder of modern, uh capitalism. Ah,	えっと、アダム・スミスじゃないんだけど、 近代資本主義の創始者って誰だっけ？ ああ、
+50:38	anyways, >> lock. [laughter]	とにかく、 ロック。 [笑い]
+50:42	Oh, man. Specifically economist. He died only recently. Um anyways, um weird	ああ、もう。 具体的には経済学者。 彼はつい最近亡くなったばかりだ 。 えーっと、とにかく、
+50:46	weird that I'm Blake on his name. Anyways, uh before I had all of his	彼の名前にブレイクが入っているのは変な感じがします。 とにかく、えーと、彼が誰であろうと、彼の条件をすべて把握する前に、
+50:49	terms, whoever he is, awkwardly. Um I understood that whoever makes the most	気まずい思いをしました。 えっと、私が 理解したところでは、最も多くの取引を行った人が
+50:53	trades wins because every trade is a win-win. And so even if you're winning a	勝ち、なぜならすべての取引は双方にとって利益になるから、ということですよね 。 だから、たとえ勝っている
+50:56	little bit less than the other person who's winning, if you just keep winning	相手より少し勝率が低くても 、相手
+50:59	and making by making more trades than them, it works out. So getting the deal	よりも多くの取引を行い、勝ち続ければ、最終的にはうまくいくのです 。 つまり、取引の
+51:02	flow, getting the businesses, getting velocity of money, having a default yes	流れを確保し、ビジネスを獲得し、 資金の流通速度を上げ、
+51:06	instead of a default no um and getting smart enough people to do risk analysis	デフォルトで「ノー」ではなく「イエス」となるようにし、 リスク分析を行うのに十分な知識を持った人材を
+51:10	to make sure that um bad yeses don't destroy you. Um that's right. This	確保して、悪い「イエス」によって 会社が破滅しないようにするということです。 ええ、その通りです。 これは、
+51:15	reminds me of the evolution of trust. If you guys have never played the game,	信頼の進化を思い出させる。 もし 皆さんがこのゲームをプレイしたことがないなら、
+51:18	there's a game, it's a flash game, it's old school evolution of trust that goes	これはフラッシュゲームで、 昔ながらの信頼関係の進化を描いたゲームで、
+51:22	back and forth and shows like there's like an embedded morality of keeping on	-
+51:26	trading, right? But if like you get too many cheaters in the system, the whole	取引を続けることの倫理観が根底にあるようなゲームです。 しかし、 システム内に不正行為者が多すぎると、
+51:29	entire system collapses. So the more people that like mirror you and how you	システム全体が崩壊してしまう。 つまり、
+51:34	behave like in terms of doing trades, it becomes like this like moral ethos of	トレードを行う際に、あなたの行動を真似る人が増えれば増えるほど、
+51:38	like why why being a good person is profitable and sustainable as long but	良い人間であることが 利益になり持続可能であるという道徳的な倫理観のようなものになります。しかし、
+51:44	as once you get start to get a bunch of cheaters like in the game then the the	ゲーム内でチーターが大量に発生し始めると、
+51:48	kind of thing can devolve if the ratio isn't isn't certain. You can like play	比率が確実でない場合、状況は悪化する可能性があります 。 シミュレーション上で
+51:52	with these uh these numbers on the simulation. So, it was Milton Friedman I	これらの数値をいじって遊ぶことができます 。 つまり、私が探していたのはミルトン・フリードマンだったのです
+51:56	was looking for. Can't believe I blanked on that. But he he goes into depth about	。 まさかそんなことを思い出せなかったなんて信じられない 。 しかし彼は、鉛筆はサプライチェーンを通じて製造されるため、
+51:59	how nobody knows how to build a pencil because pencils are through supply	誰も鉛筆の製造方法を知らないという点について詳しく説明しています
+52:03	chain. Somebody grows trees and somebody's a lumberjack and somebody's,	。 誰かが木を育て、 誰かが木こりで、誰かが
+52:06	you know, buying the wood and making the shape. Somebody's making lead. Yeah. All	木材を買って 形を整える。 誰かが鉛を作っている。 うん。
+52:10	of these are different people and every single one of them knows the pricing of	これらはすべて異なる人物であり、 彼らは皆、自社製品の仕入先への価格設定と、仕入れ先の
+52:14	their product to the to their vendors as well as the supplers pricing that	サプライヤーの価格設定を把握しており、価格
+52:18	they're buying from and that pricing is the fastest way to relay information.	情報は 情報伝達の最も迅速な手段となっている。
+52:21	And I would have loved for him to see what's going on with things like	そして、彼には
+52:23	prediction markets where um you are, you know, paying for knowledge in real time	予測市場のようなもので何が起こっているのか、つまり リアルタイムで知識にお金を払うような状況
+52:29	and how market makers are struggling in this because like they're constantly	や、マーケットメーカーが
+52:32	losing to the people with the inside information. But really that's the	内部情報を持っている人たちに常に負けているために苦戦している様子を見てもらいたかった 。 しかし、実際には、
+52:36	purpose of this vehicle for information to flow faster where every single poll	このプラットフォームの目的は、 より速く情報が流通することです。CNNやFoxの世論調査はすべて
+52:40	on CNN and uh and Fox is wrong, but every single market on Poly Market is	間違っていますが、 Poly Marketの市場はすべて
+52:45	right because now there's money behind it. to the monetization of information	正しいのです 。なぜなら、そこには資金が投入されているからです。 彼が予測し、ますます速くなると言っていた情報の収益化についてですが、
+52:49	um which he predicted and said would get faster and faster but we're to a scary	私たち …は
+52:53	fast place now. >> Yeah, the volatility on this thing and	今、恐ろしいほど速いところまで来ています。 ええ、この銘柄の変動性と
+52:55	the volume that's going to h like is happening is is insane and it's all	取引量はとんでもなく 大きく、しかも全て
+52:59	public and then all transparent. We we didn't have that before 24 by7 and um	公開されていて、全て透明です。 24時間365日以前はそんなことはなかったし、
+53:04	some of the the inaccuracies or some of the like you know hiccups in the whole	-
+53:08	Robin Hood stuff is is really interesting to watch how people are like	ロビンフッド関連の不正確さやちょっとした不具合も、 人々が100万ドルの流動性のような
+53:11	making thin liquidity like a million dollars of liquidity and they're	薄い流動性を作り出して
+53:16	manipulating the price so that when it pops up on Monday they're attaching	価格を操作し、 月曜日に価格が上昇したときに自分たちの
+53:19	their memecoin. Did you see this like micro strategy thing that they did Eric?	ミームコインを付ける様子を見るのは本当に興味深い。 エリック、彼らがやったこのマイクロストラテジーみたいなやつ見た？ 今の
+53:22	Did you see that? No. I'll try to explain it.	見た？ いいえ。 説明してみます。
+53:25	>> No. >> It's pretty wild. So over the weekend,	いや、かなりすごいよ 。 それで、先週末、
+53:27	this past weekend, they some people pushed down the price of Micro Strategy	一部の人が
+53:32	on Robin Hood chain to like like 5% of its actual value. Then at that point in	ロビンフッドチェーン上のマイクロストラテジーの価格を 実際の価値の約5％まで押し下げたんです。 そしてその時点で
+53:37	time, they paired it with their memecoin on a liquidity pool. So when Monday	、彼らはそれを自分たちのミームコインと組み合わせ、 流動性プールに上乗せした。 それで月曜日になって、
+53:41	happened and people came in and were like, "Wait a second, it's Micro	人々がやって来て 「ちょっと待って、マイクロ
+53:44	Strategy 95% down." They bonded it with their coin. And so Micro Strategy came	ストラテジーの株価が95%も下がってるよ」と言ったんです。 彼らはそれを 自分たちのコインと結びつけた。 こうしてマイクロストラテジーは
+53:48	back up to like parody, but it also brought up their memecoin that they were	パロディのような形で再び登場したが、同時に 彼らが
+53:51	programmatically dumping. So it's just like this crazy game. It's like the	プログラムによって売り払っていたミームコインも話題になった。 まるで クレイジーなゲームみたいだ。 それは、
+53:56	secondary like derivative liquidity of of games that people are playing.	人々がプレイしているゲームの二次的な、いわば派生的な流動性のようなものです。
+54:00	Turning major like high cap stocks into like penny stock volume. It's it's it's	大型株のような高時価総額株を、ペニーストックのような出来高に変えてしまう 。 それは、それは、それは
+54:05	insane. >> I love the solutions people go to to get	狂気だ。 私は、 人々がばかげた
+54:08	around ridiculous legal restrictions. Um law moves slowly, governments move	法的規制を回避するために編み出す解決策が大好きです。 法律はゆっくりと動くし、政府の動きはさらに
+54:14	slower and people are smart. >> Yeah. Yeah. The regulatory arbitrage is	遅い。そして人々は賢い。 うん。 うん。 規制裁定取引は
+54:18	always going to be there. That's why I was like, you know, oh, are we going to	常に存在するだろう。 だから私は、「 ああ、私たちは将来的に完全に中央集権的な
+54:20	go to p pure centralized chains over time? I think in some category, but I	チェーンに移行していくのだろうか ？」と思ったんです。 あるカテゴリーではそうだと思いますが、
+54:25	mean even with like the NFT standard that they're using, they're like, "Okay,	彼らが使用しているNFT規格でさえ、「
+54:27	well, you have to do KYC. You have to get your wallet to hold certain	KYC（本人確認）を行う必要があります。 ウォレットに特定の
+54:30	securities." Well, now they're wrapping it in this uh wallet uh EIP where it's	証券を保管する必要があります」という感じです。 ええと、今は それをこのウォレット、EIPで包んでいて、その
+54:35	like that can hold tokens underneath. So, they're selling the NFTs with the	下にトークンを保管できるようなものです。 つまり、彼らはKYC（本人確認）を受けてい
+54:38	tokens embedded into people that aren't um gone through KYC. All right, let's go	ない人々にトークンが埋め込まれたNFTを販売しているのです 。 それでは、
+54:42	through a couple other projects. Um back to the Draper Orion accelerator, uh	他のプロジェクトもいくつか見ていきましょう。 えっと、 ドレイパー・オリオン加速器の話に戻りますが、あれは
+54:46	which was really cool. Shout out to Esco. Got to meet him in person. A	本当にすごかったですね。 エスコに感謝！ 彼に直接会うことができた。
+54:49	really cool guy. He's working on uh better web 3. This reminds me very much	本当に素敵な人だった。 彼は、より優れた Web 3の開発に取り組んでいます。これは、
+54:53	of like a galaxy or layer three type of like implementation. Um, you know,	ギャラクシーやレイヤー3のような 実装を彷彿とさせます。 えっと、
+54:58	making it super easy like earn.com experience. Hey, do this task, do this,	earn.com のような体験をすごく簡単にできるようにしたいんです 。 ねえ、このタスクをやって、これをやって、
+55:04	do this bounty, uh, earn a little bit of crypto, learn about this project. And I	この懸賞金をやって、ちょっと 暗号通貨を稼いで、このプロジェクトについて学んで。 そして、それは
+55:08	thought that was really cool. Uh, ChatterPay was also very cool. They were	本当に素晴らしいと思った。 ええと、 ChatterPayもすごく良かったですね。 それは、
+55:11	uh a WhatsApp wallet. Uh, and then I saw uh one of the judges uh um from the	WhatsAppウォレットでした。 えーと、それから 審査員の1人が
+55:17	Cardano Foundation, he downloaded it, they sent him, and he got like $3 ADA.	カルダノ財団からダウンロードして、送られてきたものを受け取ったのを見たんだけど、 3ドルくらいのADAをもらったんだ。
+55:21	So like it's live right now. Chatterpay is like able to send ADA back and forth	つまり、今まさにライブ配信されているということです。 Chatterpayは、
+55:26	through WhatsApp. So you get an embedded wallet right in WhatsApp and then you	WhatsAppを介してADAを送受信できる機能のようなものです。 つまり、 WhatsApp に組み込みウォレットが備わり、
+55:30	get a number attach your wallet and now you're tra you're sending people don't	ウォレットに紐付けられた番号が発行され、送金できるようになります。送金先は、送金
+55:33	exactly know the on-ramps and off-ramps of how to get there and get you know but	方法や送金先が正確にはわからないかもしれませんが、
+55:36	once you have a wallet address obviously you can onboard um there you know being	ウォレット アドレスを取得すれば、当然、
+55:40	able to put in other tokens understanding what's in your wallet.	他のトークンを入金したり、 ウォレットの中身を理解したりすることができます。
+55:43	Obviously there's a public good that needs to mean understanding like okay	もちろん、公共の利益とは、例えば「
+55:45	what are all the tokens in my wallet? Are there going to be aird drops? So	私のウォレットに入っているトークンは全部何だろう？」といったことを理解することである必要がある。 エアドロップは実施されますか？ それは
+55:48	that was really cool. Um, a lot of action there. Gravity Decks. I I think	本当に素晴らしかった。 ええと、かなり 動きがありましたね。 グラビティデッキ。 そこへ
+55:51	we should really like double click into there. Uh, they have it seems like one	ダブルクリックして入ってみるべきだと思う 。 えっと、あれって
+55:55	of those um, single-sided AMMs, right? Uh, with like better they the claim is	、片面式のAMMみたいなやつですよね？ ええと、彼らの主張はより良いので、
+56:00	and so I really want to double click into this one because and potentially	私は本当にこれをダブルクリックして、彼らを出演させたり、
+56:04	get them on or at least interview them. Their claim is that they have better	少なくともインタビューしたりしたいと思っています。 彼らの主張は、カルダノ上の
+56:07	pricing for for Bitcoin on on uh, Cardano and they can get the best price,	ビットコインの価格設定が優れており、 最良の価格を提供できるというものだが、
+56:12	but it felt like a single-sided AMM. I really want to understand the mechanics	それは片側的なAMMのように感じられた。
+56:16	of what they're doing that. Um, and then Nick, uh, he had Lava. So, a liquid	彼らが一体何をしているのか、その仕組みを本当に理解したいんです。 えっと、それから ニックは、えっと、溶岩を持っていました。 だから、
+56:20	staking token throughout DeFi is is like a no-brainer to me. I mean, that that to	DeFi全体における流動性の高いステーキングトークンは、 私にとっては当然のことのように思える。 つまり、
+56:25	me is like being able to Now, there is a weird mechanic cuz right now, if you	私にとってそれは、今、 奇妙な仕組みがあるということです。なぜなら、
+56:29	hold the ADA in your app, that's some of the fees that you generate for having a	アプリでADAを保有している場合、それは
+56:33	a D app and a DAP on Cardono. You get some of the staking fees. However, the	CardonoでDアプリとDAPを保有することで発生する手数料の一部だからです。 ステーキング手数料の一部を受け取ることができます。 しかし、ユーザーはステーキング
+56:37	user would like more likely prefer for them to get the staking fees than to	-
+56:42	push the staking fees to the DAP. So, there's kind of like this weird	手数料をDAPに送金するよりも、ステーキング手数料を受け取ることを好む可能性が高い。 つまり、ちょっと変わった
+56:44	mechanic. I mean, it's not it's a little bit zero sum, so the DAPs are going to	仕組みがあるんです。 つまり、それは ゼロサムゲームではないので、DAPの
+56:48	make less money, but the user will have like a liquid staking token, which will	収益は減少するでしょうが、ユーザーは 流動性の高いステーキングトークンのようなものを持つことができ、それははるかに
+56:52	make a lot more sense. Um, there was an event app called E Envent. Uh, they did	理にかなっています。 えっと、 E Enventっていうイベントアプリがあったんです。 えーと、
+56:57	the rare EVO uh and River Arc, which felt a little bit like a pure.xyz XYZ	珍しいEVOとRiver Arcをやってくれました。それは ちょっとpure.xyz XYZみたいでした。それから、
+57:02	and um got to meet Pete uh from uh like Astro Boy guy for he's doing web3	アストロボーイのピートに会えました。彼はweb3の
+57:07	bounties so like security audits and bounties and kind of like Immunifi or uh	バウンティ、つまりセキュリティ監査や バウンティ、Immunifiや
+57:12	Quest which was really cool. I Pete the the that Pete's energy in person is just	Questみたいなことをやっていて、すごくクールでした。 ピートの実際のエネルギーは、
+57:17	as good on camera, right? So he is just like I love that dude. Like it's like	カメラ越しでも同じように素晴らしいと思いませんか？ だから彼は「あの人 大好き」って感じなんだ。
+57:21	good energy, good vibes. Um we we'll figure out how to to work with him.	いいエネルギー、いい雰囲気って感じ。 ええと、 彼とどう協力していくか考えます。
+57:25	Cool. All right. So um that's a highle wrap-up. I mean there's uh we're going	いいね。 よし。 というわけで、以上がまとめです 。 つまり、
+57:30	through the operating group for the first infrastructure audit. We got to do	最初のインフラ監査のために運用グループを通して作業を進めているところです。
+57:34	internal 77 pages. Maybe we do like a like a fivepage thing and then if you	内部文書を77ページ作成する必要がありました。 5ページくらいのものを作って、もしあなたが
+57:38	want to like double click into like all 77 pages, we got to wrap that up and um	ダブルクリックして 77ページ全部を見たい場合は、それをまとめ、
+57:43	drive uh more transparency somebody requested. So this is the first step in	誰かが 要求したように透明性を高める必要があります。 これは、
+57:48	driving more transparency of what we're doing. And um honestly, we're pretty	我々の活動の透明性を高めるための第一歩です 。 ええと、正直言って、私たちはかなり
+57:52	reachable. >> Big news is we're going to open up RFPs	連絡が取りやすいですよ。 大きなニュースですが、助成金の申請受付を、
+57:54	for grants um as soon as this afternoon or tomorrow. Um so if you have a	今日の午後 か明日にも開始する予定です。 えっと、もしプロジェクトをお持ちでしたら
+58:00	project, please like make sure you're on our radar when we've probably talked to	、弊社が
+58:03	you already, but to fill out an RFP. Um let us come talk to you and let's uh see	既にお話している可能性はありますが、RFPにご記入いただくことで、弊社のレーダーにご登録いただけるようにしてください。 ええと、まずは お話させてください。そして、どのように関わっていただけるか見ていきましょう
+58:08	how you can get involved. Maybe we can cut a grant, maybe we can't. Either way,	。 補助金を削減できるかもしれないし 、できないかもしれない。 どちらにしても、あなたにも
+58:11	we want you involved. Um we want your tokens put to work. We want you guys	参加していただきたいと思っています。 ええと、私たちはあなたの トークンを有効活用してもらいたいのです。 私たちは、皆さんが
+58:14	integrated and up-to-date scooper um and vault standards um and SIP 1113	統合され最新のスクーパーと ボルトの標準規格とSIP 1113と
+58:19	compatible and just in the no and the flow. Uh we're going to set up more	互換性があり、フローがスムーズであることを望んでいます 。 ええと、もっと
+58:23	regular builder calls as well so the builders have places to go to each other	定期的な建設業者向けの電話会議も設定するつもりです。そうすれば、 建設業者同士が集まって、
+58:26	and to work on this kind of stuff together because too many things are	こういったことに 一緒に取り組める場ができます。というのも、まとまりがないために、多くのものがバラバラの
+58:29	built in different directions because there's no cohesion and we're just going	方向に建設されているからです。 私たちがやって来て、
+58:32	to come in and throw glue on everything and say, "Hey, we're all on one team	すべてを接着剤でつなぎ合わせて、 「さあ、みんなで一つのチームだ
+58:35	now." >> Yeah. And I I'll dox some, you know,	」と言うつもりです。 うん。 そして、私はいくつかのプライベートな
+58:38	private conversations kind of like the framework of thinking um for public like	会話を公開します。例えば、 公共の場での考え方の枠組みとして、
+58:43	if you have a project that for every dollar of like grants or incentives can	助成金や奨励金1ドルごとに
+58:47	bring $50 of TVL, let's talk, right? And and especially in size, not like5	50ドルのTVLをもたらすプロジェクトがある場合、話し合いましょう、ということです。 そして 特に規模に関して言えば、500
+58:52	million, but like more than $5 million or more. Um and it's like, hey, for	万ドルというレベルではなく、500万ドル以上、あるいはそれ以上の金額のことです 。 えっと、それで、10万ドルで
+58:57	hundred grand I can bring, you know,5 to$10 million of TVL. Like, oh, let's	500万ドルから 1000万ドルのTVLをもたらすことができます。 えっと、ちょっと
+59:01	talk. Let's figure that out because and and we should have that as an open	話しましょうか。 それを解明しましょう。なぜなら、 それをオープン
+59:04	category because we know what we know and we have our strategy and playbook	カテゴリとして扱うべきだからです。私たちは知っていることを知っており、 戦略とプレイブックを持っています。そして、
+59:08	and we're going to run our strategy in playbook but we also don't know what we	プレイブックに従って戦略を実行しますが、
+59:11	don't know and so if you have an asset $5 million $10 million or more um or	知らないこともわかりません。ですから、 500万ドル、1000万ドル以上の資産、または
+59:15	access to an asset that has volume and volatility where we can incentivize and	ボリュームとボラティリティのある資産へのアクセスがあり、 インセンティブを与え、付与して、
+59:19	grant and bring you know 50 to1 TVL um we know that not everything is going to	50対1のTVLを実現できる場合、 すべてがうまくいくわけではないことはわかっていますが、私たちが提案する
+59:23	work but a majority of the things that we're going to bring to the table are	ものの大部分はうまくいくでしょう。
+59:25	going to work >> but while we know that we don't know	しかし、知らないこともわかっており、
+59:27	what we don't know we're also very uh focused on demand side so um if you have	需要側にも非常に注目しています。ですから、
+59:31	traditional business deals in size and we can juice them and make them a little	規模の大きい従来のビジネス取引があり、それを チェーン上で少し
+59:35	bit more attractive on chain that is very easy conversion that leads to long	魅力的にすることで、
+59:40	long-term business flow on chain. Um yes to science fair projects but they have	チェーン上での長期的なビジネスフローにつながる非常に簡単な変換が可能になります。 ええ、 科学フェアのプロジェクトは賛成ですが、必ず
+59:44	to have an end in mind. Um not like hey if we build this then somebody can like	最終目標がなければなりません。 えっと、例えば「 これを作れば、誰かが
+59:48	we need to have a target ICP and we'll help you reach out to them. We'll help	ターゲットとなるICPを設定すれば、私たちがその人たちへの アプローチをお手伝いします」みたいな感じではありません。 私たちは
+59:52	bring them involved. We'll help show them what the deal looks like and why	彼らが参加できるよう支援します。 私たちは、 取引内容がどのようなものか、そして
+59:55	their business can save money and save time and be better handled by using your	御社 …の
+59:59	app and your and our chain. Uh but um that's that's mostly what we're going to	アプリと御社と当社のチェーンを利用することで、御社のビジネスがコスト削減、時間短縮、そしてより効率的な運営を実現できる理由を、お客様に分かりやすくご説明します。 ええと、それが 私たちが主に
+1:00:03	be looking for. >> Amazing. Eric, I know you got to go. I	探しているものです。 すばらしい。 エリック、君が行かなきゃいけないのは分かってるよ。 もう行かなくちゃ
+1:00:05	got to go. This is rad. Another dose of alpha. A little shtick on Cardono Prime.	。 これは最高だ。 アルファのもう1回分 。 カルドノ・プライムに関するちょっとした小ネタ。
+1:00:09	Um we'll probably do these like every other week where we'll be on like uh	えっと、おそらく隔週でこういうことをやります。他の
+1:00:12	some of the other like X spaces and uh reach out, ask questions, and we'll get	Xスペースで、連絡を取って 質問して、それに答えて、全力で取り組みます
+1:00:17	to them and we're going to crank it. >> Go team. See you guys. See you.	。 頑張れ、チーム！ またね、みんな。 またね。
+1:00:24	[music]	[音楽]

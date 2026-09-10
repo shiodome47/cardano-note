@@ -48,6 +48,44 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | DRUPS, dereppp | DReps / DRep（dereppp は 2026-09-02 Block//45 の "my DRep load"） |
 | LA's, Lac's（Lace の所有格） | Lace's |
 | Trad（"what Trad wants"） | TradFi |
+| Cardono, Cardona（"Cardona coffee"） | Cardano、Cardano Over Coffee |
+| Matt Plowman, Matt Plman | Matt Plomin（USDM の創業者。2024-11 死去） |
+| Jed（"calling out Jed"） | Djed |
+| Min Swap | Minswap |
+| SIP 113, SIP 1113, zip 1113, CIP113 | CIP-113 |
+| Mika | MiCA |
+| Treadfi, trifi, stratfi, Trevy | TradFi |
+| Vlabs | VIA Labs |
+| MBX | NBX（Norwegian Block Exchange。USDM の EEA 側の発行者） |
+| USM, USCM | USDM |
+| Manetta, mana global, app a.mmonetta.global | Moneta、moneta.global、app.moneta.global |
+| Athena（"Athena Pay"） | Ethena |
+| three Jane | 3Jane |
+| steam stream, stream（Eric の発言、DeFi の事故の文脈） | Stream（Stream Finance） |
+| USS the teras | UST, the Terras |
+| Robin Hood | Robinhood |
+| Micro Strategy | MicroStrategy |
+| Poly Market | Polymarket |
+| X42, x42 | x402 |
+| Msumi and Sakosumi | Masumi and Sokosumi |
+| Enriion Fund | Orion Fund |
+| AlphaGo（AlphaGrowth への呼びかけ） | AlphaGrowth |
+| Cardono Prime, Cardano Prime | Cardano PRIME |
+| Erica（"Me and Erica"） | Eric |
+| apology（"apology from the network state"） | Balaji（Srinivasan） |
+| lock（Adam Smith ではない経済学者を探して） | Locke |
+| galaxy or layer three | Galxe or Layer3 |
+| Nigerian beer | Nigerian naira |
+| cherry carry trade | yen carry trade |
+| multi-IG, multi-yc, multi-pig | multisig |
+| so sofur（"sub so sofur"） | SOFR |
+| Padre tickets | Padres tickets |
+| Immunifi | Immunefi |
+| Merkel（"Merkel or Turtle Clubs"） | Merkl |
+| Gravity Decks | Gravity DEX |
+| blockjack 2017 | blockjock2017（James Meidinger の X） |
+| f Mary kill, fad merry kill | Fad, Marry, Kill |
+| DREApp council to D5 | DApp council to DeFi |
 
 **特定できなかった名前は聞こえたまま残し、まとめページで「名前だけ挙がって説明されなかった」と事実として書く。**
 
@@ -68,6 +106,22 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 - **2020**（"hindsight's 2020"）— 20/20。同上
 - **the car**（26:45 "first roll out of the car"）— 語尾が切れており、Carbon か carry trade か決められない。英語全文はそのまま
 - **収録と公開のずれ**に注意。動画内の「今年 5 月」「近日中」「今月後半」は 2026 年 7 月上旬の基準（`meta.yml` の recorded）
+
+### 2026-09-06 AlphaGrowth Dose of Alpha Ep. 16（USDM の James と Marco）
+
+上の表に足したもののほか、**特定できずに聞こえたまま残した名前**。
+
+- **Nighthawk**（9:08 "that Nighthawk that was going on there"）— 大きなステークホルダーから凍結できるか確認が来た「件」。時期と文脈から **2026-07-20 の Wanchain ブリッジからの 5 億 1,500 万 NIGHT 流出（NIGHT hack）** の可能性が高いが、動画内に説明がなく確定できない。まとめでは `補足` で候補として書き、全文は聞こえたまま
+- **Tala Emali**（11:51）— Bryan が Draper のプログラムで会った南アフリカの ZAR 決済処理の会社。特定できず
+- **Army of Spies**（3:27）— Matt Plomin が Djed を批判して「注目を浴びた」場。特定できず
+- **1010en**（18:29 "our markets were safe from 1010en"）— 意味不明。聞こえたまま
+- **the brain**（29:24 "with the brain and etherfine"）— ネオバンク領域の競合の名前。カード発行の Rain の可能性があるが確認できず
+- **red.xyz**（45:10）— 「以前一緒にプロジェクトをやった」相手。オンチェーン再保険の **Re（re.xyz）** の可能性。まとめでは候補として `補足`
+- **agent to aagent.xyz**（47:23）— 「agent dynamics」の URL として挙げられたもの。確認できず
+- **Esco**、**E Envent**、**River Arc**、**pure.xyz**、**Pete from Astro Boy**、**Yoda** — 名前だけ
+- **Syria Deutsche Bank**（3:35）— "subsidiary of Deutsche Bank" の誤変換。固有名詞ではないので英語全文はそのまま、日本語は「Deutsche Bank の傘下」
+- **swap meat**、**rapper**（wrapper）、**junior trunch**（tranche）、**illquid** — 普通名詞の誤変換。英語全文はそのまま
+- **収録と公開のずれ**は小さい。ライブ配信の録画で、「Ethena Pay が昨日」（発表 2026-09-01）から収録は 09-02 ごろ。公開日は依頼者の指定「4 日前」= 09-06 で、YouTube 側の日付はこの環境から確認できていない
 
 ### 2026-09-09 Charles Hoskinson — Navier-Stokes
 
@@ -145,6 +199,28 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **P2P のクレジット市場（peer-to-peer credit market）** | 借り手と貸し手が金利・期間・担保を直接交渉する貸し借り。アルゴリズム型と違い、担保の値下がりで自動清算されず、支払いの不履行で清算される、と説明される（Pogun）。**リスクが消えるのではなく、貸し手側に移る**ことを `補足` で書く | 訳さない・初出で説明 |
 | **USDCx** | Circle の USDC を Cardano 上で使えるようにしたもの。2026 年 2 月に mainnet 稼働（姉妹サイトの用語集）。動画では借りるステーブルコインの例として出た | 訳さない |
 | **RabbitHole** | Ethereum の、報酬付きで使い方を学ばせる教育プラットフォーム。Nate Strang が成功例として挙げた | 訳さない |
+| **ステーブルコイン / 利回りコイン（yield coin）** | 2026-09-06 の Marco の線引き。利回りを配るものはステーブルコインではなく「利回りコイン」。法定通貨に 1 対 1 で裏付けられ利回りを払わないものがステーブルコイン、という立場 | 利回りコイン（原語を添える）。**要点では「利回りを配るもの」と書く** |
+| **決済用ステーブル（payment stable）** | 価値の移動・保存に使う、利回りを払わないステーブルコイン。James が USDM をこう位置づけた | 決済用のステーブル |
+| **CIP-113** | Cardano のネイティブアセットに凍結などのプログラム可能な振る舞いを付ける改善提案。2026-09-06 の動画で James は「まだ固まっていない」と評価。字幕では SIP 113 / SIP 1113 / zip 1113 | 訳さない・初出で説明 |
+| **KYC / KYB** | 本人確認（Know Your Customer）／法人確認（Know Your Business） | KYC / KYB（初出で補う） |
+| **MiCA** | EU の暗号資産規制（Markets in Crypto-Assets）。字幕では Mika | 訳さない |
+| **GENIUS Act** | 米国のステーブルコイン法（2025 年成立）。2026-09-06 で Eric が "genius compliant" と言及 | 訳さない |
+| **SOFR** | 米ドルの翌日物の基準金利（Secured Overnight Financing Rate）。Marco が「これ以下しか払わない理由はない」の基準に使った | 訳さない・初出で「ドルの基準金利」と補う |
+| **MMF（マネーマーケットファンド）** | 短期国債などで運用する低リスクのファンド。トークン化 MMF が Marco の「ステーブルコインのサンドイッチ」の両側 | MMF（初出で補う） |
+| **ステーブルコインのサンドイッチ（stablecoin sandwich）** | Marco の構想。資産はトークン化 MMF に置き、カードをかざす瞬間だけステーブルコインに換えて払う。**構想であり動いているプロダクトではない** | 原語を添える |
+| **DeFi マレット（DeFi mullet）** | 表は CeFi、裏は DeFi。利用者は普通の金融アプリを使い、裏の運用が DeFi。2026-07-26（姉妹サイト）と 2026-09-06 の両方で出た | DeFi マレット（初出で説明） |
+| **リンディ効果（Lindy effect）** | 長く生き残ったものはさらに長く生き残る、という経験則。Marco は「もうリンディではない、むしろハニーポット」と述べた | リンディ効果（原語を添える） |
+| **TRC（Treasury Reserve Contract）** | Intersect が管理する、財務庫から引き出した ADA を保持しマイルストーンごとに支払う契約。2026-09-06 で James が「その中で ADA の代わりに USDM / USDCx を置く」用途を挙げた | 訳さない・初出で説明 |
+| **B2B4C** | 2026-09-06 で Eric が「こう呼ぶ」と言った造語。大きな案件は B2B だが、それを個人（C）にも開く | 訳さない |
+| **x402** | HTTP 402（Payment Required）を使い、エージェントが機械的にステーブルコインで支払う標準。Coinbase 発。Masumi が Cardano 実装を公開。字幕では X42 | 訳さない・初出で説明 |
+| **クラウド規制（cloud regulation）** | Balaji Srinivasan『The Network State』の語。2026-09-06 で Bryan がエージェント間取引の紛争解決の文脈で借用 | クラウド規制（原語を添える） |
+| **scooper** | Cardano の DEX で注文を束ねて処理する役（バッチャー）。PRIME が「標準化」の対象に挙げた | 訳さない・初出で補う |
+| **ボールト（vault）** | 資金を預かって運用する契約の器。PRIME が「標準化」の対象に挙げた | ボールト（原語を添える） |
+| **CDP（担保付き債務ポジション）** | 担保を入れて合成資産やステーブルコインを発行する仕組み。Indigo が Cardano の例 | CDP（初出で補う） |
+| **再担保（rehypothecation）** | 預けた資産を裏で別の運用に回すこと。Bryan の「Uniswap v4 型の DEX」の文脈 | 再担保（原語を添える） |
+| **キャピタルコール（capital call）** | プライベートファンドが約束済みの出資を実際に払い込ませる請求。3Jane の「キャピタルコールなし」の文脈 | キャピタルコール（原語を添える） |
+| **リキッドステーキング** | ステークした ADA の代わりに流動性のあるトークン（Lava の場合 L-ADA）を受け取り、DeFi で使える形 | リキッドステーキング |
+| **AMM（自動マーケットメーカー）** | 数式で価格を決めて交換する DEX の仕組み。「片側だけ（single-sided）」は片方の資産だけを預ける形 | AMM（初出で補う） |
 | **MCP / CLI** | AI エージェントがソフトウェアを操作するための接続口（Model Context Protocol、コマンドライン）。Crypto Crow が「エージェントを Lace につなぐ計画は」の文脈で挙げた | 訳さない・初出で補う |
 
 ## 数学・AI の用語（Charles Hoskinson のチャンネルで出るもの）
@@ -194,6 +270,25 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **RealFi / USDR** | Input Output の取り組み。USDR は利回り付きのステーブルコイン。**2026-08-26 の投票でティッカーは USDrf / sUSDrf に改称と決まった**が、7 月収録の動画では USDR。各回の表記は動画のとおりにし、書き換えない。詳細は `2026RealFi` の glossary |
 | **Block//45** | Input Output Group の公式チャンネルにある番組。司会は Wendy O と Crypto Crow（外部の配信者）。回ごとに独立 |
 | **AlphaGrowth** | DeFi の成長支援の会社。ポッドキャスト「A Dose of Alpha」を運営し、Cardano の PRIME 提案を出している |
+| **USDM / Moneta** | Cardano ネイティブのドル建てステーブルコイン（2024-03 発行開始）。米国側の発行体は Moneta Digital、開発は W3i Software、CEO は Jillian Plomin。創業者 Matt Plomin は 2024-11-14 死去。EEA 側の共同発行者は NBX。ミントは 20 の州で可。公式: <https://moneta.global>。2026-08-13 に VIA Labs との協業で Cardano↔Midnight のネイティブ移動が mainnet で稼働（USDM 公式 X） |
+| **NBX（Norwegian Block Exchange）** | ノルウェーの取引所。USDM の EEA 側の発行者で、MiCA 準拠の根拠。カード Visa Flex を USDM 残高と結びつけて再始動（2026-09-06 の動画と James の X）。字幕では MBX。公式: <https://nbx.com> |
+| **VIA Labs** | クロスチェーンのメッセージング基盤。USDM の Cardano↔Midnight の移動を提供。James は「ブリッジではなくメッセージングサービス」と表現。字幕では Vlabs。公式: <https://vialabs.tech>（開発者ドキュメント developer.vialabs.tech） |
+| **Dose of Alpha** | AlphaGrowth の番組。司会は Bryan Colligan（CEO）と Eric Waisanen（DeFi Strategist）。Ep. 16 が 2026-09-06 の回 |
+| **Cardano PRIME** | Protocol Readiness, Incentives & Market Expansion。AlphaGrowth が提案者、独立した Operating Group が監督、Intersect が資金管理者。財務庫から 1 億 2,000 万 ADA（2026-08 に DRep の投票で可決）。目標は 12 か月で TVL を約 9,000 万→2 億 9,000 万ドル。2026-09-06 時点でインフラ監査（社内 77 ページ）の段階、RFP を「今日か明日」に開く、と運営者が発言 |
+| **Orion Fund** | Cardano と Draper Dragon による 8,000 万ドルのエコシステム・ファンド。Draper University の Genesis（プレアクセラレーター）と Apex（10 週間）に資金提供。字幕では Enriion Fund |
+| **Draper University** | Tim Draper の起業家育成機関。Cardano 向けに Genesis と Apex を運営。2026-09-06 の動画で Bryan が「月曜と昨日サンフランシスコで」見たピッチはこのプログラム |
+| **Masumi / Sokosumi** | Cardano 上の AI エージェントの決済・登録プロトコル（Masumi）と、その上のマーケットプレイス（Sokosumi）。Serviceplan、Cardano Foundation、NMKR の共同。x402 の Cardano 実装を公開。詳細は 2026RealFi の 2026-08-11 の回 |
+| **ChatterPay** | WhatsApp 上のウォレット。ADA、USDCx、USDM を送れると公表。Draper University の Genesis に参加 |
+| **Lava** | Cardano のリキッドステーキング。ADA をステークして L-ADA を受け取る。公式: <https://lava.markets> |
+| **Gravity DEX** | 2026-09-06 で Bryan が「片側だけの AMM に見えた、Bitcoin の価格が良いと主張」と挙げた Cardano の DEX。公式サイトは未確認 |
+| **Strike / Bodega / Fluid** | James が「USDM を日常的に使っているパートナー」として挙げた Cardano の DeFi。公式サイトは未確認 |
+| **Indigo** | Cardano の CDP 型合成資産プロトコル。PRIME が「何かをやる」相手として挙げた |
+| **Re（re.xyz）** | オンチェーン再保険プロトコル。2026-09-06 で「red.xyz」と聞こえた相手の候補（未確認） |
+| **3Jane** | Ethereum 系の信用プロトコル。2026 年に「Levered Callable Capital」（キャピタルコールまで利回りを付けて待てる仕組み）を出した。公式: <https://www.3jane.xyz> |
+| **Ethena Pay** | Ethena の決済アプリ（2026-09-01 発表）。USDe を残高に持ち Visa カードを発行 |
+| **Stream Finance** | 2025-11 に外部運用者の約 9,300 万ドルの損失を開示し、xUSD が大きく下落。Elixir の deUSD も終了。2026-09-06 で Eric が「私たちの市場はエクスポージャーがなかった」と言及 |
+| **Robinhood Chain** | Robinhood の Ethereum レイヤー 2（2026-07 メインネット）。トークン化株とミームコインの組み合わせが多数。2026-09-06 で Bryan が MicroStrategy の一件を語った |
+| **Hermes（Hermes Agent）** | Nous Research のオープンソースの AI エージェント。Marco が自分のパソコンで動かし OpenRouter 経由で USDC で払っている、と述べた |
 | **TxPipe** | アルゼンチン拠点の Cardano 向け開発ツール企業。Pallas（Rust ライブラリ群）、Oura（インデクサ）、Dolos（データノード）、Demeter（ホスティング、Blink Labs と共同運営）。公式: <https://txpipe.io>。RealFi 側の glossary では監査の協力先として出る |
 | **Dolos** | TxPipe の Cardano「データノード」。1 バイナリで、ブロック生成・検証はせず、リレーにつないで台帳のコピーを組み込み DB に持ち、Blockfrost 互換・UTxO RPC・Kupo 互換・Ogmios 経由の API を出す。履歴は期間を決めて切り詰められる。公式ドキュメント: <https://docs.txpipe.io/dolos> |
 | **Demeter** | TxPipe と Blink Labs が運営する Cardano の DApp 向けインフラ基盤。2026-09-02 のデモでは「Demeter のリレー」が接続先の選択肢として出た。公式: <https://demeter.run> |

@@ -1,0 +1,1107 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dose of Alpha Ep. 16 — Why Real Stablecoins Don't Pay Yield (USDM) — AlphaGrowth (2026-09-06)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">AlphaGrowth</p>
+<h1><span class="l-ja">Dose of Alpha Ep. 16 — 「本物のステーブルコインは利回りを払わない」USDM の 2 人と、Cardano PRIME の現在地</span><span class="l-en">Dose of Alpha Ep. 16 — “Real stablecoins don't pay yield”: two voices from USDM, and where Cardano PRIME stands</span></h1>
+<p class="meta">
+  <span>2026-09-06</span>
+  <span>YouTube</span>
+  <span>1:00:24</span>
+  <span><span class="l-ja">AlphaGrowth（@alphagrowth） · Bryan Colligan、Eric Waisanen、James Meidinger、Marco</span><span class="l-en">AlphaGrowth (@alphagrowth) · Bryan Colligan, Eric Waisanen, James Meidinger, Marco</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Cardano のドル建てステーブルコイン USDM の 2 人が、<strong>「利回りを払うものはステーブルコインではなく利回りコインだ」</strong>という線引きから、規制・凍結・決済・他チェーンへの展開を語った回です。<br>
+  後半は司会 2 人だけで、自分たちが運営する Cardano PRIME（財務庫から 1 億 2,000 万 ADA を受けた DeFi 成長プログラム）の進捗を説明しています。<strong>後半は当事者が自分の仕事を語る部分</strong>として読む必要があります。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>USDM は「決済用」。</strong>取締役の Marco は、利回りを配るものをステーブルコインと呼ぶことに疑問を示し、法定通貨の裏付けがいちばん素直で安全だと述べています。James は USDM を決済用と位置づけ、利回り付きの別のプロダクト（例として RealFi の USDR）と組み合わせて使う姿を描きました。</li>
+  <li><strong>規制対応は「アプリの入口」で。</strong>Cardano のネイティブトークンは発行後どこへでも動くので、KYC と凍結はミントと償還を行うアプリで行う、と James。トークンそのものに凍結を付ける標準（CIP-113）は「規制当局に銃を突きつけられたらやる」と述べています。</li>
+  <li><strong>足りないのは「深さ」と使い道。</strong>Marco は、Cardano のステーブルコインの最大の課題は流動性の厚みで、いまチェーン間を動くお金は利回りを追う同じお金だと述べました。外の資本を呼び込む方法は「まだ誰も見つけていない」と。</li>
+  <li><strong>お金は利回りを生む場所に置き、ステーブルコインは通り道に。</strong>Marco が描いた「ステーブルコインのサンドイッチ」は、トークン化された MMF（マネーマーケットファンド）に置いた資産を、カードをかざした瞬間だけステーブルコインに換えて支払う形です。本人の構想で、動いているものではありません。</li>
+  <li><strong>Moneta の次の一手。</strong>VIA Labs との協業で USDM を Midnight へ移す機能は動いているが、Midnight 側は「まだ 2、3 か月先」。共同発行者 NBX のカード Visa Flex、Intersect の資金保持契約の中で ADA の代わりに USDM や USDCx を置く用途、を挙げました。</li>
+  <li><strong>Cardano PRIME は監査の段階。</strong>社内の監査文書は 77 ページ、目標は TVL 2 億 5,000 万ドル、助成の RFP を「今日の午後か明日」に開く、助成 1 ドルにつき TVL 50 ドルが目安、と司会 2 人が述べています。いずれも運営者自身の説明です。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か、動画の 2 つの部分</a></li>
+  <li><a href="#stable"><span class="n">02</span>「利回りコイン」と、法定通貨の裏付け</a></li>
+  <li><a href="#native"><span class="n">03</span>放し飼いの鶏 — ネイティブアセットと規制・凍結</a></li>
+  <li><a href="#payments"><span class="n">04</span>決済用ステーブルの使い道 — 航空会社と南アフリカ</a></li>
+  <li><a href="#depth"><span class="n">05</span>ボトルネックは「深さ」。お金は循環している</a></li>
+  <li><a href="#scale"><span class="n">06</span>拡張性と安全性、そして「大人になる」</a></li>
+  <li><a href="#game"><span class="n">07</span>Fad, Marry, Kill — RWA、AI、DeFi マレット</a></li>
+  <li><a href="#sandwich"><span class="n">08</span>ステーブルコインのサンドイッチ、3Jane、カード</a></li>
+  <li><a href="#roadmap"><span class="n">09</span>Moneta のロードマップ — Midnight、NBX、財務庫の契約</a></li>
+  <li><a href="#prime"><span class="n">10</span>Cardano PRIME の現在地 — 監査、戦略、RFP</a></li>
+  <li><a href="#agents"><span class="n">11</span>エージェント、x402、「クラウド規制」</a></li>
+  <li><a href="#robinhood"><span class="n">12</span>Robinhood Chain と、Draper で見たプロジェクト</a></li>
+  <li><a href="#overall"><span class="n">13</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">14</span>やり取りから</a></li>
+  <li><a href="#pending"><span class="n">15</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か、動画の 2 つの部分</h2>
+<p class="deck">前半はステーブルコイン発行体へのインタビュー、後半は司会が自分たちの事業を語る。読み方が変わる。</p>
+
+<p>AlphaGrowth のチャンネルで配信された番組「Dose of Alpha」の第 16 回です。冒頭で本人たちが「生配信だと思っていなかった」と慌てているとおり、ライブ配信の録画で、音声が途切れたまま始まります。</p>
+
+<ul>
+  <li><strong>Bryan Colligan</strong> —— 司会。<span class="badge">補足</span>AlphaGrowth の CEO。動画では名乗らず、番組の公開情報から。「Eric、どうぞ」と振る側です。</li>
+  <li><strong>Eric Waisanen</strong> —— 司会。<span class="badge">補足</span>AlphaGrowth の DeFi 担当。動画では「Eric」と呼ばれます。</li>
+  <li><strong>James Meidinger</strong> —— ゲスト。USDM。動画では「James」「Jim」。<span class="badge">補足</span>姓は公開プロフィールと、終わりに本人が挙げる X のアカウント名から。</li>
+  <li><strong>Marco</strong> —— ゲスト。USDM の発行体の取締役会メンバーで、本業は伝統金融の会社の暗号資産・RWA 戦略、と自称。姓は動画にも説明欄にも出ません。</li>
+</ul>
+
+<p><span class="badge">補足</span>USDM は 2024 年 3 月に出た Cardano ネイティブのドル建てステーブルコインで、米国側の発行体は Moneta Digital、開発は W3i Software、CEO は Jillian Plomin です。創業者の Matt Plomin は 2024 年 11 月に亡くなっています（USDM の公式発表）。字幕では「Matt Plowman」と出ますが、本文では Plomin に直しています。</p>
+
+<p><strong>動画は 2 つに分かれます。</strong>0:39〜36:42 は James と Marco へのインタビュー。36:42 からは司会 2 人だけで、AlphaGrowth 自身が運営する Cardano PRIME の進捗を語ります。<span class="badge">補足</span>PRIME は Cardano の財務庫から 1 億 2,000 万 ADA を引き出す提案で、2026 年 8 月に可決されました（詳細は 10 節）。つまり後半は、公的な資金を受けた運営者が自分の仕事を説明している部分です。数字も評価も本人たちの説明として読み、この記録もそう書いています。</p>
+
+
+<h2 id="stable">2. 「利回りコイン」と、法定通貨の裏付け</h2>
+<p class="deck">Marco の線引き。James は USDM を「決済用」と置き、利回り付きは別のプロダクトに任せる。</p>
+
+<p>Marco は自分の経歴から入ります。2020 年ごろから複数のチェーンで調査・助言をしてきて、Minswap の仕事を通じて James と、そして USDM を立ち上げるころの Matt Plomin と話すようになった、と。そのとき考えたことが、この回の題名になっています。</p>
+
+<div class="term">
+<p class="term-name">利回りコイン <small>yield coins、動画の中の言葉</small></p>
+<p>Marco は「ステーブルコインの作り方はいくつかあり、全部をステーブルコインと呼ぶことはできるが、私の意見ではいくつかはステーブルコインではなく利回りコインだ」と述べています。対して自分が関心を持ったのは法定通貨に裏付けられたもので、「いちばん素直で、いちばん安全な使い方」だと。USDM の準備金と裏付けの管理を調べて納得し、取締役会に入った、という順序です。<span class="badge">補足</span>「利回りを払うかどうか」で線を引く見方で、利回りの出どころ（国債か、貸し出しか、別のトークンの発行か）の違いには踏み込んでいません。</p>
+</div>
+
+<p>後半で Bryan が「Cardano のステーブルコインの規模は 6,000 万ドル前後だと思う」と前置きしてロードマップを聞くと、James は<strong>「USDM は決済用のステーブルだ」</strong>とまず答えました。見たいのは、決済用と利回りを生むステーブルとの直接の関係だ、と。価値を移す・分け合う・保存するのが USDM で、利回りは別のプロダクトに置く。例として挙げたのが RealFi の USDR で、ステークして sUSDR にすればその利回りが得られ、送金や支払いのときは 1 対 1 で裏付けられた決済用のステーブルがあるとよい、という組み合わせです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="決済用ステーブルコインと利回り付きステーブルコインの役割分担。USDM は価値の移動・保存、利回りは別のプロダクト（例として RealFi の USDR と sUSDR）に置き、必要なときに行き来する、という James の説明を図にしたもの">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="30" width="270" height="120" rx="8" class="d-box-accent"/>
+  <text x="155" y="58" class="d-t" text-anchor="middle">決済用のステーブル — USDM</text>
+  <text x="155" y="84" class="d-s" text-anchor="middle">1 ドルを 1 対 1 で裏付け</text>
+  <text x="155" y="104" class="d-s" text-anchor="middle">送金、支払い、価値の保存</text>
+  <text x="155" y="124" class="d-s" text-anchor="middle">利回りは払わない</text>
+
+  <rect x="390" y="30" width="270" height="120" rx="8" class="d-box"/>
+  <text x="525" y="58" class="d-t" text-anchor="middle">利回り付きのステーブル — 例: USDR</text>
+  <text x="525" y="84" class="d-s" text-anchor="middle">ステークして sUSDR にすると利回り</text>
+  <text x="525" y="104" class="d-s" text-anchor="middle">別のプロトコルのプロダクト</text>
+  <text x="525" y="124" class="d-s" text-anchor="middle">Marco の言う「利回りコイン」側</text>
+
+  <line x1="296" y1="80" x2="384" y2="80" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="384" y1="110" x2="296" y2="110" class="d-line-accent" marker-end="url(#m1)"/>
+  <text x="340" y="70" class="d-s" text-anchor="middle">稼ぐとき</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">払うとき</text>
+
+  <rect x="20" y="176" width="640" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="199" class="d-s" text-anchor="middle">James の説明。「彼らが新しいアイデアを出さない限りは」と留保付き。USDR の名称は動画公開時点のもの</text>
+</svg>
+<p class="figcap">James の「決済用と利回り付きを連動させる」という説明をこちらで図にしたもの。<span class="badge">補足</span>USDR と sUSDR は姉妹サイトで扱っている RealFi のトークンで、2026 年 8 月 26 日の投票でティッカーは USDrf / sUSDrf に改称と決まっています（<a href="https://shiodome47.github.io/2026RealFi/2026-08-24-office-hours-ticker/">2026-08-24 の回</a>）。動画では USDR と呼ばれているので、この記録もそのままにしています。</p>
+</div>
+
+<p><span class="badge">補足</span>Marco の「利回りコイン」の線引きと、James の「利回りは RealFi のようなプロダクトに任せる」という説明は、同じ会社の 2 人が同じ方向を向いている発言です。ただし RealFi の USDR そのものが「ステーブルコイン」なのか「利回りコイン」なのかは、この動画では誰も判定していません。RealFi 側は sUSDR を「ステーブルコインではない」と説明しています（<a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/#tokens">2026-08-06 の回</a>）。</p>
+
+
+<h2 id="native">3. 放し飼いの鶏 — ネイティブアセットと規制・凍結</h2>
+<p class="deck">KYC と凍結は「ミントと償還のアプリ」で。トークン側に凍結を付ける標準は「銃を突きつけられたら」。</p>
+
+<p>Bryan が、EVM ではトークン標準を通じた「資産発行者」が存在してスマートコントラクトを維持する責任が生じるが、Cardano のネイティブトークンなら発行者が外れる、という話を Cardano Foundation などから聞いた、と切り出しました。中央の当事者を置きたくない一方で MiCA に準拠したステーブルコインを出している、その二律背反はどこで分かれるのか、という問いです。</p>
+
+<div class="term">
+<p class="term-name">放し飼いの鶏 <small>free-range chicken、James の言い方</small></p>
+<p>James は Cardano ネイティブアセットを「放し飼いの鶏」と呼びます。エコシステムの中ならどこへでも行ける、という意味です。<strong>USDM の中央集権的な部分は、ミントとバーンを行うアプリそのものにある</strong>。各ユーザーはそこで KYC（事業者は KYB）を通り、規制当局の要請にもとづく凍結もそこで行う、と。「今の状態で両方を手にできる」という言い方でした。<span class="badge">補足</span>ここで言う「凍結」は、規制当局が対象にした利用者のミントと償還をアプリで止めることを指すと読めます。チェーン上を動いている USDM そのものを止める仕組みの説明はありません。</p>
+</div>
+
+<p>トークン側にプログラム可能性を持たせる標準については、James は「CIP-113 はまだ完全に作り込まれていない」「開発者の中には固まっていないと言う人もいる。今日書かれているとおりになると当て込まないほうがいい」と述べました。規制当局が求めればそれで準拠できるようにはなる、としつつ、Matt Plomin の方針は<strong>「銃を頭に突きつけられるまで待つ」</strong>で、自分たちもそうする、と。凍結可能でなければならず、それはアプリでできる、という事実の外側に明確な規則はないので、「少しグレーな領域で仕事を続ける」と言い切っています。</p>
+
+<p>具体例として James は「少し前に、あの Nighthawk の件に関係して」Cardano の大きなステークホルダーから凍結できるか確認のメッセージが来て、「もちろんできる」と答えた、と語りました。何の件かは動画で説明されていません。<span class="badge">補足</span>時期と文脈から、2026 年 7 月 20 日に Wanchain のブリッジから約 5 億 1,500 万 NIGHT が流出した事件（「NIGHT hack」）を指す可能性が高いとみますが、字幕の「Nighthawk」が何を指すかは確定できないので、全文では聞こえたまま残しています。</p>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>そもそも「ネイティブアセット」と CIP-113 とは</h4>
+<p>Ethereum では、ドル建てのステーブルコインは ERC-20 というスマートコントラクトとして存在し、そのコントラクトの中に「このアドレスを凍結する」といった機能を発行者が書き込みます。Cardano では、発行したトークンは ADA と同じ扱いの「ネイティブアセット」になり、専用のコントラクトを持たずに台帳の上を動きます。だからトークンそのものには凍結の機能がありません。CIP-113 は、そこに凍結などのプログラム可能な振る舞いを付けるための提案で、司会の Eric が「Ethereum の ERC に当たる Cardano の改善提案」と補足したものです。</p>
+<h4>なぜそれが要るのか</h4>
+<p>MiCA（EU の暗号資産規制）や米国の規制では、発行者が特定の保有者の資産を止められることが求められる場面があります。ネイティブアセットではそれをトークン側でできないので、James の言うとおり「入口のアプリ」で止めるしかなく、CIP-113 はそのギャップを埋める候補です。</p>
+<h4>身近なものへのたとえ</h4>
+<p>銀行のキャッシュカードは、銀行が止めれば使えなくなります（ERC-20 型）。現金は、いったん引き出されたら銀行には止められず、止められるのは窓口での入出金だけです（今の USDM）。CIP-113 は、現金の紙幣そのものに「この持ち主には使わせない」印を付けられるようにする話です。</p>
+<h4>この動画では分からないこと</h4>
+<p>USDM が CIP-113 を採用する条件（どの規制当局の、どんな要請か）と時期は語られていません。「Nighthawk の件」で実際に凍結が行われたかどうかも、「できると答えた」までで止まっています。</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>素朴な疑問 — 「凍結できる」と「アプリでしか凍結できない」は同じことなのでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。</p>
+<p>疑問はもっともです。James の説明では、凍結はミントと償還のアプリで行われます。KYC を通った利用者のアカウントを止めることはできても、すでにチェーン上にあり、KYC を通っていない別のアドレスへ渡った USDM は、その説明の範囲では止められません。</p>
+<p>それでも James の言い方が成り立つのは、規制上「凍結できる」ことが求められる場面の多くが、発行者と直接やり取りする利用者（ミントと償還をする人）に対するものだからです。1 ドルとの交換は入口と出口でしか起きないので、そこを止めれば、少なくともドルへの換金は止まります。</p>
+<p>外から見分ける方法は 1 つ。USDM の利用規約や規制当局への届け出で、凍結の対象が「アカウント」なのか「トークン」なのかを確かめることです。動画ではそこまで示されておらず、「規制に準拠しているが、一部の人が望むやり方ではないかもしれない」という James の言葉が、この違いを本人も意識していることを示しています。</p>
+</div>
+</details>
+
+
+<h2 id="payments">4. 決済用ステーブルの使い道 — 航空会社と南アフリカ</h2>
+<p class="deck">13 か国の通貨を 1 つにしたい航空サービス会社に、専用のステーブルコインを作る。投資家の耳が立った、と。</p>
+
+<p>James は、いま一緒に仕事をしている会社として、航空サービス業界で 13 か国に展開する会社を挙げました（社名は出ません）。前払いを 13 種類の通貨ではなく 1 つの通貨で受けたい、ナイジェリアのナイラのように扱いが難しい通貨もある、CFO の視点で全員が使う 1 つの通貨を欲しがっている、という話です。USDM を使うのではなく、<strong>その会社のための専用のステーブルコインをホワイトラベルで作る</strong>、と説明しています。閉じたループの中で使い、USDC のような大きなエコシステムにもつなげられる、と。</p>
+
+<p>James が「面白い」と付け加えたのは、その会社が VC 投資家と話したときに、航空サービスでステーブルコインを使うと言い出すと相手の耳が立ち、投資に前向きになったことです。「未開拓の領域で、ほかの分野にも同じようなことがかなりある」と述べています。</p>
+
+<p>Bryan はその前に、Draper と Orion のアクセラレーターに入っている南アフリカの会社の話をしています。ZAR（南アフリカ・ランド）の決済処理を、そのままチェーン上のステーブルにする、と。後半の PRIME の部分でも「南アフリカの決済処理の会社が Cardano に来る。37 以上の店舗と 1 万人以上の利用者」と繰り返しました。<span class="badge">補足</span>字幕では社名が「Tala Emali」と聞こえますが、特定できていません。数字は Bryan の発言のままで、何を数えたものか（累計利用者か月間か）は語られていません。</p>
+
+
+<h2 id="depth">5. ボトルネックは「深さ」。お金は循環している</h2>
+<p class="deck">Marco の見立て。利回りを追う同じお金がチェーン間を動いているだけで、外の資本を呼ぶ方法は「まだ誰も見つけていない」。</p>
+
+<p>Bryan が「ミントか、償還か、DEX か。実際のビジネスに使えるものにするには何が要るか」と聞くと、Marco は<strong>「深さ」</strong>だと答えました。ステーブルコインの TVL の大半は DeFi のプロトコルの中で利回りを得ようとしていて、流動性が流動性を生む。Cardano にもやることはあるが、他のエコシステムと同じ水準ではない、と。</p>
+
+<p>そのうえで Marco は、問題は Cardano だけではないと続けます。法定通貨に裏付けられたステーブルコインは「利回りを払わないトークン化された国債」のようなもので、売りやすいものではない。利回りが欲しければレンディングプロトコルに預けることになるが、自分は伝統金融で働いていて、「理解していないリスクを負って、たいてい SOFR かそれ以下を稼ぐためにドルをチェーンに置け、と誰かを説得することはできなかった」と述べました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Marco が述べた、利回りを追う同じお金がチェーン間を循環している構図と、外から資本を呼ぶ 3 つの道の図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="170" y="24" class="d-t" text-anchor="middle">いま動いているお金（Marco の見方）</text>
+  <rect x="30" y="40" width="120" height="44" rx="7" class="d-box"/>
+  <text x="90" y="67" class="d-s" text-anchor="middle">Base</text>
+  <rect x="190" y="40" width="120" height="44" rx="7" class="d-box"/>
+  <text x="250" y="67" class="d-s" text-anchor="middle">Ethereum</text>
+  <rect x="30" y="130" width="120" height="44" rx="7" class="d-box"/>
+  <text x="90" y="157" class="d-s" text-anchor="middle">Solana</text>
+  <rect x="190" y="130" width="120" height="44" rx="7" class="d-box-warn"/>
+  <text x="250" y="157" class="d-s" text-anchor="middle">Cardano</text>
+  <line x1="154" y1="62" x2="184" y2="62" class="d-line" marker-end="url(#m2)"/>
+  <line x1="250" y1="88" x2="250" y2="124" class="d-line" marker-end="url(#m2)"/>
+  <line x1="184" y1="152" x2="156" y2="152" class="d-line" marker-end="url(#m2)"/>
+  <line x1="90" y1="124" x2="90" y2="90" class="d-line" marker-end="url(#m2)"/>
+  <text x="170" y="204" class="d-s" text-anchor="middle">利回り 1、2 ポイントの差を追う同じお金</text>
+  <text x="170" y="224" class="d-s" text-anchor="middle">呼び込むにはインセンティブが要る</text>
+  <text x="170" y="244" class="d-s" text-anchor="middle">借りたお金の使い道がなければ借り手もいない</text>
+
+  <line x1="330" y1="150" x2="380" y2="150" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <text x="520" y="24" class="d-t" text-anchor="middle">Marco が挙げた 3 つの道</text>
+  <rect x="390" y="40" width="270" height="56" rx="7" class="d-box"/>
+  <text x="525" y="62" class="d-s" text-anchor="middle">① 既存のチェーン上の資本を呼ぶ</text>
+  <text x="525" y="82" class="d-s" text-anchor="middle">「私の意見では高くつく」</text>
+  <rect x="390" y="108" width="270" height="56" rx="7" class="d-box"/>
+  <text x="525" y="130" class="d-s" text-anchor="middle">② Cardano に独自の使い道を作る</text>
+  <text x="525" y="150" class="d-s" text-anchor="middle">RWA、プライバシーが「助けになるかも」</text>
+  <rect x="390" y="176" width="270" height="56" rx="7" class="d-box-accent"/>
+  <text x="525" y="198" class="d-s" text-anchor="middle">③ チェーン外の資本を持ってくる</text>
+  <text x="525" y="218" class="d-s" text-anchor="middle">「金の卵。まだ誰も見つけていない」</text>
+
+  <rect x="30" y="260" width="630" height="30" rx="7" class="d-box-plain"/>
+  <text x="345" y="280" class="d-s" text-anchor="middle">Marco の発言（14:44〜17:53）をこちらで整理。チェーン名は本人が挙げた例</text>
+</svg>
+<p class="figcap">「同じお金がチェーン間を利回りを追って動いている」という Marco の説明と、そこから抜ける 3 つの道をこちらで整理した図。①〜③の番号はこちらで付けたもので、本人は「2 つのうちどちらか、あるいは 3 つ目」という言い方をしています。</p>
+</div>
+
+<p>Marco が「金の卵を産むガチョウ」と呼んだのが、チェーン外の資本を持ってくることです。「まだ誰も見つけていない。未定だ」と言い、RWA のいくつかとプライバシー技術が助けになるかもしれない、と留保付きで挙げました。機関が財務部門の資産の動きを全部公開のチェーンに置きたがるはずがない、大きな取引所のウォレットのタグは誰でも見られる、という理由です。<span class="badge">補足</span>ここは Midnight のようなデータ保護型のチェーンの動機として、姉妹サイトの回でも繰り返し出る論点です。この動画では Midnight の名前は 9 節の「USDM を移す先」としてしか出ません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「流動性が流動性を生む」なら、最初の一押しはどうするのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。</p>
+<p>疑問はもっともです。Marco の説明を素直に読むと、深さがないから使い道が増えず、使い道がないから深さが来ない、という循環になっていて、出口がありません。本人も「少し循環している」と認めています。</p>
+<p>それでも成り立つのは、Marco が循環の外に 2 種類の力を置いているからです。1 つはインセンティブ（他のチェーンから利回りで呼ぶ。ただし高くつく）、もう 1 つはチェーンの外にある資本です。後者が来れば循環は破れますが、それが「まだ誰も見つけていない」ことだ、というのが本人の結論です。</p>
+<p>外から見分ける方法は 1 つ。Cardano のステーブルコインの供給量が増えたときに、増えた分がどこから来たか（他チェーンからのブリッジか、法定通貨からの新規ミントか）を、発行体の開示やブリッジの流入量で追うことです。この動画では、Bryan の「6,000 万ドル前後」という総額以外に数字は出ていません。<span class="badge">補足</span>2026 年 5 月末時点の公開データでは Cardano のステーブルコインの時価総額は約 5,490 万ドルで、USDCx が 45%、USDM が 27% でした。9 月時点の内訳は確認できていません。</p>
+</div>
+</details>
+
+
+<h2 id="scale">6. 拡張性と安全性、そして「大人になる」</h2>
+<p class="deck">Eric は「無限に安全なものは広がらず、無限に広がるものは安全でない」と問い、James は「まず信頼」と答えた。</p>
+
+<p>Eric がここで持ち出したのは、拡張性と安全性の二律背反です。普及と成長をもたらすのは拡張性だが、それが UST や Terra のような「途方もない高利回り」を生み、いまはデフォルトが起こりうるプライベートクレジットの領域でも同じことが起きるだろう、と。Eric は<strong>Stream</strong>の名前を挙げ、「私たちが自分で選んで管理している市場は Stream へのエクスポージャーがなかった。運と技能が少し混ざった結果だ」と述べました。<span class="badge">補足</span>Stream Finance は 2025 年 11 月に外部の運用者による約 9,300 万ドルの損失を開示し、そのステーブルコイン xUSD が 1 ドルから大きく下落、それを担保にしていた Elixir の deUSD も終了に追い込まれた事件です。「私たち」は AlphaGrowth が助言・運用する市場を指すと読めますが、どの市場かは語られていません。</p>
+
+<p>James の答えは「まずエコシステムへの信頼を作ること」でした。初期に入ってきた人は 10 倍、100 倍の利益を求めていて、Robinhood がそれを多くの人に現実にしたが、ほとんどの人は原資産を所有していないことに気づいていなかった。時間が経つと失う人が増え、暗号資産は「大人になる準備ができておらず、文化を変えなかった」。パーティーで、奥さんたちが自分の妻に「うちの夫に暗号資産の話をするのはやめて」と言ってきた、という個人的な話も添えています。いまは「少し大人になってきた」感じがあり、Consensus Miami は伝統金融のイベントに見えた、NASDAQ の北米 CEO がインタビューを受けていた、と。</p>
+
+<p><span class="badge">補足</span>Eric の問いに対して、James の答えは「中間のどこに線を引くか」ではなく「信頼を先に作る」という別の軸のものです。動画の中で、拡張性と安全性の具体的な折り合い（どの利回り水準まで、どの担保まで）が語られた箇所はありません。後半の PRIME の部分で Eric が「利回りコイン」の名で「より高い利回りだが吹き飛ばないもの」を探している、と述べたのが、この問いの続きにあたります（10 節）。</p>
+
+
+<h2 id="game">7. Fad, Marry, Kill — RWA、AI、DeFi マレット</h2>
+<p class="deck">James は「どれも一時の流行ではない」。Marco は「短期では AI を消す」「DeFi マレットは、まだ DeFi にそれだけの中身がない」。</p>
+
+<p>毎回やっているというコーナーです。3 つのナラティブ——RWA とトークン化された証券、AI と AI トークン、DeFi マレット——を「一時の流行（Fad）」「消える（Kill）」「長く残る（Marry）」に分けてもらう、というもの。<span class="badge">補足</span>DeFi マレットは「表は CeFi、裏は DeFi」、つまり利用者は普通の金融アプリの画面を使い、裏側の運用が DeFi で動く形を指す言い方です。Bryan は Coinbase Earn や OKX を例に挙げました。この語は AlphaGrowth の 7 月の回で Charles Hoskinson も使っています（<a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#mullet">姉妹サイトの 2026-07-26 の回、6 節</a>）。</p>
+
+<ul>
+  <li><strong>James。</strong>「一時の流行が DeFi の部分でないことを願う」「AI が一時の流行だとは思わない」。エージェントが生活のほぼあらゆる面を担う未来を語り、「RWA は何でもトークン化できるが、それが何を意味するのか」と留保しつつ、「正直、どれも一時の流行だとは思えない」と答えました。</li>
+  <li><strong>Marco。</strong>「どちらかというと時間軸をつける」。<strong>短期では AI を消す</strong>。AI は爆発的に伸びているが全部チェーン外の話で、自分は Hermes というエージェントを OpenRouter 経由で動かして USDC で払っているが、そのために資産をアンステークして移すのが面倒だ、と実体験を添えています。DeFi マレットは「とても良いアイデアだが、それに値するほどのものがまだ DeFi にない」。RWA には「とても関心がある」。</li>
+</ul>
+
+<p>Marco の DeFi への慎重さの理由は具体的です。自分はまだチェーン上に資産を置いているが、この 6 か月で引き出した。理由の一部は「AI がとても良くなった」から。最先端のモデルでペネトレーションテストを常に回していないプロトコルは「いつか痛い目を見る」。<strong>「リンディ効果はもうリンディではない。むしろ大きなハニーポットだ」</strong>と述べています。<span class="badge">補足</span>リンディ効果は「長く生き残ったものはさらに長く生き残る」という経験則です。Marco の主張は、長く動いてきたコントラクトが安全だという推定が AI による攻撃能力の向上で崩れ、むしろ資金が積み上がった標的になる、というものです。動画ではこの見方を裏付ける数字や事例は挙げられていません。</p>
+
+
+<h2 id="sandwich">8. ステーブルコインのサンドイッチ、3Jane、カード</h2>
+<p class="deck">Marco の構想。お金は利回りを生む場所に置き、ステーブルコインは払う瞬間の通り道にする。</p>
+
+<p>Marco は RWA について、市場は順序を逆にしたと述べます。数年前のトークン化はプライベート市場から始まったが、<strong>流動性のない資産に流動性のある包み紙をかぶせても流動的にはならない</strong>。償還の頻度やロックの条件を理解していない人が損をする。流動資産から始めるべきで、いま株で動きが出ている、と。トークン化された MMF（マネーマーケットファンド）については「良いアイデアだが使い道が分からない」としつつ、自分にとってこうなればいい、という形を描きました。</p>
+
+<div class="term">
+<p class="term-name">ステーブルコインのサンドイッチ <small>stablecoin sandwich、Marco の言い方</small></p>
+<p>お金はトークン化された MMF の中でチェーン上に置いておく。支払いたいときにカードをかざすと、MMF からステーブルコインに換わり、支払先へ流れ、支払先はすぐ MMF に戻すかもしれない。「ステーブルコインはそこに座っている。決済のレールで、真ん中にある」。ほとんどの時間、資産は利回りを生む状態にあり、その利回りは「いちばん安全な」国債でよく、望めば信用の階層を下げてもよい、と。<span class="badge">補足</span>4% や 4.5% という数字は、Marco が「より多くのリスクを負ってチェーン上で稼ぐ利回り」の例として口にした仮の数字です。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Marco の「ステーブルコインのサンドイッチ」。トークン化された MMF に置いた資産が、カードをかざした瞬間にステーブルコインに換わって支払先へ流れ、支払先はまた MMF に戻す、という流れの図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="40" width="190" height="110" rx="8" class="d-box-accent"/>
+  <text x="115" y="68" class="d-t" text-anchor="middle">自分の資産</text>
+  <text x="115" y="94" class="d-s" text-anchor="middle">トークン化された MMF</text>
+  <text x="115" y="114" class="d-s" text-anchor="middle">国債などの利回りを</text>
+  <text x="115" y="134" class="d-s" text-anchor="middle">ほとんどの時間、受け取る</text>
+
+  <rect x="255" y="40" width="170" height="110" rx="8" class="d-box"/>
+  <text x="340" y="68" class="d-t" text-anchor="middle">ステーブルコイン</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">決済のレール</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">払う瞬間だけ通る</text>
+  <text x="340" y="134" class="d-s" text-anchor="middle">利回りは要らない</text>
+
+  <rect x="470" y="40" width="190" height="110" rx="8" class="d-box-accent"/>
+  <text x="565" y="68" class="d-t" text-anchor="middle">支払先</text>
+  <text x="565" y="94" class="d-s" text-anchor="middle">受け取ったらすぐ</text>
+  <text x="565" y="114" class="d-s" text-anchor="middle">自分の MMF に戻す</text>
+  <text x="565" y="134" class="d-s" text-anchor="middle">「かもしれない」</text>
+
+  <line x1="214" y1="95" x2="249" y2="95" class="d-line-accent" marker-end="url(#m4)"/>
+  <line x1="429" y1="95" x2="464" y2="95" class="d-line-accent" marker-end="url(#m4)"/>
+  <text x="231" y="170" class="d-s" text-anchor="middle">カードをかざす</text>
+
+  <rect x="20" y="196" width="640" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="213" class="d-s" text-anchor="middle">Marco の構想であり、動いているプロダクトの説明ではない。</text>
+  <text x="340" y="229" class="d-s" text-anchor="middle">USDM は真ん中の「レール」の役割に当たる（James の「決済用」という位置づけと一致）</text>
+</svg>
+<p class="figcap">Marco が語った構想をこちらで図にしたもの。「サンドイッチ」の具が真ん中のステーブルコインで、両側のパンが利回りを生む MMF、という比喩です。</p>
+</div>
+
+<p>ここから司会との雑談が続きます。Eric（推定）が 3Jane の「キャピタルコールがない」プロダクトを挙げると、Marco は「自分の会社でも話した。個人には良いが、機関はどうせ最終日に払い込むので効かない」と評価。Bryan は「カードをかざすために売るか、借りるか」という設計を「本当に賢い」と評し、Apple 株を持ったままカードで払うと設定次第で担保借り入れか売却になる、という例を挙げました。「Ethena Pay が昨日」という言及もあります。<span class="badge">補足</span>3Jane は Ethereum 系の信用プロトコルで、「Levered Callable Capital」という、未払込のコミットメントを利回り付きで置いておける仕組みを 2026 年に出しています。Ethena Pay は 2026 年 9 月 1 日に発表された、USDe を残高とする Visa カード付きの決済アプリです。いずれも Cardano 上のものではなく、動画ではアイデアの参照として出ています。</p>
+
+<p>Marco はまとめとして、<strong>DeFi の利回りは伝統金融の利回りと直接競争できるようになるべき</strong>で、「SOFR 以下しか払わない理由はない」「チェーン上とチェーン外の利回りにはもっと高い相関があるべきだ」と述べました。RWA は「良いもので残る。最初のやり方が間違っていただけ」と。Bryan と Eric は「許可制すぎた、OTC すぎた」「Robinhood がスピードランしている」と応じています。</p>
+
+
+<h2 id="roadmap">9. Moneta のロードマップ — Midnight、NBX、財務庫の契約</h2>
+<p class="deck">USDM を Midnight へ移す機能は動いている。Midnight 側は「2、3 か月先」。カード、決済業者、助成金の資金の置き場。</p>
+
+<p>Bryan の「ロードマップと困っている点は」という問いに、James は 4 つを挙げました。</p>
+
+<ul>
+  <li><strong>他チェーンとの相互運用性。</strong>いまいちばん困っている点。VIA Labs と協業しており、「Circle の CCTP に似たもの」と考えてほしい、と。USDM を Midnight のチェーンへ移す機能は<strong>「すでに実際に動いている」</strong>。ただし<strong>「Midnight のチェーンはまだ価値のある資産を扱う準備が完全にはできておらず、彼らも積極的に押していない。2、3 か月先だろう」</strong>。James は「ブリッジ」という言葉も仕組みも嫌いだと言い、「ブリッジに似ているが、少し違うメッセージングサービス」だと表現しました。</li>
+  <li><strong>決済。</strong>NBX は戦略的パートナーで USDM の共同発行者。Visa Flex というカードの関係を一緒に進めている。店で残高が足りなければクレジット部分を使う、ロイヤルティのポイントも載せられる、そのために USDM がそこで保管される、という説明です。ほかに決済だけを手がける会社が 2 社ほどあり、利用者の代わりに資産を保管して法定通貨に換えてくれる、と。</li>
+  <li><strong>ガバナンスの資金の置き場。</strong>Intersect MBO などと組み、助成金を受ける側（「あなたたち AlphaGrowth もそうだ」）が TRC の中で資金を待つ期間に、ADA の代わりに USDM か「いまなら USDCx」を置いて下落をヘッジする用途。6 か月や 12 か月の納品期間に ADA が 50% 下がったらどうするのか、と。</li>
+  <li><strong>DeFi の中で使ってもらう。</strong>締めで James は「どうか USDM をミントして」と繰り返し、Strike、Bodega、Fluid を USDM を日常的に使っているパートナーとして挙げました。ミントは自社アプリ（20 の州で利用可）か、ほぼ世界中で使える NBX から、と。</li>
+</ul>
+
+<div class="term">
+<p class="term-name">TRC <small>Treasury Reserve Contract、動画の中の言葉</small></p>
+<p>James の説明では、助成の提案が資金を受け取ると、成果物を達成して分配を受けるまで資金がそこに保持される仕組みです。<span class="badge">補足</span>Intersect の資料では、Cardano の財務庫から引き出した ADA を保持する契約が Treasury Reserve Contract で、そこから各ベンダー向けの契約にマイルストーンごとに支払われます。Intersect は 2026 年 7 月時点で、USDM と USDA の発行体と「ADA をステーブルコインに換えて運用する選択肢」を協議中と公表しています。James の話はその文脈にあります。</p>
+</div>
+
+<p><span class="badge">補足</span>いくつか、動画の外で確認できることがあります。VIA Labs は USDM を「包まずに」Cardano と Midnight の間で動かす統合を発表しており、USDM の公式 X は「Cardano + Midnight、mainnet 8 月 13 日」と投稿しています。つまり James の「すでに動いている」は 2026 年 8 月 13 日以降の状態です。NBX（Norwegian Block Exchange）は USDM の EEA 側の発行者で、字幕では「MBX」と聞こえますが本文では NBX に直しています。Visa Flex について James 本人の X は「USDM が残高の層になる」と投稿しています。「Midnight はまだ価値のある資産の準備ができていない」は James の評価で、Midnight 側の発表ではありません。</p>
+
+<p>Bryan はこの節の終わりに、AlphaGrowth 自身も PRIME の資金について「ADA へのエクスポージャーをヘッジして、今年のプロジェクトをやり切る」課題に向き合っている、と応じました。「価格は少し上がった。上がったものは、下がらない、ですよね」という掛け合いで締めています。</p>
+
+
+<h2 id="prime">10. Cardano PRIME の現在地 — 監査、戦略、RFP</h2>
+<p class="deck">運営者による自己報告。監査は 77 ページ、目標は TVL 2 億 5,000 万ドル、RFP は「今日か明日」。</p>
+
+<p>36:42 から司会 2 人だけの部分です。Eric は「SNS でいろいろ言われているので、5 分か 10 分で透明性を高めたい」と切り出し、Bryan は「2 週間ごとに Cardano Over Coffee に出て説明する準備をしている」と述べました。<span class="badge">補足</span>PRIME（Protocol Readiness, Incentives &amp; Market Expansion）は AlphaGrowth が提案者、独立した運営グループ（Operating Group）が監督、Intersect が資金の管理者という構成で、財務庫から 1 億 2,000 万 ADA を引き出す提案です。2026 年 8 月に DRep の投票で可決されました。目標は 12 か月で TVL を 9,000 万ドルから 2 億 9,000 万ドルに増やすこと、と提案文書は書いています（姉妹サイトの <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#ghost">2026-07-26 の回、9 節</a> に提案時点の整理）。以下はすべて運営者本人の説明です。</p>
+
+<p><strong>インフラ監査。</strong>Eric は、提案は「監査、構築、展開」の 3 フェーズが混ざり合って進むもので、監査の文書は社内で 77 ページほどになっている、と述べました。見えてきたのは<strong>「誰もが自分でインフラを作らなければならず、他のチームが当たり前に使えるレゴのピースがなかった」</strong>こと。ボールト（資金の保管庫）の標準、scooper（DEX の注文を束ねる役）の標準、CIP-113 への対応、ウォレットのような配布パートナーへの統合、を挙げています。Bryan は、オラクル、インデクサー、サブグラフ、マルチシグの選定（3〜4 社あり、どれをなぜ選ぶか）、RPC、ブリッジといった地道な選定が監査の大半だ、と補いました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="Cardano PRIME の進め方。監査・構築・展開の 3 フェーズと、Bryan と Eric が挙げたインフラ、戦略、カテゴリー、目標を並べた図">
+  <defs>
+    <marker id="m5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="195" height="56" rx="8" class="d-box-accent"/>
+  <text x="117" y="44" class="d-t" text-anchor="middle">① インフラ監査</text>
+  <text x="117" y="64" class="d-s" text-anchor="middle">社内 77 ページ、いまここ</text>
+  <rect x="242" y="20" width="195" height="56" rx="8" class="d-box"/>
+  <text x="339" y="44" class="d-t" text-anchor="middle">② 構築・統合</text>
+  <text x="339" y="64" class="d-s" text-anchor="middle">標準化、RFP で公募</text>
+  <rect x="464" y="20" width="196" height="56" rx="8" class="d-box"/>
+  <text x="562" y="44" class="d-t" text-anchor="middle">③ 展開・インセンティブ</text>
+  <text x="562" y="64" class="d-s" text-anchor="middle">「3 つは混ざり合って進む」</text>
+  <line x1="219" y1="48" x2="236" y2="48" class="d-line-accent" marker-end="url(#m5)"/>
+  <line x1="441" y1="48" x2="458" y2="48" class="d-line-accent" marker-end="url(#m5)"/>
+
+  <rect x="20" y="96" width="310" height="120" rx="8" class="d-box"/>
+  <text x="175" y="120" class="d-t" text-anchor="middle">足りない「レゴのピース」</text>
+  <text x="175" y="144" class="d-s" text-anchor="middle">ボールトと scooper の標準、CIP-113</text>
+  <text x="175" y="164" class="d-s" text-anchor="middle">オラクル、インデクサー、マルチシグ、RPC</text>
+  <text x="175" y="184" class="d-s" text-anchor="middle">ブリッジ（LayerZero の議論）</text>
+  <text x="175" y="204" class="d-s" text-anchor="middle">ポートフォリオ管理、ウォレット追跡</text>
+
+  <rect x="350" y="96" width="310" height="120" rx="8" class="d-box"/>
+  <text x="505" y="120" class="d-t" text-anchor="middle">作りたいカテゴリー</text>
+  <text x="505" y="144" class="d-s" text-anchor="middle">分離型マネーマーケット、CDP</text>
+  <text x="505" y="164" class="d-s" text-anchor="middle">再担保できる DEX、ローンチパッド</text>
+  <text x="505" y="184" class="d-s" text-anchor="middle">保険・再保険、固定金利</text>
+  <text x="505" y="204" class="d-s" text-anchor="middle">エージェント金融（x402）</text>
+
+  <rect x="20" y="236" width="640" height="70" rx="8" class="d-box-warn"/>
+  <text x="340" y="260" class="d-t" text-anchor="middle">目標と目安（運営者の説明）</text>
+  <text x="340" y="282" class="d-s" text-anchor="middle">TVL 2 億 5,000 万ドル。助成 1 ドルにつき TVL 50 ドル。対象は 500 万ドル以上の資産</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">RFP は「今日の午後か明日」に開く。「全部がうまくいくわけではない」と留保</text>
+</svg>
+<p class="figcap">Bryan と Eric の説明（36:42〜1:00:03）をこちらで 1 枚に整理したもの。フェーズの 3 分割は Eric の言葉、カテゴリーの列挙は Bryan の言葉です。<span class="badge">補足</span>可決された提案の目標（TVL の 2 億ドル以上の純増）と、動画で Eric が言った「2 億 5,000 万ドルを持ってくる」は、数え方が同じかどうか動画では語られていません。</p>
+</div>
+
+<p><strong>戦略。</strong>Bryan は、内部で発行する資産と外から持ち込む資産の配分が大きな課題だと述べ、LayerZero の議論に関わっていること、RWA、利回り資産、金・銀・石油のようなコモディティ、UAE のステーブルコイン、日本と円（「今後 6 か月から 1 年で起きそうな円のキャリートレードまわり」）を挙げました。いずれも「話をしている」段階の列挙で、決まったものとしては語られていません。</p>
+
+<p><strong>カテゴリー。</strong>Bryan が挙げたのは、分離型のマネーマーケット、Indigo との CDP（担保付き債務ポジション）の何か、Uniswap v4 型の再担保できる DEX、ローンチパッド（「来年 TGE を迎えるプリミティブが 4、5 あるなら要る」）、オンチェーンの保険・再保険、Pendle 的な固定金利、そしてエージェント金融です。「規制、安全性、固定金利」が歴史的に伝統金融を阻んだ 3 つで、保険付きの固定利回りができれば大口の資本が入る、と。Eric は再保険で「本当に良い案件のパイプライン」があり、サンフランシスコでヘッジファンドと会って、通常はニッチな層や私設銀行に限られるまとまった案件を一般に開く話をした、と述べました。<span class="badge">補足</span>Bryan が「以前一緒にプロジェクトをやった」と挙げた「red.xyz」は、オンチェーン再保険の Re（re.xyz）の可能性がありますが、字幕からは確定できません。</p>
+
+<div class="term">
+<p class="term-name">B2B4C <small>Eric が「こう呼ぶことにする」と言った造語</small></p>
+<p>針を動かせるほど大きい案件は B2B の取引だが、暗号資産と分散化を使う目的は、その取引を個人（C）にも開くことだ、という考え方です。各企業が一度だけ暗号資産に接続すれば、その先のパートナーや案件のパイプラインが作れる。「そこから生まれるフライホイールは巨大だ」と。Eric はこの文脈で「Cardano に 2 億 5,000 万ドルの TVL を持ってくる。やる」と述べています。Bryan はそれを「モノポリー理論」——いちばん多く取引した者が勝つ、すべての取引は双方の得——と呼び、既定を「ノー」ではなく「イエス」にしつつ、悪い「イエス」で壊れないようリスク分析の人を置く、と続けました。</p>
+</div>
+
+<p><strong>RFP と目安。</strong>Eric は「大きなニュース」として、助成の RFP を「早ければ今日の午後か明日」に開くと述べました。トークンを働かせたい、最新の scooper とボールトの標準と CIP-113 に対応してほしい、定期的なビルダーの電話会議を設ける、「全部に接着剤を塗って、みんなひとつのチームだと言う」と。Bryan は非公開の会話の枠組みとして<strong>「助成やインセンティブ 1 ドルにつき TVL 50 ドル」</strong>を挙げ、対象は 50 万ドルではなく 500 万ドル以上の資産、「10 万ドルで 500 万〜1,000 万ドルの TVL」なら話をしよう、と述べました。「全部がうまくいくわけではないが、大半はうまくいくだろう」という留保付きです。Eric は需要側も見ていて、「科学の自由研究のようなプロジェクトにもイエスだが、狙う顧客像を持っていること」が条件だと述べています。</p>
+
+<p><span class="badge">補足</span>数字はすべて運営者の口頭の説明で、RFP の文書やその条件は動画公開時点では示されていません。姉妹サイトの <a href="https://shiodome47.github.io/2026RealFi/2026-08-14-ask-the-ceo/">2026-08-14 の回</a>で RealFi の CEO が「AlphaGrowth も提案を勝ち取った」と述べており、あちらの未回答の問い「実際の引き出し額と執行の状況」に、この動画は「監査の段階で、RFP をこれから開く」という進捗を与えています。引き出し額そのものは語られていません。</p>
+
+
+<h2 id="agents">11. エージェント、x402、「クラウド規制」</h2>
+<p class="deck">Draper で見た「agent to agent」と、Masumi・Sokosumi。ボットがボットから買って届かなかったら、誰が裁くのか。</p>
+
+<p>Bryan は Draper のプログラムで「agent to agent」というプロジェクトを見た、x402 を Cardano に持ち込む申請を進めている、と述べました。x402 に一度入れば「すべての DApp とトークンがエージェントの拡張に関われる」と。Eric が「Masumi と Sokosumi の 2 つの名前だと思う。いま x402 のことをやっている」と補い、Bryan は「Cardano でそれをやっている会社が 2 つある。agent dynamics が社名で、一方は B2B 型、こちらは B2C 型に近い。ピッチのフィードバックでも競合か協力かが問われ、協力に見えた」と続けました。<span class="badge">補足</span>x402 は HTTP の 402（Payment Required）を使ってエージェントが機械的にステーブルコインで支払う標準で、Coinbase が始めたものです。Masumi は Cardano 上の AI エージェントの決済・登録のプロトコル、Sokosumi はその上のマーケットプレイスで、Masumi は x402 の Cardano 実装を公開しています。姉妹サイトの <a href="https://shiodome47.github.io/2026RealFi/2026-08-11-masumi-ai-forum/">2026-08-11 Masumi の回</a>に、Sokosumi のクレジットの実体が USDM だという説明があります。「agent dynamics」の URL は字幕では「agent to aagent.xyz」と聞こえ、確認できていません。</p>
+
+<p>Bryan がここで持ち出したのが、Balaji Srinivasan の『The Network State』にある<strong>「クラウド規制」</strong>の考えです。初期のインターネットは規制をスピードランして、新しい規制のやり方を考え出さなければならなかった。エージェント間の取引でも、どのエージェントに、なぜ払うのか、評判スコアはどうするのか、オラクルにもとづく納品のためにスマートコントラクトとエスクローが要るのか、Yelp のような 5 つ星のレビューになるのか。「私のボットがあなたのボットから買って、届かなかったらどうするのか」。Eric（推定）が「チャージバックはどうするのか」と挟み、Bryan は「カスタマーサポートとは何か、それがボットで溢れないのはなぜか」と続けて、「非常に必要で、創造的だ」と締めました。答えは出していません。</p>
+
+<p><span class="badge">補足</span>姉妹サイトの 2026-07-26 の回で「エージェント取引の責任の所在」が未質問のまま残っています（あちらの問い 18）。この動画は問いを「エスクローか、評判か」と具体化しましたが、答えにはなっていません。</p>
+
+
+<h2 id="robinhood">12. Robinhood Chain と、Draper で見たプロジェクト</h2>
+<p class="deck">MicroStrategy のトークンを週末に 5% まで叩いてミームコインと組む、という話。それから ChatterPay、Gravity DEX、Lava。</p>
+
+<p>Bryan が Eric に説明したのは、Robinhood Chain 上の出来事です。「先週末、ある人たちが Robinhood Chain 上の MicroStrategy の価格を実際の価値の 5% くらいまで押し下げ、自分たちのミームコインと流動性プールで組み合わせた。月曜に人々が『95% 下がっている』と気づいて買い、MicroStrategy はパリティ近くまで戻ったが、彼らがプログラムで売り続けていたミームコインも持ち上がった」。時価総額の大きい株をペニーストックのような出来高に変えてしまう、「正気ではない」と。Eric は「ばかげた法的制約を回避するために人々が行き着く解決策が好きだ。法律はゆっくり動き、人々は賢い」と応じました。<span class="badge">補足</span>Robinhood Chain は 2026 年 7 月にメインネットが出た Ethereum のレイヤー 2 で、トークン化された株とミームコインを組み合わせた流動性プールが多数あることは公開の分析で報じられています。Bryan が語った MicroStrategy の一件そのものの日付と規模は、こちらでは確認できていません。数字は本人の口頭の説明です。</p>
+
+<p>最後に Bryan は、Draper のプログラムで見たプロジェクトを列挙しました。いずれも一言ずつで、掘り下げはありません。</p>
+
+<ul>
+  <li><strong>Esco</strong> の「より良い web3」—— Galxe や Layer3 のような、タスクをこなして少し暗号資産を稼ぎながらプロジェクトを学ぶ仕組みを思わせる、と。人物・プロジェクト名は特定できていません。</li>
+  <li><strong>ChatterPay</strong> —— WhatsApp のウォレット。Cardano Foundation の審査員がその場でダウンロードし、3 ドルほどの ADA を受け取っていた、「つまりいま動いている」。<span class="badge">補足</span>ChatterPay は WhatsApp 上で ADA、USDCx、USDM などを送れると公表しており、Draper University の Genesis プレアクセラレーターに参加していたことも本人たちが発表しています。</li>
+  <li><strong>Gravity DEX</strong> —— 片側だけの AMM に見え、「Cardano 上の Bitcoin により良い価格を付けられる」と主張していた。「仕組みを理解したいので出演かインタビューを」と。</li>
+  <li><strong>Lava</strong>（Nick）—— リキッドステーキングトークン。Bryan は「DeFi 全体で使えるリキッドステーキングは当然」としつつ、いまは DApp が預かった ADA のステーキング報酬を受け取る仕組みがあり、ユーザーが自分で受け取ると DApp の収益は減る、「少しゼロサム」だと補いました。</li>
+  <li><strong>E Envent</strong>（イベントのアプリ、Rare Evo を担当）、<strong>River Arc</strong>、<strong>Pete</strong>（セキュリティ監査とバウンティ、Immunefi のようなもの）—— 名前だけです。</li>
+</ul>
+
+<p><span class="badge">補足</span>Draper University は Cardano と Orion Fund（Cardano と Draper Dragon による 8,000 万ドルのエコシステム・ファンド）と組んで、Genesis というプレアクセラレーターと Apex という 10 週間のアクセラレーターを運営しています。Bryan が「月曜と昨日サンフランシスコにいた」「Tim Draper が壇上に上がった」と語ったのは、Genesis のデモデーとみられますが、動画では催しの名前は出ません。</p>
+
+
+<h2 id="overall">13. 全体像</h2>
+<p class="deck">前半の「決済用のステーブル」と、後半の「深さを作る」が、同じ 1 つの問題の両側にある。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="この回の全体像。Marco が挙げた「深さがない、お金が循環している」という問題を真ん中に置き、上に USDM 側の答え（決済用に徹する、規制は入口で、Midnight とカードへ）、下に PRIME 側の答え（インフラの標準化、カテゴリーの構築、50 対 1 のインセンティブ）を配し、両者が同じ問題の両側にあることを示す図">
+  <defs>
+    <marker id="m6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="16" width="640" height="84" rx="8" class="d-box-accent"/>
+  <text x="340" y="40" class="d-t" text-anchor="middle">USDM（発行体の側）— James と Marco</text>
+  <text x="340" y="62" class="d-s" text-anchor="middle">決済用に徹する。利回りは別のプロダクトに。規制と凍結は「入口のアプリ」で</text>
+  <text x="340" y="82" class="d-s" text-anchor="middle">使い道を足す — Midnight へ、Visa Flex へ、助成金の資金の置き場へ、ホワイトラベルへ</text>
+
+  <line x1="340" y1="104" x2="340" y2="126" class="d-line-accent" marker-end="url(#m6)"/>
+
+  <rect x="90" y="132" width="500" height="70" rx="8" class="d-box-warn"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">共通の問題 — 「深さ」がない（Marco）</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">利回りを追う同じお金が循環している。外の資本を呼ぶ方法は「まだ誰も見つけていない」</text>
+  <text x="340" y="194" class="d-s" text-anchor="middle">Bryan の前置きでは Cardano のステーブルコインは 6,000 万ドル前後</text>
+
+  <line x1="340" y1="228" x2="340" y2="206" class="d-line-accent" marker-end="url(#m6)"/>
+
+  <rect x="20" y="234" width="640" height="84" rx="8" class="d-box"/>
+  <text x="340" y="258" class="d-t" text-anchor="middle">Cardano PRIME（運営者の側）— Bryan と Eric</text>
+  <text x="340" y="280" class="d-s" text-anchor="middle">「レゴのピース」を標準化する。マネーマーケット、DEX、保険、固定金利、エージェントを作る</text>
+  <text x="340" y="300" class="d-s" text-anchor="middle">助成 1 ドルにつき TVL 50 ドルで呼ぶ。目標 2 億 5,000 万ドル。全部がうまくいくとは限らない</text>
+</svg>
+<p class="figcap">上下の対比はこちらの整理です。動画では前半と後半は別の会話で、Marco の「深さ」の話を PRIME の側が引き取る、という直接のやり取りはありません。<span class="badge">補足</span>Marco が「高くつく」と言った「既存のチェーン上の資本をインセンティブで呼ぶ」道は、PRIME の「1 ドルで 50 ドル」がまさにそれに当たります。両者の見立ての違いを、動画は突き合わせていません。</p>
+</div>
+
+
+<h2 id="qa">14. やり取りから</h2>
+<p class="deck">司会の問いと 2 人の答えを 4 つ抜き出した。後半は司会どうしの掛け合いなので、ここには入れていない。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>中央の当事者を置きたくない一方で MiCA に準拠したステーブルコインを出している。この二律背反はどこで分かれるのか。</p>
+<p class="qa-a" data-by="James Meidinger">Cardano ネイティブアセットは「放し飼いの鶏」で、どこへでも行ける。<strong>中央集権的な部分はミントとバーンのアプリにあり</strong>、KYC と凍結はそこで行う。CIP-113 のようなトークン側の標準は「規制当局に銃を突きつけられるまで待つ」。それ以外は「少しグレーな領域で仕事を続ける」。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>Cardano のステーブルコインの最大のボトルネックは。ミントか、償還か、DEX か。</p>
+<p class="qa-a" data-by="Marco">「深さ」。ただし本当の問いは「それで何をするのか」で、法定通貨に裏付けられたステーブルコインは<strong>「利回りを払わないトークン化された国債」</strong>のようなもの。いまチェーン間を動くのは利回りを追う同じお金で、外の資本を呼ぶ方法は「まだ誰も見つけていない」。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>無限に安全なものは広がらず、無限に広がるものは安全でない。この二律背反をどう見るか。</p>
+<p class="qa-a" data-by="James Meidinger（線引きには答えず）">「まずエコシステムへの信頼を作ること」。初期の利用者は 10 倍、100 倍を求めて入り、失って離れ、暗号資産は「大人になる準備ができていなかった」。いまは Consensus Miami が伝統金融のイベントに見えるほど変わったが、「まだ大人になるべきところが多い」。<strong>どこに線を引くかは語っていません。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>Moneta のロードマップと、困っている点は。</p>
+<p class="qa-a" data-by="James Meidinger">困っているのは他チェーンとの相互運用性。VIA Labs と組んで USDM を Midnight へ移す機能は動いているが、<strong>Midnight 側は「2、3 か月先」</strong>。ほかに NBX の Visa Flex、資産を預かってくれる決済業者、Intersect の資金保持契約の中で ADA の代わりに置く用途。</p>
+</div>
+
+
+<h2 id="pending">15. 答えが出なかったこと</h2>
+<p class="deck">時期は「2、3 か月」「今日か明日」。名前だけで終わったものが多い。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期のみ</span>Midnight 上で USDM が「価値のある資産」として使えるのはいつか。</p>
+<p class="qa-a" data-by="「2、3 か月先」">James の評価として「Midnight はまだ準備が完全ではなく、彼らも押していない」。<span class="badge">補足</span>USDM の公式 X は「mainnet 8 月 13 日」と投稿しており、移動の機能そのものは公開日前から動いています。「使える」の意味（アプリがあるか、流動性があるか）は語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未説明</span>「Nighthawk の件」とは何か。凍結は実際に行われたのか。</p>
+<p class="qa-a" data-by="「できると答えた」まで">大きなステークホルダーから凍結できるか確認が来て「もちろんできる」と答えた、というだけです。<span class="badge">補足</span>2026 年 7 月 20 日の Wanchain ブリッジからの NIGHT 流出を指す可能性が高いとみますが、確定できません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未説明</span>USDM が CIP-113 を採用する条件と時期。</p>
+<p class="qa-a" data-by="「銃を突きつけられたら」">規制当局の要請があれば、とだけ。どの当局の、どんな要請かは語られていません。CIP-113 自体も「固まっていない」と James は評価しています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>航空サービス会社向けのホワイトラベルのステーブルコインは、いつ、どの規模で出るのか。</p>
+<p class="qa-a" data-by="「一緒に仕事をしている」">社名、時期、規模は出ていません。「投資家の耳が立った」という反応だけです。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未提示</span>PRIME の RFP の条件と、資金の引き出し・執行の状況。</p>
+<p class="qa-a" data-by="「今日の午後か明日」">RFP を開く時期と「1 ドルで 50 ドル」「500 万ドル以上」という口頭の目安だけで、文書は示されていません。1 億 2,000 万 ADA のうちいくらが引き出されたかも語られていません。監査文書は「5 ページ版と 77 ページ版を出す」とだけ。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">名前のみ</span>Tala Emali、Esco、E Envent、River Arc、pure.xyz、Pete、Yoda、red.xyz、agent dynamics の URL。</p>
+<p class="qa-a" data-by="特定できず">いずれも一言で挙がっただけで、説明がありません。字幕の綴りのまま全文に残しています。red.xyz はオンチェーン再保険の Re（re.xyz）の可能性があります。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未質問</span>Marco の「リンディ効果はもうリンディではない」を支える事例。</p>
+<p class="qa-a" data-by="主張のみ">AI による攻撃能力の向上で古いコントラクトが安全だという推定が崩れる、という主張で、具体的な事件や数字は挙げられていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は AlphaGrowth の YouTube チャンネル（@alphagrowth）で公開されている動画 <a href="https://www.youtube.com/watch?v=af31SbPD0AQ">Why Real Stablecoins Don't Pay Yield | Interview w James &amp; Marco at USDM | Dose of Alpha - Ep. 16</a>（公開日 2026-09-06 とみられる。依頼者の指定「4 日前」から。1 時間 00 分 24 秒）です。公開動画なので発言者は実名のまま書いています。ライブ配信の録画で、動画内の「昨日」（Ethena Pay の発表）から収録は 2026 年 9 月 2 日ごろと推定されます。</p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回は字幕だけから作っており画面は確認していないので、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>立場について。</strong>後半（36:42〜）は AlphaGrowth の 2 人が自分たちの運営する Cardano PRIME を説明する部分で、数字と評価は運営者本人のものです。前半の USDM の 2 人の発言も、発行体の当事者の説明として書いています。第三者への評価（Stream、Robinhood Chain、CIP-113 の完成度など）は、すべて話者の発言として帰属させています。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Two people from USDM, Cardano's dollar stablecoin, start from a line in the sand: <strong>“some of these aren't stablecoins, they're yield coins”</strong>, and go on to regulation, freezing, payments and moving to other chains.<br>
+  In the second half the two hosts talk alone about Cardano PRIME, the DeFi growth programme they themselves run with 120 million ADA from the treasury. <strong>That half is the operator describing its own work</strong>, and has to be read as such.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>USDM is “a payment stable”.</strong> Marco, a board member, doubts that anything paying yield should be called a stablecoin and says fiat backing is the most straightforward and safest case. James places USDM on the payment side and imagines pairing it with a separate yield-bearing product, naming RealFi's USDR as an example.</li>
+  <li><strong>Compliance lives at the door.</strong> A Cardano native token goes anywhere once issued, so KYC and freezing happen in the app where USDM is minted and redeemed, says James. A standard that would put freezing into the token itself (CIP-113) is for “when they put the gun to our head”.</li>
+  <li><strong>What's missing is depth, and things to do.</strong> Marco says the biggest bottleneck for stablecoins on Cardano is liquidity, and that the money moving between chains today is the same money chasing yield. How to bring off-chain capital in is something “no one's figured out yet”.</li>
+  <li><strong>Keep money where it earns; let the stablecoin be the rail.</strong> Marco's “stablecoin sandwich” keeps assets in a tokenised money-market fund and converts to a stablecoin only for the instant a card is swiped. It is his idea, not a live product.</li>
+  <li><strong>Moneta's next moves.</strong> Moving USDM to Midnight with VIA Labs already works, but Midnight is “maybe 2, 3 months off” for assets of value, in James's view. Also: the Visa Flex card with co-issuer NBX, and parking USDM or USDCx instead of ADA inside Intersect's treasury contracts.</li>
+  <li><strong>Cardano PRIME is at the audit stage.</strong> A 77-page internal audit, a target of $250M in TVL, RFPs for grants opening “this afternoon or tomorrow”, and a rule of thumb of $50 of TVL per $1 of incentive, all in the hosts' own words as the programme's operators.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this video</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking, and the video's two halves</a></li>
+  <li><a href="#en-stable"><span class="n">02</span>“Yield coins” versus fiat backing</a></li>
+  <li><a href="#en-native"><span class="n">03</span>Free-range chicken: native assets, regulation, freezing</a></li>
+  <li><a href="#en-payments"><span class="n">04</span>Uses for a payment stable: an airline and South Africa</a></li>
+  <li><a href="#en-depth"><span class="n">05</span>The bottleneck is depth, and the money is circular</a></li>
+  <li><a href="#en-scale"><span class="n">06</span>Scalability versus security, and “growing up”</a></li>
+  <li><a href="#en-game"><span class="n">07</span>Fad, Marry, Kill: RWA, AI, the DeFi mullet</a></li>
+  <li><a href="#en-sandwich"><span class="n">08</span>The stablecoin sandwich, 3Jane and cards</a></li>
+  <li><a href="#en-roadmap"><span class="n">09</span>Moneta's roadmap: Midnight, NBX, treasury contracts</a></li>
+  <li><a href="#en-prime"><span class="n">10</span>Where Cardano PRIME stands: audit, strategy, RFPs</a></li>
+  <li><a href="#en-agents"><span class="n">11</span>Agents, x402 and “cloud regulation”</a></li>
+  <li><a href="#en-robinhood"><span class="n">12</span>Robinhood Chain, and projects seen at Draper</a></li>
+  <li><a href="#en-overall"><span class="n">13</span>How it fits together</a></li>
+  <li><a href="#en-qa"><span class="n">14</span>From the exchange</a></li>
+  <li><a href="#en-pending"><span class="n">15</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking, and the video's two halves</h2>
+<p class="deck">First an interview with a stablecoin issuer, then the hosts on their own programme. The reading changes.</p>
+
+<p>Episode 16 of “Dose of Alpha”, streamed on AlphaGrowth's channel. As the opening scramble shows (“We're not live live, are we?”), it is the recording of a livestream, and it starts with a guest's audio gone.</p>
+
+<ul>
+  <li><strong>Bryan Colligan</strong>: host. <span class="badge">added</span> AlphaGrowth's CEO. He does not introduce himself; the name comes from the show's public listings. He is the one who hands over to “Eric”.</li>
+  <li><strong>Eric Waisanen</strong>: host. <span class="badge">added</span> AlphaGrowth's DeFi lead. Addressed as “Eric” in the video.</li>
+  <li><strong>James Meidinger</strong>: guest, USDM. “James” and “Jim” in the video. <span class="badge">added</span> The surname is from his public profile and the X handle he gives at the end.</li>
+  <li><strong>Marco</strong>: guest. Describes himself as a board member of the USDM issuer whose day job is crypto and RWA strategy at a traditional-finance firm. No surname is given in the video or its description.</li>
+</ul>
+
+<p><span class="badge">added</span> USDM is a Cardano-native dollar stablecoin launched in March 2024. The US issuer is Moneta Digital, the developer is W3i Software, and the CEO is Jillian Plomin. The founder, Matt Plomin, died in November 2024 (USDM's official announcement). The captions render him “Matt Plowman”; this page uses Plomin.</p>
+
+<p><strong>The video has two halves.</strong> From 0:39 to 36:42 it is the interview with James and Marco. From 36:42 the two hosts talk alone about Cardano PRIME, the programme AlphaGrowth itself runs. <span class="badge">added</span> PRIME is a proposal to withdraw 120 million ADA from Cardano's treasury, approved in August 2026 (see section 10). So the second half is a publicly funded operator describing its own work. Its numbers and judgements are treated here as the operators' own account.</p>
+
+
+<h2 id="en-stable">2. “Yield coins” versus fiat backing</h2>
+<p class="deck">Marco's line in the sand. James puts USDM on the payment side and leaves yield to a separate product.</p>
+
+<p>Marco starts with his own background: research and advisory work across several chains since about 2020, and through work with Minswap, conversations with James and, around the launch of USDM, with Matt Plomin. What he thought about then is the episode's title.</p>
+
+<div class="term">
+<p class="term-name">Yield coins <small>the phrase used in the video</small></p>
+<p>“There's a handful of ways you can build a stablecoin and we could call them stablecoins,” Marco says. “Some are not stablecoins in my opinion. They're more yield coins.” What interested him was the fiat-backed kind, “the most straightforward and safest use case”. He dug into USDM's reserves and how the backing is managed, got comfortable, and joined the board, in that order. <span class="badge">added</span> The line is drawn on whether yield is paid, not on where yield comes from (treasuries, lending, or issuing another token); the video does not go into that.</p>
+</div>
+
+<p>Later, when Bryan prefaces his roadmap question with “the stablecoin ecosystem within Cardano is around $60 million, I think”, James's first answer is that <strong>“USDM is a payment stable”</strong>. What he would like to see is a direct relationship between a payment stable and a yield-bearing stable. Transferring, sharing and storing value is USDM; yield sits in another product. His example is RealFi's USDR: stake it into their protocol and you get sUSDR and that yield, and when you want to transfer or pay it is good to have a fiat-backed payment stable in the mix, “one-to-one backed, and it represents a dollar wherever you go”.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-label="Division of roles between a payment stablecoin and a yield-bearing one. USDM moves and stores value; yield sits in a separate product (RealFi's USDR and sUSDR as the example); money moves between them when needed. Drawn from James's explanation">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="30" width="270" height="120" rx="8" class="d-box-accent"/>
+  <text x="155" y="58" class="d-t" text-anchor="middle">Payment stable: USDM</text>
+  <text x="155" y="84" class="d-s" text-anchor="middle">One dollar, backed one-to-one</text>
+  <text x="155" y="104" class="d-s" text-anchor="middle">Transfer, pay, store value</text>
+  <text x="155" y="124" class="d-s" text-anchor="middle">Pays no yield</text>
+
+  <rect x="390" y="30" width="270" height="120" rx="8" class="d-box"/>
+  <text x="525" y="58" class="d-t" text-anchor="middle">Yield-bearing stable: e.g. USDR</text>
+  <text x="525" y="84" class="d-s" text-anchor="middle">Stake into sUSDR to earn yield</text>
+  <text x="525" y="104" class="d-s" text-anchor="middle">Another protocol's product</text>
+  <text x="525" y="124" class="d-s" text-anchor="middle">Marco's “yield coin” side</text>
+
+  <line x1="296" y1="80" x2="384" y2="80" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="384" y1="110" x2="296" y2="110" class="d-line-accent" marker-end="url(#e1)"/>
+  <text x="340" y="70" class="d-s" text-anchor="middle">to earn</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">to pay</text>
+
+  <rect x="20" y="176" width="640" height="36" rx="7" class="d-box-plain"/>
+  <text x="340" y="199" class="d-s" text-anchor="middle">James's account, with the caveat “unless they come up with a new idea”. USDR is the name used at publication</text>
+</svg>
+<p class="figcap">Our drawing of James's “work those two in tandem”. <span class="badge">added</span> USDR and sUSDR are RealFi's tokens, covered on the sister site; a vote on 2026-08-26 renamed the tickers to USDrf / sUSDrf (<a href="https://shiodome47.github.io/2026RealFi/2026-08-24-office-hours-ticker/">the 2026-08-24 session</a>). The video says USDR, so this record does too.</p>
+</div>
+
+<p><span class="badge">added</span> Marco's “yield coin” distinction and James's “leave yield to a product like RealFi” point the same way, from two people at the same company. Whether RealFi's USDR itself is a “stablecoin” or a “yield coin” by Marco's test is something nobody in the video rules on. RealFi describes sUSDR as not a stablecoin (<a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/#tokens">the 2026-08-06 session</a>).</p>
+
+
+<h2 id="en-native">3. Free-range chicken: native assets, regulation, freezing</h2>
+<p class="deck">KYC and freezing happen “at the app where you're minting and burning”. Freezing in the token itself waits for “the gun to our head”.</p>
+
+<p>Bryan opens with something he says the Cardano Foundation and others raised: on EVM chains a stablecoin has an “asset issuer” who must maintain the token contract, which brings regulatory risk to the Circles and Tethers of the world, whereas with a Cardano native token the issuer is fully removed. Yet USDM is launching as MiCA-compliant. “Where does this dichotomy diverge?”</p>
+
+<div class="term">
+<p class="term-name">Free-range chicken <small>James's phrase</small></p>
+<p>James calls a Cardano native asset “free-range chicken”: it is allowed to go wherever it wants within the ecosystem. <strong>“The centralised portion of USDM is at the app itself where you're minting and burning.”</strong> Each user goes through KYC (KYB for a business) there, and freezing at a regulator's request happens there too. “So the beauty is that you can have both, with the current state of things.” <span class="badge">added</span> “Freeze” here reads as stopping a targeted user's minting and redemption in the app. The video does not describe a way to stop USDM already moving on chain.</p>
+</div>
+
+<p>On putting programmability into the token itself, James says CIP-113 “currently isn't really completely built out yet”; some developers would say the standard is not nailed down, so “I wouldn't bank on it being exactly the way it's written today. It might change.” It would let an issuer comply if regulators require it, but Matt Plomin's idea was <strong>“we'll wait till they put the gun to our head”</strong>, and that is what they will do. Outside of that, “we're really not interested and we'll continue to work in the gray area a little bit”, because beyond the requirement to be freezable, which the app satisfies, “there's no real rule or regulation surrounding that”.</p>
+
+<p>As a concrete case James mentions “an instance just a little bit ago having to do with that Nighthawk”: one of the larger stakeholders in Cardano messaged to make sure USDM could freeze, and “we said absolutely we can”. What the instance was is not explained. <span class="badge">added</span> From timing and context this most likely refers to the exploit of a Wanchain bridge on 2026-07-20 that drained about 515 million NIGHT (the “NIGHT hack”), but the caption “Nighthawk” cannot be resolved with certainty, so the transcript leaves it as heard.</p>
+
+<details class="explain">
+<summary>A jargon-heavy section: open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written by us. It is not from the video.</p>
+<h4>What “native asset” and CIP-113 mean</h4>
+<p>On Ethereum a dollar stablecoin exists as an ERC-20 smart contract, and the issuer writes functions such as “freeze this address” into it. On Cardano an issued token becomes a “native asset”, handled by the ledger like ADA itself, with no contract of its own. So the token has no freeze function. CIP-113 is a proposal to attach programmable behaviour such as freezing, the one Eric glosses in the video as “CIP similar to ERC”.</p>
+<h4>Why it is needed</h4>
+<p>MiCA (the EU's crypto-asset regulation) and US rules can require an issuer to be able to stop a specific holder's assets. A native asset cannot do that in the token, so, as James says, the only place to do it is the app at the door. CIP-113 is a candidate for closing that gap.</p>
+<h4>A familiar comparison</h4>
+<p>A bank card stops working if the bank blocks it (the ERC-20 model). Cash, once withdrawn, cannot be stopped by the bank; only the counter can be (USDM today). CIP-113 is like being able to stamp a banknote itself as unusable by its holder.</p>
+<h4>What the video does not tell you</h4>
+<p>Under what conditions (which regulator, what kind of request) and when USDM would adopt CIP-113 is not said. Whether a freeze was actually carried out in the “Nighthawk” instance is not said either; the story stops at “we said we can”.</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>A naive question: aren't “we can freeze” and “we can only freeze at the app” different things?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> Our own reading.</p>
+<p>The question is fair. In James's account, freezing happens in the mint-and-redeem app. A KYC'd user's account can be stopped; USDM already on chain and passed to an address that never went through KYC cannot be, within that account.</p>
+<p>His wording still holds because most regulatory demands to “freeze” concern the people who deal with the issuer directly, those who mint and redeem. The exchange with a dollar only happens at the door, so stopping the door stops at least the conversion to dollars.</p>
+<p>One way to tell from outside: check whether USDM's terms of service and regulatory filings describe the freeze as applying to an account or to the token. The video does not go that far, and James's own line, “regulatory compliant, just not necessarily the way some people would like it to be”, shows he is aware of the difference.</p>
+</div>
+</details>
+
+
+<h2 id="en-payments">4. Uses for a payment stable: an airline and South Africa</h2>
+<p class="deck">An airline-services company in 13 countries wants one currency; Moneta would build it a stablecoin of its own. Investors' ears perked up, he says.</p>
+
+<p>James describes a company they are working with in the airline-services industry, operating in 13 countries (unnamed). It wants to take prepayment in one currency instead of 13, some of them as hard to work with as the Nigerian naira; from the CFO's point of view, one currency everybody uses. Rather than USDM, Moneta would <strong>create a stablecoin specifically for them, a white-label solution</strong>, used in a closed loop and potentially connected to the larger ecosystem such as USDC.</p>
+
+<p>What James finds interesting is that when the company talked to VC investors, their ears “perked up quite a bit” at the mention of a stablecoin, and investors became more interested in the company. “I think it's an untapped area and there's quite a few like that in different areas.”</p>
+
+<p>Just before this, Bryan brings up a South African company in the Draper and Orion accelerator: payment processing in ZAR (the South African rand) that becomes a stable on chain. In the PRIME half he repeats it: “a South African payments processing company that's coming to Cardano, over 37 stores, over 10,000 people that have used it.” <span class="badge">added</span> The captions render the name as “Tala Emali”; it could not be identified. The numbers are Bryan's as spoken, and what they count (cumulative users, monthly users) is not said.</p>
+
+
+<h2 id="en-depth">5. The bottleneck is depth, and the money is circular</h2>
+<p class="deck">Marco's diagnosis: the same yield-chasing money moves between chains, and no one has yet found how to bring outside capital in.</p>
+
+<p>Asked whether the bottleneck is minting, redemption or DEXes, Marco answers <strong>“depth”</strong>. Most stablecoin TVL sits in DeFi protocols trying to earn yield; liquidity begets liquidity; Cardano has things to do but “not the same level of things to do as there are in other ecosystems”.</p>
+
+<p>He then widens it beyond Cardano. A fiat-backed stablecoin is “like a tokenised treasury that pays you no yield”, not the easiest sell. To earn yield you deposit it into a lending protocol, and, working in TradFi himself, “I couldn't convince anyone to put their dollars on chain to earn basically SOFR or less most of the time, while taking a bunch of more risk that they don't fully understand.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Marco's picture: the same yield-chasing money circulating between chains, and the three ways out he named">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="170" y="24" class="d-t" text-anchor="middle">The money moving today (Marco)</text>
+  <rect x="30" y="40" width="120" height="44" rx="7" class="d-box"/>
+  <text x="90" y="67" class="d-s" text-anchor="middle">Base</text>
+  <rect x="190" y="40" width="120" height="44" rx="7" class="d-box"/>
+  <text x="250" y="67" class="d-s" text-anchor="middle">Ethereum</text>
+  <rect x="30" y="130" width="120" height="44" rx="7" class="d-box"/>
+  <text x="90" y="157" class="d-s" text-anchor="middle">Solana</text>
+  <rect x="190" y="130" width="120" height="44" rx="7" class="d-box-warn"/>
+  <text x="250" y="157" class="d-s" text-anchor="middle">Cardano</text>
+  <line x1="154" y1="62" x2="184" y2="62" class="d-line" marker-end="url(#e2)"/>
+  <line x1="250" y1="88" x2="250" y2="124" class="d-line" marker-end="url(#e2)"/>
+  <line x1="184" y1="152" x2="156" y2="152" class="d-line" marker-end="url(#e2)"/>
+  <line x1="90" y1="124" x2="90" y2="90" class="d-line" marker-end="url(#e2)"/>
+  <text x="170" y="204" class="d-s" text-anchor="middle">The same money chasing a point or two of yield</text>
+  <text x="170" y="224" class="d-s" text-anchor="middle">Attracting it means paying incentives</text>
+  <text x="170" y="244" class="d-s" text-anchor="middle">No borrowers without things to do with it</text>
+
+  <line x1="330" y1="150" x2="380" y2="150" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <text x="520" y="24" class="d-t" text-anchor="middle">Three ways out, as Marco named them</text>
+  <rect x="390" y="40" width="270" height="56" rx="7" class="d-box"/>
+  <text x="525" y="62" class="d-s" text-anchor="middle">① Attract existing on-chain capital</text>
+  <text x="525" y="82" class="d-s" text-anchor="middle">“expensive in my opinion”</text>
+  <rect x="390" y="108" width="270" height="56" rx="7" class="d-box"/>
+  <text x="525" y="130" class="d-s" text-anchor="middle">② Create distinct utility on Cardano</text>
+  <text x="525" y="150" class="d-s" text-anchor="middle">RWA and privacy “might help”</text>
+  <rect x="390" y="176" width="270" height="56" rx="7" class="d-box-accent"/>
+  <text x="525" y="198" class="d-s" text-anchor="middle">③ Bring off-chain capital</text>
+  <text x="525" y="218" class="d-s" text-anchor="middle">“the golden goose. No one's figured that out”</text>
+
+  <rect x="30" y="260" width="630" height="30" rx="7" class="d-box-plain"/>
+  <text x="345" y="280" class="d-s" text-anchor="middle">Our arrangement of Marco's remarks (14:44–17:53). Chain names are his own examples</text>
+</svg>
+<p class="figcap">Our arrangement of Marco's “same money chasing yield” and the ways out. The numbering is ours; he says “one of two things”, then adds the third.</p>
+</div>
+
+<p>The one Marco calls “the golden goose” is bringing off-chain capital on chain. “No one's figured that out yet. It's TBD.” Real-world assets and privacy technology “might help”, with the caveat kept, because no institution wants all of its treasury's asset movement on a public chain when anyone can look up the wallet tags of the large exchanges. <span class="badge">added</span> This is the motivation for data-protecting chains such as Midnight that recurs on the sister site. In this video Midnight appears only as the destination for USDM in section 9.</p>
+
+<details class="explain">
+<summary>A naive question: if “liquidity begets liquidity”, where does the first push come from?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> Our own reading.</p>
+<p>The question is fair. Read plainly, Marco's account is a loop: no depth, so no things to do; no things to do, so no depth. He admits it is “a little bit circular”.</p>
+<p>It still works because he puts two forces outside the loop: incentives (pulling yield-seekers from other chains, at a cost he calls expensive) and capital from outside crypto. The second would break the loop, and his conclusion is that this is exactly what no one has worked out.</p>
+<p>One way to tell from outside: when Cardano's stablecoin supply grows, track where the growth came from (bridged from other chains, or freshly minted from fiat) through issuer disclosures and bridge flows. The video offers no number beyond Bryan's “around $60 million”. <span class="badge">added</span> Public data at the end of May 2026 put Cardano's stablecoin market cap at about $54.9M, with USDCx at 45% and USDM at 27%. A September breakdown was not verified.</p>
+</div>
+</details>
+
+
+<h2 id="en-scale">6. Scalability versus security, and “growing up”</h2>
+<p class="deck">Eric asks: infinitely secure doesn't scale, infinitely scalable isn't secure. James answers: first, confidence.</p>
+
+<p>Eric raises the dichotomy: scalability is what brings adoption and growth, but it also produced “the UST, the Terras of the world that promise crazy high yields”, and “probably what we're going to see in the whole private credit scape now where defaults are possible”. He names <strong>Stream</strong>: “our markets, the ones that we're personally curating, didn't have Stream exposure. Luck, skill, a little bit of a mix.” <span class="badge">added</span> Stream Finance disclosed in November 2025 that an external manager had lost about $93M; its xUSD fell far below a dollar, and Elixir's deUSD, which used it as collateral, was wound down. “Our markets” reads as markets AlphaGrowth advises or manages; which ones is not said.</p>
+
+<p>James's answer is “first creating confidence in the ecosystem”. Early entrants wanted 10x and 100x; Robinhood made that real for many people, most of whom did not realise they never owned the underlying asset; over time more people lost money and left, and crypto “wasn't really ready to grow up and it didn't change that particular culture”. He adds a personal note: at a party, other wives told his wife to stop him talking to their husbands about crypto. Now “it feels as though we're growing up a little bit”; Consensus Miami looked like a TradFi event to him, with NASDAQ's North America CEO being interviewed.</p>
+
+<p><span class="badge">added</span> Eric asks where the line falls; James answers on a different axis, confidence first. Nowhere in the video is a concrete trade-off (which yield level, which collateral) worked out. The closest continuation is in the PRIME half, where Eric says they are looking for “yield coins”, higher yields “but things that don't blow up” (section 10).</p>
+
+
+<h2 id="en-game">7. Fad, Marry, Kill: RWA, AI, the DeFi mullet</h2>
+<p class="deck">James: none of them is a fad. Marco: kill AI short-term; the DeFi mullet is a great idea, but there isn't enough in DeFi yet.</p>
+
+<p>A recurring segment. Three narratives, RWA and tokenised securities, AI and AI tokens, and the DeFi mullet, to be sorted into Fad, Kill and Marry. <span class="badge">added</span> “DeFi mullet” means CeFi in the front, DeFi in the back: users see an ordinary finance app while DeFi does the work behind it. Bryan's examples are Coinbase Earn and OKX. Charles Hoskinson used the same phrase on AlphaGrowth's July episode (<a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#en-mullet">sister site, 2026-07-26, section 6</a>).</p>
+
+<ul>
+  <li><strong>James.</strong> “I'm really hoping that the fad isn't the DeFi part.” “I don't see AI being a fad”; agents will do almost every aspect of our lives, and he cannot wait to have one buy his Padres tickets. On RWA, “you could tokenise everything, but what does it mean?” Then: “I'm not sure any one of them is a fad, to be quite honest.”</li>
+  <li><strong>Marco.</strong> “I'd more put timelines on things.” <strong>Kill AI short-term</strong>: it is exploding but all off-chain. He has set up the Hermes agent on his own computer, routed through OpenRouter and paid in USDC, and finds it annoying to unstake and move funds to pay for it. The DeFi mullet is “a really cool idea, I just don't think there's that much in DeFi yet for it to be worth it”. RWA: “very interested”.</li>
+</ul>
+
+<p>Marco's caution on DeFi is specific. He still has assets on chain but has taken some out in the past six months, partly because “the AI has gotten so good”: a protocol not running penetration tests with frontier models all the time “is going to get screwed at some point”. <strong>“The Lindy effect is not Lindy anymore in my opinion. If anything it's a bigger honeypot.”</strong> <span class="badge">added</span> The Lindy effect is the rule of thumb that what has survived a long time will survive longer. Marco's claim is that AI-boosted attack capability breaks the presumption that old contracts are safe, and turns accumulated funds into a target. No figures or incidents are offered for it in the video.</p>
+
+
+<h2 id="en-sandwich">8. The stablecoin sandwich, 3Jane and cards</h2>
+<p class="deck">Marco's idea: keep money where it earns and make the stablecoin the rail for the instant of payment.</p>
+
+<p>On RWA, Marco says the market “got it backwards”. Tokenisation started with private markets, but <strong>“I don't think you can put a liquid wrapper on an illiquid asset and make it liquid”</strong>; people who do not understand redemption cycles and gating get hurt. It should have started with liquid assets, and now stocks are moving. A tokenised money-market fund on chain is “a great idea, I don't know what the use case is though”; then he describes what would be nice for him.</p>
+
+<div class="term">
+<p class="term-name">Stablecoin sandwich <small>Marco's phrase</small></p>
+<p>Keep money on chain in a tokenised money-market fund. To pay, swipe a card: it goes from the fund to a stablecoin to the vendor, who “maybe goes right back into the money market fund”. “So the stablecoin sits there. It's a payment rail. It sits in the middle.” Most of the time the assets earn the safest yield he can find, treasuries, and you can go down the credit stack if you wish. <span class="badge">added</span> The 4% and 4.5% he mentions are illustrative figures for “earning on chain while taking a bunch more risk”, not rates of any product.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="Marco's stablecoin sandwich: assets kept in a tokenised money-market fund convert to a stablecoin for the instant a card is swiped, flow to the vendor, who returns them to a money-market fund">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="40" width="190" height="110" rx="8" class="d-box-accent"/>
+  <text x="115" y="68" class="d-t" text-anchor="middle">Your assets</text>
+  <text x="115" y="94" class="d-s" text-anchor="middle">Tokenised money-market fund</text>
+  <text x="115" y="114" class="d-s" text-anchor="middle">Earning treasury yield</text>
+  <text x="115" y="134" class="d-s" text-anchor="middle">most of the time</text>
+
+  <rect x="255" y="40" width="170" height="110" rx="8" class="d-box"/>
+  <text x="340" y="68" class="d-t" text-anchor="middle">Stablecoin</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">The payment rail</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">Passed through to pay</text>
+  <text x="340" y="134" class="d-s" text-anchor="middle">No yield needed</text>
+
+  <rect x="470" y="40" width="190" height="110" rx="8" class="d-box-accent"/>
+  <text x="565" y="68" class="d-t" text-anchor="middle">The vendor</text>
+  <text x="565" y="94" class="d-s" text-anchor="middle">Goes “right back into</text>
+  <text x="565" y="114" class="d-s" text-anchor="middle">the money market fund”</text>
+  <text x="565" y="134" class="d-s" text-anchor="middle">“maybe”</text>
+
+  <line x1="214" y1="95" x2="249" y2="95" class="d-line-accent" marker-end="url(#e4)"/>
+  <line x1="429" y1="95" x2="464" y2="95" class="d-line-accent" marker-end="url(#e4)"/>
+  <text x="231" y="170" class="d-s" text-anchor="middle">card swipe</text>
+
+  <rect x="20" y="196" width="640" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="213" class="d-s" text-anchor="middle">Marco's idea, not a description of a live product.</text>
+  <text x="340" y="229" class="d-s" text-anchor="middle">USDM would be the rail in the middle, matching James's “payment stable”</text>
+</svg>
+<p class="figcap">Our drawing of Marco's idea. The filling of the sandwich is the stablecoin in the middle; the bread on either side is the money-market fund earning yield.</p>
+</div>
+
+<p>Banter follows. Eric (inferred) brings up 3Jane's product with “basically no cap calls”; Marco says his firm discussed it, good for individuals, not much help for institutions “who are probably doing it on the last day of the cap call anyways”. Bryan calls the “either you sell to swipe your card or you borrow to swipe your card” design “a really smart move”, with the example of holding Apple stock and letting the settings decide whether a swipe borrows against it or sells it. “Ethena Pay yesterday” is mentioned in passing. <span class="badge">added</span> 3Jane is an Ethereum-based credit protocol whose 2026 “Levered Callable Capital” lets uncalled commitments earn yield until called. Ethena Pay, announced on 2026-09-01, is a money app with a Visa card whose balances are held in USDe. Neither is on Cardano; both come up as reference points.</p>
+
+<p>Marco's conclusion: <strong>DeFi yields should be directly competitive with TradFi yields</strong>. “There's no reason a stablecoin should pay you sub-SOFR in my opinion”, and “there should be a higher correlation between on-chain yields and off-chain yields”. RWAs “are good and they're here to stay. They were done wrong initially.” Bryan and Eric add: “too permissioned, too OTC”, and “Robinhood speedrunning it”.</p>
+
+
+<h2 id="en-roadmap">9. Moneta's roadmap: Midnight, NBX, treasury contracts</h2>
+<p class="deck">Moving USDM to Midnight already works; Midnight is “2, 3 months off”. Cards, payment processors, and where grant money waits.</p>
+
+<p>Asked about the roadmap and pain points, James lists four things.</p>
+
+<ul>
+  <li><strong>Interoperability with other chains</strong>, the pain point “right now”. They work with VIA Labs, “similar to the CCTP that Circle does”. The ability to transfer USDM into the Midnight chain is <strong>“live”</strong>, but <strong>“Midnight chain's really not completely ready for assets of value yet, nor are they really pushing that. It's still maybe about 2, 3 months off.”</strong> James hates bridges and the word bridge, because of the exploits over the years; this is “similar to a bridge, a little different messaging service”.</li>
+  <li><strong>Payments.</strong> NBX is a strategic partner and co-issuer of USDM, and they are working together on Visa Flex: at the grocery store, if the bank account is short, the credit portion kicks in, and closed-loop loyalty points can sit on the card too; USDM is custodied there to make it usable. Two other companies working solely in payments will custody assets for the user and convert into fiat in the markets they serve.</li>
+  <li><strong>Where governance money waits.</strong> With Intersect MBO and grant recipients (“even like yourselves, AlphaGrowth”), funds held in a TRC until deliverables are met could sit in USDM or, “right now”, USDCx, hedged against downside. Over a six- or twelve-month deliverable period, what if ADA drops 50%?</li>
+  <li><strong>Use in DeFi.</strong> In closing James repeats “please, please, please mint USDM”, naming Strike, Bodega and Fluid as partners using it regularly. Minting is through Moneta's app (available in 20 US states) or through NBX, “pretty much worldwide”.</li>
+</ul>
+
+<div class="term">
+<p class="term-name">TRC <small>Treasury Reserve Contract, the phrase used in the video</small></p>
+<p>In James's account, when a grant proposal is funded the money is held there until the recipient hits deliverables and receives disbursal. <span class="badge">added</span> In Intersect's materials the Treasury Reserve Contract holds ADA withdrawn from Cardano's treasury and pays milestone-based amounts into vendor contracts. Intersect said in July 2026 that it was engaging the USDM and USDA teams on the option of converting ADA into stablecoins for operational use. James's remark sits in that context.</p>
+</div>
+
+<p><span class="badge">added</span> Several things can be checked outside the video. VIA Labs announced an integration moving USDM between Cardano and Midnight without a wrapped token, and USDM's official X account posted “cardano + midnight. mainnet august 13.” So James's “live” describes the state since 2026-08-13. NBX (Norwegian Block Exchange) is USDM's issuer for the EEA; the captions say “MBX”, corrected here. On Visa Flex, James's own X account posted that “USDM powers the balance layer”. “Midnight isn't ready for assets of value” is James's assessment, not a Midnight announcement.</p>
+
+<p>Bryan closes the section by saying AlphaGrowth faces the same challenge with PRIME's funds: “hedge the exposure to ADA so we can successfully get through the PRIME project for the year”, with a joke that the price “had a little bit of a bump”, and “what goes up can't go down, right?”</p>
+
+
+<h2 id="en-prime">10. Where Cardano PRIME stands: audit, strategy, RFPs</h2>
+<p class="deck">The operators' own report. A 77-page audit, a $250M TVL goal, RFPs “this afternoon or tomorrow”.</p>
+
+<p>From 36:42 the two hosts are alone. Eric says there has been “chatter on the socials” about Cardano PRIME and AlphaGrowth and proposes “five or ten minutes” of transparency; Bryan says they are setting up to appear on Cardano Over Coffee every two weeks. <span class="badge">added</span> PRIME (Protocol Readiness, Incentives &amp; Market Expansion) is a treasury withdrawal of 120 million ADA with AlphaGrowth as proposer, an independent Operating Group as overseer and Intersect as administrator of the funds; DReps approved it in August 2026. The proposal's stated aim is to raise TVL from about $90M to $290M over twelve months (the sister site's <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#en-ghost">2026-07-26 episode, section 9</a> summarises it as proposed). Everything below is the operators' own account.</p>
+
+<p><strong>The infrastructure audit.</strong> Eric says the proposal's three phases, audit, build, deploy, “mix together”, and the audit runs to “77 something pages” internally. What it flags: <strong>“everyone has had to build their own infrastructure and they haven't had the building blocks, the Lego pieces, that teams are used to having”</strong>. He names vault standards, scooper standards (the batchers that process DEX orders), CIP-113, and integration into distribution partners such as wallets. Bryan adds the “blocking and tackling”: oracles, indexers, subgraphs, choosing among three or four multisig providers, RPC, bridges.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="How Cardano PRIME is being run: the audit, build and deploy phases, and the infrastructure, categories and targets Bryan and Eric named">
+  <defs>
+    <marker id="e5" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="195" height="56" rx="8" class="d-box-accent"/>
+  <text x="117" y="44" class="d-t" text-anchor="middle">① Infrastructure audit</text>
+  <text x="117" y="64" class="d-s" text-anchor="middle">77 pages internally; now</text>
+  <rect x="242" y="20" width="195" height="56" rx="8" class="d-box"/>
+  <text x="339" y="44" class="d-t" text-anchor="middle">② Build and integrate</text>
+  <text x="339" y="64" class="d-s" text-anchor="middle">Standards; RFPs</text>
+  <rect x="464" y="20" width="196" height="56" rx="8" class="d-box"/>
+  <text x="562" y="44" class="d-t" text-anchor="middle">③ Deploy, incentives</text>
+  <text x="562" y="64" class="d-s" text-anchor="middle">“all three phases mix together”</text>
+  <line x1="219" y1="48" x2="236" y2="48" class="d-line-accent" marker-end="url(#e5)"/>
+  <line x1="441" y1="48" x2="458" y2="48" class="d-line-accent" marker-end="url(#e5)"/>
+
+  <rect x="20" y="96" width="310" height="120" rx="8" class="d-box"/>
+  <text x="175" y="120" class="d-t" text-anchor="middle">The missing “Lego pieces”</text>
+  <text x="175" y="144" class="d-s" text-anchor="middle">Vault and scooper standards, CIP-113</text>
+  <text x="175" y="164" class="d-s" text-anchor="middle">Oracles, indexers, multisig, RPC</text>
+  <text x="175" y="184" class="d-s" text-anchor="middle">Bridges (LayerZero conversations)</text>
+  <text x="175" y="204" class="d-s" text-anchor="middle">Portfolio management, wallet tracking</text>
+
+  <rect x="350" y="96" width="310" height="120" rx="8" class="d-box"/>
+  <text x="505" y="120" class="d-t" text-anchor="middle">Categories to build</text>
+  <text x="505" y="144" class="d-s" text-anchor="middle">Isolated money markets, CDPs</text>
+  <text x="505" y="164" class="d-s" text-anchor="middle">Rehypothecating DEX, launchpad</text>
+  <text x="505" y="184" class="d-s" text-anchor="middle">Insurance and reinsurance, fixed rates</text>
+  <text x="505" y="204" class="d-s" text-anchor="middle">Agentic finance (x402)</text>
+
+  <rect x="20" y="236" width="640" height="70" rx="8" class="d-box-warn"/>
+  <text x="340" y="260" class="d-t" text-anchor="middle">Targets and rules of thumb (the operators' words)</text>
+  <text x="340" y="282" class="d-s" text-anchor="middle">$250M of TVL. $50 of TVL per $1 of incentive. Assets of $5M or more</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">RFPs open “this afternoon or tomorrow”. “Not everything is going to work”</text>
+</svg>
+<p class="figcap">Our one-page arrangement of Bryan's and Eric's account (36:42–1:00:03). The three phases are Eric's words; the list of categories is Bryan's. <span class="badge">added</span> Whether the approved proposal's target (a net increase of $200M+ in TVL) and Eric's “bring a quarter billion dollars in TVL” count the same thing is not discussed in the video.</p>
+</div>
+
+<p><strong>Strategy.</strong> Bryan says a major challenge is how much to issue internally versus bring in externally; the first thing is the bridge, so they are in LayerZero conversations. He lists RWAs, yield-bearing assets, commodities such as gold, silver and oil, stablecoins in the UAE, and Japan and the yen (“the Japanese yen carry trade over the next 6 months to a year”). All are things they are “having conversations” about, not decisions.</p>
+
+<p><strong>Categories.</strong> Bryan names isolated money markets, something with Indigo and other CDP (collateralised debt position) mechanics, a Uniswap v4-style DEX where LP capital also earns in a money market, a launchpad (“if four or five primitives are going to have TGEs in the next year”), on-chain insurance and reinsurance, Pendle-like fixed rates, and agentic finance. Regulation, security and fixed rates are “the three big things that block traditional finance”, and fixed-rate yield with insurance is where “the big capital can come in”. Eric says they see “really cool deal flow with reinsurance” and met hedge funds in San Francisco about bringing to Cardano bulk deals “usually reserved for niches and private companies and private banks”. <span class="badge">added</span> The “red.xyz” Bryan says they previously did a project with may be Re (re.xyz), an on-chain reinsurance protocol; the caption does not settle it.</p>
+
+<div class="term">
+<p class="term-name">B2B4C <small>Eric's coinage, “I'm going to call it”</small></p>
+<p>Deals big enough to move the needle are B2B, but the point of crypto and decentralisation is to make those deals available to individuals (C). Each business connects to crypto once, and “you can establish an entire new pipeline of partners, of deal flow, of velocity of capital to that business”; “the flywheel that comes from that is massive”. It is here that Eric says “our goal is to bring a quarter billion dollars in TVL to Cardano. We're going to do it.” Bryan links it to his “Monopoly theory”: whoever makes the most trades wins, because every trade is a win-win; default to yes, and hire people smart enough at risk analysis “to make sure that bad yeses don't destroy you”.</p>
+</div>
+
+<p><strong>RFPs and a rule of thumb.</strong> Eric's “big news” is that RFPs for grants open “as soon as this afternoon or tomorrow”: they want tokens put to work, projects integrated with up-to-date scooper and vault standards and CIP-113, regular builder calls, and “we're just going to come in and throw glue on everything and say, hey, we're all on one team now”. Bryan “doxes” the framework from private conversations: <strong>$50 of TVL for every dollar of grants or incentives</strong>, in size, “not like $500,000 but more than $5 million”; “for a hundred grand I can bring $5 to $10 million of TVL, let's talk”. With the caveat: “not everything is going to work, but a majority of the things we bring to the table are going to work.” Eric adds the demand side: yes to science-fair projects, “but they have to have an end in mind”, a target customer profile.</p>
+
+<p><span class="badge">added</span> All figures are spoken; no RFP document or terms were shown at publication. On the sister site's <a href="https://shiodome47.github.io/2026RealFi/2026-08-14-ask-the-ceo/">2026-08-14 session</a> RealFi's CEO noted that “Alpha Growth also won their proposal”, and that site's open question about the actual withdrawal and execution gets a partial update here: the programme is at the audit stage, with RFPs about to open. How much of the 120 million ADA has been withdrawn is not said.</p>
+
+
+<h2 id="en-agents">11. Agents, x402 and “cloud regulation”</h2>
+<p class="deck">“Agent to agent” at Draper, and Masumi and Sokosumi. If my bot buys from your bot and nothing arrives, who adjudicates?</p>
+
+<p>Bryan saw a project called “agent to agent” at Draper that is “going through the process to bring x402 to Cardano”; once in that standard, “every single DApp and every single token can get involved”. Eric adds “Masumi and Sokosumi, I think those are the two names, they're doing x402 stuff right now”, and Bryan says there are two companies doing it on Cardano: the one he saw is “agent dynamics”, more B2C where the other is more B2B, and the pitch feedback asked whether they compete or cooperate; it looked cooperative. <span class="badge">added</span> x402 is a standard that uses the HTTP 402 “Payment Required” code so that agents can pay in stablecoins by machine; Coinbase started it. Masumi is a payment and registry protocol for AI agents on Cardano and Sokosumi the marketplace on top of it; Masumi maintains a Cardano implementation of x402. The sister site's <a href="https://shiodome47.github.io/2026RealFi/2026-08-11-masumi-ai-forum/">Masumi call of 2026-08-11</a> notes that Sokosumi's credits are backed by USDM. The URL Bryan gives for “agent dynamics” is heard as “agent to aagent.xyz” and was not verified.</p>
+
+<p>Bryan then borrows <strong>“cloud regulation”</strong> from Balaji Srinivasan's <em>The Network State</em>: the early internet “speedran regulation” and had to invent a new way to regulate. For agent-to-agent commerce: which agent do you pay, how, why, and what is its reputation score? Smart contracts and escrow for oracle-based delivery, or a Yelp-style five-star score with reviews? “I go on x402, I have my bot buy from your bot. What if it doesn't deliver?” Eric (inferred) interjects “How do you do chargebacks?”; Bryan continues, “What's customer support? How does that not get flooded by bots?”, and calls the idea “incredibly needed and creative”. No answer is offered.</p>
+
+<p><span class="badge">added</span> The sister site's 2026-07-26 episode left “who bears responsibility in agent commerce” unasked (its question 18). This video sharpens the question, escrow or reputation, without answering it.</p>
+
+
+<h2 id="en-robinhood">12. Robinhood Chain, and projects seen at Draper</h2>
+<p class="deck">Pushing a MicroStrategy token down to 5% over a weekend and pairing it with a memecoin. Then ChatterPay, Gravity DEX, Lava.</p>
+
+<p>Bryan explains to Eric what happened on Robinhood Chain “this past weekend”: some people pushed the price of MicroStrategy on Robinhood Chain to about 5% of its actual value, paired it with their memecoin in a liquidity pool, and when Monday came and people saw “MicroStrategy 95% down” and bought, the stock token came back up to near parity while the memecoin they were “programmatically dumping” rose with it. “Turning high-cap stocks into penny-stock volume. It's insane.” Eric: “I love the solutions people go to to get around ridiculous legal restrictions. Law moves slowly, governments move slower and people are smart.” <span class="badge">added</span> Robinhood Chain is an Ethereum layer 2 whose mainnet launched in July 2026; public analyses report many liquidity pools pairing tokenised stocks with memecoins. The date and size of the MicroStrategy episode Bryan describes were not verified; the figures are his as spoken.</p>
+
+<p>Finally Bryan runs through projects seen at Draper, a line each, none pursued.</p>
+
+<ul>
+  <li><strong>Esco</strong> and “better web3”: reminds him of Galxe or Layer3, an earn.com-like experience of doing tasks and bounties to learn about a project. Neither the person nor the project could be identified.</li>
+  <li><strong>ChatterPay</strong>: a WhatsApp wallet. A judge from the Cardano Foundation downloaded it on the spot and received about $3 of ADA, “so it's live right now”. <span class="badge">added</span> ChatterPay says it lets users send ADA, USDCx and USDM on WhatsApp, and has announced its participation in Draper University's Genesis pre-accelerator.</li>
+  <li><strong>Gravity DEX</strong>: felt like a single-sided AMM, claiming better pricing for Bitcoin on Cardano; “I really want to understand the mechanics”, so he wants them on the show.</li>
+  <li><strong>Lava</strong> (Nick): a liquid staking token. Bryan calls liquid staking across DeFi “a no-brainer”, but notes a “weird mechanic”: today DApps earn some of the staking rewards on ADA held in them, and if users keep those rewards, DApps make less. “A little bit zero sum.”</li>
+  <li><strong>E Envent</strong> (an events app that did Rare Evo), <strong>River Arc</strong>, and <strong>Pete</strong> (security audits and bounties, “kind of like Immunefi”): names only.</li>
+</ul>
+
+<p><span class="badge">added</span> Draper University runs a Genesis pre-accelerator and a ten-week Apex accelerator with Cardano and the Orion Fund, an $80M ecosystem fund from Cardano and Draper Dragon. Bryan's “I was in San Francisco Monday and yesterday” and “Tim Draper got up there” most likely describe the Genesis demo day, but the event is not named in the video.</p>
+
+
+<h2 id="en-overall">13. How it fits together</h2>
+<p class="deck">The first half's “payment stable” and the second half's “build depth” are two sides of one problem.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="The shape of the episode: Marco's problem of missing depth and circulating money in the middle; above it USDM's answers (stay a payment stable, compliance at the door, Midnight and cards); below it PRIME's answers (standardise infrastructure, build categories, 50-to-1 incentives)">
+  <defs>
+    <marker id="e6" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="16" width="640" height="84" rx="8" class="d-box-accent"/>
+  <text x="340" y="40" class="d-t" text-anchor="middle">USDM (the issuer's side): James and Marco</text>
+  <text x="340" y="62" class="d-s" text-anchor="middle">Stay a payment stable; leave yield to other products; KYC and freezing “at the app”</text>
+  <text x="340" y="82" class="d-s" text-anchor="middle">Add uses: Midnight, Visa Flex, grant money in treasury contracts, white labels</text>
+
+  <line x1="340" y1="104" x2="340" y2="126" class="d-line-accent" marker-end="url(#e6)"/>
+
+  <rect x="90" y="132" width="500" height="70" rx="8" class="d-box-warn"/>
+  <text x="340" y="156" class="d-t" text-anchor="middle">The shared problem: no “depth” (Marco)</text>
+  <text x="340" y="178" class="d-s" text-anchor="middle">The same yield-chasing money circulates; bringing outside capital in is unsolved</text>
+  <text x="340" y="194" class="d-s" text-anchor="middle">Bryan's preface: Cardano stablecoins are around $60 million</text>
+
+  <line x1="340" y1="228" x2="340" y2="206" class="d-line-accent" marker-end="url(#e6)"/>
+
+  <rect x="20" y="234" width="640" height="84" rx="8" class="d-box"/>
+  <text x="340" y="258" class="d-t" text-anchor="middle">Cardano PRIME (the operators' side): Bryan and Eric</text>
+  <text x="340" y="280" class="d-s" text-anchor="middle">Standardise the “Lego pieces”; build money markets, DEXes, insurance, fixed rates, agents</text>
+  <text x="340" y="300" class="d-s" text-anchor="middle">Attract with $50 of TVL per $1; target $250M; “not everything is going to work”</text>
+</svg>
+<p class="figcap">The top-and-bottom arrangement is ours. In the video the two halves are separate conversations; nobody on the PRIME side picks up Marco's “depth” argument directly. <span class="badge">added</span> The route Marco called expensive, attracting existing on-chain capital with incentives, is exactly what PRIME's “$50 for $1” does. The video does not set the two views against each other.</p>
+</div>
+
+
+<h2 id="en-qa">14. From the exchange</h2>
+<p class="deck">Four questions from the hosts and the guests' answers. The second half is hosts talking to each other, so it is not included here.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>You don't want a central party, yet you're launching a MiCA-compliant stablecoin. Where does the dichotomy diverge?</p>
+<p class="qa-a" data-by="James Meidinger">A Cardano native asset is “free-range chicken”; it can go anywhere. <strong>The centralised portion is the mint-and-burn app</strong>, where KYC and freezing happen. A token-level standard like CIP-113 waits “till they put the gun to our head”. Otherwise, “we'll continue to work in the gray area a little bit”.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>What is the biggest bottleneck for stablecoins on Cardano: minting, redemption, DEXes?</p>
+<p class="qa-a" data-by="Marco">“Depth.” But the real question is what you do with it: a fiat-backed stablecoin is <strong>“like a tokenised treasury that pays you no yield”</strong>. The money moving between chains is the same money chasing yield, and bringing outside capital in is something “no one's figured out yet”.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>Infinitely secure doesn't scale; infinitely scalable isn't secure. How do you see the dichotomy?</p>
+<p class="qa-a" data-by="James Meidinger (not on where the line falls)">“First creating confidence in the ecosystem.” Early users came for 10x and 100x, lost, and left; crypto “wasn't ready to grow up”. It has changed enough that Consensus Miami looked like a TradFi event, but “there's still a lot of growing up to do”. <strong>Where to draw the line is not addressed.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>What is on Moneta's roadmap, and what are the pain points?</p>
+<p class="qa-a" data-by="James Meidinger">The pain point is interoperability. Moving USDM to Midnight with VIA Labs is live, but <strong>Midnight is “maybe about 2, 3 months off”</strong> for assets of value. Also NBX's Visa Flex, payment processors that custody assets, and parking funds in Intersect's treasury contracts instead of ADA.</p>
+</div>
+
+
+<h2 id="en-pending">15. Left unanswered</h2>
+<p class="deck">Timings are “2, 3 months” and “this afternoon or tomorrow”. Many names appear once and go nowhere.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Timing only</span>When will USDM be usable as an “asset of value” on Midnight?</p>
+<p class="qa-a" data-by="“2, 3 months off”">James's view is that Midnight is not fully ready and is not pushing it. <span class="badge">added</span> USDM's official X posted “mainnet august 13”, so the transfer itself predates publication. What “usable” would mean (apps, liquidity) is not said.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unexplained</span>What was the “Nighthawk” instance, and was a freeze actually carried out?</p>
+<p class="qa-a" data-by="“we said we can”">A large stakeholder asked whether USDM could freeze; James said yes. <span class="badge">added</span> Most likely the NIGHT drained from a Wanchain bridge on 2026-07-20, but that cannot be confirmed from the video.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unexplained</span>Under what conditions, and when, would USDM adopt CIP-113?</p>
+<p class="qa-a" data-by="“when they put the gun to our head”">At a regulator's request, and no more: which regulator, what request. James also judges CIP-113 itself as not nailed down.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No figures</span>When, and at what scale, will the white-label stablecoin for the airline-services company launch?</p>
+<p class="qa-a" data-by="“we've been working with”">No name, date or size. Only the investors' reaction.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not shown</span>PRIME's RFP terms, and how much has been withdrawn and spent.</p>
+<p class="qa-a" data-by="“this afternoon or tomorrow”">Only the opening date and spoken rules of thumb ($50 for $1, assets of $5M or more); no document. How much of the 120 million ADA has been withdrawn is not said. The audit will come as “a five-page thing” and the full 77 pages.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Names only</span>Tala Emali, Esco, E Envent, River Arc, pure.xyz, Pete, Yoda, red.xyz, and the URL for agent dynamics.</p>
+<p class="qa-a" data-by="Not identified">Each is mentioned once without explanation. The transcript keeps the caption spellings. red.xyz may be the on-chain reinsurance protocol Re (re.xyz).</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not asked</span>Evidence for Marco's “the Lindy effect is not Lindy anymore”.</p>
+<p class="qa-a" data-by="Claim only">The claim is that AI-boosted attackers break the presumption that old contracts are safe. No incident or figure is given.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is <a href="https://www.youtube.com/watch?v=af31SbPD0AQ">Why Real Stablecoins Don't Pay Yield | Interview w James &amp; Marco at USDM | Dose of Alpha - Ep. 16</a>, published on AlphaGrowth's YouTube channel (@alphagrowth), apparently on 2026-09-06 (from the requester's “four days ago”), 1 h 00 min 24 s. A public video, so speakers are named. It is the recording of a livestream; “Ethena Pay yesterday” puts the recording at about 2026-09-02.</p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken aloud. <span class="badge">on screen</span> would mark things shown but not said; this page is built from captions alone and the screen was not reviewed, so the mark is not used. <span class="badge">added</span> marks explanations we wrote; they are not in the video.</p>
+<p><strong>On standpoint.</strong> The second half (from 36:42) is AlphaGrowth's two hosts describing the Cardano PRIME programme they run; its numbers and judgements are theirs. The two USDM guests speak as the issuer's people. Judgements about third parties (Stream, Robinhood Chain, how finished CIP-113 is) are attributed to the speakers throughout.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — AlphaGrowth · <a href="https://www.youtube.com/watch?v=af31SbPD0AQ">動画を見る</a></span><span class="l-en">Cardano note — AlphaGrowth · <a href="https://www.youtube.com/watch?v=af31SbPD0AQ">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>

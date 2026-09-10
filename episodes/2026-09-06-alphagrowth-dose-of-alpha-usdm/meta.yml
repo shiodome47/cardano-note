@@ -1,0 +1,47 @@
+slug: 2026-09-06-alphagrowth-dose-of-alpha-usdm
+title: Dose of Alpha Ep. 16 — 「本物のステーブルコインは利回りを払わない」USDM の James と Marco、そして Cardano PRIME の現在地
+title_en: "Why Real Stablecoins Don't Pay Yield | Interview w James & Marco at USDM | Dose of Alpha - Ep. 16"
+date: 2026-09-06            # 動画の公開日（依頼者の指定「2026/09/10 の 4 日前」）。YouTube 側の日付はこの環境から取得できず、要確認
+recorded: 2026-09-02        # 推定。ライブ配信の録画。動画内で「Ethena Pay が昨日」（Ethena Pay の発表は 2026-09-01）、「月曜と昨日サンフランシスコにいた」
+series: alphagrowth         # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: alphagrowth        # YouTube 上の表示名（@alphagrowth）。会社名の表記は AlphaGrowth
+official_channel: true      # oEmbed の author_url が https://www.youtube.com/@alphagrowth であることを確認。AlphaGrowth 自身の番組
+duration: "1:00:24"         # 字幕の最終行の時刻から。動画の実尺は要確認
+video: https://www.youtube.com/watch?v=af31SbPD0AQ
+
+speakers:
+  - Bryan Colligan          # 司会。AlphaGrowth CEO。動画内では名乗らず、番組の公開情報（ホストは Bryan Colligan と Eric Waisanen）から。相手に "Eric" と呼びかける側
+  - Eric Waisanen           # 司会。AlphaGrowth の DeFi Strategist。動画内で "Eric" と呼ばれる。姓は番組の公開情報から
+  - James Meidinger         # ゲスト。USDM（Moneta）。動画内では "James" / "Jim"。姓は本人の公開プロフィール（USDM、X: @blockjock2017）から
+  - Marco                   # ゲスト。USDM（Moneta）の取締役会メンバー、TradFi 勤務と自称。姓は動画・説明欄に出ず、特定していない
+speaker_labels: inferred    # 字幕に話者名はない。">>" の交代印と文脈から割り当て
+timestamps: table           # 「時刻 / 字幕 / 機械翻訳」の 3 列の表。時刻は秒（"14s"）と分:秒（"1:02"）、1:00:03 形式の混在。.turn-time は 00:MM:SS に直したもの
+proper_nouns_corrected_in_docs: true
+
+# 原本について
+# - 依頼者から本文に貼り付けで受領した表を、そのまま transcript.txt に置いた（3 列タブ区切り、937 行）
+# - 3 列目の機械翻訳は使っていない。日本語全文はこちらで訳し直したもの
+# - 話者の交代は ">>" で示されるが、印が誤りとみられる箇所（同じ話者の続き）は結合し、
+#   印がないのに話者が替わる箇所（37:20 以降の司会 2 人の掛け合いなど）は手で分けた。詳細は shared/speakers.md
+# - 冒頭 0:00〜0:39 は本編の抜粋を並べたダイジェスト
+
+# 構成
+# - 0:39〜36:42 USDM（Moneta）の James と Marco のインタビュー
+# - 36:42〜1:00:24 司会 2 人だけで Cardano PRIME の進捗報告（AlphaGrowth 自身の事業の説明。当事者の見解として読む）
+
+# 画面について
+# - 字幕だけを受領しており画面は確認していない。まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用
+
+# 裏取り（2026-09-10 時点）
+# - USDM の発行体は Moneta Digital（米国）。開発は W3i Software。CEO は Jillian Plomin。創業者 Matthew（Matt）Plomin は 2024-11-14 に死去（USDM の公式 Medium）
+# - 字幕の "Matt Plowman" / "Matt Plman" は Matt Plomin。"Manetta" / "mana global" は Moneta / moneta.global
+# - "Vlabs" は VIA Labs。USDM の Cardano↔Midnight のネイティブ移動は VIA Labs との協業で、USDM 公式 X が「mainnet 8 月 13 日」と投稿
+# - "MBX" は NBX（Norwegian Block Exchange）。USDM の EEA 側の共同発行者。Visa Flex は NBX のカード
+# - "Nighthawk" は「NIGHT hack」（2026-07-20 の Wanchain ブリッジからの 5 億 1,500 万 NIGHT 流出）とみられるが、動画内では説明がなく推定
+# - "X42" は x402（HTTP 402 を使うエージェント決済の標準）。"Msumi and Sakosumi" は Masumi と Sokosumi
+# - "Enriion Fund" / "Orion" は Orion Fund（Cardano と Draper Dragon の 8,000 万ドルのファンド）。"Japer Draper Orion" は Draper University の Cardano 向けプログラム
+# - "three Jane" は 3Jane（Levered Callable Capital）。"Athena Pay" は Ethena Pay（2026-09-01 発表）。"stream" は Stream Finance（2025-11 の xUSD 崩落）
+# - "red.xyz" は Re（re.xyz、オンチェーン再保険）とみられる。"Tala Emali"、"Esco"、"Pete from Astro Boy"、"E Envent"、"River Arc"、"pure.xyz" は特定できず

@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Real Stablecoins Don't Pay Yield | Interview w James &amp; Marco at USDM | Dose of Alpha - Ep. 16 (2026-09-06) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">AlphaGrowth</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-09-06</span>
+  <span>1:00:24</span>
+  <span>YouTube</span>
+  <span>Why Real Stablecoins Don't Pay Yield | Interview w James &amp; Marco at USDM | Dose of Alpha - Ep. 16</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> A publicly published video on AlphaGrowth's YouTube channel (@alphagrowth), so the speakers are named. The two hosts of Dose of Alpha are <code>Bryan Colligan</code> and <code>Eric Waisanen</code> of AlphaGrowth; neither introduces himself in the video, and the names come from the show's public listings. Bryan is identified as the one who hands over to “Eric”. The guests are <code>James Meidinger</code> (called “James” and “Jim”; the surname is from his public profile and the X handle he gives at the end) and <code>Marco</code>, who describes himself as a board member of the USDM issuer working in traditional finance. His surname is not given in the video or its description and has not been identified.</p>
+<p><strong>Two parts.</strong> 0:39–36:42 is the interview with James and Marco. From 36:42 the two hosts talk alone about Cardano PRIME, the programme AlphaGrowth itself runs; that part is the operator describing its own work.</p>
+<p>The source is a subtitle table (one row every few seconds, speaker changes marked <code>&gt;&gt;</code>, no speaker labels). Turns follow those markers; where one row clearly carries two voices it has been split, where a marker looks spurious consecutive lines by the same speaker are merged, and long single-speaker stretches are split at topic boundaries so the Japanese version can match. Short interjections whose speaker the words alone do not settle are marked <em>(inferred)</em>. The first 39 seconds are a cold open made of excerpts from later in the video.</p>
+<p><strong>Only obvious proper-noun misrecognitions are corrected</strong>: <code>Cardono</code> → Cardano, <code>Matt Plowman</code> / <code>Plman</code> → Matt Plomin, <code>Jed</code> → Djed, <code>Min Swap</code> → Minswap, <code>SIP 113</code> / <code>SIP 1113</code> / <code>zip 1113</code> → CIP-113, <code>Mika</code> → MiCA, <code>Salana</code> → Solana, <code>Treadfi</code> / <code>trifi</code> / <code>stratfi</code> / <code>Trevy</code> → TradFi, <code>realy</code> / <code>SUSDR</code> → RealFi / sUSDR, <code>USDCX</code> → USDCx, <code>Vlabs</code> → VIA Labs, <code>MBX</code> → NBX, <code>USM</code> / <code>USCM</code> → USDM, <code>Manetta</code> / <code>mana global</code> → Moneta / moneta.global, <code>Athena</code> → Ethena, <code>three Jane</code> → 3Jane, <code>steam stream</code> → Stream, <code>USS the teras</code> → UST, the Terras, <code>Robin Hood</code> → Robinhood, <code>Micro Strategy</code> → MicroStrategy, <code>Poly Market</code> → Polymarket, <code>X42</code> → x402, <code>Msumi and Sakosumi</code> → Masumi and Sokosumi, <code>Enriion Fund</code> → Orion Fund, <code>AlphaGo</code> → AlphaGrowth, <code>Cardono Prime</code> → Cardano PRIME, <code>Erica</code> → Eric, <code>apology</code> → Balaji, <code>lock</code> → Locke, <code>galaxy or layer three</code> → Galxe or Layer3, <code>Nigerian beer</code> → Nigerian naira, <code>cherry carry trade</code> → yen carry trade, <code>multi-IG</code> / <code>multi-yc</code> / <code>multi-pig</code> → multisig, <code>so sofur</code> → SOFR, <code>Padre</code> → Padres, <code>Immunifi</code> → Immunefi, <code>Merkel</code> → Merkl, <code>Gravity Decks</code> → Gravity DEX, <code>blockjack 2017</code> → blockjock2017, <code>Cardona coffee</code> → Cardano Over Coffee. Left as heard because they could not be resolved: <code>Nighthawk</code>, <code>Tala Emali</code>, <code>Army of Spies</code>, <code>1010en</code>, <code>the brain</code>, <code>red.xyz</code>, <code>agent to aagent.xyz</code>, <code>Esco</code>, <code>E Envent</code>, <code>River Arc</code>, <code>pure.xyz</code>, <code>Pete from Astro Boy</code>, <code>Yoda</code>. Everything else, mistranscriptions included, is unchanged.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-open">00:00:00 — Cold open</p>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>you think about stable coins, there's a handful of ways you can build a stable coin coins. Some are not stable coins in my opinion. They're more yield coins. I'll set. But I was always interested in the fiat backstable coins. I thought that was the most straightforward and safest use case.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:00:13</span></div>
+  <div class="turn-body"><p>Took me 3 days to answer. It's the first time I actually thought about something ahead of time. Uh really for the most part. And um I got three people telling me, "Are you sure?" Cuz it's real money. You got to produce real, you know, uh value coming in. People got to invest in you.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:00:24</span></div>
+  <div class="turn-body"><p>Because who wants to put all of their asset movement from their treasury on chain in a public fashion? That's not something you want to do. If you're running a small private company or a large public company, you don't want everyone to see where what your money's doing and how it's moving. I I don't want to be doing that if I'm running a company.</p></div>
+</div>
+
+<p class="sec" id="t-intro">00:00:39 — Introductions, and a dropped connection</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:00:39</span></div>
+  <div class="turn-body"><p>Today on a Dose of Alpha, we have very special guests from USDM. We have James and Marco. Guys, welcome.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:00:46</span></div>
+  <div class="turn-body"><p>I've got no audio. I just I knew it was going to drop on me.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:00:49</span></div>
+  <div class="turn-body"><p>All right, that's okay. We can restart. [laughter]</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco <em>(inferred)</em><span class="turn-time">00:00:52</span></div>
+  <div class="turn-body"><p>As soon as it went live, James has totally dropped. Typical. I told you that was going to happen.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:00:55</span></div>
+  <div class="turn-body"><p>Leave a little bit of hanging.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:00:57</span></div>
+  <div class="turn-body"><p>We're not live live, are we?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:00:57</span></div>
+  <div class="turn-body"><p>Yeah, we are.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:00:58</span></div>
+  <div class="turn-body"><p>No, like live streaming.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco <em>(inferred)</em><span class="turn-time">00:00:58</span></div>
+  <div class="turn-body"><p>Oh, no [laughter]</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:01:02</span></div>
+  <div class="turn-body"><p>I thought this was a pre-recorded one.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:01:05</span></div>
+  <div class="turn-body"><p>All right, Marco, how you doing, man?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:01:05</span></div>
+  <div class="turn-body"><p>I'm good. How are you? I don't think we've matched. It's nice to meet you.</p></div>
+</div>
+
+<p class="sec" id="t-marco">00:01:07 — Marco: fiat-backed, not “yield coins”</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:01:07</span></div>
+  <div class="turn-body"><p>It is nice to meet you. Tell us a little bit about USDM. I know you guys are like one of the first uh stable coins on Cardano. Like, how did you get here? What did you do? What's going on with this?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:01:16</span></div>
+  <div class="turn-body"><p>Sure. And if it helps, I'll give you some background on myself because I don't work as directly at for USDM as James does. I actually sit on the board of directors there. I've um been in crypto for I don't know since 2020 give or take. COVID hit, got bored and delved right in. I've been all over a lot of different chains just doing more research and advisory work, I'd say. So, some EVM stuff, some SVM stuff, and definitely stuff in the Cardano ecosystem. And through some of the work I was doing with Minswap, kind of started talking to Jim over here, who's no longer with us. Uh, [laughter] and you know, actually the uh, founder who passed a couple years ago, Matt, I started talking to him as we were launching USDM. He's trying to do some background cuz you think about stable coins. There's a handful of ways you can build a stable coin and we could call them stable coins. Some are not stable coins in my opinion. They're more yield coins. Uh, I I'll say but um, I was always interested in the fiat back stable coins. I thought that was the most straightforward and safest use case. So, I started digging into USDM, seeing what they were doing, understanding the reserves, their management of the of the backing of the token and got pretty comfortable with it and through conversations with uh Matt back at the time and then Jim more recently thought maybe I could help out a little bit here and there. So, I've jumped on the board and just trying to help out where I can with talking a lot to Jim and the team and Jillian who's the CEO now. You're in, Jim.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:02:35</span></div>
+  <div class="turn-body"><p>I am finally good. Can you guys hear me?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:02:39</span></div>
+  <div class="turn-body"><p>I was lost in another land with no camera, no microphone, no nothing. I don't know what happened, but uh what did I miss?</p></div>
+</div>
+
+<p class="sec" id="t-james">00:02:45 — James: from Cardano Over Coffee to a stablecoin company</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:02:45</span></div>
+  <div class="turn-body"><p>How did you get involved with USDM?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:02:45</span></div>
+  <div class="turn-body"><p>Boy, that's a great that's a great story. I had no intent on being part of a stable coin company. Anyway, I came into this uh into crypto just to make sure that my investment was okay. So, in order to know blockchain and know where I was putting all my money in this investment, I needed to make sure the people I was working with had my back or at least I had some intel ahead of time just to make sure in case everybody was exiting the building, I was getting out before everybody else did. So I just after that just kept running my mouth over and over again and like hey you might be good doing this and next thing you know I was doing that so I became a co-host of Cardano Over Coffee met Matt Plomin then we started working together with a project called Freeloaders with Steven our CTO at the time that's how we started working then Matt had an idea one day of calling out Djed and its capital inefficiencies and got a spotlight on Army of Spies and he took off and everybody was talking about him good or bad it really didn't matter but the fact that he worked for DWS which is some Syria Deutsche Bank and so multi-billion dollar client. I mean he did it all and he found himself right in the limelight where he I think he wanted to be quite honestly and started a stable coin company sent me a message one day and said hey would you like to be part of a stable coin company and it took me 3 days to answer. It's the first time I actually thought about something ahead of time uh really for the most part and um I got three people telling me are you sure uh you want to do that cuz it's like real money. You got to produce real you know uh value coming in. People got to invest in you. this is not creating some sort of NFT you could sell uh and uh just you know make some decent dime you know off of that right and uh after the third one I took it as a challenge and told Matt yeah definitely down and uh became his at the time wasn't business development it was mostly just to set up the uh team get everybody on board and get everybody started working towards the same goal uh which typically pretty good at uh so yeah that's kind of the story there Matt just kind of laid it on me and and um want to be a part of something and uh he's one of those guys who's hard to say no to, you know, cuz he's just really good at what he did. And so yeah, and the rest is history. Here I am.</p></div>
+</div>
+
+<p class="sec" id="t-culture">00:04:43 — NFT culture versus DeFi</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:04:43</span></div>
+  <div class="turn-body"><p>You mentioned not being a an NFT project and back in the time every project was pre-revenue. No one was talking about revenue yet. No one was talking about real business and institutions just kind of a kind of as like oh eventually this is all going to translate there, but everything was you know culture and science fair projects. So, you went into the like most like real like even to date as Marco mentioned um stable coins are often yield coins or business deals wrapped to look like stable coins. You went as as deep as you could into the most trady thing possible. Um [laughter] what was what was some of the the push back that you got dealing with the the NFT projects, the flash in the pans that aren't here as much today anymore? Like how was the culture mix?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:05:25</span></div>
+  <div class="turn-body"><p>When you talk about culture mix, I mean compared to what was out there. So you get a bunch of DJs just trying to make uh you know put JPEGs on [laughter] on chain and and sell them right and and make a business out of it. And it was just a social experiment the way I looked at it. And it was also to me it never really made any sense uh unless it had any real utility like if an artist were to use it to engage with their community, their people who love their music and then gave them a GPS coordinated uh coordination uh based on you know where they're [clears throat] going to be next for some surprise show that they were doing or something like that. Had to have utility outside of that. It was literally like swap meat, you know, and no shade to NFT projects, the Bored Ape club or anybody else, but I just didn't see it as being of value. And then trying to sell them were just it was ridiculously hard. Uh you're in a marketplace. It was literally like a swap meet. You know, what I wanted is I wanted DeFi. You know, I wanted to centralized finance. You know, I set up my first wallet and the wallet was called um you know, empowerment, right? it was something that was going to give me uh self- sovereignty right um financial freedom which is what I wanted to have and I didn't want to have any central authority you know controlling what it is that I wanted to do wanted to live and do this on my own uh and then be able to pass that through my kids right which is the other thing you know so legacy things like that so that's what DeFi represents to me and it still represents that to me today even though we've been through a lot you know over the last seven years that I've been here but yeah</p></div>
+</div>
+
+<p class="sec" id="t-reg">00:06:54 — Native assets, CIP-113, regulation and freezing</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:06:54</span></div>
+  <div class="turn-body"><p>so we've been we've been diving into the Cardano ecosystem obviously extremely extremely uh all the way full-time fuller time than full-time and in this talking to some of the teams like we've been learning about you know CIP-113 uh talking to the Cardano Foundation and other pentad groups and um one of the things that they brought up was that when building things EVM there's like a an asset issuer through these token standards as opposed to native tokens and because somebody has to manage or maintain that smart contract uh that gives regulatory risk to the Circles, the Tethers of this world that don't apply if you launch a native token and the asset issuer is fully removed. Um can you talk to me about kind of the regulatory considerations as you you mentioned right now like you don't want a central party um pushing this kind of stuff in but at the same time you're launching like a MiCA compliant stable coin. Where does this dichotomy like diverge?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:07:43</span></div>
+  <div class="turn-body"><p>Well, the beauty of it is in Cardano is Cardano native asset. Uh I call it freerange chicken. You're allowed to be able to go wherever you want within the ecosystem. uh the centralized portion of USDM is at the the on at the app itself where you're minting and burning. So each user um is has to go through KYC KYB if they're having a business included in that. Uh and so we are of course you know regulated uh and we can freeze when it is uh that we need to based on a regulator regulator's request. So the beauty is is that you can have both uh with the current state of things. CIP-113 which currently isn't really completely built out yet. Uh some developers would tell you that that standard is not completely nailed down and so I wouldn't bank on it being just exactly the way it's written today. It might change. Uh but it does allow for you to then be compliant with regulators when it comes to that thing if they require it. Matt Plomin's idea was is that we'll wait till they put the gun to our head in order to do it, you know, and that was literally his statement, you know, uh to us and so we're just going to wait till they put a gun to our head uh to do that. Outside of that, we're really not interested and we'll continue to work in the gray area a little bit, you know, because there's no real rule or regulation surrounding that outside of the fact that it needs to be freezable and it can be at the app itself. So, you know, we had an instance just a little bit ago having to do with that Nighthawk uh that was going on there and one of the larger stakeholders here in Cardano uh sent us a message and made sure that we could freeze and we said absolutely we can. So, you know, we are regulatory compliant just not necessarily the way some people would like it to be.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:09:21</span></div>
+  <div class="turn-body"><p>Yeah. Some some context for viewers who are maybe a little bit less familiar with Cardano jargon. Uh CIP-113 would be CIP similar to ERC from uh you know overall standards for Cardano improvement. um it's enables you know program programmability around the native assets that are launched on Cardano. So things like season freeze can be added from a new token launch that otherwise doesn't exist on Cardano because everything's native as native as ADA is. So um yeah, thank you James and very very interesting to see um how something so intertwined with the chain itself becomes programmable whereas you know this kind of programmability was for better and worse built in at the base layer for Ethereum.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:09:55</span></div>
+  <div class="turn-body"><p>I love it and I I love Charles reference to it is it's just we have a first class citizen you know and each one of them when you create a new CNT it is a first class citizen you're allowed to be able to do what you want here and that's one of the things I absolutely love you know if you have freedom flexibility to be able to do that uh but at the same time still work within the guardrails and guidelines that you know regulators have then you know we should continue on with that you know in my mind so</p></div>
+</div>
+
+<p class="sec" id="t-payment">00:10:19 — A payment stable next to a yield-bearing stable; the airline white label</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:10:19</span></div>
+  <div class="turn-body"><p>James Marco the stable coin like ecosystem within Cardano is is around $60 million I think you know there's like new entrance new things how how do you guys think about you know pushing USDM forward throughout the ecosystem into DAPs and what what do you see on your road map and timelines like that get or get gets you guys excited?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:10:40</span></div>
+  <div class="turn-body"><p>So I I'll take the first uh first off uh USDM is payment uh stable. So what I'd like to see is is that there is direct relationship between a payment stable and a yield bearing stable. Uh so you think about it from the point of view to where you can transfer value is in easy share or store of value uh is what USDM is. Um and if you then combine that with another product that might be a yield bearing product then you could work those two in tandem or in synergy together. Uh this way you know unless they come up with a a new idea. I'm sure that they'll probably come up with a few. uh but you could then get exposure to a yield bearing asset uh like a stable that you know like say let's say RealFi for example USDR which is the sUSDR when you go ahead and stake that into their protocol uh you can get that particular yield uh but when you want to transfer or send a payment or do something along those lines it would be good to have a payment stable included in that you know that's fiatbacked so that it's solid in you know it's onetoone backed fiatbacked and it's represents a dollar wherever you go right so um familiarity ities. One, two, is ease of use and payment.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:11:46</span></div>
+  <div class="turn-body"><p>Yeah. Met with uh this just yesterday and two days ago met with uh Tala Emali. Have you heard of these guys?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:11:55</span></div>
+  <div class="turn-body"><p>No.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:11:55</span></div>
+  <div class="turn-body"><p>They're in the they're in the Japer Draper Orion like accelerator right now. And uh similar but different. So they have like the ZAR which is the like the South African currency and they as a payment stable they started doing payment processing and so all the payment processing that happens within um their application within South Africa is like basically that's like the stable that's going to be like on chain I think that's really like awesome exposure um in terms of figuring out payments I mean there's a lot of activity in payments right now what are what are you guys looking at in terms of like the payment stable coin adoption</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:12:29</span></div>
+  <div class="turn-body"><p>so I think when it comes to payment stable coins this is very interesting topic because we have a company right now that we've been working with that is in the airline services industry and they work in 13 different countries. Um what they were looking for is a stable coin. You think about it from almost like a closed loop solution for them. So they get a prepayment uh you can work with one specific currency for everybody instead of working for 13 different ones. they have, you know, the Nigerian naira which is a, you know, a very difficult uh region of the country to or in the world to work with. Uh, and there's a lot of regulation and things going on there. It's very difficult to navigate. And they would like it to where they could actually be able to from the CF CFO's point of view be able to use one specific currency that everybody uses to make payments, prepayment, things like that. Uh, within that particular services, you know, airline services industry that they're a part of. uh this would make it exceedingly uh better for uh one the CFO I'm sure pulling his hair out over 13 different currencies you could imagine uh and then also allow them to be able to market it in a way that it makes it a lot easier for everybody else. So they just get on board they use one specific currency and we're going to create a stable coin specifically for that for them. So, a white label solution that they would then uh have in order to be able to use for what it is they plan on using. Which what's interesting about this is is that when they started talking to people who BC investors and other people were talk uh that they were talking to, they become their ears perked up quite a bit when they started talking about using a stable coin for their ser for what they're doing, you know, uh in the airline services. uh and investors were uh a little bit more interested in investing in that particular company which was which was very interesting to me. So I think it's an untapped area and there's quite a few like that in different areas where you can do just exactly that and create your own payment solutions specifically for you closed loop and then potentially also connect it to where you can still be connected to the uh larger ecosystem like USDC US things like that.</p></div>
+</div>
+
+<p class="sec" id="t-depth">00:14:28 — Marco: the bottleneck is depth, and the money is circular</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:14:28</span></div>
+  <div class="turn-body"><p>Fair enough. Marco um you mentioned [snorts] you've done work in EVM and Solana as well. Where do you see as the biggest bottleneck in terms of stable coins on Cardano? Is it like minting, redemption, dex? What does it take in your perspective to make this competitive and usable for real business?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:14:44</span></div>
+  <div class="turn-body"><p>Yeah, it's a it's a great question. I think depth is probably the the hardest one to come by now um for for Cardano specifically. I mean, you look at where most of the stable coin TVL ignoring volume for a second sits, right? It's in DeFi protocols. It's trying to earn yield. Um, and the the challenge is it kind of the liquidity begets liquidity, right? Like it only works if if there's things to do there, which Cardano there's things to do, but it it's not the same level of things to do as there are in other ecosystems. I think that's growing. Um, but it happens to be kind of native onchain users. You're just not seeing that that off-chain user coming in anywhere, not just on Cardano, but any any chain. Maybe now you're starting to see it a bit with tokenized products. Um, so I think you know, you know, first first things first is like depth matters, but really like what are you going to do with it? Just just tokenizing a dollar doesn't that because that's what a stable coin is, right? It's a tokenized dollar. Um, doesn't really do anything or or even better, it's like a tokenized treasury that pays you no yield for a fiat back stable coin. Like that's not always the easiest sell, right? So if I want to earn yield, I have to go and deposit it into some lending protocol. um taking a bunch of risks that a traditional investor like myself, you know, I I work in TradFi, like I couldn't convince anyone to put their dollars on chain to earn basically so far or less most of the time uh while taking a bunch of more risk that they don't fully understand. So like there needs to be one the opportunity uh or the utility and I think that's kind of where most of the ecosystem across across different ecosystems lacks currently. Um, you know, I'm I'm hopeful that the idea of tokenization actually brings more capital onchain that exists offchain cuz right now it's the same money just chasing chasing yield flipping between it's getting easier to bridge across chains, right? Like it's getting easier to move your money. I can move it from base to ETH mainet to Solana to whatever uh just to chase, you know, an extra point or two of yield. Like that's that's the money that you're seeing right now. Like sure, so sure you could bring that money in to Cardano. you're going to be paying incentives in some form or fashion because the native demand isn't there necessarily. Most of the time you need that borrow demand. So who's going to borrow if there's no things to do with that borrowed money anyways, you know, like so it's kind of a little bit circular is the way I see it. So you need one of two things. One, you need to either attract existing onchain capital to Cardano, which is expensive in my opinion. um or you need to create new um you know distinct utility there on the Cardano ecosystem to to attract that onchain capital or you got to figure out how to bring offchain capital. I think that's the golden grill. That's the golden goose. No one's figured that out yet. It's TBD. I think some of these real world assets might help. I think some of the privacy stuff might help at some point in time. I think that's going to be a big um unlock for certain institutions because who wants to put their, you know, who wants to put their um all of their asset movement from their treasury on chain in a public fashion? Like that's not something you want to do, right? Like if you're running a small private company or a large or large public company, you don't want everyone to see where what your money's doing and how it's moving. Like you can just go and you can see all the wallet tags of all the large exchanges, right? Like that's I don't I don't want to be doing that if I'm running the company.</p></div>
+</div>
+
+<p class="sec" id="t-scale">00:17:53 — Scalability versus security; “growing up”</p>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:17:53</span></div>
+  <div class="turn-body"><p>there you mentioned needing things to do and chasing points of yield and whatnot. Uh something that I I'll bring this to is this kind of dichotomy of um scalability versus security and things that are infinitely secure don't scale and things that are infinitely scalable aren't secure. Uh the issue is scalability is what gets adoption um and growth because all it is is growth. This is the UST, the Terras of the world that promise crazy high yields probably what we're going to see in the whole private credit scape now where defaults are possible and people are going to outpace you know yield and think of Stream um we were lucky um I mean luck skill a little bit of mix but that our markets were safe from 1010en the ones that we're personally curating um that we didn't have um Stream exposure but so many things did in different capacities and there's not really this ability to to go bankrupt and to get your your whole, you know, covered on the balance sheet. It just kind of completely disrupts projects. Um, but if you're infinitely scalable or infinitely secure, then you're not able to get the adoption for people to even care that nobody um that nobody got hurt in your protocol. So, there's got to be some kind of middle ground of like scalableish with secure enough. How do how do you guys see this dichotomy?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:19:00</span></div>
+  <div class="turn-body"><p>So for me personally, I think it starts with first creating confidence in the ecosystem and a lot of people came in in the beginning. They were looking for 10x, 100x,000x gains uh and in the crypto space because that's what attracted them. And so you had people joining in droves because they're like, "Hey, I just made a, you know, $10,000 off a, you know, $100 trade." uh you know it was crazy you know and so Robinhood you know made that a reality for a lot of people and most people didn't realize in Robinhood that you never own the underlying asset you know in crypto you were basically trading it uh but it was a synthetic version of when you think about it it wasn't something you could take somewhere else and go trade you know uh they're on some decentralized exchange let's say for example um but they were making money and so you had people coming in by the droves in order to be able to do that over time what happened though is is that more and more people started losing money or they started being taken advantage of on a regular basis and you started losing traction over a period of time and for whatever reason crypto wasn't really ready to grow up and it didn't change uh that particular culture and just kept on with it. Um so over a period of time you had less and less people actually engaging. You know it literally my entire group of friends that I had no one wanted to talk about crypto. I was actually even told hey stop talking to our wives about wives were telling my wife hey stop talking to uh our husbands about crypto uh at a party you know because they didn't want to talk about it anymore because they didn't want their husbands putting any money into it and losing their money there you know which is that's pretty bad you know when you think about it right. Uh it feels as though we're kind of growing up a little bit. I don't know if anybody was at Consensus Miami or not, but uh that looked like a TradFi event to me. I mean, the NA CEO of NASDAQ was there being interviewed, right? So, it we changed quite a bit over a period of time, but there's still a lot of growing up to do, I think.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan <em>(inferred)</em><span class="turn-time">00:20:55</span></div>
+  <div class="turn-body"><p>Yeah. I feel seven years ago I was the youngest person at a conference and now I'm the oldest or seven years ago it's the oldest. Now I'm the youngest. It's</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger <em>(inferred)</em><span class="turn-time">00:21:01</span></div>
+  <div class="turn-body"><p>that is the youngest. Yeah. Yeah. I a lot of people like me show up, you know, with the snow on top of the hair and a suit everywhere. Yeah. Yeah. So yeah, it's definitely changed quite a bit, but you know,</p></div>
+</div>
+
+<p class="sec" id="t-game">00:21:10 — Fad, Marry, Kill: RWA, AI, the DeFi mullet</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:21:10</span></div>
+  <div class="turn-body"><p>amazing guys, we we have a fun portion of the the dose of alpha that we do every episode. I don't know if you know this one yet or not. And um are you familiar with uh Fad, Marry, Kill? We're going to do Fad, Marry, Kill. So from excited, bullish to bearish. We're going to three crypto narratives and I want you guys to categorize them. Maybe we'll like do a little banter back and forth. Okay, so we have three different narratives that are very very spicy right now, right? So, RWAS and tokenized securities, right? That's one. We have AI and AI tokens and the AI how AI is going to play with crypto. And we have the DeFi mallet. So, this would be like a Coinbase Earn or like OKX, you know, CFI in the front, DeFi in the back. If you guys had to categorize, James or or Marco, hop in. What's what's FAD? What's uh what's what's going to die? And then what's going to be here for the the long road?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:22:02</span></div>
+  <div class="turn-body"><p>So, we've got AI, right? Yeah. You've got tokenized assets or RWAS. And then what's the third one?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:22:07</span></div>
+  <div class="turn-body"><p>The DeFi mullet.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:22:08</span></div>
+  <div class="turn-body"><p>DeFi mullet. And the DeFi mullet is because Eric has said this to me once before. What's it? It's part because I know it's, you know, party in the front.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:22:15</span></div>
+  <div class="turn-body"><p>CFI in the front.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan <em>(inferred)</em><span class="turn-time">00:22:15</span></div>
+  <div class="turn-body"><p>Ci, DeFi in the back.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:22:18</span></div>
+  <div class="turn-body"><p>Yeah. Yeah. Um, well, I'm really hoping that the fat isn't the DeFi part. Uh, and this continues on. So, I'm really hoping that the uh the mullet continues. Uh, no question. Um, I don't see AI being a fad. I see that actually growing. Me and Eric had quite a few conversations about aging to agent uh and where that's going. Uh and more than likely where our future really is being agents are going to be doing every aspect of our life almost. You know, I can't wait to buy Padres tickets with an agent. Uh and then letting me know they've got me uh great seats. Um and then you know when it comes to um RWA that's an interesting subject uh because you could tokenize everything and bring on real world assets, but what does it mean? you know, um I'm not sure any one of them is a fad to be quite honest. Uh in my mind right now, just running it through my mind right now. Uh Marco,</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:23:08</span></div>
+  <div class="turn-body"><p>I guess [clears throat] I'd more put timelines on things if anything, right? So like AI, if I had to if I had to kill something, it would be that right now. I don't I don't think we're there yet. I think it's still exploding, but it's all offchain. So like that doesn't have to do with crypto per se. like I I've you know over the past couple weeks set up Hermes or Hermes or however you say that on my personal computer and I have a bunch of profiles and I'm routing it through OpenRouter and I'm paying with USDC because I have some USDC but you know I'm swapping it to you know I'm unstaking it or you know taking it out of lending protocol putting it into a wallet and paying that like that's kind of annoying like it would be nice to</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan <em>(inferred)</em><span class="turn-time">00:23:50</span></div>
+  <div class="turn-body"><p>I call it automated</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:23:50</span></div>
+  <div class="turn-body"><p>before you have it set up I have it Hermes and then after it starts printing for me it's Hermes.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:23:55</span></div>
+  <div class="turn-body"><p>Yeah I like that. I like that. Yeah. Yeah. It's uh it's been it's been interesting. My wife is not happy that I've set up a group chat between me, her, and an agent, and I'm trying to have stuff help us help us around the house with the kids. And she's like, I I don't understand what the hell I know Telegram. Um I was like, yes, you do. Uh so that's been it's been an interesting</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan <em>(inferred)</em><span class="turn-time">00:24:12</span></div>
+  <div class="turn-body"><p>quick on that. Like 10 years ago, we had this automated system and it would like run like every Thursday at like noon and I had it text me and remind me to flirt with my wife.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:24:22</span></div>
+  <div class="turn-body"><p>Yeah, that's smart. I I should [laughter] be doing that. We should be doing Haven't scheduled a date.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:24:28</span></div>
+  <div class="turn-body"><p>What are you doing?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:24:28</span></div>
+  <div class="turn-body"><p>Yeah, that's actually [laughter] I should do that one. I'll put that in the group chat, though.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan <em>(inferred)</em><span class="turn-time">00:24:34</span></div>
+  <div class="turn-body"><p>See, I just had the agent impersonate me and flirt with my wife for me, but then I get jealous of it, which makes me a better husband. I [laughter] hope</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:24:41</span></div>
+  <div class="turn-body"><p>I I really wish my wife to the left of me was listening to this cuz she'd be like, "What the hell are you guys even talking about right now?" That's absolutely hilarious, though. Oh my gosh.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:24:50</span></div>
+  <div class="turn-body"><p>So, um I'll bring it back. [laughter] Uh, so I think the AI stuff is going to happen, but it's not there yet for the crypto related piece. Um, you know, like all</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:25:00</span></div>
+  <div class="turn-body"><p>we're short-term kill AI. All right.</p></div>
+</div>
+
+<p class="sec" id="t-rwa">00:25:03 — Marco on DeFi risk, RWA and the “stablecoin sandwich”</p>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:25:03</span></div>
+  <div class="turn-body"><p>Yeah, short-term kill AI. Longterm it'll it'll happen, but I don't know when. Um, the DeFi mullet is interesting, but I don't think there's that much interesting in DeFi right now. Personally, I don't think the riskreward is there. Personally, um, like I still have stuff um on chain, but I've taken I've taken stuff out in the past six months. Part of it is because of the AI has gotten so good. I don't know what is hackable or not hackable like right like if you're not a if you're a protocol and you're not running um like pen tests and all those tests with AI like as top top um frontier models all the time like you're going to get screwed at some point like the Lindy effect is not Lindy anymore in my opinion if anything it's a bigger honeypot. Um so the the DeFi mullet I think is a really cool idea. I just don't think there's that much in DeFi yet for it to be worth it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:25:46</span></div>
+  <div class="turn-body"><p>The RWA stuff I'm very interested in. I come from a TradFi background. I I help out with my firm's crypto strategy, DeFi, not DeFi, like RWA strategy. We haven't tokenized anything yet, but but we've thinking about it. Um, we have something in the pipeline. The tokenization stuff, like, you know, a couple years ago, it was all private markets. I think that's the wrong first step personally. Like, I don't think you can put a liquid wrapper on an illquid asset and make it liquid. Like, that's just not how things work. It's still illquid underneath the hood. If anything, you're going to get screwed because you don't understand what the redemption frequency and cycle is and you don't understand how things are gated and lock like so like it's its own can of worms. It's it's very challenging and I don't think people fully understand that. You know, putting a tokenized money market fund on chain. Cool. Yeah. Like that's a great idea. I don't know what the use case is though. Like I don't really know what people are doing with that. Sure, you can post it as margin. You can still earn yield. Like great. Like I maybe that's a use case. So I I think at some point you will see the idea of like a stable coin sandwich where it would be nice for me. I don't have to put my money in something earning 4% or 4 and a.5% on chain taking a bunch more risk. I can keep my money on chain in a tokenized money market fund. And then if I want to pay for it, I swipe a card and it goes from money market fund to stable coin to the vendor that I paid and maybe they go right back into the money market fund. So the stable coin sits there. It's a payment rail. It sits in the middle. Most of the time you're keeping your assets yield bearing in some form or fashion in the safest yield that you can find in my opinion which is you know call it treasuries. You could obviously increase that risk. You could go to AAAL's you could go down the down the credit stack or further out in duration however you want to manage your assets. But to me that's that's an interesting use case. I think the market got it backwards though. They started with privates and liquids. That's not the right that's not the right way to do it. You should have started with liquid assets. You're starting to see stuff with the stocks right now. Tokenized stocks and then you look at Robinhood chain and like what the hell is happening over there? like they're pairing tokenized stocks with memecoins and like somehow that's affecting maybe the price like I was looking at Twitter today and they were talking about I forget what even the firm was. I've never even heard of it. They paired it you know so you're starting to blend DGEN crypto plus you know traditional assets is it's own it own camp forms but to me I do think that's happening and then I think you get the RWA stuff that actually happens. It's legit assets being tokenized in a legit rapper which is always a question mark too. what's the rapper and how does that work and where do the assets custody and do you actually have rights the same rights you would if you owned it in a traditional brokerage account and that will enable the DeFi mullet because at some point you want you want DeFi yields to be directly competitive with TradFi yields right like there's no reason a should pay you sub-SOFR in my opinion like you're not that's that makes no sense uh unless you have to keep your money on chain for some reason which for an individual you shouldn't have to unless you earned it in some way that you don't want to pay taxes on um so you you need that to be competitive. You need to have there there should be a higher correlation between onchain yields and offchain yields in my opinion.</p></div>
+</div>
+
+<p class="sec" id="t-cards">00:28:38 — 3Jane, Ethena Pay and card rails</p>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:28:38</span></div>
+  <div class="turn-body"><p>Have you guys seen 3Jane's new product where they're basically no cap calls?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:28:42</span></div>
+  <div class="turn-body"><p>Yeah, I thought that was a really cool idea. We've talked about it internally at my firm. Um we have private, you know, closed end private funds. Like is there a way to make that a little bit more streamlined? You know, if you're an institution in in uh investing a private fund, you're you're probably doing it on the last day of the cap call anyways. You're pretty streamlined. So, I don't think it helps for an institutional framework, but like for individuals, yes. Like I do think that type of structure is is a really cool idea. Um, and like keep it yield bearing up until the last second essentially. Like I I love that idea.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:29:11</span></div>
+  <div class="turn-body"><p>It's really smart. Yeah. Especially with the payment rails that are like like it's seamless and it's and you know the the ability to carry like a little bit of a balance sheet for these um card applications like the neo banks obviously everybody's kind of racing to that space with the with the brain and ether.fi now. Um what was it? Ethena Pay yesterday. Ethena. Yes.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco <em>(inferred)</em><span class="turn-time">00:29:28</span></div>
+  <div class="turn-body"><p>Yeah. It's wild. It's wild. It</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan <em>(inferred)</em><span class="turn-time">00:29:33</span></div>
+  <div class="turn-body"><p>That's a It's a really smart move. And either either you sell to swipe your card or you borrow to swipe your card. I think like that there was a chain.com like 2014 2015 they raised a a bucket of money to do this and and now we're actually see it come to fruition, which is like I hold my Apple stock, I swipe my card, I borrow against my Apple stock or I sell depending upon my settings and that's it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:29:54</span></div>
+  <div class="turn-body"><p>That's smart. That's it's the right way to do it. You do have to hope that you're getting best execution if you're selling underneath the hood. The borrow rate is legit. But like you said all that stuff up, right? It is a much better UI or really UX, right? Like then we've seen. So I like I love the way things are going. Like I said, I think RWAS are good and they're going to here to stay. They were done wrong initially. I think they're they're moving in the right direction now.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:30:15</span></div>
+  <div class="turn-body"><p>I still too permissioned and it was too too OTC, right? Yes.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:30:20</span></div>
+  <div class="turn-body"><p>Very limited amount of flow, right? It's like if if blockchain is like the world's best secondary market, you got to let the secondary market like liquidity flow otherwise, but then you get into like all these regulatory stuff. It's a challenge. RWS are a big challenge. I right now I'm thinking like that's the one that's going to be the hardest on the longest time horizon to to kind of figure that out. But, uh, you know, Robinhood speedrunning it. If they can continue to do that with this tokenized meme stocks, I mean, you know, petty stocks have been around forever. There's there's a lot of volume. There's a lot of volatility. But, uh, let's see. They're the memes like right they really are.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco <em>(inferred)</em><span class="turn-time">00:30:52</span></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:30:54</span></div>
+  <div class="turn-body"><p>Yeah. Exactly.</p></div>
+</div>
+
+<p class="sec" id="t-roadmap">00:30:54 — Moneta’s roadmap: Midnight, NBX and Visa Flex, treasury contracts</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:30:54</span></div>
+  <div class="turn-body"><p>But guys, what's on your road map? Um how is Moneta going to grow, scale? What are you guys building, deploying, contributing? What painoints do you have?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:31:03</span></div>
+  <div class="turn-body"><p>I'd say pain points are right now interoperability uh with other chains. Um, we are working with VIA Labs and you can think of it similar to the CCTP that Circle does uh crosschain transfer protocol basically for anybody that doesn't know what that means. Um, and we're working to actually we already have a live live ability to be able to transfer USDM over into the midnight chain. Um, midnight chain's really not uh completely ready for uh assets of value yet, nor are they really uh kind of pushing that. uh it's still maybe about 2 3 months off. Uh but the idea is to be able to you know transfer value over into another chain and do it in relatively safe manner. I hate using a bridge uh in any way or the name bridge in in any way just simply because of the amount of exploits that have happened uh over the years uh with bridges. Um so this is similar to a bridge. It's a little different messaging service. So think about it in that particular way. Uh but uh we'd love to be able to see more interoperability with other chains. So as far as a roadmap goes, that's one thing that we're working on. VIA Labs has been able to facilitate that for us. Uh which has been great. Um payment solutions is another uh we have NBX is a u strategic partner. They're also a co-issuer of USDM and uh they're working along with us on a relationship with Visa Flex. Uh Visa Flex is a new style or new way of being able to make payments. So you can think about it in a way where you show up with your Visa Flex card. you're at the grocery store, everything's going through, but turns out you don't have enough money in your bank account. So, a isn't going to work right at that moment, right? So, you can instead use uh the credit portion of that as well. Or you might even have points on there based on a closed loop uh system that they've got for rewards based on shopping there for loyalty, things like that nature, right? And so all these can be incorporated into that and USDM will be custodied there in order to be able to be used. So giving utility to people who are holding USDM that has been one of the main goals uh in in my mind that we need in order to make USDM attractive in order for it to um for other people to adopt it. Uh so NBX has been a a really great partner in that regard. Uh there's a couple other companies we're working with now that solely work in payment solutions and they will custody the assets for you. Uh so you don't even have to create the vault the private vault necessary in order to be able to do the conversions and they convert it into any fiat that they're currently available to be able to in the markets they're available in uh and USDM can be utilized there. So that's giving further utility to USDM uh as a saving point. Um so on on the road map we're working there also working within the governance structure uh within Cardano's ecosystem. uh we are working with Intersect MBO and others that are getting grant funding say for example even like yourselves right with AlphaGrowth for example uh where there's a certain structure the way it works it's called the TRC or Treasury reserve contract typically what happens is a grant proposal gets something uh gets the funding in and then it's held there until they hit their deliverables and they get dispersal you know what happens during that particular time well you know you potentially uh use USDM or I think USDCx right now currently in order to be safe be able sit in and hedge against downside. Uh especially when you're sitting in a maybe a six or 12 month uh deliverable period uh and the volatility of a particular asset like ADA isn't exactly something you want to you want to sit in for very long. Um this also helps the ecosystem grow because if the grant uh person who receives the grant funding gets something that is of stable value the entire time they can definitely achieve all the deliverables that they need to to meet. if they don't and ADA goes down in value and they choose ADA instead and it drops by 50%. How does that work? You know, when they're able to try when they're trying to pay people, you know, with a a volatile asset, right, like that. So, these are all these are all spots that we're currently working on. And then there's a few others that we're working on as well.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:35:03</span></div>
+  <div class="turn-body"><p>It's amazing. Yeah, we're we're going through that challenge right now and that opportunity of like going to make sure to uh hedge the exposure to ADA so we can successfully get through the prime project um for the year. and we had a little bit of a bump in price which is which is awesome but helpful</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger <em>(inferred)</em><span class="turn-time">00:35:17</span></div>
+  <div class="turn-body"><p>what goes up yeah</p></div>
+</div>
+
+<p class="sec" id="t-close">00:35:17 — How to reach USDM, and the close of the interview</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:35:17</span></div>
+  <div class="turn-body"><p>can't go down right so we gota we got to do hedging that's that's awesome James Marco this has been great thank you for uh joining uh a dose of alpha today we're going to stick around and do a couple Cardano PRIME updates before we go what's the best way to reach you get a hold of you guys</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:35:32</span></div>
+  <div class="turn-body"><p>yeah so moneta.global is your best spot that you can go you can also go in uh through my X account at blockjock2017 reach me there uh we also have an app It's at app.moneta.global. Uh there you can go in and mint. We're available in 20 states. Uh if you can't get us through our app, then you can go to NBX. They are actually pretty much worldwide. Uh worldwide. So uh anybody that's looking to be able to mint USDM, you can reach uh you can go ahead and mint through NBX as well through our partners. So, um, that's probably our best spots for for anybody that's interested in minting USDM and then putting to work in our DeFi EOS ecosystem. Please, please, please mint USDM and go into our DeFi space like Strike, like Bodega, like Fluid, and others that are working their asses off here in this ecosystem to try and give the best possible UIUX to its users. Uh, and they're using USDM on a regular basis in order to be able to do that. So, we're excited to have them as partners. And uh so the the more the marrier when it comes to that and adding liquidity there would be absolutely amazing.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:36:38</span></div>
+  <div class="turn-body"><p>It's awesome. James Marco, thank you for joining the dose of Alpha.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger<span class="turn-time">00:36:41</span></div>
+  <div class="turn-body"><p>Thanks guys.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Marco<span class="turn-time">00:36:41</span></div>
+  <div class="turn-body"><p>Great to see you guys.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">James Meidinger <em>(inferred)</em><span class="turn-time">00:36:42</span></div>
+  <div class="turn-body"><p>Take care.</p></div>
+</div>
+
+<p class="sec" id="t-prime">00:36:42 — Cardano PRIME: the infrastructure audit</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:36:42</span></div>
+  <div class="turn-body"><p>It's awesome. All right, Eric, as we move on to the next segment, that was really cool. And the a lot of people think in the world like things just happen. It takes two people, you know, it takes people just willing to like break the mold and say, "Okay, I want to I want to get this out there. I want to hedge exposure. I want to like get involved with the DeFi ecosystem." Like things just don't happen. It takes the will of people to just like push and push and push and iterate. It's uh it's inspiring.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:37:06</span></div>
+  <div class="turn-body"><p>Yeah. And building things that are, you know, MiCA compliant, GENIUS compliant, and constantly moving around. It's uh takes funding, resources, partnerships, um and a heck of a lot of willpower in a a place where it's not just remote work, but it's like remote from everyone else you're ever working with work. All right, let's um there's been some chatter out on the socials about what's going on with uh Cardano PRIME and AlphaGrowth and uh let's why don't we take like five or 10 minutes here to like go over some highle stuff that we've been working on and uh and drive some uh transparent exposure. I think we should do this more often like to be like frank, you know what I mean?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:37:38</span></div>
+  <div class="turn-body"><p>Yeah, I I think we're we're setting things up so that we can uh every two weeks come out on Cardano Over Coffee uh and you know be available there and give some breakdowns there. I know Yoda did a good job of opening up the DApp council to DeFi participants as well where we're going to do like a monthly like more deep dive that's for more than just the operating group. Um yeah, I we need to get more people being more social, but uh it's been it's been cooking, man. It's been fun.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:38:03</span></div>
+  <div class="turn-body"><p>Yeah, I was in um San Francisco this yesterday in Monday and yesterday for the presentation. Tim Draper got up there and got everybody dancing into the uh the pitch competition. That was pretty wild. Some really cool projects. We can go over that. I really, you know, sat down with like Draper and the Orion Fund. It was, it was a really cool experience. I mean, they have they have the setup and the infrastructure for like the pipeline, like get a project like punch them up, get them ready for like investors and investment and just like the energy in the room and how much like excitement there was. It it was really a beautiful thing. Um, probably like there was there was two projects in particular that I was like really uh interested in. totally did not expect it, but there's um like a South African payments processing company that's coming to Cardano. So, they have like over 37 stores, like over 10,000 people that have used it. And uh effectively a payment processing, it's a ZAR, which is like South African currency. You know how I love like foreign currencies. I think that's the rate discovery in foreign currencies is going to be amazing. And then being able to bring other foreign currencies uh to Cardano is is something I'm very excited for. Um we could go over like that. We could go over the projects. We could go over like the high of level infrastructure audits, some of the things that we're seeing. Maybe a little bit of like the good, the bad, and the ugly. Um, I'm happy to go any direction. I'll lean lean on you. What do you want to do first?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:39:21</span></div>
+  <div class="turn-body"><p>So, so our prop I I think most people um don't see all three phases kind of mixing together. They mostly see like, hey, infrastructure audit and then build uh and deploy. Uh the infrastructure audit, I think internally we have like 77 something pages at this point. Yeah. Uh so many video breakdowns, UX breakdowns, all kinds of stuff. But um uh things that are flagging like we were aware coming in that there were going to be these hiccups and holdups but it's that everyone has had to build their own infrastructure and they haven't had the building blocks the Lego pieces that um teams are used to having available and that means that the barrier of entry for new projects is still incredibly high because they don't have anywhere to start. So, even things like standardizing like like vault standards or um working with CIP-113 and and figuring out how to do more token standards and get those integrated into distribution partners like wallets and uh bringing in distribution partners where there's no like Merkl or Turtle Clubs of the world. Um it's it's a lot. Um but we're finding that out now and we're already sprinting with um just brilliant partners. I was in a call today with uh I think four different apps representing like how to best like tackle the whole vault standardization stuff and scooper standardization stuff so that it can work for everybody.</p></div>
+</div>
+
+<p class="sec" id="t-strategy">00:40:30 — Strategy: bridges, assets, categories, insurance, fixed rates</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:40:30</span></div>
+  <div class="turn-body"><p>Yeah. Yeah. I think like if you kind of think about like some of the strategy like bringing it out into the public is uh is like there's major challenges, right? So one of the major challenges is like how much is going to be asset issuance internally with Cardano and how many assets that we're going to bring externally, right? So if you kind of want to map that out, the first thing is the bridge. So we're getting involved with some of the LayerZero conversations trying to figure out how to time that appropriately along with like the incentivization of different assets. So we're talking about like RWAs, yield bearing assets, some major commodities, you know, think like gold, silver, oil, these types of things. And then we're also having conversations with uh trying to expand adoption within uh particular nation states and countries. So there's conversations going on with the uh the UAE and some other you know stable coins there as well as uh Japan um and and the yen. So things around the Japanese yen carry trade that are going to go on probably over the next 6 months to a year. There's going to be a lot of volume a lot of volatility building strategies building products that kind of take advantage of that is something that's you know front point and center. But basic stuff like oracles, indexers, subgraphs, even even the multisig conversations that we have going on. There's, you know, three or four different multisig providers. Which one and why? So, as we bring new projects, here's your Oracle, here's your bridge, here's your multisig, here's your RPC provider. like these types of like blocking and tackling. We need to streamline it and and they still haven't been 100% figured out what's going to be the best and breed chosen per multisig per uh indexer, per RPC, per um bridge and like that's that's a lot of the blocking and tackling in the infrastructure audit. Uh there's other things like uh portfolio management um we did I don't know I can't should release that or not. There's some portfolio management stuff coming that which is very interesting like how to do like wallet and wallet tracking um that that's necessary. So any kind of somebody that's not going to roll their own type of infrastructure um but they're like a proumer or retail how do they keep track of all their tokens and where they're at. Uh currently there's not an amazing solution for that. So that's a big one. Um I know I'm missing a ton but like just from like an infrastructure high level that's a lot of the work. And then there's kind of two different components. there's kind of a high-risk highreward uh type of strategies and components and maybe venture style bets if you will, but in working with Orion and working with uh the Cardano Foundation on what do they have in their pipeline? And then there's how do we turn DeFi into like sustainable yield products as well. Eric, you want to talk a little bit about that?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:43:01</span></div>
+  <div class="turn-body"><p>Yeah, I I we just talked with, you know, James and Marco about, you know, the dichotomy between security and scalability and how do we get things that are, you know, more scalable but not so scalable they're not secure. And this is what they'll call yield coins where you're able to get these, you know, higher yielding opportunities but things that don't blow up or you you're able to track the redemption or the windfall type stuff. Uh that's more aggressive than things like T-bill yield which are common and and are difficult to do cool things like looping and are less interesting. Uh so we have some really cool um deal flow pipeline um that we're seeing with with reinsurance. Uh we're also um yeah I was in San Francisco as well. So both of us have have done gotten to meet the Draper team and worked on establishing that pipeline so we can all work together uh in kind of a unified direction and there I was able to meet some hedge funds that are doing some really really cool deal flow that I was able to talk about bringing to Cardano um and making accessible decentralizing it. basically take these bulk deals that are usually reserved for niches and private companies um and private banks even and make it accessible to the general public who can kind of bootstrap and come in together similar to how angels will you know um replace venture in some capacity but decentralizing access to cool deal flow that's high yield opportunity and I I think the pipeline's looking good</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:44:11</span></div>
+  <div class="turn-body"><p>yeah from a from a category perspective we're looking at isolated money markets uh obvious we probably going to do a game with uh indigo potentially looking at like other types of CDP mechanics as well. Um, uh, DEXes would that allow for like rehypothecation. So like Uniswap v4 style approach where the capital can be sitting in an LP position and then earning uh on on a money market behind the scenes so it it can juice the yields high enough so it makes sense to put in a DEX. Um, I think like definitely a launchpad. I know we've been going back and forth on that. Like some if we're doing like, you know, four or five different potential new primitives that are going to have TGEs in the next year, we gota we got to have an awesome launchpad. Um some of these we're going to put out as uh like RFPs and some of them some people have already kind of like raised their hand. I think uh onchain insurance and reinsurance is something that's like pinnacle the whole entire industry needs and and you know people have been like working on this for a while. Uh we did a project uh re previously with um red.xyz and they're cranking and killing it, but there's that's just like one sliver of the potentiality of like insurance and reinsurance. And I know Eric, you've done a ton on kind of like this as restaking style approach of insurance as well. So there's some like cool mechanics that have been theoretical but now can like come to the table and stake your ADA for potential reinsurance yield or stake you know your dollars in a junior trunch or you can so we'll come up with some like really interesting um mechanics that previously will be theoretical but now start to approach it um what else the other big one is like insurance and then it would be fixed rate interest so Pendle or Pendle-like type of implementation there's a project uh that talking to on how to turn uh you know existing money markets or variable rate money markets into fixed rate yield opportunities. So fixed rate yield with insurance you're getting into a point where you are so there's three big major things that block traditional finance historically which was regulation security and fixed rates. That's when the big capital can come in. So you know piling that on uh together we're we're looking at those same type of strategies. It's not just access and rails. there has to be something there that feels secure that has a lot of capital in it and it it starts the ball rolling</p></div>
+</div>
+
+<p class="sec" id="t-agents">00:46:29 — Agents, x402 and “cloud regulation”</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:46:29</span></div>
+  <div class="turn-body"><p>and then of course we're playing with um there's a lot of like a lot of like hotness around this AI narrative as well. So Agentic Finance, Agentic Wallets, there's a there's a lot of games to be played there and um there was a cool project uh agent to agent and that was at Draper uh who is submitting and going through the process to bring x402 to Cardano and and that's awesome, right? So because like once you get into that standard that means every single DAP and every single token can get involved with a agent expandments and and x402 into a new internet standard. So those are</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:47:03</span></div>
+  <div class="turn-body"><p>what project was that?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:47:05</span></div>
+  <div class="turn-body"><p>Oh shoot I think it was called agent to agent but it's uh that was their that was their public name.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:47:09</span></div>
+  <div class="turn-body"><p>Masumi and Sokosumi. I think those are the two names. Apologies if I'm not saying them right but uh uh they're doing x402 stuff right now.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:47:16</span></div>
+  <div class="turn-body"><p>Yes. So there's two companies doing that on Cardano, right? So the the company was called agent dynamics uh and they're agent to aagent.xyz is their URL and they're going through the x402 I don't know if they're help that was one of the questions in the feedback of the pitch competition is is this competitive or is this cooperative and it seemed to be uh more cooperative than competitive like one was more of like a B2B style play and this was almost like more of like a a B2C style play. I think there's a lot of opportunity there and where they started to kind of like drip on this is like a really like highlevel um idea. This isn't my idea. This is like Balaji you know from The Network State. He talks about early internet right and when he talks about early internet I I'll bring it back. It'll make sense in a second that that the early internet speedrun regulation right so they had to come up with a new way to do regulation called cloud regulation. And my inkling on this agent to agent XYZ is kind of what agent do you pay? How do you pay it? Why do you pay it? And what is their reputation score, right? Do we need smart contracts and escrow for oraclebased delivery? Or is it going to be like a Yelp style, you know, five-star rec reputation score with reviews, right? Cuz like I go on x402, I have my my bot buy from your bot. What if it doesn't deliver? And how do you how do you handle that whole entire process?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:48:36</span></div>
+  <div class="turn-body"><p>How do you do chargebacks?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:48:36</span></div>
+  <div class="turn-body"><p>Exactly. Exactly. So I think there's like a lot of opportunity in that in terms of cloud regulation escrow. We don't have a like a standard game on like I make an x402 payment. What they it doesn't it delivers me in null value right back. What do I do? I complain I raise my hand. What's customer support? How does that not get flooded by bots? Right. So this uh this idea of cloud regulation on agentto agent commerce I think is is incredibly needed and creative.</p></div>
+</div>
+
+<p class="sec" id="t-b2b4c">00:49:02 — $250M of TVL, B2B4C, Monopoly and prediction markets</p>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:49:02</span></div>
+  <div class="turn-body"><p>Yeah. We've been asked to share more about yeah what what it is we've been doing. Obviously infrastructure audit. We're going to come out with a whole bunch of details soon. Um, but I'm going to say obviously our our goal is to bring a quarter billion dollars in TVL to Cardano. Uh, we're going to do it. Part of the path we're doing this I'm going to call B2B4C. Um, the deal sizes that are big enough to move the needle are B2B type business deals. But the goal of using crypto and Cardano and decentralization is to make those deals available for retail for individual people and businesses can participate and individuals can participate and all of it's available. And what I love, like the vision of this, why it expands bigger than a4 billion dollars, why this can change the world is all it takes is getting each business to connect to crypto once. And then you can establish an entire new pipeline of partners, of deal flow, of velocity of capital to that business to the point where that one endpoint of their connection to crypto, ideally through Cardano, is all it takes for them to handle business with anybody and everybody long term. So, as long as we can start getting more and more businesses to make that first touch point, um the the flywheel that comes from that is massive.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:50:07</span></div>
+  <div class="turn-body"><p>Did you got to coin your monopoly term? Your monopoly theory.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:50:10</span></div>
+  <div class="turn-body"><p>Oh, uh yeah. Yeah. [laughter] Um so, I have won like every game of Monopoly ever, like a lot. And my monopoly theory, which got me into capitalistic philosophy back when I was a kid, was whoever makes the most trades wins. Um it is just shots on goals. It's not, oh, I have to make more from this trade than my counterparty in the trade. Every trade is a win-win. I didn't have the, you know, um the reading. I'm blanking on, uh not Adam Smith, who's the the founder of modern, uh capitalism. Ah, anyways,</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:50:38</span></div>
+  <div class="turn-body"><p>Locke. [laughter]</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:50:42</span></div>
+  <div class="turn-body"><p>Oh, man. Specifically economist. He died only recently. Um anyways, um weird weird that I'm Blake on his name. Anyways, uh before I had all of his terms, whoever he is, awkwardly. Um I understood that whoever makes the most trades wins because every trade is a win-win. And so even if you're winning a little bit less than the other person who's winning, if you just keep winning and making by making more trades than them, it works out. So getting the deal flow, getting the businesses, getting velocity of money, having a default yes instead of a default no um and getting smart enough people to do risk analysis to make sure that um bad yeses don't destroy you.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan <em>(inferred)</em><span class="turn-time">00:51:10</span></div>
+  <div class="turn-body"><p>Um that's right. This reminds me of the evolution of trust. If you guys have never played the game, there's a game, it's a flash game, it's old school evolution of trust that goes back and forth and shows like there's like an embedded morality of keeping on trading, right? But if like you get too many cheaters in the system, the whole entire system collapses. So the more people that like mirror you and how you behave like in terms of doing trades, it becomes like this like moral ethos of like why why being a good person is profitable and sustainable as long but as once you get start to get a bunch of cheaters like in the game then the the kind of thing can devolve if the ratio isn't isn't certain. You can like play with these uh these numbers on the simulation.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:51:52</span></div>
+  <div class="turn-body"><p>So, it was Milton Friedman I was looking for. Can't believe I blanked on that. But he he goes into depth about how nobody knows how to build a pencil because pencils are through supply chain. Somebody grows trees and somebody's a lumberjack and somebody's, you know, buying the wood and making the shape. Somebody's making lead. Yeah. All of these are different people and every single one of them knows the pricing of their product to the to their vendors as well as the supplers pricing that they're buying from and that pricing is the fastest way to relay information. And I would have loved for him to see what's going on with things like prediction markets where um you are, you know, paying for knowledge in real time and how market makers are struggling in this because like they're constantly losing to the people with the inside information. But really that's the purpose of this vehicle for information to flow faster where every single poll on CNN and uh and Fox is wrong, but every single market on Polymarket is right because now there's money behind it. to the monetization of information um which he predicted and said would get faster and faster but we're to a scary fast place now.</p></div>
+</div>
+
+<p class="sec" id="t-robinhood">00:52:53 — Robinhood Chain and the MicroStrategy episode</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:52:53</span></div>
+  <div class="turn-body"><p>Yeah, the volatility on this thing and the volume that's going to h like is happening is is insane and it's all public and then all transparent. We we didn't have that before 24 by7 and um some of the the inaccuracies or some of the like you know hiccups in the whole Robinhood stuff is is really interesting to watch how people are like making thin liquidity like a million dollars of liquidity and they're manipulating the price so that when it pops up on Monday they're attaching their memecoin. Did you see this like MicroStrategy thing that they did Eric? Did you see that?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen <em>(inferred)</em><span class="turn-time">00:53:22</span></div>
+  <div class="turn-body"><p>No.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:53:22</span></div>
+  <div class="turn-body"><p>I'll try to explain it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:53:25</span></div>
+  <div class="turn-body"><p>No.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:53:25</span></div>
+  <div class="turn-body"><p>It's pretty wild. So over the weekend, this past weekend, they some people pushed down the price of MicroStrategy on Robinhood chain to like like 5% of its actual value. Then at that point in time, they paired it with their memecoin on a liquidity pool. So when Monday happened and people came in and were like, "Wait a second, it's MicroStrategy 95% down." They bonded it with their coin. And so MicroStrategy came back up to like parody, but it also brought up their memecoin that they were programmatically dumping. So it's just like this crazy game. It's like the secondary like derivative liquidity of of games that people are playing. Turning major like high cap stocks into like penny stock volume. It's it's it's insane.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:54:05</span></div>
+  <div class="turn-body"><p>I love the solutions people go to to get around ridiculous legal restrictions. Um law moves slowly, governments move slower and people are smart.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:54:14</span></div>
+  <div class="turn-body"><p>Yeah. Yeah. The regulatory arbitrage is always going to be there. That's why I was like, you know, oh, are we going to go to p pure centralized chains over time? I think in some category, but I mean even with like the NFT standard that they're using, they're like, "Okay, well, you have to do KYC. You have to get your wallet to hold certain securities." Well, now they're wrapping it in this uh wallet uh EIP where it's like that can hold tokens underneath. So, they're selling the NFTs with the tokens embedded into people that aren't um gone through KYC.</p></div>
+</div>
+
+<p class="sec" id="t-projects">00:54:38 — Projects from the Draper programme</p>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:54:38</span></div>
+  <div class="turn-body"><p>All right, let's go through a couple other projects. Um back to the Draper Orion accelerator, uh which was really cool. Shout out to Esco. Got to meet him in person. A really cool guy. He's working on uh better web 3. This reminds me very much of like a Galxe or Layer3 type of like implementation. Um, you know, making it super easy like earn.com experience. Hey, do this task, do this, do this bounty, uh, earn a little bit of crypto, learn about this project. And I thought that was really cool. Uh, ChatterPay was also very cool. They were uh a WhatsApp wallet. Uh, and then I saw uh one of the judges uh um from the Cardano Foundation, he downloaded it, they sent him, and he got like $3 ADA. So like it's live right now. Chatterpay is like able to send ADA back and forth through WhatsApp. So you get an embedded wallet right in WhatsApp and then you get a number attach your wallet and now you're tra you're sending people don't exactly know the on-ramps and off-ramps of how to get there and get you know but once you have a wallet address obviously you can onboard um there you know being able to put in other tokens understanding what's in your wallet. Obviously there's a public good that needs to mean understanding like okay what are all the tokens in my wallet? Are there going to be aird drops? So that was really cool. Um, a lot of action there. Gravity DEX. I I think we should really like double click into there. Uh, they have it seems like one of those um, single-sided AMMs, right? Uh, with like better they the claim is and so I really want to double click into this one because and potentially get them on or at least interview them. Their claim is that they have better pricing for for Bitcoin on on uh, Cardano and they can get the best price, but it felt like a single-sided AMM. I really want to understand the mechanics of what they're doing that. Um, and then Nick, uh, he had Lava. So, a liquid staking token throughout DeFi is is like a no-brainer to me. I mean, that that to me is like being able to Now, there is a weird mechanic cuz right now, if you hold the ADA in your app, that's some of the fees that you generate for having a a D app and a DAP on Cardano. You get some of the staking fees. However, the user would like more likely prefer for them to get the staking fees than to push the staking fees to the DAP. So, there's kind of like this weird mechanic. I mean, it's not it's a little bit zero sum, so the DAPs are going to make less money, but the user will have like a liquid staking token, which will make a lot more sense. Um, there was an event app called E Envent. Uh, they did the rare EVO uh and River Arc, which felt a little bit like a pure.xyz XYZ and um got to meet Pete uh from uh like Astro Boy guy for he's doing web3 bounties so like security audits and bounties and kind of like Immunefi or uh Quest which was really cool. I Pete the the that Pete's energy in person is just as good on camera, right? So he is just like I love that dude. Like it's like good energy, good vibes. Um we we'll figure out how to to work with him. Cool. All right. So um that's a highle wrap-up. I mean there's uh we're going through the operating group for the first infrastructure audit. We got to do internal 77 pages. Maybe we do like a like a fivepage thing and then if you want to like double click into like all 77 pages, we got to wrap that up and um drive uh more transparency somebody requested. So this is the first step in driving more transparency of what we're doing. And um honestly, we're pretty reachable.</p></div>
+</div>
+
+<p class="sec" id="t-rfp">00:57:52 — RFPs, the 50-to-1 rule of thumb, and closing</p>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:57:52</span></div>
+  <div class="turn-body"><p>Big news is we're going to open up RFPs for grants um as soon as this afternoon or tomorrow. Um so if you have a project, please like make sure you're on our radar when we've probably talked to you already, but to fill out an RFP. Um let us come talk to you and let's uh see how you can get involved. Maybe we can cut a grant, maybe we can't. Either way, we want you involved. Um we want your tokens put to work. We want you guys integrated and up-to-date scooper um and vault standards um and CIP-113 compatible and just in the no and the flow. Uh we're going to set up more regular builder calls as well so the builders have places to go to each other and to work on this kind of stuff together because too many things are built in different directions because there's no cohesion and we're just going to come in and throw glue on everything and say, "Hey, we're all on one team now."</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">00:58:35</span></div>
+  <div class="turn-body"><p>Yeah. And I I'll dox some, you know, private conversations kind of like the framework of thinking um for public like if you have a project that for every dollar of like grants or incentives can bring $50 of TVL, let's talk, right? And and especially in size, not like5 million, but like more than $5 million or more. Um and it's like, hey, for hundred grand I can bring, you know,5 to$10 million of TVL. Like, oh, let's talk. Let's figure that out because and and we should have that as an open category because we know what we know and we have our strategy and playbook and we're going to run our strategy in playbook but we also don't know what we don't know and so if you have an asset $5 million $10 million or more um or access to an asset that has volume and volatility where we can incentivize and grant and bring you know 50 to1 TVL um we know that not everything is going to work but a majority of the things that we're going to bring to the table are going to work</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">00:59:25</span></div>
+  <div class="turn-body"><p>but while we know that we don't know what we don't know we're also very uh focused on demand side so um if you have traditional business deals in size and we can juice them and make them a little bit more attractive on chain that is very easy conversion that leads to long long-term business flow on chain. Um yes to science fair projects but they have to have an end in mind. Um not like hey if we build this then somebody can like we need to have a target ICP and we'll help you reach out to them. We'll help bring them involved. We'll help show them what the deal looks like and why their business can save money and save time and be better handled by using your app and your and our chain. Uh but um that's that's mostly what we're going to be looking for.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Bryan Colligan<span class="turn-time">01:00:03</span></div>
+  <div class="turn-body"><p>Amazing. Eric, I know you got to go. I got to go. This is rad. Another dose of alpha. A little shtick on Cardano PRIME. Um we'll probably do these like every other week where we'll be on like uh some of the other like X spaces and uh reach out, ask questions, and we'll get to them and we're going to crank it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Eric Waisanen<span class="turn-time">01:00:17</span></div>
+  <div class="turn-body"><p>Go team. See you guys. See you. [music]</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the proper-noun corrections noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — AlphaGrowth · <a href="https://www.youtube.com/watch?v=af31SbPD0AQ">Watch the video</a></p>
+</footer>
+
+</div>
+</body>
+</html>
