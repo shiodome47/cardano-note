@@ -45,7 +45,7 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | Ian Bolina | Ian Balina |
 | chatgbt, claude | ChatGPT、Claude |
 | rabbit hole（Ethereum の教育プラットフォームの文脈） | RabbitHole |
-| DRUPS | DReps |
+| DRUPS, dereppp | DReps / DRep（dereppp は 2026-09-02 Block//45 の "my DRep load"） |
 | LA's, Lac's（Lace の所有格） | Lace's |
 | Trad（"what Trad wants"） | TradFi |
 
@@ -62,7 +62,7 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 
 ### 2026-09-02 IOG Block//45（Lace、Nate Strang）
 
-- **dereppp**（4:32、Crypto Crow が Lace が固まる要因として挙げた語）— 特定できず、聞こえたまま。「DRep」「DApp」のどちらにも取れるが、どちらとも決められない
+- **dereppp**（4:32、Crypto Crow が Lace が固まる要因として挙げた語）— **DRep**。「自分の DRep の負荷」という文脈で、依頼者の判断でも DRep。上の表に登録
 - **Dimensions**（23:53 "Dimensions already setting in"）— dementia（認知症）の誤変換。固有名詞ではないので英語全文はそのまま、日本語は「認知症」
 - **bare markets** — bear markets（弱気相場）。同上
 - **2020**（"hindsight's 2020"）— 20/20。同上
