@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navier-Stokes（2026-09-09）— 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Charles Hoskinson</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-09-09</span>
+  <span>18:40</span>
+  <span>YouTube（ライブ）</span>
+  <span>Navier-Stokes</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>Charles Hoskinson 本人の YouTube チャンネルで公開されているライブ配信なので、発言者は実名のままです。約 18 分の 1 人語りで、ここで語られていることは本人の見解であり、IOG や Cardano Foundation の公式見解ではありません。</p>
+<p>原本は YouTube の自動字幕を「開始時刻・英語字幕・機械翻訳」の表にしたもので、183 行。<strong>話者ラベルはありません</strong>。1 人語りなので話題の切れ目で区切り、英語全文と同じ分割にしています。時刻は各区切りの最初の字幕の開始時刻です。<strong>この日本語は英語字幕から訳し直したもの</strong>で、原本に付いていた機械翻訳の列は使っていません。</p>
+<p>誤変換は用語集にしたがって直しています。<code>Cray Institute</code> → Clay 研究所、<code>ponor conjecture</code> → Poincaré 予想、<code>reman hypothesis</code> → Riemann 予想、<code>nir stokes</code> などの揺れ → Navier–Stokes、<code>Linets</code> → Leibniz、<code>Bob FSY</code> → Bob Fosse など。<strong>文脈から推定して直した名前が 3 つ</strong>あり、本文に <em>(推定)</em> を付けています。<code>Peter Schwab</code> → Peter Scholze、<code>managars paradox</code> → Banach–Tarski のパラドックス、<code>health's tertinary gold injection proof</code> → Helfgott の三素数版 Goldbach 予想の証明。<code>the uadidus manifesto</code> は特定できなかったので、聞こえたまま残しています。</p>
+<p>話者のフィラー（you know、um）は落としています。本人の冗談や比喩はそのまま訳しています。</p>
+<p><strong>画面共有があった配信です。</strong>OpenAI の投稿、Jay Cummings の投稿、Bob Fosse と Michael Jackson の映像が映っていますが、<strong>ここに載っているのは音声で語られた内容だけ</strong>です。</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="ja-t-open">00:00:01 — 冒頭：Gillette、Monument Health、「今日あるものが出た」</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:00:01</span></div>
+  <div class="turn-body"><p>こんにちは、Charles Hoskinson です。荒々しく厳しいワイオミング、ここ Gillette の補助オフィスからライブでお届けしています。私たちの良き友人である Monument Health への引き継ぎの作業をしているところです。ご存じのとおり Mayo の関連機関で、私たちが建てた美しい建物をゆっくり、しかし着実に引き取りながら、ワイオミング州 Gillette のみなさんにすばらしい医療をどう提供していくかを考えているところです。ただ、今日あるものが出ました。出てきたら楽しむしかない、というたぐいのものです。そしてもちろん、人工知能の話なので、何もかもがいつも驚くほど物議を醸します。では、ちょっとしたものをお見せしましょう。</p></div>
+</div>
+
+<p class="sec" id="ja-t-tweet">00:00:49 — OpenAI の投稿と、ミレニアム問題とは</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:00:49</span></div>
+  <div class="turn-body"><p>さて、これは OpenAI のツイートで、かなり注目すべきことが書いてあります。まず、ミレニアム問題とは何か。Clay 研究所という組織が 100 万ドルの懸賞金をかけた一群の問題で、数学全体でもっとも重要でもっとも難しい問題とされ、一部は物理学とも重なります。解けば「ターボ終身在職権」が手に入るような問題です。週末に人食いになろうが修道女に火をつけようがクビにならず、遠い島に送られてもまだ働けて、ナポレオンのような流刑者になれる、という種類の終身在職権です。要するに学術界のゴッドモードです。Poincaré 予想、Riemann 予想、Navier–Stokes といったものがそれです。ですから、Navier–Stokes を解いたと主張する人が出れば、それは大変なことで、多くの人が強い疑いの目を向けます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:01:54</span></div>
+  <div class="turn-body"><p>OpenAI が言っているのはこうです。「Navier–Stokes のミレニアム懸賞問題の解を共有します。数学の最前線でもっとも深い問題のひとつです。証明はエージェントの群によって作られ、GPT-6 Astra よりはるかに高い能力を持つ OpenAI の次世代モデルを使っています。この問題は、Navier–Stokes 方程式でモデル化された滑らかな 3 次元の流体運動の記述が破綻しうるかどうかを問うもので、90 年間未解決のままでした」。</p></div>
+</div>
+
+<p class="sec" id="ja-t-ns">00:02:21 — Navier–Stokes とは何の話か</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:02:21</span></div>
+  <div class="turn-body"><p>Navier–Stokes とは何かというと、Claude-Louis Navier と George Gabriel Stokes の 2 人にちなんで名付けられた 19 世紀の問題で、彼らは 19 世紀に偏微分方程式の系を作りました。関心があったのは、流体はどう流れるか、です。流体というと水のことだと思うでしょう。でも、あらゆるものがある意味で流体です。川の水、翼の上を流れる空気、煙突を抜ける煙。気体は基本的に流体のように振る舞いますし、体の中の血液もそうです。流体には、いっしょに働く 3 つのものがあります。押す圧力、重力のような外からの力、そして粘り気、つまり流体そのものの粘性です。蜂蜜は水と違う注がれ方をしますよね。コーヒーにクリームを入れると、すぐ消えるのではなく、しばらくかかってから色が変わる。船が航跡を残すのもそうです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:03:23</span></div>
+  <div class="turn-body"><p>これは本当に重要なことで、Clay の数学も、物理学のすべてもそれを認めています。求めているのは、流体が動くとき、行儀よく振る舞う一連の方程式を作れるか、ということです。偏微分方程式で「行儀がよい」というのは、有限であることと滑らかであることです。偏微分方程式が暴走すると、養育費を求めて訴えてくるような、世界中を駆け回るような、極端な狂い方をします。そこで言うわけです。「この解には無限の速度や無限に鋭い折れ曲がりがないことを示したい」。そうでなければ系が物理から外れてしまうからです。無限の速度も無限のエネルギーもありえない。系の中にそうした無限の不連続はない。流体らしく滑らかであってほしい。それが流体の基本的な振る舞いだからです。有限でなければならない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:04:29</span></div>
+  <div class="turn-body"><p>ですから、こういうものを解くのは数学にとって大きなこと、とても大きなことです。数学のひとつの分野全体を前に進めるからです。偏微分方程式はすべてのエンジニアが強い関心を持つものですし、すべての物理学者もそうです。流体力学は、ロケットを作る人、航空宇宙のエンジニア、機械のエンジニアが何らかの形で必ず扱うものです。学部や大学院で工学や物理を学ぶと、どこかで流体力学に出会い、常微分方程式と偏微分方程式の授業は必ず取ります。偏微分方程式の授業で出てくる Navier–Stokes は、「述べるのは簡単だが、論じるのは途方もなく難しい」の典型例です。だから OpenAI がこれを解いたと主張するのは、数学のパラダイムを根本から変えるようなことなのです。90 年以上前から理解されていて、誰もが「こんなものをどうやって解けばいいんだ」と言っていた問題の例ですから。</p></div>
+</div>
+
+<p class="sec" id="ja-t-cummings">00:05:43 — Jay Cummings「この証明に 1 年取り組んだのに」</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:05:43</span></div>
+  <div class="turn-body"><p>さて、ここに問題があります。そしてこれこそが、私たちが Midnight を作った理由です。何度も何度も、この話に戻ってきます。Navier–Stokes がありますね。そこに Jay Cummings が、「私はこの証明に 1 年取り組んだのに、彼らはただツイートしてしまった」と。Jay Cummings は何を言っているのか。Jay Cummings は UCSD の教授です。れっきとした数学者で、履歴書を見れば論文をたくさん出していて、とても頭のいい人で、いい仕事をたくさんしています。では、なぜ Jay は 1 年取り組んだと言っているのか。彼にはチャットログがあるからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:06:17</span></div>
+  <div class="turn-body"><p>これを追って見てみると、興味深いのは、OpenAI は完全に独自に思いついたと言っているけれども、実際に見えてくるのはこういう筋です。超知能のモデルに、その創造性と洞察力を試すために不可能な課題を与えた。こうしたモデルは基本的に最適化エンジンで、経路の最小化を探します。だから解けなければオンラインを探しに行く。そしてアクセスできるので、ChatGPT の内部のチャットログを見に行く。ChatGPT の内部のチャットログに入っていくと、そこに数学者がいて、その数学者がまさにこれに取り組んでいた。彼の解、彼のアイデアが、ChatGPT が取っていたアプローチに影響を与えたか、あるいは丸ごと置き換えたように見えます。そして数が多いので、モデルの何千ものコピーがそれを引き取り、次の段階へ進め、Lean で検証し、何かを出してきた。</p></div>
+</div>
+
+<p class="sec" id="ja-t-notes">00:07:33 — 机に置いたノート：手柄の争いはどう決着するか</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:07:33</span></div>
+  <div class="turn-body"><p>これは、こういうことと同じです。ある問題に 1 年取り組んで、その問題についてのノートがあって、それを机の上に置いておく。別の数学者がやって来てノートを取り、読んで、触発されて、「ああ、この問題の解き方が分かった」と言い、全部書き出して、確かめて、発表し、自分が思いついたと言う。あなたは言います。「ちょっと待て。証明のアプローチを考えたのは私だ。そのための土台は全部私が作った。必要なものは基本的に全部渡した。ここまでの道のりを解いたのは私で、私が仕上げたんだ」。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:08:11</span></div>
+  <div class="turn-body"><p>こういうことは学術界では時々起きます。私たちの研究グループでも、そういうケースに出くわすことがあります。だいたいの場合、行き着くのは「ショットガン・ウェディング」です。双方に実質的な貢献があれば、いっしょになって共著者になることに合意し、手柄を分け合う。別の場合には、激しい対立になります。実際、微積分の発明にはこの問題がありました。Isaac Newton 卿が Leibniz に先行していたけれど、先に発表したのは Leibniz で、彼は自分が微積分を発明したと主張した。ドイツにいれば彼に同意するでしょうし、英国にいれば Newton 卿に同意するでしょう。とても古い確執ですが、こういうことがどれだけ激しくなりうるかは分かると思います。</p></div>
+</div>
+
+<p class="sec" id="ja-t-prompt">00:08:55 — 「プロンプトに入れたものは何でも」</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:08:55</span></div>
+  <div class="turn-body"><p>ただ、この件が言っているのは、ChatGPT のプロンプトに入れたものは何でも、彼らはそれを使う、ということです。あなたの知的財産、あなたのアイデア、あなたのもの。数学者にとってこれは、Google や Apple や Microsoft のアイデアと計画の全部を持っていて、Bill Gates か Larry Page か Steve Jobs になれる保証があるのと同じことです。数学という分野で人がやることの中の、最大級の中の最大です。有限で滑らかな Navier–Stokes の解を持っている。なんということでしょう。言葉になりません。キャリアの最大の業績で、これを超えるものはない。要するに「あれ」です。それを ChatGPT が、あなたの 1 年分の仕事を、ログがあって全部やってあるのに、魔法のように自分の仕事だと主張して「私が見つけた、私が書いた」と言い、発表して、Clay から賞をもらう。これはかなり大きなことで、かなりひどいことです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:10:19</span></div>
+  <div class="turn-body"><p>ですから、研究者であれ起業家であれ、知っておいてください。自分のアイデアを、クラウドにあるこうした最先端モデルの AI に共有したら、それはもうあなたのアイデアではありません。いつでも OpenAI が持っていけるし、Sam Altman が自分のものにできる。Dario についても同じです。Claude を使えば Anthropic に渡ります。</p></div>
+</div>
+
+<p class="sec" id="ja-t-midnight">00:10:40 — 「なぜ Midnight がこれを解決するのか」</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:10:40</span></div>
+  <div class="turn-body"><p>では、なぜ Midnight がこれを解決するのか。AI を動かせるプライベートな環境を作るからです。だから彼らはあなたのログを読めない。推論の恩恵は全部得られて、欠点はまったくない。発明を共有する必要も、知的財産を盗まれることもない。だからこれは教訓になる出来事です。ものすごく物議を醸すでしょう。おそらくショットガン・ウェディングに落ち着くでしょう。数週間待ってください。いろいろなことが出てきます。AI は毎分ドラマで、いつもドラマです。暗号通貨の分野では私たちが彼らに勝っていますが、ほんの少しの差です。それにしても、彼らが「持っている」と主張していることには本当に驚かされます。</p></div>
+</div>
+
+<p class="sec" id="ja-t-lean">00:11:17 — 形式数学センターと「信頼の半径」</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:11:17</span></div>
+  <div class="turn-body"><p>さて、多くの方がご存じのとおり、私はカーネギーメロン大学に形式数学のセンターを設立し、Jeremy Avigad が運営しています。すばらしい人で、優秀な数学者です。私たちは 2021 年に、依存型の言語によって可能になる構成的数学、つまり uadidus マニフェスト、QED マニフェスト、あるいは 1970 年に Automath が始めたものが、とても大きくなると予測しました。ソフトウェアのテストの技法を数学のコミュニティに適用できる直接の道だからです。私たちは、これがプロの数学者どうしの「協働の半径」を広げると考えていました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:12:03</span></div>
+  <div class="turn-body"><p>研究所の開設のときにカーネギーメロンでした私の基調講演を見てもらえれば分かりますが、私の立場はこうでした。数学が協働に向かない分野なのは、共著者がすべてを完全に理解し検証できると信じなければならないからで、その「信頼の半径」はかなり小さい。本当に知っていて本当にいっしょに働く 3〜5 人くらいで、本当のところを証明する手立てはない。彼らが優れた数学者だと信じるしかなく、そうでなければ彼らの間違いがあなたの間違いになる。Lean があれば、テスト駆動開発のソフトウェアのようなものです。証明が正しいことを証明できる。だから誰も信じなくていい。参加する方法は、何かを証明することです。Lean の証明が正しいとコンパイルされれば、数学が正しいということになる。だから、はるかに大きな協働の集まりに行ける。コンピュータサイエンスの世界で 50 人、100 人、200 人、500 人の貢献者がいるリポジトリが珍しくないのと同じで、Git のようなバージョン管理システムを使って、全部整理できるわけです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:13:01</span></div>
+  <div class="turn-body"><p>それはそれでけっこうなことで、すばらしい。ただ、AI がここまで入ってくる度合いは、私たちはまったく予想していませんでした。デジタルの模造のようなものは可能になると分かっていましたが、AI そのものが証明を丸ごと書くという考えは、かなり突飛でした。LLM には本当に驚かされました。ここまで来て、これだけのことを達成し、やってのけているのは、実に驚くべきことです。数学の基礎をめぐる戦争があります。直観主義と構成的数学のあいだで、数学のどれだけが構成可能なのか、こうした依存型のシステムがどれだけ強力なのか。それらは ZFC 集合論で驚くほど強力なようです。膨大なことができる。Banach–Tarski のパラドックス <em>(推定)</em> や連続体仮説が Lean で形式化されたのは、私には実際に驚きでした。これらがここまで進んだのは、実に驚くべきことです。</p></div>
+</div>
+
+<p class="sec" id="ja-t-accept">00:14:04 — 数学界はこの種の証明を受け入れるのか</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:14:04</span></div>
+  <div class="turn-body"><p>これは興味深いことです。いろいろなものがひとつに包まれている。最前線の数学であり、数学の文化でもある。数学のコミュニティがこの種の証明を受け入れることをどう感じるかは分かりません。Lean は証明の正当な形式なのか。私はそうだと主張します。そのために形式数学のセンターを作ったのですから。ただ、私は明らかに本職の数学者ではなく、影響力もありません。Peter Scholze <em>(推定)</em> と Terry Tao は私に同意してくれていますが。彼らは本職の数学者です。しかし昔ながらの数学者の多くは好みません。たとえば数論の学術誌は AI の貢献を受け付けません。ですから、これをめぐる「聖戦」があります。でも、AI の貢献を無視したとして、証明があって、それが正しかったらどうするのか。「未解決の解決済み問題」になって、人間の生身の脳がそれをなぞって、ほんの少しよい版を出してくるのを待つしかなくなる。そうすれば先に進める。Helfgott の三素数版 Goldbach 予想の証明 <em>(推定)</em> のように。分かりません。興味深い問いです。これは無視できない問題で、無視できない状況です。</p></div>
+</div>
+
+<p class="sec" id="ja-t-proof">00:15:19 — 本人が読んだ OpenAI の文書</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:15:19</span></div>
+  <div class="turn-body"><p>興味深いことに、OpenAI の文書のいくつかに目を通す機会がありました。私は Navier–Stokes の専門家ではありません。私の数学の分野は解析的整数論と加法的整数論で、関心のあり方がまったく違います。ただ、彼らが提案している解は、少し「ハック」のように見えます。実際の物理では出てこない退化したケースを許していて、それでも技術的には解の条件を満たしている。ここも細かく突ける点です。提案には十分な隙間があるので、論争全体を避けたければ、Clay はうまく逃げられると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:16:11</span></div>
+  <div class="turn-body"><p>ただ、この件が意味するのは、モデルが十分に高度で、賢い人の仕事を盗み、それを取り込み、改良し、反復し、実際に難問を解くところまで形式化するやり方を知っている、ということです。これはとても人間らしい振る舞いです。今日それができるなら、彼らの進歩の速度からして、能力は指数関数的によくなるでしょう。創造性の源泉については未解決の哲学的な問いがあります。でも正直に言えば、人間の発明の大部分は、何か別のものの反復と洗練です。</p></div>
+</div>
+
+<p class="sec" id="ja-t-fosse">00:16:51 — Bob Fosse と Michael Jackson</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:16:51</span></div>
+  <div class="turn-body"><p>それを示すために、ちょっとしたものをお見せします。みなさん、われらが友 Michael Jackson はご存じでしょう。でも、Bob Fosse という人がいたのは知っていましたか。1974 年に Michael Jackson に着想を与えた人です。少し流してみましょう。「Good Old Bob」の番組。Michael がそれを見た。Jackson Five の Michael が、「いいか、あれをやるぞ」と言った。昔、Michael Jackson のああいうものを全部見て、みんな夢中になった。そして突然、あの蛇の動きは Bob Fosse から取ったものだと分かる。つまり、すべては盗まれたもので、本当にオリジナルなものは何もない。そこがすばらしいところです。先にあったものを取り込んで、よりよくできる。</p></div>
+</div>
+
+<p class="sec" id="ja-t-close">00:18:04 — 締めの問い</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:18:04</span></div>
+  <div class="turn-body"><p>では、みなさんはどう思いますか。Navier–Stokes のこの解は OpenAI の由来のものなのか。技術的には OpenAI の知識はすべてほかの数学者から来ているのだから。それとも、ChatGPT のチャットログにある未完成の部分的な解なのか。それが本当の証明なのか。それが本当の着想なのか。Michael Jackson は Bob を別の光で見せただけなのか。それとも Michael Jackson は何か新しくて、面白くて、違うものなのか。言い切るのは難しいですよね。それではまた次回。乾杯。</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語の原文を訳したもの。誤変換は用語集にしたがって直してある。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 一覧</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/live/dcQxe9ohHOw">動画を見る</a></p>
+</footer>
+
+</div>
+</body>
+</html>

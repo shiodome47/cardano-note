@@ -1,0 +1,37 @@
+slug: 2026-09-09-charles-hoskinson-navier-stokes
+title: Navier-Stokes — AI が最難関の証明を「出した」日に、それは誰の手柄かを本人が考える
+title_en: "Navier-Stokes"
+date: 2026-09-09            # ライブ配信。依頼者の指定は「2026-09-10 の 1 日前」。動画の中で「今日出た」と言う OpenAI の投稿は 09-08（UTC 17:20）付。09-09 付の報道と整合。YouTube のページからは日付を取得できていないので要確認
+series: charles-hoskinson   # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: Charles Hoskinson  # oEmbed の author_name。author_url は https://www.youtube.com/@charleshoskinsoncrypto
+official_channel: true      # 本人のチャンネル（IOG や Cardano Foundation の公式チャンネルではない）。oEmbed で確認
+duration: "18:40"           # 字幕の最終ブロック（18:37）から。動画の実尺は要確認
+video: https://www.youtube.com/live/dcQxe9ohHOw
+
+speakers:
+  - Charles Hoskinson       # 1 人語り。冒頭で名乗る。IOG 創業者、Cardano 創始者
+speaker_labels: n/a         # 1 人語りなので話者ラベルは不要
+timestamps: txt             # 「1s」「1:01」形式の開始時刻付きのテキスト（YouTube の字幕を表にしたもの）。.turn-time に使用
+proper_nouns_corrected_in_docs: true
+
+# 原本について
+# - 3 列（開始時刻、英語字幕、機械翻訳）のタブ区切りテキスト。183 行。機械翻訳の列は渡されたまま置いてあるが、docs/ の日本語は使っていない（訳し直した）
+# - 話者ラベルなし。全編 1 人語り
+# - 5:32〜5:36 と 1:21〜1:28 は機械翻訳の列が "-"（英語字幕はある）
+
+# 画面について
+# - OpenAI の投稿（X）、Jay Cummings の投稿、Bob Fosse と Michael Jackson の映像が画面に映っていると発言から分かる
+# - 字幕だけを受領しており画面は確認していないので、まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用
+# - Confidential 表示の資料は出てこない（本人の配信で、他社の公開投稿を見せているだけ）
+
+# 裏取り（2026-09-10 時点）
+# - OpenAI の投稿: https://x.com/OpenAI/status/2097374640582668336（2026-09-08 17:20 UTC）。動画で読み上げられた文言と一致
+# - Jay Cummings の投稿: https://x.com/LongFormMath/status/2097404073406521691（2026-09-08 19:17 UTC）。OpenAI の投稿の引用で、本文は「I...worked on this proof for a year...and...they just…tweeted it out.」の 1 文のみ
+# - Jay Cummings は CSU Sacramento の数学教授（PhD は 2016 年に UCSD）。動画では「UCSD の教授」
+# - 報道（Science、TechCrunch、Quanta、Axios、Fortune ほか、いずれも 2026-09-08〜09）で「先に取り組んでいた」として名前が出ているのは NYU の Tristan Buckmaster と Anthropic の Levent Alpöge。Cummings は出てこない
+# - OpenAI は「9 月 1 日にうわさを聞いて着手、9 月 5 日に結果」「ユーザーの個別データにはアクセスしていない」「Clay の賞金は請求しない」と説明（報道経由）
+# - 証明の内容は「有限時間で解が破綻する（blow-up）」の方向で、滑らかな外力を許す設定。Clay の公式の問題文はその設定を許している
+# - Clay Mathematics Institute は 09-10 時点で「未解決」のまま掲載（報道経由）
