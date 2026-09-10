@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Block//45 — Lace Wallet Interview with Nate Strang（2026-09-02）— 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Input Output（IOG）</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-09-02</span>
+  <span>36:05</span>
+  <span>YouTube</span>
+  <span>Block//45 — Lace Wallet Interview with Nate Strang</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>Input Output Group の公式 YouTube チャンネルで公開されている動画なので、発言者は実名のままです。<code>Wendy O</code> と <code>Crypto Crow</code> は番組 Block//45 の 2 人の司会、<code>Nate Strang</code> は Lace の担当者です。ゲストの名前は動画の題名にあり、司会は自分で名乗っています。Nate Strang の肩書（Lace の Product Manager）は公開プロフィールから取ったもので、音声にはありません。</p>
+<p><strong>収録は公開の約 2 か月前です。</strong>公開日は 2026-09-02 ですが、動画の中で v2.1 は「近日中」、Carbon は「今月後半」と言われています。Lace 2.1.0 の実際のリリースは 2026-07-09 なので、収録は 2026 年 7 月上旬とみられます。本文の「今月」「今年」はそのつもりで読んでください。</p>
+<p>原本は数秒ごとに 1 行の字幕の表で、話者の交代は <code>&gt;&gt;</code> で示されていますが話者名はありません。ターンはその印にしたがい、1 行に明らかに 2 人の声が入っているところは分け、印が誤りとみられるところは同じ話者として結合しました。短い相づちと、終わりのマスコットの雑談は、言葉だけでは誰の声か決められない箇所に <em>(推定)</em> を付けています。</p>
+<p>誤変換は用語集にしたがって直しています。<code>dereppp</code> と聞こえる 1 語だけは特定できず、聞こえたまま残しました。</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="ja-t-open">00:00:00 — 冒頭のダイジェスト</p>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>Lace Carbon は、今月後半にオプションとして――オプトインの体験としてリリースされます。ユーザーとしてまず気づくのは、アプリの見た目と操作感がまったく新しくなっていることです。RealFi でのステークと利回りの受け取りは、2 クリックで始められます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:00:14</span></div>
+  <div class="turn-body"><p>両方を同時にできますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:17</span></div>
+  <div class="turn-body"><p>そこがこの話の面白いところです。クレジット市場と RealFi はそれぞれ独立していて、単体でも魅力的なものとして成り立ちます。でも組み合わせると、もっと面白いことができます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:00:31</span></div>
+  <div class="turn-body"><p>もっと儲かる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:31</span></div>
+  <div class="turn-body"><p>もっと儲けられます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:00:33</span></div>
+  <div class="turn-body"><p>じゃあ、やってくれ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:00:33</span></div>
+  <div class="turn-body"><p>ええ、やってくれ（笑）。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-intro">00:00:41 — 自己紹介と「マルチチェーン」</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:00:41</span></div>
+  <div class="turn-body"><p>Block 45 へようこそ。Wendy O です。Crypto Crow と一緒に、今日はスペシャルゲストをお迎えしています。Lace の Nate Strang です。Cardano のことを何でも話します。Nate、調子はどうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:53</span></div>
+  <div class="turn-body"><p>最高です。お二人と一緒にいられて嬉しいです。番組の中で――ご存じのとおり、番組の中で喧嘩することになっていますが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:00:59</span></div>
+  <div class="turn-body"><p>ええ。今回はちょっと物議を醸しますよ、みなさん。収録前に外で、この二人の間で強い言葉が飛び交ったので。でも心配しないで、ちゃんと片をつけます。いくつかはっきりさせます。それから将来の話もします。Cardano にはわくわくすることがたくさん来ていて、とくに Lace と、あなたたちが作っているもの、やっていることについて。Crow は殴り合いで決着をつけることになるかもしれませんが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:01:19</span></div>
+  <div class="turn-body"><p>私は愛の人であって、戦う人ではありません。傷つけないで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:01:21</span></div>
+  <div class="turn-body"><p>良いことはすべて逆境から生まれる。個人的には、あなたがどういう人なのかをもう少し知りたい。初対面なので、経歴を少し聞かせてください。なぜここにいて、何をしているのか。crypto に入ったきっかけは。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:01:36</span></div>
+  <div class="turn-body"><p>もちろんです。私は 2018 年の初めから Web3 の領域にいます。最初に入ったのは、この技術が新しい経済を作り、金融商品や金融サービス――米国では当たり前に享受しているが、世界の多くの地域では同じ恩恵がない――へのアクセスを広げる可能性に魅了されたからです。実際にはコンサルティングの立場でこの領域に入りましたが、そのすぐあとに Solflare という会社に加わりました。Solana ブロックチェーンの有力なウォレットです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:02:16</span></div>
+  <div class="turn-body"><p>あら、本当に喧嘩になりそう（笑）。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:02:16</span></div>
+  <div class="turn-body"><p>いや、あちらの人を一人もらったということだ。それでいい。それでいい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:02:20</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:02:21</span></div>
+  <div class="turn-body"><p>そこなんです。マルチチェーンであることは、とくに重要だと感じます。まさに今、私たちが見ている状況です。相互運用性がどんどん出てきている。Cardano は Midnight でその流れを少しだけ先導した気がします。だから、彼がほかのチェーンを知っているのは良いことです。彼は Cardano も知っている。私自身はチェーンのマキシ（特定チェーンの信奉者）ではありません。好きじゃない。そういうやり方は面白くないと思う。crypto の中では競争が多すぎるように感じるけれど、建設的な競争――AI であれ金融であれブロックチェーンであれ、何であれ、あらゆるものの最良の版を作り続けて、誰もが平等にアクセスし続けられるようにする競争――ならいい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:02:56</span></div>
+  <div class="turn-body"><p>そのとおり。ゼロサムゲームではないですよね。まったくそのとおり。私はもう大人になっているはずなんですが、残念ながら（笑）まだもがいています。昔の話です。私はいわば OG（古参）で、チェーンの部族主義をめぐって酒場で殴り合いをしていた古い流派の人間なので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:03:13</span></div>
+  <div class="turn-body"><p>私も同意見です。将来、願わくばそう遠くない将来には、チェーンについて話すことはなくなると思います。異なるエコシステムで別々のことをする、サイロ化したコミュニティはなくなり、すべてが収束して、プロトコルや相互運用性について話す必要さえなくなる。でも、長いことやってきた感覚はあっても、私たちはまだごく初期の段階にいます。それが私をわくわくさせるし、同時に、物事を見て「こうあるべきではないか」「もっと密に、もっとうまく連携すべきではないか」と考えるとき、立ち止まって考えさせもします。ですから、ここは刺激的な場所です。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-v2">00:03:13 — Lace v2 と安定性の問題、そして 2.1</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:03:13</span></div>
+  <div class="turn-body"><p>私はよく冗談を言いますが、やっていることの多くにはかなり真剣です。私は Lace のユーザーです。初期のころは Daedalus を使っていました。何かしたいと思うたびに、全部が同期してダウンロードされるまで 5 時間半も座って待たなければならなかった。ほかのウォレットも使ってきました。でも今は Lace を使っていて、ときどき当たり外れがあるんです。ある日はあっという間に動いて何の問題もないのに、別の日は、私の「dereppp」（聞こえたまま）の負荷とか、やっていることによっては、固まることがある。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:04:36</span></div>
+  <div class="turn-body"><p>今、議論の対象になっている問題の一部に対処するために、何が起きているんですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:04:44</span></div>
+  <div class="turn-body"><p>良い質問です。説明するのに良い枠組みは、この 2 年近く非常に深く取り組んできたことの話です。私たちが「バージョン 2 アップデート」と呼んでいるもので、今年の 5 月に出ました。ご指摘のとおり、そのリリースのあとにパフォーマンスと安定性の問題がいくつか続きました。これはいくつかのことの症状だと思います。ひとつは、Lace v2 がアプリケーションの大規模な書き直し、再設計だったことです。v1 は単一プラットフォームのアプリ――単一のチェーンをサポートするブラウザ拡張のプラットフォーム――でした。私たちは将来を見て、新しいチェーンをもっと速く載せ、モバイルアプリやほかのプラットフォームをサポートするには何が必要か、そして何か新しいことをしたり作ったりするたびに、何かを壊したり、技術やインフラ全体を遅くしたりするリスクを負わずに済むにはどうすればよいか、と考えました。ですから v2 は、土台――私の言い方では「配管」――への投資でした。そしてリリースには、本来より滑らかに動かなかった点という意味で、いくつか欠点がありました。明るい面としては、近日中に v2.1 のアップデートを出します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:06:16</span></div>
+  <div class="turn-body"><p>なるほど。でもこれが公開されるころには……</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:06:16</span></div>
+  <div class="turn-body"><p>公開されるころには、もう出ています。2.1 は、これまでのパフォーマンスの問題、安定性の問題――トランザクションが止まる、DApp に簡単につながらない、といったもの――のほとんど、あるいは全部を直します。比較的小さいけれども苛立たしい問題は、すべてすぐに直ります。理想を言えばリリース時点でこれらが入っているべきでしたが、私たちはできるだけ早くアップデートをユーザーの手に届けたかった。あとから見れば、少し早すぎたかもしれません。ただ、もうひとつ良い面として、コミュニティからフィードバックをもらい、何が悪かったのか、何を優先すべきかを把握できました。それは、アップデートを出す前に最適化していたものとは実際に違っていました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:07:08</span></div>
+  <div class="turn-body"><p>大事なのは、コミュニティの声に耳を傾けることですよね。それが Cardano に関わるすべてのことの性質でもある。Cardano のエコシステムでは、誰もが何らかの形で自分の声を届けたがっていることを、みんな知っています。関係者全員の意見を取り入れずに分散化はできませんからね。だから、それは良いことです。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-carbon">00:07:27 — Carbon と、AI がチームにとって意味すること</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:07:27</span></div>
+  <div class="turn-body"><p>では Nate、Lace のマスコットの Dave が Carbon について聞きたいことがあるようです。少し話してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:07:35</span></div>
+  <div class="turn-body"><p>もちろん。Carbon は、v2 を出してからずっと取り組んできた、とてもわくわくする取り組みです。いくつかの意味があります。ひとつめは――v2 がアプリの土台とインフラの全面的な見直し、作り直しだったと話しましたが、Carbon は同じような全面的な見直しと投資を、Lace のユーザーインターフェースの現代化に対して行うものです。Lace Carbon は今月後半に、オプションの、オプトインの体験としてリリースされます。ユーザーとしてまず気づくのは、アプリの見た目と操作感がまったく新しくなっていることです。v2 以降、アプリはどう見えるべきか、どう感じられるべきか、今後の Lace のデザイン言語にどう取り組むのが最善かを検討してきました。Carbon が出たときに、その結論を見てもらえます。Carbon が、Lace がものを作る方法、そして今後どう機能を新しいユーザー体験に組み込んで形にしていくかに何をもたらすか、とても楽しみです。それが Lace Carbon の第一の目標、柱です。もうひとつ、Carbon は、私たちがチームとして問いかけていた疑問の表れでもあります。ご存じのとおり AI はどこにでもあり、とくにソフトウェア開発ではそうです。私の周りにはソフトウェアエンジニアの友人がたくさんいて、自分の仕事の将来を心配しています。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:09:13</span></div>
+  <div class="turn-body"><p>仕事について、ね。私は何も知らないが――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:09:16</span></div>
+  <div class="turn-body"><p>まさに。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:09:16</span></div>
+  <div class="turn-body"><p>バイブコーダーのお出ましだ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:09:19</span></div>
+  <div class="turn-body"><p>バイブコーディングの話はやめて。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:09:19</span></div>
+  <div class="turn-body"><p>私たちは「エージェンティック・エンジニア」ですよ、Wendy。いや、冗談です。私たちはバイブコーダーです。みんなバイブコーダーです。冗談はさておき、これらのツールが私たちにとって何を意味するのかを見たかったのです。AI で何ができるかについては雑音が多いけれど、エンジニアが使えるツールという点では本当の価値もたくさんある。そこで私たちは、「AI を使ってどう速く作るか」ではなく、これらのツールが、ソフトウェア開発チームの役割にとって何を意味するのか、という観点で見ました。エンジニアの役割とは何か。将来それはどうあるべきか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:09:39</span></div>
+  <div class="turn-body"><p>Lace に何か追加される予定、あるいは計画はありますか。MCP や CLI のような、私のエージェントがウォレットにつなげられるようにするもの。今は、そういうことをしたければ、エージェントに私のコンピュータを乗っ取らせるしかないと思うんです。それを助けるものは何かありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:10:23</span></div>
+  <div class="turn-body"><p>すぐにはありません。エージェントによる取引は、Web3 の領域では確かにホットな話題です。ただ、できるだけ早く出すことを優先しているものではありません。個人的には、ほかのプレイヤーに実験してもらって、何がうまくいき何がうまくいかないかを見て、必ずしも最初に動く者（first mover）ではなく、最初に改善する者（first improver）になれればいいと思っています。そうすれば私たちが入っていって――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:10:52</span></div>
+  <div class="turn-body"><p>多くの失敗を避けられるといいですね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:10:55</span></div>
+  <div class="turn-body"><p>これまでに、高くついた失敗をいくつか見てきましたから。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-problems">00:10:57 — ウォレットは誰のためのものか、チャットボットは要るのか</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:10:57</span></div>
+  <div class="turn-body"><p>では、今日の crypto でいちばん大きな問題で、Lace でやっていることを通じて最終的に解決したいものは何ですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:11:05</span></div>
+  <div class="turn-body"><p>良い質問です。今日のどのエコシステムも悩ませている問題のひとつは、crypto に関わる顧客セグメントがあまりに多様だということです。純粋な投機家、ミームコインで一儲けしようと入ってくる人たち――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:11:25</span></div>
+  <div class="turn-body"><p>よく知ってるよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:11:25</span></div>
+  <div class="turn-body"><p>――彼らは多くの場合、エコシステムに大量の資本を持ち込みます。ある意味では有害で、ある意味では価値がある。その一方の端には、自国の通貨の代わりにデジタル資産を使って物を買い、家族に送金するユーザーがいる。私たちは業界として、集団として、そうした異なるグループに適切な種類のアプリケーションで応える方法を、まだ見つけられていないと思います。ウォレットはあります。ウォレットは、デジタル資産を使い、ブロックチェーンとやり取りするユーザー体験の、疑いなく重要な部品です。でも今、私がこの領域に入ってきて、この技術からどう恩恵を受けるか、自分にとって何がいちばん重要か、自分に何の得があるかを知ろうとすると、何に注意を払い、何が雑音なのかを理解するのは、ユーザーにとってとても混乱すると思います。この問題をどう解くかというと、もちろん既存ユーザーは優先であり続けますが、そうあるべきなのか。というのも、考えてみればウォレットは――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:11:25</span></div>
+  <div class="turn-body"><p>――とくに Lace は、美しいウォレットです。見た目は本当にきれいだ。もうすぐまた大きな作り直しがあって、さらに良くなると知っています。すばらしい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:12:54</span></div>
+  <div class="turn-body"><p>でも実質的に、ウォレットは誰にとっても入り口ですよね。魂の目のようなもので、どのブロックチェーンでも、最初に触れるときはウォレットが最初の体験になる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:13:05</span></div>
+  <div class="turn-body"><p>私はさらに、ウォレットこそそのブロックチェーンでいちばん重要な部分だと言いたい。自分のものを保管する場所がなければ、分散化に何の意味があるのか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:13:15</span></div>
+  <div class="turn-body"><p>ですよね。ええ。それと、ずっと不思議に思っていたのですが、なぜウォレットには、ごく簡単なユーザーガイドが組み込まれていないんでしょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:13:23</span></div>
+  <div class="turn-body"><p>まさに。それが私の言いたかったことです。ウォレットのユーザー体験が、そうした多様な顧客やユーザーに応えるという点で遅れてきた理由は、プロダクトリサーチだと思います。顧客の発見（customer discovery）、つまり従来のプロダクトの意味で顧客が何を必要としているかを理解することは、Web3 ではずっと本当に難しく、今も難しい。新しい技術が毎日出る。ユーザーの感情、いちばん声の大きいユーザーが欲しいと言うものは変わるし、それは多くの場合、実際に必要なものとも違う。それが、この領域の多くのプロダクトチームが――諦めてはいないが――実証済みのプロダクト手法を理解して適用し、いちばん重要なユーザー体験は何かを言うための、大変な一連の活動に投資していない、という形で現れていると思います。そして、おっしゃったとおり、異なるタイプのユーザーに応える大きな部分はオンボーディングから始まります。ユーザーが自分の意図や、この広大な領域のどこにいるのかを表明し、選択できるようにする。そうすればウォレットとして体験を編集し、多くの場合ユーザーにとって初めて Web3 に足を踏み入れる場面に、本当に重要なガードレールを置ける。見るべきものを見て、大金を失わせたり、怖がらせて追い払ったりしかねないものから守られるように。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:13:23</span></div>
+  <div class="turn-body"><p>AI が Lace のようなものに直接の役割を果たすと思いますか。今は、どんな AI モデルを使うにしても、「私のことと、私が何をしようとしているかを聞いてくれ」というプロセスになっている。そういうことが Cardano のウォレットで起きると思いますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:15:17</span></div>
+  <div class="turn-body"><p>ウォレットにチャットボットを入れることには、複雑な思いがあります。利点はあると思いますが、少し怠惰でもあると思います。というのは――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:15:27</span></div>
+  <div class="turn-body"><p>私は怠惰な男です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:15:31</span></div>
+  <div class="turn-body"><p>ええ。でも、ウォレットにチャットボットを入れると OPSEC（運用上のセキュリティ）のリスクもある気がします。頻繁ではないけれど、ボットが暴走する話は聞きますよね。暴走したいからではなく、置かれた境界が足りないから――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:15:48</span></div>
+  <div class="turn-body"><p>あるいは回避されたりする。確かに――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:15:51</span></div>
+  <div class="turn-body"><p>でも議論する価値はありますよね。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:15:51</span></div>
+  <div class="turn-body"><p>ええ。私たちが今やよく知っているチャットボットのインターフェース――ChatGPT でも Claude でも、好きなモデルが何であれ――は、唯一の解ではないし、ウォレットの中で LLM から得られる利点を形にする唯一の方法でもありません。あなたの目標や経験レベルといった文脈を集めるオンボーディング体験を考えてみてください。それは、入力して答えをもらうテキストボックスである必要はない。LLM の機能を組み込んで、同じ利点を、もう少し意図的な UX で得ることができます。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-onboarding">00:16:32 — Carbon のオンボーディング — リカバリーフレーズと段階的開示</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:16:32</span></div>
+  <div class="turn-body"><p>説明してください。私が新しいユーザーだとして――Lace を使うどんなユーザーでもいいのですが――初めて使うとしましょう。Carbon で私は何を見ることになるのか。初めてウォレットを持つ、ウォレットを使ったことがない、友達に「これを試してみろ」「Cardano を少し買ってみろ」と言われた、というとき。今日私が見慣れているものを、Carbon は何を変えるのか。プロセスはどう変わるのか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:17:03</span></div>
+  <div class="turn-body"><p>オンボーディングに関して言えば、Carbon で改善される主な点は 2 つあります。ひとつめは、非カストディアルのウォレットでリカバリーフレーズの記録をどう扱うか。これはウォレットが生まれて以来のデザイン上の問いです。Carbon での扱い方は進化しています――退化と見る人もいるかもしれませんが――セキュリティ最優先のアプローチへ移行します。ユーザーがウォレットを守る方法について緩かったり、自由放任だったりすることで、攻撃があまりに多く、攻撃の経路があまりに多かった。ですから、新しいユーザーが入ってくるときには、セキュリティを強く意識したアプローチを取ります。すぐにやる必要はないかもしれませんが、どこかの時点でフレーズを記録してもらう必要がある。クリップボードにはコピーできません。ですから――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:17:58</span></div>
+  <div class="turn-body"><p>絶対に、絶対にやらないで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:17:58</span></div>
+  <div class="turn-body"><p>やらないで。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:18:00</span></div>
+  <div class="turn-body"><p>お願いだからやらないで（笑）。間違っているかもしれませんが、昔 Ian Balina がやったのはそれではなかったですか。クラウドのテキストか何かにコピーしていて、それで誰かがアクセスできた。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:18:11</span></div>
+  <div class="turn-body"><p>私はそういうことにはものすごく神経質です。何も――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:18:16</span></div>
+  <div class="turn-body"><p>私は全部、銃のそばに鍵をかけて置くか、貸金庫に入れています。遊びではやらない。だからさっき言ったんです。全部を別の場所の金庫に入れて、それから何をするか計画する。そのために専用のウォレットを別に作る。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:18:28</span></div>
+  <div class="turn-body"><p>というのも、誰でも一般に、とくに私たちが長年くぐってきたことを経験していない新規の人は、いちばん簡単で摩擦のないやり方を選ぶからです。全部書き留めたりはしない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:18:41</span></div>
+  <div class="turn-body"><p>それに、AI やエージェント決済、マイクロトランザクションが増えていくと、多くの人が自分のものは安全だと感じるようになるけれど、そうではない。そこから守るのは Lace の仕事でもウォレットの仕事でもない。でも、人々が自分の AI に好きにやらせて、しかも同じデバイスで全部を持っていることから、たくさんの間違いが起きる気がします。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:19:04</span></div>
+  <div class="turn-body"><p>まさに。もし私がこの領域の新参者で、ウォレットに登録したばかりなら、初めての場面で自分のエージェントを設定するよう促されるべきではない。それは決して最適でも、安全でもないユーザー体験です。ですから Carbon で優先しているのは、選択的開示、あるいは段階的開示（progressive disclosure）と言えるものです。オンボーディングを終えたら、まずやるべきことは当然、口座に資金を入れること。それをしたら、無限の選択肢を突きつけられることはない。ユーザーとして「次は何をすればいい？」と座り込むことは決してない。ウォレットを通じてアクセスできる機能や Web3 の体験は、段階を追った形でユーザーに紹介されます。これは本当に重要だと思います。成功しているプロトコルもいくつかあります。Ethereum の世界では RabbitHole が最初で、インセンティブ付きの学習、インセンティブ付きの教育のプラットフォームです。これはこの世界で十分に注目されていないと思います。新しい言葉がたくさんある。この世界に来る前には想像もしなかった、新しいタイプの体験やデジタルなやり取りがたくさんある。それを案内する責任を負うのはウォレットの仕事であり、作り手全員の仕事だと思います。ですから、それは今後も重点を置き続ける大きな優先事項です。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-defi">00:20:47 — Pogun のクレジット市場と RealFi</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:20:47</span></div>
+  <div class="turn-body"><p>2026 年末までの Lace のいちばんのユースケースは何だと思いますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:20:52</span></div>
+  <div class="turn-body"><p>水晶玉があればいいんですが。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:20:54</span></div>
+  <div class="turn-body"><p>作りましょう。作りましょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:20:56</span></div>
+  <div class="turn-body"><p>2030 年と言ってはどうですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:20:56</span></div>
+  <div class="turn-body"><p>遠すぎる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:20:59</span></div>
+  <div class="turn-body"><p>私は 7 フィート（約 213cm）ある。グレート・デーンみたいなものだ。全部が起きるときに、まだ生きているようにしたい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:20:59</span></div>
+  <div class="turn-body"><p>主なユースケースが、年末か来年末かに何になるかは分かりません。でも、私たちが作ることにわくわくしていて、その触媒になろうとしているのは、Cardano のエコシステムの DeFi にようやく息を吹き込むことです。その最初の一歩として、実際には IO の取り組みが 2 つあります。ひとつは Pogun のプロトコル群、もうひとつは RealFi です。Pogun には、ピアツーピアのクレジット市場のようなものを可能にするプロトコルとスマートコントラクトがいくつかあります。ほかのプラットフォームにあるアルゴリズムで管理された貸し借りのプロトコルではなく、Pogun のクレジット市場は本当にピアツーピアです。つまり、借り手候補と貸し手の間で直接の交渉とやり取りがある。それが重要なのは、分散型の貸し借りプロトコルでいちばんリスクの高いもの――価格の変動――から借り手を守ることです。ピアツーピアの貸付契約の中では、大きな価格変動に対して脆弱ではない。清算されるリスクがあるのは、合意した支払いを合意したスケジュールで行わない場合だけです。これは、数年後の Cardano の DeFi エコシステムと業界の姿にとって、本当に重要でわくわくする一片だと思います。もうひとつ、作っていくことにわくわくしているのが RealFi です。RealFi も IO の取り組みです。RealFi には USDR という資産があり、利回り付きのステーブルコインです。ほかのエコシステムやチェーンのリキッドステーキングトークンとよく似た働きをします。利回り付きステーブルコインの利点、主な違いは、クレジット市場と似ています。利回りを得ている。その資産は流動的で好きに使える。でも、何であれ価格変動に対して脆弱ではない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:22:12</span></div>
+  <div class="turn-body"><p>将来にとっても重要になると思います。ステーブルコインは猛烈な勢いで作られている。（Nate：ええ。）それに関して相互運用性がたくさん見られる。伝統的金融（TradFi）が欲しいのはまさにそれだと分かっています。ですから、Cardano エコシステムの中で Lace がやっていることに統合するのは、とくに DRep やほかのみんなにとって、実に良いアイデアだと思います。それに、Lace ならひとつのインターフェースで全部できて、あなたが文句を言っていたみたいに別のウォレットに行かなくて済む。ね、おじいさん、覚えてる？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:23:53</span></div>
+  <div class="turn-body"><p>忘れた。年を取りすぎた。もう認知症が始まっている。いや、でも、そこで全部を済ませて、しかも DeFi の側面にもアクセスできる。すばらしいと思う。ほかで DeFi をしなくていいので、ユーザーも引きつけると思う。そこで全部やって、恩恵を全部受けられる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:24:06</span></div>
+  <div class="turn-body"><p>まさに。そのとおりです。これらの新しい DeFi の機能で優先しているのは、シンプルさです。アプリケーションによっては、これらのプロトコルを採用してもパワーユーザー向けにしたり、周りのユーザー体験をシンプルにする投資をしなかったりするかもしれない。Lace の中では、これらの新機能に数クリックで、きわめてシンプルで分かりやすい方法でアクセスできて、それでもパワーユーザーにとって魅力的で有益です。RealFi の例で言えば、2 クリックで RealFi のステークと利回りの受け取りを始められます。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-carry">00:24:51 — キャリートレード</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:24:51</span></div>
+  <div class="turn-body"><p>両方を同時にできますか？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:24:51</span></div>
+  <div class="turn-body"><p>そこがこの話の面白いところです。クレジット市場と RealFi はそれぞれ独立していて、単体でも魅力的なものとして成り立ちます。でも組み合わせると、もっと面白いことができます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:25:06</span></div>
+  <div class="turn-body"><p>もっと儲かる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:25:08</span></div>
+  <div class="turn-body"><p>もっと儲けられます。なぜなら――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:25:08</span></div>
+  <div class="turn-body"><p>なんて発想（笑）。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:25:11</span></div>
+  <div class="turn-body"><p>ですよね。それが私の言いたかったことです。どちらかを選ばなければならないわけではない。作られていくエコシステムから恩恵を受けられる。だから、そこをはっきりさせておきたかったんです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:25:22</span></div>
+  <div class="turn-body"><p>ええ。「キャリートレード」という言葉は新しいものではなく、伝統的金融の世界で何十年も前からあります。Pogun のクレジット市場と RealFi の文脈でキャリートレードがどう機能するかというと、私は自分の ADA を貸付契約の担保として差し入れ、ステーブルコイン――たとえば USDCx――を借りられます。その ADA は担保として置かれているだけなので、ステーキング報酬を得続けられるし、私たちが期待する価格上昇からも恩恵を受けられる。つまり ADA から利回りを得ている。ローンには利息を払っている。Pogun のクレジット市場側の利回りの 2 つの部分を見たうえで、ADA を担保に借りたステーブルコインを RealFi の中でステークして、USDR の利回りを得始められる。キャリートレードと呼ぶ理由は、ひとつの資産を差し入れて借り、その資産の利回りをまだ得ながら、借りたものを USDR にステークして 2 つ目の利回りを得られるからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:26:30</span></div>
+  <div class="turn-body"><p>では、私のリキッドステーキングの利回りと USDR の利回りを合わせて、ローンの返済に充てることは可能ですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:26:40</span></div>
+  <div class="turn-body"><p>まさに。ただ、それはおそらく最初のロールアウトではネイティブにはサポートされません。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:26:51</span></div>
+  <div class="turn-body"><p>今さら手を抜かないでくれ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:26:51</span></div>
+  <div class="turn-body"><p>期待値を調整しているだけです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:26:54</span></div>
+  <div class="turn-body"><p>あとで文句を言われないように、ちゃんと作らないといけないのよ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:26:57</span></div>
+  <div class="turn-body"><p>速く動いて壊せ。ほかはみんなそうやっている。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:27:00</span></div>
+  <div class="turn-body"><p>なぜ私たちは彼らのようになれないの？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:27:00</span></div>
+  <div class="turn-body"><p>いいえ。でも、それが最終目標です。自分の利回りを取って「そう、RealFi の利回りでローンを返済したい」と言えること。報酬を自動で受け取り、何もしなくても支払いができる。要するに利回りの差分から得られる恩恵です。支払いが済み、すべてがきれいに動いて、何も触らなくていい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:27:25</span></div>
+  <div class="turn-body"><p>結局、多くの銀行が効果的に機能しているのはそういうやり方ですよね。私はずっと言ってきたし、何年も X で言っている。銀行がブロックチェーンのレールを採用して、借りたら利回りが得られて、それが車のローンや住宅ローンを返してくれる、そういうシステムがなぜないのか。もっと流動的になる。正直、AI の時代には、生活費を相殺する手段をできるだけたくさん持つ必要がある。だから、そこに先回りできればすばらしい。一歩を踏み出したように聞こえる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:27:57</span></div>
+  <div class="turn-body"><p>ええ。分散化の伝道師になるつもりはありませんが、この文脈でそれが可能な理由は、銀行はそういうことを自動化させても得をしないからです。仲介者が減り、取引に割って入って手数料を取る金融サービスが減る。それぞれがごく特定の役割を担う 1 人、2 人、3 人のプレイヤーだけなら、「手数料をよこせ」と言う人がいない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:28:25</span></div>
+  <div class="turn-body"><p>ええ。それは、私が最初に思っていたよりずっと面白い。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:28:33</span></div>
+  <div class="turn-body"><p>頭が回り始めた。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:28:33</span></div>
+  <div class="turn-body"><p>そこが私のいちばん好きなところ。アップグレードとか、あなたが文句を言っているようなことはどうでもよくて、それを自動（パッシブ）にできるようになりたい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:28:40</span></div>
+  <div class="turn-body"><p>まあ、簡単に実現する方法があればパッシブは最高だが、それは彼の仕事だ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:28:44</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:28:45</span></div>
+  <div class="turn-body"><p>じゃあ、やってくれ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:28:45</span></div>
+  <div class="turn-body"><p>ええ、やってくれ（笑）。では Nate、Cardano と Lace の将来について、いちばん楽観していることは何ですか。アルファ（内輪の情報）をたくさん出してくれましたが。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-outlook">00:28:54 — 弱気相場と、ベータプログラム</p>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:28:54</span></div>
+  <div class="turn-body"><p>ええ。先ほど言ったように、私は Web3 に 8 年います。市場のサイクルで言えば 4 回だと思います。その間ずっとこの領域で作ってきました。はっきり分かったことがひとつあります。弱気相場を好む人はいませんが、重要なものが作られるのは弱気相場のときです。雑音が静まるとき。学んだことを持ち寄って、前回の熱狂のサイクル――誰もが市場に殺到していろいろ求めていたとき――で何がうまくいき、何がうまくいかなかったかを見極められるとき。今は内省をして、次の強気相場で語られることになるものを作れるときです。ですから私がいちばんわくわくしているのは、話してきたことに取り組み、それを作る時間があること、そしてこの 3、6、9 か月でそれらを出していきながら、次の強気相場の到来、Cardano の姿の新しい章の始まりを迎え入れ、Cardano とその先で人々が長く待っていた新しい体験を作るという点で、本当に前向きな力になり、ついにそれを現実にすることです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:30:20</span></div>
+  <div class="turn-body"><p>では Nate、ほかに触れておきたいことはありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:30:23</span></div>
+  <div class="turn-body"><p>ええ。直接は触れなかったことがひとつあります。顧客を理解することの重要性と、歴史的にこの世界ではそれが少し欠けてきたと思う、という話をしました。Lace のベータプログラムを始めます。意欲のある、関わりの深いユーザーに早い段階でものを試してもらい、何かをリリースする前にチームにフィードバックをもらう。リリース後まで待っていたら最初に耳にしていたであろうことを、事前に直せるように。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:30:55</span></div>
+  <div class="turn-body"><p>それは、全体的に見え始めている良い流れです。誰もが、確定する前にフィードバックを得始めたがっている。提案でも開発でも何でも。IO 全体、みんなに共通するテーマのようです。緊張やプレッシャーをずいぶん和らげると思うので、本当にいいことです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:31:15</span></div>
+  <div class="turn-body"><p>透明性も高く感じます。いきなり降ってくるのではなく、人々が提案を聞いたり検討したりする時間があって、何かにただ動転して腹を立てるのではなく、「これが私たちの考えで、これが欲しい」と言える。そして反対側は、望むなら変更できるし、しなくてもいい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:31:31</span></div>
+  <div class="turn-body"><p>ええ。それがプロダクト作りで私のいちばん好きなところです。ユーザーと話し、フィードバックを聞き、それを彼らのために作る体験に翻訳する。ですから、それにもっと能動的に取り組み、歴史的にどちらかというと事後対応的だった作り方から離れつつあることにわくわくしています。これを見ていて Lace のユーザーの方も、まだユーザーでない方も、ぜひ私たちのソーシャルをチェックしてください。ベータプログラムの情報はそこで公開します。フォーカスグループや、対象を絞った調査も行って、人々が何を求めているかをいろいろな形で聞きます。ぜひ参加して、声を上げてください。私たちは聞いていますし、聞くのを楽しみにしています。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-requests">00:32:27 — 機能の要望と、Lace の窓口</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:32:27</span></div>
+  <div class="turn-body"><p>よろしければ、公式に提案をしたい。Carbon のあとに見たいものが――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:32:33</span></div>
+  <div class="turn-body"><p>どうぞ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:32:33</span></div>
+  <div class="turn-body"><p>用途に応じてウォレットにテーマを付けられるようにしてほしい。実現してもらえますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:32:38</span></div>
+  <div class="turn-body"><p>テーマというのは、どういう見た目の――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:32:38</span></div>
+  <div class="turn-body"><p>ウォレットに大きなカラス（crow）を付けたい。自分のエゴが大きいので。Cardano の取引をするたびに自分に思い出させたい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:32:46</span></div>
+  <div class="turn-body"><p>少し照れますが、それはウォレットの中の LLM の良いユースケースです。Lace は動物界のあらゆる動物の背景や、誰かが欲しがるあらゆるものを作ったりはしません。でも「ユーザーさん、このウォレットのテーマは何にしたいですか」と聞いて「カラス」と返ってくる、というのは簡単に言える。それは LLM に向いたタスクです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:33:10</span></div>
+  <div class="turn-body"><p>そこまで難しくしなくていい。現実的には、特定のウォレットを使っているときに、いちいち上を見なくても、たとえばそのウォレットを DeFi アプリ専用に使っているとか、何であれ用途を表してくれるものがあればいい。5 つくらいのテーマから選べる小さなセレクターでも。そのうちひとつがカラスのテーマならそれでいい。（Nate：いいですね。）</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:33:41</span></div>
+  <div class="turn-body"><p>Wendy、機能の要望や希望は？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:33:45</span></div>
+  <div class="turn-body"><p>いえ、今のところは。全部を吸収して聞いているところで、改善が必要な機能すべてに取り組んでいることにわくわくしています。それに、これは crypto で、比較的新しい技術です。加えて AI の波があって、AI が来ることは分かっていたけれど、あまりに速く進んでいるので多くの人が驚いたと思う。ですから、率先してこうした多くのことを直そうとしていて、同時に柔軟な姿勢で提案を受け入れ、人々が来て「これが欲しい、これは嫌だ、これが必要だ」と言えるプログラムを設けているのはいいことです。世の中のほかのウォレットとはかなり違うものになると思います。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:34:21</span></div>
+  <div class="turn-body"><p>まったく。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:34:21</span></div>
+  <div class="turn-body"><p>Lace の Nate、来てくれてありがとうございました。Lace のこと、少しの Cardano と AI のことを話せて楽しかったです。もちろん、Crow と一緒なのはいつも楽しい。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:34:32</span></div>
+  <div class="turn-body"><p>もちろんそうだ（笑）。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:34:32</span></div>
+  <div class="turn-body"><p>Block 45 にも感謝します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:34:32</span></div>
+  <div class="turn-body"><p>Lace についてもっと知りたい人は、どこに行けばいいですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:34:37</span></div>
+  <div class="turn-body"><p>Lace についてもっと知りたければ、ウェブサイト lace.io を見てください。信頼できる公式のソーシャルのリンクも全部そこにあります。ウェブサイトからソーシャルを見つけてください。ぜひ。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-mascot">00:34:56 — マスコットの Dave</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:34:56</span></div>
+  <div class="turn-body"><p>マスコットについて何か言うことは？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:34:56</span></div>
+  <div class="turn-body"><p>イグアナは本当に面白いマスコットの選択だと思います。マーケティングチームのおかげで気に入っています。というのも（笑）、イグアナは 2 つ本当に面白いことをするので。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:35:09</span></div>
+  <div class="turn-body"><p>何？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:35:10</span></div>
+  <div class="turn-body"><p>尻尾を失っても、また生やせる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:35:12</span></div>
+  <div class="turn-body"><p>トカゲもできる。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:35:12</span></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:35:14</span></div>
+  <div class="turn-body"><p>なるほど。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:35:14</span></div>
+  <div class="turn-body"><p>でも、すべてのトカゲが色を変えられるわけではない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:35:17</span></div>
+  <div class="turn-body"><p>すべてのトカゲが適応して擬態できるわけではない。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:35:19</span></div>
+  <div class="turn-body"><p>いえ。すべてのトカゲは――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:35:21</span></div>
+  <div class="turn-body"><p>イグアナは本当にそれができるの？ カメレオンだけじゃなくて？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:35:24</span></div>
+  <div class="turn-body"><p>私もそう思った。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:35:24</span></div>
+  <div class="turn-body"><p>いえ、イグアナは色を変えられません。だから――</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:35:26</span></div>
+  <div class="turn-body"><p>でも彼は色を変えられる。だからすごい。Dave は特別なイグアナ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:35:31</span></div>
+  <div class="turn-body"><p>まあ、Dave はスプレー塗料つきで来たからな。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:35:36</span></div>
+  <div class="turn-body"><p>Dave は実は、この先の研究所から出てきたのよね？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:35:39</span></div>
+  <div class="turn-body"><p>ああ（笑）、ジュラシック・ワールドの。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:35:40</span></div>
+  <div class="turn-body"><p>だから特別なスキルがある。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(推定)</em><span class="turn-time">00:35:42</span></div>
+  <div class="turn-body"><p>ええ。将来の Lace ウォレットのテーマに合わせて変われます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(推定)</em><span class="turn-time">00:35:52</span></div>
+  <div class="turn-body"><p>こいつ、私の局部を食べようとしている（笑）。ところで Dave は免責同意書にサインした？</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(推定)</em><span class="turn-time">00:35:57</span></div>
+  <div class="turn-body"><p>口いっぱいになるぞ、Dave。（笑）手錠。</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語の原文を訳したもの。誤変換は用語集にしたがって直してある。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 一覧</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Input Output（IOG） · <a href="https://www.youtube.com/watch?v=ZTuU9vwpmts">動画を見る</a></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Block//45 — Lace Wallet Interview with Nate Strang — Input Output (2026-09-02)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Input Output（IOG）</p>
+<h1><span class="l-ja">Block//45 — Lace は「配管」を作り直した。次は見た目と、2 クリックの DeFi</span><span class="l-en">Block//45 — Lace rebuilt the plumbing; next comes the look, and DeFi in two clicks</span></h1>
+<p class="meta">
+  <span>2026-09-02</span>
+  <span>YouTube</span>
+  <span>36:05</span>
+  <span><span class="l-ja">Input Output Group 公式チャンネル · Wendy O、Crypto Crow、Nate Strang</span><span class="l-en">Input Output Group's official channel · Wendy O, Crypto Crow, Nate Strang</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Cardano のウォレット Lace の担当者 Nate Strang が、<strong>v2 で土台を作り直したら不安定になった</strong>ことを認めたうえで、次に来るものを語った回です。<br>
+  見た目を一新するオプトインの「Carbon」、初心者を段階的に案内する導線、そして Input Output の 2 つの取り組み——Pogun の貸し借り市場と RealFi の利回り付きステーブルコイン——を Lace の中で 2 クリックでつなぐ<strong>「キャリートレード」</strong>。ただし収録は公開の約 2 か月前で、「近日中」「今月後半」はそのつもりで読む必要があります。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>v2 は「配管」の作り直し。</strong>2 年近くかけて、1 つのチェーンだけのブラウザ拡張から、複数のチェーンとモバイルに広げられる土台に書き直した。その代わりリリース後に、取引が止まる、DApp につながらないといった不安定さが出た、と本人が認めています。「近日中」に出す 2.1 で「ほとんど、あるいは全部」直す、と。</li>
+  <li><strong>Carbon は見た目の刷新で、オプトイン。</strong>「今月後半」に任意で切り替える形で出す。同時に、AI がソフトウェア開発チームの役割をどう変えるかを問い直した結果でもある、と位置づけられました。</li>
+  <li><strong>AI エージェントとの連携は「すぐにはやらない」。</strong>最初に動く者ではなく「最初に改善する者」になりたい、と。ウォレットにチャットボットを入れることにも「複雑な思い」があると述べています。</li>
+  <li><strong>初心者向けの導線を作り直す。</strong>リカバリーフレーズはクリップボードにコピーできなくし、資金を入れたあとは選択肢を一度に見せず、段階を追って機能を出す。</li>
+  <li><strong>Pogun と RealFi を Lace の中で。</strong>Pogun の貸し借り市場は当事者どうしの直接交渉で、価格が下がっても清算されず、支払いが遅れたときだけ清算される、という説明。RealFi の USDR は利回り付きのステーブルコインで、Lace から 2 クリックでステークできる、と。</li>
+  <li><strong>2 つを組み合わせると「キャリートレード」。</strong>ADA を担保にステーブルコインを借り、それを RealFi にステークして、ADA の報酬と USDR の利回りの両方を得る。利回りで返済を自動化するのは「最初のロールアウトでは対応しない」、あくまで最終目標だと明言されました。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か、いつ収録されたか</a></li>
+  <li><a href="#v2"><span class="n">02</span>v2 は「配管」の作り直し。不安定になり、2.1 で直す</a></li>
+  <li><a href="#carbon"><span class="n">03</span>Carbon — 見た目の刷新と、AI がチームに問うもの</a></li>
+  <li><a href="#users"><span class="n">04</span>ウォレットは誰のためのものか</a></li>
+  <li><a href="#onboarding"><span class="n">05</span>Carbon のオンボーディング — フレーズと段階的開示</a></li>
+  <li><a href="#defi"><span class="n">06</span>Pogun の貸し借り市場と RealFi</a></li>
+  <li><a href="#carry"><span class="n">07</span>キャリートレード</a></li>
+  <li><a href="#outlook"><span class="n">08</span>弱気相場、ベータプログラム、要望</a></li>
+  <li><a href="#overall"><span class="n">09</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">10</span>やり取りから</a></li>
+  <li><a href="#pending"><span class="n">11</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か、いつ収録されたか</h2>
+<p class="deck">司会 2 人は外部の配信者。ゲストは Lace の製品担当。公開の 2 か月前の収録とみられる。</p>
+
+<p>Input Output Group の公式チャンネルにある「Block//45」という番組の 1 本です。司会は crypto 系の配信者 2 人で、ゲストが Lace の担当者という構成です。</p>
+
+<ul>
+  <li><strong>Wendy O</strong> —— 司会。「Block 45 へようこそ。Wendy O です」と名乗っています。<span class="badge">補足</span>Crypto Wendy O の名前で活動する配信者です。</li>
+  <li><strong>Crypto Crow</strong> —— 司会。Cardano 寄りの立場で、自分を「OG（古参）」「チェーンの部族主義で酒場で殴り合っていた古い流派」と紹介し、Lace のユーザーとして不満も言います。<span class="badge">補足</span>本名は Jason Appleton。動画では「Crow」とだけ呼ばれています。</li>
+  <li><strong>Nate Strang</strong> —— ゲスト。Lace。2018 年初めから Web3 に関わり、Solana のウォレット Solflare を経て Lace に来た、と本人が語っています。<span class="badge">補足</span>肩書は Lace の Product Manager（公開プロフィールから）。動画の中では名前と「Lace の」としか出ません。</li>
+</ul>
+
+<p><span class="badge">補足</span>Lace は Input Output が開発する Cardano のウォレット（ブラウザ拡張とモバイル）です。この動画は IOG の公式チャンネルで公開されており、Nate Strang の発言は Lace の製品担当としての説明として読めます。司会 2 人の評価や感想は、それぞれ本人の見解です。</p>
+
+<p><strong>収録の時期に注意が要ります。</strong>公開日は 2026 年 9 月 2 日ですが、動画の中で 2.1 は「近日中」、Carbon は「今月後半」、v2 は「今年の 5 月に出た」と言われています。<span class="badge">補足</span>Lace の GitHub のリリース履歴では 2.0.0 が 4 月 28 日、2.1.0 が 7 月 9 日なので、収録は 7 月上旬とみられます。以下、動画内の「今月」「近日中」はその前提で書き、動画公開後に分かったことは日付を添えて分けます。</p>
+
+
+<h2 id="v2">2. v2 は「配管」の作り直し。不安定になり、2.1 で直す</h2>
+<p class="deck">2 年かけた土台の書き直しを、少し早く出しすぎたかもしれない、と本人が言う。</p>
+
+<p>口火を切ったのは Crypto Crow の不満です。初期に Daedalus（フルノード型のウォレット）で同期に 5 時間半待たされた話のあと、「今は Lace を使っているが、日によって当たり外れがある」「固まることがある」と述べました。</p>
+
+<p>Nate Strang の答えは、v2 が何だったかの説明から始まります。2 年近く取り組んだ「バージョン 2 アップデート」は、アプリの<strong>大規模な書き直し</strong>だった。v1 は 1 つのチェーンだけを扱うブラウザ拡張だったが、新しいチェーンを速く載せ、モバイルやほかのプラットフォームに広げ、何かを足すたびに全体を壊す心配をせずに済むようにしたかった。だから v2 は土台への投資で、本人の言葉では<strong>「配管」</strong>への投資だった、と。</p>
+
+<div class="term">
+<p class="term-name">配管 <small>plumbing、動画の中の言葉</small></p>
+<p>ユーザーの目に見えない、アプリの内部構造のこと。Nate Strang は v2 を「土台、私の言い方では配管への投資」と呼び、Carbon を「同じような見直しを、今度はユーザーインターフェースに対して行うもの」と対比させています。<span class="badge">補足</span>家で言えば、v2 は壁の中の配管と配線を全部やり直した工事、Carbon は内装のやり直しです。配管工事の直後に水漏れが出た、というのがこの節の話です。</p>
+</div>
+
+<p>そのうえで、リリース後にパフォーマンスと安定性の問題が続いたことを認めています。「本来より滑らかに動かなかった点で、いくつか欠点があった」。理由として挙げたのは、書き直しの規模そのものと、<strong>できるだけ早くユーザーに届けたかった</strong>こと。「あとから見れば、少し早すぎたかもしれない」。ただ、コミュニティのフィードバックで、何を優先すべきかが分かり、それは出す前に最適化していたものとは違っていた、とも述べています。</p>
+
+<p>修正は 2.1 で来る、という説明です。取引が止まる、DApp につながりにくい、といった「比較的小さいが苛立たしい」問題の「ほとんど、あるいは全部」を直す。時期は「近日中」で、司会が「これが公開されるころには」と言うと「もう出ている」と答えています。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="Lace の v1 から v2、収録、2.1、公開、Carbon までの時系列。動画で語られたことと、公開後にリリース履歴から分かったことを区別して並べた図">
+  <text x="340" y="22" class="d-s" text-anchor="middle">動画で語られた時期と、実際のリリース（GitHub の履歴）を並べたもの</text>
+
+  <rect x="16" y="40" width="104" height="112" rx="8" class="d-box-accent"/>
+  <text x="68" y="64" class="d-t" text-anchor="middle">v1</text>
+  <text x="68" y="88" class="d-s" text-anchor="middle">1 つのチェーンの</text>
+  <text x="68" y="106" class="d-s" text-anchor="middle">ブラウザ拡張</text>
+  <text x="68" y="130" class="d-s" text-anchor="middle">（動画の説明）</text>
+
+  <rect x="124" y="40" width="104" height="112" rx="8" class="d-box-accent"/>
+  <text x="176" y="64" class="d-t" text-anchor="middle">v2</text>
+  <text x="176" y="88" class="d-s" text-anchor="middle">動画では「5 月」</text>
+  <text x="176" y="106" class="d-s" text-anchor="middle">GitHub：4 月 28 日</text>
+  <text x="176" y="130" class="d-s" text-anchor="middle">配管の作り直し</text>
+
+  <rect x="232" y="40" width="104" height="112" rx="8" class="d-box-plain"/>
+  <text x="284" y="64" class="d-t" text-anchor="middle">収録</text>
+  <text x="284" y="88" class="d-s" text-anchor="middle">7 月上旬と推定</text>
+  <text x="284" y="106" class="d-s" text-anchor="middle">2.1 は「近日中」</text>
+  <text x="284" y="130" class="d-s" text-anchor="middle">Carbon は「今月」</text>
+
+  <rect x="340" y="40" width="104" height="112" rx="8" class="d-box"/>
+  <text x="392" y="64" class="d-t" text-anchor="middle">2.1.0</text>
+  <text x="392" y="88" class="d-s" text-anchor="middle">GitHub：7 月 9 日</text>
+  <text x="392" y="106" class="d-s" text-anchor="middle">安定性の修正</text>
+  <text x="392" y="130" class="d-s" text-anchor="middle">（公開後に確認）</text>
+
+  <rect x="448" y="40" width="104" height="112" rx="8" class="d-box-plain"/>
+  <text x="500" y="64" class="d-t" text-anchor="middle">公開</text>
+  <text x="500" y="88" class="d-s" text-anchor="middle">9 月 2 日</text>
+  <text x="500" y="106" class="d-s" text-anchor="middle">この動画</text>
+  <text x="500" y="130" class="d-s" text-anchor="middle">2.2.3 まで出ている</text>
+
+  <rect x="556" y="40" width="104" height="112" rx="8" class="d-box-warn"/>
+  <text x="608" y="64" class="d-t" text-anchor="middle">Carbon</text>
+  <text x="608" y="88" class="d-s" text-anchor="middle">「今月後半」に</text>
+  <text x="608" y="106" class="d-s" text-anchor="middle">オプトインで</text>
+  <text x="608" y="130" class="d-s" text-anchor="middle">時期は未確認</text>
+
+  <line x1="16" y1="172" x2="660" y2="172" class="d-line"/>
+
+  <rect x="16" y="190" width="14" height="14" rx="3" class="d-box-accent"/>
+  <text x="38" y="202" class="d-s">動画で語られたもの</text>
+  <rect x="180" y="190" width="14" height="14" rx="3" class="d-box"/>
+  <text x="202" y="202" class="d-s">公開後にリリース履歴で確認したもの（補足）</text>
+  <rect x="16" y="216" width="14" height="14" rx="3" class="d-box-plain"/>
+  <text x="38" y="228" class="d-s">こちらの推定</text>
+  <rect x="180" y="216" width="14" height="14" rx="3" class="d-box-warn"/>
+  <text x="202" y="228" class="d-s">動画では予定として語られ、結果は未確認</text>
+  <text x="340" y="258" class="d-s" text-anchor="middle">「今年 5 月」と 4 月 28 日の食い違いは、両方そのまま示しています</text>
+</svg>
+<p class="figcap">v2 の時期は、動画の「今年の 5 月」と GitHub の 4 月 28 日で食い違います。<span class="badge">補足</span>5 月初旬に 2.0.1〜2.0.4 の修正版が続いているので、本人の記憶が修正版の時期と重なっている可能性はありますが、動画では確認できません。2.1.0 の GitHub 上の説明は「信頼性に重点を置いたアップデート」で、動画の予告と合っています。</p>
+</div>
+
+<p><span class="badge">補足</span>動画公開後の結果として。2.1.0 は 2026 年 7 月 9 日に、2.2.0（ハードウェアウォレット対応）は 7 月 23 日に、2.2.3 は 9 月 1 日に公開されています。「ほとんど、あるいは全部」が実際に直ったかどうかは、この動画からも、リリース履歴からも判断できません。</p>
+
+
+<h2 id="carbon">3. Carbon — 見た目の刷新と、AI がチームに問うもの</h2>
+<p class="deck">配管の次は内装。オプトインで出す。そして「エンジニアの役割とは何か」。</p>
+
+<p>司会が Lace のマスコット Dave（イグアナ）の名で振ると、Nate Strang は Carbon を「v2 を出してからずっと取り組んできたもの」と説明しました。意味は 2 つある、と。</p>
+
+<ul>
+  <li><strong>ユーザーインターフェースの現代化。</strong>v2 が土台の全面見直しだったのと同じことを、今度は見た目に対してやる。「まず気づくのは、アプリの見た目と操作感がまったく新しくなっていること」。v2 以降、Lace のデザイン言語をどうするかを検討してきた結論が Carbon で見える、と。<strong>「今月後半」に、任意で切り替えるオプトインの体験として出す</strong>と述べられました。</li>
+  <li><strong>AI がチームに問うものの表れ。</strong>AI がとくにソフトウェア開発のあらゆる場所にある中で、「AI でどう速く作るか」ではなく、これらのツールが開発チームの役割、エンジニアの役割にとって何を意味し、将来どうあるべきかを問うた。その問いの結果でもある、と。</li>
+</ul>
+
+<p>2 つ目の中身は、これ以上は語られていません。「バイブコーダー」「エージェンティック・エンジニア」と司会とふざけ合ったあと、Crypto Crow が話題を「自分の AI エージェントを Lace につなげる計画はあるか（MCP や CLI のような）」に移しました。</p>
+
+<p>これに対する答えは明確で、<strong>「すぐにはない」</strong>。エージェントによる取引は Web3 で確かに話題だが、できるだけ早く出すことを優先してはいない。ほかのプレイヤーに実験してもらい、何が効くかを見て、「最初に動く者（first mover）ではなく、最初に改善する者（first improver）」になりたい、と。これまでに「高くついた失敗」をいくつか見てきた、という言い方でした。</p>
+
+<p><span class="badge">補足</span>同じ時期に Charles Hoskinson は本人のチャンネルで「エージェント金融」を第 4 世代の柱として語っています（姉妹サイトの <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#agentic">2026-07-26 A Dose of Alpha「エージェント金融」</a>）。構想としての方向と、ウォレットの製品担当が「すぐにはやらない」と言う優先順位は別のもので、この動画はその差が見える回です。</p>
+
+<p><span class="badge">補足</span>動画公開後の結果として。Lace の公式 X アカウントは 2026 年 7 月に、Carbon を 2.1 経由のオプトインのベータとして「間もなく」提供すると投稿しています（検索結果の要約から。原文の日付は未確認）。2026 年 9 月 10 日時点で、Carbon が実際に提供されているかどうかは確認できていません。</p>
+
+
+<h2 id="users">4. ウォレットは誰のためのものか</h2>
+<p class="deck">投機家から送金に使う人まで。誰にも応えられていない理由は「プロダクトリサーチ」だと言う。</p>
+
+<p>Wendy O の「crypto でいちばん大きな問題で、Lace で解きたいものは」という問いに、Nate Strang は<strong>顧客の多様さ</strong>を挙げました。一方の端に純粋な投機家やミームコインで一儲けしたい人（資本を持ち込むので「ある意味では有害で、ある意味では価値がある」）、もう一方の端に自国の通貨の代わりにデジタル資産で買い物や家族への送金をする人。業界はまだ、この異なるグループに合ったアプリを出せていない、と。</p>
+
+<p>新しく入ってきた人にとって、何に注意して何が雑音かを見分けるのは「とても混乱する」。既存ユーザーは優先であり続けるが、「そうあるべきなのか」と本人が問いを挟んだところで、司会 2 人が「ウォレットは誰にとっても入り口」「保管する場所がなければ分散化の意味がない」「なぜ簡単なユーザーガイドが組み込まれていないのか」と続けました。</p>
+
+<p>Nate Strang の診断は、ウォレットの体験が遅れてきた理由は<strong>プロダクトリサーチ</strong>だ、というものです。顧客が何を必要としているかを従来のプロダクトの意味で理解することが、Web3 では難しい。新しい技術が毎日出て、いちばん声の大きいユーザーの要望は変わり、しかも「実際に必要なものとは違う」ことが多い。その結果、多くのチームが、実証済みの手法を使っていちばん重要な体験を見極める「大変な一連の活動」に投資していない、と述べました。</p>
+
+<p>この話は、次の節の<strong>オンボーディング</strong>につながります。ユーザーに自分の意図と経験の度合いを表明してもらい、ウォレットの側で体験を編集して、最初の一歩に「ガードレール」を置く。大金を失ったり、怖がって離れたりしないように、と。</p>
+
+<p>Crypto Crow が「AI が Lace で直接の役割を果たすか」と聞くと、答えは<strong>「ウォレットにチャットボットを入れることには複雑な思いがある」</strong>でした。利点はあるが「少し怠惰」。Wendy O は、ボットが境界の不足で暴走する OPSEC（運用上の安全）のリスクを挙げています。Nate Strang は、ChatGPT や Claude のようなチャット画面が唯一の解ではなく、目標や経験を聞き取るオンボーディングに LLM の機能を組み込めば、テキストボックスなしで同じ利点が得られる、と述べました。</p>
+
+
+<h2 id="onboarding">5. Carbon のオンボーディング — フレーズと段階的開示</h2>
+<p class="deck">クリップボードにコピーさせない。資金を入れたあと、選択肢を一度に見せない。</p>
+
+<p>Crypto Crow が「初めてウォレットを持つ人が Carbon で何を見るのか」と聞きました。Nate Strang はオンボーディングで改善される点を 2 つ挙げています。</p>
+
+<ul>
+  <li><strong>リカバリーフレーズの扱い。</strong>自分で鍵を持つウォレットでフレーズをどう記録させるかは「ウォレットが生まれて以来のデザイン上の問い」。Carbon では<strong>セキュリティ最優先</strong>に寄せる。「退化と見る人もいるかもしれない」と断りつつ、ユーザーの守り方が緩いことで攻撃の経路が多すぎた、と。すぐでなくてよいがどこかでフレーズを記録してもらう必要があり、<strong>クリップボードにはコピーできない</strong>。</li>
+  <li><strong>段階的開示。</strong>登録を終えたら、まずやることは資金を入れること。それをしても無限の選択肢は出てこない。ウォレットから触れる機能や Web3 の体験は、順を追って紹介される。</li>
+</ul>
+
+<div class="term">
+<p class="term-name">段階的開示 <small>progressive disclosure、動画の中の言葉</small></p>
+<p>「選択的開示、あるいは段階的開示と言えるもの」と説明されました。ユーザーが「次は何をすればいい？」と座り込むことがないように、必要になった順に機能を出す設計です。<span class="badge">補足</span>元はソフトウェアのユーザーインターフェース設計の用語で、初心者には基本だけを見せ、慣れるにつれて高度な機能を出す手法を指します。「新しい人がいきなり自分の AI エージェントを設定させられるべきではない」という例が、その文脈で出ています。</p>
+</div>
+
+<p>クリップボードの話には司会 2 人が強く同意し、Wendy O は昔の事故の例として Ian Balina の名前を挙げています（「クラウドのテキストに保存していて誰かに読まれたのでは」という記憶で、本人も「間違っているかもしれないが」と断っています）。Crypto Crow は自分のフレーズを金庫や貸金庫に置いていると述べました。</p>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>そもそも「リカバリーフレーズ」とは</h4>
+<p>Lace のような<strong>非カストディアル</strong>（自分で鍵を持つ）ウォレットでは、業者が鍵を預かりません。代わりに 12〜24 語の単語の列が鍵の元になっていて、これがあればどの端末でもウォレットを復元できます。裏返せば、<strong>この単語列を見た人は誰でも中身を動かせる</strong>、ということです。</p>
+<h4>なぜクリップボードにコピーさせないのか</h4>
+<p>コピーした文字列は、クリップボードを読む別のソフトに拾われたり、メモアプリ経由でクラウドに同期されたりします。動画で挙げられた「クラウドのテキストに保存していた」事故はその典型です。紙に書くのは不便ですが、ネットワークにつながっていない、というのが利点です。</p>
+<h4>身近なものへのたとえ</h4>
+<p>家の合鍵を、写真に撮ってクラウドに置くか、金庫にしまうかの違いです。Carbon は「写真に撮る」ボタンをなくす、という設計だと言っています。</p>
+<h4>この動画では分からないこと</h4>
+<p>コピーを禁じる以外に、フレーズの記録をどう確認するのか（書き取りのテストがあるのか、後回しにした場合にいつ促されるのか）は語られていません。「すぐにやる必要はないかもしれないが、どこかの時点で」とだけです。</p>
+</div>
+</details>
+
+<p>Nate Strang は、Ethereum の RabbitHole（報酬付きで使い方を学ばせる仕組み）を「十分に注目されていない」成功例として挙げ、新しい言葉と新しい体験を案内する責任は「ウォレットの仕事であり、作り手全員の仕事」だと述べています。</p>
+
+
+<h2 id="defi">6. Pogun の貸し借り市場と RealFi</h2>
+<p class="deck">「2026 年末のいちばんの使い道」には答えず、代わりに IO の 2 つの取り組みを語った。</p>
+
+<p>Wendy O の「2026 年末までの Lace のいちばんのユースケースは」という問いに、Nate Strang は「水晶玉があれば」と答え、年末か来年末かは分からないとしたうえで、<strong>Cardano の DeFi に「ようやく息を吹き込む」</strong>ことを作りたい、と方向を示しました。その最初の一歩が、Input Output の 2 つの取り組みです。</p>
+
+<ul>
+  <li><strong>Pogun のプロトコル群。</strong>「ピアツーピアのクレジット市場」を可能にするプロトコルとスマートコントラクト。ほかのプラットフォームにある「アルゴリズムで管理された貸し借り」ではなく、借り手と貸し手が直接交渉する。それによって、分散型の貸し借りでいちばんリスクの高い<strong>価格変動</strong>から借り手が守られる。「清算されるリスクがあるのは、合意した支払いを合意した予定どおりに行わない場合だけ」。</li>
+  <li><strong>RealFi。</strong>USDR という<strong>利回り付きのステーブルコイン</strong>を持つ。ほかのチェーンのリキッドステーキングトークンに似た働きで、利回りを得ながら資産は流動的に使え、価格変動には晒されない、という説明。Lace では「2 クリックで RealFi のステークと利回りの受け取りを始められる」。</li>
+</ul>
+
+<p><span class="badge">補足</span>2 つとも、姉妹サイトの RealFi のコールで扱っています。Pogun は「非証拠金型のクレジット市場」として、オラクル価格での日中の強制清算を使わず、金利・期間・担保・デフォルト条件を当事者が合意する、という設計が示されており（<a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#tech">2026-07-26 A Dose of Alpha</a>、2026 年 8 月 1 日時点の提案上のロードマップ）、この動画の「支払いが遅れたときだけ清算」と一致します。USDR の裏付けと利回りの出どころは <a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/#tokens">2026-08-06 GTM 回</a> にあり、RealFi 側は Lace を「スワップの出入りとステークができる専用の体験」を作るウォレットパートナーだと説明しています（<a href="https://shiodome47.github.io/2026RealFi/2026-08-14-ask-the-ceo/#launch">2026-08-14 Ask the CEO</a>）。「2 クリック」は、Lace 側から見たその体験の説明です。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「価格が下がっても清算されない」なら、そのリスクは誰が負うのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、動画はそこに触れていません。</strong>担保の値段が下がったときに損をする誰かは必ずいます。借り手が守られるなら、その分は貸し手の側に残ります。</p>
+<h4>なぜ「守られる」と言えるのか</h4>
+<p>ふつうの DeFi の貸し借り（アルゴリズム型）は、担保の価値が借入額に対して一定の比率を割った瞬間に、自動で担保を売って貸し手を守ります。借り手にとっては、一晩の急落で担保を失うのがいちばんの恐怖です。Pogun の説明は、その自動売却をなくし、「約束どおり返しているかどうか」だけで清算を決める、というものです。借り手から見れば、確かに価格変動で清算されなくなります。</p>
+<h4>では貸し手は</h4>
+<p>貸し手は、担保の値下がりと、借り手の返済の遅れの両方を自分で見ることになります。その代わりに、金利や担保の量、期間を借り手と直接交渉できる、というのが「ピアツーピア」の意味です。つまりリスクが消えるのではなく、<strong>自動の仕組みから、当事者の合意へ移る</strong>のです。</p>
+<h4>外から見分ける方法</h4>
+<p>「担保の価値が借入額を下回ったとき、貸し手は何ができるか」を聞けば足ります。答えが「合意した条件にしたがって」なら P2P 型、「自動で売られる」ならアルゴリズム型です。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>貸し手が誰なのか（個人か、機関か）、担保をどれくらい入れるのか、返済が遅れたときに担保がどう処分されるのかは、語られていません。</p>
+</div>
+</details>
+
+
+<h2 id="carry">7. キャリートレード</h2>
+<p class="deck">ADA を担保に借りて、借りたものを RealFi にステークする。返済の自動化は「最初は非対応」。</p>
+
+<p>Crypto Crow が「両方を同時にできるか」と聞き、Nate Strang が「そこが面白いところ」と答えた場面が、この回の冒頭のダイジェストにも使われています。2 つはそれぞれ独立して成り立つが、組み合わせると「もっと面白いことができる」。Crow が「もっと儲かる」と要約し、Nate も「もっと儲けられます」と応じました。</p>
+
+<div class="term">
+<p class="term-name">キャリートレード <small>carry trade、動画の中の言葉</small></p>
+<p>伝統的金融で何十年も前からある言葉で、<strong>ある資産を差し入れて借り、その資産の利回りを得続けながら、借りたものを別の利回りに回す</strong>取引、と説明されました。<span class="badge">補足</span>本来は「低い金利で借りて高い利回りで運用し、差を取る」取引の総称です。差がプラスなら「ポジティブ・キャリー」と呼びます。差がマイナスになれば、持っているだけで損が出ます。</p>
+</div>
+
+<p>Nate Strang が示した流れは次のとおりです。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 336" role="img" aria-label="ADA を担保に Pogun のクレジット市場でステーブルコインを借り、それを RealFi にステークして、ADA の報酬と USDR の利回りの両方を得るキャリートレードの流れの図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">① ADA を担保に入れる</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">貸付契約の担保として差し入れる</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">ADA は手放さない</text>
+
+  <line x1="220" y1="65" x2="236" y2="65" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="240" y="20" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">② Pogun で借りる</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">P2P のクレジット市場で</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">ステーブルコイン（例：USDCx）</text>
+
+  <line x1="444" y1="65" x2="460" y2="65" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="464" y="20" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">③ RealFi にステーク</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">借りたステーブルコインを</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">USDR としてステークする</text>
+
+  <line x1="116" y1="114" x2="116" y2="138" class="d-line" />
+  <line x1="340" y1="114" x2="340" y2="138" class="d-line" />
+  <line x1="564" y1="114" x2="564" y2="138" class="d-line" />
+
+  <rect x="16" y="142" width="200" height="90" rx="8" class="d-box"/>
+  <text x="116" y="170" class="d-t" text-anchor="middle">＋ ADA の報酬は続く</text>
+  <text x="116" y="194" class="d-s" text-anchor="middle">ステーキング報酬と</text>
+  <text x="116" y="214" class="d-s" text-anchor="middle">「期待する」値上がり</text>
+
+  <rect x="240" y="142" width="200" height="90" rx="8" class="d-box-warn"/>
+  <text x="340" y="170" class="d-t" text-anchor="middle">− ローンの利息を払う</text>
+  <text x="340" y="194" class="d-s" text-anchor="middle">価格が下がっても清算されず</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">返済が遅れたときだけ清算</text>
+
+  <rect x="464" y="142" width="200" height="90" rx="8" class="d-box"/>
+  <text x="564" y="170" class="d-t" text-anchor="middle">＋ USDR の利回り</text>
+  <text x="564" y="194" class="d-s" text-anchor="middle">「2 つ目の利回り」</text>
+  <text x="564" y="214" class="d-s" text-anchor="middle">Lace から 2 クリック、と</text>
+
+  <rect x="16" y="252" width="648" height="68" rx="7" class="d-box-plain"/>
+  <text x="340" y="278" class="d-t" text-anchor="middle">最終目標：利回りでローンを自動返済し、「何も触らなくていい」</text>
+  <text x="340" y="302" class="d-s" text-anchor="middle">「最初のロールアウトではネイティブには対応しない」と明言。時期は語られていない</text>
+</svg>
+<p class="figcap">Nate Strang の説明を 3 段に並べたものです。＋と−はこちらの整理で、動画では「ADA から利回りを得ている。ローンには利息を払っている」と述べられています。<span class="badge">補足</span>金利や利回りの数字は、動画では一つも出ていません。</p>
+</div>
+
+<p>Crypto Crow が「ADA のステーキング報酬と USDR の利回りを合わせてローンの返済に充てられるか」と聞くと、答えは<strong>「それはおそらく、最初のロールアウトではネイティブには対応しない」</strong>でした。Crow が「今さら手を抜くな」と返し、Nate は「期待値を調整しているだけ」。ただし最終目標はそこにある、と続けています。報酬を自動で受け取り、何もしなくても支払いが済み、「利回りの差分」から恩恵を受ける状態。</p>
+
+<p>Crow はこれを「銀行がブロックチェーンのレールを採用して、借りたら利回りで車や家のローンが返っていくシステム」の話につなげ、Nate Strang は「分散化の伝道師になるつもりはないが」と断ったうえで、銀行がそれを自動化させないのは<strong>手数料を取る仲介者が減るから</strong>だ、と述べました。「1 人、2 人、3 人のプレイヤーだけなら、『手数料をよこせ』と言う人がいない」。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 利回りが 2 つあれば、必ず得なのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。数字はすべて<strong>説明のための仮の数字</strong>で、実際の金利や利回りではありません。</p>
+<p><strong>その疑問は正しく、得かどうかは「借りる金利」次第です。</strong>動画には金利も利回りも数字が出ていないので、儲かるとも損するとも言えません。</p>
+<h4>足し算と引き算に分ける</h4>
+<ul>
+  <li>＋ ADA のステーキング報酬（仮に年 3%）</li>
+  <li>＋ USDR の利回り（仮に年 8%。<strong>あくまで仮の数字</strong>）</li>
+  <li>− ローンの金利（仮に年 6%。<strong>あくまで仮の数字</strong>）</li>
+</ul>
+<p>この仮の数字なら、ADA 100 万円分を担保に 50 万円分を借りたとして、報酬 3 万円＋利回り 4 万円−利息 3 万円で、年 4 万円のプラスです。ところが金利が仮に 10% なら、3 万円＋4 万円−5 万円で 2 万円。USDR の利回りが下がれば、簡単にマイナスになります。</p>
+<h4>「価格変動で清算されない」の裏側</h4>
+<p>ADA の値段が下がっても清算はされない、という説明でした。ただし借りているのはステーブルコインなので、返す額は減りません。ADA が半分になれば、担保の価値も半分になったまま、同じ額を返す必要があります。清算されないことと、損をしないことは別です。</p>
+<h4>外から見分ける方法</h4>
+<p>「借りる金利」と「USDR の利回り」を並べて、差がプラスかどうかを見れば足ります。差がマイナスなら、ADA の報酬で埋められるかどうかの話になります。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>金利、利回り、担保の比率、いずれも数字はありません。姉妹サイトの RealFi のコールでは、別の組み立て（Liqwid で ADA を担保に USDC を借りる「ポジティブ・キャリー」）が仮の数字つきで説明されています（<a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/#mainnet">2026-08-06 GTM 回</a>）。そちらはアルゴリズム型の貸し借りを使う案で、この動画の Pogun 経由とは経路が違います。</p>
+</div>
+</details>
+
+<p><span class="badge">補足</span>動画公開後の結果として。RealFi は 2026 年 8 月に、USDR という名前が使えないことが分かったとして改称をコミュニティ投票にかけ、8 月 26 日の締切で <strong>USDrf / sUSDrf</strong> の案が選ばれています（<a href="https://shiodome47.github.io/2026RealFi/2026-08-24-office-hours-ticker/#vote">2026-08-24 Ticker 回</a>）。この動画は 7 月の収録なので USDR のままで、このページも動画のとおり USDR と書いています。切り替えの完了時期は、あちらの回でも示されていません。</p>
+
+
+<h2 id="outlook">8. 弱気相場、ベータプログラム、要望</h2>
+<p class="deck">「重要なものは弱気相場で作られる」。出す前に聞く仕組みを始める。</p>
+
+<p>「いちばん楽観していることは」という問いに、Nate Strang は 8 年、4 回の市場サイクルを見てきた経験から、<strong>弱気相場のときに重要なものが作られる</strong>、と答えました。雑音が静まり、前回の熱狂で何が効いて何が効かなかったかを見極められる時期だから、と。「この 3、6、9 か月」で話してきたものを出していき、次の強気相場と「Cardano の新しい章」を迎え入れたい、という言い方でした。</p>
+
+<p>最後に足したのが<strong>ベータプログラム</strong>です。意欲のあるユーザーに早い段階で試してもらい、リリース前にチームがフィードバックを受ける。「リリース後まで待っていたら最初に耳にしていたであろうこと」を事前に直すため。フォーカスグループと対象を絞った調査も行う、と。情報は Lace のソーシャルで出す、と述べられ、Crypto Crow は「確定する前にフィードバックを取るのは IO 全体に共通する流れ」と評しています。<span class="badge">補足</span>ベータの開始時期と参加方法は語られていません。</p>
+
+<p>要望の時間もありました。Crypto Crow は「用途ごとにウォレットにテーマを付けたい（カラスのテーマがあればよい）」。Nate Strang はそれを「ウォレットの中の LLM に向いたタスク」と受け、Crow は「5 つくらいのテーマから選ぶセレクターで十分」と下方修正しました。Wendy O は要望なし。締めの雑談は、マスコットのイグアナ Dave が色を変えられるかどうか、でした。</p>
+
+
+<h2 id="overall">9. 全体像</h2>
+<p class="deck">土台、見た目、中身の順。全部が「出す前に聞く」に向かっている。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="v2 の土台、Carbon の見た目と導線、Pogun と RealFi の中身、という 3 段の積み上げと、それを支えるベータプログラムの図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="130" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">土台 — v2 / 2.1</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">配管の作り直し</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">複数チェーン、モバイル</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">不安定になり 2.1 で修正</text>
+  <text x="116" y="134" class="d-s" text-anchor="middle">「少し早すぎたかも」</text>
+
+  <line x1="220" y1="85" x2="236" y2="85" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="240" y="20" width="200" height="130" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">見た目と導線 — Carbon</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">UI の刷新、オプトイン</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">フレーズはコピー不可</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">段階的開示</text>
+  <text x="340" y="134" class="d-s" text-anchor="middle">エージェント連携は後回し</text>
+
+  <line x1="444" y1="85" x2="460" y2="85" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="464" y="20" width="200" height="130" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">中身 — Pogun と RealFi</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">P2P の貸し借り市場</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">利回り付きステーブルコイン</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">2 クリック、キャリートレード</text>
+  <text x="564" y="134" class="d-s" text-anchor="middle">自動返済は「最初は非対応」</text>
+
+  <rect x="16" y="176" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="200" class="d-t" text-anchor="middle">出す前に聞く — ベータプログラム、フォーカスグループ、調査</text>
+  <text x="340" y="220" class="d-s" text-anchor="middle">v2 の反省（出してから聞いた）を、次からは逆にする、という位置づけ</text>
+
+  <rect x="16" y="248" width="648" height="40" rx="7" class="d-box-warn"/>
+  <text x="340" y="273" class="d-s" text-anchor="middle">時期は「近日中」「今月後半」「3、6、9 か月」。収録は公開の約 2 か月前（こちらの推定）</text>
+</svg>
+<p class="figcap">3 段に積んだのはこちらの整理です。動画では v2 と Carbon が「土台」と「見た目」として対比され、DeFi の 2 つは「最初の一歩」として別に語られています。<span class="badge">補足</span>「出す前に聞く」を v2 の反省と結びつけたのもこちらの読みで、本人は v2 の教訓とベータプログラムを直接はつなげていません。</p>
+</div>
+
+
+<h2 id="qa">10. やり取りから</h2>
+<p class="deck">インタビュー形式なので、司会の問いと答えを 4 つ抜き出した。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Crypto Crow</span>Lace が日によって固まる。今、何が起きているのか。</p>
+<p class="qa-a" data-by="Nate Strang">v2 は 2 年かけた大規模な書き直しで、リリース後に安定性の問題が出た。「あとから見れば、少し早すぎたかもしれない」。<strong>2.1 で「ほとんど、あるいは全部」直す</strong>と述べ、公開時点では出ている、と。<span class="badge">補足</span>2.1.0 は 2026 年 7 月 9 日に公開されています。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Crypto Crow</span>自分の AI エージェントを Lace につなげる計画（MCP、CLI など）はあるか。</p>
+<p class="qa-a" data-by="Nate Strang">「すぐにはない」。エージェント取引は話題だが、最優先で出すものではない。ほかに実験してもらい、<strong>「最初に動く者ではなく、最初に改善する者」</strong>になりたい、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Wendy O</span>2026 年末までの Lace のいちばんのユースケースは。</p>
+<p class="qa-a" data-by="Nate Strang（直接は答えず）">「水晶玉があれば」。年末か来年末かは分からない、として、代わりに Cardano の DeFi に息を吹き込むための 2 つ——Pogun の貸し借り市場と RealFi——を語りました。<strong>「いちばん」が何かは言っていません。</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Crypto Crow</span>ADA の報酬と USDR の利回りを合わせて、ローンの返済に充てられるか。</p>
+<p class="qa-a" data-by="Nate Strang">「まさに」そうしたいが、<strong>最初のロールアウトではネイティブには対応しない</strong>。「期待値を調整しているだけ」。最終目標として、報酬を自動で受け取り、何もしなくても支払いが済む状態を挙げました。</p>
+</div>
+
+
+<h2 id="pending">11. 答えが出なかったこと</h2>
+<p class="deck">時期の言葉はすべて収録月の基準。数字は一つも出ていない。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期のみ</span>Carbon はいつ出るのか。</p>
+<p class="qa-a" data-by="「今月後半」">収録月（7 月上旬と推定）の「今月後半」にオプトインで、と述べられました。<span class="badge">補足</span>Lace の X が 7 月に「2.1 経由のオプトインのベータとして間もなく」と投稿していますが、2026 年 9 月 10 日時点で実際に提供されているかは確認できていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">予定のみ</span>Pogun と RealFi の機能は、Lace にいつ入るのか。</p>
+<p class="qa-a" data-by="「3、6、9 か月」">「この 3、6、9 か月で出していく」という言い方だけで、どれがいつかは示されていません。<span class="badge">補足</span>Pogun 自体が 2026 年 8 月 1 日時点で提案上のロードマップだったこと（姉妹サイトの用語集）を考えると、Lace 側の時期はさらにその先です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>利回りでローンを自動返済する機能はいつか。</p>
+<p class="qa-a" data-by="「最初は非対応」">「最終目標」とだけ。最初のロールアウトには入らない、と明言されています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未説明</span>Pogun の貸し借り市場で、貸し手は誰で、担保の値下がりのリスクは誰が負うのか。</p>
+<p class="qa-a" data-by="借り手側の説明のみ">「借り手が価格変動から守られる」という説明はありましたが、貸し手の側、担保の比率、返済が遅れたときの担保の扱いは語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未説明</span>AI が「エンジニアの役割」に何を意味するのか、という問いの結論。</p>
+<p class="qa-a" data-by="問いのみ">Carbon は「その問いの表れでもある」と述べられましたが、問いの答え（チームの体制がどう変わったのか）は語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>ベータプログラムの開始と参加方法。</p>
+<p class="qa-a" data-by="「ソーシャルで」">「情報はソーシャルで公開する」とだけ。フォーカスグループと調査も同様です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">聞き取れず</span>Crypto Crow の「dereppp の負荷」。</p>
+<p class="qa-a" data-by="特定できず">Lace が固まる要因として挙げた言葉が字幕では「dereppp」で、何を指すか特定できません。全文では聞こえたまま残しています。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は Input Output Group の公式 YouTube チャンネルで公開されている動画 <a href="https://www.youtube.com/watch?v=ZTuU9vwpmts">Block//45 - Lace Wallet Interview with Nate Strang</a>（公開日 2026-09-02、36 分 05 秒）です。公開動画なので発言者は実名のまま書いています。収録は 2026 年 7 月上旬と推定され、本文の「今月」「近日中」はその基準です。</p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回は字幕だけから作っており画面は確認していないので、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>動画公開後の結果</strong>として足したものは、Lace のリリース履歴（2.1.0、2.2.x）、Carbon に関する X の投稿、RealFi のティッカー改称の 3 点で、いずれも <span class="badge">補足</span> と日付を付けています。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Nate Strang of Lace, Cardano's wallet from Input Output, concedes that <strong>rebuilding the foundation in v2 made the app unstable</strong>, then lays out what comes next.<br>
+  An opt-in visual overhaul called Carbon, an onboarding that reveals features step by step, and a <strong>“carry trade”</strong> that joins two Input Output initiatives, Pogun's credit market and RealFi's yield-bearing stablecoin, in two clicks inside Lace. The recording predates publication by about two months, so “in the coming days” and “later this month” need that context.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>v2 was the plumbing.</strong> Nearly two years rewriting a single-chain browser extension into a base that can take new chains and mobile. The cost, he admits, was instability after release: hanging transactions, DApps that would not connect. A 2.1 update “in the coming days” fixes “most if not all” of it.</li>
+  <li><strong>Carbon is the look, and it is opt-in.</strong> Due “later this month” as an optional experience. He also frames it as the outcome of asking what AI tools mean for the role of a software team.</li>
+  <li><strong>Agent hooks: “not in the immediate future.”</strong> He would rather be “the first improver” than the first mover, and has “mixed feelings” about a chatbot inside a wallet.</li>
+  <li><strong>Onboarding gets rebuilt for newcomers.</strong> The recovery phrase cannot be copied to the clipboard; after funding, the user is not faced with every option at once but walked through features in sequence.</li>
+  <li><strong>Pogun and RealFi inside Lace.</strong> Pogun's credit market is peer-to-peer negotiation: no liquidation on price moves, only on missed payments, he says. RealFi's USDR is a yield-bearing stablecoin you can stake from Lace “in two clicks.”</li>
+  <li><strong>Together they make a “carry trade.”</strong> Post ADA as collateral, borrow a stablecoin, stake it in RealFi, and earn on both. Paying the loan down from the yield automatically is “not going to be natively supported in the first rollout”; it is the end goal.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking, and when it was recorded</a></li>
+  <li><a href="#en-v2"><span class="n">02</span>v2 was the plumbing; it wobbled, and 2.1 fixes it</a></li>
+  <li><a href="#en-carbon"><span class="n">03</span>Carbon: a new look, and what AI asks of the team</a></li>
+  <li><a href="#en-users"><span class="n">04</span>Who wallets are for</a></li>
+  <li><a href="#en-onboarding"><span class="n">05</span>Onboarding in Carbon: the phrase, and progressive disclosure</a></li>
+  <li><a href="#en-defi"><span class="n">06</span>Pogun's credit market and RealFi</a></li>
+  <li><a href="#en-carry"><span class="n">07</span>The carry trade</a></li>
+  <li><a href="#en-outlook"><span class="n">08</span>Bear markets, a beta programme, requests</a></li>
+  <li><a href="#en-overall"><span class="n">09</span>The whole picture</a></li>
+  <li><a href="#en-qa"><span class="n">10</span>From the exchange</a></li>
+  <li><a href="#en-pending"><span class="n">11</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking, and when it was recorded</h2>
+<p class="deck">Two outside hosts and Lace's product lead. Recorded about two months before it was published.</p>
+
+<p>An episode of “Block//45,” a show on Input Output Group's official channel. Two crypto broadcasters host; the guest is from Lace.</p>
+
+<ul>
+  <li><strong>Wendy O</strong> — host. “Welcome back to Block 45. I'm Wendy O.” <span class="badge">added</span> Broadcasts as Crypto Wendy O.</li>
+  <li><strong>Crypto Crow</strong> — host. Cardano-leaning, self-described “kind of an OG” from “the old school where we still have bar brawls over chain tribalism,” and a Lace user with complaints. <span class="badge">added</span> Jason Appleton; the video only calls him Crow.</li>
+  <li><strong>Nate Strang</strong> — guest, Lace. In Web3 since early 2018, previously at Solflare, a Solana wallet, by his own account. <span class="badge">added</span> Product Manager at Lace, per public profiles. The video gives only his name and “from Lace.”</li>
+</ul>
+
+<p><span class="badge">added</span> Lace is the Cardano wallet (browser extension and mobile) built by Input Output. Since the video is on IOG's official channel, Nate Strang's statements read as Lace's own product account. The two hosts' judgements are their own.</p>
+
+<p><strong>Mind the recording date.</strong> Published 2 September 2026, but in the video 2.1 is “in the coming days,” Carbon is due “later this month,” and v2 “came out in May of this year.” <span class="badge">added</span> Lace's GitHub releases put 2.0.0 on 28 April and 2.1.0 on 9 July, so the conversation was most likely recorded in early July. Below, “this month” and “in the coming days” are read against that, and anything learned after publication is dated and marked.</p>
+
+
+<h2 id="en-v2">2. v2 was the plumbing; it wobbled, and 2.1 fixes it</h2>
+<p class="deck">A two-year rewrite of the foundation, shipped perhaps a little too soon, in his own words.</p>
+
+<p>Crypto Crow opens with a complaint. After recalling five-and-a-half-hour syncs on Daedalus (the full-node wallet) in the early days, he says that on Lace “it sometimes feels hit or miss”: some days “lickety split,” other days “it'll hang on me.”</p>
+
+<p>Nate Strang answers by explaining what v2 was. Almost two years of work on “our version two update,” a <strong>“massive rewrite, re-architecture of the application.”</strong> v1 was a web-extension platform supporting a single chain; the aim was to onboard new chains faster, support mobile and other platforms, and stop every new feature from risking “breaking things, slowing our entire technology and our entire infrastructure down.” So v2 was an investment in the foundation, “and I like to say the plumbing.”</p>
+
+<div class="term">
+<p class="term-name">Plumbing <small>the speaker's term</small></p>
+<p>The internal structure a user never sees. He calls v2 an investment in “the foundation and, I like to say, the plumbing,” and sets Carbon against it as “a similar overhaul and investment” in the user interface. <span class="badge">added</span> In house terms, v2 redid the pipes and wiring inside the walls and Carbon redoes the interior. The leak that followed the pipe work is what this section is about.</p>
+</div>
+
+<p>He then concedes “some performance, some stability issues that have followed that release,” and “some shortcomings with the release in terms of things that weren't working as smoothly as they could be.” Two reasons: the sheer size of the rewrite, and the wish to get it “into the hands of our users as quickly as we could.” “Hindsight's 20/20. Maybe we did it a little bit too soon.” The upside was community feedback that changed the priorities, which “were actually different from what we were optimizing for before we rolled out the update.”</p>
+
+<p>The fix is 2.1: “hanging transactions, not being able to connect to DApps easily, things like that,” “relatively minor but also frustrating,” fixed “most if not all.” Timing: “in the coming days,” and when a host notes the video will air later, “by the time this is out, they'll be live.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 270" role="img" aria-label="Timeline of Lace from v1 to v2, the recording, 2.1, publication and Carbon, distinguishing what was said in the video from what the release history shows">
+  <text x="340" y="22" class="d-s" text-anchor="middle">Dates as spoken in the video, next to the actual releases (GitHub history)</text>
+
+  <rect x="16" y="40" width="104" height="112" rx="8" class="d-box-accent"/>
+  <text x="68" y="64" class="d-t" text-anchor="middle">v1</text>
+  <text x="68" y="88" class="d-s" text-anchor="middle">single-chain</text>
+  <text x="68" y="106" class="d-s" text-anchor="middle">web extension</text>
+  <text x="68" y="130" class="d-s" text-anchor="middle">(as described)</text>
+
+  <rect x="124" y="40" width="104" height="112" rx="8" class="d-box-accent"/>
+  <text x="176" y="64" class="d-t" text-anchor="middle">v2</text>
+  <text x="176" y="88" class="d-s" text-anchor="middle">video: “May”</text>
+  <text x="176" y="106" class="d-s" text-anchor="middle">GitHub: 28 April</text>
+  <text x="176" y="130" class="d-s" text-anchor="middle">the plumbing</text>
+
+  <rect x="232" y="40" width="104" height="112" rx="8" class="d-box-plain"/>
+  <text x="284" y="64" class="d-t" text-anchor="middle">Recorded</text>
+  <text x="284" y="88" class="d-s" text-anchor="middle">early July (est.)</text>
+  <text x="284" y="106" class="d-s" text-anchor="middle">2.1 "coming days"</text>
+  <text x="284" y="130" class="d-s" text-anchor="middle">Carbon this month</text>
+
+  <rect x="340" y="40" width="104" height="112" rx="8" class="d-box"/>
+  <text x="392" y="64" class="d-t" text-anchor="middle">2.1.0</text>
+  <text x="392" y="88" class="d-s" text-anchor="middle">GitHub: 9 July</text>
+  <text x="392" y="106" class="d-s" text-anchor="middle">reliability fixes</text>
+  <text x="392" y="130" class="d-s" text-anchor="middle">(checked later)</text>
+
+  <rect x="448" y="40" width="104" height="112" rx="8" class="d-box-plain"/>
+  <text x="500" y="64" class="d-t" text-anchor="middle">Published</text>
+  <text x="500" y="88" class="d-s" text-anchor="middle">2 September</text>
+  <text x="500" y="106" class="d-s" text-anchor="middle">this video</text>
+  <text x="500" y="130" class="d-s" text-anchor="middle">2.2.3 already out</text>
+
+  <rect x="556" y="40" width="104" height="112" rx="8" class="d-box-warn"/>
+  <text x="608" y="64" class="d-t" text-anchor="middle">Carbon</text>
+  <text x="608" y="88" class="d-s" text-anchor="middle">later this month</text>
+  <text x="608" y="106" class="d-s" text-anchor="middle">opt-in</text>
+  <text x="608" y="130" class="d-s" text-anchor="middle">not yet confirmed</text>
+
+  <line x1="16" y1="172" x2="660" y2="172" class="d-line"/>
+
+  <rect x="16" y="190" width="14" height="14" rx="3" class="d-box-accent"/>
+  <text x="38" y="202" class="d-s">said in the video</text>
+  <rect x="180" y="190" width="14" height="14" rx="3" class="d-box"/>
+  <text x="202" y="202" class="d-s">checked against the release history after publication (added)</text>
+  <rect x="16" y="216" width="14" height="14" rx="3" class="d-box-plain"/>
+  <text x="38" y="228" class="d-s">our estimate</text>
+  <rect x="180" y="216" width="14" height="14" rx="3" class="d-box-warn"/>
+  <text x="202" y="228" class="d-s">stated as a plan in the video; outcome not confirmed</text>
+  <text x="340" y="258" class="d-s" text-anchor="middle">“May” versus 28 April is shown as it is, both ways</text>
+</svg>
+<p class="figcap">The v2 date differs: “May of this year” in the video, 28 April on GitHub. <span class="badge">added</span> Patch releases 2.0.1 to 2.0.4 followed in early May, which may be what he had in mind, but the video does not say. The GitHub note for 2.1.0 calls it a “reliability-focused update,” consistent with what he promised.</p>
+</div>
+
+<p><span class="badge">added</span> Post-publication: 2.1.0 shipped on 9 July 2026, 2.2.0 (hardware wallets) on 23 July, and 2.2.3 on 1 September. Whether “most if not all” of the problems were in fact fixed cannot be judged from the video or from the release notes.</p>
+
+
+<h2 id="en-carbon">3. Carbon: a new look, and what AI asks of the team</h2>
+<p class="deck">After the plumbing, the interior. Opt-in. And a question about what engineers are for.</p>
+
+<p>Prompted in the name of Dave, the Lace mascot iguana, Nate Strang describes Carbon as something “we've been working on essentially since we released V2.” It “represents a few different things.”</p>
+
+<ul>
+  <li><strong>Modernising the user interface.</strong> The same kind of overhaul v2 was for the foundation, now for the look. “The first thing you'll notice as a user is completely new look and feel of the application.” Since v2 they have been working out a design language for Lace, and Carbon is the conclusion. <strong>It “will be released as an optional, as an opt-in experience later this month.”</strong></li>
+  <li><strong>A representation of questions the team asked about AI.</strong> With AI “everywhere, especially in software development,” they looked not at “how can we use AI to build more quickly” but at “what do these tools mean as far as what the role of our software development team is? What are the roles of engineers? What should those look like in the future?”</li>
+</ul>
+
+<p>He does not say more about the second. After some joking about “vibe coders” and “agentic engineers,” Crypto Crow moves to whether Lace will get hooks (“the MCPs, the CLIs”) so his agents can connect to the wallet instead of taking over his computer.</p>
+
+<p>The answer is flat: <strong>“Not in the immediate future.”</strong> Agentic trading is “certainly a hot topic,” but not something Lace is prioritising shipping soon. He is “happy to let other players experiment with it, see what works and see what doesn't,” and be “not necessarily the first mover, but the first improver,” having seen “a few costly” mistakes so far.</p>
+
+<p><span class="badge">added</span> Around the same time Charles Hoskinson, on his own channel, was presenting “agentic finance” as a pillar of a fourth generation (sister site, <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#agentic">2026-07-26 A Dose of Alpha, “Agentic finance”</a>). A direction stated as vision and a product lead's “not in the immediate future” are different things; this video is where the gap shows.</p>
+
+<p><span class="badge">added</span> Post-publication: Lace's official X account posted in July 2026 that Carbon would “soon” be available as an opt-in beta through 2.1 (from a search summary; the post's exact date is unverified). As of 10 September 2026 it is not confirmed whether Carbon is actually available.</p>
+
+
+<h2 id="en-users">4. Who wallets are for</h2>
+<p class="deck">From speculators to people sending money home. The missing piece, he says, is product research.</p>
+
+<p>Asked by Wendy O for the biggest problem in crypto he would like Lace to solve, Nate Strang names <strong>“such a disparate number of customer segments.”</strong> At one end, pure speculators and people “coming in to get rich off of meme coins,” bringing capital that is “in some ways detrimental, but in some ways valuable”; at the other, people “using digital assets in place of their national currency to buy things, to send to their family members.” As a collective, he says, the space has not figured out how to serve those groups with the right applications.</p>
+
+<p>For a newcomer trying to work out what is in it for them, “it's very confusing to a user in understanding what to pay attention to and what's noise.” Existing users “are going to remain the priority, but should they be,” he asks, before the hosts pick it up: the wallet is “the gateway to everybody,” “the most important part of that particular blockchain,” and why do wallets never have “a very simplistic user guide built into them”?</p>
+
+<p>His diagnosis for why wallet experiences have lagged is <strong>product research</strong>. Customer discovery “in a traditional product sense has been and continues to be really difficult in web 3.” New technology ships every day; what the loudest users say they want changes, and “a lot of times differs from what they actually need.” The result is product teams “not investing in that hard set of activities to understand and apply tried and true product methodologies.”</p>
+
+<p>That leads into the next section, <strong>onboarding</strong>: letting users state their intentions and where they are, so the wallet can “curate the experience and put really important guard rails on” a first foray into Web3, protecting them from things that could “lose them a lot of money and maybe even scare them away.”</p>
+
+<p>When Crypto Crow asks whether AI will play a direct role in Lace, the answer is <strong>“I have mixed feelings about putting a chatbot into a wallet.”</strong> There are benefits, but “it's a bit lazy.” Wendy O raises the OPSEC risk of bots that “go rogue” for lack of boundaries. Nate Strang adds that the chat interface “we all are too familiar with,” “whether it's ChatGPT or Claude,” is not the only way to get an LLM's benefits: an onboarding that gathers context about goals and experience “doesn't have to be a text box that you type into.”</p>
+
+
+<h2 id="en-onboarding">5. Onboarding in Carbon: the phrase, and progressive disclosure</h2>
+<p class="deck">No copying to the clipboard. After funding, not every option at once.</p>
+
+<p>Crypto Crow asks what a first-time wallet user will see in Carbon. Nate Strang names two improvements to onboarding.</p>
+
+<ul>
+  <li><strong>Handling the recovery phrase.</strong> How to have users record it in a non-custodial wallet “has been a design question since wallets came to be.” Carbon shifts to <strong>“a security first approach.”</strong> “Some may see it as devolving,” but there have been “way too many attack vectors with being lax or being open-ended in terms of how users secure their wallets.” Users may not need to record the phrase right away, but at some point they must, and <strong>“they can't copy it to their clipboard.”</strong></li>
+  <li><strong>Progressive disclosure.</strong> After onboarding, the first thing to do is fund the account. After that “you're not going to be faced with an infinite number of options.” Capabilities are “introduced to the user in a way that is sequential.”</li>
+</ul>
+
+<div class="term">
+<p class="term-name">Progressive disclosure <small>the speaker's term</small></p>
+<p>“What you can see as selective disclosure or progressive disclosure”: the user is never “sitting there saying what do I do next?” because features appear in the order they are needed. <span class="badge">added</span> A standard term from interface design: show beginners the basics and reveal advanced features as they go. His example, that a newcomer “shouldn't be prompted to set up my own agent for the first time,” belongs to that idea.</p>
+</div>
+
+<p>Both hosts jump on the clipboard point. Wendy O recalls an old incident involving Ian Balina (“copied it to his cloud text or something,” with the caveat “I could be wrong”). Crypto Crow keeps his own phrases “locked away close to my gun” or in a safety deposit box.</p>
+
+<details class="explain">
+<summary>Dense section — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<h4>What a recovery phrase is</h4>
+<p>In a <strong>non-custodial</strong> wallet like Lace, no company holds your keys. Instead, a list of 12 to 24 words is the seed the keys are derived from, and with it the wallet can be restored on any device. The flip side: <strong>anyone who sees the words controls the funds.</strong></p>
+<h4>Why block the clipboard</h4>
+<p>Copied text can be read by other software watching the clipboard, or synced to the cloud through a notes app. The “cloud text” incident mentioned in the video is the classic case. Writing it on paper is inconvenient, but paper is not connected to a network.</p>
+<h4>An everyday comparison</h4>
+<p>Photographing your spare house key and saving it to the cloud, versus putting it in a safe. Carbon removes the “take a photo” button.</p>
+<h4>What the video does not say</h4>
+<p>Beyond blocking copy, how the recording is verified (a write-back test? when a user who deferred it is prompted again?) is not described. Only “they may not need to do it right away, but at some point.”</p>
+</div>
+</details>
+
+<p>He points to RabbitHole on Ethereum, an “incentivized education platform,” as a success that “doesn't get nearly enough attention,” and says guiding people through new language and new kinds of interaction is “the wallet's job. It's everyone's job as a builder.”</p>
+
+
+<h2 id="en-defi">6. Pogun's credit market and RealFi</h2>
+<p class="deck">He does not name a “number one use case” for 2026. He names two Input Output initiatives instead.</p>
+
+<p>To Wendy O's “what do you see as Lace's number one use case by the end of 2026?”, Nate Strang answers “I wish I had a crystal ball,” declines to pick a year, and instead says what Lace wants to catalyse: <strong>“finally breathing some life into DeFi on the Cardano ecosystem.”</strong> The first step is two Input Output initiatives.</p>
+
+<ul>
+  <li><strong>The Pogun set of protocols.</strong> Protocols and smart contracts that enable “a peer-to-peer credit market.” Instead of “an algorithmically governed borrow lending protocol as exists on other platforms,” there is “direct negotiation and interaction between a prospective borrower and a lender.” That protects the borrower from “the thing that is riskiest about decentralized borrow lending protocols, which is price volatility.” “The only thing that puts you at risk of being liquidated is if you are not making the agreed upon payments on the agreed upon schedule.”</li>
+  <li><strong>RealFi.</strong> It has “an asset called USDR which is a <strong>yield-bearing stable coin</strong>,” functioning much like a liquid staking token elsewhere: you earn a yield, the asset stays liquid, and it is not exposed to price swings. In Lace, “you can start staking and earning yield with RealFi in two clicks.”</li>
+</ul>
+
+<p><span class="badge">added</span> Both appear on the sister site's RealFi calls. Pogun's design there is a “non-margin credit market” with no oracle-priced intraday forced liquidation, where rate, term, collateral and default terms are agreed by the parties (<a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#tech">2026-07-26 A Dose of Alpha</a>, a proposed roadmap as of 1 August 2026), matching “liquidated only on missed payments” here. What backs USDR and where its yield comes from is in the <a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/#tokens">2026-08-06 GTM session</a>, and RealFi describes Lace as the wallet partner building a dedicated swap-and-stake experience (<a href="https://shiodome47.github.io/2026RealFi/2026-08-14-ask-the-ceo/#launch">2026-08-14 Ask the CEO</a>). “Two clicks” is that experience seen from Lace's side.</p>
+
+<details class="explain">
+<summary>A fair question — if a price drop never liquidates you, who carries that risk?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<p><strong>The question is fair, and the video does not address it.</strong> When collateral falls in value, someone loses. If the borrower is protected, what remains sits with the lender.</p>
+<h4>Why “protected” is a fair description</h4>
+<p>An ordinary algorithmic lending protocol sells your collateral automatically the moment its value falls below a set ratio to the loan, to protect the lender. For a borrower, losing collateral to an overnight crash is the main fear. Pogun's description removes that automatic sale and decides liquidation only on whether you are paying as agreed. From the borrower's side, price moves genuinely stop being a liquidation trigger.</p>
+<h4>And the lender</h4>
+<p>The lender now watches both the collateral's value and the borrower's payment record themselves, and in return negotiates rate, collateral and term directly. That is what “peer-to-peer” means here: the risk does not vanish, it <strong>moves from an automatic mechanism to an agreement between two parties.</strong></p>
+<h4>How to tell from outside</h4>
+<p>Ask what a lender can do when the collateral is worth less than the loan. “Whatever the agreed terms say” is the P2P model; “it gets sold automatically” is the algorithmic one.</p>
+<h4>What the video does not say</h4>
+<p>Who the lenders are (individuals, institutions), how much collateral is required, and what happens to it when payments stop are not discussed.</p>
+</div>
+</details>
+
+
+<h2 id="en-carry">7. The carry trade</h2>
+<p class="deck">Borrow against ADA, stake what you borrowed in RealFi. Automatic repayment: “not in the first rollout.”</p>
+
+<p>The exchange used for the cold open comes here. Crypto Crow asks “can you do them both simultaneously?”, and Nate Strang: “that's an exciting piece of this.” Each stands on its own, “but when you combine them, something even cooler is possible.” Crow: “Make a lot more money.” Nate: “You can make a lot more money.”</p>
+
+<div class="term">
+<p class="term-name">Carry trade <small>the speaker's term</small></p>
+<p>“Not new. It's been around for decades in the traditional finance world.” His definition: <strong>“putting up one asset to borrow against it, still earning a yield on that asset,”</strong> then putting what you borrowed to work for “a second yield.” <span class="badge">added</span> In general use the term means borrowing cheaply to earn more elsewhere and keeping the difference. A positive difference is “positive carry”; a negative one loses money just by being held.</p>
+</div>
+
+<p>The flow he describes:</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 336" role="img" aria-label="Flow of the carry trade: post ADA as collateral, borrow a stablecoin in Pogun's credit market, stake it in RealFi, and earn on both ADA and USDR">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">① Post ADA as collateral</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">Into a loan agreement</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">You keep the ADA</text>
+
+  <line x1="220" y1="65" x2="236" y2="65" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="240" y="20" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">② Borrow via Pogun</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">Peer-to-peer credit market</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">A stablecoin, “say USDCx”</text>
+
+  <line x1="444" y1="65" x2="460" y2="65" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="464" y="20" width="200" height="90" rx="8" class="d-box-accent"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">③ Stake in RealFi</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">The borrowed stablecoin</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">staked as USDR</text>
+
+  <line x1="116" y1="114" x2="116" y2="138" class="d-line" />
+  <line x1="340" y1="114" x2="340" y2="138" class="d-line" />
+  <line x1="564" y1="114" x2="564" y2="138" class="d-line" />
+
+  <rect x="16" y="142" width="200" height="90" rx="8" class="d-box"/>
+  <text x="116" y="170" class="d-t" text-anchor="middle">+ ADA keeps earning</text>
+  <text x="116" y="194" class="d-s" text-anchor="middle">Staking rewards, plus</text>
+  <text x="116" y="214" class="d-s" text-anchor="middle">price moves “we hope” are up</text>
+
+  <rect x="240" y="142" width="200" height="90" rx="8" class="d-box-warn"/>
+  <text x="340" y="170" class="d-t" text-anchor="middle">− Interest on the loan</text>
+  <text x="340" y="194" class="d-s" text-anchor="middle">No liquidation on price drops</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">Only on missed payments</text>
+
+  <rect x="464" y="142" width="200" height="90" rx="8" class="d-box"/>
+  <text x="564" y="170" class="d-t" text-anchor="middle">+ USDR yield</text>
+  <text x="564" y="194" class="d-s" text-anchor="middle">“a second yield”</text>
+  <text x="564" y="214" class="d-s" text-anchor="middle">Two clicks from Lace, he says</text>
+
+  <rect x="16" y="252" width="648" height="68" rx="7" class="d-box-plain"/>
+  <text x="340" y="278" class="d-t" text-anchor="middle">End goal: the yield pays the loan automatically, “I never have to touch anything”</text>
+  <text x="340" y="302" class="d-s" text-anchor="middle">“Not going to be natively supported in the first rollout.” No date given</text>
+</svg>
+<p class="figcap">Nate Strang's description laid out in three tiers. The plus and minus signs are our arrangement; in the video it is “I'm earning a yield from my ADA. I'm paying interest on the loan.” <span class="badge">added</span> No rate or yield figure of any kind is given in the video.</p>
+</div>
+
+<p>Crypto Crow asks whether the ADA staking yield and the USDR yield could together make the loan payments. <strong>“That's not going to be natively supported in likely the first rollout.”</strong> Crow: “Don't slack on me now.” Nate: “I'm just managing expectations.” But it is the “ultimate goal”: claim rewards automatically, make the payments without doing anything, “benefit from the delta of the yield.”</p>
+
+<p>Crow turns this into a wish for banks on blockchain rails where a loan pays down “our car note or our mortgage” from yield. Nate Strang, “not to be a decentralization evangelist,” explains why that is possible here and not there: banks do not benefit from letting you automate it, because it means <strong>fewer intermediaries taking a fee.</strong> “When we have one, two, or three players each serving a very specific role, there's no one to say, ‘Hey, give me the fee.’”</p>
+
+<details class="explain">
+<summary>A fair question — do two yields guarantee a profit?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video. Every number below is <strong>a made-up figure for illustration</strong>, not an actual rate or yield.</p>
+<p><strong>The question is fair, and the answer depends on the borrowing rate.</strong> The video gives no rates and no yields, so nothing here says whether the trade makes or loses money.</p>
+<h4>Split it into pluses and minuses</h4>
+<ul>
+  <li>+ ADA staking rewards (say 3% a year, hypothetical)</li>
+  <li>+ USDR yield (say 8% a year, <strong>hypothetical</strong>)</li>
+  <li>− loan interest (say 6% a year, <strong>hypothetical</strong>)</li>
+</ul>
+<p>With those made-up numbers, posting $10,000 of ADA and borrowing $5,000: $300 in rewards plus $400 in yield minus $300 in interest is $400 a year. At a hypothetical 10% rate it is $300 plus $400 minus $500, or $200. If the USDR yield falls, it turns negative easily.</p>
+<h4>The other side of “no liquidation on price moves”</h4>
+<p>You are not liquidated if ADA falls, he says. But you borrowed a stablecoin, so the amount owed does not fall. If ADA halves, your collateral is worth half and you still owe the same. Not being liquidated is not the same as not losing.</p>
+<h4>How to tell from outside</h4>
+<p>Put the borrowing rate next to the USDR yield and see whether the difference is positive. If it is negative, the question becomes whether ADA rewards cover the gap.</p>
+<h4>What the video does not say</h4>
+<p>No rate, yield or collateral ratio. The sister site's RealFi calls describe a different construction, a “positive carry” trade borrowing USDC against ADA on Liqwid, with hypothetical figures (<a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/#mainnet">2026-08-06 GTM session</a>). That route uses an algorithmic lending protocol, unlike the Pogun route described here.</p>
+</div>
+</details>
+
+<p><span class="badge">added</span> Post-publication: in August 2026 RealFi found the name USDR could not be used, put the rename to a community vote, and the option <strong>USDrf / sUSDrf</strong> won at the 26 August deadline (<a href="https://shiodome47.github.io/2026RealFi/2026-08-24-office-hours-ticker/#vote">2026-08-24 Ticker session</a>). This video was recorded in July and says USDR throughout, and so does this page. When the switch completes was not given in that session either.</p>
+
+
+<h2 id="en-outlook">8. Bear markets, a beta programme, requests</h2>
+<p class="deck">“Bear markets are when the important stuff gets built.” And a way to listen before shipping.</p>
+
+<p>Asked what he is most optimistic about, Nate Strang draws on “eight years, I think four market cycles”: <strong>“while nobody likes bear markets, bear markets are when the important stuff gets built.”</strong> The noise quiets down and you can work out what did and did not work in the last hype cycle. He wants to roll things out “over the next 3, 6, 9 months” and help “usher in that next bull run,” “the new chapter of what Cardano will look like.”</p>
+
+<p>His closing addition is a <strong>beta programme</strong>: letting “motivated or involved users” test early and give the team feedback before release, so that what would otherwise be “heard about first” after release gets fixed beforehand. Focus groups and targeted surveys too. Details will come via Lace's socials. Crypto Crow calls getting feedback before things are final “an ongoing theme with all of IO.” <span class="badge">added</span> No start date or sign-up mechanism is given.</p>
+
+<p>Then requests. Crypto Crow wants themed wallets by purpose (“as long as one of them's crow themed”). Nate Strang calls that “a great use case for an LLM in a wallet”; Crow scales it back to “a little selector” with five themes. Wendy O has none. The banter at the end is about whether Dave the iguana can change colour.</p>
+
+
+<h2 id="en-overall">9. The whole picture</h2>
+<p class="deck">Foundation, then look, then content. All of it pointing at listening before shipping.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Three tiers: the v2 foundation, Carbon's look and onboarding, and the Pogun and RealFi content, supported by a beta programme">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="130" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">Foundation — v2 / 2.1</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">The plumbing rewritten</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">Multi-chain, mobile</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">Unstable; 2.1 fixes it</text>
+  <text x="116" y="134" class="d-s" text-anchor="middle">“Maybe a little too soon”</text>
+
+  <line x1="220" y1="85" x2="236" y2="85" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="240" y="20" width="200" height="130" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">Look and path — Carbon</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">New UI, opt-in</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">Phrase can't be copied</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">Progressive disclosure</text>
+  <text x="340" y="134" class="d-s" text-anchor="middle">Agent hooks deferred</text>
+
+  <line x1="444" y1="85" x2="460" y2="85" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="464" y="20" width="200" height="130" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">Content — Pogun, RealFi</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">P2P credit market</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">Yield-bearing stablecoin</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">Two clicks; the carry trade</text>
+  <text x="564" y="134" class="d-s" text-anchor="middle">Auto-repay “not at first”</text>
+
+  <rect x="16" y="176" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="200" class="d-t" text-anchor="middle">Listen before shipping — beta programme, focus groups, surveys</text>
+  <text x="340" y="220" class="d-s" text-anchor="middle">The reverse of v2, where feedback came after release</text>
+
+  <rect x="16" y="248" width="648" height="40" rx="7" class="d-box-warn"/>
+  <text x="340" y="273" class="d-s" text-anchor="middle">Dates: coming days, later this month, 3-6-9 months. Recorded ~2 months before publication (our estimate)</text>
+</svg>
+<p class="figcap">The three tiers are our arrangement. In the video v2 and Carbon are contrasted as foundation and look, and the two DeFi initiatives are presented separately as “the first step.” <span class="badge">added</span> Tying “listen before shipping” to the v2 lesson is also our reading; he does not himself connect the beta programme to v2.</p>
+</div>
+
+
+<h2 id="en-qa">10. From the exchange</h2>
+<p class="deck">An interview, so here are four host questions with the answers.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Crypto Crow</span>Lace hangs on some days. What is being done about it?</p>
+<p class="qa-a" data-by="Nate Strang">v2 was a two-year rewrite that brought stability problems after release; “maybe we did it a little bit too soon.” <strong>2.1 fixes “most if not all”</strong> and will be live by the time the video airs. <span class="badge">added</span> 2.1.0 shipped on 9 July 2026.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Crypto Crow</span>Any plan for hooks (MCPs, CLIs) so my agents can connect to the wallet?</p>
+<p class="qa-a" data-by="Nate Strang">“Not in the immediate future.” Agentic trading is a hot topic but not a shipping priority. Let others experiment; be <strong>“not necessarily the first mover, but the first improver.”</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Wendy O</span>What is Lace's number one use case by the end of 2026?</p>
+<p class="qa-a" data-by="Nate Strang (not answered directly)">“I wish I had a crystal ball.” He would not say whether this year or next, and instead described the two initiatives meant to bring Cardano DeFi to life, Pogun's credit market and RealFi. <strong>Which is “number one” is never said.</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Crypto Crow</span>Can the ADA yield and the USDR yield together pay the loan?</p>
+<p class="qa-a" data-by="Nate Strang">“Exactly,” but <strong>not natively supported in the first rollout.</strong> “I'm just managing expectations.” The ultimate goal is rewards claimed automatically and payments made without touching anything.</p>
+</div>
+
+
+<h2 id="en-pending">11. Left unanswered</h2>
+<p class="deck">Every date is relative to the recording month. Not a single number is given.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Date only</span>When does Carbon ship?</p>
+<p class="qa-a" data-by="“Later this month”">Opt-in, “later this month” of the recording (early July, estimated). <span class="badge">added</span> Lace's X account said in July it would come “soon” as an opt-in beta via 2.1; as of 10 September 2026 it is not confirmed whether it is available.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Plan only</span>When do the Pogun and RealFi features land in Lace?</p>
+<p class="qa-a" data-by="“3, 6, 9 months”">Only “as we roll these things out over the next 3, 6, 9 months”; nothing is assigned a date. <span class="badge">added</span> Pogun itself was a proposed roadmap as of 1 August 2026 (sister site glossary), so Lace's timing sits behind that.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When does yield-funded automatic repayment arrive?</p>
+<p class="qa-a" data-by="“Not in the first rollout”">“The ultimate goal,” explicitly excluded from the first rollout.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not explained</span>In Pogun's credit market, who are the lenders, and who bears the collateral's price risk?</p>
+<p class="qa-a" data-by="Borrower's side only">The borrower is “protected from price volatility,” but the lender's side, collateral ratios, and what happens to collateral after missed payments are not discussed.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not explained</span>The answer to “what do AI tools mean for the role of engineers?”</p>
+<p class="qa-a" data-by="Question only">Carbon “represents” that question, he says, but what the team concluded about its own roles is not described.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When the beta programme starts, and how to join.</p>
+<p class="qa-a" data-by="“On our socials”">Information will be published on Lace's socials; same for the focus groups and surveys.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unresolved</span>Crypto Crow's “dereppp load.”</p>
+<p class="qa-a" data-by="Not identified">Given as a factor in Lace hanging; the captions render it “dereppp” and it cannot be resolved. Left as heard in the transcript.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is <a href="https://www.youtube.com/watch?v=ZTuU9vwpmts">Block//45 - Lace Wallet Interview with Nate Strang</a>, published on Input Output Group's official YouTube channel on 2026-09-02, 36 min 05 s. A public video, so speakers are named. The recording is estimated at early July 2026; “this month” and “in the coming days” are relative to that.</p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken aloud. <span class="badge">on screen</span> would mark things shown but not said; this page is built from captions alone and the screen was not reviewed, so the mark is not used. <span class="badge">added</span> marks explanations we wrote; they are not in the video.</p>
+<p><strong>Post-publication outcomes</strong> added here are three: Lace's release history (2.1.0, 2.2.x), an X post about Carbon, and RealFi's ticker rename. Each carries <span class="badge">added</span> and a date.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — Input Output（IOG） · <a href="https://www.youtube.com/watch?v=ZTuU9vwpmts">動画を見る</a></span><span class="l-en">Cardano note — Input Output (IOG) · <a href="https://www.youtube.com/watch?v=ZTuU9vwpmts">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Block//45 — Lace Wallet Interview with Nate Strang (2026-09-02) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Input Output（IOG）</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-09-02</span>
+  <span>36:05</span>
+  <span>YouTube</span>
+  <span>Block//45 — Lace Wallet Interview with Nate Strang</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> A publicly published video on Input Output Group's official YouTube channel, so the speakers are named: <code>Wendy O</code> and <code>Crypto Crow</code>, the two hosts of Block//45, and <code>Nate Strang</code> of Lace. The video names the guest in its title and the hosts introduce themselves; Nate Strang's role (Product Manager, Lace) comes from public profiles, not the audio.</p>
+<p><strong>The recording predates publication by about two months.</strong> Published 2026-09-02, but in the video v2.1 is “in the coming days” and Carbon is due “later this month”; Lace 2.1.0 shipped on 2026-07-09, so the conversation was most likely recorded in early July 2026. “This month” and “this year” in the transcript should be read against that.</p>
+<p>The source is a subtitle table (one row every few seconds, with speaker changes marked <code>&gt;&gt;</code>, no speaker labels). Turns follow those markers; where one row clearly carries two voices it has been split, and where the marker seems spurious consecutive lines by the same speaker are merged. Short interjections and the closing banter about the mascot are marked <em>(inferred)</em> where the words alone do not settle who is speaking.</p>
+<p><strong>Only obvious proper-noun misrecognitions are corrected</strong>: <code>Nate String</code> → Nate Strang, <code>Soulflare</code> / <code>Salana</code> → Solflare / Solana, <code>datalus</code> → Daedalus, <code>Realy</code> / <code>Reali</code> / <code>Realfi</code> → RealFi, <code>Pogan</code> / <code>poking</code> → Pogun, <code>USDCX</code> → USDCx, <code>Ian Bolina</code> → Ian Balina, <code>chatgbt</code> → ChatGPT, <code>rabbit hole</code> → RabbitHole, <code>DRUPS</code> → DReps, <code>LA's</code> / <code>Lac's</code> → Lace's, <code>Trad</code> → TradFi, <code>Gardano</code> / <code>Cardono</code> → Cardano. One word heard as <code>dereppp</code> could not be resolved and is left as is. Everything else, mistranscriptions included, is unchanged.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-open">00:00:00 — Cold open</p>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>Lace Carbon will be released as an optional as an opt-in experience later this month. First thing you'll notice as a user is completely new look and feel of the application. You can start staking and earning yield with RealFi in two clicks.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:00:14</span></div>
+  <div class="turn-body"><p>Can you do them both simultaneously?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:17</span></div>
+  <div class="turn-body"><p>So that's that's an exciting piece of this. So both the credit market and RealFi exist and can stand on their own as exciting offerings. But when you combine them, something even cooler is is possible.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:00:31</span></div>
+  <div class="turn-body"><p>Make a lot more money.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:31</span></div>
+  <div class="turn-body"><p>You can make a lot more money.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:00:33</span></div>
+  <div class="turn-body"><p>So, get on it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:00:33</span></div>
+  <div class="turn-body"><p>Yeah, get on [laughter] it.</p></div>
+</div>
+
+
+<p class="sec" id="t-intro">00:00:41 — Introductions, and the multi-chain question</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:00:41</span></div>
+  <div class="turn-body"><p>Welcome back to Block 45. I'm Wendy O. We're here with the Crypto Crow and we are also here with a special guest. We have Nate Strang from Lace and we're also going to talk about everything Cardano. How you doing today, Nate?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:00:53</span></div>
+  <div class="turn-body"><p>I'm doing great. It's great to be here with you guys. We're going to fight by but so you know we're going to fight on the show.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:00:59</span></div>
+  <div class="turn-body"><p>Yeah. And there's going to be a little bit of controversy on this one, guys, because there was some strong words between the two boys outside. But don't worry, we're going to work it out. We're going to clarify some things. We're also going to be talking about the future because there's a lot of exciting things coming to Cardano, especially with Lace and what you guys are building and what you guys are doing. And you Crow might just have to duke it out.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:01:19</span></div>
+  <div class="turn-body"><p>I'm a lover, not a fighter. Don't don't hurt me.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:01:21</span></div>
+  <div class="turn-body"><p>All good things come as a as a factor of adversity. I I personally I want to know a little bit more about who you are, right? Because we just met for the first time and uh I'd like to get into a little bit about your background like why are you here and what do you do? Like what got you started into crypto?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:01:36</span></div>
+  <div class="turn-body"><p>Yeah, absolutely. So I've I've been in the web 3 space since early 2018. uh I initially got into it just because I was fascinated by what the potential was for the technology to create new economies to increase access to financial instruments to financial services that you know we take for granted here in the United States but that a lot of the world doesn't have that same privilege and I actually got into the space uh working in a consulting capacity but very soon after uh joined a company called Solflare which is a prominent wallet on the Solana uh blockchain.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:02:16</span></div>
+  <div class="turn-body"><p>Oh, we're really fighting. [laughter]</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:02:16</span></div>
+  <div class="turn-body"><p>No, we got one of theirs. That's fine. That's fine.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:02:20</span></div>
+  <div class="turn-body"><p>Yeah,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:02:21</span></div>
+  <div class="turn-body"><p>this is the thing. Being multi-chain is especially important, I feel like. And that's that's kind of what we're seeing now. We're starting to see a lot of interoperability. I feel like Cardano kind of led with that with Midnight just a tad. So, it's good. It's good that he's good that he knows about other chains. He knows about Cardano. And me personally, I am not a chain maxi. I don't like it. I just don't think it's fun that way because I feel like we're in so much competition in crypto, but a positive competition like consistently building the best version of everything to make the future of whatever this is, whether it's going to be AI or finance or blockchain, whatever that may be, to make it the best version so everybody continues to have equal access.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:02:56</span></div>
+  <div class="turn-body"><p>That's true. It's not a zero- sum game, right? That is very true. I should I should be all grown up by now, but unfortunately, [laughter] I still struggle. It's the old days, you No, I'm I'm I'm kind of an OG, I guess you could say. And uh I'm back I'm from the old school where we still have bar brawls over chain tribalism.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:03:13</span></div>
+  <div class="turn-body"><p>And you know, I I agree that I don't think that in the future, hopefully not too far distant future, there won't we won't be talking about chains. There won't be such siloed communities that are doing different things in different ecosystems that all of it will converge and we won't even need to be talking about protocols or interoperability. But we're even though it feels like we've been around for a while and we've been doing this for a long time, we're still in very early days. And that it makes me excited. Uh it also, you know, it makes me take pause when I look at things and think that they should be different, think that things should work more closely with each other, work better uh with each other. Um and so yeah, it's a it's an exciting place to be in.</p></div>
+</div>
+
+
+<p class="sec" id="t-v2">00:03:13 — Lace v2, the stability problems, and the 2.1 update</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:03:13</span></div>
+  <div class="turn-body"><p>You know, I joke around a lot, but I'm obviously pretty serious about a lot of the things that I do. And um I'm a lace user, right? So, it it's like I my in the early days, I was using Daedalus, you know what I mean? So, anytime I wanted to do anything, I had to sit there for five and a half hours waiting for everything to sync up and download and uh and and I I've used other wallets in the past. Um but now that I'm on Lace, I you know, it's like it sometimes it feels hit or miss, right? Okay. you know, it's like some days it works lickety split, I have no issues and then other days depending on like my dereppp load or what I've got going on, it'll hang on me sometimes. Like what</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:04:36</span></div>
+  <div class="turn-body"><p>what what's happening right now to address some of the issues that that are part topic of discussion?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:04:44</span></div>
+  <div class="turn-body"><p>Yeah, that's a good question. Uh I think a good way to frame it is to talk about something that we were working uh very deeply on for the last almost two years uh which was what we refer to as our our version two update which came out in in May of this year and like you like you alluded to uh we have had some performance some stability issues uh that have followed that release and I think that's a a symptom of of a couple of things one being lace v2 2 was a massive rewrite rearchitecture of the application. So we went from what was previously in v1 uh a single platform application uh you know a web extension platform that supported a single chain. We wanted to look to the future and say well what do we need to do to be able to onboard new chains more quickly to support mobile applications and other platforms. Um, and how do we do that in a way that each time we want to do something new or build something new, we're not uh at risk of breaking things, of slowing our our entire technology and our entire infrastructure down. And so V2 was was very much an investment in kind of the foundation and I like to say the plumbing of the application. And there were some shortcomings with the release in terms of things that weren't working as smoothly as they could be. Uh the on the bright side, we are releasing a v2.1 update in the coming days. Um that's</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:06:16</span></div>
+  <div class="turn-body"><p>okay. But by the time this goes out,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:06:16</span></div>
+  <div class="turn-body"><p>by the time this is out, they'll they'll be live. And uh 2.1 fixes most if not all of those performance issues that we had, the stability issues, um things like hanging transactions, not being able to connect to DAPs easily, things like that. All of those kind of uh relatively minor but also frustrating uh issues are going to be fixed very soon. You know, ideally they would have been live for the release, but we really wanted to get the the update out into the hands of our users as quickly as we could. hindsight's 2020. Maybe we we did it a little bit too soon, but you know, on on another positive note, we were able to get feedback from the community and [clears throat] figure out what was what was wrong, what the most important things to prioritize were, which were actually different from, you know, what we were optimizing for before we before we rolled out the update. So,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:07:08</span></div>
+  <div class="turn-body"><p>well, and the important thing is that you pay attention to what the community has to say, right? And and that's pretty much the nature of everything that that's related to Cardano, right? because we all know everybody loves to have their voices heard one way or another in the Cardano ecosystem. I mean, you know, granted, you can't be decentralized without taking the opinions of everyone involved, right? So, that's a good thing.</p></div>
+</div>
+
+
+<p class="sec" id="t-carbon">00:07:27 — Carbon, and what AI means for the team</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:07:27</span></div>
+  <div class="turn-body"><p>Well, Nate, it looks like the lace wallet mascot Dave has a few questions about Carbon. Can you talk to us a little bit about that, please?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:07:35</span></div>
+  <div class="turn-body"><p>Yeah, absolutely. So, Carbon is a really exciting initiative that we've been working on essentially since we released V2. It represents a few different things. The first one is as I kind of talked about how V2 was an overhaul and a in a kind of rebuild of the foundation and the infrastructure of the application. Carbon is going to be a similar overhaul and investment in in kind of modernizing the user interface of lace. So lace carbon will be released as an optional as an opt-in experience later this month. And the first thing you'll notice as a user is completely new look and feel of the application. So since V2, we've been looking at and considering what should the app look like, how should it feel, what's the best way to kind of approach a design language for Lace going forward. And you will see that kind of uh representation or the the conclusion that we've released uh when Carbon rolls out. And we're we're really excited about what Carbon is going to do for how Lace is able to build things and and how we're able to kind of roll and shape features into uh the new user experience going forward. So that that's kind of the first goal or pillar of what Lace Carbon is. But what it also is is it's a representation of some questions that we were asking as a team about as we all know AI is everywhere especially in software development. I personally have tons of friends that are software engineers and are worried about what the future of their jobs</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:09:13</span></div>
+  <div class="turn-body"><p>for their jobs and I don't know anything</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:09:16</span></div>
+  <div class="turn-body"><p>exactly.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:09:16</span></div>
+  <div class="turn-body"><p>Here come the vibe coders.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:09:19</span></div>
+  <div class="turn-body"><p>Stop it with the vibe coding.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:09:19</span></div>
+  <div class="turn-body"><p>We're agentic engineers, Wendy. No, I'm kidding. We're vibe coders. Yeah, [laughter] we are all vibe coders. Um, no, but we wanted to we wanted to look at what do these tools mean for us? You know, there's a lot of noise surrounding what you can do with AI, but there's also a lot of real value in terms of the tools that are available to engineers. And so we looked at this kind of in terms of not asking [snorts] how can we use AI to build more quickly, but what do these tools mean as far as what the role of our software development team is? What what are the roles of engineers? What should those look like in the future?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:09:39</span></div>
+  <div class="turn-body"><p>Is there anything being added to Lace or or even a plan like um you know you have like the the MCPs, the CLIs, all that different stuff so that my my agents can connect to the wallet like right now I think it just has to take over my computer if I want to do something like that. Is there anything that's going to facilitate that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:10:23</span></div>
+  <div class="turn-body"><p>Not in the immediate future. Um you know agentic trading is is certainly a hot topic in in the web 3 space. Uh, it's not something that we're prioritizing on shipping as soon as possible. Uh, I I personally I think that I'm I'm happy to let other players experiment it, experiment with it, see what works and see what doesn't, and you know, not necessarily be the first mover, but the first improver so that we can come in and</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:10:52</span></div>
+  <div class="turn-body"><p>hopefully avoid a lot of the mistakes that,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:10:55</span></div>
+  <div class="turn-body"><p>you know, we've seen a few costly ones so far.</p></div>
+</div>
+
+
+<p class="sec" id="t-problems">00:10:57 — Who wallets are for, and whether a chatbot belongs in one</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:10:57</span></div>
+  <div class="turn-body"><p>Sure. What do you think are some of the biggest key problems in crypto today that ultimately you would love to be able to solve through what you do in Lace?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:11:05</span></div>
+  <div class="turn-body"><p>That's a good question. I think um one problem that plagues any ecosystem today is there's such a disperate uh number of customer segments that interact with crypto. You have your pure speculators, your folks that are coming in to get rich off of meme coins that are</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:11:25</span></div>
+  <div class="turn-body"><p>don't I know it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:11:25</span></div>
+  <div class="turn-body"><p>a lot of times bringing a ton of capital into the ecosystem that in some ways is detrimental, but in some ways is is valuable um all the way over to your users that are using digital assets in place of their national currency to buy things to to send to their family members. And so I don't think we as a as a space, as a collective group yet, have figured out how to serve those different groups with the right types of applications. We have wallets. Wallets are an undoubtedly critical piece of the user experience in users using digital assets, interacting with blockchains. But right now, if I come into the space and I want to figure out how to benefit from this technology, if I want to figure out what's most important for me, what's going to what's in it for me? Um, I think it's very confusing to to a user in understanding what to pay attention to and what's noise. Um so I think the way we solve that problem is of course existing users are going to remain the priority but should they be because if you think about it the wallet</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:11:25</span></div>
+  <div class="turn-body"><p>especially with lace lace is a beautiful wallet. I mean it really is aesthetically it's it's very nice. I know it's getting ready to go through another overhaul and it's going to be even better which is great.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:12:54</span></div>
+  <div class="turn-body"><p>But effectively the wallet is the gateway to everybody right? It's it's almost like the eyeballs to the soul in the sense that you know when you first start interacting with any blockchain the wallet is going to be your first experience.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:13:05</span></div>
+  <div class="turn-body"><p>I would even argue that the wallet's the most important part of that particular blockchain because if you don't have a place to hold on to your stuff then what's the point of decentralization</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:13:15</span></div>
+  <div class="turn-body"><p>right? Yeah. And yeah I would love to see what you know I I've always kind of wondered why wallets don't ever have like a a very simplistic user guide built into them.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:13:23</span></div>
+  <div class="turn-body"><p>Exactly. That's exactly what I was getting at. And I think the the reason that a wallet user experience has has lagged in terms of it serving all of those different types of customers and users is product research. Customer discovery, understanding what customers need in a traditional product sense has has been and continues to be really difficult in web 3. New technology ships every day. user sentiment, what what the loudest users say they want changes and it also a lot of times differs from what they actually need. And so I think that's manifested in a lot of product teams in the space not giving up but not investing in that hard set of activities to understand and apply tried and trueue product methodologies to say what is the user experience that is most important. And like you alluded to, a big part of solving and serving different types of users is starts with onboarding in terms of understanding and allowing users to uh make uh statements, make selections about what their intentions are, where they are in this massive space. So that you can as a wallet curate the experience and put really important guard rails on the a lot of times users first fora into web 3 so that they are seeing the things that they need to see and are protected from things that are going to potentially lose them a lot of money and maybe even scare them away.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:13:23</span></div>
+  <div class="turn-body"><p>Do you ever see AI playing a direct role in something like lace where you know it it's like if you're using any kind of AI model or anything you now the process is ask me about me and what I'm trying to do and do you ever see something like that happening with a like a Cardano wallet?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:15:17</span></div>
+  <div class="turn-body"><p>Yeah, I have I have mixed feelings about putting a chatbot into a wallet there. I think there are benefits to it, but I think also it's a bit lazy in terms of</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:15:27</span></div>
+  <div class="turn-body"><p>I'm a lazy man.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:15:31</span></div>
+  <div class="turn-body"><p>Yeah. But I also feel like there's like an opsac risk there if you put a chatbot into a wall because you hear about again it doesn't happen often but you do hear about these bots that they go rogue not because they want to go rogue but because there's not enough there's not enough boundaries that's put in by</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:15:48</span></div>
+  <div class="turn-body"><p>or they could be sidestepped and things. It's definitely</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:15:51</span></div>
+  <div class="turn-body"><p>but it's worth discussing like</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:15:51</span></div>
+  <div class="turn-body"><p>yeah and I I think you know the chatbot interface that we all are too familiar with at this point whether it's ChatGPT or Claude or or whatever model you like to use that's not the only solution and the only way to kind of manifest the benefits you can get from an an LLM in a wallet. Think if you think about an onboarding experience that is gathering context as far as what your goals are, what your experience level is, doesn't have to be a text box that you type into and get answers from. Uh you can you can build that LLM functionality and get the same benefits from it uh with a little bit more of a intentional UX.</p></div>
+</div>
+
+
+<p class="sec" id="t-onboarding">00:16:32 — Onboarding in Carbon: the recovery phrase, and progressive disclosure</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:16:32</span></div>
+  <div class="turn-body"><p>Explain to me if I if I'm a new user, I have a or or any user for that matter using Lace. Let's say I'm using it for the first time. What is Carbon going to what am I going to see? Like when I first I don't have a wallet. I've never used a wallet. A buddy of mine told me to try this out or to pick up some Cardano, right? What [clears throat] is carbon changing today that I'm used to seeing? How how is the process going to be different?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:17:03</span></div>
+  <div class="turn-body"><p>So the in terms of onboarding specifically, there are there are two main things that will be improved upon with carbon. The first is the, you know, how do you handle uh recording your recovery phrase in a in a non-custodial wallet? That's been a a design question since wallets came to be. Um, how we're going to handle it with carbon is evolving. Um, some may see it as as devolving, but shifting to a security first approach. There have been way too many attacks uh there are way too many attack vectors with being lax or being open-ended in terms of how users secure their wallets. So we we're taking a very security-minded approach to when a new user comes in. They may not need to do it right away, but at some point they need to record their phrase. They can't copy it to their clipboard. Um so they're</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:17:58</span></div>
+  <div class="turn-body"><p>Don't ever ever do that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:17:58</span></div>
+  <div class="turn-body"><p>Don't do that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:18:00</span></div>
+  <div class="turn-body"><p>Please don't do that. [laughter] Didn't Isn't that what And I could be wrong, but isn't that what Ian Balina did back in the day? He had copied it to his like cloud text or something and then that's how somebody got access to it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:18:11</span></div>
+  <div class="turn-body"><p>I am super paranoid about that stuff. Like I I Yeah, I don't do any</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:18:16</span></div>
+  <div class="turn-body"><p>I keep everything either locked away close to my gun or I have it stored in a safety deposit box. I don't play around. That's why I told you earlier. I keep everything in a vault somewhere else and then I plan out what I'm going to do. I create a separate wallet specifically for that</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:18:28</span></div>
+  <div class="turn-body"><p>because the thing is is like everybody is generally especially newcomers who haven't been through everything we've been through all the years they're going to take the easiest most frictionless approach to things they're not writing all this stuff down</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:18:41</span></div>
+  <div class="turn-body"><p>I also think too as we see the rise of AI and the gentic payments and the microtransactions happening like a lot of people are going to get they're going to feel like their stuff is safe and it's not it's not even a w it's not even a lace's job or a wallet's job to kind of protect them from that. But I feel like there's gonna be so many mistakes happening from people just letting their, you know, their AI kind of do what it's going to do and by using the same exact device to have all this stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:19:04</span></div>
+  <div class="turn-body"><p>Exactly. If if I'm a newcomer to the space, I onboard to a wallet, I shouldn't be prompted to set up my own agent for the first time. That is that's by no means an optimal or a secure or safe user experience. So what we're prioritizing with carbon is kind of uh what you can see as selective disc disclosure or progressive disclosure in terms of I finish onboarding the first thing that I need to do is obviously fund my account. Um once you do that you're not going to be faced with an infinite number of options. So you're not going to be ever sitting there as a user saying what do I do next? um kind of the capabilities and the kind of web 3 experience which a lot of which is accessible through a wallet is going to be introduced to the user in a way that's accessible in a way that is kind of uh sequential and so I I think that I think that's really important there there are some really successful protocols out there RabbitHole was was the first one in the Ethereum world uh which is kind of an incentivized learning or incentivized education platform and that's something that I don't think gets nearly enough attention in this world. There's a lot of new language. There are a lot of new types of experiences and digital interactions that are possible that you had no idea about before you came into the world. And I think it's the wallet's job. It's everyone's job as a builder to take responsibility for being ushers of that type of education. And so that's that's a big priority that we're going to continue to to place emphasis on.</p></div>
+</div>
+
+
+<p class="sec" id="t-defi">00:20:47 — Pogun's credit market and RealFi</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:20:47</span></div>
+  <div class="turn-body"><p>What do you see as is Lace's number one use case by the end of 2026?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:20:52</span></div>
+  <div class="turn-body"><p>I wish I wish I had a crystal crystal ball. Um</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:20:54</span></div>
+  <div class="turn-body"><p>we're going to create one. We're going to create one.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:20:56</span></div>
+  <div class="turn-body"><p>Why don't we say 2030</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:20:56</span></div>
+  <div class="turn-body"><p>because that's too far.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:20:59</span></div>
+  <div class="turn-body"><p>I'm seven foot. I'm like a great Dane. I want to make sure I'm around when all this stuff happens.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:20:59</span></div>
+  <div class="turn-body"><p>So I I don't know what the primary use case will be whether it's at the end of the year or the end of next year but something that we are excited about building and and kind of being the catalysts for is finally breathing some life into DeFi on the Cardano ecosystem or in the Cardano ecosystem and what that's going to look like as far as the first step that we're taking. Uh there are two actual also IO initiatives. One is the Pogun uh set of protocols. The other is RealFi. So Pogun has a couple different uh protocols and smart contracts that allow that enable things like uh a peer-to-peer credit market. So instead of an algorithmically governed borrow lending protocol as exist uh on other platforms, uh the Pogun credit market is is truly peer-to-peer. So what that means is there's a direct negotiation and interaction between a desirable or a prospective borrower and a lender. And what that does importantly is it protects the borrower from the thing that is riskiest about decentralized borrow lending uh protocols which is price volatility. So, within a a peer-to-peer uh lending agreement, you're not vulnerable to massive price swings. The only thing that puts you at risk of being liquidated is if you are not making the agreed upon payments uh on the agreed upon schedule. So that's a really important and I I think a really exciting uh one piece to the DeFi ecosystem and industry on Cardano is going to look in a couple years. The other one that we're excited about building towards is RealFi. So RealFi is another IO initiative. RealFi has an asset called USDR which is a yieldbearing stable coin. It functions a lot like a liquid liquid staking token might uh on other ecosystems or other chains. The kind of benefit or or main difference with a yield bearing stable coin is similar to the credit market. You're earning a yield. You have that asset liquid to do with it as you please, but it's not vulnerable to price swings of of whatever.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:22:12</span></div>
+  <div class="turn-body"><p>I think it's going to be important for the future, too, because stable coins are being produced like crazy. Yep. We're seeing a lot of interoperability with that. We know that's exactly what TradFi wants. So, I think that it's actually a br a brilliant idea to kind of integrate it in to what Lace is doing in within the Cardano ecos ecosystem, especially for DReps and everybody else. And since you're able to going to be able to do everything on one interface with Lace and not have to go to a different wall like you were complaining about, old man, remember?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:23:53</span></div>
+  <div class="turn-body"><p>I forgot. I'm too old. Dimensions already setting in. No, but but to have everything done there, but also have access to that DeFi aspect. I think that's awesome. And I think that's also going to attract users because you don't have to do DeFi elsewhere. You can do it all there and reap all the benefits.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:24:06</span></div>
+  <div class="turn-body"><p>Exactly. And that's that's spot on. What we are prioritizing with these new kind of DeFi capabilities is simplicity. So as some application may adopt these protocols and gear them towards a power user or or not invest in making the user experience around them simple. Within lace, you'll be able to access these new capabilities in a few clicks in an extremely simple and straightforward way that that's still attractive and beneficial to power users. But we are if we take the the RealFi example, you can start staking and earning yield with RealFi in two clicks.</p></div>
+</div>
+
+
+<p class="sec" id="t-carry">00:24:51 — The carry trade</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:24:51</span></div>
+  <div class="turn-body"><p>Can you do them both simultaneously?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:24:51</span></div>
+  <div class="turn-body"><p>So that's that's an exciting piece of this. So both the credit market and RealFi exist and can stand on their own as exciting offerings, but when you combine them, something even cooler is is possible.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:25:06</span></div>
+  <div class="turn-body"><p>Make a lot more money.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:25:08</span></div>
+  <div class="turn-body"><p>You can make a lot more money because</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:25:08</span></div>
+  <div class="turn-body"><p>what a concept, [laughter]</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:25:11</span></div>
+  <div class="turn-body"><p>right? Well, that's that's what I'm getting at. It's not just a you have to pick or choose. You can benefit from the ecosystem as it's built. So, that's why I wanted to make sure we were clear on that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:25:22</span></div>
+  <div class="turn-body"><p>Yeah. So, the term carry trade is not new. It's it's been around for for decades in the traditional finance world. So the way that the carry trade will work um in the context of the Pogun credit market and RealFi I can take my ADA I can put it up as collateral in a loan agreement and borrow a stable coin say USDCx. Just because that ADA is sitting as collateral I can still earn staking rewards on it and I can still benefit from what we hope are positive price movements. So, I'm earning a yield from my ADA. I'm paying interest on the loan. But if we if we look at those two kind of pieces of of the yield on the Pogun credit market side, I can then take that stable coin that I've borrowed using my ADA as collateral and stake it within RealFi and start earning USDR yield. So the reason we call it a carry trade, I'm putting up one asset to borrow against it, still earning a yield on that asset, and now I can then go and take it and stake it with USDR and earn a second yield.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:26:30</span></div>
+  <div class="turn-body"><p>Is it what what is it possible then that my liquid staking yield and then my USDR yield is combined to then make the payment on the loan?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:26:40</span></div>
+  <div class="turn-body"><p>Exactly. So that's that's not going to be natively supported in likely in the first uh roll out of the car.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:26:51</span></div>
+  <div class="turn-body"><p>Don't slack on me now.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:26:51</span></div>
+  <div class="turn-body"><p>I'm just I'm just managing expectations.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:26:54</span></div>
+  <div class="turn-body"><p>They have to make sure that it's done right so that you don't complain later.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:26:57</span></div>
+  <div class="turn-body"><p>Move fast and break things. That's the way everyone else does it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:27:00</span></div>
+  <div class="turn-body"><p>Why can't we be like them?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:27:00</span></div>
+  <div class="turn-body"><p>No. No. But that that that is the ultimate goal is to be able to take your yield and say, "Yep, I want to make payments on my loan using my real yield." So I want to automatically claim my rewards and without doing anything I can make those payments. It's essentially benefit of the benefit from the delta of the yield. Make my payments everything is working beautifully and I never have to touch anything.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:27:25</span></div>
+  <div class="turn-body"><p>That's ultimately the way I see a lot of banks working effectively, right? Because I've always said and I've been saying it on X for years. Why don't we have a system that if these banks want to adopt blockchain rails where if we're borrowing then we get our yield and it pay it pays down our car note or pays down our mortgage and it it becomes more fluid which let's face it with AI you know we're going to need as many different vehicles to try and offset our living expenses as possible. So it' be great if we are able to get ahead of that. It sounds like making a step.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:27:57</span></div>
+  <div class="turn-body"><p>Yeah. And you know, not to be a a decentralization evangelist, but the reason that that's possible in this context is banks don't benefit by allowing you to automate those types of things because then you don't you have fewer intermediaries, fewer financial services that can step in and take a fee on those on those transactions. uh when we have one, two, or three players each serving a very specific role, um there there's no one to say, "Hey, give me the fee."</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:28:25</span></div>
+  <div class="turn-body"><p>Right. That's that's actually a lot more exciting than I than I originally thought.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:28:33</span></div>
+  <div class="turn-body"><p>It's got my wheels turning.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:28:33</span></div>
+  <div class="turn-body"><p>That's my favorite part. I feel like like I don't care about the upgrades, like all the stuff you're complaining about. I want to be able to make that passive.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:28:40</span></div>
+  <div class="turn-body"><p>Well, yeah, passive would be great if there's a way to facilitate that easily, but that's his job.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:28:44</span></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:28:45</span></div>
+  <div class="turn-body"><p>So, get on it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:28:45</span></div>
+  <div class="turn-body"><p>Yeah. Get on it. [laughter] So Nate, what are you most optimistic about when it comes to Cardano and Lace's future? Because you dropped a lot of alpha.</p></div>
+</div>
+
+
+<p class="sec" id="t-outlook">00:28:54 — Bear markets, and a beta programme</p>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:28:54</span></div>
+  <div class="turn-body"><p>Mhm. I've been in the web 3 space, like I said, for eight years. That's I think four market cycles. I've been building in in the space for that time. And one thing that has become abundantly clear to me is while nobody likes bare markets, bare markets are when the important stuff gets built. It's when the noise quiets down. It's when you can take your learnings, figure out what was working, what wasn't working from the the previous hype cycle when everyone was flooding into the market and asking for things. This time is when we can have some introspection and we can build what's going to be talked about in the next bull run. And so I'm most excited to be working on the things that we've talked about to have the time to to build those things, but also to as we roll these things out over the next 3 6 n months to start to usher in that next bull run to start to usher in the new chapter of what Cardano will look like and hopefully be a really positive force in terms of creating new experiences that I think people have have have waited a long time for on Cardano and beyond and finally kind of make those things a reality.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:30:20</span></div>
+  <div class="turn-body"><p>So Nate, is there anything else that you wanted to touch on?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:30:23</span></div>
+  <div class="turn-body"><p>Yeah, one thing that we didn't touch on directly is, you know, I talked about the importance of understanding customers and how I think historically that's been somewhat lacking in this world. We're rolling out a beta program for Lace to allow motivated or involved users to test things early to give us feedback to give the team feedback before we release something so we can make the the things that if we were to wait until after release we were going to be hearing about first.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:30:55</span></div>
+  <div class="turn-body"><p>That's a good dynamic I'm starting to see across the board. Everybody's wanting to start putting some getting feedback before it's finalized. Getting feedback on proposals or developments or anything. It seems to be an ongoing theme with all of IO and everybody. That's actually a really cool thing because I think it's going to alleviate a lot of tension and pressure because I Yeah, that's a that's really cool.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:31:15</span></div>
+  <div class="turn-body"><p>It feels like it's more transparent, too, because it's not just kind of dropped on you. Like people have time to hear the suggestions or to review things instead of just freaking out and being like so upset about whatever. So they can make they could be like, "Hey, this is what we're thinking. This is what we want." And then the the opposing side can make changes if they want to or not.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:31:31</span></div>
+  <div class="turn-body"><p>Yeah, and that's that's my favorite part about building products is getting to talk to users, getting to hear feedback, and then translating that into the experiences that we then go and build for them. So, I'm excited that we're working more proactively on that and moving away from the kind of historically more reactive uh way of building things. So, if you're if you're watching this and you're a Lace user or if you're watching this and you're not yet a Lace user, I encourage you to check us out on our socials. That's where we'll be publishing information about our beta program. We're also going to be uh rolling out some focus groups, some targeted surveys to hear more about what people want in different ways. So, just encourage everyone to to get involved and to be vocal and that just we're we're listening and that we're we're looking forward to hearing what</p></div>
+</div>
+
+
+<p class="sec" id="t-requests">00:32:27 — Feature requests, and where to find Lace</p>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:32:27</span></div>
+  <div class="turn-body"><p>I would like to make an official suggestion if I might. Something I'd like to see postcarbon,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:32:33</span></div>
+  <div class="turn-body"><p>please.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:32:33</span></div>
+  <div class="turn-body"><p>I want to be able to theme my wallets based on what I'm using them for. Can you make that happen, sir?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:32:38</span></div>
+  <div class="turn-body"><p>What is a What does a theme look like to</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:32:38</span></div>
+  <div class="turn-body"><p>I want a big crow on my wallet because my ego is so big. I want to remind myself every time I make a Cardano transaction.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:32:46</span></div>
+  <div class="turn-body"><p>You know, I'm being somewhat bashful, but that's a a great use case for an LLM in a wallet. You know, Lace Lace isn't going to Lace isn't going to create backgrounds for all the different animals in the animal kingdom and everything that anyone may want. But it's pretty easy to say, "Hey, user, what do you want your theme of this wallet to be?" And be like, "Crows." That's that's a that's a great task for an LLM.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:33:10</span></div>
+  <div class="turn-body"><p>You know what? I won't even make it that difficult cuz realistically I'm just thinking something that if I if I'm using a particular wallet it would be easier for me to not have to look up at the top but just something that's you know it kind of represents maybe if I'm using that wallet specifically for a DeFi app or I'm using it as my you know for whatever it is but just like even a like a little selector where I can say okay well there's maybe five one of five different themes or something I can pick from long as one of them's crow themed and we're good. I like that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:33:41</span></div>
+  <div class="turn-body"><p>Wendy, any feature requests, desires from from you?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:33:45</span></div>
+  <div class="turn-body"><p>No, not at this time. I mean, I'm kind of taking everything in and and hearing and what I'm just excited that you guys are working on all the features that are making it like that need to be improved. And again, it's crypto and this is like newer technology. Plus, we have like this AI wave that kind of I mean, we knew that AI was coming, but it kind of shocked a lot of people, I feel like, because it's happening so fast. So, it's nice to see that you guys are t taking the initiative to fix a lot of these things, but also keeping an open mind and taking suggestions and also allowing for that program for people to come and say, "Hey, we want this. We don't like this. This is what we need." And I think it's going to be I think it's a lot different than some of the other wallets that you see out there.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:34:21</span></div>
+  <div class="turn-body"><p>Totally.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:34:21</span></div>
+  <div class="turn-body"><p>Thank you so much to Nate from Lace for coming on. It was a pleasure chatting with you about everything Lace and a little bit of Cardano and AI. Of course, it's always a pleasure with Crow.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow<span class="turn-time">00:34:32</span></div>
+  <div class="turn-body"><p>Of course, it is. [laughter]</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:34:32</span></div>
+  <div class="turn-body"><p>Thank you so much to Block 45.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O<span class="turn-time">00:34:32</span></div>
+  <div class="turn-body"><p>And if you want to learn more about Lace, where should they go?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:34:37</span></div>
+  <div class="turn-body"><p>If you want to find out more about Lace, you can check us out on our website, lace.io. Uh all of our trusted official social links are there, too. So, you can find us on our socials uh from our website and encourage you encourage you to do so.</p></div>
+</div>
+
+
+<p class="sec" id="t-mascot">00:34:56 — Dave the iguana</p>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:34:56</span></div>
+  <div class="turn-body"><p>What do you got to say about the mascot?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:34:56</span></div>
+  <div class="turn-body"><p>I think I think a an iguana is a really interesting mascot choice which I love thanks to our marketing team. Um because [laughter] iguanas do two really interesting things.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:35:09</span></div>
+  <div class="turn-body"><p>What is that?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang<span class="turn-time">00:35:10</span></div>
+  <div class="turn-body"><p>They can lose their tail and they can regrow it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:35:12</span></div>
+  <div class="turn-body"><p>Lizards can too.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:35:12</span></div>
+  <div class="turn-body"><p>Yeah.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:35:14</span></div>
+  <div class="turn-body"><p>Okay.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:35:14</span></div>
+  <div class="turn-body"><p>But not all lizards can can change colors.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:35:17</span></div>
+  <div class="turn-body"><p>Not not all lizards can adapt and camouflage themselves.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:35:19</span></div>
+  <div class="turn-body"><p>No. All lizards</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:35:21</span></div>
+  <div class="turn-body"><p>can can iguanas do that actually or is that just chameleons?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:35:24</span></div>
+  <div class="turn-body"><p>That's what I thought.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:35:24</span></div>
+  <div class="turn-body"><p>No. iguanas can't change colors. So,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:35:26</span></div>
+  <div class="turn-body"><p>but like he can change colors, so that's cool. Dave is a special kind of iguana.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:35:31</span></div>
+  <div class="turn-body"><p>Well, Dave came with some spray paint.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:35:36</span></div>
+  <div class="turn-body"><p>Dave actually came out of the research lab down the street, right?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:35:39</span></div>
+  <div class="turn-body"><p>Oh, [laughter] of Jurassic World.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:35:40</span></div>
+  <div class="turn-body"><p>So, he's got some special special skills.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Nate Strang <em>(inferred)</em><span class="turn-time">00:35:42</span></div>
+  <div class="turn-body"><p>Okay. Yeah, he can he can uh he can change with the theme of the future lace wallets.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Crypto Crow <em>(inferred)</em><span class="turn-time">00:35:52</span></div>
+  <div class="turn-body"><p>He's about to eat my private parts. [laughter] Did Dave sign a waiver, by the way?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Wendy O <em>(inferred)</em><span class="turn-time">00:35:57</span></div>
+  <div class="turn-body"><p>About to get a mouthful, Dave. [laughter] Handcuff.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the proper-noun corrections noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Input Output (IOG) · <a href="https://www.youtube.com/watch?v=ZTuU9vwpmts">Watch the video</a></p>
+</footer>
+
+</div>
+</body>
+</html>
