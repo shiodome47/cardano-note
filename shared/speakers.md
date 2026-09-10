@@ -88,3 +88,14 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 - 後半（36:42〜）の司会 2 人は、"I was in San Francisco Monday and yesterday" と "You know how I love foreign currencies" を Bryan（前半 11:46 で Tala Emali に会ったと言うのも Bryan）、"I was in San Francisco as well. So both of us…" を Eric として切り分けた
 
 **まとめでの書き方**：前半は誰の発言かを書く（取締役の Marco と実務の James は立場が違う。Marco は TradFi の勤め人としての見方をたびたび断っている）。**後半は AlphaGrowth が自分の事業（Cardano PRIME）を語る部分**なので、数字も評価も「運営者の説明」として帰属させ、地の文にしない。第三者への評価（Stream、Robinhood Chain、CIP-113 の完成度、Midnight の準備状況）はすべて話者に帰属させた。
+
+### 2026-09-09 Charles Hoskinson — Navier-Stokes
+
+**1 人語り。**冒頭で "Hi, this is Charles Hoskinson" と名乗る。本人のチャンネル（@charleshoskinsoncrypto、oEmbed で確認）。話者の割り当ての問題はない。
+
+- **書き方**: 本人のチャンネルなので、評価・方針・時期はすべて「本人の見解として」。Midnight についても「私たちが作った理由」という本人の位置づけとして書き、公式見解にはしない
+- **第三者への評価**: OpenAI（「独自だと言うが、ログの仕事が土台に見える」）、Sam Altman・Dario Amodei（「いつでも持っていける」）、Jay Cummings（「れっきとした数学者」）、Peter Scholze・Terence Tao（「同意してくれている」）。いずれも本人の発言として帰属させ、地の文にしない
+- **確度が低かった箇所**: 固有名詞の推定が 3 つ（Scholze、Banach–Tarski、Helfgott）。`glossary.md` の同回の見出しに根拠を書いた。全文では `(推定)` / `(inferred)` を付けた
+- **事実と違う紹介**: Jay Cummings を「UCSD の教授」と言っているが、所属はカリフォルニア州立大学サクラメント校。動画の言い分を残し、`補足` で添えた
+- **動画に出てこない当事者**: 報道で先行研究者として出る Tristan Buckmaster と Levent Alpöge。本人は触れていない。まとめでは `補足` の時系列で示した
+

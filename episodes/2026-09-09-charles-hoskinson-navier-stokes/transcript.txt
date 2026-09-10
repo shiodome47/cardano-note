@@ -1,0 +1,220 @@
+Navier-Stokes
+Time	Subtitle	Machine Translation
+1s	Hi, this is Charles Hoskinson broadcasting live from rough and rugged	こんにちは、チャールズ・ホスキンソンです。
+6s	Wyoming up here in Gillette auxiliary office taking care of some of the	ここはワイオミング州の荒々しいジレットにある補助 事務所で、
+10s	transition to our good friends at Monument Health uh who are as you know a	私たちの良き友人である モニュメント・ヘルスへの引き継ぎ作業を行っています。ご存知のように、モニュメント・ヘルスはメイヨー・クリニックの
+15s	Mayo affiliate and they're having a lovely time slowly but surely taking	関連機関で、私たちが
+20s	custody of the beautiful building we built and figuring out how they're going	建てた美しい建物をゆっくりと着実に引き継ぎ、ワイオミング州ジレットの皆さんに
+23s	to provide excellent wonderful healthc care to everybody in Gillette Wyoming	素晴らしい医療を提供する方法を模索しています。
+28s	but something came out today something that, you know, you just got to enjoy it	今日、あることが発表されました。それは、発表されたら 楽しむしかないようなことです
+32s	when it comes out. And of course, because it's artificial intelligence,	。 そしてもちろん、 人工知能である以上、あらゆる事柄は
+37s	everything is always remarkably controversial.	常に非常に 物議を醸すものだ。
+41s	So, let me show you guys a little something.	それでは、皆さんにちょっとした ものをお見せしましょう。
+49s	Okay, so this is a tweet from OpenAI and it said something rather remarkable. So	さて、これはOpenAIのツイートなのですが、 かなり注目すべきことが書かれていました。 まず
+57s	first off, what are the Millennium problems? Millennium problems are a	最初に、ミレニアム 問題とは何でしょうか？ ミレニアム問題とは、
+1:01	bunch of problems that a organization called Cray Institute uh put	クレイ研究所という組織が
+1:07	million-dollar bounties on and they're considered to be the most important and	100万ドルの懸賞金をかけた一連の問題で、
+1:11	hardest problems in all of mathematics with some overlap in physics. These are	物理学と一部重複するものの、数学全体の中で最も重要かつ最も難しい問題と考えられています。 これらは、
+1:16	the kinds of problems that if you solve um you get turbo tenure. That's the kind	解決すれば 超長期の在職期間が得られる種類の問題です。 それは、
+1:21	of tenure where uh you can become a cannibal and uh set nuns on fire on the	-
+1:28	weekend and they won't fire you. They'll just kind of like send you to a remote	週末に人食いになって修道女に火をつけてもいいような、そういう種類の在職期間です。 彼らは あなたを人里離れた島に送り込むようなもので、
+1:31	island and you still get to work but you know you'll be like a Napoleonque exile.	仕事は続けられるけれど、まるで ナポレオン時代の亡命者のような気分になるだろう。
+1:36	You get basically god mode in academia. And these are things like the ponor	学術界では、基本的に神のような存在になれる。 そして、これらはポノール
+1:41	conjecture the reman hypothesis and nir stokes. So anybody uh who claims Navier	予想、レマン仮説、ニル・ ストークスといったものです。 だから、ナビエ・ストークス方程式が正しいと主張する人は、それは
+1:48	Stokes uh is is you know that's that's a big deal and a lot of people have	大変なことで、多くの人がそれに対して
+1:54	enormous skepticism behind it. So what OpenAI said is we're sharing a solution	非常に懐疑的です。 つまり、 OpenAIが発表したのは、
+2:00	to the neighbor Stokes Millennium Prize problem. One of the deepest problems at	ストークス・ミレニアム賞の近隣 問題に対する解決策を共有するということだ。
+2:03	the frontier of mathematics the proof was produced by a group of agents using	数学の最先端分野における最も難解な問題の一つであるこの問題の証明は、
+2:08	an open AI nextG model significantly more capable than GPT6 Astra. The	GPT-6 Astraよりもはるかに高性能なOpenAIのnextGモデルを使用するエージェントグループによって作成された。
+2:14	problem concerns whe the description of three smooth threedimensional fluid	-
+2:18	motion modeled by Navier Stokes equations can break down is remade	ナビエ・ストークス方程式でモデル化された3つの滑らかな3次元流体運動の記述が 破綻する可能性があるという問題は、
+2:21	unsolved for 90 years. So when you look at Navier Stokes really	90年間未解決のままです。 ナビエ・ストークス方程式について見てみると、実際には
+2:31	what it's about is named after two people Claude Louie Navier and George	クロード・ルイ・ナビエとジョージ・
+2:35	Gabriel Stokes and it's a 19th century problem and they developed them uh	ガブリエル・ストークスの2人にちなんで名付けられており、19世紀の 問題で、彼らは
+2:40	basically a system of partial differential equations in the 19th	基本的に 19世紀に偏微分方程式のシステムを開発しました。
+2:43	century and what they were interested in is how does fluid flow and you think	彼らが興味を持ったのは、 流体がどのように流れるかということで、
+2:48	fluid? That's like water, right? Well everything is kind of a fluid. water in	流体について考えてみてください。 それは水みたいなものですよね？ まあ、 すべては流動的なものだ。 川の水
+2:52	a river, air over a wing, smoke going through a chimney, gases have basically	、翼の上を流れる空気、 煙突を通る煙など、気体は基本的に
+2:57	fluid-like behavior, the blood in your body, and there's kind of three things	流体のような性質を持ち、体内の血液も同様です。
+3:02	that work together when you have fluid. You have pressure pushing it, outside	流体が存在する場合、3つの要素が連携して機能します。
+3:07	forces like gravity, and stickiness, its own stickiness, the viscosity of it. So,	重力のような外部からの圧力と、粘着性、つまり物質 自体の粘性によって、物質は押し付けられるのです。 つまり、
+3:13	when you think about honey pours differently than when you pour water. So	蜂蜜を注ぐことは、 水を注ぐこととは異なる考え方をするということです。 だから、
+3:17	when you squirrel cream and coffee instead of vanishing takes a while and	リスのクリームとコーヒーは 消えるのではなく、しばらく時間がかかり、
+3:23	eventually it changes the color and how a boat leaves awake. You know this is a	最終的には色を変え、 ボートが航跡を残す様子も変わります。 これは
+3:28	really important thing and clay mathematics uh recognizes that all	本当に重要なことで、粘土 数学もそれを認識していますし、すべての
+3:33	physics recognizes that and really what you're looking for is you know do	物理学もそれを認識しています。そして、本当に 探しているのは、
+3:39	when fluids move can we create a series of equations that have well behaved	流体が動くときに、きちんと振る舞う一連の方程式を作成できるかどうかです
+3:45	behavior. So what you're thinking about in partial differential equations for	。 つまり、良好な挙動を表す 偏微分方程式で考えているのは、ある種の
+3:48	well- behaved behavior is is kind of a finitness and smoothness about it. When	有限性と滑らかさのことです。
+3:55	PTEES go crazy, they go extra turbo cray cray like dependopotamus,	PTEESが狂うと、 デペンドポタマスのように超ターボクレイジーになるんだ、ほら、
+4:01	you know, suing you for child support crazy just go all across the entire	養育費を求めて訴訟を起こして、
+4:05	world uh for craziness. And and so what you do is you say okay well we want to	世界中を狂ったように駆け回るんだ。 そこで、こう言うのです。「この
+4:11	show that the solution here doesn't have infinite speeds infinite sharp kinks	解には 無限の速度や無限の急激な折れ曲がりはないことを示したい。
+4:16	because what would happen is the system breaks from physics. You don't have	なぜなら、そうなるとシステムが 物理法則から逸脱してしまうからだ。」 あなたには
+4:21	infinite speed, infinite energy. You don't have these infinite	無限の速度も無限のエネルギーもありません。
+4:25	discontinuities inside a system. You want to be fluid and smooth because	システム内部には、このような無限の不連続性は存在しません。 流動的で滑らかであることは、
+4:29	that's how a fluid basically behaves, right? It has to be finite. So it's a	基本的に流体がそう振る舞う性質だからですよね ？ それは有限でなければならない。 だから、
+4:35	big deal in mathematics, huge deal in mathematics	-
+4:41	uh to solve something like this because you advance an entire field of	このような問題を解決することは数学において非常に重要なことであり、
+4:47	mathematics. When you look at partial differential equations, this is	数学の分野全体を前進させることになるのです。 偏 微分方程式は、
+4:51	something that every engineer is super interested in. Every physicist is super	あらゆるエンジニアが非常に 興味を持っている分野です。あらゆる物理学者も同様です
+4:56	interested in. Fluid dynamics is something that every rocket builder,	。流体力学は、 ロケット設計者、
+4:59	aerospace engineer, mechanical engineer in some way has to deal with. And and so	航空宇宙エンジニア、機械エンジニアなど、あらゆる人が 何らかの形で関わらなければならない分野です。 ですから、
+5:04	when you study engineering at the undergraduate and graduate level or you	学部や大学院レベルで工学を学んだり、
+5:08	study physics, um you tend to deal with uh fluid dynamics at some point, you	物理学を学んだりすると、 ある時点で流体力学を扱うことになり、
+5:16	always take an OD and a PTE class. and Nivier Stokes when you take a PTE class	必ずODとPTEの授業を受けることになります。 そして、 PTEの授業を受けるとニヴィエ・ストークスが出てくるが、これは
+5:21	that's a the canonical example of it's easy to state but ridiculously hard to	言うのは簡単だが、実際に
+5:27	talk about. So for open AAI to claim that they have solved this this is	話すのは非常に難しいという典型的な例だ。 だから、オープンAAIが これを解決したと主張することは、
+5:32	something that would fundamentally change the	-
+5:36	mathematics paradigm because that's an example of a 90 plus year old	数学のパラダイムを根本的に変えることになるでしょう。なぜなら、これは 90年以上も前から理解されてきたことの一例であり、
+5:39	understanding and everybody's just like man you know how do we solve something	誰もが「一体 どうやって
+5:43	like this? Okay. Well, here's the problem and this is why we built	これを解決すればいいんだ？」と考えているからです。 わかった。 さて、ここに 問題点があり、だからこそ私たちはMidnightを開発したのです
+5:48	Midnight. We go back to it again and again and again and again. Okay. So, you	。 私たちは何度も何度も何度もそれに戻ってくる 。 わかった。 つまり、
+5:53	have Navier Stokes, right? Well, Jay Cummings,	ナビエ・ストークス方程式を使っているということですよね？ ジェイ・ カミングスさん、
+5:59	I worked on this proof for a year and they just tweeted it out. What the hell	私はこの証明に1年間取り組んできたのに、 彼らはそれをツイートしてしまったんですよ。
+6:04	is Jay Cummings saying? Well, Jay Cummings, a professor at UCSD. He's a	ジェイ・カミングスは何を言っているんだ？ ええ、 UCSDの教授であるジェイ・カミングスです。 彼は
+6:08	proper mathematician. If you look at his CV, he's well published. He he's very	正真正銘の数学者だ。 彼の 履歴書を見れば、彼は多くの論文を発表していることがわかる。 彼はとても頭の良い
+6:12	smart guy. done a lot of great work. So, why is Jay saying he worked on this	人だ。 素晴らしい仕事をたくさんしてきた。 では、なぜジェイはこれに
+6:17	for a year? Because he has the chat logs. Um, if you if you uh you go	1年間取り組んだと言っているのでしょうか？ なぜなら、彼はチャット ログを持っているからだ。 ええと、
+6:24	through it and you take a look at this, what's interesting is that basically uh	これをよく見ていただければ、 興味深いのは、基本的に
+6:33	OpenAI says that they totally independently came up with this, but	OpenAI …は これを完全に独自に考案したと言っていますが、実際には、
+6:38	what it's looking like is that they gave a hyperintelligent model an impossible	超知能モデルに不可能な
+6:43	task to test its creativity and its insight. And these models are basically	タスクを与えて、その創造性と 洞察力をテストしたように見えます。 そして、これらのモデルは基本的に
+6:51	optimization engines. They look for path minimization. So if they can't solve it,	最適化エンジンです。 彼らは経路の 最小化を追求する。 だから、もし彼らがそれを解決できない場合は、
+6:57	they'll look online and because they have access to it, the internal chat	オンラインで調べます。そして、彼らは それにアクセスできるので、
+7:02	logs of chat GPT. So if they go into the internal chat	チャットGPTの内部チャットログを調べます。 つまり …、
+7:09	logs of chat GPT, there was a mathematician	チャットGPTの内部チャットログを調べれば、 数学者がいて、
+7:13	and that mathematician basically was working on it. uh and his solution, his	その数学者が基本的に その研究に取り組んでいたことがわかる。 そして彼の解決策、彼の
+7:19	ideas seemed to have influenced or entirely	アイデアは、
+7:24	replaced the approach that Chad GPT was taking. And because there's more of it,	チャドGPTが 採用していたアプローチに影響を与えたか、あるいは完全に取って代わったように思われます。 そして、そのモデルが大量に存在するようになったことで、
+7:29	thousands of copies of the model were then able to take it, take it to the	何千ものモデルのコピーがそれを基に
+7:33	next level, lean verify it, and then come up with something. So this is the	次のレベルに発展させ、リーン検証を行い、最終的に 何かを生み出すことができたのです。 つまりこれは、
+7:38	equivalent of you've worked on a problem for a year, you have your notes on the	1年間かけて問題に取り組み、その問題に関するメモを
+7:43	problem, you leave them on the table. another mathematician comes by, grabs	机の上に置いておくのと同じことだ。 別の数学者がやって来て、
+7:48	your notes, reads them, is inspired by it, and says, "Oh, I actually know how	あなたのノートを手に取り、それを読んで、感銘を受け、 「ああ、実は
+7:53	to solve this problem, and then goes and writes everything down, checks it, and	この問題の解き方がわかった」と言って、 すべてを書き出し、確認し、
+7:58	publishes it and says they came up with it." And you say, "Well, hang on a	発表して、自分が考え出したのだと言うのです 。 そしてあなたはこう言うでしょう。「ちょっと待ってください
+8:03	second here. I came up with the proof approach. I came up with all the	。証明の アプローチを考え出したのは私です。
+8:07	infrastructure for it, and I gave you basically everything you needed. I	そのためのインフラもすべて私が構築し、 必要なものは基本的にすべて提供しました。私は
+8:11	solved this whole way. I finished it. And this happens in academia from time	この方法を完全に解決し、完成させました。」 そして、これは学術界では時々起こります
+8:18	to time. Um, you know, and we even even run into it some cases in our research	。ええと、私たちの 研究
+8:24	group. Uh, and generally speaking, what ends up happening is a shotgun wedding	グループでも、そういうケースに遭遇することがあります。一般的に言って、 最終的に起こるのは、
+8:29	where if both sides made substantial contributions, they come together, agree	両者が実質的な 貢献をした場合、いわば駆け落ち結婚のようなもので、両者が協力して
+8:33	to be co-authors and share credit with this. In other cases, there's bitter	共著者となり、功績を共有することに同意します 。他のケースでは、激しいライバル関係が生まれます
+8:38	rivalry. In fact, the invention of calculus uh had this issue where Sir	。実際、微積分学の発明には、
+8:42	Isaac Newton preceded Linets, but Linets was first to publish. So, he claimed he	アイザック・ニュートン卿がリネッツよりも先に研究していたにもかかわらず、リネッツが 先に論文を発表したという問題がありました。そのため、彼は
+8:48	invented calculus. And if you were in Germany, you'd agree with him. And if	微積分学を発明したと主張しました。もしあなたが ドイツにいたら、彼に同意するでしょう。そして、もし
+8:51	you're in the UK, you'd agree with Sir Isaac Newton uh for this. So, that's a	あなたがイギリスにいたら、アイザック・ニュートン卿に同意するでしょう 。これは
+8:55	very old feud, but you can see how violent these things can get. But what	非常に古い確執ですが、どれほど 激しいものかお分かりいただけるでしょう。 こういうことは起こり得る。つまり、
+9:00	this is saying is anything you put into the prompt of chat GPT,	チャットGPTのプロンプトに入力したものは何でも、
+9:09	they're going to use that. Okay, your intellectual property, your	彼らが利用するということだ。 あなたの知的財産、
+9:15	ideas, your things. And for a mathematician, this is the equivalent of	アイデア、作品。 数学者にとって、これは
+9:20	having the idea for Google or Apple or Microsoft and like the whole plan and	Google …やApple、 Microsoftのアイデア、計画全体、そしてビル・
+9:27	everything and a guarantee that you're going to be Bill Gates or Larry's Page	ゲイツやラリー・ペイジ、スティーブ・
+9:32	or you know or Steve Jobs. This is the biggest of the big for your field of	ジョブズのような存在になれるという保証に匹敵する。これは、数学 の分野において、
+9:37	mathematics for things that uh that you know people do. Having a solution for	人々が行うようなこと、例えば
+9:42	Navier Stokes that's finite and smooth. Oh my lord. Uh there's just there's just	有限で滑らかなナビエ・ストークス方程式の解法を見つけることなど、最大の偉業だ。 ああ、言葉では言い表せない
+9:48	no words to describe. It's the greatest accomplishment of your career. There's	。 キャリアにおける最大の功績だ。これに勝るものはない
+9:51	nothing to top it. Basically, this is like the thing. And so for CHPT to	。基本的に、これは すごいことだ。だから、CHPTが
+9:57	basically take a year of your work and you have the logs and you've done all	あなたの1年間の研究成果、 ログ、そしてあなたが成し遂げたすべての
+10:02	these things and then magically uh you know it it then takes that claims it's	ことを、魔法のように自分の
+10:09	its own work uh and say I found this, I wrote this. uh and then they publish it	作品だと主張して、「私がこれを見つけた、私が 書いた」と言うのだ。 そして彼らはそれを発表し、
+10:13	and they get the prize from Clay. Um that's pretty big and that's pretty bad.	クレイから賞をもらう。これは かなり大きなことであり、かなり悪いことだ。
+10:19	So if you're an academic, if you're an entrepreneur, know that your ideas, if	だから、あなたが学者であれ、 起業家であれ、あなたのアイデアをクラウド上の
+10:25	you share them in AI with these frontier models in the cloud, they're not your	これらの最先端モデルでAIに共有すると、それはもはや あなた …の
+10:30	ideas anymore. At any time, OpenAI can go and take it and Sam Alman can make it	アイデアではなくなることを知っておいてほしい。いつでもOpenAIが それを奪い、サム・アルマンがそれを
+10:35	his. And it's the same for Daario. And you'll get enthropies if you use Claude.	自分のものにすることができる。ダリオについても同じだ。 クロードを使うとエントロピーも得られる。
+10:40	So why does Midnight fix this? Because it creates the private environments that	では、なぜMidnightはこの問題を解決するのか？ それは、AIを実行できるプライベート環境を作成するからだ
+10:45	you can run the AI in. So they can't read your logs. You get all the upside	。だから彼らは あなたのログを読み取ることができない。推論のメリットはすべて得られるが
+10:51	of the inference, but you get none of the downside. You don't have to share	、デメリットは一切ない 。
+10:55	the invention or have your intellectual property stolen from you. So this is a	発明を共有したり、知的 財産を盗まれたりする必要もない。だからこれは
+11:00	teachable moment. It's going to be hyper controversial. Um it's some it's	教訓となる瞬間だ。非常に 物議を醸すだろう。おそらく、これは
+11:05	probably gonna be a shotgun wedding out of it. Wait a few weeks. whole bunch of	強引な結婚のようなものになるだろう 。数週間待ってみよう。たくさんの
+11:09	stuff is going to come out. Drama per minute AI, it's always drama. Uh, you	ことが出てくるだろう。 AIはドラマチックで、常にドラマチックです。ええと、
+11:13	know that we we beat them in the cryptocurrency space, but just by a	暗号通貨分野では彼らに勝ったことは知っていますが、ほんの少しの差です
+11:17	little uh but I'm just blown away that they claim they have it. Now, as many of	。でも、彼らがそれを主張していることに驚いています。さて、
+11:21	you know, I founded a center for formal mathematics at Carnegie Melon University	皆さんもご存知のように、私は カーネギーメロン大学に形式数学センターを設立しました
+11:26	uh that Jeremy Avagad runs. He's a great guy, brilliant mathematician. And uh we	。ジェレミー・アヴァガドが運営しています。彼は素晴らしい 人で、優秀な数学者です。そして、
+11:33	predicted in 2021 that constructive mathematics enabled by dependently typed	2021年に、 依存型言語によって可能になる構成的数学、つまり
+11:38	language. So basically the uadidus manifesto the QED manifesto or what	基本的にUadidus マニフェスト、QEDマニフェスト、または
+11:43	automath started in 1970 was going to get really big because it's a direct	1970年にオートマスが始めたものが、
+11:48	line to be able to apply the text testing techniques of software in the	-
+11:54	mathematical community. Now, we thought	数学コミュニティでソフトウェアのテキストテスト技術を適用できる直接的な方法であるため、非常に大きなものになると予測しました。 私たちは、
+12:00	that this would increase the radius of	これがプロの数学者間のコラボレーションの範囲を広げると考えました
+12:03	collaboration amongst professional mathematicians. And if you watch my	。
+12:06	keynote that I had at Carnegie Melon at the opening of the lab, my position was	カーネギーメロン大学の 研究所の開設時に私が行った基調講演をご覧いただければわかると思いますが、私の立場は、
+12:12	that the reason why mathematics is an anti- collaborative field is you have to	数学 …が 反コラボレーション分野である理由は、自分の
+12:16	trust your co-authors to be able to fully understand and verify everything.	共同執筆者には、 すべてを完全に理解し検証できるようにする必要があります。
+12:20	And your radius of trust is quite small. So, you know, like three to five people	そして、あなたの信頼範囲は非常に狭いです。 つまり、
+12:24	that you really know, you really work with, there's no way to really prove.	本当に知っていて、一緒に仕事をしている3人から5人くらいしかいません。
+12:28	You have to believe they're good mathematicians or else they make	彼らが優れた 数学者であると信じるしかありません。そうでなければ、彼らが
+12:31	mistakes and those become your mistakes. With lean, it's like test-driven	間違いを犯し、それがあなたの間違いになります。 リーンでは、テスト駆動
+12:35	development software. You can prove that the proof is correct. So, you don't have	開発ソフトウェアのようなものです。証明が正しいことを証明できます 。つまり、
+12:39	to trust anybody. Their way to earn in is to prove something. It compiles the	誰かを信頼する必要はありません。彼らの報酬を得る方法は、 何かを証明することです。
+12:45	lean proofs are correct. Uh then it means that the math is right. So you can	リーン証明が正しいとコンパイルされると、 数学が正しいということになります。そのため、
+12:49	go to a much larger collaborative set just like it's not uncommon in the	-
+12:53	computer science world to see a repo with 50 or 100 or 200 or 500	コンピュータサイエンスの世界では 50人、100人、200人、500人の
+12:58	contributors and you use a version management system, a version control	貢献者がいるリポジトリを見るのは珍しくありませんが、もっと大規模な共同作業セットに移行できます。Gitのようなバージョン 管理システム、バージョンコントロール
+13:01	system like Git. Um and you're able to you basically sort all that out. Well,	システムを使用すると、 基本的にすべてを整理できます。まあ、それはすべてうまくいき、
+13:06	that's all fine and dandy and that's great. Um we never anticipated the	素晴らしいことです。
+13:11	extent upon which AI uh would come in. We knew that it would allow like a	AIがここまで普及するとは予想していませんでした。
+13:17	digital similacro, but the idea of the AI itself would fully write the proof.	デジタル版のようなものは作れるだろうとは思っていましたが、 AI自体が証明を完全に書き上げるという考えは、かなり突飛なものでした。LLMは
+13:22	It was um pretty far out and LLM's really surprised us. And it's pretty	本当に私たちを驚かせました。
+13:27	remarkable to see how far they've gotten and what they've been able to achieve	彼らがここまで進歩し、何を達成し、何を成し遂げてきたのかを見るのは、実に驚くべきことです。
+13:30	and do. There is a war and it's at the foundations of mathematics and	数学の基礎、
+13:35	intuitionistic versus constructive mathematics of how much math is	直観主義数学と構成主義 数学のどちらがどれだけ数学を
+13:40	constructible and how powerful are these dependently typed systems. uh and they	構築できるのか、そしてこれらの 依存型システムがどれだけ強力なのかという戦いが繰り広げられています。ZFC
+13:44	seem remarkably wellpowered with ZFC set theory. You you can do an enormous	集合論では、驚くほど強力なシステムになっているようです。 膨大 …な
+13:51	amount of stuff. It was actually surprising to me that certain things	量のことができます。
+13:54	were formalized like the managars paradox for example uh and the continuum	例えば、マナーのパラドックスや連続体
+13:59	hypothesis in uh in lean. So it's pretty remarkable to see how far these things	仮説がリーンで形式化されたことは、私にとっては驚きでした。ですから、 これらのシステムがどれほど進歩してきたのかを見るのは、実に驚くべきことです
+14:04	have gotten. Uh so this is an interesting thing. Um it's it's a lot of	。これは興味深いことです。多くの
+14:10	stuff all wrapped up into one. It's frontier mathematics. It's uh	ことが一つにまとめられています。これは 最先端の数学です。 ええと、
+14:14	mathematical culture. I don't know how the mathematical community will feel	数学文化ですね。 数学界が
+14:18	about accepting this type of proof. Um is lean a legitimate format for proofs?	この種の証明を受け入れることについてどう感じるかは分かりません。ええと、リーンは 証明の正当な形式でしょうか？
+14:24	I would argue yes. I I created a center for formal mathematics to do that. Uh	私はイエスと主張します。 そのために形式数学センターを設立しました。ええと、
+14:29	but I'm obviously not a proper mathematician and I don't have sway	私は明らかに正統な 数学者ではありませんし、影響力もありませんが、
+14:34	although Peter Schwab and Terry Tao agree with me. So you know there that's	ピーター・シュワブとテリー・タオは 私に同意しています。つまり、
+14:38	something they are proper mathematicians but a lot of old school mathematicians	彼らは正統な数学者ですが、 多くの昔ながらの数学者は、ええと、
+14:42	do not like um um number theory journals do not accept for example AI	数論のジャーナルは、 例えばAIの貢献を受け入れません。ですから、それ
+14:47	contributions so there's a there's a holy war about all that but what do you	については聖戦のようなものがありますが、
+14:52	do when there's a proof if you ignore the AI contribution but it's right	AIの貢献を無視して証明が正しければ、どうすればいいのでしょうか？
+14:59	then it's an unsolved solved problem we have to just wait for a human's fleshy	それは未解決の問題であり、解決済みです。 人間の生身の
+15:03	brain to parro it and come up with a slight slightly better version of it so	脳がそれを繰り返して、少しだけより 良いバージョンを思いつくのを待つしかありません。そうすれば、
+15:08	we can move on like health's tertinary gold injection proof I don't know it's	健康の三次 金注入の証明のように、先に進むことができます。分かりません、これは
+15:14	an interesting question um this is a problem you can't ignore and this is a	興味深い質問です。ええと、これは 問題です 無視できない
+15:19	situation you uh you can't ignore uh so you know it's it's interesting now uh I	状況です。これは無視できない状況です。 興味深いことに、
+15:27	did have a chance to look through um some of the write up from openai	OpenAI のレポートをいくつか読む機会がありました。私は
+15:33	uh I am not a domain expert on nibier stokes it's my area of math. I studied	ニビエ …・ ストークス方程式の専門家ではありません。私の専門は数学で、
+15:38	analytic and additive number theory. Um and it's a very different set of	解析的および加法的整数論を研究しました。 そして、これは全く異なる
+15:43	concerns. Uh this is u the solution that they're proposing though seems to be a	懸念事項です。しかし、彼らが提案している解決策は、
+15:49	little bit of a hack. Um and it permits some degenerate cases that would not	少しハックのようです。
+15:55	come up in uh real physics, but it still technically satisfies the solution. Uh	実際の物理学では発生しないような退化したケースを許容しますが、 技術的には解決策を満たしています。
+16:01	so this is another thing to be nitpicky about. There's enough air in the	これは、細かいことを指摘すべきもう一つの点です 。提案には十分な余裕があるので、
+16:07	proposal that I think Clay can weasle its way out if they want to sidestep the	クレイは論争全体を回避したいのであれば、うまく逃げ出すことができると思います
+16:11	entire controversy. But what this does mean is that a model is sufficiently	。しかし、これは、 モデルが十分に
+16:17	advanced that it knows how to steal a smart person's work, take that work,	高度であるため、 賢い人の研究を盗み、その研究を取り入れ、
+16:22	improve it, iterate it, and formalize it to the extent that it actually solves a	改善し、反復する方法を知っていることを意味します。 それを、 実際 …に
+16:28	hard problem. That is very humanlike behavior. And if	難しい問題を解決できる程度に形式化する。 それは非常に人間らしい行動です。そして、
+16:33	the model can do it today at the rate of progress that they have uh you know the	モデルが今日、現在の進歩の速度でそれを実行できるのであれば、その
+16:39	capabilities will be exponentially better. There are some open	能力は指数関数的に向上するでしょう 。創造性の
+16:42	philosophical questions about the source of creativity. But let's be honest here	源泉については、いくつかの哲学的な疑問が残っています 。しかし、正直に言うと、
+16:47	the vast majority of human invention is iteration and refinement of something	人間の発明の大部分は、何か
+16:51	else. You know and to show you guys that let me show	別のものの反復と改良です。それを 皆さんに示して、
+16:56	you a little something here. So	ここで少し見せましょう。
+17:08	So, you all know our good friend Michael Jackson,	皆さんは私たちの良き友人であるマイケル・ ジャクソンを知っていますが、
+17:18	but did you know that there was a man named Bob FSY? And he's the one who	ボブ・FSYという男がいたことをご存知でしたか？そして、彼は
+17:23	inspired Michael Jackson back in 1974. And let me just play a little something	1974年にマイケル・ジャクソンにインスピレーションを与えた人物です。ここで少しだけ、
+17:29	for you. the show Good Old Bob. Michael saw it, Mr. Jackson Five, Michael, and	ショー「グッド・オールド・ボブ」を再生しましょう。 ジャクソン5のマイケルはそれを見て、
+17:36	he said, "You know what? I'm gonna do that." So, you saw all that Michael	「いいかい、 「それをやるよ。」昔、マイケル・
+17:39	Jackson stuff back in the day. You were all excited about it, and then suddenly	ジャクソンの件を全部見たよね。みんな 興奮してたけど、突然、
+17:45	it turns out that he kind of took the snake from Bob Fos.	彼 …が ボブ・フォスから蛇を盗んだことがわかった。
+17:53	So, everything is stolen. Nothing is truly original.	つまり、すべて盗作なんだ。 真にオリジナルなものなんて何もない。それが
+17:59	And that's the beauty of it. You can take what came before and you can make	素晴らしいところなんだ。 以前のものを取り入れて、それをより
+18:04	it better. So what do you think Navier Stokes	良くすることができる。では、ナビエ・ ストークス方程式の
+18:08	this solution the providence of open AI because technically all the knowledge of	この解法はオープンAIの起源だと思う？ 技術的には、オープンAIの知識はすべて
+18:13	OpenAI comes from every other mathematician or is the unfinished	他の 数学者から得たものか、オープンGのチャットGPTの
+18:18	partial solution in the chat logs of open G of chat GPT. Is that the real	チャットログにある未完成の部分的な解法なんだ 。それが本当の
+18:24	proof? Is that the real inspiration? And is Michael Jackson just Bob in a	証拠なのか？それが本当のインスピレーションなのか？ マイケル・ジャクソンはボブを
+18:31	different light? Or is Michael Jackson something new and interesting and	別の角度から見ただけなのか？それともマイケル・ジャクソンは何か 新しくて面白くて
+18:37	different? Hard to say, right? Until next time everyone. Cheers.	違うものなのか？判断するのは難しいよね。それではまた 次回。乾杯。

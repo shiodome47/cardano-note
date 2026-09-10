@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Navier-Stokes (2026-09-09) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Charles Hoskinson</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-09-09</span>
+  <span>18:40</span>
+  <span>YouTube (live)</span>
+  <span>Navier-Stokes</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> This is a public live stream on Charles Hoskinson's own YouTube channel, so the speaker is named. It is a single-speaker broadcast of about 18 minutes; what he says here is his personal view, not a statement of IOG or the Cardano Foundation.</p>
+<p>The source is YouTube's auto-generated captions, supplied as a table of start times and caption lines with <strong>no speaker labels</strong>, 183 lines. Since there is one speaker, turns are split at changes of topic, and the same split is used on the Japanese page. Times are the start time of the first caption line in each turn.</p>
+<p><strong>Only proper-noun misrecognitions are corrected</strong>: <code>Cray Institute</code> → Clay Institute, <code>ponor conjecture</code> → Poincaré conjecture, <code>reman hypothesis</code> → Riemann hypothesis, <code>nir stokes</code> / <code>neighbor Stokes</code> / <code>Nivier Stokes</code> / <code>nibier stokes</code> → Navier Stokes, <code>Claude Louie Navier</code> → Claude-Louis Navier, <code>GPT6 Astra</code> → GPT-6 Astra, <code>Chad GPT</code> / <code>CHPT</code> → ChatGPT, <code>open AAI</code> → OpenAI, <code>Sam Alman</code> → Sam Altman, <code>Daario</code> → Dario, <code>enthropies</code> → Anthropic, <code>Linets</code> → Leibniz, <code>Larry's Page</code> → Larry Page, <code>Carnegie Melon</code> → Carnegie Mellon, <code>Jeremy Avagad</code> → Jeremy Avigad, <code>automath</code> → Automath, <code>lean</code> → Lean, <code>Bob FSY</code> / <code>Bob Fos</code> → Bob Fosse. Three names are corrected on inference from context, and are marked with <em>(inferred)</em> in the text: <code>Peter Schwab</code> → Peter Scholze, <code>managars paradox</code> → Banach–Tarski paradox, <code>health's tertinary gold injection proof</code> → Helfgott's ternary Goldbach conjecture proof. One phrase, <code>the uadidus manifesto</code>, could not be identified and is left as heard.</p>
+<p><strong>Everything else is unchanged</strong>, mistranscriptions included: <code>PTEES</code> / <code>PTE</code> (PDEs / PDE), <code>OD</code> (ODE), <code>nextG</code> (next-generation), <code>awake</code> (a wake), <code>squirrel</code> (squirt), <code>similacro</code>, <code>parro</code>, <code>open G</code>, and the jokes are all as captioned.</p>
+<p><strong>Screens were shared.</strong> OpenAI's post, Jay Cummings's post, and a clip of Bob Fosse and Michael Jackson are shown in the video; only what was spoken aloud appears on this page.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-open">00:00:01 — Opening: Gillette, Monument Health, and “something came out today”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:00:01</span></div>
+  <div class="turn-body"><p>Hi, this is Charles Hoskinson broadcasting live from rough and rugged Wyoming up here in Gillette auxiliary office taking care of some of the transition to our good friends at Monument Health uh who are as you know a Mayo affiliate and they're having a lovely time slowly but surely taking custody of the beautiful building we built and figuring out how they're going to provide excellent wonderful healthc care to everybody in Gillette Wyoming but something came out today something that, you know, you just got to enjoy it when it comes out. And of course, because it's artificial intelligence, everything is always remarkably controversial. So, let me show you guys a little something.</p></div>
+</div>
+
+<p class="sec" id="t-tweet">00:00:49 — The OpenAI post and the Millennium problems</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:00:49</span></div>
+  <div class="turn-body"><p>Okay, so this is a tweet from OpenAI and it said something rather remarkable. So first off, what are the Millennium problems? Millennium problems are a bunch of problems that a organization called Clay Institute uh put million-dollar bounties on and they're considered to be the most important and hardest problems in all of mathematics with some overlap in physics. These are the kinds of problems that if you solve um you get turbo tenure. That's the kind of tenure where uh you can become a cannibal and uh set nuns on fire on the weekend and they won't fire you. They'll just kind of like send you to a remote island and you still get to work but you know you'll be like a Napoleonque exile. You get basically god mode in academia. And these are things like the Poincaré conjecture the Riemann hypothesis and Navier Stokes. So anybody uh who claims Navier Stokes uh is is you know that's that's a big deal and a lot of people have enormous skepticism behind it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:01:54</span></div>
+  <div class="turn-body"><p>So what OpenAI said is we're sharing a solution to the Navier Stokes Millennium Prize problem. One of the deepest problems at the frontier of mathematics the proof was produced by a group of agents using an open AI nextG model significantly more capable than GPT-6 Astra. The problem concerns whe the description of three smooth threedimensional fluid motion modeled by Navier Stokes equations can break down is remade unsolved for 90 years.</p></div>
+</div>
+
+<p class="sec" id="t-ns">00:02:21 — What Navier–Stokes is about</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:02:21</span></div>
+  <div class="turn-body"><p>So when you look at Navier Stokes really what it's about is named after two people Claude-Louis Navier and George Gabriel Stokes and it's a 19th century problem and they developed them uh basically a system of partial differential equations in the 19th century and what they were interested in is how does fluid flow and you think fluid? That's like water, right? Well everything is kind of a fluid. water in a river, air over a wing, smoke going through a chimney, gases have basically fluid-like behavior, the blood in your body, and there's kind of three things that work together when you have fluid. You have pressure pushing it, outside forces like gravity, and stickiness, its own stickiness, the viscosity of it. So, when you think about honey pours differently than when you pour water. So when you squirrel cream and coffee instead of vanishing takes a while and eventually it changes the color and how a boat leaves awake.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:03:23</span></div>
+  <div class="turn-body"><p>You know this is a really important thing and Clay mathematics uh recognizes that all physics recognizes that and really what you're looking for is you know do when fluids move can we create a series of equations that have well behaved behavior. So what you're thinking about in partial differential equations for well- behaved behavior is is kind of a finitness and smoothness about it. When PTEES go crazy, they go extra turbo cray cray like dependopotamus, you know, suing you for child support crazy just go all across the entire world uh for craziness. And and so what you do is you say okay well we want to show that the solution here doesn't have infinite speeds infinite sharp kinks because what would happen is the system breaks from physics. You don't have infinite speed, infinite energy. You don't have these infinite discontinuities inside a system. You want to be fluid and smooth because that's how a fluid basically behaves, right? It has to be finite.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:04:29</span></div>
+  <div class="turn-body"><p>So it's a big deal in mathematics, huge deal in mathematics uh to solve something like this because you advance an entire field of mathematics. When you look at partial differential equations, this is something that every engineer is super interested in. Every physicist is super interested in. Fluid dynamics is something that every rocket builder, aerospace engineer, mechanical engineer in some way has to deal with. And and so when you study engineering at the undergraduate and graduate level or you study physics, um you tend to deal with uh fluid dynamics at some point, you always take an OD and a PTE class. and Navier Stokes when you take a PTE class that's a the canonical example of it's easy to state but ridiculously hard to talk about. So for OpenAI to claim that they have solved this this is something that would fundamentally change the mathematics paradigm because that's an example of a 90 plus year old understanding and everybody's just like man you know how do we solve something like this?</p></div>
+</div>
+
+<p class="sec" id="t-cummings">00:05:43 — Jay Cummings: “I worked on this proof for a year”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:05:43</span></div>
+  <div class="turn-body"><p>Okay. Well, here's the problem and this is why we built Midnight. We go back to it again and again and again and again. Okay. So, you have Navier Stokes, right? Well, Jay Cummings, I worked on this proof for a year and they just tweeted it out. What the hell is Jay Cummings saying? Well, Jay Cummings, a professor at UCSD. He's a proper mathematician. If you look at his CV, he's well published. He he's very smart guy. done a lot of great work. So, why is Jay saying he worked on this for a year? Because he has the chat logs.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:06:17</span></div>
+  <div class="turn-body"><p>Um, if you if you uh you go through it and you take a look at this, what's interesting is that basically uh OpenAI says that they totally independently came up with this, but what it's looking like is that they gave a hyperintelligent model an impossible task to test its creativity and its insight. And these models are basically optimization engines. They look for path minimization. So if they can't solve it, they'll look online and because they have access to it, the internal chat logs of ChatGPT. So if they go into the internal chat logs of ChatGPT, there was a mathematician and that mathematician basically was working on it. uh and his solution, his ideas seemed to have influenced or entirely replaced the approach that ChatGPT was taking. And because there's more of it, thousands of copies of the model were then able to take it, take it to the next level, Lean verify it, and then come up with something.</p></div>
+</div>
+
+<p class="sec" id="t-notes">00:07:33 — Notes left on the table: how credit disputes go</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:07:33</span></div>
+  <div class="turn-body"><p>So this is the equivalent of you've worked on a problem for a year, you have your notes on the problem, you leave them on the table. another mathematician comes by, grabs your notes, reads them, is inspired by it, and says, "Oh, I actually know how to solve this problem, and then goes and writes everything down, checks it, and publishes it and says they came up with it." And you say, "Well, hang on a second here. I came up with the proof approach. I came up with all the infrastructure for it, and I gave you basically everything you needed. I solved this whole way. I finished it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:08:11</span></div>
+  <div class="turn-body"><p>And this happens in academia from time to time. Um, you know, and we even even run into it some cases in our research group. Uh, and generally speaking, what ends up happening is a shotgun wedding where if both sides made substantial contributions, they come together, agree to be co-authors and share credit with this. In other cases, there's bitter rivalry. In fact, the invention of calculus uh had this issue where Sir Isaac Newton preceded Leibniz, but Leibniz was first to publish. So, he claimed he invented calculus. And if you were in Germany, you'd agree with him. And if you're in the UK, you'd agree with Sir Isaac Newton uh for this. So, that's a very old feud, but you can see how violent these things can get.</p></div>
+</div>
+
+<p class="sec" id="t-prompt">00:08:55 — “Anything you put into the prompt”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:08:55</span></div>
+  <div class="turn-body"><p>But what this is saying is anything you put into the prompt of ChatGPT, they're going to use that. Okay, your intellectual property, your ideas, your things. And for a mathematician, this is the equivalent of having the idea for Google or Apple or Microsoft and like the whole plan and everything and a guarantee that you're going to be Bill Gates or Larry Page or you know or Steve Jobs. This is the biggest of the big for your field of mathematics for things that uh that you know people do. Having a solution for Navier Stokes that's finite and smooth. Oh my lord. Uh there's just there's just no words to describe. It's the greatest accomplishment of your career. There's nothing to top it. Basically, this is like the thing. And so for ChatGPT to basically take a year of your work and you have the logs and you've done all these things and then magically uh you know it it then takes that claims it's its own work uh and say I found this, I wrote this. uh and then they publish it and they get the prize from Clay. Um that's pretty big and that's pretty bad.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:10:19</span></div>
+  <div class="turn-body"><p>So if you're an academic, if you're an entrepreneur, know that your ideas, if you share them in AI with these frontier models in the cloud, they're not your ideas anymore. At any time, OpenAI can go and take it and Sam Altman can make it his. And it's the same for Dario. And you'll get Anthropic if you use Claude.</p></div>
+</div>
+
+<p class="sec" id="t-midnight">00:10:40 — “Why does Midnight fix this?”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:10:40</span></div>
+  <div class="turn-body"><p>So why does Midnight fix this? Because it creates the private environments that you can run the AI in. So they can't read your logs. You get all the upside of the inference, but you get none of the downside. You don't have to share the invention or have your intellectual property stolen from you. So this is a teachable moment. It's going to be hyper controversial. Um it's some it's probably gonna be a shotgun wedding out of it. Wait a few weeks. whole bunch of stuff is going to come out. Drama per minute AI, it's always drama. Uh, you know that we we beat them in the cryptocurrency space, but just by a little uh but I'm just blown away that they claim they have it.</p></div>
+</div>
+
+<p class="sec" id="t-lean">00:11:17 — The formal-mathematics centre and the radius of trust</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:11:17</span></div>
+  <div class="turn-body"><p>Now, as many of you know, I founded a center for formal mathematics at Carnegie Mellon University uh that Jeremy Avigad runs. He's a great guy, brilliant mathematician. And uh we predicted in 2021 that constructive mathematics enabled by dependently typed language. So basically the uadidus manifesto the QED manifesto or what Automath started in 1970 was going to get really big because it's a direct line to be able to apply the text testing techniques of software in the mathematical community. Now, we thought that this would increase the radius of collaboration amongst professional mathematicians.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:12:03</span></div>
+  <div class="turn-body"><p>And if you watch my keynote that I had at Carnegie Mellon at the opening of the lab, my position was that the reason why mathematics is an anti- collaborative field is you have to trust your co-authors to be able to fully understand and verify everything. And your radius of trust is quite small. So, you know, like three to five people that you really know, you really work with, there's no way to really prove. You have to believe they're good mathematicians or else they make mistakes and those become your mistakes. With Lean, it's like test-driven development software. You can prove that the proof is correct. So, you don't have to trust anybody. Their way to earn in is to prove something. It compiles the Lean proofs are correct. Uh then it means that the math is right. So you can go to a much larger collaborative set just like it's not uncommon in the computer science world to see a repo with 50 or 100 or 200 or 500 contributors and you use a version management system, a version control system like Git. Um and you're able to you basically sort all that out.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:13:01</span></div>
+  <div class="turn-body"><p>Well, that's all fine and dandy and that's great. Um we never anticipated the extent upon which AI uh would come in. We knew that it would allow like a digital similacro, but the idea of the AI itself would fully write the proof. It was um pretty far out and LLM's really surprised us. And it's pretty remarkable to see how far they've gotten and what they've been able to achieve and do. There is a war and it's at the foundations of mathematics and intuitionistic versus constructive mathematics of how much math is constructible and how powerful are these dependently typed systems. uh and they seem remarkably wellpowered with ZFC set theory. You you can do an enormous amount of stuff. It was actually surprising to me that certain things were formalized like the Banach–Tarski paradox <em>(inferred)</em> for example uh and the continuum hypothesis in uh in Lean. So it's pretty remarkable to see how far these things have gotten.</p></div>
+</div>
+
+<p class="sec" id="t-accept">00:14:04 — Will the mathematical community accept this kind of proof?</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:14:04</span></div>
+  <div class="turn-body"><p>Uh so this is an interesting thing. Um it's it's a lot of stuff all wrapped up into one. It's frontier mathematics. It's uh mathematical culture. I don't know how the mathematical community will feel about accepting this type of proof. Um is Lean a legitimate format for proofs? I would argue yes. I I created a center for formal mathematics to do that. Uh but I'm obviously not a proper mathematician and I don't have sway although Peter Scholze <em>(inferred)</em> and Terry Tao agree with me. So you know there that's something they are proper mathematicians but a lot of old school mathematicians do not like um um number theory journals do not accept for example AI contributions so there's a there's a holy war about all that but what do you do when there's a proof if you ignore the AI contribution but it's right then it's an unsolved solved problem we have to just wait for a human's fleshy brain to parro it and come up with a slight slightly better version of it so we can move on like Helfgott's ternary Goldbach conjecture proof <em>(inferred)</em> I don't know it's an interesting question um this is a problem you can't ignore and this is a situation you uh you can't ignore</p></div>
+</div>
+
+<p class="sec" id="t-proof">00:15:19 — His reading of the write-up</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:15:19</span></div>
+  <div class="turn-body"><p>uh so you know it's it's interesting now uh I did have a chance to look through um some of the write up from openai uh I am not a domain expert on Navier Stokes it's my area of math. I studied analytic and additive number theory. Um and it's a very different set of concerns. Uh this is u the solution that they're proposing though seems to be a little bit of a hack. Um and it permits some degenerate cases that would not come up in uh real physics, but it still technically satisfies the solution. Uh so this is another thing to be nitpicky about. There's enough air in the proposal that I think Clay can weasle its way out if they want to sidestep the entire controversy.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:16:11</span></div>
+  <div class="turn-body"><p>But what this does mean is that a model is sufficiently advanced that it knows how to steal a smart person's work, take that work, improve it, iterate it, and formalize it to the extent that it actually solves a hard problem. That is very humanlike behavior. And if the model can do it today at the rate of progress that they have uh you know the capabilities will be exponentially better. There are some open philosophical questions about the source of creativity. But let's be honest here the vast majority of human invention is iteration and refinement of something else.</p></div>
+</div>
+
+<p class="sec" id="t-fosse">00:16:51 — Bob Fosse and Michael Jackson</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:16:51</span></div>
+  <div class="turn-body"><p>You know and to show you guys that let me show you a little something here. So So, you all know our good friend Michael Jackson, but did you know that there was a man named Bob Fosse? And he's the one who inspired Michael Jackson back in 1974. And let me just play a little something for you. the show Good Old Bob. Michael saw it, Mr. Jackson Five, Michael, and he said, "You know what? I'm gonna do that." So, you saw all that Michael Jackson stuff back in the day. You were all excited about it, and then suddenly it turns out that he kind of took the snake from Bob Fosse. So, everything is stolen. Nothing is truly original. And that's the beauty of it. You can take what came before and you can make it better.</p></div>
+</div>
+
+<p class="sec" id="t-close">00:18:04 — Closing questions</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:18:04</span></div>
+  <div class="turn-body"><p>So what do you think Navier Stokes this solution the providence of open AI because technically all the knowledge of OpenAI comes from every other mathematician or is the unfinished partial solution in the chat logs of open G of ChatGPT. Is that the real proof? Is that the real inspiration? And is Michael Jackson just Bob in a different light? Or is Michael Jackson something new and interesting and different? Hard to say, right? Until next time everyone. Cheers.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the proper-noun corrections noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/live/dcQxe9ohHOw">Watch the video</a></p>
+</footer>
+
+</div>
+</body>
+</html>
