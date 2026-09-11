@@ -99,3 +99,36 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 - **事実と違う紹介**: Jay Cummings を「UCSD の教授」と言っているが、所属はカリフォルニア州立大学サクラメント校。動画の言い分を残し、`補足` で添えた
 - **動画に出てこない当事者**: 報道で先行研究者として出る Tristan Buckmaster と Levent Alpöge。本人は触れていない。まとめでは `補足` の時系列で示した
 
+### 2026-09-10 Cardano Over Coffee — AlphaGrowth が PRIME の監査と RFP を説明した回
+
+**X スペースの録音。文字起こしには話者名も交代の印も時刻もない。**割り当てはすべて文脈からの推定で、全文の 436 ターンのうち 107 ターン（短い相づちと雑談が中心）に `(推定)` / `(inferred)` を付けた。**司会の Christina に 189 ターン**を割り当てている。番組の司会は回ごとに替わるので、次に同じ番組を扱うときは司会を前提にしない。
+
+| 表記 | 根拠 |
+| --- | --- |
+| **Christina**（司会） | 冒頭で共同司会を集める側。"I work at Blink Labs"、"I'm an old-school infra person"、PRIME の運営グループに「私も入っている」と自称。"I'm stirring stuff up with Pragma"、"I've already added Cardano Ignite as a project on Pragma's website" と Pragma の側でも動いている。AlphaGrowth 側も "we've got Christina here" と運営グループの一員として呼ぶ。**姓は出ない** |
+| **James**（共同司会） | Christina が名前で呼ぶ。"I'm on the product committee, and we're reviewing everything"（Intersect の Product Committee）と自称。Sam（"lives in GitHub"）の話をする側。姓・所属の詳細は出ない |
+| **Chad**（共同司会） | ミッドロールと TSC（Technical Steering Committee）の情報を読み上げる側。名前で呼ばれる |
+| **Eric Waisanen**（AlphaGrowth） | "Eric" と呼ばれる。"Happy Thursday. You cut off a second after…" で登場。「3 つか 5 つ選べ」への長い答え、Ken Eric の EVM とマーケットメーカーの質問への答え、"Go, go for it Brandon" と Bryan に振る側。姓は番組 Dose of Alpha の公開情報（2026-09-06 と同じ根拠） |
+| **Bryan Colligan**（AlphaGrowth） | 音声では "Brian"、一度 "Brandon"。「監査でいちばん面白い数字」（1,140 万ドル）、50 対 1、ダイヤモンドの仮の話をする側。"I got a meeting at 11:17" で退出。姓は同上 |
+| **Giovanni**（Cardano Dev Skills、X: @CryptoJoe101） | Christina が名前で紹介。"I made a post about the MCP server" と作者として語る。スペースの題「w/ guests @CryptoJoe101 & @alphagrowth1」にゲストとして載り、@CryptoJoe101 の表示名は「Giovanni EASY1」（ステークプール EASY1 の運営者、2026-09-11 に検索で確認）。姓は出ない |
+| **Bora**（Cardano の教育チーム） | Giovanni が "Bora from the education team" と紹介。発言は「唯一の KPI は新しい開発者の獲得コスト」の 1 ターンのみ |
+| **Phil** | 形式手法・安全性の長い発言。Christina が "Phil" と呼び、Giovanni も "the great Phil" と呼ぶ。姓・所属は出ない |
+| **Ryan** | 「AI エージェントで自動研究・取引エンジンを作っている」参加者。"Thank you, guys. I gotta hop" で退出 |
+| **Chris**（Blink Labs） | 「今日 Boston Blockchain Week へ」と短い発言。Christina が "my partner" と呼ぶ相手（OpenZeppelin の提案に「もう投票した」と「ノー」を入れた人）も同じ Chris と読んだ |
+| **Ken Eric**（Team Void、ノルウェー） | "since I'm a part of Team Void" と自称。EVM・マーケットメーカーの 3 つの質問をする側 |
+| **Beatrice**（Pragma に関わる） | Christina が "Miss Beatrice" と呼ぶ。Pragma の会合の記録を「note taker が送ってきた」と読む側で、Christina の「Robertino のプロジェクトを受け入れた」の発表に「本人に伝えたか」と返す。OpenZeppelin の提案について「約 1,100 万を求めている」「保守のコストは誰が持つのか」の発言。所属の明言はない |
+| **Serg** | node 11.1 / 11.2 と Dijkstra・Musashi のテストネットの状況を説明する側。名前で呼ばれる |
+| **Satoshi's Bride、Alex、Gamechanger、DC Dog、Mustafa** | 表示名で呼ばれる参加者。Gamechanger は GCScript DSL を Cardano Dev Skills に載せたいと発言。DC Dog と Mustafa は終盤の雑談 |
+| **名前の出ない参加者 1 名** | 「何のためにやっているのか」と問いかけた、くたびれた参加者。名前で呼ばれないまま 4 ターン |
+
+**割り当ての方針と、確度が低かった箇所**
+
+- **冒頭の "Good morning, Brian"** は、直後に発言する Ryan の聞き違いと読んで Ryan に割り当てた。英語全文の文言は聞こえたまま。AlphaGrowth の登場（189 ターン目）以降の "Brian" は Bryan Colligan に直した
+- **文の途中に挟まる短い相づち**（原本では "- … " で示される）は、話している側のターンの中に残した。相づちの主を当てるのは無理があるため
+- **雑談の切り分けが不確か**な箇所: 冒頭の AI エージェントの雑談（Ryan と Chris）、"Donkey Kong" のやり取り、"pull request approver should be a job"（Ryan）と "Chris put out like 70"（James）、Dave の姓 "Dinesio" をめぐる 3 分（Christina と James の掛け合い）、終盤の DC Dog・Mustafa・Ken Eric の本の話
+- **AlphaGrowth の 2 人の切り分け**: 「透明性報告」の説明（"We'll give transparency reports"）は Eric としたが Bryan の可能性がある。まとめでは「Eric（推定）」と書いた。"For Cardano or for us?"、"Yeah, just getting started" も Eric とした
+- **"Business and competence. Thank you. Or competence and results"** は Phil とした。直前の Phil の発言の言い直しと読んだ
+- **"The Argentinian" / "The Italian"** の短いやり取り（Ken Eric、Christina、Beatrice）は誰の訂正かが不確か
+- **共同司会 James の所属**は "product committee" の自称だけ。Intersect のものと読んだが、動画の中で組織名は言っていない
+
+**まとめでの書き方**: AlphaGrowth の 2 人は PRIME の運営者、Christina はその運営グループの一員なので、監査の数字・RFP の条件・互いの評価は当事者の発言として帰属させた。Phil の安全性の主張、OpenZeppelin の提案への賛否、ノードの版の情報は各参加者の見解として書いた。

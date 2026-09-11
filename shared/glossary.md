@@ -160,6 +160,31 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 
 **動画の言い分と事実が違う固有名詞**: Jay Cummings を「UCSD の教授」と紹介しているが、本人の所属はカリフォルニア州立大学サクラメント校で、UCSD は博士号の取得先（2016 年）。docs/ では動画の言い分を残し、`補足` で事実を添えた。
 
+### 2026-09-10 Cardano Over Coffee — AlphaGrowth が PRIME の監査と RFP を説明した回
+
+X スペースの録音の文字起こし。**話者名も時刻もない**ので、話者はすべて文脈からの推定（`speakers.md`）。音声のみなので `画面` は使っていない。
+
+| 誤変換 | 正しい表記 |
+| --- | --- |
+| Alpha Growth | AlphaGrowth |
+| Cardano dev skill / dev skills | Cardano Dev Skills |
+| TX Pipe | TxPipe |
+| GS Script DSL | GCScript DSL（GameChanger のスクリプト言語） |
+| Eli5 | ELI5（explain like I'm five） |
+| Ton | TON |
+| linear claims | Linear Leios |
+| Omani Padme Om | Om Mani Padme Hum |
+| Brandon（AlphaGrowth の文脈） | Bryan（Colligan） |
+| Brian（AlphaGrowth の登場以降） | Bryan（Colligan） |
+
+**文脈から推定して割り当てたもの**: 冒頭の挨拶に出る **Brian** は、直後に発言する **Ryan** の聞き違いと読み、話者は Ryan に、英語全文の文言は聞こえたまま残した。
+
+**特定できず聞こえたまま残した名前**: **Astra**、**Tebow**、**Cmon**、**Blaster**（Phil が「形式的な保証のツール」の例として挙げた名前。公式サイトは未確認）、**Cranston AI**、**Krill**、**Elk**、**Apple Duo**、**Dave Dinesio**、**Nifa**、**Mateo**、**van Rossem**、**CAP portal**。
+
+**数字の食い違い**: PRIME の監査文書は 2026-09-06 の Dose of Alpha で Eric が「77 ページほど」、この回では Christina が「97 ページ」。両方を記録し、どちらにも寄せていない。
+
+**要点で置き換えた語**（`.thesis` / `.tldr` では平易な言葉、原語は本文の初出で渡す）: yield compression → 「利回りの圧縮」（本文で「チームが名前を考えている、と Bryan が言った語」と示す）、TVL → 「預けられた資産の総額」を初出で添える、RFP → 「提案募集（RFP）」、stale answers → 「古い答え」、competitive bidding → 「競争入札」。
+
 ## Cardano の基本用語
 
 | 用語 | 説明 | 訳し方 |
@@ -274,7 +299,7 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **NBX（Norwegian Block Exchange）** | ノルウェーの取引所。USDM の EEA 側の発行者で、MiCA 準拠の根拠。カード Visa Flex を USDM 残高と結びつけて再始動（2026-09-06 の動画と James の X）。字幕では MBX。公式: <https://nbx.com> |
 | **VIA Labs** | クロスチェーンのメッセージング基盤。USDM の Cardano↔Midnight の移動を提供。James は「ブリッジではなくメッセージングサービス」と表現。字幕では Vlabs。公式: <https://vialabs.tech>（開発者ドキュメント developer.vialabs.tech） |
 | **Dose of Alpha** | AlphaGrowth の番組。司会は Bryan Colligan（CEO）と Eric Waisanen（DeFi Strategist）。Ep. 16 が 2026-09-06 の回 |
-| **Cardano PRIME** | Protocol Readiness, Incentives & Market Expansion。AlphaGrowth が提案者、独立した Operating Group が監督、Intersect が資金管理者。財務庫から 1 億 2,000 万 ADA（2026-08 に DRep の投票で可決）。目標は 12 か月で TVL を約 9,000 万→2 億 9,000 万ドル。2026-09-06 時点でインフラ監査（社内 77 ページ）の段階、RFP を「今日か明日」に開く、と運営者が発言 |
+| **Cardano PRIME** | Protocol Readiness, Incentives & Market Expansion。AlphaGrowth が提案者、独立した Operating Group が監督、Intersect が資金管理者。財務庫から 1 億 2,000 万 ADA（2026-08 に DRep の投票で可決）。目標は 12 か月で TVL を約 9,000 万→2 億 9,000 万ドル。2026-09-06 時点でインフラ監査（社内 77 ページ）の段階、RFP を「今日か明日」に開く、と運営者が発言。2026-09-10 の Cardano Over Coffee では、監査の結論として「1,140 万ドルの TVL が入ると全プロトコルの年率が半分になる」（運営者が「利回りの圧縮」と呼ぶ）、RFP は「助成 1 ドルにつき TVL 50 ドル」、助成はマイルストーン払いで透明性報告に受領者を載せる、と説明。監査のページ数は 09-06 で「77」、09-10 で「97」と食い違う |
 | **Orion Fund** | Cardano と Draper Dragon による 8,000 万ドルのエコシステム・ファンド。Draper University の Genesis（プレアクセラレーター）と Apex（10 週間）に資金提供。字幕では Enriion Fund |
 | **Draper University** | Tim Draper の起業家育成機関。Cardano 向けに Genesis と Apex を運営。2026-09-06 の動画で Bryan が「月曜と昨日サンフランシスコで」見たピッチはこのプログラム |
 | **Masumi / Sokosumi** | Cardano 上の AI エージェントの決済・登録プロトコル（Masumi）と、その上のマーケットプレイス（Sokosumi）。Serviceplan、Cardano Foundation、NMKR の共同。x402 の Cardano 実装を公開。詳細は 2026RealFi の 2026-08-11 の回 |
@@ -299,6 +324,24 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **Clay Mathematics Institute** | ミレニアム懸賞問題を出している米国の私設研究所。公式: <https://www.claymath.org/> |
 | **Monument Health** | サウスダコタ州を拠点にする医療システム。Hoskinson は「Mayo の関連機関」と紹介し、ワイオミング州 Gillette の自分たちの建物を引き継いでいると述べた（2026-09-09） |
 | **Cardano Foundation のリレー** | 2026-09-02 のデモで "CF relays" として、Demeter と並ぶ接続先の選択肢に出た |
+| **Cardano Over Coffee（@coc_space）** | X スペースで平日毎朝配信されているコミュニティの番組。司会は回によって替わる（2026-09-10 の回は Christina、共同司会 James と Chad）。番組のアカウント: <https://x.com/coc_space>。録音が公開されている回だけを扱う。2026-09-10 の回の録音: <https://x.com/i/spaces/1yKAPwbXnNWxb>（題は「Cardano Over Coffee ☕️ w/ guests @CryptoJoe101 & @alphagrowth1」） |
+| **PRIME の Operating Group（運営グループ）** | PRIME の提案で AlphaGrowth を監督するとされた独立の合議体。2026-09-10 の回で、司会の Christina が「私も入っている」と述べ、AlphaGrowth 側も「運営グループの前に立つ」と表現した。構成員の一覧は動画では語られていない |
+| **Cardano Dev Skills** | 作者は Giovanni（X: @CryptoJoe101、表示名「Giovanni EASY1」、ステークプール EASY1 の運営者）。Cardano Foundation の公開リポジトリ（<https://github.com/cardano-foundation/cardano-dev-skills>）。Claude Code のプラグイン／Codex のスキルとして、Cardano の最新の文書を AI コーディングエージェントに渡す「知識ベース」。週次で自動更新、と作者の Giovanni が 2026-09-10 に説明。教育チームの Bora は「新しい開発者を獲得するコストが下がるか」が唯一の KPI と述べた |
+| **MCP（Model Context Protocol）** | AI エージェントに外部のツールやデータを渡すための共通の規格。2026-09-10 の回で Giovanni が「Solana 側には MCP サーバーの知識ベースがあると言われて作り始めたが、Phil に『MCP サーバーは使うな』と助言され、スキルの形式にした」と経緯を語った。MCP は「知識の共有ではなく遠隔で何かを実行するためのもの」で部分的な答えでエージェントを混乱させる、というのが Giovanni の説明。2026-09-02 の Block//45 では Lace の連携先として出た |
+| **Blink Labs / Dingo** | Blink Labs は Cardano のインフラ・ツール開発チーム（上の行も参照）。Dingo は同社の Go 言語による Cardano ノード実装。2026-09-10 の司会 Christina と参加者 Chris の所属 |
+| **Team Void** | ノルウェーの DRep チーム。2026-09-10 で Ken Eric が名乗った所属。公式サイトは未確認 |
+| **Pragma** | Cardano のオープンソース開発の団体（Amaru、Aiken などを擁する）。2026-09-10 で Christina（「Pragma で騒ぎを起こしている」と自称）が「Robertino のプロジェクトが Pragma のプロジェクトとして受け入れられた」「Cardano Ignite を Pragma のサイトに載せた」と述べた。Beatrice は Pragma の会合の記録を読んでいる側として会話に加わった。公式: <https://pragma.builders>（2026-09-11 に確認。Aiken、Amaru を掲載） |
+| **Amaru** | Pragma の Rust による Cardano ノード実装。2026-09-10 で Ryan が「数か月から 1 年で出て、RAM は数 GB で済むだろう」と述べ、Christina が「Leios より先に出ても Leios を実装しなければならない」と補った |
+| **Harmonic Labs / Pebble** | Harmonic Labs は Cardano の開発ツールのチーム（plu-ts など）。Pebble はそのスマートコントラクト言語。2026-09-10 の Cardano Dev Skills の対応言語として名前が出た |
+| **Scalus** | Scala による Cardano のスマートコントラクト開発環境。同上 |
+| **Tx3** | TxPipe のトランザクション記述言語。同上 |
+| **GameChanger / GCScript** | Cardano のウォレット GameChanger と、その取引記述の DSL。2026-09-10 で参加者 Gamechanger が「GCScript DSL」を Cardano Dev Skills に載せたいと発言。字幕では GS Script |
+| **OpenZeppelin** | Ethereum 系で知られるスマートコントラクトのライブラリとセキュリティ監査の企業。2026-09-10 で参加者が「約 1,100 万（単位は発言にない）のガバナンス提案が出ている、12 か月のセキュリティ人員を含む」と述べたが、こちらで提案文書は未確認 |
+| **Cardano Ignite** | Robertino Martinez（IOG）のプロジェクト。2026-09-10 で「Pragma のプロジェクトとして受け入れられ、オンボーディング中」と Christina が述べた。中身（イベントか、開発者体験の取り組みか）はこの回では説明されていない |
+| **Developer Experience Initiative** | IOG の Robertino Martinez が提案した 360 万 ADA の開発者体験の提案。2026 年 4〜5 月の投票で可決（67.9%）。2026-09-10 で OpenZeppelin の提案の比較対象として名前が出た |
+| **Dijkstra / DijkstraNet / MusashiNet** | Dijkstra は Cardano の次のハードフォークの名前。DijkstraNet はそのテストネット、MusashiNet は Leios のテストネット。2026-09-11 時点の見込み: ハードフォークは 2026-12-05〜2027-01-04（中程度の確度）、2027-02-24〜03-26（高い確度）。2026-09-10 で Serg が「node 11.1 は間近、11.2 は Dijkstra 向け」と述べ、cardano-node 11.1.1 は 09-06 までに公開済み |
+| **Merkl** | DeFi のインセンティブ配布基盤。2026-09-10 で Eric が「Cardano にない部品」の例として挙げた |
+| **Linear Leios** | Leios（Cardano のスループット拡張）の段階的な設計の 1 つ。字幕では "linear claims" |
 
 ## 数字を書くときの単位
 
