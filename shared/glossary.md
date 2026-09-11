@@ -324,9 +324,9 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **Clay Mathematics Institute** | ミレニアム懸賞問題を出している米国の私設研究所。公式: <https://www.claymath.org/> |
 | **Monument Health** | サウスダコタ州を拠点にする医療システム。Hoskinson は「Mayo の関連機関」と紹介し、ワイオミング州 Gillette の自分たちの建物を引き継いでいると述べた（2026-09-09） |
 | **Cardano Foundation のリレー** | 2026-09-02 のデモで "CF relays" として、Demeter と並ぶ接続先の選択肢に出た |
-| **Cardano Over Coffee（@coc_space）** | X スペースで平日毎朝配信されているコミュニティの番組。司会は回によって替わる（2026-09-10 の回は Christina、共同司会 James と Chad）。番組のアカウント: <https://x.com/coc_space>。録音が公開されている回だけを扱う |
+| **Cardano Over Coffee（@coc_space）** | X スペースで平日毎朝配信されているコミュニティの番組。司会は回によって替わる（2026-09-10 の回は Christina、共同司会 James と Chad）。番組のアカウント: <https://x.com/coc_space>。録音が公開されている回だけを扱う。2026-09-10 の回の録音: <https://x.com/i/spaces/1yKAPwbXnNWxb>（題は「Cardano Over Coffee ☕️ w/ guests @CryptoJoe101 & @alphagrowth1」） |
 | **PRIME の Operating Group（運営グループ）** | PRIME の提案で AlphaGrowth を監督するとされた独立の合議体。2026-09-10 の回で、司会の Christina が「私も入っている」と述べ、AlphaGrowth 側も「運営グループの前に立つ」と表現した。構成員の一覧は動画では語られていない |
-| **Cardano Dev Skills** | Cardano Foundation の公開リポジトリ（<https://github.com/cardano-foundation/cardano-dev-skills>）。Claude Code のプラグイン／Codex のスキルとして、Cardano の最新の文書を AI コーディングエージェントに渡す「知識ベース」。週次で自動更新、と作者の Giovanni が 2026-09-10 に説明。教育チームの Bora は「新しい開発者を獲得するコストが下がるか」が唯一の KPI と述べた |
+| **Cardano Dev Skills** | 作者は Giovanni（X: @CryptoJoe101、表示名「Giovanni EASY1」、ステークプール EASY1 の運営者）。Cardano Foundation の公開リポジトリ（<https://github.com/cardano-foundation/cardano-dev-skills>）。Claude Code のプラグイン／Codex のスキルとして、Cardano の最新の文書を AI コーディングエージェントに渡す「知識ベース」。週次で自動更新、と作者の Giovanni が 2026-09-10 に説明。教育チームの Bora は「新しい開発者を獲得するコストが下がるか」が唯一の KPI と述べた |
 | **MCP（Model Context Protocol）** | AI エージェントに外部のツールやデータを渡すための共通の規格。2026-09-10 の回で Giovanni が「Solana 側には MCP サーバーの知識ベースがあると言われて作り始めたが、Phil に『MCP サーバーは使うな』と助言され、スキルの形式にした」と経緯を語った。MCP は「知識の共有ではなく遠隔で何かを実行するためのもの」で部分的な答えでエージェントを混乱させる、というのが Giovanni の説明。2026-09-02 の Block//45 では Lace の連携先として出た |
 | **Blink Labs / Dingo** | Blink Labs は Cardano のインフラ・ツール開発チーム（上の行も参照）。Dingo は同社の Go 言語による Cardano ノード実装。2026-09-10 の司会 Christina と参加者 Chris の所属 |
 | **Team Void** | ノルウェーの DRep チーム。2026-09-10 で Ken Eric が名乗った所属。公式サイトは未確認 |

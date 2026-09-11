@@ -110,7 +110,7 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 | **Chad**（共同司会） | ミッドロールと TSC（Technical Steering Committee）の情報を読み上げる側。名前で呼ばれる |
 | **Eric Waisanen**（AlphaGrowth） | "Eric" と呼ばれる。"Happy Thursday. You cut off a second after…" で登場。「3 つか 5 つ選べ」への長い答え、Ken Eric の EVM とマーケットメーカーの質問への答え、"Go, go for it Brandon" と Bryan に振る側。姓は番組 Dose of Alpha の公開情報（2026-09-06 と同じ根拠） |
 | **Bryan Colligan**（AlphaGrowth） | 音声では "Brian"、一度 "Brandon"。「監査でいちばん面白い数字」（1,140 万ドル）、50 対 1、ダイヤモンドの仮の話をする側。"I got a meeting at 11:17" で退出。姓は同上 |
-| **Giovanni**（Cardano Dev Skills） | Christina が名前で紹介。"I made a post about the MCP server" と作者として語る。姓は出ない |
+| **Giovanni**（Cardano Dev Skills、X: @CryptoJoe101） | Christina が名前で紹介。"I made a post about the MCP server" と作者として語る。スペースの題「w/ guests @CryptoJoe101 & @alphagrowth1」にゲストとして載り、@CryptoJoe101 の表示名は「Giovanni EASY1」（ステークプール EASY1 の運営者、2026-09-11 に検索で確認）。姓は出ない |
 | **Bora**（Cardano の教育チーム） | Giovanni が "Bora from the education team" と紹介。発言は「唯一の KPI は新しい開発者の獲得コスト」の 1 ターンのみ |
 | **Phil** | 形式手法・安全性の長い発言。Christina が "Phil" と呼び、Giovanni も "the great Phil" と呼ぶ。姓・所属は出ない |
 | **Ryan** | 「AI エージェントで自動研究・取引エンジンを作っている」参加者。"Thank you, guys. I gotta hop" で退出 |
