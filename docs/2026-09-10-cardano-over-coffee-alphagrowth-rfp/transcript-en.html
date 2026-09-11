@@ -1,0 +1,1875 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardano Over Coffee — AlphaGrowth on the PRIME audit and RFPs, with Cardano Dev Skills (2026-09-10) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Cardano Over Coffee</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-09-10</span>
+  <span>X Spaces</span>
+  <span>Cardano Over Coffee — AlphaGrowth on the PRIME audit and RFPs, with Cardano Dev Skills</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> A recorded X Space of the community show Cardano Over Coffee (@coc_space), streamed on Thursday 2026-09-10. The host says on air that the Space is recorded; the requester is asked to confirm that the replay is publicly available. It is audio only, and the transcript received carries <strong>no speaker labels and no timestamps</strong>, so every speaker attribution on this page is inferred from context. Short back-channel interjections that the source embeds mid-sentence (rendered “- … ” in the original) are left inside the speaking turn rather than split out.</p>
+<p><strong>Who is speaking.</strong> The host is <code>Christina</code> (she says she works with Blink Labs and sits on PRIME's Operating Group; no surname is given). Co-hosts <code>James</code> and <code>Chad</code>. Guests: <code>Giovanni</code> and <code>Bora</code> (Cardano Dev Skills), then <code>Eric Waisanen</code> and <code>Bryan Colligan</code> of AlphaGrowth, addressed as “Eric” and “Brian” / “Brandon”; their surnames come from the show Dose of Alpha, not from this audio. Participants: <code>Phil</code>, <code>Ryan</code>, <code>Chris</code> (Blink Labs), <code>Alex</code>, <code>Satoshi's Bride</code>, <code>Gamechanger</code>, <code>Ken Eric</code> (Norway, Team Void), <code>Beatrice</code> (Pragma), <code>Serg</code>, <code>DC Dog</code>, <code>Mustafa</code>, and one participant who does not give a name. The “Brian” greeted in the first minutes is read as a mishearing of Ryan and left as heard; from the AlphaGrowth segment onward “Brian” is corrected to Bryan.</p>
+<p><strong>Only obvious proper-noun misrecognitions are corrected</strong>: <code>Alpha Growth</code> → AlphaGrowth, <code>Cardano dev skill(s)</code> → Cardano Dev Skills, <code>TX Pipe</code> → TxPipe, <code>GS Script DSL</code> → GCScript DSL, <code>Eli5</code> → ELI5, <code>Ton</code> → TON, <code>linear claims</code> → Linear Leios, <code>Brandon</code> → Bryan, <code>Omani Padme Om</code> → Om Mani Padme Hum. Left as heard because they could not be resolved: <code>Astra</code>, <code>Tebow</code>, <code>Cmont</code> / <code>Cmon</code>, <code>Blaster</code>, <code>Cranston AI</code>, <code>Krill</code>, <code>Elk</code>, <code>Apple Duo</code>, <code>Dave Dinesio</code>, <code>Sergerin</code>, <code>Nifa</code>, <code>Mateo</code>, <code>van Rossem</code>, <code>CAP portal</code>, <code>Maswali se</code>, <code>Lovers Lab</code>. Everything else, mistranscriptions included, is unchanged.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-open">01 — Opening banter</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Good morning, Brian. Good morning, Envy. I don't think I know Cletus or Boris, but good morning anyways. If you guys give me a few minutes, I'm trying to collect co-hosts now. Oh my God.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Sorry, I use an Android phone, and this is the first time I actually had options. Like, I can do sounds and shit.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>What? That's awesome.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I could never do that before, so I'm just, just enjoying my little buttons. Just give me a few and I'll be back. Brian, you might have to come up or I'll start singing soon.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, that one guy's laughing 'cause he doesn't know I'm singing when I'm on mute. What is up, my friend? Um, it's, it's evidently early, and I'm struggling to even get my other co-hosts awake. So- ... happy Thursday.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Happy Thursday. Oh. I, I would volunteer to co-host, but I'm trying to multitask a couple other things right now, and I'm gonna have to drop in a bit, so.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh, that's fine. I appreciate anybody who hops on early, 'cause most people are, like, waiting. But should be a good show actually. I'm kind of curious to see Giovanni's, uh, AI stuff.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh, for sure. Yeah, I'm actually not familiar with what AI stuff that is, but it'll be interesting to listen.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh, so he's got something called Cardano Dev Tools. Or was it Cardano Dev... What is it? Um, Dev Skills. That's it. Um- Oh, okay ... and- Yeah, that's where I'm gonna go ... and, uh, it's supposed to be, like, AI tools for Cardano.</p></div>
+</div>
+
+<p class="sec" id="t-ai">02 — AI agents, token budgets and auto-research</p>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Nice. Yeah, I've been going absolutely crazy on AI the past week or so. Ever since Astra came out, I've burnt, uh, about 600 million tokens on it. So.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>That's so funny.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Way too much fun. Actually, I don't usually hit my limit, but I kept running into it yesterday.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Oh. Oh, see, I upgraded to the $100 a month plan, and then I'm trying to very carefully manage whenever Tebow tweets about a reset, burning it down to zero, so. Oh. And then I, I used one banked reset- Chris does that ... and I have another banked reset that I'm waiting, saving for a rainy day.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, yeah. No, Chris does that same thing. Um, that's how I became aware of who Tebow was. Um, 'cause I was like, "Who the fuck is this person you keep talking about?" So I go and I just type in Twitter Tebow, and I'm like, "Oh, oh. Oh, it all makes so much sense."</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. It's kind of funny 'cause people have a tendency to procrastinate, but then, like- Yeah ... the announcement of a reset's coming, and everyone's like, "Oh shit, I gotta do all my work." And they start, like- Yeah, yeah, yeah. ... trying to get stuff done. Oh, yeah. It's kind of a win-win.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>He'll go through a week's worth, a week's worth in a day.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(inferred)</em></div>
+  <div class="turn-body"><p>12 hours. Huh?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>12 hours. All right, 12 hours. I don't know. He just goes through it like it's freaking nothing. If he knows that he's- Um- ... gonna get another reset, good Lord.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. When they announce it, it's on like Donkey Kong.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, I think it's Monday or Tuesday. Do what, Chris?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris</div>
+  <div class="turn-body"><p>I said when they announce it, it's on like Donkey Kong.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, yeah. On like Donkey Kong, right? Like, uh, I had like four or five different terminals open with, uh, with agents in each of them, and I was playing Whack-a-Mole trying to keep them all busy.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Four or five, that's cute. Yeah. I'm looking at his screen, man. I can't even.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Like, yeah. I like to keep my head as, as wrapped around the things as I can. I can't, I can't go too many layers deep or I start to lose track of what's going on.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Um, I think he meant like total agents.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh. Oh, oh yeah. Yeah. Yeah. It was kind of like herder terminals in Herder, just like Team He called- Just different person ... he says maybe it's like, uh, herder terminals. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Do you do like anything where you set them loose on goals?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Uh, I have before. So what I'm doing right now is actually a- a- auto, auto research, like Karpathy's auto research. I set up like an incentives RSS simulator for governance. Nice. Fed in like a dozen or so- Nice ... of reward schemes and parameters and told it to go HAM and find the Pareto frontier. So it'll run an experiment that takes about an hour, and then the AI will analyze the results and make adjustments and keep iterating through it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh, I freaking love that. That's good. That's good. That's good use. I love that.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Yeah, it's, it's a lot of fun.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Chris does too, and I'm always impressed what he can get them to do. Like, if he-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>It's the worst AI we'll be for the rest of our lives too, so it's... I mean, it's gonna be wild. I don't know.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I mean, it's, it's definitely heavily incorporated into how I work, and I'm not even talking from a developer side. Although, I did learn to write a transaction, if you saw my post. I was super proud of myself.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>In Go.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>In Go, yes.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>So speaking, speaking of transactions, that's another project I'm working on is a, uh, a trading engine that's trying to... Transaction chain is all of the venues together at once on preprod. So I can do one transaction- Oh, nice ... that goes through eight different dApps and eight different tokens in one transaction. Huh. So I had that working, uh, not, uh, as of day before yesterday, then I, I stopped it to work on other stuff.</p></div>
+</div>
+
+<p class="sec" id="t-gov">03 — A governance pilot, and Boston Blockchain Week</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Nice. Nice. I think the governance thing will be really interesting. Um, I know like, are you, do you work with Cmont at all? Or not C- well, not Cmon. Cmon? Uh, Cmon. Cmon, yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Yeah. I kind of, I kind of gave him some input onto the, uh, the pilot program idea.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. He was on the space Friday last week. Yeah. Um, I think it was, and he was talking about it, and he definitely got a lot of ideas from the community on how to like get more involvement and what else he might be able to do. 'Cause I think the biggest challenge is he's asking to be funded to come up with a plan. Um, and that's always a tough sell.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Yeah, this is, this like w- the two ends of the spectrum are like, one, we keep funding research, or two, we like just put something into the ledger that's not fully researched yet. So like we're probably not gonna want either of those. So in my opinion, the only thing that's gonna work is like a pilot program that's like pseudo-managed, and w- maybe we pay it out manually.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Mm-hmm. And then, uh I, I do think some type of program needs to be started, and I think it's okay if we get it wrong. Yeah. Um, because I rarely get anything right the first time I try it. Um, that's just life for me. So I kinda think that's how it just goes. Sure. So if we make a mistake, that, we can change it. So nothing's written in stone.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Yep. I mean, at least until we hard fork it in, which is why we probably- ... need to be careful about that, so.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, yeah. Uh, well, still hoping that comes out, comes off on time. Mm-hmm. We shall see. Um, let's see what else is going on. So Chris is going to Boston Blockchain Week again today. Him and James will be on a panel today. James from Andamio.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>What time is that? Um- Is it gonna be live streamed or anything?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I don't know. It's at 12:15 East Coast, and the other guy on the panel is somebody from Circle, so I was like, "Definitely get some contact information. That is a person to talk to." Yep. Um, but I'm curious to see how it goes. They're supposed to talk about like nodes and dev tooling. Go ahead. What's up? Put the hand up.</p></div>
+</div>
+
+<p class="sec" id="t-why">04 — “What are we doing here?”: a jaded participant, and the answers</p>
+<div class="turn">
+  <div class="turn-who">Unnamed participant</div>
+  <div class="turn-body"><p>Hi, everyone. How, how you doing?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Good, good.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Unnamed participant</div>
+  <div class="turn-body"><p>Um, I apologize if I'm interrupting a conversation, so just let me know when it's fine to talk.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>No, you're cool, man. This is just banter time.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Okay. We're just bullshitting.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Unnamed participant</div>
+  <div class="turn-body"><p>Phenomenal. Um, look, I mean, if anyone knows my voice, they know I've been in Cardano for a while. But, um, I just have a few genuine, pure questions, right? Um, because I feel a little bit jaded, you know. I, I've ... From six plus years ago, you know, from the, from the, uh, the highs and the lows or what have you with this Cardano blockchain, right? My only question is like... And, and look, a- actually, you know what? I'm, I'm, I'm gonna give you all the utmost courtesy and be as, as, as, as posi- well, no, let me, let me not even say positive. But you know what I mean? Like, as, like, non, as non-aggressive as possible, right? All right, sure. But, but ultimately, what is the entire point and/or ... No, let ... Screw that. Screw that. What i- what is the goal, right? What are, what are we doing this for? Why are we here? Why are we running up, spinning up these spaces, running these things? Because from, from, from as far as I can see it, unfortunately, it's looking like a lost cause. So- All right ... before, befo- before I ultimately, you know, wipe my hands from, from this, I, I need, I need, uh, I need someone to tell me the same things that I n- that I heard or, or, uh, obviously not the same things, but, but things that made me believe in this thing, things that made me- You wanna hear some good shit ... I ... Right. But- Yeah ... uh, uh, unfortunately it just seems that from left and right and up and down BS, and I'm, I'm, I know it's a recorded space, so I'm, I'm actually gonna reserve crashing out.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>It's cool. It's cool, man. You know? I mean, honestly, I think everybody here has had some moment where they've been like, "What the fuck am I doing?" Yeah. Because it's not always smooth sailing. It's not. But I mean, honestly, I worked in the corporate world, and I wouldn't say that was smooth sailing either. That was super dicey. So with Cardano-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Unnamed participant</div>
+  <div class="turn-body"><p>What are we doing here?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I'm, I'm just gonna talk on this space real quick, and then I'll, I'll go bigger picture. On this space, we're literally here to share the good, the bad, the ugly, whatever, and, and we have guest slots where people can come and promote what they're working on. Sometimes I'll reach out to somebody when I see a post they wrote that sounds really cool, like, um, this guy Giovanni I know that'll be coming up in a little bit. He's gonna talk about something he's been working on about AI dev skills for Cardano, and I think that's really cool. I've been using a lot of AI, and I feel like everybody around me is too, whether you're using it to do research, help you write documents, or help you code, we're all using it, right? So he's gonna talk about that. And I love that kind of energy because we're sharing the things that we're passionate about, and maybe it's gonna click with somebody, and they're gonna get excited about it. And then the other group that I've come and gone after that, that one's kind of fucking huge. We gave them, as a community, what was it, Phil, twenty million, uh, twenty million, yeah, twenty million ADA? No, twenty million dollars. Yeah. So we gave them a lot of money to do DeFi and liquidity, and they're gonna come in-- They just got started, and they're gonna come in and tell us about this, uh, audit they did, an infrastructure audit they did on DeFi and Cardano, and the weaknesses they found. And then they have a request for proposal process, where different people from the community can actually be like, "Hey, I would like to put in a proposal to work on that, to fix this part that you've highlighted right here." And so some of that money that the community gave for this project will actually go back to various community members who can work on these improvements that have been highlighted. And this isn't just, like, some nobody from the community. This is AlphaGrowth. They're a pretty recognizable name. So they're gonna come and talk to us, and actually, they're gonna do that every couple weeks here so that the whole community has a public, free-for-anybody opportunity to talk with these guys, so they don't feel like it's all distant and you don't know what's going on. So that's a lot of what this show's about, and we have banter time because nobody shows up on time. You know, I spin it off at nine thirty, and it takes, like, ten, fifteen minutes for some of my favorite people to show up. Um, and that's just life. That's fine. But as far as what are we doing on Cardano, you're gonna get different answers from different people. Um, I'm talking about this DeFi project, but DeFi's not really my bag. I'm, I'm an old-school infrastructure person. I've managed data centers around the globe. Um, so I mean, I, I like that kind of stuff, and I like how we're able to do all these different infrastructure options for blockchain, and that's the kind of stuff I get excited about. So I work with Blink Labs, and we're actually working on an alternative node to the Haskell node, and it's a little bit of a contest to, you know, see how quickly we can get there with some of the other alternative nodes. And we're having a good time, and we're sharing information with each other and having different events. So I mean, there's, there's positive shit going on. Phil, you seem ready to talk.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Those two-- Yeah, those two things are more tightly coupled than you think, uh, infrastructure and DeFi.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. Go on.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Um, and so, like, the main benefit of DeFi is that you get rid of the middleman with respect to TradFi. Like, you have the same financial opportunities. It's more equitable. You have more open access because people in other countries cannot buy, for instance, US Treasury bonds, especially, like, Second, Third World countries. Um, and there's a lot of investment opportunities even within the US that are reserved for the ultra-rich or for financial institutions, like lending. Uh, you cannot lend in the real world as an individual human being. Um, your bank will lend your money that you put in your bank, but you will not get any money from that. You'll get, like, a fraction of a cent, and your bank will take all the money. Um, and, uh, blockchain solves this problem. That's what sort of DeFi is. But it solves this problem at a cost, the cost being code and infrastructure is law, right? And so, uh, it's not acceptable to build systems with the same level of security or, uh, correctness that, uh, traditional software has. You need to really, uh, build mission-critical systems. It's, it's totally hands-off once, once it's on-chain. And so, uh, this is where Cardano thrives. Like, this is from the beginning been Cardano's, you know, unique value proposition, uh, formal methods, this slow and steady approach to security, this high assurance in correctness. Um, and, you know, historically, this didn't really pan out, uh, in the market. Like, what's-- what we did well was not highly valued by the market because Aave, Morpho, Uniswap, you know, all these blue-chip protocols, uh, despite having-- being built on a chain with higher complexity, um, and with, uh, much, much harder security guarantees, uh, to achieve, um, the, these protocols never were hacked. And it was the result of, uh, you know, a high rigor of auditing those protocols of, you know, continuous multi-firm audits every year, right? Aave gets audited three or four times by the best firms in the space, uh, every single year, even if they don't change the code. Um, but a-a-and so, you know, the-- it was just considered, "Okay, well, if Cardano's so secure, but Aave never gets hacked, why does it matter anyway?" And this radically changed in the past year. Uh, with the advent of advanced AI, uh, now all those blue chips, that sort of continuous auditing system is not sufficient anymore. We're seeing more hacks in the last twelve months of Ethereum than in the past five years combined, uh, more value stolen. Uh, th-the, uh, market's value on security, on the things that we specialized in, has skyrocketed since this, this AI boom. Uh, now more than ever, you know, this formal assurance, this mathematical proof of correctness, this, uh, system where you can functionally reason a-and, and have an application, like a lending application that, uh, you can, you can mathematically prove operates correctly and cannot be exploited, is extremely valuable. Uh, and, you know, to the, the, the missing pieces here are the financial side of it. Uh, Cardano has the high assurance testing, formal method security side of it. We have very strong, uh, technical infrastructure. We have lots of great teams like Blink Labs and others building this, but, uh, uh, we have lots of great teams building formal assurance tooling like Blaster. Uh, but we didn't have competitive DeFi products, and that's what I think AlphaGrowth, um, you know, they just did this, this audit, and as Christina said, they've published this gaps list, which to me is very exciting. It means teams in the ecosystem can go, uh, start putting in proposals to go build those things, uh, fill in a meaningful gap, uh, to build something that will create economic activity here. Uh, and w- if we get economic parity to Ethereum in terms of functionality, like you can use all the same financial instruments and strategies here that you can use on Ethereum, then, um, I don't see a world where we don't completely dominate in the market because of the value of security right now. Uh, liqui-- Large LPs are scared. They're, they're scared more than ever to the point where hundreds of millions are being, uh, of, of dollars in liquidity are being pulled out month after month. The founder of OpenZeppelin famously said, like two months ago, that he recommends to all of his friends and family and everyone he knows personally to pull their money out of DeFi entirely for the next two years, uh, because of how scary the landscape is right now. Uh, a-and, you know, yeah, to me, this, this is a market opportunity. That's why you should be excited.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I wanted to make sure you left it on the high note there, not the scary landscape part. Um, Alex, did you want to contribute to what you think is awesome or...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Alex</div>
+  <div class="turn-body"><p>Well, I have a complete pivot. Uh-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Ah, shit.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Alex</div>
+  <div class="turn-body"><p>Phil, I was listening. Yep. Go for it, man. I was listening to you the other day in that other space where you were talking about reinforcement learning and what, you know, AI, guardrails on AI, and your confidently incorrect, uh, audience listening to you, and it was sadly entertaining because you were spot on, and they were trying to morph it into something else.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Oh, I hate Twitter. I've realized, like- ... you-- I join a space and it says like, oh, I, I'm an ex-Grok, uh, ex-Grok developer or whatever. I was like, oh, that's gonna be interesting to talk to someone who knows AI. Right? You think? And then I just get, like, inundated, and it's just clear that this person was completely lying. Like they've never- ... worked on AI tooling. They're just like, "Uh, the, the guardrails are the only... are just like a API thing and everything, it'll just refuse it. And the model itself, like, you know, is like super trained to never do wrong things." And I was, like, trying to explain how, like, one of the reasons that the Chinese models are catching up so close to the American frontier models is that they don't lobotomize their models with RL. Like they don't teach it things that are factually wrong with RL. They do- Yeah ... to some extent. Like they teach it, like if you say, "Does the president look like Winnie-the-Pooh?" It'll say, "No, he does not look like Winnie-the-Pooh. He looks very strong and fit." But, um, or if you ask it about the Tiananmen Massacre, obviously. But like outside of like a sub-- a very small set of political questions, uh, you know, it's not gonna, it's not gonna give wrong answers. But the US frontier models, they do RL fry with lots of wrong answers. Like if you say, uh, "How do I make cocaine?" Um, it will, uh, obviously not know. It will be punished for giving correct answers to that. And so it has the wrong information. Oh, I would love it to teach you how to make bread or something instead. Like let's just totally replace those. Yeah. A-and so the general point was just to say that, like, we are-- we're-- It, it's a good thing that we're concerned about safety and alignment, but, um, you can't look at things in a vacuum. Like, we're not the only people working on this type of technology. And, uh, the person, the, the country with the smartest model in the world right now, uh, has a huge, huge, huge advantage over every other country in the world when it comes to military, economics, education, everything. And so I'm not sure we can afford to keep building alignment into the core models. And I'm, I'm very concerned with lots of public statements to the effect of, "Oh, we should s- we should halt all frontier model development in the US," um, because this seems like a recipe for, for disaster.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Alex</div>
+  <div class="turn-body"><p>You were spot on with your opinions, and they were willfully not listening or ignorantly not listening. Yep. Could have been both.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Right. Back to the re- regularly scheduled programming.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>No, it's fine. We had a guy come up, and he was asking, uh, basically for some, some good news in the ecosystem, uh, and asking why we were still trying. So it was nice for everybody to kinda share a little bit there. Um, let's see.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>I think, I think it's good that Ethereum... I think AI is the best thing ever for Cardano. It's good that security has now become crit- It's... Like, it was too hard for exploits to occur before. You needed too much ex- uh, specialized expertise. You had to have people dedicate years of their lives to this domain, to learning intricacies of a single chain. And so the chance that you would have an exploit, even if your code was vulnerable, was very low. Uh, now if your code is vulnerable, you will get hacked. Uh, and this is an environment where Cardano thrives, right? This is the best possible environment for Cardano in the market, uh, to, to really be able to step on some toes and, and climb the ladder.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Go ahead, Ryan.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>No, I was just gonna dovetail off of what Phil was saying with Cardano being, like, way ahead on AI stuff. Like, if you think about it, we've got mountains of peer-reviewed research. Um, we've got things designed in formal methods, detailed specifications, low resource requirements, well-typed languages. All of these things are things that AI is going to thrive at, and our competition is going to get hurt at, right? So if you think of the RAM apocalypse, if I, if I need 256 gigs of RAM to run a node, that is going to hurt me way more than it is on Cardano right now. With Amaru coming out presumably in the next few months to a year with only a couple gigabytes of RAM, you know, you could... It's, it's, it's gonna be much easier for us. Likewise, our, our biggest challenges- To be fair- ... are gonna be developers. Yeah, continue.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>To be fair though, um, I feel... Chris and I were just talking about this. We've done a good job of trimming things down so that the, the requirements for the node aren't quite as much, and then we're gonna roll out Leios. Yep. And we're gonna undo all of that. So yes, Amaru is going to come out probably before Leios, and it's going to be smaller, but they still have to implement Leios. Yeah. And it's... And then that's gonna happen. So we, we gotta find this balance.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>So maybe, maybe a better argument to make though is that one of our biggest challenges has been the difficult developer experience, right? Like, writing stuff in Haskell and trying to just figure out all the, all the different intricacies of working on Cardano. That's something that AI is just gonna make trivial in the next couple years, right? Like, we're already at the point where you... Like, I, I just... Earlier this week I was telling you, I just got a bot going on test net that's chaining together eight transactions for ma- for, like, six or seven different venues at once. I have no idea how to write smart contracts. I, I just prompted Astra to do it, and I'm just playing around. In the next year or two, it's gonna be super easy to, to, you know, to figure out all these things at Cardano, and you're only gonna need to know, you know, kind of the basics, and then make sure that, you know, you don't introduce security holes, get it audited. But then AIs can be good at that too, and we have stuff like Blaster. Um, so yeah, I think, I think we're gonna thrive with AI. I think A- AI is only a net, net good for, for Cardano specifically, so I'm very optimistic.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I like your optimism. Gio, you're welcome to come up whenever you want, 'cause we're, like, pretty much segueing right into your stuff.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh, wow. That's a lot.</p></div>
+</div>
+
+<p class="sec" id="t-pr">05 — Pull requests, 70 in a day, and running a business from a phone</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Gio, Chris is just telling me you put in, like, a 15,000-line PR. I'm so sorry for you.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Hey, I put in a PR the other day for the first... Second time?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>What was your PR for?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Second, I remember. I, I don't know. What? Don't ask me to explain it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>No, I am. I am, absolutely.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>I'm not even, I'm not even sure if I put in a PR, to be honest here. So it's having to do with GitHub- Yes, yes ... and something that I had to do on GitHub when it comes to product committee, and we're reviewing everything. 'Cause Sam lives in GitHub, okay? Sam is, is GitHub. He's a developer.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. I know he is.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>So everything you do in there... And so I am finding things that are a little bit, uh, easier. Like, I can go line by line instead of looking at the, I'm gonna call it Java version of it or whatever usual version you see of it. Uh-huh. And instead I'm seeing it line by line. And when I do write my, my reviews for the proposal- Mm-hmm ... I can go line by line, which I found exceedingly cool. Mm-hmm. And give a comment or suggestion having to do with this first milestone submission- Mm-hmm ... that was done by Elk, which I happen to be the reviewer for. Yeah. You know, within product committee, right? Yeah. So that was... I'm, I'm warming up to the idea that this is useful.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So you're approving somebody's pull request.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Yeah. Am I?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. Okay, sorry. That's, that's what it sounds like you're doing.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Wow. Somebody puts something in, and then you're looking at it, and you're giving commentary, letting them know if, if you think they need to change anything.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Yeah, dude. So I'm a coder now?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>You are... Well, I mean, uh, does a g- ... Is a pull request a...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>I think being a pull request approver should be a job at this point because-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh. What? ... Chris put out like 70 in a couple days.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>I thought the team was gonna- Oh my God. In one day.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>You did that in one fucking day?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>That was in one day.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>No wonder they were so mad at you.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>That was in one day. One day, 70 pull requests.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>What the hell, dudes? How dare you?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. Take a break.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>He did. He's, he's going to blockchain, Boston Blockchain Week. Right. So he was, like, mad cramming. And I told the team, I was like, "Look, he's going away for a few days." I was, "Not like he won't do any, but he'll do less now." Right. He'll probably still do, like, you know, 40, right? Right, Chris? Good Lord.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(inferred)</em></div>
+  <div class="turn-body"><p>I don't know.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Oh. Did you do them on your phone? With the new Apple Duo, you're probably gonna be able to do it no problem.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(inferred)</em></div>
+  <div class="turn-body"><p>Um- I can't wait for that phone to come out.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>James, he's been doing this from his phone for, I don't know, 10-plus years. These are not challenges you think they are. No. He can even- I weighed a- He even has, like- Yeah ... his AI get stuck on something on the machine, and he's able to get it from his phone and approve it, and, like, tell it, you know, "Yeah, go ahead and do this."</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>That, that's pretty good, man. I've been using my phone and running my business, uh, I ran it for 25 years, and 10 of it I ran almost solely from my phone- Mm-hmm ... which include all invoicing, managing all the e-mail, e- everything, customer relationships, e- all the stuff, I did it all on my phone, uh, because I was always on the go. I was never in an office anywhere. Oh, yeah. Oh, yeah. You know, so it was required, right? So, um, yeah, it could be a useful tool, but, uh-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I can remember- ... there's limitations and stuff ... like in the early 2000s, maybe, maybe it's like 2003, 2004, I had a VP of sales try and hand back in his laptop. He said, "I can do everything from my Treo. Why do I need this?"</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>I mean, come on. I- It, it's pretty good. Some things are hard, but- Yeah, yeah ... it's useful.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. Well, so I actually punked him. I, I had... I don't know why they let somebody my age in charge, you know? I was barely allowed to buy alcohol. Um- Oh, my God ... so I took his beautiful, beautiful laptop. He had a nice, pretty, small, thin Dell, and I took it and I was like, "That's fine." And he was like, "If I need a machine, I'll let you know." And we had found something in a storage closet. Oh, God. It was an old IBM brick, old IBM brick laptop. You know? Like it- ... I think it was like 75 megahertz for the processor. So I waited, and he did ask for a computer again, and that's the one I set up at his desk. Oh, my gosh. I had his real computer, but I made him tolerate that for a hot minute.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>That is freaking hilarious. Yeah. You, you are funny. Geez.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I am a troublemaker. All right. Well, Chris, you ex- Is Chris excited? I know we got time.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh, yeah, so we got time. Um- All right. No more. No more banter.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>No, no, no, we're good. We're good. Um- Okay ... Satoshi's bride- It's Chris, it's- ... I think she wanted to say something. I'm gonna give her a chance.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh, go for it.</p></div>
+</div>
+
+<p class="sec" id="t-sb">06 — Satoshi’s Bride: governance, being needed, and the market reality</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>What's up, lady?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Okay, great. Hey, baby. Yeah. So mainly I wanted to say that... Okay, that I appreciate Phil and his accuracy. And then second, I'd like to say that what I think is interesting, like anyone who knows actual things, like facts and infrastructure, knows that Cardano built it best for the area of governance. And, you know, all this work that is involved with human beings organizing, like th- it works. And then with Midnight, uh, the privacy. So what I'm saying is that anyways, it's the slow path. It's the tortoise or the hare, you know? And so what I say is that why don't we-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah ... what? What? Go ahead. Finish your thought.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Okay. My thought was that w- like why don't... Well, what I'm most interested is in, um, implementation. And then I know there's some tricky things with, um, you know, the movement of power, and then there's a lot of in- innovation within the movement of power and grids and like things like mesh, et cetera. Anyway, like what I'm saying is that, you know, I believe the best technical solution is always the hardest to implement, which means it would never make it in the mainstream market. So like I'm excited about brainstorming things like, okay, if I can mine with hydropower, um, different kinds of things in Nepal, how much, how could I transport that and sell it in, in Bangladesh? And how much... Like I think these are pretty much just calculations, but then we do know- That's cool ... that this is the best... Like, I don't know, I just think we start brainstorming how in our own villages we can just implement. Mm-hmm. You know?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>I have a question for Satoshi's Bride. So why do you think that Cardano's technology, the layer one, um, is the best for decentralized governance?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Okay. Well, there's two factors. One is there's just one, um, sheer experience. So in the same way that I, I cannot say that I cannot... I can probably never say that any, any Chinese model is going to be better, uh, than any, uh, North America because of the sheer number of human beings that can consistently get data to us models.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Well, hold on. You just jumped from LLMs. You just jumped from blockchain, which was the topic- Yeah ... the layer one- Yeah ... and its ability to be able to support- Yeah ... uh, technol- tech- technically, uh, what would be needed in order to actually run a decentralized governance structure, and you jumped into LLM. So how did you make that leap?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Oh, I apologize. Um, well, I just wanted to give an example. I wanted to give an example about, um... Hmm. Okay. Anyways, uh, let's just skip that.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>So back to the question.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Okay. Why, why Cardano? Why the governance? Because, well, first of all, um, w- Cardano is the only proof of concept, right? The, the only, um, what, basically b- beta case that has been running for years with very faithful stewards. And I don't know your language on how you talk about validators and all the things. Right. But, like, that is stewardship, and there's years of that. You know? So what- whatever all the funding issues or whatever the thing, the reality is Cardano network is the only one that has an experience with real human beings having to deal with each other, having to buy hardware, like all the things. And so that's a- Right ... point. That's a fact.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Well, if you use the Nakamoto coefficient as a, um, basis for your argument, then you would y- be using Carda- Cardano is at the top of the list when it comes to, you know, stake pool oper- the way, uh, proof of stake, um, blockchain, and the fact that it is relatively decentralized, yet it can also then accommodate smart contracts, um, you know, uh, larger business ideas, enterprise solutions, a variety of different things that you could integrate, uh, with the blockchain itself, whether it be at the layer one or layer two. Um, so there's that if you're using that as the basis for your argument. But decentralized governance is much harder- than just running a bunch of decentralized stake pools. You know, deciding as a group, you know, to, you know, mint blocks and how secure that is, right? In order to make sure that one bad actor can't come in and take over the whole thing. That's pretty impressive, but when it comes to decentralized governance, it's quite another thing to organize people around ideas, uh- ... while also trying to coalesce them into, uh, some policies that would effectively help it operate. But at the same time, they're also always worried about or struggle with the idea that there's some sort of centralization component to it, which is exceedingly difficult to get people to agree upon.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Well, there's, there's always a bit of what about me-ism that we're, we're trying to find that balance with.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>There's that too, and a lot of us, we're all rebels by nature, okay? There's a reason we're all here at Cardano. What? We all love living and, you know, walking to our own beat, you know? And so that's understandable that this is one of the reasons that Cardano is so attractive to us, you know? Right. And the potential that it has. Yeah. You know? But there are some things that have to be agreed upon together, and you have to have consensus to do that. Fair. And so there has to be some sort of thing that everybody jumps onto and agrees this is what we're going to use in order to come to that consensus, and that's the struggle we currently have in Cardano with governance. So I'm just curious, Satoshi's Bride, if you believe that, you know, this can be accomplished based on the way you think about it. Uh, I'm always curious of other people's ideas about this.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Oh, I just think, I kind of feel like not in the same extreme, extreme way as Richard Heart and whatever happened over there with him talking about sacrificing. But I do believe that, like, there's, there's, there's the market reality, and the market reality is what, what is liquid and, you know, like, what are people actually seeking in the marketplace? And it, in the level that you're playing with institutions and high net worth and whatever, you know, the market reality is that those things are over. Those tools are like ETFs now and, um, Bitcoin. And so for Carda- Cardano to really effectively... Like, they have all the technology and it's great, like the Midnight and those things, but it's like you have to be needed. You have to be needed, you know? So where in that product-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Well, it has to be wanted or desired, which is the issue. And most of them, yeah. And we struggle with trying to sell being your own bank or self-sovereignty.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Instead of when you take- Yeah, sorry, go for it ... you're in this, you're in this utopian, you know, Thomas More, like, this is the best way it should run, right? But where can you actually just facilitate even the, the minimal, you know, SDK, like pilot stuff, like, that people can actually use today. Like, that's why TON, like, you know, that's why TON in the, in, in the South America and Stellar, you know, like, they, they focus their thesis not on the technology. They're not-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Hey, guys ... on the, you know? I gotta wrap this up because I have a guest.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride <em>(inferred)</em></div>
+  <div class="turn-body"><p>Okay.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>As interesting as this is, but, um, I, I can't keep going down that rabbit hole. Um, we can pull it back after when we get to banter after our guest, so-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Please don't.</p></div>
+</div>
+
+<p class="sec" id="t-devskills">07 — Giovanni and Bora: Cardano Dev Skills</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Listen, so I have Giovanni coming up. But you know what? First, I have been given buttons and stuff. Let's see. I have sounds. Oh, can you hear me? Drum rolls. Ha. Yes. I finally have sounds. Giovanni.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>How's it going? How's it going? How's it going?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So lovely to have you, sir.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>Happy to be here, as usual.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Good. Good. I kind of harassed you. I'm glad you came.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>No. It's the, the, the, the, the, the nice harassment that I like. The- Yeah ... that one, that one is fine. Other type of harassment, not that much.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Well, um, you did a post, uh, not too long ago, and I pinned it up at the top talking about Cardano Dev Skills and how it helps AI skills to develop on Cardano, and I was immediately intrigued by this and started looking through it, and that's why I asked, "Could you come on Cardano Over Coffee?" Because we talk about AI all the time. So, um, I guess let's just start out, tell us a little bit about what Cardano Dev Skills are. What is it?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>Of course. So, um, Cardano Dev Skills, uh, was born, um, just couple of months ago, uh, from an idea of a community member. And, uh, funny enough, I was already working on something similar, but the, the TLDR is that if you're working on Cardano with the AI tooling, if you add Cardano Dev Skills as a, as a context or as plugins, uh, to your, as knowledge base, sorry, to your, uh, Claude, for instance, or your Codex, uh, all of a sudden you're just giving your AI, uh, agent all the knowledge or a lot of knowledge about Cardano just there ready to be used. So whenever you ask questions or you ask to develop a piece of code, your agent can access the latest and greatest documentation about whatever you're doing on Cardano, um, just there and then super fast, and this should, like, um, increase 10X or 20X the quality of the work, the answers, and the, the, the job and the coding, uh, that you're actually doing with the, with the, with your agent. Um-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Well, so I think a lot of people who've tried using AI tools have run into things like hallucinations or outdated answers. How does Cardano Dev Skills make AI agents m- more reliable?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>Right. So we can start straight away with the, um, uh, uh, stale answers. Uh, that's one of the thing that has affected me the most, and that's the reason why I actually started to look into this. So whenever you work with the, uh, with the, um, AI models or machine learning or, um, artificial intelligence in general, there is this, this thing called training, right? That happens at, at a certain moment in time, and it happens, uh, and it, it, it is done on so-called the training set that is obviously frozen in time. So let's say that, um, uh, back in the days when the, like, the AI model were much simpler, uh, you were doing a training set on, uh, uh, a training of a model based on 2025. This means that, uh, your, uh, machine learning algorithm is really good with whatever happened in 2025, but it's not that good on whatever happened in 2026 because they had no knowledge about it. So if you're building on Cardano, for example, and you're using, uh, AI and the AI was trained on a, on an older version of the code, well, you would have, you would get, like, an amazing, uh, reply but, uh, only suited 2025. So if you're in 2026, whatever the AI is producing maybe is a little bit stale, it works but not so much, or maybe there are errors, or maybe there was an hard fork, and all of a sudden that piece of code doesn't work anymore because it's not aware of the hard fork. So the, one of the efforts of Cardano Dev Skills is to ensure that, um, first of all, the knowledge is continually refreshed. So, uh, these sets of knowledge base that is built within Cardano Dev Skills automatically refreshes every week on a Monday morning. Um, Claude or Co- uh, Codex have been instructed to periodically go check if there is a newer version. So you download basically all the knowledge base. Um, and obviously if there was one of these libraries, API systems, or if there was an hard fork, the new specification will be pulled automatically for you so that if you're building today a transaction, for example, that is one of the most common thing that I do every day, um, Cardano Dev Skills helps me to find the latest and most updated way to use, uh, Lucid Evolution or to use, uh, um, uh, uh, the, the Java version or to use the, the, the, and in recent weeks, Go version as well, so that I know that, um, the, the, the likelihood of my transaction building code working at the first shot is much higher- Right ... because I'm just, uh, fetching the latest version of the code. And this is only one simple example, but we can go down a really, uh, deeper rabbit hole.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Um, I, I don't think we need to go down the rabbit hole quite yet. Well, I mean, maybe. So let's just talk a little bit about w- what, what problems people would solve. Like, what would they, what would they, a developer use this for? Like, CIPs, transaction building, Nix, I don't know, smart contract vulnerabilities?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>Right. So it, it is a little bit 360 degrees, right? It goes from, um, knowledge. So I don't wanna build software, I just wanna ask Cardano stuff. Uh, what is, uh, CIP8, CIP8 or CIP30? Can you explain this to me? And, uh, it's gonna give you an answer, but, uh, if you want the ELI5 version, that's the beauty of AI, is that it has access to the original version of the document and it can dumb it down for you if you want. So there is all this thing about, uh, knowledge. How does this work? What is UTXO? And, and then you can basically talk to the AI and, uh, ask questions and just get the possibly the most reliable answer, which, which helps a lot, right? Um, but then you ... And, and one thing that I, I've been using for, uh, uh, for, for a very long time every single day, and that's one of the reasons why, how, um... And with this thing about the, um, um, knowledge, uh, I'm gonna maybe at some stage pass the ball and the mic over to, to Bora because, uh, Cardano Dev Skills now, uh, uh, has actually become one of the first step into the learning path over to Cardano. So let's, let's put this one in, into the back burner for a minute, and then m- may- maybe in a few minutes we, we'll, uh, we'll hand it over to Bora and, and because he's done a great job, so we'll get back to this in, in a second. And but then there is, like, more operational stuff like, uh, um, you have a bunch of smart contracts so that you have your on-chain part. Uh, but, uh, we, we've actually learned very quickly on Cardano that building the off-chain code is, uh, is, uh, a- as challenging and as verbose as writing, um, the off-chain code. And sometimes, like, you spend hours writing the off-chain. Now what you can do is just, like, you tell the AI, "Look, this is, this is the code, whether it is Scalus, Aiken, Plutus, whatever. Can you just build, can you just write for me the transaction building code in Java, Go, uh, um, uh, Scalus JS, Evolution, Evolution SDK, Lucid?" And it's gonna give you the stub, the stub, right? And it writes the, the 20, 30, 40 lines of code for you doing all the math with multiplications, whatever. Uh, find the, the, the, the, the change, ensure that all the reference inputs, so on and so forth, are there. Um, but that's one thing. Like, if you wanna build a, a dashboard and say, like, um, uh, "I have access to Blockfrost and I wanna build a dashboard on the Blockfrost API. Can you help me building something like this?" Um, and it is an ex- example. And, and for fun, um, once that the Cardano Dev Skills was, uh, uh, was big enough that had the transaction building, explain CIP, explain UTXO, uh, write smart contract, uh, so on and so forth, I decided to vibe code completely a Cardano marketplace. Now it took to me a while and, and it helped me finding a few, uh, a few issues, but eventually, it, it actually brought the Aiken code, the off-chain code, the back end with indexing and, uh, on all the front end. Uh, now everything is very simple, but it actually works. And I literally wrote zero lines of code. Um, and, and that was absolutely beautiful. I can keep talking for hours and hours- No, I like it. I like it ... but I just wanna give you, wanna give you, I wanna give you time to jump on and, uh, and ask questions.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Uh- Um, well, so when we talk about community contributions, what type of community projects have been contributing to this already?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>This is, this is actually a great question, right? Um, so everything starting from, um, me, uh, writing the same code again and again. I'm just like, I wanna use AI, but I wasn't happy with the AI results. And I was just like, I, I must do something to tell my agent That there is a newer version, how can I tell it to just don't base it on memory and just go check this thing? And then two days later, I was working with, uh, one of our partners, and he was just like, "And I'm really sorry I have to say this." And the guy was just like, "I come from Solana, and they have a knowledge base. I just put my... Sorry, it was an MCP server on Solana." Say, "I just connect to it, and it gives me all the knowledge I have." And I was just like, "Burn." You know, like, when someone like say, uh, tooling on other blockchains is better. Yeah. I was just like, "Okay, this pisses me off," right? Right. Right. So I was like, "I need to do something about this." So when I was finally... I started to wo- uh, I started to work on something like this. I made a post about the MCP server, and the great Phil said, "Look, you're doing a great job." Even Phil, he said, "You're doing a good job, but don't use MCP servers because of all these issues," right? So I worked around it. I picked up on, uh, his, his suggestions, and, um, I was working on the material myself, and then eventually came up with the idea... Not the idea, with the format of the Cardano Dev Skills, and that's where, like, basically things started to work really, really well. One problem with the MCP servers is like an, uh, is, is that they might even give you a, a, a partial answer and not all of it, and it actually is gonna confuse the, the agent even more because MCP is not sure... It's not made to share knowledge but to execute stuff remotely. But anyway, so once these things started to work, um, so the first person to join on board was, uh, Bora from the education, uh, uh, team in Cardano. He's like, "Why don't we put more, uh, knowledge about this?" Uh, but then a few people started to jump on. Uh, obviously Chris from Blink Labs said like, "I, I'm not a Go expert-" "... so I wouldn't feel comfortable adding Go documentation to the, um, to the Dev Skills." Great. "My... But I invited everybody to jump on and bring the contribution about where they are more expert." Um, so there were like, um... I got review from, uh, Michele from Harmonic Labs about, um, Pebble and all the things he's been working on. Then there is from the Go ecosystem. Um, I've had contribution from, um, uh, what was that again? From the Scalus team. Um, Robertino, obviously you guys had Robertino from IOG a couple of weeks ago. Yeah, yeah. And then basically there is a little bit of, um, there is a little bit of cooperation there because the, the two projects actually sits nicely together. There is a, a tiny, tiny overlap, which is fine, but also a lot of complementary work. So he needed the knowledge base for all the things Cardano, and that's where we are focusing on. Yeah. But, uh, we also needed something more to start the project on Cardano. So we have a little skills that is- Nice ... scaffold or bootstrap. Mm-hmm. Uh, but I don't think it is as strong as it should be, and, and I am happy about that. Mm-hmm. Um, but on the flip side, because I, I didn't want it to be too opinionated, that's where Rob- Robertino came in and said, "I actually wanna build something that is extremely opinionated, but then I want a more generic, um, uh, ge- generic purpose documentation ex, uh, as well, uh, where we can get the information from." And that's what... That's beautiful cooperation, uh, that, uh, I started. We have a couple of PRs we're working on to ensure that everything is working smoothly. Nice. Um, but yeah, this is, uh, this is an initial list of, uh, of things I've been working on. And I just wanna ju- wanna say just one more thing because I think- Sure ... it's almost time to, to, to get contribution for Bora as well. That, uh, first of all, Bora has been a legend because he found a, a ton of bugs into my sloppy code. And the first thing I wanna say publicly, before, uh, before, uh, before making, uh, uh, before making, uh, Dev Skills bigger, the first thing he did was like to, to fix up all my mess. And then, uh, I believe, and he's gonna tell us more about this, that, uh, into the onboarding process today, AI is, um, is, uh, is, is, is, is an incredible, um, way to start things. And, um, and then, yeah, I'm not gonna say more, but- Love it ... the Cardano Dev Skills is part of the, um, on- onboarding process.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Nice. Nice. Um, if anybody does have questions, you know the drill. Raise your hand, ask to come up. Um, but Bora, we'd love to have you come up and speak a little. Giovanni's laid out the red carpet for you.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bora</div>
+  <div class="turn-body"><p>I am flattered. Thank you. Thank you, Gio, for laying it out there. Um, hi, everyone. Um, so, um, I think Gio covered it pretty well. I'll just try to give a perspective of how I view what this tool or this bundle will be really useful for. Um, I think whatever we do for developer experience in the ecosystem or developer onboarding, whether this is an event or a hackathon or a new tool that makes it easier to use Cardano network to build a solution or a product, it essentially serves just one, uh, KPI in my mind. That's how I evaluate it. Does this make it, uh, cheaper for me to acquire a new developer who has never touched the chain before? And if it is a yes, then it's probably a good direction to follow. And if it doesn't serve that directly, um, it might be not a priority. So, um, the Dev Skills will... We wanted to get it as mature as possible so that the community can start playing around with it and start contributing because it's, uh, the knowledge base of all Cardano developers would be the ideal... Let's say it, it's, it's like this giant encyclopedia that we are creating, right? For the entire ecosystem. And it, it's just a self, uh, improving loop that we could use, um, as a structure here in Cardano Dev Skills. We are just creating the baseline building blocks, what an AI needs to know about Cardano, and we are pulling from all directions, all contexts available in the ecosystem. And when a new developer joins in or just wants to give it a go, right? About Cardano, "Oh, I'll try my business here on Cardano." They don't need to start with the boilerplate and figuring it, uh, figuring it, it out. Where we see the most fraction in, uh, friction, that's where we lose probably a lot of potential new developers. And the moment they have this tool in their hand, it's, uh- They start from floor 80, right? Like, they don't, they don't start from the entrance. They don't need to understand exactly what happens while a transaction is being built, all the ins and outs or what goes under the hood, right? And it, it doesn't mean that we don't need more, um, well-versed developers who understand what happens under the hood. But, um, the goal here is that people can get going, and they will realize while they're building out their stuff what they need to know better so that they can optimize or make cheaper or scale better, right? That's the goal, I would say. And, um, I, I'd like to also thank Gio- Mm-hmm ... for, uh, starting this out and giving this a platform. And, um, um, it would be amazing to see more community contributions come along because this is a, a tool for everyone- Yeah ... that we are building here.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I love that. Um, we've got a hand up. M- lovers lab, really? That's what I'm supposed to call you? Go ahead with the hand up. You have a question? I'm gonna go with maybe not. Um, Game Changer, did you have a question for us? Nice. Good, good, good.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>Hi, guys.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>You have an AI question for us?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>Uh, yes, yes. For sure.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Go for it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>Um, nice to hear you again, Gio. Uh, congratulations on this very important, uh, yeah, piece of education and, and tooling for Cardano, for the new ages. Uh, yeah, just, uh, basically, um, I don't know if, if on the, on the post you are sharing instructions on how to, uh, uh, contribute. Um, if you can share some quick tips regarding that, regarding formats, if there is a template for sk- for skills. And basically, yes, we are looking for, uh, on these upcoming months to contribute with, um, yeah, with GCScript DSL, our intent-based scripting language, uh, for everything off-chain Cardano and, and what, what it's like.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. This is a fabulous question. Yes, we absolutely need to know. If people want to contribute, like, where should they go? What should they do?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>Right. So, um, it's, uh, it's everything in the repository and in, into the, the readme. Um, there is, uh, uh, there is also, um, a, a contributing, um, uh, there are also contributing guidelines. So while we invite the community to enrich, uh, the knowledge base, um, this is not a place for, uh, putting, um, DApps specific stuff or, uh, your specific product thing. Um, the, this, this is a, a knowledge base that is for building on Cardano. So even when you, um, and I don't want disco- don't, I don't want to discourage people to contribute, uh, but one of the, a beefing exercise that we've done is to, uh, basically provide immediate feedback once a pull request is open. Um, meaning that, uh, uh, one of the examples, for instance, recently in w- uh, uh, two things that I forgot for, um, Masumi also did a very... They were the first to contribute, obviously. Uh, AI project on Cardano, uh, is not a surprise that they are the first one to contribute to the project. Um, and the TxPipe as well, right? Um, uh, they have the, the, the transaction building, um, uh, framework, which is, like, more idiomatic. Uh, again, I wasn't familiar with that, but I think it was Robertino, uh, issuing the, um, the, the PR to add it. Now, T- TxPipe, right, is, uh, uh, uh, the, the Tx3, I think it's called, the framework. Uh, it's a specific framework, but it's a generic thing for Cardano, for building on Cardano. So, um, whenever you go on, you wanna, you go like, uh, uh, I wanna create a, uh, there is a skill that you bui- build transaction, and you're just adding another, another flavor, another way of doing it. Like building with Java, building with Go, building with TypeScript, building, building, build it with the Tx3. Um, so the, the automated AI process went off and it's like, checked the PR and said, "Right. It's all, it's all good. Uh, you can do it." Uh, but, uh, in case someone is adding how to use DEX X, Y, Z or, uh, how to make money on Cardano, obviously all these PRs will be automatically rejected because it has nothing to do with building on Cardano. So, um, in recent weeks as we made this, uh, project more and more formal, more, uh, more mature and more structured also to receive community contribution, um, we've put some, uh, guidelines that we are happy to review, obviously, if they are too strict. Um, but all the, um, all the guidelines and rules are, are in the repo. So just check the readme, which is the perfect starting point, uh, and you, you'll find everything there. Um, one, one suggestion, don't do it by hand, but use your AI to better, um, interact the repository because there are lots of moving parts and lots of rules to follow. And, uh, we, we tested with Codex and with Claude, they understand it really nicely. Um, so adding your own stuff to the repository should be pretty straightforward. And, and again, the automated, uh, the automated reply to the PRs, uh, give you a good feedback on, uh, what, what went wrong and what should be the next step, um, in getting your PR mark- your PRs merged.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I love that your advice is to use AI.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>Oh, yeah, yeah, yeah. Like, just doing it by hand is an absolute nightmare. There are, like, so many things that you have to, uh, to, to process. And, and, like, documentation is AI friendly, rather, like, I use AI, uh, friendly first rather than human friendly first. Uh, this is the first time, like, um, that, uh, one of the first time that when I'm writing docs, I'm, I'm, I'm telling the agent just make it AI friendly because no human is ever, never gonna read, like- ... all this wall of text, right? Because it's like, who's that crazy person who's gonna go, like, I don't know, hundreds of lines of documentation, which is like, it makes no sense to me. I was like- Yeah ... as long as it works for AI.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh, yeah Um, Blink Labs does something similar with, um, our own repos where there's stuff under Dingo to introduce AI to kind of explain things, to answer the questions so they're just gonna ask and all that, just to make it easier. And I can, I can see how doing this across the board would simplify life so much. So I, I can't wait to see this grow. Um, okay. So our call to action is please go check this out, see what you can contribute. Is that right?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(inferred)</em></div>
+  <div class="turn-body"><p>And use it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>And use it. Chris says use it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni <em>(inferred)</em></div>
+  <div class="turn-body"><p>It's all good, good stuff. Just, uh, just get, get your hands dirty first.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. Yeah. Mess around first and then... So I do have a link up in the top. Um, and of course, if you go to Giovanni's profile, you can see where he continues to talk about this too. Um, Giovanni, thank you so much for coming on. Um, Gamechanger, did you still have a question or is your hand still up?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>No, just, just a quick reply.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Go ahead. Go ahead. Go for it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>Okay. Thank you, Christina. Just, um, yeah, Gio and Bora, let's talk about this please, because, um, of course the, the language, um, this, the JSON schema defining the language has been open source since years. So, um, the implementation could be a, a product, but the actual language, uh, could be not treated as a product, and that's what we are targeting or aiming to, to offer this tooling to Cardano, and it literally helps a lot on boarding. You can literally have, uh, DApps built auto-generated, uh, by one or two clicks. So this literally helps a lot. Um, we have validated this before and yeah, let, let's try, let's find a way, please. Um, let's, let's talk about it. Uh, once again, congrats. Of course. Uh, you know where to find us.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. They don't hide very well. All right. Thank you so much, Giovanni. As always, I appreciate, appreciate you coming out, sharing what you're working on. We'll continue to harass you for updates. I'm sure you already expected that. But...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>Thank you guys. Happy to be here. Thank you so much.</p></div>
+</div>
+
+<p class="sec" id="t-midroll">08 — Midroll, and AI banter before the guests</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Hey Chad, are you still there?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>I'm still here.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Can we do a midroll, sir?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>I got a midroll for us. Thank you. Thank you for tuning in everybody. This is Cardano Over Coffee, the world's first decentralized morning show where you are the guest, you are the speaker, you are the host, and you are also the listener. So thanks for tuning in. I love it. Really appreciate it. We're here Monday through Friday at 9:30 Eastern Standard, 2:30 UTC, bringing you what's being built on the blockchain and that's what we like to talk about. And if you are building something on the blockchain, we'd like you to click the cup, go on the Calendly link, schedule a spot, and come on the show and we'll talk about what you're building. Uh, we also like to remind our listeners to keep your funds off central exchanges. Put them in your own self-custody wallet that you have the keys for. And we like to remind people to stake to a stake pool and delegate to a DRep. That way you're taking full participation in the Cardano blockchain. Once again, thanks for tuning in, and at the second part of the show, we're going to have AlphaGrowth.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Woo woo. Oh wait, that's why I have sounds. Where are my sounds? That's a thumbs up sound. Thank you. Hey Eric, I see you hanging out. How's it going?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>Yo, yo, it's going well. How are you?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Pretty good. Pretty good. Happy Thursday over here. Uh, what-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>To say, um, the AI skill stuff has gotten much better.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>Happy Thursday. Uh, you cut off a second after, uh, I think you asked me something. Yeah. I'm not sure what it was.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Uh, Phil's just happy about AI, I think.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Oh yeah. I wanted to say, yeah, it's gotten much, much better. The one, one thing, uh, you know, a- as a nice quality of life improvement would be to, uh, go through all the docs in, in that skill and then hand write them. Uh, because right now I've been using it a lot recently and the only downside is the context rot. Like when it loads these skills into context because they have a lot of AI writing in it, it'll like take up a lot of the context and so... Yeah. Can be hard to read. Mm-hmm.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Phil, what happens when the AI just decides that we're no longer needed and we're actually the problem?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>We get to go horseback riding, James.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Well, I mean the guy from Anthropic said we got a few years left. That's it. So I would say everybody start the party now like it's 1999.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Yeah. But his job is, is an alignment engineer and so if you're, if you're working in the alignment space, that's like max job security to just tell people like-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>No, so you're dis- you're discounting his, his role. Oh, it's gonna kill everybody. You just diminished... He ju- you just diminished his, his overall thought, uh, down to, you know, like he really, it really doesn't count.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Okay. No, I mean it, it counts, but it's like you gotta, you gotta factor in their perspective, right? Like his job relies on people needing to hire people to, um, I don't... I, I'll be worried about it when the AI can like, like fucking fill out a tax form, um, without me like freaking out about-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>He also might be bitter, you know? I mean, there was that other guy that left, uh, uh, AI or, uh, GPT and, and it's, he just became a, uh, full-time poet- Yeah ... apparently. Uh, which is so- All right. All right ... we, we have to understand everybody's individual, uh- I'm not really worried about it yet ... what's going on. You know?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>People are all afraid about AI coming to take our jobs and, um, there's aspects of my job it can do and aspects that it screws up every time I ask for help. So I'm, I'm not really worried yet I want to take the largest part of my life that's totally boring, all the things like- ... reading documents, writing documents. Uh, did I say reading documents? James. I said reading documents. James.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Um, yeah. I've been to Japan. They have robot maids. We just don't have them yet.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Can the robot maid do the cleaning and the c- and the cooking and read the documents? That's what I want.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Ah, that one might cost extra, but I bet it could.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right, whatever. Damn it. All right. Stop, stop, stop. Okay. I got guests. You and Phil knock it off.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, all right, let's go for it. We all love AI. Everybody knows that.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Bryan's a guest and he's got his hand up. Come on, Bryan, what's up?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>Yeah, so Cranston AI is now selling to CPAs in the United States for next year's taxes. They've worked on a model for, like, 18 months, and what they're claiming is, uh, your CPI- CPA can read all the documents, hit a button, and then file, like, your taxes for 40 bucks. And they're charging the CPAs 40 bucks a, a tax admission. Hmm. It's pretty awesome.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>What kind of warranties do you get?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>Exactly. I mean, you're still gonna have to, like- Yeah ... you know, review with the tax accountant. But, like, we're, we're not there there, but we're getting there. We're on the cusp. You know? We're, we're close. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Yeah, no, I, I actually, uh, I, it's, I used AI to file my taxes, so, uh, and it did a, a pretty good job. Probably better than I would have done, so I was being facetious. M- mostly it's just like, okay, it can file my taxes, but can it, like, make a nuclear bomb? Probably not. So, you know.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. We're at the point where it's- It's models ... it's useful and helpful to society, and I'm happy with that, and I think we should continue making it more useful and helpful.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Yeah. And- It still doesn't have any individual agency. It always requires a prompt. That's the thing with AI. It's just a tool still.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Good. So I'm just gonna put a little thing having to do with CPAs. Integrity, objectivity, competence, independence, and the public interest. Those are all things that need to be a part of the AI version of CPA, or we potentially have, you know, uh, an issue potentially. That's his part of the CPA oath, by the way.</p></div>
+</div>
+
+<p class="sec" id="t-audit">09 — AlphaGrowth: the 97-page audit and the 11.4 million figure</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right. Bryan, you were supposed to help me bring this back around to AlphaGrowth, and you did not.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>He didn't do it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>You did not help me at all. Eric-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>What do, what do, what do you want to know?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Bryan, put your hand down.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(inferred)</em></div>
+  <div class="turn-body"><p>What do you want to know? Put your hand down.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I'm done talking to you. Eric?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>I, it's down. It's down. It's down.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right. So I, I do want to get on topic because I value everybody's time, and we're gonna go over anyways and keep you as long as we can. But let's get this started. I'm pretty sure everybody here is familiar with AlphaGrowth proposal. Um, I saw that you did a post and you were talking about the audit and the RFP, and I was really excited to talk more about that. So let's, let's talk a little bit about the Cardano DeFi ecosystem audit you did. And for the people who did not read all 97 freaking pages, guys, um, what is the plain English conclusion?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(inferred)</em></div>
+  <div class="turn-body"><p>I'll, I'll give, like, the most interesting stat that I, that I found. Um, you know, Krill and, and Charlotte on the team did, like, are kind of, like, coining a stat. Uh, there's a key number in there, 11.4 million. So what that means, it, there's like... We're coming up with, like, a yield compression category or, you know, uh, some, trying to figure out the coining of the phrase, that if you brought $11.4 million of TVL to Cardano, all the APRs across all the protocols would be cut in half. And so in terms of, like, yield capacity, um, it's very, very limited on DeFi, and I think that's one of the most important things that we're gonna focus on, is how do we increase the capacity to earn more yield across all the different protocols?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I mean, that's completely valid. All right. So the audit lists a lot of missing or immature pieces, um, be it wallets, bridging, you know, executor standards, vault standards. If Cardano could only make meaningful progress on, like, I don't know, three or five of those, which ones do you think matter the most?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>For Cardano or for us?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Um- Ha. You're a pain. Okay. For, for Cardano. We're not talking about you. We're just talking- Yeah ... about you. Go on.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>Well, uh, th- th- this is why it's tough. I mean, fundamentally, Cardano needs significant improvement on, on all of these. Like, it needs to be competitive, um, and competent and capable to sustain real business and all types of real business so that they can intermingle and work together, and that, that does require everything. So if I had to pick only three to five things, it's gonna be core DeFi protocols so that we could design good enough strategies to get deployment to hit our TVL goal. Um, but that would be specifically for TVL, which is potential energy. That wouldn't be something that's activated. And our, you know, stated goal and purpose is we want to, you know, be here helping out and contributing for a really long... Means we not only need to get it activated, and the activation is gonna take a lot of the things that, um, yeah, it's gonna take the vault standards, it's gonna take all the tooling that enable everyone else to run their own businesses. It's gonna take significant UX improvements. Um, just even, you know, using things like multisigs right now on-chain are, i- it's, it's a pain compared to what exists elsewhere, and what exists- Preach ... elsewhere in crypto is not nearly good enough. It's awful, actually. Like, I don't want to- Yeah. Yeah. I, I don't even want to get it up to where, like, Gnosis is. Like, Gnosis isn't good enough for, you know, the traditional banking world and real world companies. Um, but we're so far behind where Gnosis is that it's, um, yeah, needs improvement. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right. Um, so one thing I really noticed is that some of the gaps are about getting outside capital to Cardano, like wallets and bridging, and others are about making capital productive once it gets there, like, um, concentrated liquidity, vaults, um, incentive attribution. Is, is this the right way to think about the audit?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>Yeah. Um, specifically just, just to show goals, kind of showcase how far behind we are compared to other, um, ecosystems and knowing that they're also trying to grow. Um, it's just trying to get a realistic, as unbiased as possible, um, analysis of where we are. Um, our, our goal coming in here with three phases, it's like phase three, yay, TVL go up, apps coming out, tokens launching, uh, ev- everything's hype. Phase two is to get to where we need to be. Um, and phase one is just figuring out where we're at. And so now we have a decent understanding of, of what it's going to take to get to where we need to be, and additionally, a, a broader understanding of what it would take to get to where we would like to be. So we're taking this, we're working closely with the operating group, with the Cardano Foundation, uh, who's been helpful and supportive in this, um, so that we can, you know, have recommendations going back and forth, have pipeline going back and forth, point to specific things, being like, "Here's, you know, where we need to, to make things better." If we need real time, um, yeah, real time freezing, live time monitoring as, you know, things are getting hacked from AI exploits. Um, you know, there's no distribution partners. Um, so we're, we're talking to Merkl, we're gonna see what it takes to get somebody like Merkl and other, other groups in as well so that we can activate more users. We're talking to the wallets, and it's like, not only do we need agent native, uh, infrastructure, but we're also like, "Can you support EVM or EVM wallets? Can you support Cardano?" Like, how do we bring more users into the, the apps and the businesses that we set up?</p></div>
+</div>
+
+<p class="sec" id="t-rfp">10 — From audit to RFPs: the 50-to-1 rule, diamonds, transparency reports</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I love that. So, um, let's, let's talk about from audit to RFPs. Um, all the gaps are now RFP categories, and a lot of people are gonna be very interested in how they might participate. Maybe we could tell them what a strong response would look like from a team that wants to build in one of these areas.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>Yeah. Um, first and preface, um, the categories are not all inclusive, and we're not promising grants go to like every single one of those. They're things that we see as like really big needs right now. Um, but there are very many needs. So please do come forward with whatever your idea is. Treat it like you would Catalyst, um, if you think you're gonna grow Cardano, if you think you're gonna make Cardano, um, TVL scale. Like, we do want any and all ideas, but we are trying to flag things that we see as like core needs that we would like to address really quickly. So, um, yeah, f- if you can help in any of those capacities, if you're doing cool wallet stuff, uh... I think I was talking to, to, uh, Patrick Tobler, who's doing, uh, Masumi. I, I don't want to say it wrong, but it's really cool agent stuff, and they're like, "Yeah, they're good wallets, you know, um, but we need agentic specific stuff." And I agree. I'm a big fan of x402 and like x402 MPP and agentic payments. Um, as we, as we try to figure out what the next five years of business is gonna look like, we want anything that's gonna build the tooling or the infrastructure for those businesses to come and apply.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Fabulous. Um, and you just opened this RF- RFP process, I assume you're getting a lot of responses.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, just getting started.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, I'll have to circle back.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>Go, go for it Bryan.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>Yeah, we're just getting started. I mean, like historically, um, when we've done this for other chains, uh, there's probably like four applications to like one or two fundable. So- Mm-hmm ... uh, I think we're gonna expect like, you know, similar results. And the, the, the hard part is like, here's the difficult part. There's unknown unknowns. There's things that we know that we know that Cardano needs, and there's like onboarding experiences, like can we integrate with Apple Pay? Can there be, you know, multiple different categories of, of new entrants- Mm-hmm ... and compute find- Like, so there's... But there's things that we also don't know, right? So y- you wanna make it tight enough to give people ideas, uh, on what to do, but also broad enough so if there's something unexpected that has, you know, 100 to one, you know, TVL shot, then we can reasonably guesstimate that it, that it can work, and it potentially can work. We'd love to hear about it. Um, when I'm talking to the, like, asset issuers and other apps across multiple other ecosystems, they're like, "Okay, what's your real target?" And then, and I'll just say it out here publicly. For every dollar that we spend in grants and incentives, we're looking for $50 in TVL. If we reasonably believe that your asset, your app can come over and, you know, we put a, a dollar of grants and incentives, you know, for every dollar, it's $50 a TVL, uh, and now let's scale that out. How much do you think you can bring to the table? Can you bring like 100 million to the table? Can you bring 10 million to the table? And so- Right ... it kind changes the conversation to like the category of things that we need. So like there was like, um, there was like this like NFT jewelry, uh, like app that kind of like inbound and, and a friend of a friend introduced me, and I'm like, "Eh, NFT jewelry- Uh-huh ... is not that interesting." And then I told him that about the 50 to one, and he's like, "Well, there's this, uh, diamond licensing company, it's one of the biggest importers and exporters in the world, that they have like this fund that's associated that prints, you know, 27%, like 30% APR a year, and it's a multi-billion dollars of diamond processing." I'm like, "Great, let's talk about that." Right? So that's like the financialization of an industry of a category. Even though he's like one of, you know, a major buyer of diamonds from this guy in diamond NFTs, eh, like I, I don't know where that could go. Having something that's- Right ... real is securitization and the final- fin- financialization of the diamond industry, um, is quite interesting.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I have seen people sell like NFT linked with very high-end jewelry. There was, um, a really nice watch, um, that was made in Switzerland, handmade and everything. And then there was another guy, I think, out of, um, Dubai who did some really nice rings. And I didn't think they were gonna be that popular, but they were. They, people were buying them. So, um-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>I, I wasn't sure either. Yeah, it's, that's, that's cool. It's a hits-driven business, and it's gonna be very status-y. It's gonna be harder to, um, take bets and grants and on those types of things because, you know, it, it becomes taste and curation and- Yeah ... kind of which KOL and celebrity is, like, kind of like supporting that, um, versus something that blockchain could be really amazing at, which is creating the largest secondary market in the world and helping pieces to the financialization of different industries that were always kind of dark and not transparent and bringing transparency to them and socializing, uh, the yield and the alpha. So one category is, like, hits-driven business, VC style. We're kind of like thinking more along, well, you know, the financialization. So then we have a, a yield-bearing stable that's backed by diamond yield, and I'm not saying that we're gonna do that deal or not, but hypothetically, a yield-bearing stable backed by diamond processing comes into the Cardano. It prints some interest. We start to bring it into the lending. We start to bring it into the perpetual as we start to bring in, into, like, risk curation, um, across all of the, the pools. It starts to really drive organic yield, and if it doesn't, that's okay because we're gonna do 30 more things like that.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I like it. But, um, let's bring this real, real quick back to the, um, the RFP process before I lose sight because I think that's why we have a lot of people listening. Um, let's talk about, like, accountability. What will be public as this moves forward? Like, will people be able to see which RFPs are selected and why they were chosen?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>We'll give transparency reports, um, a- around where the funds are spent. So, like, we're going to issue, I think we're trying to, yeah, expedite some to, to get some builders started that have, have already been working on things. Um, goal is we give out so many grants and whatnot, and we list out, like, who gets grants, what the, you know, high-level terms are. Uh, everything's gonna be milestone-based, not we're, you know, giving full money up front and hoping that things work out. It's like, "Hey, here's a little bit up front. Here, you got to get things built." Ideally, you're launching it, an asset on-chain and whatnot, um, funneling things through launchpads, getting opportunities into the hands of the community, but, uh, really through transparency reports where we showcase what's getting funded, uh, and why. We're probably not gonna make every detail of the specs and negotiations public. Um, probably won't make, like, fundamental contracts and things that are legally, like, uh, have risk if data goes public- Right. Right ... public, but the amount of funds and who they go to, and for, and high level for what.</p></div>
+</div>
+
+<p class="sec" id="t-grants">11 — James on the grant system; Eric on the “North Star”</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right. All right. I appreciate that. Um, did any of my guests have questions for... Well, my speakers have questions for our guests? Yeah, that's what I was trying to spit out. James, I'm surprised you don't have questions, sir.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>It's not that I don't have questions. I'm just letting Bryan and Eric kind of run, you know, because- ... I, I think, I think this is also exceedingly important, you know, just from, you know, informational point of view- Yes ... transparency point of view. Uh, ensuring that everybody understands that, you know, we've-- A- anybody who's been here a while, we all know the grant system is, is rife with, uh, people who are just taking advantage of the grant system and not really delivering on any one particular thing. Yeah. When you start to think about, like, for every dollar that goes out in grant funding and it gets 50, we've been the reverse of that, uh, for the entire time almost I've been here. I'm not gonna say everybody, but I'd say overwhelmingly, we have not gotten the juice worth the squeeze that we were anticipating, you know? So-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I don't think we've done a good job in the past of actually, like, reflecting, measuring afterwards to see how it's going- Oh, big time ... and whether there's anything we could do to help. Right. You know, as a community, we fund people, and then we're like, "All right, now go, go rock it," and, and we just kind of leave it at that, so.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Right. You even started a small group having to do with just auditing, you know, what contracts were currently, uh, open, what was being, you know, delivered. Uh, and we really didn't have any formal method for that, which is really interesting when you think about it because this is a lot of money coming out of the grant, the treasury system. So why- Yeah ... isn't there a formal method for that? You know, which is just-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Well, we made that little rubric, so- You did ... like we were all trying to assess the same stuff.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>You did. But I mean, you're right. We don't have something like that across the board. I just worry that from Eric's point of view and Bryan's point of view, there are so many things that need to come in, and in some cases it's like, "Oh, I need to get to the second floor," but turns out there's, you know, only steps on the 1st and 15th and 18th step, and you need, you know, one, two, at least, you know, every other step there, right? In order to be able to get this done, which means- Here's some climbing gear, buddy. Yeah, there might be some infrastructure that needs to be done as well along with that, and it becomes even a heavier lift to get this things done, get these things done, right? So, and that's also important to be able to relate that information for everybody in order to temper or, you know, temper expectation when it comes to- Yeah ... the result, you know, that we expect, you know? 'Cause people can get very expecty here, uh, with what they want and not understand the full scope of what has to be done in order to hit that. You know, so that's also important to remember.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>What? Yeah, James, thanks, thanks for that. A, a lot of the feedback we've gotten even from the teams we've talked to is that they, they haven't had, like, a North Star, that they've been building things that they think are cool, but it's a lot of build it and hope it'll come. And when we tell them, "Here are the specs that we need to make things work," they're like, "Wow, okay, that's ambitious. That's cool. I get it. We had had thoughts around this." Um, however, it's like how are we even gonna have the partners? Like, even if we do this, who will come and why? How-- Like, you're, you're talking about things like rehypothecation for these kinds of strategies. We don't even have the other partners in place to, to make up the other side of the strategy. And we're like, "Yeah That's on us. We're going to all of these other partners too, and we're telling them that you guys are gonna have this end when they say the same thing. Um, so if we're able to showcase them like, "Hey, we're trying to change your specs, we're trying to guide them in this direction. Here's why. I- if you guys have this build, then we can deploy these types of strategies. We show these strategies to family offices and liquid funds, they deploy these assets. Here's why, here's how it maps out, here, here's where it becomes sticky." And they see it, and it makes sense, and they're ... And it, it gets them a little bit excited. They're like, "Okay, yeah. Um, it, this is worth this being our design. This is worth now this being our spec. We can see how this next build sprint is going to get us to a place where there's sustainability at the core, where, um, there's more TVL, where there's more funding, uh, where we're solving actual business needs for real people." And wh- when that light bulb clicks, it's been really exciting for the builders, which is what's exciting to me, 'cause I, I'm here for the builders. Um, but it, it is ... Yeah, we're here to provide a North Star, but we're also not here to do everybody's work for them. We're not coming in and being like, "Here are the specific contracts. Here's the specific map. I want this built in this way." At that point, we're just hiring dev shops. Um, our goal is to- Right ... stimulate what a final product high level looks like, and we're asking you guys to come forward and be like, "How would you build your vision that aligns with these, um, requirements? And let us help you, you guys get there." Ha- have your own spin on it, have your own goals as well, but I need it to work for this kind of stuff too.</p></div>
+</div>
+
+<p class="sec" id="t-evm">12 — Ken Eric: EVM teams, market makers, and “is anything technically missing?”</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Awesome. Appreciate that. Ken Eric with the hand up. You got a question- Yeah ... for our lovely guests. Go on.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Yeah, yeah, yeah. Finally, I can talk with the AlphaGrowth and the GM everybody. I hope your coffee tastes as good as mine this morning. So good. Or it's actually afternoon- So good ... here in Norway. Yeah, great, great. So bear in mind- Go on, my friend ... I, so, uh, bear in mind, uh, so, uh, I'm not, like, this deep into the DeFi trenches. Uh, but like I think I have, uh, um, let's say a, a little, a good idea about how things are working. Um, so, uh, you know, Cardano have, you know, we are, we are a little bit of a geeky chain, you know? We are all about tech. We- A little? ... chosen different ... Yeah. We've chosen a, a, let's say a, a different, uh, approach, uh, uh, on, let's say the blockchain architecture from, let's say all the EVM chains. Um, so that is the, that's the first challenge I think we, uh, I don't know if you guys agree, but, like how, how do we s- share this knowledge, you know, to those building on, uh, you know, EVM chains? Because I believe, like if you're gonna grow our TVL, uh, we need, you know, um, uh, bridges, um, uh, and, and, uh, share those, uh, cross chain, uh, liquidity. And the second one is like, are we able to like, uh, uh, attract, you know, um, market makers, you know, like Jump Crypto, Wintermute, uh, Amber Group that, uh, is like really, uh, kicking ass, you know, on other EVM chains? I don't know if like, is there any strategy for that or ... Yeah. This is my question.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>Dude, bo- both of those are fantastic questions. Thank you. Uh, number one from the EVM side, so we've put out RFPs to like targeted specific teams that we think are qualified and capable, um, from coming EVM to Cardano. Um, we will be bringing some teams in. Uh, for a lot of them, it's, um, it's too expensive and exhaustive. The infrastructure is so different, um, that the, the juice isn't quite worth the squeeze, and that is good for us to know. And, and that's, you know, we're, our goal coming in is that we get quotes from Cardano native teams and quotes from EVM or other VM teams to see what it takes to build things according to different specs. Um, and we're, we're doing a hodgepodge as expected, and it's largely Cardano native representation, which is, you know, what we'd hope for after meeting the builders and seeing that people are qualified. Uh, so we are getting the word out there, but a lot of the feedback is they can't do it fast enough, um, and it would be really, really expensive to get a lot of the qualified teams and name brands involved. Doesn't mean that we shouldn't pursue that, especially for some of them, but that's overarching feedback. As for the market makers, the juice has to be worth the squeeze. Similar thing. They're gonna ask for very, very deep liquidity. They're gonna ask for really, really, um, good composability and trusted testing framework for like wallet security. It's a lot of the infrastructure thing. They won't, like even if we had a billion dollars in TVL right now, they would want better infrastructure, and we won't get the billion dollars in TVL until they have it. Things like the $11 million I, I think we're calling it com- uh, compression acquisition, um, the, um, we have a term for it. I forgot it. Um, the fact that that's 11 million, where TVL in Cardano is 90 million, uh, when theoretically it'd be half, like, you know, double the TVL and half the organic yield, um, but it's way, way worse than that. Um, it's not attractive right now for Jump. Hopefully by the end of this program it becomes attractive. Part of what's going to be attractive is making Cardano DeFi a part of their existing strategies. So, um, groups like this are doing a lot of CEX, DEX arbitrage. They're doing a lot of funding rate arbitrage where they're doing, you know, traditional finance, uh, perps, plus Hyperliquid. Uh, but even then when you take Hyperliquid, you can then farm the funding rate and do games in, in DeFi. So we need really trusted lending markets that they trust are really secure, and they understand the liquidation rails. They need to understand how to get in and out, um, very, very efficiently, and it's not efficient right now, so better bridging, better on and off ramping. Um, but the not just really good liquidity and really good liquidity customization, but really battle tested, kick butt framework that's easy to use that they can trust and/or maybe insurance on top of it. I don't think we're gonna get to where we could get the Jump Capitals in the world integrated in this</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Yeah. Great, great, great. Thanks, thanks. And just, uh, uh, maybe a little bit of funny question, but like, uh, like if you had like the, the god key and, uh, uh, you want to change something on Cardano, like you do a hard fork, like what would you like... On a technical point of view, like is Cardano lacking? Like if you look at from your experience from the EVM chain, so yeah, that kind of... Is, is it something technical we need to change on Cardano?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>I, I don't know for sure. Um, I don't think so. I think conceptually everything works, and that all of the infrastructure that is, like that would be great can be built. I think that, uh, from what I can tell, it seems like only kind of recently has that been more possible, and then previously when people have tried to build all the infrastructure, there wasn't, um, a strong enough of the- of a backbone. Uh, I could be wrong here, but, um, I think it- I think anything infrastructure-wise can be built. It's just people need to reframe how things have been built. There's been so much funding flowing around EVM stuff that everyone thinks been built for and by EVM, and that's kind of the conceptual how things are built that, that has been. Oh, what's that Kamala quote? "We need, we need what could be, unburdened by what has been." Uh, we, we need that more widespread, but that's gonna take a lot of, a lot of, uh, venture and like ecosystem fund type stuff coming, coming in to, um, subsidize and make work, but it's doable.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>I think the key here is coordination. Right? So like just in terms of bridging, like there's some technical aspects. If we don't get the bridging to like EVM land nailed and correct, and people that are really excited, then we're missing out on hundreds, potentially thousands of new assets being printed. Like there's, there's narratives, there's games, there's, you know, tokens that come into play that are like super popular. So infrastructure side, I think bridging, like your question was on, on EVM, but, um, s- in terms of like Cardano core tech, we didn't spot anything reason why. More like how do we get the asset coordination together, tightly tuned, put deals in front of LPs, bring them over, and then as more LPs come on, it becomes easier and easier and easier. That this is a place where I can kind of, you know, come and play. But nobody wants to be first, so it's kind of like a Spider-Man game where everybody's pointing at everybody else to come first, and then it'll become like this cascading effect and, uh, it'll become easier and easier and easier.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I like the Spider-Man reference.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Thank you.</p></div>
+</div>
+
+<p class="sec" id="t-og">13 — Working with Christina and the Operating Group; Phil on competitive bidding</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Did anybody else have any questions for our guests today? Do want to remind you, our lovely friends from AlphaGrowth had said they will come every couple weeks and share updates with us, but also give the community the opportunity to ask questions and share their feedback directly with AlphaGrowth. So, um, props to you guys. I appreciate you making yourself available and so transparent with the community. Um, we'll keep asking lots of questions, I'm sure. All right. If I don't get-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>Thank- thank you guys, thank you guys for hosting us in general.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Wait, hold on. You didn't ask the, the one question. Uh- Uh-oh ... how has it been working with Christina? Uh, especially being a part of the OG, uh- ... operating group, uh- ... and her contributions, and dare I say, probably a high bar she sets for everybody.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh. Oh. When it comes- Burn.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>I'm just curious. Just curious.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>Burn. Shots fired. My mom said if you don't have anything nice... I'm kidding.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh, my God, Eric. Oh. Smart, no answers whatsoever. Oh, God.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>No, Christina's awesome. The, honestly, the whole operating group, um, has, has been great. It's so many brilliant people, um, with diverse enough backgrounds, and everyone's showing up just asking how they can help, and adding ideas and, and taking feedback, and at times criticism, and taking it really well and in stride. It's only ever people, you know, looking out, asking what they can contribute instead of asking what they could take. I love being surrounded by those kind of people. So, uh, Christina, she's there, she's involved, she's, um, listening. I mean, would love her feedback as well, and even then she's like, "Okay, um, how can I help? And then, um, here's what I think you guys can do better," which is exactly what I need. Uh, so I think yesterday she was telling us how we need to do better at meeting minutes, and we need to do better at a couple of- Documentations ... other things, doing more of the overview stuff. Yeah. Um, and that's right. Yeah, yeah. That's exactly- No, documentation's been my issue for decades ... that's exactly what we need now. I'm... Perfect. Because I'm gonna be in the weeds. I'm meeting with all the builders constantly and designing a whole bunch of architecture. It's easy for me to let that go because I'm lost in my head. Um, and grounding and creating these sources of truth and creating these paper trails so that we can provide the accountability that you guys, the community, deserve is imperative. Um, and that's, you know, Christina contributing and being a part of this, this group of awesome people, um, figuring out how we can make Cardano better, and we are. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Thank God for people like Christina and others who keep you on task- ... and herd all the cats on a regular basis.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>Mm-hmm. And, uh, you know- Oh ... because I love living in the moment, I really do, uh, but um, someone always says in the background like, "Well, hey, where are you putting all this information?" I'm like, "Hmm, that's a great question."</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Uh, um, I will say they've been great to work with because whenever we have questions- They- ... or constructive criticism, it's, it's taken the same. Everybody's really helpful.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>The, the technical audit is very impressive. I mean, if you look at the items in the RFP, as someone who's been in Cardano for a long time, uh, that's like... It has some very nuanced, uh, understanding of... Like when I saw executor standard there, it was like, oh, as a Cardano developer, that's exactly something that- You know, is a pain point when whenever, uh, people hire us to build apps. It's like, okay, well, we have to build everything from the ground up, and then nothing is interoperable by default. And so, uh, I was really, really impressed, and I think that if people here, uh, wanna take a look at it to... If you wanna sort of see a display of competence and results, uh, of even this first phase already identifying the gaps and pain points, uh, that DeFi has here, uh, that, that RFP is a really good place to start looking.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Phil, can you say competence and results again in a sentence, please? I mean, because this is something that I think has been very lacking, uh, in our side.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>He doesn't hear it often.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>I know. I don't hear it often. And I absolutely love that we're having these conversations, and they feel more like in a business conversation, which is absolutely amazing to me. So, uh, thank you very much, uh, for that particular...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil <em>(inferred)</em></div>
+  <div class="turn-body"><p>Business and competence. Thank you. Or competence and results. Thank you.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>You can't even remember. Just knock it off.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>I know, see? I'm so in the moment.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Do you have any other questions, James, since we silenced you for so long?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>0.0, as, uh, Belushi would say in Animal House. Uh, or sorry, he didn't actually say that. That was his grade point average- ... uh, during his time in college. Uh, but ab- absolutely 0.0.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Awesome. Awesome. Guys, I really appreciate you coming. I'm looking forward to having these discussions, letting the community get to know you, and what we're working towards, and the progress we're making. This is all going to be great. I know from being a part of this that we will continue to be transparent so the community can see what's happening and actually track us against the milestones and everything that was- we have committed to. Um, so this is just gonna be awesome. We're excited.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>And this- Thank you guys for being here ...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>this is also great to, uh... One last thing I wanna say is the RFP thing- Go on ... I think people have been begging for forever because the idea is it's a competitive bidding system, so it's no longer each team individually proposes something, and then, you know, uh, now you just have a single... You, you have either this or nothing, right? Now, for the first time, we have a competitive bidding system, which means, you know, there's these gaps identified, and we have dozens of competent teams on Cardano. Uh, this should drive a lot of competition, which is one of the reasons, like, Dingo and the alt nodes are doing so good and, and releasing on such a, a fast pace, so, and so forth, because there's a, a heavy competition between these teams to, uh, to produce these alt nodes. And same with, like, Plutus and Aiken and all these other languages. And so, uh, this, this system really, really thrives when as many people as possible participate. So please, uh, if you are a Cardano team or developer, participate in the RFP. Uh, if you know a Cardano team, particip- uh, you know, reach out to them. Uh, if you are just a community member, uh, just retweet and make this widely known that this RFP process is happening, uh, so we can get as much participation as possible.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>And Phil, couldn't you see this as actually leveling up our entire process when it comes to this? Um, because in some cases it's been a little bit lackluster. Uh, and this also could level up others, you know, where we, we also have funding that's happening as well because it's not just all coming from treasury. It's not just all coming from secondaries who have received funding, uh, say for example. Um, but there's quite a bit that's out there, and if we had some sort of, like, proven standard that really works, uh, that produces great results, this could actually help others as well, um, by, uh, us just paying attention to this, right?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Yeah, I mean, this is a... I, I would encourage o- other grant proposers in the ecosystem to follow this, uh, template, right? To take a look at this RFP process. You know, not necessarily for everything, and, uh, I, I, I think that, like, there are some concerns with RFP in general if you have, like, a voting system based RFP, right? Because then the end result is, okay, well, two people are proposing the same thing, but one is cheaper so I pick that one. Uh, but you know, an expert committee based RFP is much more aligned with traditional business practices because it's not just gonna, you know, def- default to the lowest, uh, the cheapest option, right? It's gonna consider things like quality and track record and all these things. And so I do hope that they, uh, other, other grant providers, uh, take a look at this, and, uh, I hope that it im- improves the space as a whole.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>Definitely. Thanks, man. Appreciate it.</p></div>
+</div>
+
+<p class="sec" id="t-dave">14 — A shout-out to Dave, and the guests leave</p>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Um- And shout out Dave Dinesio. He also, uh, uh... Just one little shout-out to Dave Dinesio. He, uh, it was a masterclass-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Is that how you say his last name?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Dinesio. Yeah, actually.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>There's so- You know what? There's a Dinesio Farms that-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>I never actually said it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>No. Well, it's gotta be Dinesio. I mean, come on. Okay.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>So but shout out to Dave Dinesio in putting out a masterclass in how to actually market, promote, and coordinate a, uh, proposal during its five epoch phase, uh, and how to get DReps together and join, also feel as though they're a part of that particular process, uh, where we haven't seen that before in the past at, at the level that Dave was able to produce. So, uh, just shout out to that guy, man. It was absolutely amazing.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>What's his last name, Blockchain?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>I believe, I believe it's Dinesio.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So am I saying it wrong now? So Dave- I don't know. I don't know ... I completely destroyed his name, so-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>I heard you say it, yeah, 'cause you said it like four times, but I was like, "Hell yeah."</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So I, I am definitely guilty of having, like, book knowledge, where you've read something a lot but you don't speak it So I've definitely said things wrong, 'cause I've just only read it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>And that's the first time I've ever heard anybody say his name.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>He was in here. He's not now, so I'll have to clip it- Ah, damn ... and tell him- Okay ... to verify.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Clip it. Clip it. We need a verification now from Dave. We talked about his name for three minutes, Dave.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. You're checking out. I mean, on top of the fact that he's got a small child and he's not getting much sleep. Hopefully he's getting more sleep than he did- Oh ... he was getting, like, three months ago, so we'll see. I don't know that it's improved.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Thank you, guys. I gotta hop, everyone. Thank you, Eric. Thank you, Bryan. Appreciate you, Elder. Um, this is awesome. Phil, James, I appreciate you guys. Christine, rock.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, you guys get to work, will ya?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(inferred)</em></div>
+  <div class="turn-body"><p>Awesome. Thank you guys so much.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(inferred)</em></div>
+  <div class="turn-body"><p>Hey, welcome to the trenches. Nice. Hey, this is a great place. We live down here. Come on.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Ooh, I got a meeting. I gotta jump. I'll see you guys later.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right. Go, go on. You're late for your meeting.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(inferred)</em></div>
+  <div class="turn-body"><p>I got a meeting at 11:17.</p></div>
+</div>
+
+<p class="sec" id="t-after">15 — After the guests</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Psh. Love that. So what do you think, Chad? Good, good show? Good stuff, right?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>I think everybody appreciated the AlphaGrowth stuff. I think it'll get more popular too, as they can start sharing more information.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right, Chad, what else is new? What is going on?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>You know, I don't really know. What else is going on? I, I... There's a new governance action I heard, maybe.</p></div>
+</div>
+
+<p class="sec" id="t-oz">16 — The OpenZeppelin governance action</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh, sorry. That was not on mute. There we go. Um, there is another governance action, um, and it is very similar to one we approved for the developer experience with Robertino. So, um, yeah. I mean, you're welcome to go check that out and vote. I think my, my significant other was one of the first ones that voted no, and said, "We already voted for one of these." So I don't know how well it's gonna do. Ken Eric, have you been watching this one? How's that one going?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Yeah, so I, I've been watching it. Uh, just from, like... So since I'm a part of, uh, Team Void, I must say that, uh, this proposal, uh, you know, with this metadata, uh, it is actually, like, uh... Disregard the amount and what the proposal is about. Like, in regards to the Co- Cardano Constitution, this looks actually very, very nice. It's, I- It's, it's one of the best actually, I think. So whoever wrote this one, uh, I think we owe him a beer.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Are, are you the one that wrote it? Is that what you're fishing for?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>No, no, no. It's not. It's not. I, I have nothing to do with this, uh-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>V, I think Ken Eric's trying to get me to buy him a beer</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>I, I... You can do it anyway, you know, just because, you know, times. Uh, well, well, um, no, but actually, like, the proposal is written in a good way, uh, like according to Constitution. And, and other than that, so, uh, OpenZeppelin, yeah, I don't think there are, let's say, many in the Cardano ecosystem perhaps that knows what OpenZeppelin is, what's their history- Probably not ... and, and what they have done. Uh, even I don't know everything.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So maybe share. Mm. What do you know about them?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>I can share what I know. Uh, so, um, I don't remember the guys, but the, like, the OpenZeppelin goes way, way back. Uh, it basically, in the EVM, uh, chain world, the, uh, I would call it de facto place to go, uh, when you want to, uh, yeah, grab a smart con- Uh, yeah, grab some, uh, code for, um, your smart c- contract, because I think they have been around, like, all the way back to 2014. Uh, and, and it's, and they are also heavily supported by, uh, Ethereum, uh, Foundation with grants and, um, stuff like that. So, uh, the codes and, you know, the libraries at the OpenZeppelin, they are, like, battle-tested and used a lot. So they, like, they have a very, very high confidence, uh, in the developer world. I think, you know, like, if we had Phil still here, he would, um, probably agree with me.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I think he dropped.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Yeah, he dropped. But, yeah, so, um-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>But no, I mean, that's essentially what I know them for, is, um- Yeah, yeah ... from the Ethereum space.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>And, and, and I'm gonna just share my experience. I have onboarded, I have snuck, uh, like, a developer from the EVM chain and from Solana and, you know, onboard them into the Cardano ecosystem. And one of the challenges that I have, have met is that, okay, where is that library? Where is that code? Like, how do you make a multi-sig contract? How do you do this? How do you do that, you know? And it's, in the Cardano express ecosystem, it's spread all over, you know? Um, and I know we have found, let's say, uh, an attempt to, to, to, to gather, let's say, everything in one place. Is it, uh, uh, was it Mateo or something like that? I, I, I don't, I don't remember. But, like, um, anyway, um-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Robertino.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Robertino. That was so close. Damn it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>No, it wasn't even remotely.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>One of them is Italian, the other one is Brazilian, I think? Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>No, Argentinian.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>In, in my mind, it was close, okay? Okay? Anywho, uh, well, um, so, uh, when I, when I saw that, you know, I told basically everyone that I know, developer, like, "Hey, look, push your code in there and, like, get it, uh- Uh, get some, uh, eyes on what's going on there so that, uh, it can, as a ... People who wants to build can maintain it and develop and, like, yeah, do those infamous, um, uh, pull requests, uh, for improvements. And I don't know, like, uh, uh, I, I, I'm not on day-to-day, uh, developing on Cardano, like, but, uh, I, I feel that it has even, like, a similar, uh, let's say, trust and approach as, like, when you go to an OpenZeppelin. And, and also OpenZeppelin, they have a huge community, you know, um, that they are supporting each other. So yeah, that's my rant on it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So the thought process is basically if we get involved with them and it's shared with Ethereum maybe, like, or the EVM, um, maybe they'll come over and use it on our side, basically.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>I... That's a, that's a feasible thing also, but you know, there's a lot of, a lot of knowledge, um, you know, um, uh, you know, uh, competence in, in the OpenZeppelin ecosystem as well that will benefit Cardano.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right. All right. There's- Miss B.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>I'm hearing a lot of, I'm hearing a lot of maybes and might happen. Yeah. As Chris, you know, already mentioned, we have already funded something like this. Is there a problem with what we are building right now that would not be compatible with what they are building on their end? Because at the end of the day, they're asking for about 11 million, and I think Nifa was the one who pointed out first that, you know, how... What are the costs of maintaining this at the e- at the end of the day? Because if you think about it, we will have to maintain this, and then most likely what Robertino is doing, I'm not sure if that- Mm-hmm ... that was gonna be a one-off or, you know, all that stuff. So then suddenly we're paying twice for the same thing, and it's like i- it's the same, I guess, trap that we've been doing for the past few years on Cardano, that we're funding the same thing over and over and over again. And then when it comes to maintenance, it's like, "Oh yeah, but we have to maintain this, this, or that." And we have four different solutions, and all of them are built on different, uh, different solutions again. So you can't have one without the other. And so then we're stuck again, and then everybody's complaining about, "Oh, yay." And then we get back to what Robertino was building now, where we're trying to build, uh, an actual standard, you know? Um, th- but that's, like, in four or five year. Not that he's gonna finish in four or five years, but I'm just saying, like, this is the roadmap that I'm seeing right now. We're gonna have so m- so many different solutions that we're gonna have to start building a, uh, a standard for how these solutions are going to be used. So we're, we'll just be moving back and forth and back and forth, and by that time somebody's probably gonna come and say, "Oh, but I have this solution for how the standard is gonna work." Um- No, no. So, I mean, I mean, I love it. It's great, and it's wonderful that they have a great reputation and stuff like that, and I, I really appreciate that they're putting their name forward. But I feel like sometimes we're just not thinking further ahead than just what seems important and what seems fun to do right now.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>Mm, valid point, Pete. Valid points. I, I, I get that. Uh, a- and, and another thing that also, like, uh, that I don't know why people, uh, haven't mentioned, like, they have, like, a security. They're gonna, like, put a bunch of guys, uh, on a weekly basis, uh, over 12 months to, like, do all this, um, look out for ... smart contracts and stuff like that as well. So I don't know, like, um, I, I know, um, um, it's a very hefty amount of money, and yes, we have, uh, funded something similar before. So yeah, I, I am not denying that.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>We have funded the Italian guy.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice <em>(inferred)</em></div>
+  <div class="turn-body"><p>The Argentinian.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>Oh, I thought... Argentinian guy. Okay, sorry.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Italian, Argentina. Nope. I don't know that he would speak They're not even... No. No. They're very different. Sorry. All right. My bad. Yes. We'll forgive you this time.</p></div>
+</div>
+
+<p class="sec" id="t-dcdog">17 — DC Dog from Zimbabwe</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Uh, Mr. DC Dog, what's up?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>What up, what up, what up? This is DC Dog, Maswali se, broadcasting live from warm, sunny Zimbabwe.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Nice. It is not warm or sunny here.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Always warm, always sunny. Yeah, I'm actually joking. I'm in the UK, but I live, uh, Zimbabwe. And big up Pete, Learn Cardano. And I've been, uh, I've been listening to Cardano Over Coffee. You guys are fucking funny, man. Uh, pardon my French. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I don't think that's French- A little bit of French ... but you're good, man.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Yeah. Yeah. Uh, I can speak a little bit more French, but I think it'll offend a lot of people.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Please don't. Please don't. It's not my favorite.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>No, I, I'm joking. I'm joking. I'm joking. It's jokes, jokes. But, uh, yeah, love this space. It's, uh, yeah, Cardano Over Coffee is great, man.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, we're serious sometimes.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Yes, Pete. And- Yes, Pete ... Pete- I'm super grateful for all the content he puts out. He's a, he's a legend in the space of Cardano, and also in life.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Pete is awesome. Have you been watching all of his Draper posts?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>No, not recently. I've been, uh, running here, there, and everywhere, you know? Globetrotting.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>He's been sharing lots of tidbits of knowledge from his Draper University experiences for videos and stuff. So if you haven't checked out.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>I, I've tuned into it and, uh, I've been telling people about this opportunity. Um, but I do other things, and quite busy with, uh, you know, other things that life, uh, requires you to do. Yes, life. And also, uh, where, where we are at, at the moment with crypto, uh, if you want to keep your, your assets secure, you must have hardware and safe deposit boxes, and spread it out, and, uh, a little fucking fly here, there, and everywhere like Vietnam Goodbye, and blah, blah, blah, blah, blah. Wales, I'm at the moment. Oops. Selective disclosure, I slipped it. Yeah, I think you missed that one, man. You did. Hook you up with some midnight people. But am I really in Wales, or was that a false chase? The world may never know. Love you all, man. Love you all. Just thought I'd check in, say hello, and, uh, I, I listened a lot, and, uh, I love this space, man. You guys are jokes, man, but also serious with the jokes.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>We can be a little bit of both, uh, with trying, trying to help people, educate people, make sure they have the right information. Yeah. But we're gonna have fun doing it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Yes. Make education entertaining, because the time I spent in Zimbabwe growing up, my dad sent me to camps and, uh, they'd take us out into the wilderness and they... We, we had to learn, you know, like how to, to navigate and, uh, things to do with ropes, with abseiling and survival and, and, and this is where you... It really sticks, you know, when it's fun. Yeah. You know? Tell, telling certain people to sit behind a desk and read history that's just one culture's history, it's not real history, you know? You know what I'm saying? Uh- Sure. Sure ... so yeah, I, I, I just used to fucking knock off school all the time and, and learn by myself, which we're- Yeah ... all doing here, you know? We're all connected now, so we've all- Fair ... decided to be alive.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Fair. Fair. Appreciate you coming up and sharing with us, man.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>My pleasure. My pleasure.</p></div>
+</div>
+
+<p class="sec" id="t-pragma">18 — Beatrice: Cardano Ignite joins Pragma</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Miss Beatrice, what are you up to, lady? I see you sneaking up here.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>I didn't sneak. Yeah. I came here invited because somebody said my name.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Said your name three times- Not gonna mention you ... and you had to show up.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>Oh, yeah. Pretty much. It's the Beetlejuice, uh, curse that I have.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh, my goodness. But it's Beetlejuice.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>Thank you. Thank you. I'll be here all week.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh. Oh. Ba da ba. Hey, wait, do I have those sounds? I have drums. Thank you. I'm just delighted. I've never had sounds, sound effects on this app before, so it's my turn. Bea, what have you been up to lately? Anything exciting in your, uh, your neck of the woods other than Ken Eric stirring up drama?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>Nothing exciting really, just- Good ... life in general- Good ... I guess. But I think it's great to have like a quiet period. Um-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>It is. Good, 'cause I'm stirring stuff up with Pragma. I'm gonna make sure you're busy.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>Yeah, I read the meeting notes from yesterday. Or I had-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, I only assigned you like 20 things ...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>I had my... Yeah. No, no, no. No, no, no. My, my, my note taker sent me like a nice brief this morning and was like, "Here's what happened yesterday. This, this, and this. And remember you have to reply to this, and this is what decisions were made yesterday during a Pragma meeting that you missed." So. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>But your note taker was there.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>I know. That's how I know. So that was really nice. But yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So I guess we can, uh, go ahead and officially say, for anybody still listening, that Robertino's project has been accepted as a, um, Pragma project, so they are onboarding. We're super excited to be able to help him grow this and make sure that we get all the contribution we can to make it easier to onboard to Cardano. So I'm pretty stoked about it. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>Wait, have we told him though? Or did we just tell everybody-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yes. Nah, I told him ...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice <em>(inferred)</em></div>
+  <div class="turn-body"><p>but we told them.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I told him.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>That would be funny, wouldn't it? It sounds like something I would do. And everyone starts congratulating him, and he's, he's like, "What, what is going on? Why? What did I do?"</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Look, King James releases. Yeah. Oh, that's so cute. I'm scrolling through my sounds. Um, no, I did tell Robertino and he was pretty excited. And I've already added Cardano Ignite as a, uh, project on Pragma's website if anybody wants to check that out. I play with that when nobody stops me. Tried to make me work yesterday.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>We try to stop you but you don't listen. You don't listen, Christina.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>No. Somebody gave me like the superior write access in GitHub, and that's it. So...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>I approved somebody's pull request. That's gotta give me like credit to do things.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Just approving somebody else's pull request for no reason other than kindness. Um, yeah. So we have some stuff coming up there. I'm excited to start working with him, and really excited for how this will help Cardano. So you and I will be busy, lady. Chad, you got-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>I'm always busy, just busy in different areas.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>That's fair. That's fair. Um, no, you have been really busy lately. That's all right. You can work next week. Chad, you got anything going on?</p></div>
+</div>
+
+<p class="sec" id="t-node">19 — Node 11.1 and 11.2, DijkstraNet and MusashiNet</p>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>Hmm. I, uh, I got some, uh, alpha from technical steering. Uh, there is- Ooh ... a node- Well, tell it ... grade. Yeah, yeah. So like 11, uh, one is main net ready, and they have 11.2 is on the way. Um, s- I see Serg down there. Like, he probably have more on this than me, but, um- ... it's, uh, improvements to Cardano blockchain on the way. They're cooking on it and working hard, as always.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Well, yeah, we kind of expect that. Uh-oh, Ryan wants to come back. Is Ryan on that group?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Uh, I might. I might.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>And, and, um, there is, uh, um, uh, there is, uh, you know, CAP portal updates to the- To the Constitution Oh, yeah ... things going on there. Yeah. Yep Have you been there? Had, had a look?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I actually-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad <em>(inferred)</em></div>
+  <div class="turn-body"><p>You're always a, an opinion-formed person, so you should go in there, like- Oh ... "Fix this goddamn..."</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>The accuracy of your accusation. I have a tab open for it, I just haven't gotten far.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad <em>(inferred)</em></div>
+  <div class="turn-body"><p>Nice. Nice. Yeah. And it's gonna come be, um, for those, uh, who don't know, so when we have Linear Leios- Mm-hmm ... then, uh, there are gonna be, uh, some updates to the Constitution. No, that makes sense, yeah We have some new rules for the Cardano blockchain. That makes sense. Yes. A bunch of them actually. So they are- Mm ... coming in hot, uh, the next, uh, few weeks I believe.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. Well, yeah, because I think, um, what you have to have everything ready by like the end of the month or something to get everything out on time for the hard fork. I don't know. It's exciting times the last few weeks.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Very, very tight timeline. Very tight timeline. I almost got my head chopped off because I accused that maybe we're not able to hard fork for like Q1, but, uh- Yes ... apparently I was so wrong. I was so wrong. We're gonna do it much, much earlier than that.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I, I have experienced this, Ken Eric, you're not alone. I'm listening to people talking. I've been skeptical as well. Mm-hmm. I've been skeptical as well, but last I checked we're still on track, so we'll see. Yeah. Well, I, I was... There's, um, a Leios and Peras development progress review, and I was listening to everybody give their reports and I was like, "This doesn't sound like everything's wrapping up quite yet." So we'll see.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>But yeah, A, Sergerin, what can you tell about, uh, the next, uh, node version? What do you know? You, you are on this, right? Spill it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg</div>
+  <div class="turn-body"><p>Yeah. I was just talking about the TSC meeting yesterday. I pretty much think you said it. 11.1 is imminent any minute now. Uh, I think it's mainnet ready, removes legacy tracing system. 11.2 is underway, uh, coming in the next few weeks probably. Is not expected to survive the hard fork event, but it will enable early Dijkstra testing. Um, and I think it will be used for Dijkstra net, which will start with protocol version 11 and be forked to protocol version two again. So that's pre-van Rossem, and then they're gonna fork to van Rossem, um, without Leios though. So Musashi test net is the one that's testing Leios. So we're gonna have a couple different test nets going at once. I think that's it for node versions, at least at the last meeting, in our notes anyways.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. All these different test nets. That's good.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah. Yeah, lots of fun stuff going on. I think there's a Musashi respin underway imminently, at least that's what I've been waiting on for my Musashi node, my Dingo node. I think something did...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. Wasn't there something that came out, and if you're on Musashi you had to update?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. I'm checking now. But last... I checked yesterday and they were still waiting to res- they hadn't started the respin yet, so...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh. I thought I saw something there was, so now you're gonna make me go look too. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>A- from a security point of view there are... I, I haven't seen, uh, what's actually been done, but, uh, from my understanding there are some hardening of the blockchain that's been going on as well. I don't know if you-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. Yeah. It looks like the respin might have actually started this morning, so it might be up now.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yes. So I'll have to go do that.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(inferred)</em></div>
+  <div class="turn-body"><p>That sounds right. Well, we've got some exciting stuff to do.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>I, I kept, I kept hearing you guys saying Musashi, and in Norwegian it means massage. I was like, "What kind of massage node are you guys talking about?" A very- Because again, I've never actually heard the word be said. I've just read it. So I, I've always thought that it was Musahi and not Masa- Musashi.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(inferred)</em></div>
+  <div class="turn-body"><p>Well, I guess that depends where you're coming from. I mean, pronunciation's everything.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>That's sort of funny. I just know it because of that trip to Japan, and we like visited the cave and everything. I was like, "So now I know how to say it." All right, Miss Beatrice, I think I might actually have to get back to work. Is there anything exciting you wanna bring up, lady?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>You caught me as I was eating, but nothing exciting- ... from me right now.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I love that. That's like a server who waits till you like take a big bite of something to stop by and ask if everything's good, if you needed something. That's just what happens here.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>Yep, pretty much. All right. Nothing new from me.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Ryan, wishing you the best with all the things you're working on. Ken Eric-</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>I wish you all the best too. I wish everyone the best- Mustafa ... by the way.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(inferred)</em></div>
+  <div class="turn-body"><p>Likewise.</p></div>
+</div>
+
+<p class="sec" id="t-musashi">20 — Mustafa, the “build market”, and The Book of Five Rings</p>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yes, TC Dog, my dog. Hey, there you are.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yes, bro.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I kept seeing you down there. What's going on? Are you doing some digging?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Yeah. Let, let, let Mu- Mustafa have a little chat. He, he'll tell you about the groundwork we're doing. The groundwork. Global. Yeah. Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Mustafa</div>
+  <div class="turn-body"><p>TC Dog don't, don't mess about. He's, he's on it all the time. All the time he's on it, TC Dog. He don't shut up about it. But, um- ... yeah, he's, he's on it all the time. He's got me... He, he set up my hardware wallet. He set me up with Cardano. We were doing things back in the day with, uh, Monero, Bitcoin. That's another story. But yeah- ... he got me into Cardano and, um, I'm really loving it. The Midnight n- uh, Midnight Space, the Discord. And, uh- Yeah ... can't wait to get into the city. And, um, yeah, thank you Dan for getting me into this. And, uh, thank you all of you guys. I haven't got a clue what you're talking about. Don't have a clue what, what you guys are talking about, by the way.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>It's all good.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Mustafa <em>(inferred)</em></div>
+  <div class="turn-body"><p>And, um, and we're doing good.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>You're doing good. Everyone's doing good</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Mustafa <em>(inferred)</em></div>
+  <div class="turn-body"><p>Appreciate it. Thank you- Lovely people, right? Lovely people.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Exactly, bro. We can be, but you know- Yeah. Yeah, yeah. They can kick your butt too, but it's all love, man. It's all love. It's a, it's a tough time lately, so we're, we're even lovelier people as ADA goes up, so...</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Yeah, but it, we're in, we're in the build market. It's not a bear market, it's the build market.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Oh. This is the build market.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>And I, and I, and I have the, the Book of Five Rings- No, this is- ... always with me, Miyamoto Musashi.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Do you? Always.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>Do you- Yeah. I always have it right next- I have it now. I have it in my backpack now.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yes, I now carry it too. It's my- When did you first read it? ... pre-transit reading. Um, last month.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>When did I go? I went there in February. It starts off with the, the, the, when it comes to the elements, the ground book. It's like the, the, the Nepali, you know, Om Mani Padme Hum ground. But the water book is very interesting, because when you come to like Admiral's Law... But we're not gonna go too deep on that, but it's- No ... fucking super cool.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>I love Charles- I'm gonna need somebody- ... his philosophy ... to send me all of these, all of these books, please. Thank you.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So you can- Just buy it. Buy them ... you can actually buy it all as one book. You can buy it all as one book, 'cause they're not like long books or anything. They're pretty, like, short.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah. They're like chapters really, but- You, you don't read it once ... they were scrolls back then. You read it over and over and over again, because it says- Yes ... "This must take a... You must practice this over and over and over again." And it's not just about the, the art of the s- sword, it's actually the art of conquering yourself. You know? They're like the duel battle or the- Mm. Mm ... the, the battle of, you know, one against 10, and then 10 of us Musashis will take on 1,000. Salute.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>So it's like reading Ikigai or something, like it's more like a poem or something that you're supposed to... Well, I like it. Send it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>All right. Get it on it. They were- Get it on it ... they were like scrolls basically, so they're pretty easy to read. And he's right, you just like keep reading it over.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Yes. Well, you see- Okay. Thanks, Ben ... it's, it's very, it's a very easy read, but the more you read it, then the more you realize, oh my God, it's like reading the teachings of Buddha. Um, it is so, so beautiful of a book. Um, yeah, it's, it's not just about, um, the, s- the sword fight with- It's not just swordsmanship ... a single person. Yeah. It's, it's, it's a fight within yourself, the yin and the yang, you know? Because you gotta, you gotta fuck yourself up sometimes, you know? You gotta stand your ground on whoever's fucking trying to tempt you to turn around. Yeah. You gotta stand your ground. And all your madness. That's why Bruce Lee did all that wah. And you look into how you fucking assert your dominance. You jump into the space like boom, and then in the middle of the fight you keep it subtle, and then on defeat you do a big roar. Done.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So you know how this guy was known for being the first to use like two swords, right?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>Yeah, yeah. I love it.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>You- Yeah. But that, that, that was in the madness. Well, I found out he was just ridiculously tall. That was like in the- But- Yeah ... he was just ridiculously tall. He was able to. I'm like tall. Like, if you're two feet taller than everybody else, yeah, your arms are gonna be a little longer.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>Well, I'm, I used to study- Yeah.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(inferred)</em></div>
+  <div class="turn-body"><p>I thought that shit was funny when I found out.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>... aikido. Uh, actually being short is an advantage in itself.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>It is. There's pros and cons to everything.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>Because when you do aikido you can learn everything from your knees without any weapon, and if you're on your knees and somebody... It is way more leverage to slam them down to the ground, you know? But anyway.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Yeah, I can imagine back in his day- Beautiful ... seeing some guy come at you swinging two swords was scarier than one guy with one sword.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>He only ever really used the one sword, unless he was, uh, ambushed and then he'd whip the two out. Mm-hmm. And, uh, you gotta use your environment, everything. Keep the sun behind you. You know? Use, use your, the environment to your advantage. So I love how Charles has, uh, named this upgrade, the, the one we've been waiting for- Yeah ... for a long time, because I asked him a question about the, this on, um, on, uh, Discord, and he said, "If we would've launched this back when, um... like a couple years ago, we would've just d- demolished everyone. But we don't wanna do that. We brought everyone together, you know? We don't wanna... It's, it's not a battle against each other, it's within."</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Love it. Fun.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(inferred)</em></div>
+  <div class="turn-body"><p>So for homework for next week's- Well, I appreciate you sharing the wisdom ... Space. Everybody needs to read.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>I was gonna say, we have reading homework. So next week we can discuss what we read.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>It's not even a lot of pages.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So we can discuss it next week. Let's see how many pages. Wonderful. I mean, if you're in school, you wish you got an assignment where they wanted you to read... How many pages is it?</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>82 pages. That's it. That's the book. 82 pages. Please. You guys got this.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>So next week on Thursday there will be a quiz on each chapter. Listen, I appreciate you guys so much. I'm gonna wrap this space up. Thank you, guys. Thank you, my new friends- Thank you ... for coming out. Ryan, B, Ken, Eric, Chad, love you guys. Appreciate you as always. And remember, there will be another space tomorrow. Come out and join Maureen. Talk to you guys later. Bye, guys.</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(inferred)</em></div>
+  <div class="turn-body"><p>Nice one. Take care. Goodbye. Bye bye.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the proper-noun corrections noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Cardano Over Coffee · <a href="https://x.com/coc_space">Cardano Over Coffee on X</a></p>
+</footer>
+
+</div>
+</body>
+</html>

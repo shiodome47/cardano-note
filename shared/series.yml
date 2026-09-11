@@ -41,3 +41,11 @@ alphagrowth:
   blurb_en: Videos published on the channel of AlphaGrowth (@alphagrowth), a DeFi growth firm, including its show "Dose of Alpha". AlphaGrowth also runs Cardano's PRIME programme, so what it says about Cardano DeFi is read as the view of an interested party. Speakers are named.
   chatham_default: false
   numbered: false
+
+cardano-over-coffee:
+  title_ja: Cardano Over Coffee
+  title_en: Cardano Over Coffee
+  blurb_ja: X（旧 Twitter）のスペースで平日毎朝配信されているコミュニティの番組「Cardano Over Coffee」（@coc_space）。録音が公開されている回だけを扱います。司会も参加者もコミュニティの個人で、発言は各自の見解です。発言者は表示名のまま扱います。
+  blurb_en: "Cardano Over Coffee" (@coc_space), a community morning show streamed on X Spaces every weekday. Only sessions with a public recording are covered. Hosts and participants are individuals speaking for themselves, named by their display names.
+  chatham_default: false
+  numbered: false

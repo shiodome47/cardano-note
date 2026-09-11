@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardano Over Coffee — AlphaGrowth on the PRIME audit and RFPs (2026-09-10)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Cardano Over Coffee</p>
+<h1><span class="l-ja">Cardano Over Coffee — AlphaGrowth が PRIME の監査と RFP を「公開の場」で説明した回</span><span class="l-en">Cardano Over Coffee — AlphaGrowth explains the PRIME audit and RFPs in the open</span></h1>
+<p class="meta">
+  <span>2026-09-10</span>
+  <span>X Spaces</span>
+  <span><span class="l-ja">Cardano Over Coffee（@coc_space） · 司会 Christina · ゲスト Eric Waisanen、Bryan Colligan、Giovanni、Bora ほか</span><span class="l-en">Cardano Over Coffee (@coc_space) · host Christina · guests Eric Waisanen, Bryan Colligan, Giovanni, Bora and others</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Cardano の財務庫から 1 億 2,000 万 ADA を受けた AlphaGrowth が、コミュニティの朝の番組に出て、<strong>監査の結論と提案募集（RFP）の条件</strong>を口頭で説明した回です。鍵の数字は「1,140 万ドルの TVL が入るだけで Cardano の DeFi の利回りが半分になる」、目安は「助成 1 ドルにつき TVL 50 ドル」。<br>
+  前半では、くたびれた参加者の「何のためにやっているのか」という問いに、司会と参加者が「AI で安全性の価値が上がった今こそ Cardano の番だ」と答え、AI エージェント向けの知識ベース Cardano Dev Skills も紹介されました。<strong>これは音声だけの録音で、話者はすべて推定</strong>です。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>利回りの器が小さい。</strong>AlphaGrowth の Bryan Colligan は、監査でいちばん面白い数字として「1,140 万ドル」を挙げました。それだけの TVL（預けられた資産の総額）が Cardano に入ると、すべてのプロトコルの年率が半分になる、という試算です。チームはこれを「利回りの圧縮」と呼ぶ名前を考えている、と。</li>
+  <li><strong>全部足りない、まずは中核の DeFi。</strong>Eric Waisanen は「3 つか 5 つ選べ」と聞かれて、根本的には全部に大幅な改善が要る、と前置きしたうえで、TVL の目標のためには中核の DeFi プロトコル、活性化にはボールトの標準や UX、マルチシグの改善を挙げました。</li>
+  <li><strong>RFP の目安は 50 対 1。</strong>助成とインセンティブの 1 ドルにつき 50 ドルの TVL を求める、と Bryan が公の場で明言。過去の他チェーンでは応募 4 件に対して助成できるのが 1、2 件、カテゴリーは網羅ではない、Catalyst に出すように何でも持ってきてほしい、と。</li>
+  <li><strong>透明性は「誰に、いくら、何のために」。</strong>助成はマイルストーン払いで、透明性報告に受領者と高い次元の条件を載せる。契約の細部や交渉は公開しない、と Eric（推定）。</li>
+  <li><strong>EVM のチームは高すぎる、マーケットメーカーはインフラ待ち。</strong>ノルウェーの Ken Eric の質問に、Eric は EVM のチームへの狙った RFP は出したが多くは費用に見合わず、応募の大半は Cardano ネイティブになりそう、Jump のような相手には信頼できる貸し借り市場と出入りの効率が先、と答えました。「技術的に足りないものは見つけていない」とも。</li>
+  <li><strong>AI エージェント用の知識ベース。</strong>Giovanni の Cardano Dev Skills は、Claude や Codex に Cardano の最新の文書を毎週自動で渡す仕組み。教育チームの Bora は「新しい開発者を獲得するコストが下がるか」が唯一の KPI だと述べました。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>何の記録か、誰が話しているか</a></li>
+  <li><a href="#why"><span class="n">02</span>「何のためにやっているのか」— 司会と Phil の答え</a></li>
+  <li><a href="#devskills"><span class="n">03</span>Cardano Dev Skills — AI エージェントに最新の Cardano を渡す</a></li>
+  <li><a href="#audit"><span class="n">04</span>監査の結論 — 97 ページと「1,140 万ドル」</a></li>
+  <li><a href="#rfp"><span class="n">05</span>RFP — 50 対 1、ダイヤモンドの仮の話、透明性報告</a></li>
+  <li><a href="#grants"><span class="n">06</span>助成制度への不信と、「北極星」</a></li>
+  <li><a href="#evm"><span class="n">07</span>EVM のチーム、マーケットメーカー、「技術的に足りないもの」</a></li>
+  <li><a href="#og"><span class="n">08</span>運営グループ、競争入札、そして「能力と結果」</a></li>
+  <li><a href="#rest"><span class="n">09</span>ゲストのあと — OpenZeppelin の提案、Pragma、ノードの版</a></li>
+  <li><a href="#overall"><span class="n">10</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">11</span>やり取りから</a></li>
+  <li><a href="#pending"><span class="n">12</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 何の記録か、誰が話しているか</h2>
+<p class="deck">X のスペースの録音。話者名も時刻もない文字起こしから作っているので、誰の発言かはすべて推定。</p>
+
+<p>Cardano Over Coffee は、X（旧 Twitter）のスペースで平日毎朝配信されているコミュニティの番組です。ミッドロールで Chad が「世界初の分散型の朝の番組。あなたがゲストで、話者で、司会で、聴き手」と説明しています。この回は 2026 年 9 月 10 日（木）の配信で、司会の Christina は配信中に「録音されているスペース」だと述べています。<span class="badge">補足</span>日付は「Happy Thursday」と、「Chris が今日 Boston Blockchain Week に行く」（同イベントは 9 月 8〜10 日）から特定しました。録音が X 上で誰でも再生できる状態かは、こちらでは確認できていません。</p>
+
+<p><strong>話者は全員、文脈からの推定です。</strong>受け取った文字起こしには話者の名前も交代の印もなく、相づちが文の途中に混ざっています。全文ページでは、言葉だけでは決められない箇所に「（推定）」を付けました。主な人物は次のとおりです。</p>
+
+<ul>
+  <li><strong>Christina</strong> —— 司会。「Blink Labs で働いている」「昔気質のインフラの人間」と自称し、PRIME の運営グループ（Operating Group）の一員でもあると本人と AlphaGrowth の双方が述べています。姓は出ません。</li>
+  <li><strong>Eric Waisanen、Bryan Colligan</strong> —— AlphaGrowth。音声では「Eric」と「Brian」（一度「Brandon」）。<span class="badge">補足</span>姓は同社の番組 Dose of Alpha の情報から。前回の <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/">2026-09-06 の回</a>で PRIME を語った 2 人と同じです。</li>
+  <li><strong>Giovanni、Bora</strong> —— Cardano Dev Skills のゲスト。Bora は「Cardano の教育チーム」と紹介されます。</li>
+  <li><strong>Phil</strong> —— 形式手法と安全性の話をする参加者。ほかに共同司会の <strong>James</strong>（Intersect の Product Committee でレビューをしている、と自称）と <strong>Chad</strong>、参加者の Ryan、Chris（Blink Labs）、Ken Eric（ノルウェー、DRep の Team Void）、Beatrice（Pragma の会合に関わる）、Serg、Satoshi's Bride、Alex、Gamechanger、DC Dog、Mustafa、名前を言わない参加者 1 名。</li>
+</ul>
+
+<p><strong>この記録の中心は AlphaGrowth の部分です。</strong>PRIME は財務庫から 1 億 2,000 万 ADA を受けたプログラムで、AlphaGrowth は運営者、Christina はそれを監督する運営グループの一員です。つまりこの回は、<strong>運営者と監督者が同じ番組にいて、コミュニティの前で説明している</strong>場面で、数字も評価も当事者の発言として書いています。それ以外の部分（AI の雑談、Dev Skills、ノードの版、ガバナンス提案の感想）は、参加者各自の見解です。</p>
+
+
+<h2 id="why">2. 「何のためにやっているのか」— 司会と Phil の答え</h2>
+<p class="deck">6 年以上いる参加者が「負け戦に見える」と問う。Christina は番組の役割を、Phil は「AI で安全性の値段が上がった」を答えた。</p>
+
+<p>雑談の途中で、名前を言わない参加者が上がってきて、「私の声を知っている人は、私が Cardano に長くいることを知っている」「少しくたびれている」と前置きし、<strong>「何のためにやっているのか。私の見える範囲では負け戦に見える」</strong>と問いました。「録音されているので取り乱すのは控える」とも。</p>
+
+<p>Christina の答えは 2 段でした。まずこの番組について。「良いことも悪いこともひどいことも共有する場」で、ゲストが自分の取り組みを話しに来る。そして「もう一つのグループ」として AlphaGrowth を挙げ、コミュニティが「2,000 万ドル」を渡した相手が、監査で見つけた弱点と、コミュニティの人が提案を出せる RFP について話しに来る、しかも 2 週間ごとにここに来る、と説明しました。<span class="badge">補足</span>「2,000 万 ADA？ いや 2,000 万ドル」と言い直しています。PRIME の提案額は 1 億 2,000 万 ADA で、可決時の報道では約 1,920 万ドルでした。次に Cardano について。「人によって答えが違う」とし、自分はデータセンターを管理してきたインフラの人間で、Blink Labs で Haskell のノードに代わるノードを作っている、代替ノードどうしの「小さな競争」が楽しい、と。</p>
+
+<p>Phil はここで、この回のいちばん強い主張を述べました。</p>
+
+<ul>
+  <li><strong>DeFi の代償は「コードが法」であること。</strong>従来のソフトウェアと同じ水準の安全性では許されず、それが Cardano の形式手法と「ゆっくり着実」の姿勢が最初から狙ってきたものだ、と。</li>
+  <li><strong>しかし歴史的には報われなかった。</strong>Aave、Morpho、Uniswap のようなブルーチップは、より難しいチェーンの上で「一度もハッキングされなかった」。毎年複数社の監査を続けたからで、「Cardano が安全でも Aave はハッキングされないのだから、何の意味がある」と見られていた、と Phil は説明します。</li>
+  <li><strong>それが「この 1 年で根本から変わった」。</strong>AI の登場で継続的な監査では足りなくなり、Ethereum ではこの 12 か月に過去 5 年の合計より多くのハッキングが起きた、大きな LP は怖がって毎月何億ドルも引き揚げている、OpenZeppelin の創業者は「今後 2 年は DeFi から資金を引き揚げるよう友人に勧めている」と 2 か月ほど前に述べた、と。これらは Phil の発言で、数字の出所は示されていません。</li>
+  <li><strong>足りないのは金融の側。</strong>Cardano には形式手法の側とインフラはあるが、競争力のある DeFi プロダクトがなかった。だから AlphaGrowth が「足りないもの一覧」を公開したことが「とてもわくわくする」。Ethereum と機能で同等になれば「市場で完全に支配的にならない世界は想像できない」。</li>
+</ul>
+
+<p>Ryan は Phil に乗って、査読済みの研究、形式手法の設計、型の強い言語、低いリソース要件は AI が力を発揮する条件で、開発者体験の難しさは AI が「些細なこと」にする、自分はスマートコントラクトの書き方を知らないまま testnet で 8 つのトランザクションを連鎖させるボットを AI に作らせた、と述べました。Christina は「公平のために」と割って入り、<strong>ノードの要件を小さくしてきたが Leios を出せばそれを元に戻すことになる</strong>、Amaru は Leios より先に出ても Leios を実装しなければならない、とバランスを求めています。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「AI でハッキングが増えたから Cardano の番だ」は、そのまま成り立つのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。</p>
+<p>疑問はもっともです。Phil の主張は 2 段でできています。①AI で攻撃が容易になり、安全性の市場価値が上がった。②Cardano は形式手法で安全性に強いから、その価値を取れる。①が正しくても、②には「Cardano の DeFi が実際にハッキングされにくい」という実績が要りますが、Cardano の DeFi の規模は小さく（Bryan の発言で TVL 約 9,000 万ドル）、比較できる実績そのものが乏しい、というのが正直なところです。</p>
+<p>それでも Phil の言い方が成り立つのは、彼が「Cardano の DeFi が安全だ」ではなく「Cardano には安全性を証明する道具（形式手法、Blaster のような検証ツール）がある」と言っている点です。道具があっても、それで作られた競争力のあるプロダクトがなかった、というのが彼自身の続きで、だから AlphaGrowth の空白の一覧を歓迎しています。</p>
+<p>外から見分ける方法は 1 つ。同じ TVL 規模あたりの攻撃件数と損失額を、チェーンごとに、期間をそろえて比べることです。この回では、Ethereum 側の「12 か月で過去 5 年分より多い」という Phil の言葉以外に、比較できる数字は出ていません。</p>
+</div>
+</details>
+
+
+<h2 id="devskills">3. Cardano Dev Skills — AI エージェントに最新の Cardano を渡す</h2>
+<p class="deck">Claude や Codex に「Cardano の知識ベース」を差し込む。毎週月曜に自動更新。MCP ではなくスキルにした理由。</p>
+
+<p>Giovanni は、Cardano Dev Skills を「数か月前にコミュニティのメンバーのアイデアから生まれた」もので、Claude や Codex のようなコーディング用 AI にプラグインや知識ベースとして加えると、<strong>エージェントが Cardano の最新の文書にその場でアクセスできる</strong>ようになる、と説明しました。狙いは「仕事と答えとコーディングの質を 10 倍、20 倍にする」。<span class="badge">補足</span>「スキル」は、コーディング用 AI エージェントに手順や参照文書を束ねて渡す形式の呼び名です。リポジトリは GitHub の cardano-foundation 組織にあり、Claude Code のプラグインまたは Codex のスキルとして使え、上流の文書を毎週自動で取り込む、と README にあります。</p>
+
+<div class="term">
+<p class="term-name">古い答え <small>stale answers、Giovanni が最初に挙げた問題</small></p>
+<p>AI のモデルは、ある時点で凍結された訓練データで作られる。2025 年のコードで訓練されたモデルは、2026 年のハードフォーク後のやり方を知らず、「動くが十分でない」コードや、動かないコードを返す。Cardano Dev Skills は知識ベースを<strong>毎週月曜の朝に自動更新</strong>し、エージェントに新しい版を定期的に確認するよう指示することで、たとえばトランザクション構築のコードが「一発で動く確率」を上げる、と Giovanni は述べました。</p>
+</div>
+
+<p>使い道として Giovanni が挙げたのは、①知識（CIP-8 や CIP-30、UTXO とは何かを、元の文書にもとづいて噛み砕いて答える）、②オフチェーンのコード（Aiken や Plutus のコントラクトを渡すと、Java、Go、TypeScript の各ライブラリでトランザクション構築のひな形を書く）、③Blockfrost の API でダッシュボードを作るような作業、です。遊びで Cardano のマーケットプレイスを「1 行も書かずに」バイブコーディングで作った、Aiken のコードからフロントエンドまで揃って動いた、とも。</p>
+
+<p><strong>MCP ではなくスキルにした経緯</strong>が語られています。Solana から来たパートナーに「あちらには MCP サーバーの知識ベースがある」と言われて「痛い」と思い、MCP サーバーを作り始めたが、Phil から「MCP サーバーは使うな」と助言され、回避策としていまの形式にたどり着いた。MCP は「知識を共有するためではなく、遠隔で何かを実行するためのもの」で、部分的な答えを返してエージェントを混乱させることがある、というのが Giovanni の説明です。<span class="badge">補足</span>MCP（Model Context Protocol）は AI エージェントが外部のツールやデータにつなぐための規格です。</p>
+
+<p>貢献者として、Bora（教育チーム、「私のずさんなコードのバグを山ほど見つけた」）、Harmonic Labs の Michele（Pebble）、Scalus のチーム、IOG の Robertino、Masumi（「Cardano の AI プロジェクトが最初に貢献するのは当然」）、TxPipe の Tx3 が挙げられました。Robertino のプロジェクトとは「ほんの少しの重なりと、多くの補い合い」があり、Robertino は「極めて意見の強いもの」を作り、Dev Skills は汎用の文書を担う、という分担だと説明しています。</p>
+
+<p>Bora は評価軸をひとつだけ挙げました。<strong>「チェーンに触ったことのない新しい開発者を獲得するコストが下がるか」。</strong>イエスなら進むべき方向、そうでなければ優先ではない。新しい開発者は「入口からではなく 80 階から始められる」。内部を理解する熟練の開発者が不要になるわけではなく、作りながら何を知るべきかに気づけばよい、と。</p>
+
+<p>貢献の条件は README にあり、DApp 固有のものやプロダクトの宣伝は対象外で、「DEX の使い方」や「儲け方」の PR は自動で拒否される、貢献するときも AI を使ってほしい、と Giovanni。Phil はあとで「ずっと良くなった」と評価しつつ、AI が書いた文書が多いのでコンテキストを食う（「コンテキストの腐敗」）のが唯一の欠点で、手で書き直せばよい、と付け加えました。Gamechanger は自社の意図ベースのスクリプト言語 GCScript DSL で貢献したいと申し出ています。</p>
+
+
+<h2 id="audit">4. 監査の結論 — 97 ページと「1,140 万ドル」</h2>
+<p class="deck">TVL がわずかに増えるだけで利回りが半分になる。Eric は「全部足りない」と言い、まず中核の DeFi を挙げた。</p>
+
+<p>Christina は「97 ページ全部を読んでいない人のために、平易な言葉での結論は」と聞きました。<span class="badge">補足</span>4 日前の <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/">2026-09-06 の Dose of Alpha</a> では Eric が監査文書を「社内で 77 ページほど」と言っています。どちらも運営者の口頭の数字で、増えたのか言い間違いかは分かりません。両方を記録しておきます。</p>
+
+<div class="term">
+<p class="term-name">利回りの圧縮 <small>yield compression、チームが「名前を考えている」と Bryan が言った語</small></p>
+<p>Bryan Colligan が「いちばん面白い統計」として挙げた数字が <strong>1,140 万</strong>です。チームの Krill と Charlotte が作った統計で、<strong>Cardano に 1,140 万ドルの TVL を持ってくると、すべてのプロトコルの年率（APR）が半分になる</strong>、という意味だと説明しました。「利回りの容量」がとても小さい、だから各プロトコルで稼げる容量をどう増やすかが注力点になる、と。<span class="badge">補足</span>TVL は預けられた資産の総額です。DeFi の利回りは、たとえば借り手が払う利息を預け手で分け合う形で決まるので、借り手が増えないまま預け手が増えれば一人あたりの取り分は薄まります。「いくら入れば半分になるか」は、その薄まりやすさをひとつの数字にしたものです。</p>
+</div>
+
+<p>Christina が「ウォレット、ブリッジ、エグゼキューターの標準、ボールトの標準と足りないものが多い。3 つか 5 つだけ進めるならどれか」と聞くと、Eric はまず「Cardano にとって、それとも私たちにとって？」と返し、そのうえで<strong>「根本的に、Cardano はこれら全部で大幅な改善が要る」</strong>と答えました。あえて選ぶなら、TVL の目標を達成する戦略を設計できるだけの中核の DeFi プロトコル。ただし TVL は「位置エネルギー」で、活性化には、ボールトの標準、ほかの人が自分のビジネスを回せるツール、大幅な UX の改善が要る。オンチェーンのマルチシグは「他所と比べて苦痛」で、しかも他所の Gnosis の水準ですら伝統的な銀行や実業には足りないのに、Cardano はそこから遠く後ろにいる、と。</p>
+
+<p>Christina が「空白には、外の資本を持ってくるもの（ウォレット、ブリッジ）と、来た資本を生産的にするもの（集中流動性、ボールト、インセンティブの帰属）があるのか」と整理すると、Eric は同意し、監査の目的を「ほかのエコシステムと比べてどれだけ後ろにいるかを、できるだけ偏りなく示す」ことだと述べました。3 つのフェーズは「1: いまどこにいるか」「2: あるべき場所へ」「3: TVL が上がりアプリが出る」。運営グループと Cardano Foundation（「助けになり支えてくれている」）と密に働き、AI の攻撃に備えたリアルタイムの凍結や監視、配布パートナーの不在（Merkl と話している）、ウォレットへの「EVM を支えられるか」の問いかけなどを挙げています。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「1,140 万ドルで利回りが半分」は、悪い知らせなのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した整理です。</p>
+<p>疑問はもっともです。TVL を増やすのが PRIME の目標なのに、増えると利回りが下がるなら、目標を達成するほど魅力が落ちることになります。Bryan 自身も、この数字は「利回りの容量が非常に限られている」ことを示すものだと言っています。</p>
+<p>それでも運営者側の言い方が成り立つのは、この数字が「いまの借り手の需要のままなら」という前提の値だからです。Eric があとで Ken Eric に説明したとおり、Jump のようなマーケットメーカーが資金調達率の裁定などの既存の戦略の一部として Cardano を使うようになれば、借り手側の需要が増え、同じ TVL でも利回りは薄まりにくくなります。だから RFP のカテゴリーに「中核の DeFi プロトコル」や「再担保できる DEX」が並んでいる、という筋です。</p>
+<p>外から見分ける方法は 1 つ。PRIME の進行中に TVL と各プロトコルの年率を同時に追い、TVL が増えたときに年率がどれだけ下がったかを見ることです。監査の 1,140 万ドルという数字の計算方法（どのプロトコルを、どの時点で）は、この回では説明されていません。</p>
+</div>
+</details>
+
+
+<h2 id="rfp">5. RFP — 50 対 1、ダイヤモンドの仮の話、透明性報告</h2>
+<p class="deck">カテゴリーは網羅ではない。応募 4 件に助成 1、2 件。「誰に、いくら、何のために」は公開、契約の細部は非公開。</p>
+
+<p>Eric は RFP の前置きとして、<strong>カテゴリーはすべてを網羅するものではなく、それぞれに助成が行く約束でもない</strong>、いま「本当に大きな必要」と見ているものを挙げたにすぎない、と述べました。「Catalyst に出すのと同じように扱ってほしい。Cardano の TVL を拡大させると思うなら、どんなアイデアでも」。Masumi の Patrick Tobler と話した例を引き、エージェント専用のウォレットのようなものも歓迎、自分は x402 とエージェントの決済の「大ファン」だ、と。</p>
+
+<div class="term">
+<p class="term-name">50 対 1 <small>Bryan が「ここで公に言う」と前置きした目安</small></p>
+<p><strong>「助成とインセンティブに使う 1 ドルごとに、50 ドルの TVL を求めている」。</strong>資産の発行者やアプリから「本当の目標は何か」と聞かれるときの答えで、「いくら持ってこられるか、1 億か、1,000 万か」と会話を変える、と Bryan は説明しました。過去にほかのチェーンで同じことをしたときは「応募 4 件に対して助成できるのが 1、2 件」で、似た結果を予想している、と。<span class="badge">補足</span>4 日前の Dose of Alpha でも Bryan は同じ 50 対 1 と「500 万ドル以上の資産」を挙げています（<a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/">同回の 10 節</a>）。今回は「未知の未知」があるので、アイデアを与えるくらい絞りつつ、100 対 1 の見込みがある予想外のものも受けられるくらい広くしたい、と付け加えました。</p>
+</div>
+
+<p>Bryan は 50 対 1 が会話を変えた例として、NFT のジュエリーのアプリの話をしました。「NFT のジュエリーは面白くない」と言って 50 対 1 を伝えたところ、相手が「世界最大級のダイヤモンドの輸出入業者に、年 27%、30% くらいの APR を出す関連ファンドがある。数十億ドルのダイヤモンド加工だ」と持ち出してきた、と。Bryan はこれを「産業の金融化」と呼び、ダイヤモンド加工に裏付けられた利回り付きステーブルが Cardano に来て、レンディングやパーペチュアルに入っていく、という絵を描きました。<strong>「その案件をやるかやらないかは言っていない。仮の話だ」「うまくいかなくても、あと 30 やる」と本人が留保しています。</strong><span class="badge">補足</span>「27%、30%」は Bryan が第三者から聞いた数字の引用で、検証も出所の名前もありません。この記録では利回りの水準として扱わず、会話の例としてのみ記します。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="監査から RFP、助成、透明性報告までの流れ。97 ページの監査で空白のカテゴリーを出し、RFP（狙ったものと公開のもの）を受け、応募 4 件に助成 1、2 件、50 対 1 の目安、マイルストーン払い、透明性報告、という順に並べた図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="200" height="72" rx="8" class="d-box"/>
+  <text x="120" y="46" class="d-t" text-anchor="middle">① 監査</text>
+  <text x="120" y="66" class="d-s" text-anchor="middle">「97 ページ」（前回は 77）</text>
+  <text x="120" y="82" class="d-s" text-anchor="middle">空白のカテゴリー、1,140 万ドル</text>
+
+  <line x1="224" y1="56" x2="256" y2="56" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="260" y="20" width="200" height="72" rx="8" class="d-box-accent"/>
+  <text x="360" y="46" class="d-t" text-anchor="middle">② RFP</text>
+  <text x="360" y="66" class="d-s" text-anchor="middle">狙ったもの（EVM のチーム）と公開</text>
+  <text x="360" y="82" class="d-s" text-anchor="middle">「Catalyst に出すように」</text>
+
+  <line x1="464" y1="56" x2="496" y2="56" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="500" y="20" width="160" height="72" rx="8" class="d-box"/>
+  <text x="580" y="46" class="d-t" text-anchor="middle">③ 選定</text>
+  <text x="580" y="66" class="d-s" text-anchor="middle">応募 4 件に 1、2 件</text>
+  <text x="580" y="82" class="d-s" text-anchor="middle">目安は 50 対 1</text>
+
+  <line x1="580" y1="96" x2="580" y2="128" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="260" y="132" width="400" height="72" rx="8" class="d-box"/>
+  <text x="460" y="158" class="d-t" text-anchor="middle">④ 助成 — マイルストーン払い</text>
+  <text x="460" y="178" class="d-s" text-anchor="middle">「少し前払い、あとは作ってから」。全額の前払いはしない</text>
+  <text x="460" y="194" class="d-s" text-anchor="middle">すでに動いているビルダーには早める</text>
+
+  <line x1="460" y1="208" x2="460" y2="240" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="260" y="244" width="400" height="72" rx="8" class="d-box-accent"/>
+  <text x="460" y="270" class="d-t" text-anchor="middle">⑤ 透明性報告</text>
+  <text x="460" y="290" class="d-s" text-anchor="middle">公開: 誰に、いくら、高い次元で何のために</text>
+  <text x="460" y="306" class="d-s" text-anchor="middle">非公開: 仕様と交渉の細部、法的リスクのある契約</text>
+
+  <rect x="20" y="132" width="200" height="184" rx="8" class="d-box-warn"/>
+  <text x="120" y="158" class="d-t" text-anchor="middle">留保（本人の言葉）</text>
+  <text x="120" y="182" class="d-s" text-anchor="middle">カテゴリーは網羅ではない</text>
+  <text x="120" y="202" class="d-s" text-anchor="middle">全部に助成する約束ではない</text>
+  <text x="120" y="222" class="d-s" text-anchor="middle">「未知の未知」がある</text>
+  <text x="120" y="242" class="d-s" text-anchor="middle">「全部がうまくいくわけではない」</text>
+  <text x="120" y="262" class="d-s" text-anchor="middle">EVM のチームは「高すぎる」</text>
+  <text x="120" y="282" class="d-s" text-anchor="middle">RFP の文書は示されていない</text>
+  <text x="120" y="302" class="d-s" text-anchor="middle">応募数は「始まったばかり」</text>
+</svg>
+<p class="figcap">Eric と Bryan の説明をこちらで 1 枚に並べたもの。①〜⑤の順番はこちらの整理で、本人たちは「監査、構築、展開」の 3 フェーズが混ざり合って進むと言っています。</p>
+</div>
+
+<p>Christina が説明責任について「どの RFP が選ばれ、なぜかを人々は見られるか」と聞くと、答え（Eric と推定）は<strong>「資金がどこに使われたかの透明性報告を出す」</strong>でした。誰が助成を受け、高い次元の条件が何かを列挙する。すべてマイルストーン払いで、全額前払いはしない。仕様や交渉のすべての細部、公開すると法的リスクのある契約は「たぶん公開しない」が、金額と相手と高い次元の目的は公開する、と。</p>
+
+
+<h2 id="grants">6. 助成制度への不信と、「北極星」</h2>
+<p class="deck">James は「私たちはずっと 50 対 1 の逆だった」と言い、Eric は「北極星は示すが、全員の仕事を代わりにはやらない」と答えた。</p>
+
+<p>共同司会の James は、あえて質問せずに聞いていた理由を「情報と透明性の面で非常に重要だから」と言い、そのうえで厳しい見方を述べました。<strong>「ここに長くいる人はみんな知っているとおり、助成の制度は、制度を利用するだけで何も届けない人で溢れている」</strong>「助成の 1 ドルが 50 になる、という話を考えると、私たちはずっとその逆だった。全員とは言わないが、圧倒的多数で、期待した果汁は絞れていなかった」。Christina も、コミュニティは資金を出したあとに振り返って測ることをしてこなかった、と認め、James は Christina が開いている契約を監査する小さなグループを作ったこと、それでも財務庫から出る大金に「正式な方法」がないことを指摘しました。<span class="badge">補足</span>2 人の評価はコミュニティの個人の見解です。過去の助成の成果を測った数字は、この回には出ていません。</p>
+
+<p>James はさらに、AlphaGrowth への期待を抑える言い方をしています。「2 階に上がりたいのに、1 段目と 15 段目と 18 段目にしか段がない」。必要なものが多く、一緒にやるべきインフラもあって、「さらに重い持ち上げ」になる。人は「期待しがち」で、達成に必要な範囲を理解していないことがある、と。</p>
+
+<p>Eric の答えは、ビルダーからのフィードバックから始まります。<strong>「北極星がなかった」</strong>——面白いと思うものを作り、来るのを祈っていた。AlphaGrowth が必要な仕様を伝えると、「野心的だ、分かる」となるが、「でも反対側のパートナーはどうやって？」と聞かれる。たとえば再担保の戦略には反対側を成すパートナーが要る。それは「私たちの仕事だ」と Eric は言い、ファミリーオフィスやリキッドファンドに戦略を見せて資産を展開してもらう筋道を示すと、ビルダーの「電球が点く」。ただし、<strong>「北極星は示すが、全員の仕事を代わりにやるためにいるわけではない。具体的な契約や地図を渡すなら、それはただ開発会社を雇っているだけだ」</strong>。自分のビジョンを、この要件に沿う形でどう作るかを持ってきてほしい、と。</p>
+
+
+<h2 id="evm">7. EVM のチーム、マーケットメーカー、「技術的に足りないもの」</h2>
+<p class="deck">Ken Eric の 3 つの質問。EVM のチームは高い、Jump にはインフラが先、技術的な欠落は「見つけていない」。</p>
+
+<p>ノルウェーから参加した Ken Eric（DRep の Team Void）は、「Cardano は少しギークで、EVM とは違うアーキテクチャを選んだ」と前置きし、①EVM で作っている人たちにどう知識を共有し、ブリッジで流動性を分け合うのか、②Jump Crypto、Wintermute、Amber Group のようなマーケットメーカーを引きつけられるのか、を聞きました。</p>
+
+<ul>
+  <li><strong>EVM のチーム。</strong>Eric は「資格と能力があると考える特定のチーム」に狙った RFP を出した、いくつかは連れてくる、と述べました。しかし多くにとっては「費用がかかりすぎ、消耗が大きい。インフラがあまりに違う」。Cardano ネイティブのチームと EVM のチームの両方から見積もりを取るのが当初の目標で、結果は「大部分が Cardano ネイティブ」になりそう。「十分に速くできない」「有名な名前を関わらせるのは本当に高くつく」が全体的なフィードバックだ、と。</li>
+  <li><strong>マーケットメーカー。</strong>「果汁が絞る労力に見合わなければならない」。彼らは深い流動性、合成可能性、ウォレットの安全性の信頼できるテストの枠組みを求める。<strong>「いま 10 億ドルの TVL があっても彼らはより良いインフラを欲しがるし、彼らがそれを持つまで 10 億ドルは来ない」</strong>。1,100 万ドルで利回りが半分になる Cardano は「いま Jump には魅力的ではない」。プログラムの終わりに魅力的になっていることを願う、と。魅力的にする道は、CEX と DEX の裁定、資金調達率の裁定、Hyperliquid と組み合わせる既存の戦略に Cardano の DeFi を組み込むこと。そのためには、清算のレールが理解できる信頼された貸し借り市場、効率的な出入り（ブリッジ、オンランプ）、実戦で試された枠組み、あるいはその上の保険が要る、と Eric は列挙しました。</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="マーケットメーカーが来ない循環。インフラがないので TVL が来ず、TVL がないのでインフラへの投資が進まない。Eric が挙げた、循環を破るための条件（信頼された貸し借り市場、効率的な出入り、既存戦略への組み込み、保険）を横に並べた図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="170" y="24" class="d-t" text-anchor="middle">Eric が述べた循環</text>
+  <rect x="30" y="44" width="280" height="56" rx="8" class="d-box-warn"/>
+  <text x="170" y="68" class="d-s" text-anchor="middle">インフラが足りない</text>
+  <text x="170" y="88" class="d-s" text-anchor="middle">→ Jump のような相手は来ない</text>
+  <rect x="30" y="150" width="280" height="56" rx="8" class="d-box-warn"/>
+  <text x="170" y="174" class="d-s" text-anchor="middle">TVL が来ない（いま約 9,000 万ドル）</text>
+  <text x="170" y="194" class="d-s" text-anchor="middle">→ 「10 億ドルあってもインフラを求める」</text>
+  <line x1="260" y1="104" x2="260" y2="144" class="d-line" marker-end="url(#m2)"/>
+  <line x1="80" y1="146" x2="80" y2="106" class="d-line" marker-end="url(#m2)"/>
+
+  <line x1="330" y1="125" x2="380" y2="125" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <text x="520" y="24" class="d-t" text-anchor="middle">循環を破る条件（Eric の列挙）</text>
+  <rect x="390" y="44" width="270" height="36" rx="7" class="d-box"/>
+  <text x="525" y="68" class="d-s" text-anchor="middle">清算のレールが分かる、信頼された貸し借り市場</text>
+  <rect x="390" y="88" width="270" height="36" rx="7" class="d-box"/>
+  <text x="525" y="112" class="d-s" text-anchor="middle">効率的な出入り — ブリッジ、オンランプ</text>
+  <rect x="390" y="132" width="270" height="36" rx="7" class="d-box"/>
+  <text x="525" y="156" class="d-s" text-anchor="middle">既存の裁定戦略に Cardano を組み込む</text>
+  <rect x="390" y="176" width="270" height="36" rx="7" class="d-box-accent"/>
+  <text x="525" y="200" class="d-s" text-anchor="middle">実戦で試された枠組み、あるいは保険</text>
+
+  <rect x="30" y="222" width="630" height="24" rx="6" class="d-box-plain"/>
+  <text x="345" y="239" class="d-s" text-anchor="middle">Eric は「世界の Jump Capital を統合できるところまで行けるとは思っていない」と言い終えている</text>
+</svg>
+<p class="figcap">Ken Eric の質問への Eric の答え（EVM のチームとマーケットメーカー）をこちらで図にしたもの。循環の描き方はこちらの整理です。</p>
+</div>
+
+<p>Ken Eric が「神の鍵を持っていてハードフォークできるなら、技術的に何を変えるか」と聞くと、Eric は<strong>「確かなことは分からないが、ないと思う。概念的にはすべて動くし、あればいいインフラは全部作れる」</strong>と答え、「間違っているかもしれない」と付けました。人々が EVM のために EVM によって作られた前提を捉え直す必要があるだけで、それにはベンチャーやエコシステム・ファンドの補助が要る、と。Bryan は「鍵は連携だ」と続け、EVM へのブリッジを決めなければ「何百、何千の新しい資産」を逃す、Cardano の中核技術には理由になるものを見つけていない、「誰も最初になりたくない、スパイダーマンのゲームだ」と述べました。</p>
+
+
+<h2 id="og">8. 運営グループ、競争入札、そして「能力と結果」</h2>
+<p class="deck">運営者と監督者が同じ場にいる。Phil は「初めての競争入札」と評し、投票型より専門家の委員会型がよいと述べた。</p>
+
+<p>James が「Christina と働くのはどうか」と聞くと、Eric は「Christina は素晴らしい。運営グループ全体が素晴らしい」と答え、昨日 Christina から<strong>議事録と文書化をもっと良くするよう言われた</strong>、自分は「細部に埋もれる」ので、真実の源と紙の記録を作って「コミュニティが受けるべき説明責任」を果たすことは不可欠だ、と述べました。Christina は「質問や建設的な批判をしても同じように受け止めてくれる」と応じています。<span class="badge">補足</span>運営者と監督者が互いを評価する場面なので、そのまま引きます。第三者の評価はこの回には出ていません。</p>
+
+<p>Phil は監査を「とても見事」と評しました。RFP の項目に「エグゼキューターの標準」があるのを見て、Cardano の開発者として「アプリを作ってほしいと頼まれるたびに、全部を土台から作らなければならず、何も既定で相互運用しない」痛点をまさに指していると感じた、と。「能力と結果の実演を見たいなら、あの RFP は良い出発点だ」。James が「能力と結果、と文の中でもう一度言ってほしい。私たちの側でとても欠けてきたものだから」と返す場面もあります。</p>
+
+<div class="term">
+<p class="term-name">競争入札 <small>competitive bidding、Phil の言い方</small></p>
+<p>「人々はずっとこれを求めてきた」と Phil。これまでは各チームが個別に提案し、「これか、何もないか」しかなかった。<strong>「いま初めて競争的な入札の仕組みがある」。</strong>空白が特定されていて、Cardano には有能なチームが何十もある。Dingo と代替ノードが速く出ているのも、Plutus と Aiken などの言語も、チーム間の競争のおかげだ、と。ただし Phil は「RFP 一般には懸念もある」と留保します。投票にもとづく RFP は「同じものを 2 人が提案していて、安いほうを選ぶ」になりがちで、<strong>専門家の委員会にもとづく RFP</strong>なら質や実績を考慮できる、と。ほかの助成の提供者もこの型を見てほしい、と述べました。<span class="badge">補足</span>PRIME で誰が提案を審査するのか（AlphaGrowth か、運営グループか、両方か）は、この回では明示されていません。</p>
+</div>
+
+<p>James はこれを「私たちの過程全体のレベルを上げる」機会と見て、財務庫以外の資金にも「実証された標準」が波及すればよい、と述べました。終わりに Dave という DRep（姓の発音で 3 分ほど盛り上がります）が、提案の 5 エポックの投票期間に DRep を巻き込んだ「お手本」を示した、と称賛しています。</p>
+
+
+<h2 id="rest">9. ゲストのあと — OpenZeppelin の提案、Pragma、ノードの版</h2>
+<p class="deck">AlphaGrowth が抜けたあとの 30 分。ガバナンス提案への賛否、Cardano Ignite の受け入れ、ノード 11.1 と 11.2。</p>
+
+<ul>
+  <li><strong>OpenZeppelin のガバナンスアクション。</strong>Christina は「Robertino の開発者体験のために承認したものと非常に似た」新しい提案があり、自分のパートナー（Chris）は「もうこの種のものには投票した」と最初に「ノー」を入れた、と紹介。Ken Eric は「金額と内容は別として、憲法に照らした書き方は最良のもののひとつ」と評し、OpenZeppelin を「EVM でスマートコントラクトのコードを取りに行く事実上の場所。2014 年ごろから。Ethereum Foundation の助成で支えられ、実戦で試されたライブラリ」と説明。Beatrice は<strong>「約 1,100 万を求めている。保守のコストは誰が持つのか。同じものに 2 回払うことになる。過去数年の Cardano と同じ罠だ」</strong>と反対の理由を述べ、Ken Eric は「12 か月にわたって毎週、スマートコントラクトを見張るセキュリティの人員が含まれる」と付け加えました。<span class="badge">補足</span>金額の単位（ADA と思われます）と提案の中身、投票の状況は、こちらでは確認できていません。参加者の要約として記します。Robertino Martinez（IOG）の Developer Experience Initiative は 360 万 ADA で、2026 年 4〜5 月の投票で可決しています。</li>
+  <li><strong>Cardano Ignite が Pragma に。</strong>Christina は「まだ聴いている人のために正式に」として、Robertino のプロジェクト Cardano Ignite が Pragma のプロジェクトとして受け入れられ、オンボーディング中だと述べました。<span class="badge">補足</span>Pragma は Cardano Foundation、Blink Labs、dcSpark、Sundae Labs、TxPipe が設立したオープンソースの非営利団体です。</li>
+  <li><strong>ノードの版。</strong>Chad が「技術運営委員会（TSC）からのアルファ」として 11.1 がメインネット対応、11.2 が来ると述べ、Serg が補足しました。11.1 は「いまにも出る。旧式のトレーシングを取り除く」、11.2 は「数週間で。ハードフォークを生き残る想定ではないが Dijkstra の早期テストを可能にする」、DijkstraNet（Leios なし）と MusashiNet（Leios をテスト）が並行する、と。<span class="badge">補足</span>cardano-node 11.1.1 は 9 月 6 日までの週末に公開されています。Serg の説明は前日の会合時点の情報です。Dijkstra の見込み時期は、公開されているロードマップで「中程度の確度」が 2026 年 12 月 5 日〜2027 年 1 月 4 日、「高い確度」が 2027 年 2 月 24 日〜3 月 26 日です。Ken Eric の「Q1 までにできないかもと言って首を切られそうになった」「ずっと早くやるらしい」と、Christina の「Leios と Peras の進捗レビューを聞いて、全部が片付きつつあるとは聞こえなかった」という懐疑は、どちらも個人の感想です。</li>
+  <li><strong>雑談。</strong>冒頭では Ryan が AI エージェントでガバナンスの報酬シミュレーターを自動研究させている話、preprod で 8 つの DApp を 1 つのトランザクションで連鎖させる取引エンジンの話、ガバナンスのパイロット案（「計画を作るための資金を求めるのは売りにくい」「間違えてもいい」）、Chris が 1 日に 70 のプルリクエストを出した話。終盤は Zimbabwe の DC Dog と Mustafa が『五輪書』を薦め、「来週の宿題」になりました。Christina は、Charles Hoskinson がこのアップグレードを Musashi と名付けたことについて Discord で本人に聞いた、と述べています。</li>
+</ul>
+
+
+<h2 id="overall">10. 全体像</h2>
+<p class="deck">開発者、資本、安全性。3 つの角度から同じ問い「なぜ今 Cardano で作るのか」に答えた回。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="この回の 3 つの角度。左に開発者の側（Cardano Dev Skills、Bora の KPI）、真ん中に資本の側（AlphaGrowth の監査と RFP、50 対 1）、右に安全性の側（Phil の主張）を置き、下に共通の問いと、この回で出なかったものを並べた図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="200" height="150" rx="8" class="d-box"/>
+  <text x="120" y="46" class="d-t" text-anchor="middle">開発者の側</text>
+  <text x="120" y="70" class="d-s" text-anchor="middle">Cardano Dev Skills</text>
+  <text x="120" y="90" class="d-s" text-anchor="middle">AI に最新の文書を毎週渡す</text>
+  <text x="120" y="110" class="d-s" text-anchor="middle">「80 階から始められる」</text>
+  <text x="120" y="130" class="d-s" text-anchor="middle">KPI は新規開発者の獲得コスト</text>
+  <text x="120" y="150" class="d-s" text-anchor="middle">— Giovanni、Bora</text>
+
+  <rect x="240" y="20" width="200" height="150" rx="8" class="d-box-accent"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">資本の側</text>
+  <text x="340" y="70" class="d-s" text-anchor="middle">PRIME の監査と RFP</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">1,140 万ドルで利回りが半分</text>
+  <text x="340" y="110" class="d-s" text-anchor="middle">助成 1 ドルに TVL 50 ドル</text>
+  <text x="340" y="130" class="d-s" text-anchor="middle">マイルストーン払い、透明性報告</text>
+  <text x="340" y="150" class="d-s" text-anchor="middle">— Eric、Bryan（運営者）</text>
+
+  <rect x="460" y="20" width="200" height="150" rx="8" class="d-box"/>
+  <text x="560" y="46" class="d-t" text-anchor="middle">安全性の側</text>
+  <text x="560" y="70" class="d-s" text-anchor="middle">AI で攻撃が容易になった</text>
+  <text x="560" y="90" class="d-s" text-anchor="middle">安全性の市場価値が上がった</text>
+  <text x="560" y="110" class="d-s" text-anchor="middle">形式手法の道具はある</text>
+  <text x="560" y="130" class="d-s" text-anchor="middle">競争力ある DeFi がなかった</text>
+  <text x="560" y="150" class="d-s" text-anchor="middle">— Phil（個人の見解）</text>
+
+  <line x1="120" y1="174" x2="120" y2="206" class="d-line-accent" marker-end="url(#m4)"/>
+  <line x1="340" y1="174" x2="340" y2="206" class="d-line-accent" marker-end="url(#m4)"/>
+  <line x1="560" y1="174" x2="560" y2="206" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="20" y="210" width="640" height="48" rx="8" class="d-box-warn"/>
+  <text x="340" y="232" class="d-t" text-anchor="middle">共通の問い —「何のためにやっているのか」（名前の出ない参加者）</text>
+  <text x="340" y="250" class="d-s" text-anchor="middle">3 つの答えはどれも「今が Cardano の番だ」と言う。理由はそれぞれ違う</text>
+
+  <rect x="20" y="272" width="640" height="46" rx="8" class="d-box-plain"/>
+  <text x="340" y="292" class="d-s" text-anchor="middle">この回で出なかったもの — RFP の文書、応募の数、監査の 1,140 万ドルの計算方法、</text>
+  <text x="340" y="310" class="d-s" text-anchor="middle">安全性の主張を支える比較の数字、OpenZeppelin の提案の中身</text>
+</svg>
+<p class="figcap">3 つの角度に分けたのはこちらの整理です。番組の中では、Dev Skills と AlphaGrowth は別のゲスト枠で、Phil の主張は「なぜ続けるのか」への応答として出ました。互いに直接の議論はしていません。</p>
+</div>
+
+
+<h2 id="qa">11. やり取りから</h2>
+<p class="deck">司会と参加者の問いと、答えを 4 つ。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Christina</span>97 ページを読んでいない人のために、監査の平易な結論は。</p>
+<p class="qa-a" data-by="Bryan Colligan（推定）">いちばん面白い統計は 1,140 万。<strong>それだけの TVL が入ると、すべてのプロトコルの年率が半分になる</strong>。利回りの容量が非常に限られていて、それを増やすことが注力点になる。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Christina</span>足りないものが多い中で、3 つか 5 つだけ進めるなら。</p>
+<p class="qa-a" data-by="Eric Waisanen">「根本的に全部に大幅な改善が要る」と前置きし、TVL の目標のためには<strong>中核の DeFi プロトコル</strong>。活性化にはボールトの標準、ツール、UX。マルチシグは「他所と比べて苦痛」で、他所の Gnosis の水準でも足りない。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Ken Eric</span>EVM のチームに知識をどう共有するのか。Jump や Wintermute のようなマーケットメーカーを引きつけられるのか。</p>
+<p class="qa-a" data-by="Eric Waisanen">EVM のチームには狙った RFP を出したが、多くは「高すぎる」。応募は大部分が Cardano ネイティブになりそう。マーケットメーカーには<strong>「10 億ドルあってもインフラを欲しがる」</strong>。信頼された貸し借り市場、効率的な出入り、保険が先。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">名前の出ない参加者</span>何のためにやっているのか。負け戦に見える。</p>
+<p class="qa-a" data-by="Christina、Phil">Christina は番組の役割と、AlphaGrowth が 2 週間ごとに公開の場で説明に来ることを挙げた。Phil は<strong>「AI で安全性の値段が上がった今が Cardano の市場機会だ」</strong>と。参加者本人がその答えに納得したかは、録音からは分かりません。</p>
+</div>
+
+
+<h2 id="pending">12. 答えが出なかったこと</h2>
+<p class="deck">文書は示されず、数字は口頭。応募の数も「始まったばかり」。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未提示</span>RFP の文書そのもの、カテゴリーの一覧、応募の締切と審査の主体。</p>
+<p class="qa-a" data-by="口頭のみ">「カテゴリーは網羅ではない」「Catalyst のように出して」と口頭で。誰が審査するか（AlphaGrowth か運営グループか）は明示されていません。Phil は「専門家の委員会型がよい」と述べましたが、PRIME がそうだと確認する発言はありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未説明</span>「1,140 万ドルで利回りが半分」の計算方法と時点。</p>
+<p class="qa-a" data-by="結論のみ">どのプロトコルを、どの時点のデータで計算したかは語られていません。監査文書の公開版に載っているかも不明です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">食い違い</span>監査は 77 ページか 97 ページか。</p>
+<p class="qa-a" data-by="両方が運営者の発言">9 月 6 日の Dose of Alpha では Eric が「77 ページほど」、この回では Christina が「97 ページ」。増えたのか、どちらかの言い間違いかは分かりません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>応募の数と、最初の助成の相手・時期。</p>
+<p class="qa-a" data-by="「始まったばかり」">「すでに動いているビルダーには早めたい」とだけ。透明性報告の最初の公開時期も示されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">仮の話</span>ダイヤモンド加工のファンド（年 27〜30% と第三者が主張）が Cardano に来るのか。</p>
+<p class="qa-a" data-by="「やるかやらないかは言っていない」">Bryan が 50 対 1 の会話の例として出したもので、社名も出所も検証もありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未確認</span>OpenZeppelin のガバナンス提案の中身、金額の単位、投票の結果。</p>
+<p class="qa-a" data-by="参加者の要約のみ">「約 1,100 万」「開発者体験の提案に似ている」「12 か月のセキュリティ人員を含む」は参加者の発言で、こちらで提案文書を確認できていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>Phil の「Ethereum では 12 か月で過去 5 年分より多いハッキング」「毎月何億ドルの引き揚げ」「OpenZeppelin 創業者の発言」の出所。</p>
+<p class="qa-a" data-by="主張のみ">いずれも Phil の発言で、出所は示されていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は、コミュニティの番組 Cardano Over Coffee（X の <a href="https://x.com/coc_space">@coc_space</a>）が 2026 年 9 月 10 日（木）に配信した X スペースの録音の文字起こしです。司会が配信中に「録音されている」と述べており、公開の記録として扱っていますが、<strong>再生が X 上で誰でもできる状態かは、こちらでは確認できていません。</strong>個別の録音の URL も受け取っていません。確認できたら `meta.yml` に足します。</p>
+<p><strong>話者はすべて推定です。</strong>文字起こしに話者名も時刻もないため、全文ページの割り当ては文脈からの推定で、時刻は付けていません。AlphaGrowth の 2 人の姓は同社の番組の情報から、司会の Christina の姓は出ないままにしています。</p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は録音の中で語られたものです。<span class="badge">画面</span>は音声のみの録音なので使っていません。<span class="badge">補足</span>はこちらで足した説明で、録音にはありません。</p>
+<p><strong>立場について。</strong>AlphaGrowth の 2 人は PRIME の運営者、司会の Christina はその運営グループの一員です。監査の数字、RFP の条件、互いの評価は当事者の発言として書いています。ほかの参加者の発言（安全性の主張、ガバナンス提案への賛否、ノードの版）は各自の見解です。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>AlphaGrowth, the operator of Cardano's 120-million-ADA PRIME programme, came onto a community morning show and explained, out loud, <strong>the audit's conclusion and the terms of its request for proposals</strong>. The key figure: bringing just $11.4 million of TVL to Cardano would halve DeFi yields. The rule of thumb: $50 of TVL per $1 of grants.<br>
+  Earlier, a jaded participant asked “what are we doing here?”, and the host and others answered that AI has raised the price of security and that this is Cardano's moment; Cardano Dev Skills, a knowledge base for AI coding agents, was also presented. <strong>This is an audio-only recording, and every speaker is inferred.</strong></p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>The yield vessel is small.</strong> Bryan Colligan of AlphaGrowth picked “11.4 million” as the audit's most interesting statistic: that much TVL (total value deposited) arriving on Cardano would cut the APR on every protocol in half. The team is coining a name for it, “yield compression”.</li>
+  <li><strong>Everything is missing; core DeFi first.</strong> Asked to pick three to five gaps, Eric Waisanen said Cardano needs significant improvement on all of them, then named core DeFi protocols for the TVL goal, and vault standards, tooling, UX and multisig for “activation”.</li>
+  <li><strong>The RFP rule of thumb is 50 to 1.</strong> Bryan said publicly that they look for $50 of TVL for every dollar of grants and incentives; on other chains about four applications yielded one or two fundable; the categories are not exhaustive, so bring anything, “treat it like Catalyst”.</li>
+  <li><strong>Transparency means who, how much, and roughly what for.</strong> Grants are milestone-based, and transparency reports will list recipients and high-level terms; contract details and negotiations will not be public, Eric (inferred) said.</li>
+  <li><strong>EVM teams are too expensive; market makers wait for infrastructure.</strong> Answering Ken Eric from Norway, Eric said targeted RFPs went to EVM teams but most find it not worth the squeeze, so applicants will be mostly Cardano-native; firms like Jump need trusted lending markets and efficient entry and exit first. Nothing technical was found missing in Cardano, “I could be wrong here”.</li>
+  <li><strong>A knowledge base for AI agents.</strong> Giovanni's Cardano Dev Skills hands Claude or Codex current Cardano documentation, refreshed weekly. Bora of the education team said the only KPI is whether it lowers the cost of acquiring a new developer.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this recording</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>What this is, and who is speaking</a></li>
+  <li><a href="#en-why"><span class="n">02</span>“What are we doing here?”: the host's and Phil's answers</a></li>
+  <li><a href="#en-devskills"><span class="n">03</span>Cardano Dev Skills: current Cardano for AI agents</a></li>
+  <li><a href="#en-audit"><span class="n">04</span>The audit's conclusion: 97 pages and “11.4 million”</a></li>
+  <li><a href="#en-rfp"><span class="n">05</span>RFPs: 50 to 1, a hypothetical about diamonds, transparency reports</a></li>
+  <li><a href="#en-grants"><span class="n">06</span>Distrust of the grant system, and the “North Star”</a></li>
+  <li><a href="#en-evm"><span class="n">07</span>EVM teams, market makers, and “anything technically missing?”</a></li>
+  <li><a href="#en-og"><span class="n">08</span>The Operating Group, competitive bidding, “competence and results”</a></li>
+  <li><a href="#en-rest"><span class="n">09</span>After the guests: OpenZeppelin, Pragma, node versions</a></li>
+  <li><a href="#en-overall"><span class="n">10</span>How it fits together</a></li>
+  <li><a href="#en-qa"><span class="n">11</span>From the exchange</a></li>
+  <li><a href="#en-pending"><span class="n">12</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. What this is, and who is speaking</h2>
+<p class="deck">A recorded X Space. The transcript has no speaker labels and no timestamps, so every attribution is inferred.</p>
+
+<p>Cardano Over Coffee is a community show streamed on X Spaces every weekday morning. In the midroll Chad calls it “the world's first decentralized morning show where you are the guest, the speaker, the host, and the listener”. This session aired on Thursday 2026-09-10, and the host Christina says on air that it is “a recorded space”. <span class="badge">added</span> The date follows from “Happy Thursday” and “Chris is going to Boston Blockchain Week today” (the event ran 8–10 September). Whether the replay is publicly available on X could not be verified here.</p>
+
+<p><strong>All speakers are inferred from context.</strong> The transcript received has no names and no change-of-speaker marks, and back-channel remarks are embedded mid-sentence. The transcript pages mark <em>(inferred)</em> where the words alone do not settle who is speaking. The main voices:</p>
+
+<ul>
+  <li><strong>Christina</strong>: host. Says she works with Blink Labs, calls herself “an old-school infrastructure person”, and both she and AlphaGrowth say she sits on PRIME's Operating Group. No surname is given.</li>
+  <li><strong>Eric Waisanen and Bryan Colligan</strong>: AlphaGrowth. “Eric” and “Brian” (once “Brandon”) in the audio. <span class="badge">added</span> Surnames come from their show Dose of Alpha; they are the same two who discussed PRIME in the <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/">2026-09-06 episode</a>.</li>
+  <li><strong>Giovanni and Bora</strong>: guests for Cardano Dev Skills. Bora is introduced as from “the education team in Cardano”.</li>
+  <li><strong>Phil</strong>: a participant who speaks on formal methods and security. Also co-hosts <strong>James</strong> (who says he reviews for Intersect's Product Committee) and <strong>Chad</strong>, and participants Ryan, Chris (Blink Labs), Ken Eric (Norway, the DRep Team Void), Beatrice (involved with Pragma), Serg, Satoshi's Bride, Alex, Gamechanger, DC Dog, Mustafa, and one participant who does not give a name.</li>
+</ul>
+
+<p><strong>The centre of this record is the AlphaGrowth segment.</strong> PRIME is a programme funded with 120 million ADA from the treasury; AlphaGrowth operates it and Christina sits on the Operating Group that oversees it. So this is <strong>the operator and an overseer on the same show, explaining themselves to the community</strong>, and their figures and judgements are recorded as the parties' own. The rest (AI banter, Dev Skills, node versions, reactions to a governance action) is individual participants speaking for themselves.</p>
+
+
+<h2 id="en-why">2. “What are we doing here?”: the host's and Phil's answers</h2>
+<p class="deck">A six-year participant says it “looks like a lost cause”. Christina answers with the show's role; Phil with “AI raised the price of security”.</p>
+
+<p>Mid-banter, a participant who does not give a name comes up, says people who know his voice know he has been in Cardano a long time, that he feels “a little bit jaded”, and asks: <strong>“What is the goal? What are we doing this for? From as far as I can see it, unfortunately, it's looking like a lost cause.”</strong> He adds that he knows the space is recorded and will “reserve crashing out”.</p>
+
+<p>Christina answers in two parts. First the show: a place “to share the good, the bad, the ugly”, with guest slots for people to present their work. Then “the other group”: AlphaGrowth, to whom the community gave “twenty million”, coming to explain the weaknesses their audit found and an RFP process through which community members can propose to fix them, and coming back every couple of weeks. <span class="badge">added</span> She corrects herself from “twenty million ADA” to “twenty million dollars”; PRIME's approved amount is 120 million ADA, reported at about $19.2 million at approval. Then Cardano: “you're gonna get different answers from different people”; hers is infrastructure, having managed data centres around the globe, and Blink Labs' alternative to the Haskell node, “a little bit of a contest” among alternative nodes.</p>
+
+<p>Phil then makes the strongest claim of the session.</p>
+
+<ul>
+  <li><strong>DeFi's cost is that “code and infrastructure is law”.</strong> Ordinary software's level of correctness is not acceptable, and that is what Cardano's formal methods and “slow and steady approach to security” were aimed at from the start.</li>
+  <li><strong>Historically this “didn't really pan out in the market”.</strong> Aave, Morpho and Uniswap, on a harder chain, “never were hacked”, thanks to continuous multi-firm audits, so the view was “if Cardano's so secure, but Aave never gets hacked, why does it matter anyway?”</li>
+  <li><strong>“This radically changed in the past year.”</strong> With advanced AI, continuous auditing is no longer sufficient; Ethereum has seen “more hacks in the last twelve months than in the past five years combined”; large LPs are pulling “hundreds of millions” a month; the founder of OpenZeppelin said about two months ago that he recommends friends and family pull their money out of DeFi for two years. These are Phil's statements; no sources are given.</li>
+  <li><strong>The missing piece is the financial side.</strong> Cardano has the formal-methods side and strong infrastructure but “didn't have competitive DeFi products”, which is why AlphaGrowth's published gaps list is “very exciting”. With economic parity to Ethereum, “I don't see a world where we don't completely dominate in the market because of the value of security right now.”</li>
+</ul>
+
+<p>Ryan dovetails: peer-reviewed research, formal specifications, well-typed languages and low resource requirements are what AI thrives on, and AI will make the hard developer experience “trivial”; he has a bot chaining eight transactions on testnet without knowing how to write smart contracts. Christina interjects “to be fair”: <strong>the node requirements have been trimmed, and Leios will “undo all of that”</strong>; Amaru may ship before Leios but still has to implement it.</p>
+
+<details class="explain">
+<summary>A naive question: does “AI made hacks easier, so it's Cardano's turn” hold as stated?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> Our own reading.</p>
+<p>The question is fair. Phil's argument has two steps: ① AI made attacks easier, raising the market value of security; ② Cardano is strong on security through formal methods, so it can capture that value. Even if ① is right, ② needs a track record of Cardano DeFi actually being harder to hack, and Cardano DeFi is small (about $90 million of TVL, per Bryan), so there is little comparable record either way.</p>
+<p>His wording still holds because he is not saying “Cardano DeFi is safe” but “Cardano has the tools to prove safety” (formal methods, verification tooling such as Blaster). Having tools without competitive products built with them is his own next sentence, which is why he welcomes the gaps list.</p>
+<p>One way to tell from outside: compare exploit counts and losses per unit of TVL across chains over the same period. Apart from Phil's “twelve months versus five years” remark about Ethereum, no comparable figure appears in this session.</p>
+</div>
+</details>
+
+
+<h2 id="en-devskills">3. Cardano Dev Skills: current Cardano for AI agents</h2>
+<p class="deck">Plug a Cardano knowledge base into Claude or Codex. Auto-refreshed every Monday. Why skills rather than MCP.</p>
+
+<p>Giovanni describes Cardano Dev Skills as born “a couple of months ago from an idea of a community member”: add it to a coding agent such as Claude or Codex as a plugin or knowledge base, and <strong>the agent can access the latest Cardano documentation on the spot</strong>. The aim: to “increase 10X or 20X the quality of the work, the answers, and the coding”. <span class="badge">added</span> A “skill” is a bundle of instructions and reference documents handed to a coding agent. The repository lives in the cardano-foundation organisation on GitHub; its README describes it as a Claude Code plugin or Codex skill set with bundled docs auto-refreshed weekly from upstream.</p>
+
+<div class="term">
+<p class="term-name">Stale answers <small>the first problem Giovanni names</small></p>
+<p>A model is trained on data frozen at a point in time. One trained on 2025 code does not know how things work after a 2026 hard fork and returns code that “works but not so much” or not at all. Cardano Dev Skills <strong>refreshes its knowledge base automatically every Monday morning</strong> and instructs the agent to check periodically for a newer version, so that, for example, transaction-building code has a much higher chance of “working at the first shot”, Giovanni says.</p>
+</div>
+
+<p>Uses he lists: ① knowledge (what CIP-8, CIP-30 or UTXO are, explained from the original documents, ELI5 on request); ② off-chain code (hand it an Aiken or Plutus contract and it writes the transaction-building stub in Java, Go or TypeScript libraries); ③ tasks such as a dashboard on the Blockfrost API. For fun he “vibe coded” a Cardano marketplace, Aiken code to front end, and “literally wrote zero lines of code”.</p>
+
+<p><strong>Why skills and not MCP.</strong> A partner from Solana told him “they have a knowledge base, an MCP server” (“Burn”, he says); he began building an MCP server, Phil told him “don't use MCP servers”, and the workaround became the current format. MCP “is not made to share knowledge but to execute stuff remotely” and can return partial answers that confuse the agent, in Giovanni's account. <span class="badge">added</span> MCP (Model Context Protocol) is a standard for connecting AI agents to external tools and data.</p>
+
+<p>Contributors he names: Bora (education team, who “found a ton of bugs into my sloppy code”), Michele of Harmonic Labs (Pebble), the Scalus team, Robertino of IOG, Masumi (“not a surprise that they are the first one to contribute”), and TxPipe's Tx3. With Robertino's project there is “a tiny overlap” and “a lot of complementary work”: Robertino builds something “extremely opinionated”, Dev Skills supplies the generic documentation.</p>
+
+<p>Bora offers a single yardstick: <strong>“Does this make it cheaper for me to acquire a new developer who has never touched the chain before?”</strong> If yes, it is probably a good direction; if not, perhaps not a priority. A new developer “starts from floor 80, not from the entrance”; this does not remove the need for developers who understand what happens under the hood, but people can get going and learn what they need as they build.</p>
+
+<p>Contribution rules are in the README: not a place for DApp-specific or product content; PRs about “how to use DEX X, Y, Z or how to make money on Cardano” are rejected automatically; and contributors are told to use their AI to interact with the repository. Phil later says the skill “has gotten much, much better”, its one downside being “context rot” from AI-written docs, fixable by hand-writing them. Gamechanger offers to contribute its intent-based scripting language, GCScript DSL.</p>
+
+
+<h2 id="en-audit">4. The audit's conclusion: 97 pages and “11.4 million”</h2>
+<p class="deck">A small inflow halves yields. Eric says everything needs work, and names core DeFi first.</p>
+
+<p>Christina asks for “the plain English conclusion” for those who did not read “all 97 freaking pages”. <span class="badge">added</span> Four days earlier, on the <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/">2026-09-06 Dose of Alpha</a>, Eric put the internal audit at “77 something pages”. Both are spoken figures from the operator; whether the document grew or one number is a slip is not known. Both are recorded.</p>
+
+<div class="term">
+<p class="term-name">Yield compression <small>the name Bryan says the team is “coining”</small></p>
+<p>Bryan Colligan's “most interesting stat” is <strong>11.4 million</strong>, a figure by Krill and Charlotte on the team: <strong>if you brought $11.4 million of TVL to Cardano, all the APRs across all the protocols would be cut in half</strong>. Yield capacity is “very, very limited”, so increasing the capacity to earn yield across protocols becomes a focus. <span class="badge">added</span> TVL is total value deposited. DeFi yields are typically interest paid by borrowers shared among depositors, so if depositors grow while borrowers do not, each share thins. “How much inflow halves it” puts that sensitivity into one number.</p>
+</div>
+
+<p>Christina asks which three to five gaps matter most among wallets, bridging, executor standards and vault standards. Eric first returns “For Cardano or for us?”, then: <strong>“fundamentally, Cardano needs significant improvement on all of these.”</strong> Forced to choose, core DeFi protocols, so that strategies good enough to hit the TVL goal can be designed. But TVL is “potential energy”; activation takes vault standards, tooling that lets everyone run their own business, and “significant UX improvements”. Using multisigs on chain “is a pain compared to what exists elsewhere”, and even Gnosis “isn't good enough for the traditional banking world”, yet “we're so far behind where Gnosis is”.</p>
+
+<p>When Christina frames the gaps as “getting outside capital to Cardano” (wallets, bridging) versus “making capital productive once it gets there” (concentrated liquidity, vaults, incentive attribution), Eric agrees and describes the audit's purpose as showing “how far behind we are compared to other ecosystems”, as unbiased as possible. The three phases: “phase one is just figuring out where we're at”, phase two “get to where we need to be”, phase three “TVL go up, apps coming out, tokens launching”. They work closely with the Operating Group and the Cardano Foundation (“helpful and supportive”), and he mentions real-time freezing and monitoring against AI exploits, the absence of distribution partners (talking to Merkl), and asking wallets “can you support EVM wallets?”</p>
+
+<details class="explain">
+<summary>A naive question: is “$11.4 million halves the yield” bad news?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> Our own reading.</p>
+<p>The question is fair. PRIME's goal is more TVL, yet more TVL lowers yields, so success would seem to erode the attraction. Bryan himself presents the number as showing that yield capacity is very limited.</p>
+<p>The operators' framing still holds because the figure assumes today's borrowing demand. As Eric later tells Ken Eric, if market makers such as Jump start using Cardano DeFi inside their existing funding-rate and CEX-DEX strategies, borrowing demand rises and the same TVL thins yields less. That is the logic behind RFP categories such as core DeFi protocols and rehypothecating DEXes.</p>
+<p>One way to tell from outside: track TVL and each protocol's APR together as PRIME proceeds, and see how much APR falls per unit of TVL gained. How the audit computed $11.4 million (which protocols, at what date) is not explained in this session.</p>
+</div>
+</details>
+
+
+<h2 id="en-rfp">5. RFPs: 50 to 1, a hypothetical about diamonds, transparency reports</h2>
+<p class="deck">Categories are not exhaustive. Four applications per one or two grants. “Who, how much, what for” public; contract details not.</p>
+
+<p>Eric prefaces the RFPs: <strong>the categories “are not all inclusive, and we're not promising grants go to every single one of those”</strong>; they are “really big needs right now”. “Treat it like you would Catalyst”: any idea that would grow Cardano's TVL is welcome. He cites a talk with Patrick Tobler of Masumi on the need for agent-specific wallets, and calls himself “a big fan of x402 and agentic payments”.</p>
+
+<div class="term">
+<p class="term-name">50 to 1 <small>the rule Bryan “says out here publicly”</small></p>
+<p><strong>“For every dollar that we spend in grants and incentives, we're looking for $50 in TVL.”</strong> It is his answer when asset issuers ask “what's your real target?”, and it turns the conversation into “how much can you bring, 100 million, 10 million?” On other chains, “there's probably like four applications to like one or two fundable”, and he expects similar. <span class="badge">added</span> Bryan gave the same 50-to-1 and “$5 million or more” on the Dose of Alpha four days earlier (<a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/">section 10 there</a>). Here he adds “unknown unknowns”: make the RFP tight enough to give ideas, broad enough to catch something unexpected with “100 to one TVL shot”.</p>
+</div>
+
+<p>Bryan's example of the rule changing a conversation: an “NFT jewelry” app came inbound, he said it was “not that interesting”, told them about 50 to 1, and the person replied that a major diamond licensing company had an associated fund “that prints 27%, like 30% APR a year” on “multi-billion dollars of diamond processing”. He calls this “the financialization of an industry” and sketches a yield-bearing stable backed by diamond processing feeding lending, perpetuals and risk curation. <strong>“I'm not saying that we're gonna do that deal or not, but hypothetically”, and “if it doesn't, that's okay because we're gonna do 30 more things like that.”</strong> <span class="badge">added</span> The “27%, 30%” is a third party's claim relayed by Bryan, unverified and unnamed. This page records it as an example of a conversation, not as a yield.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="From audit to RFPs to grants to transparency reports: a 97-page audit yields gap categories, RFPs (targeted and open), selection at about four applications per one or two grants under the 50-to-1 rule, milestone-based grants, and transparency reports; with the speakers' own caveats alongside">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="200" height="72" rx="8" class="d-box"/>
+  <text x="120" y="46" class="d-t" text-anchor="middle">① Audit</text>
+  <text x="120" y="66" class="d-s" text-anchor="middle">“97 pages” (“77” on 09-06)</text>
+  <text x="120" y="82" class="d-s" text-anchor="middle">Gap categories, $11.4M</text>
+
+  <line x1="224" y1="56" x2="256" y2="56" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="260" y="20" width="200" height="72" rx="8" class="d-box-accent"/>
+  <text x="360" y="46" class="d-t" text-anchor="middle">② RFPs</text>
+  <text x="360" y="66" class="d-s" text-anchor="middle">Targeted (EVM teams) and open</text>
+  <text x="360" y="82" class="d-s" text-anchor="middle">“Treat it like Catalyst”</text>
+
+  <line x1="464" y1="56" x2="496" y2="56" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="500" y="20" width="160" height="72" rx="8" class="d-box"/>
+  <text x="580" y="46" class="d-t" text-anchor="middle">③ Selection</text>
+  <text x="580" y="66" class="d-s" text-anchor="middle">~4 applications per 1–2</text>
+  <text x="580" y="82" class="d-s" text-anchor="middle">Rule of thumb: 50 to 1</text>
+
+  <line x1="580" y1="96" x2="580" y2="128" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="260" y="132" width="400" height="72" rx="8" class="d-box"/>
+  <text x="460" y="158" class="d-t" text-anchor="middle">④ Grants: milestone-based</text>
+  <text x="460" y="178" class="d-s" text-anchor="middle">“A little bit up front”; no full payment in advance</text>
+  <text x="460" y="194" class="d-s" text-anchor="middle">Expedited for builders already at work</text>
+
+  <line x1="460" y1="208" x2="460" y2="240" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="260" y="244" width="400" height="72" rx="8" class="d-box-accent"/>
+  <text x="460" y="270" class="d-t" text-anchor="middle">⑤ Transparency reports</text>
+  <text x="460" y="290" class="d-s" text-anchor="middle">Public: who, how much, high-level what for</text>
+  <text x="460" y="306" class="d-s" text-anchor="middle">Not public: spec and negotiation details, risky contracts</text>
+
+  <rect x="20" y="132" width="200" height="184" rx="8" class="d-box-warn"/>
+  <text x="120" y="158" class="d-t" text-anchor="middle">Caveats (their words)</text>
+  <text x="120" y="182" class="d-s" text-anchor="middle">Categories not all-inclusive</text>
+  <text x="120" y="202" class="d-s" text-anchor="middle">No promise of a grant per category</text>
+  <text x="120" y="222" class="d-s" text-anchor="middle">“Unknown unknowns”</text>
+  <text x="120" y="242" class="d-s" text-anchor="middle">“Not everything is going to work”</text>
+  <text x="120" y="262" class="d-s" text-anchor="middle">EVM teams “too expensive”</text>
+  <text x="120" y="282" class="d-s" text-anchor="middle">No RFP document shown</text>
+  <text x="120" y="302" class="d-s" text-anchor="middle">Applications “just starting”</text>
+</svg>
+<p class="figcap">Our one-page arrangement of Eric's and Bryan's account. The ①–⑤ order is ours; they say the audit, build and deploy phases “mix together”.</p>
+</div>
+
+<p>On accountability, Christina asks whether people will see which RFPs are selected and why. The answer (Eric, inferred): <strong>“We'll give transparency reports around where the funds are spent”</strong>, listing who gets grants and the high-level terms; everything milestone-based, “not giving full money up front and hoping”; not every detail of specs and negotiations, “probably won't make fundamental contracts” public where there is legal risk, “but the amount of funds and who they go to, and high level for what”.</p>
+
+
+<h2 id="en-grants">6. Distrust of the grant system, and the “North Star”</h2>
+<p class="deck">James: “we've been the reverse of 50 to 1.” Eric: “we provide a North Star, but we're not here to do everybody's work for them.”</p>
+
+<p>Co-host James explains he stayed quiet because the segment is “exceedingly important” for information and transparency, then gives a hard view: <strong>“anybody who's been here a while, we all know the grant system is rife with people who are just taking advantage of the grant system and not really delivering”</strong>, and on 50 to 1, “we've been the reverse of that for the entire time almost I've been here… overwhelmingly, we have not gotten the juice worth the squeeze.” Christina agrees the community has not measured afterwards, and James notes she started a small group to audit open contracts, yet there is no “formal method” for money leaving the treasury. <span class="badge">added</span> Both are individual community views; no measurement of past grants is offered in this session.</p>
+
+<p>James also tempers expectations of AlphaGrowth: wanting to reach the second floor when “there's only steps on the 1st and 15th and 18th step”; infrastructure may have to come along, “an even heavier lift”; people “get very expecty”.</p>
+
+<p>Eric's answer starts with builder feedback: <strong>“they haven't had a North Star”</strong>, building things they think are cool and hoping. When AlphaGrowth gives the specs needed to make strategies work, teams say “that's ambitious, I get it”, then ask how the other side of a strategy (for instance rehypothecation) will exist. “That's on us”: AlphaGrowth goes to the other partners too, and shows family offices and liquid funds how the strategies deploy, and “when that light bulb clicks” the builders get excited. But: <strong>“we're also not here to do everybody's work for them… At that point, we're just hiring dev shops.”</strong> Teams should bring their own vision aligned with the requirements.</p>
+
+
+<h2 id="en-evm">7. EVM teams, market makers, and “anything technically missing?”</h2>
+<p class="deck">Ken Eric's three questions. EVM teams are expensive, Jump needs infrastructure first, and no technical gap was found.</p>
+
+<p>Ken Eric, joining from Norway (the DRep Team Void), notes Cardano is “a little bit of a geeky chain” with a different architecture from EVM chains, and asks ① how to share knowledge with EVM builders and bridge liquidity, and ② whether market makers such as Jump Crypto, Wintermute and Amber Group can be attracted.</p>
+
+<ul>
+  <li><strong>EVM teams.</strong> Eric says targeted RFPs went to “specific teams that we think are qualified and capable”, and some will be brought in, but for many “it's too expensive and exhaustive. The infrastructure is so different.” The goal was quotes from both Cardano-native and EVM teams; the result is “largely Cardano native representation”. Feedback: “they can't do it fast enough” and name brands would be “really, really expensive”.</li>
+  <li><strong>Market makers.</strong> “The juice has to be worth the squeeze.” They want very deep liquidity, composability and trusted testing frameworks. <strong>“Even if we had a billion dollars in TVL right now, they would want better infrastructure, and we won't get the billion dollars in TVL until they have it.”</strong> With $11 million halving yields, Cardano is “not attractive right now for Jump”; he hopes it will be by the end of the programme, by making Cardano DeFi part of their existing CEX-DEX and funding-rate arbitrage strategies (he mentions Hyperliquid). That needs trusted lending markets whose liquidation rails they understand, efficient entry and exit (bridging, on- and off-ramps), a battle-tested framework, “and/or maybe insurance on top of it”.</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-label="The loop that keeps market makers away: without infrastructure TVL does not come, and without TVL infrastructure is not funded. Alongside, the conditions Eric listed for breaking it: trusted lending markets, efficient entry and exit, inclusion in existing strategies, insurance">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head"/>
+    </marker>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <text x="170" y="24" class="d-t" text-anchor="middle">The loop as Eric described it</text>
+  <rect x="30" y="44" width="280" height="56" rx="8" class="d-box-warn"/>
+  <text x="170" y="68" class="d-s" text-anchor="middle">Infrastructure falls short</text>
+  <text x="170" y="88" class="d-s" text-anchor="middle">→ firms like Jump stay away</text>
+  <rect x="30" y="150" width="280" height="56" rx="8" class="d-box-warn"/>
+  <text x="170" y="174" class="d-s" text-anchor="middle">TVL stays small (about $90M today)</text>
+  <text x="170" y="194" class="d-s" text-anchor="middle">→ “even a billion wouldn't be enough”</text>
+  <line x1="260" y1="104" x2="260" y2="144" class="d-line" marker-end="url(#e2)"/>
+  <line x1="80" y1="146" x2="80" y2="106" class="d-line" marker-end="url(#e2)"/>
+
+  <line x1="330" y1="125" x2="380" y2="125" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <text x="520" y="24" class="d-t" text-anchor="middle">What breaks it (Eric's list)</text>
+  <rect x="390" y="44" width="270" height="36" rx="7" class="d-box"/>
+  <text x="525" y="68" class="d-s" text-anchor="middle">Trusted lending, clear liquidation rails</text>
+  <rect x="390" y="88" width="270" height="36" rx="7" class="d-box"/>
+  <text x="525" y="112" class="d-s" text-anchor="middle">Efficient entry and exit: bridging, on-ramps</text>
+  <rect x="390" y="132" width="270" height="36" rx="7" class="d-box"/>
+  <text x="525" y="156" class="d-s" text-anchor="middle">Cardano inside existing arbitrage strategies</text>
+  <rect x="390" y="176" width="270" height="36" rx="7" class="d-box-accent"/>
+  <text x="525" y="200" class="d-s" text-anchor="middle">A battle-tested framework, or insurance on top</text>
+
+  <rect x="30" y="222" width="630" height="24" rx="6" class="d-box-plain"/>
+  <text x="345" y="239" class="d-s" text-anchor="middle">Eric ends: “I don't think we're gonna get to where we could get the Jump Capitals of the world integrated”</text>
+</svg>
+<p class="figcap">Our drawing of Eric's answers to Ken Eric on EVM teams and market makers. The loop is our arrangement.</p>
+</div>
+
+<p>Ken Eric's last question: with “the god key” to hard-fork Cardano, what would they change technically? Eric: <strong>“I don't know for sure. I don't think so. I think conceptually everything works, and all of the infrastructure that would be great can be built”</strong>, adding “I could be wrong here”; people need to reframe how things have been built “for and by EVM”, which will take venture and ecosystem-fund money. Bryan adds that “the key here is coordination”: without nailing bridging to “EVM land”, Cardano misses “hundreds, potentially thousands of new assets”; on core tech “we didn't spot anything”; and “nobody wants to be first, so it's kind of like a Spider-Man game where everybody's pointing at everybody else”.</p>
+
+
+<h2 id="en-og">8. The Operating Group, competitive bidding, “competence and results”</h2>
+<p class="deck">Operator and overseer in one room. Phil calls it “the first competitive bidding system” and prefers expert committees to votes.</p>
+
+<p>Asked by James how it has been working with Christina, Eric says “Christina's awesome, the whole operating group has been great”, and that yesterday she told them <strong>they need to do better at meeting minutes and documentation</strong>; he is “in the weeds” with builders and architecture, so “creating these sources of truth and paper trails so that we can provide the accountability that you guys, the community, deserve is imperative”. Christina says questions and constructive criticism “are taken the same”. <span class="badge">added</span> Operator and overseer assessing each other; no third-party assessment appears in this session.</p>
+
+<p>Phil calls the technical audit “very impressive”: seeing “executor standard” among the RFP items, as a Cardano developer, is “exactly something that is a pain point” when hired to build apps, because “we have to build everything from the ground up, and then nothing is interoperable by default”. “If you want to see a display of competence and results… that RFP is a really good place to start looking.” James asks him to say “competence and results” again, “because this is something that I think has been very lacking on our side”.</p>
+
+<div class="term">
+<p class="term-name">Competitive bidding <small>Phil's phrase</small></p>
+<p>“I think people have been begging for forever”, Phil says: until now each team proposed individually and the choice was “either this or nothing”. <strong>“Now, for the first time, we have a competitive bidding system.”</strong> Gaps are identified and Cardano has “dozens of competent teams”; he credits competition for the pace of Dingo and the alternative nodes and for the language ecosystem. He also qualifies it: a vote-based RFP tends to pick the cheaper of two identical proposals, whereas <strong>an expert-committee RFP</strong> weighs quality and track record, and he hopes other grant providers follow the template. <span class="badge">added</span> Who judges PRIME's proposals (AlphaGrowth, the Operating Group, or both) is not made explicit in this session.</p>
+</div>
+
+<p>James sees a chance to “level up our entire process”, including funding that does not come from the treasury. Near the end he praises a DRep named Dave (whose surname occupies three minutes of banter) for “a masterclass” in coordinating DReps during a proposal's five-epoch voting period.</p>
+
+
+<h2 id="en-rest">9. After the guests: OpenZeppelin, Pragma, node versions</h2>
+<p class="deck">Thirty minutes after AlphaGrowth leaves: a governance action debated, Cardano Ignite accepted, node 11.1 and 11.2.</p>
+
+<ul>
+  <li><strong>The OpenZeppelin governance action.</strong> Christina mentions a new action “very similar to one we approved for the developer experience with Robertino”, and that her partner (Chris) was among the first to vote no: “we already voted for one of these.” Ken Eric says that, amount and content aside, it is “one of the best” in how it is written against the Constitution, and describes OpenZeppelin as the “de facto place” for EVM smart-contract code since about 2014, supported by Ethereum Foundation grants, with battle-tested libraries. Beatrice objects: <strong>“they're asking for about 11 million… what are the costs of maintaining this… suddenly we're paying twice for the same thing, the same trap we've been doing for the past few years.”</strong> Ken Eric adds that it includes a security team watching contracts weekly for twelve months. <span class="badge">added</span> The unit (presumably ADA), the proposal's content and the vote's status were not verified here; this is the participants' summary. Robertino Martinez's (IOG) Developer Experience Initiative, 3.6 million ADA, passed in the April–May 2026 vote.</li>
+  <li><strong>Cardano Ignite joins Pragma.</strong> Christina says “officially, for anybody still listening” that Robertino's project Cardano Ignite has been accepted as a Pragma project and is onboarding. <span class="badge">added</span> Pragma is an open-source non-profit founded by the Cardano Foundation, Blink Labs, dcSpark, Sundae Labs and TxPipe.</li>
+  <li><strong>Node versions.</strong> Chad offers “alpha from technical steering”: 11.1 is mainnet-ready, 11.2 is on the way. Serg adds: 11.1 “imminent”, removing the legacy tracing system; 11.2 “in the next few weeks”, not expected to survive the hard fork but enabling early Dijkstra testing; a Dijkstra testnet without Leios running alongside the Musashi testnet that tests Leios. <span class="badge">added</span> cardano-node 11.1.1 was published over the weekend ending 6 September; Serg's account reflects the previous day's meeting. The published roadmap puts Dijkstra's enactment at 5 December 2026 to 4 January 2027 with “moderate confidence” and 24 February to 26 March 2027 with “high confidence”. Ken Eric's “I almost got my head chopped off for saying we might not hard fork by Q1… apparently we're gonna do it much earlier” and Christina's “this doesn't sound like everything's wrapping up quite yet” after the Leios and Peras progress review are both personal impressions.</li>
+  <li><strong>Banter.</strong> Early on, Ryan describes AI agents running “auto research” over a governance incentives simulator and a trading engine chaining eight DApps in one transaction on preprod; a governance pilot is discussed (“asking to be funded to come up with a plan is always a tough sell”; “it's okay if we get it wrong”); Chris put out 70 pull requests in a day. At the end, DC Dog and Mustafa from Zimbabwe recommend The Book of Five Rings, which becomes “homework for next week”; Christina says she asked Charles Hoskinson on Discord about naming the upgrade Musashi.</li>
+</ul>
+
+
+<h2 id="en-overall">10. How it fits together</h2>
+<p class="deck">Developers, capital, security: three angles on one question, “why build on Cardano now?”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="Three angles in this session: the developer side (Cardano Dev Skills, Bora's KPI), the capital side (AlphaGrowth's audit and RFPs, 50 to 1) and the security side (Phil's claim); below, the shared question and what was not provided">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="20" y="20" width="200" height="150" rx="8" class="d-box"/>
+  <text x="120" y="46" class="d-t" text-anchor="middle">Developers</text>
+  <text x="120" y="70" class="d-s" text-anchor="middle">Cardano Dev Skills</text>
+  <text x="120" y="90" class="d-s" text-anchor="middle">Current docs to agents weekly</text>
+  <text x="120" y="110" class="d-s" text-anchor="middle">“Start from floor 80”</text>
+  <text x="120" y="130" class="d-s" text-anchor="middle">KPI: cost to acquire a developer</text>
+  <text x="120" y="150" class="d-s" text-anchor="middle">— Giovanni, Bora</text>
+
+  <rect x="240" y="20" width="200" height="150" rx="8" class="d-box-accent"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">Capital</text>
+  <text x="340" y="70" class="d-s" text-anchor="middle">PRIME audit and RFPs</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">$11.4M halves yields</text>
+  <text x="340" y="110" class="d-s" text-anchor="middle">$50 of TVL per $1 of grants</text>
+  <text x="340" y="130" class="d-s" text-anchor="middle">Milestones, transparency reports</text>
+  <text x="340" y="150" class="d-s" text-anchor="middle">— Eric, Bryan (operators)</text>
+
+  <rect x="460" y="20" width="200" height="150" rx="8" class="d-box"/>
+  <text x="560" y="46" class="d-t" text-anchor="middle">Security</text>
+  <text x="560" y="70" class="d-s" text-anchor="middle">AI made attacks easier</text>
+  <text x="560" y="90" class="d-s" text-anchor="middle">Security's market value rose</text>
+  <text x="560" y="110" class="d-s" text-anchor="middle">Formal-methods tools exist</text>
+  <text x="560" y="130" class="d-s" text-anchor="middle">No competitive DeFi yet</text>
+  <text x="560" y="150" class="d-s" text-anchor="middle">— Phil (personal view)</text>
+
+  <line x1="120" y1="174" x2="120" y2="206" class="d-line-accent" marker-end="url(#e4)"/>
+  <line x1="340" y1="174" x2="340" y2="206" class="d-line-accent" marker-end="url(#e4)"/>
+  <line x1="560" y1="174" x2="560" y2="206" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="20" y="210" width="640" height="48" rx="8" class="d-box-warn"/>
+  <text x="340" y="232" class="d-t" text-anchor="middle">The shared question: “What are we doing here?” (an unnamed participant)</text>
+  <text x="340" y="250" class="d-s" text-anchor="middle">All three answers say “now is Cardano's moment”, each for a different reason</text>
+
+  <rect x="20" y="272" width="640" height="46" rx="8" class="d-box-plain"/>
+  <text x="340" y="292" class="d-s" text-anchor="middle">Not provided in this session: the RFP document, application counts, how $11.4M was computed,</text>
+  <text x="340" y="310" class="d-s" text-anchor="middle">comparative figures behind the security claim, the OpenZeppelin proposal's content</text>
+</svg>
+<p class="figcap">The three-angle split is ours. On the show, Dev Skills and AlphaGrowth were separate guest slots, and Phil's claim came as a reply to “why keep going?”; the three did not debate each other directly.</p>
+</div>
+
+
+<h2 id="en-qa">11. From the exchange</h2>
+<p class="deck">Four questions from the host and participants, with the answers.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Christina</span>For those who did not read the 97 pages, what is the audit's plain-English conclusion?</p>
+<p class="qa-a" data-by="Bryan Colligan (inferred)">The most interesting stat is 11.4 million: <strong>that much TVL would cut every protocol's APR in half</strong>. Yield capacity is very limited, and increasing it becomes a focus.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Christina</span>If only three to five of the gaps could be closed, which matter most?</p>
+<p class="qa-a" data-by="Eric Waisanen">“Fundamentally, Cardano needs significant improvement on all of these.” For the TVL goal, <strong>core DeFi protocols</strong>; for activation, vault standards, tooling, UX. Multisigs are “a pain compared to what exists elsewhere”, and even Gnosis is not good enough.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Ken Eric</span>How do you share knowledge with EVM builders? Can you attract market makers like Jump and Wintermute?</p>
+<p class="qa-a" data-by="Eric Waisanen">Targeted RFPs went to EVM teams, but for many it is “too expensive”; applicants will be largely Cardano-native. Market makers <strong>“would want better infrastructure even with a billion in TVL”</strong>: trusted lending markets, efficient entry and exit, insurance first.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">An unnamed participant</span>What are we doing this for? It looks like a lost cause.</p>
+<p class="qa-a" data-by="Christina, Phil">Christina: the show's role, and AlphaGrowth coming every couple of weeks to explain itself in public. Phil: <strong>“the value of security has skyrocketed since the AI boom, and this is a market opportunity.”</strong> Whether the questioner was satisfied cannot be told from the recording.</p>
+</div>
+
+
+<h2 id="en-pending">12. Left unanswered</h2>
+<p class="deck">No documents shown, all figures spoken, applications “just getting started”.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not shown</span>The RFP document itself, the list of categories, deadlines, and who judges.</p>
+<p class="qa-a" data-by="Spoken only">“Not all inclusive”, “treat it like Catalyst”. Who evaluates (AlphaGrowth or the Operating Group) is not made explicit; Phil prefers expert committees, but nobody confirms that PRIME works that way.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unexplained</span>How and when “$11.4 million halves yields” was computed.</p>
+<p class="qa-a" data-by="Conclusion only">Which protocols and which date are not said; whether the public audit shows the method is unknown.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Discrepancy</span>Is the audit 77 or 97 pages?</p>
+<p class="qa-a" data-by="Both from the operators">Eric said “77 something” on 6 September; Christina says “97” here. Growth or a slip, unknown.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No figures</span>How many applications, and the first grants' recipients and timing.</p>
+<p class="qa-a" data-by="“Just getting started”">Only that some builders already at work may be expedited. No date for the first transparency report.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Hypothetical</span>Will a diamond-processing fund (27–30% APR, per a third party) come to Cardano?</p>
+<p class="qa-a" data-by="“Not saying we're gonna do that deal or not”">Bryan's example of how 50 to 1 changes a conversation; no company, source or verification.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unverified</span>The OpenZeppelin governance action's content, unit of the amount, and result.</p>
+<p class="qa-a" data-by="Participants' summary only">“About 11 million”, “similar to the developer experience one”, “a 12-month security team” are participants' words; the proposal was not checked here.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No sources</span>Phil's figures: more Ethereum hacks in twelve months than in five years, hundreds of millions withdrawn monthly, the OpenZeppelin founder's advice.</p>
+<p class="qa-a" data-by="Claims only">All are Phil's statements without cited sources.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is a transcript of an X Space streamed by the community show Cardano Over Coffee (<a href="https://x.com/coc_space">@coc_space</a>) on Thursday 2026-09-10. The host says on air that the Space is recorded, and it is treated here as a public record, but <strong>whether the replay is publicly playable on X has not been verified</strong>, and no URL for the specific recording was received. It will be added to the metadata once confirmed.</p>
+<p><strong>Every speaker is inferred.</strong> The transcript has no speaker labels and no timestamps, so attributions on the transcript pages are contextual and no times are given. The two AlphaGrowth surnames come from the company's own show; the host's surname is left out.</p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken in the recording. <span class="badge">on screen</span> is not used, as this is audio only. <span class="badge">added</span> marks explanations we wrote; they are not in the recording.</p>
+<p><strong>On standpoint.</strong> The two AlphaGrowth speakers operate PRIME and the host Christina sits on its Operating Group; the audit figures, RFP terms and their mutual assessments are recorded as the parties' own. Other participants' statements (the security claim, views on a governance action, node versions) are their own.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — Cardano Over Coffee · <a href="https://x.com/coc_space">X の Cardano Over Coffee</a></span><span class="l-en">Cardano note — Cardano Over Coffee · <a href="https://x.com/coc_space">Cardano Over Coffee on X</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>
