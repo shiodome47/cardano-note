@@ -1,0 +1,686 @@
+# Devs versus Builders
+
+| Time | Subtitle |
+| --- | --- |
+| 0s | Hi, this is Charles Hoskinson broadcasting live from warm and sunny |
+| 5s | Colorado. I was actually just in Wyoming and uh I was just about to say rough and |
+| 10s | rugged Wyoming, but actually I'm back back in the office heading to uh to work |
+| 15s | tomorrow. Uh but I want to make a quick video uh this weekend about something |
+| 19s | that's come up. Midnight is our most responsive, fastest moving, most agile, |
+| 27s | and forward-looking project that we have. Uh, you know, there are things |
+| 31s | that are being done in Midnight at a speed I've never seen in the history of |
+| 36s | software development. Uh, we're building a DeFi kernel. Uh, we're building a |
+| 41s | specialized DeFi language that is secure by construction. Um, to complement it, |
+| 47s | we're we're doing chain abstraction. We have Midnight Passport moving along |
+| 51s | really quickly. Uh, you know, we have Midnight City building the agentic |
+| 55s | Civilization. There's almost 10,000 people floating around. Uh, and it's |
+| 59s | growing by leaps and bounds. We're actually constraining it till we have |
+| 1:02 | the bring your own agent and there's a ton of amazing things that are there. |
+| 1:06 | Uh, you know, recursion is uh coming along quite well. Composition is coming |
+| 1:10 | along quite well. Um, and really we're thinking around the dimensions of how do |
+| 1:14 | you productize a privacy preserving ecosystem and how do you make that |
+| 1:18 | privacy preserving ecosystem become a VPN for finance? You know, you just |
+| 1:24 | click a button and it just works everywhere. And we're already having |
+| 1:28 | conversations about how do these things work with things like Bitcoin DeFi and |
+| 1:33 | lending and all those other things. Awesome. So |
+| 1:38 | what this means is every quarter the Midnight foundation gets together and |
+| 1:42 | they say is the original strategy that we had good or do we need to change and |
+| 1:47 | pivot that strategy to accommodate an evolving roadmap an evolving ecosystem |
+| 1:52 | and an evolving landscape. Uh so recently they announced that they've |
+| 1:57 | pivoted and they've gotten rid of part of the DevRel team and they're moving |
+| 2:01 | towards builders and some people are floating around say, "Oh, how dare you |
+| 2:05 | do that? That's the worst thing in the world. Oh no. Oh no. It's like so bad. |
+| 2:10 | You've gotten rid of all the build the developers and that means Midnight's |
+| 2:14 | dying and the experiment's over." Ah, you know, because everybody just wants |
+| 2:20 | to panic and be shitty about everything. Here's the thing. We focused a lot on |
+| 2:25 | developers with Cardano as did other blockchains and it was a metric people |
+| 2:29 | would track this many developers on the chain and it meant something when a |
+| 2:35 | human being is writing code it meant a lot. There's a person using their brain |
+| 2:41 | to type on a keyboard with a lot of training and experience and they have |
+| 2:46 | chosen to take that very finite resource and apply that very finite resource to |
+| 2:52 | to basically and we got that guy doing that. Not sure why I'm not able to ban |
+| 2:58 | him. Huh. |
+| 3:02 | All right. Well, I can't block him in the chat. Oh well. uh they take that |
+| 3:06 | very finite resource and uh basically they they choose to spend it on |
+| 3:12 | Midnight. Okay, |
+| 3:17 | that's a big deal. But we live in an age where there's vibe |
+| 3:22 | coding and vibe engineering and you can have people who have no technical |
+| 3:27 | knowledge and no experience use these tools to look like a developer. |
+| 3:33 | So it's no longer a scarce and finite resource. It's no longer a resource that |
+| 3:38 | matters much. This is a resource that is infinite in its ability. |
+| 3:45 | And excuse me, I just have to. |
+| 4:02 | Sorry about that. Dog was trying to come in. |
+| 4:07 | It's a resource that's not finite anymore. It's a resource that's |
+| 4:11 | infinite. So if you build DevRel and you create incentives the way we used to do, |
+| 4:16 | winning hackathons, how many lines of code, uh interesting open- source |
+| 4:21 | projects, what'll end up happening is you have a huge amount of people come in |
+| 4:26 | and game the system. They say, "Oh, well uh I built this app. |
+| 4:33 | I mean Grok. I mean Claude |
+| 4:40 | did it, and then what ends up happening is you spend an enormous amount of time |
+| 4:45 | on verification of human authorship. So then you have to go and ask lots of |
+| 4:51 | probing questions and this that and the other and even though they have |
+| 4:54 | something that works and they have something that demonstrates that they've |
+| 4:58 | interfaced with the platform, you now have to go into the well did you cheat |
+| 5:03 | or not? Well, the entire purpose is to attract people to the chain to build |
+| 5:08 | things on the chain. It's not to verify that you understand how Rust works or |
+| 5:14 | TypeScript works or any of these other programming languages work. |
+| 5:19 | And so, you have to pivot in 2026 because these tools are growing |
+| 5:23 | exponentially. They're not slowing down. They're they're speeding up. And if you |
+| 5:28 | chart the next 12 months to 24 months, what's going to happen is these tools |
+| 5:34 | will get so sophisticated that really it's less about are you a developer and |
+| 5:39 | it's now about can you build something valuable? Can you specify something a |
+| 5:45 | vision and can you use the tools that we've provided in the right way to build |
+| 5:50 | a new business experience that you've never seen before that's intrinsically |
+| 5:54 | interesting. A great example is Midnight City. We have a lot of hardcore |
+| 5:59 | professional engineers on Midnight City uh who have built things like Shanghai |
+| 6:04 | and Flint and uh they built the the side chain for Cardano that ran an EVM. So |
+| 6:09 | they're proven engineers and they handwrote code. I mean down to a point |
+| 6:12 | where they're messing with assembly in some cases. These guys are good, but |
+| 6:16 | they're vibe engineering an enormous amount of features and they're able |
+| 6:20 | because they understand the engineering to make those features real, secure, |
+| 6:24 | realistic and deliver them at a pace and cadence that's unheard of and unseen |
+| 6:28 | before. And it's gone from a demo to a persistent world state to an agentic |
+| 6:35 | civilization candidate in six months as a result of that stream. We're building. |
+| 6:40 | And I look at them, I say, how long will it take to get us to a million users and |
+| 6:45 | millions of agents doing interesting things? And people being able to bring |
+| 6:49 | their own intelligence and have that exist across many devices, their cell |
+| 6:53 | phones left on at night, their PlayStation left on at night to create |
+| 6:57 | the largest distributed computer in history and apply it towards living in |
+| 7:01 | the Midnight City world. That's an extraordinary exciting thing |
+| 7:06 | if you really think about it. And so that's an example of vibes with skill to |
+| 7:12 | build something that's new that people have never seen before and get people |
+| 7:16 | very excited about it. So the strategy of Midnight is stuff like that. We want |
+| 7:23 | builders. We want people that take the best tools, the vibe tools, intuition, |
+| 7:29 | community building, marketing, the whole package, and they're capable of putting |
+| 7:34 | it together into a venture that's investable. a venture that Draper or |
+| 7:39 | A16Z or others would get very excited about, want to cut a check for. We're |
+| 7:44 | not really super keen on vanity metrics for the sake of vanity metric. We can go |
+| 7:48 | to you say we have 10,000 developers. Awesome. Great. What are they building? |
+| 7:53 | What are they producing? What will that translate to to the growth of TVL and |
+| 7:58 | the growth of transaction volume and the utilization of the Midnight |
+| 8:02 | capabilities? And if you can't answer that mapping, |
+| 8:06 | it's a vanity metric. |
+| 8:10 | I think people have become pathologically addicted to drama and to |
+| 8:15 | cynicism and they look at every event as this is the event where people die. And |
+| 8:21 | you say contradictory things. You say you have to speed up and be adaptable |
+| 8:26 | and not be addicted to the past and be iconoclastic. You have to tear down the |
+| 8:31 | conceptions and have a vision of the future. But at the same time, every time |
+| 8:36 | you make a decision to achieve the future, chase the future, um it's |
+| 8:41 | obviously the wrong decision because it's not going with best practices in |
+| 8:44 | the past as an indication that you guys are failing. |
+| 8:48 | You can't have it both ways. You can't say be traditional and be liberal. You |
+| 8:53 | have to pick a lane. You have to say either follow the way everybody else has |
+| 8:56 | done it and fail or do it a new way and you could fail or you could do something |
+| 9:03 | that no one's ever seen before and make it work. So we're focused on builders |
+| 9:08 | and by by the way this is not a criticism of the DevRel team we let go. |
+| 9:13 | They're good people and they did a lot of great work and there's a lot of smart |
+| 9:17 | things that they're focused on. And no, this doesn't mean there's no |
+| 9:21 | professional engineers around. There's 168 scientists at Input Output. There's |
+| 9:27 | hundreds of engineers at Input Output and across the broader ecosystem with |
+| 9:32 | PhDs in computer science. They haven't gone away. They're in the orbit. They're |
+| 9:37 | building things. So absolutely we're in a good position if a great builder comes |
+| 9:42 | in and says, I need to write operational semantics for a DSL that's Turing- |
+| 9:48 | incomplete that I want to embed into my game world. We will have the ability not |
+| 9:53 | only tell them how to do that an opinion on the format that they should look like |
+| 9:57 | and how you can test it and work with it. Absolutely. But that's not a |
+| 10:01 | product. That's not commercialization. That's not marketing. That's not |
+| 10:06 | adoption. You can spend the next 10 years writing technical documents, |
+| 10:11 | programming languages, protocols, and it's mental masturbation. |
+| 10:17 | A product has a product market fit. It has a consumer. It has a revenue target. |
+| 10:24 | It has adoption. It has a marketing plan. It has product people. That's a |
+| 10:29 | product. And the people who build products are builders. |
+| 10:34 | Developers help builders, but developers aren't builders themselves. They can |
+| 10:39 | become builders, but then they do more than just write code. They think about, |
+| 10:43 | okay, well, who's the consumer of this code? What makes this good? What's the |
+| 10:48 | standard of it? If you go back and watch all the Steve Jobs keynotes and what made |
+| 10:53 | them so special and so magical was that he would always start with the same |
+| 10:59 | pattern. He'd say, "Okay, we want to build a thin laptop, the MacBook Air." |
+| 11:04 | So, he'd start with the Sony Mac laptop. He said, "This is the best-in-class thin |
+| 11:09 | laptop." And he'd show the dimensions and he'd show the product capabilities. |
+| 11:14 | He said, "Well, if we're going to innovate, we need to do something better |
+| 11:17 | than this." And then he overlaid the MacBook Air on the the Sony and he |
+| 11:22 | showed that the thickest part of the MacBook Air is thinner than the thinnest |
+| 11:27 | part of the Sony Ultrabook that he was competing against. AND YOU SAY, "WOW, |
+| 11:33 | YEAH, THAT'S A thin product. That looks great. That's incredible." That's a |
+| 11:37 | builder who rallied the engineers to figure out |
+| 11:41 | how to do that. figured out the comparables, understood what the |
+| 11:45 | definition of success is, and and put it all together to a point where it it |
+| 11:49 | visually pops. So, what did he do when he came out on |
+| 11:54 | the stage, he was carrying a Manila envelope, |
+| 11:57 | he put it on that little envelope that you see in the office, and nobody knew |
+| 12:01 | what was in it. And so, when he was talking about the MacBook Air, an hour |
+| 12:04 | later, he walks over that envelope, he opens it up and pulls out the MacBook |
+| 12:07 | Air and said, "Oh my god, it's been on stage all along." I think it was the |
+| 12:11 | 2008. I just mind is blown. You say that is amazing. That's showmanship. |
+| 12:18 | That's what builders do. They build a world. They build a narrative. They |
+| 12:23 | build a story. They get people excited about it. So, you need privacy. Why do I |
+| 12:27 | need privacy? For over 30 years, the cryptographers |
+| 12:33 | have been trying to tell everybody privacy, privacy, privacy. Since 1991, |
+| 12:39 | all of you, everyone listening, has had the ability to have private email. |
+| 12:47 | In the last week, be honest. How many of you have sent a PGP encrypted email? How |
+| 12:54 | many of you even know how to send a PGP encrypted email? |
+| 13:01 | You don't. And yes, you can do hyper secure |
+| 13:05 | communication on Signal. And some of you do, but do you do it from a GrapheneOS |
+| 13:10 | phone? |
+| 13:14 | Well, [groaning] no, I do it for my iPhone. Oh, there's a |
+| 13:18 | back door in that. Oh, I do it for my Android. Well, there's a back door in |
+| 13:21 | that. So, do you really care about privacy? |
+| 13:25 | So much so it is the product differentiator and it's the thing that |
+| 13:29 | you wake up every day say I need that and I I will only buy it if it has that. |
+| 13:34 | You say it but your consumer behavior says the exact opposite. |
+| 13:39 | So you have to have more to make that work and privacy is under |
+| 13:46 | the belly of it and it lives in it but it's not the core differentiator. If |
+| 13:51 | privacy is the core differentiator, it's not worth anything. |
+| 13:56 | It has to be something more. So abstraction, smart compliance, agentic |
+| 14:02 | workflows. If you put the privacy in the agent, the |
+| 14:05 | agent chooses the private thing by default. You're not buying or consuming |
+| 14:09 | that product for the privacy. You're buying consuming it for the simplicity, |
+| 14:13 | the universality, and the ease that agents bring to you. Hey agent, find me |
+| 14:20 | a great hat to buy. Hey agent, I'm going to a wedding next week. I need something |
+| 14:23 | to wear. Find me something to wear. Hey agent, I'm going to Tahiti. Where should |
+| 14:29 | I stay? What should I do? The agent goes boop boop boop. Comes back to you and |
+| 14:34 | tells you that. It would be nice if that's running with your agent and it's |
+| 14:39 | private and it doesn't get leaked. But the consumer is not going to make the |
+| 14:43 | decision that I'm only going to choose the private agent. The private agent has |
+| 14:48 | to be easier, cheaper, simpler, and better than the non-private agent. And |
+| 14:52 | if it isn't, they're always going to choose the non-private agent. That is |
+| 14:56 | what we've learned for 30 years. This is what builders do. Developers say, "I |
+| 15:03 | have to have privacy, and here's this highly complex thing that you have to |
+| 15:08 | do. It's only 28 steps." Developers are how we ended up with Daedalus for years |
+| 15:13 | and years and years and years, taking days to sync. |
+| 15:17 | They just can't conceive and get over the hump of usability, product market |
+| 15:24 | fit, the story, the narrative. They can't get to that MacBook Air in the |
+| 15:29 | envelope and that magic of pulling it out. Builders can. That's what they do. |
+| 15:34 | And that's what Midnight wants. We want builders. We want people who have that |
+| 15:39 | holistic knowledge. And you bring it all together. The tools of the day. |
+| 15:44 | Absolutely. AI. It's a tool. It doesn't think for you. It shouldn't because |
+| 15:50 | it'll think wrong. It amplifies your thinking. It's a bicycle for the mind. |
+| 15:55 | It allows you to go faster than you've ever gone before. Challenge yourself in |
+| 16:00 | ways that you've never challenged before. Every time we talk about a |
+| 16:04 | sprint for Midnight City, we have a rolling business model canvas. We have |
+| 16:08 | rolling customer personas. We have a rolling premortem to see where the |
+| 16:12 | product will die. That's why we're able to so effectively |
+| 16:16 | tune things. But we can only do that because every time we have a meeting, |
+| 16:20 | these things we have raw transcripts. We take them, format them, and put them |
+| 16:24 | into AI. And the AI can then understand the context of what we're trying to |
+| 16:29 | achieve. And it applies the deepest thinking it can to help us navigate it. |
+| 16:34 | So, we're speeding up. And as these AI tools get more advanced and our harness |
+| 16:37 | gets more advanced, the features get more interesting and intricate and the |
+| 16:41 | strategy gets more interesting and intricate. humans are in the loop. We're |
+| 16:45 | still the builders. Jem and Nico and myself and others. |
+| 16:51 | So, that type of team is what we're looking for because if I have that team, |
+| 16:54 | 10 people can build a $10 billion venture. And I want 10 of those on |
+| 17:00 | Midnight in the next 24 36 months. I'm not going to get there with look at our |
+| 17:06 | documentation, look at our hackathons, look at our |
+| 17:09 | developer count. Just not. I have one $10 billion |
+| 17:14 | venture. They themselves will attract 10,000 developers into the ecosystem. |
+| 17:20 | That's just the way it is. So, I figured I'd make a video about it. |
+| 17:26 | I expect things in a different way than the Midnight Foundation does, and that's |
+| 17:31 | okay. Uh, and Shielded does. I tell you the direct thing and I really dig into |
+| 17:36 | it into its core and the direct thing is that this is a brutally competitive |
+| 17:42 | space and you don't die but you lose your turn and you have to spend a lot of |
+| 17:47 | time, effort and money to get back in line for your next turn. Uh, and having |
+| 17:52 | watched Ethereum go way up and go down and up and having watched Cardano go way |
+| 17:56 | up and go down and now slowly going back up and having watched all these things |
+| 18:00 | for 15 years, my critics like to say that I'm [ \_\_ ] |
+| 18:05 | I don't know anything. I I'm either too principled or not principled enough. I'm |
+| 18:09 | either hyper competent but bad or incompetent and unethical. They just say |
+| 18:14 | everything and I'm incapable of learning. |
+| 18:18 | And the reality is, every time we've had a failure, every time we've had a |
+| 18:22 | misstep, every time we haven't done something right, we talk about it. We |
+| 18:27 | admit it. We're not tonedeaf and blind. And we say, "How do we win in the |
+| 18:33 | future? Who's going to win in the future? |
+| 18:37 | What do we need to do differently? Where are anomalies occurring?" If |
+| 18:42 | Anthropic can rewrite bun in 11 days from zig to rust |
+| 18:50 | then the code is no longer the moat got to move on. If you can with Moltbook |
+| 18:59 | gain millions of users in 24 hours and these agentic harnesses uh like OpenClaw |
+| 19:05 | and Hermes are the fastest growing open source projects and everybody's |
+| 19:09 | building them. They have Crockbot. Now Muse just came out from Meta. That's the |
+| 19:13 | future. Okay. So, how do you win in a world that looks like that? What does |
+| 19:18 | your technology need to look like? How do you pivot to make that happen? |
+| 19:24 | What do we have that brings something new and interesting to the table? And |
+| 19:28 | how do we need to adapt and change? And me personally, I have to adapt and |
+| 19:32 | change and do work. I've written more code this year than the last 10 years. |
+| 19:38 | It's not easy stuff like vibe coding uh a website or something like that. It's |
+| 19:44 | hardcore engineering where I've thought a lot about language design. Uh just the |
+| 19:49 | other day I wrote a 59page specification for the requirements for a |
+| 19:54 | private proofofstake protocol for Midnight for the future consensus |
+| 19:59 | protocol for Midnight resurrecting an old idea that we had from 2018 called |
+| 20:05 | Ouroboros Crypsinous and I already started sharing this |
+| 20:08 | document with PhD researchers and we're going back and forth now about these |
+| 20:13 | requirements what the team needs to look like how we run it to ARC how we run it |
+| 20:16 | parallel with the babe launch that we're planning next year for Midnight so we |
+| 20:21 | can get it into the pipeline. Concurrently, I'm also taking a look at |
+| 20:25 | what Justin Thaler and these other guys did with uh their lattice-based folding |
+| 20:29 | upgrade to Jolt. We knew it was coming. We had backward engineered a few things |
+| 20:34 | that they had done and put it into Nightstream, but we have to do a diff |
+| 20:37 | between the two and see if these two are compatible or competitors where they |
+| 20:42 | exist. And in parallel also writing Morardi, a financial DSL that |
+| 20:46 | resurrected Marlowe, an old idea we had. And as I speak, uh, the computer is |
+| 20:51 | crunching K semantics for it right now. Uh, then you look at Lucas and and |
+| 20:56 | Sebastian over at the Midnight Foundation and they have upgraded the |
+| 21:00 | K framework to have a Rust backend and it窶冱 much faster, much more concise, |
+| 21:04 | much more powerful than anything Runtime Verification created. So they can get that |
+| 21:08 | integrated in. So we just reached out to Runtime Verification, said hey we got to do that. At the |
+| 21:13 | same time we're also talking about how do we actually get |
+| 21:19 | Leios out on time and the team is working 24/7 and |
+| 21:24 | they're putting everything in on the Cardano side of the house same time |
+| 21:28 | working with AlphaGrowth same time we sent people over to Silicon Valley have |
+| 21:33 | dinner with Andy Tang and uh the Draper folks and talk about how we actually get |
+| 21:37 | this ball on the roll ball rolling and for investments into |
+| 21:42 | things and what builders need to be and how do we use their cohorts and get our |
+| 21:46 | people through. We might even send the Midnight City team through the the |
+| 21:49 | Draper Dragons program. You know, it's just something to talk about. Actually |
+| 21:53 | going to go do a workshop in Miami at the end of this week. Flying down to |
+| 21:59 | Dallas, go see my glowing plants. Busy guy, lot going on. But all these things |
+| 22:04 | are directional. Every one of these things is a star and a constellation |
+| 22:09 | that lights up the sky. And what it does is it gives us a path to mass adoption |
+| 22:16 | if they all come together the right way and make our products used by millions |
+| 22:22 | and change the lives of millions of people because they're universal, |
+| 22:26 | they're simple, they're affordable, and they're very, very easy to adopt and |
+| 22:31 | integrate in the workflows you have. works on your PlayStation, works on your |
+| 22:37 | phone, works on your laptop, one-click install. That's what we need. What I |
+| 22:43 | bring to the table is we make sure it's private. We make sure it's secure. We |
+| 22:46 | defend it against the vibe code Armageddon of security issues that uh we |
+| 22:51 | have and everybody's being stung right now, no matter who you are. Uh and yeah, |
+| 22:57 | we lose a cycle, we come back, we try the next cycle. |
+| 23:04 | Midnight is the hardest product we've ever built |
+| 23:08 | because it has to be everything to everyone and you can't be everything to |
+| 23:12 | everyone. Uh but it's the most essential product we've ever built. We're right at |
+| 23:17 | a precipice whereas if we lose our privacy, we lose it forever. We're never |
+| 23:21 | getting it back and we're going to live in a dystopian hellscape. |
+| 23:27 | We all know it. I can't just by telling people the problem get people to take it |
+| 23:33 | seriously and actually change consumer behavior any more so than any of these |
+| 23:38 | AI alignment people can go and by telling you hey AI is getting super |
+| 23:43 | scary uh let's uh let's go and uh you know slow down AI progress good luck |
+| 23:50 | because at the end of the day people are making money with the system the way it |
+| 23:54 | is [snorts] so the only way you can bring principles in |
+| 24:00 | is if you make the principles better, faster, and cheaper than the bad stuff. |
+| 24:05 | You want to get rid of coal, make solar with batteries cheaper than coal. No |
+| 24:11 | one's going to move from coal to solar and batteries out of the goodness of |
+| 24:14 | their heart. They move it because it's a business decision. That's what you do. |
+| 24:19 | And analogously, if you want privacy and self- sovereignty and self-custody to be |
+| 24:24 | the standard, don't complain about it like that |
+| 24:28 | annoying pious ass hat, you know, and lecturing you. You just build a product |
+| 24:34 | where that's the standard and it's better, faster, and cheaper than the |
+| 24:39 | competitors that exist. You get there with builders who have a vision. They're |
+| 24:44 | laser focused. They're pragmatic. They understand staging and pacing and they |
+| 24:49 | attract an ecosystem of people around them. Developers, marketers, product |
+| 24:54 | managers, lawyers, accountants, everybody. The shared contributo |
+| 24:57 | services and the direct execution of the idea. But builders get you everywhere. |
+| 25:02 | You need builders. That's what made the iPhone the iPhone. It wasn't Steve Jobs |
+| 25:07 | holding it. It was the thousand builders behind it who built apps on it that made |
+| 25:12 | the iPhone so much more than a phone and changed our reality. And that's what we |
+| 25:18 | got to do with Midnight. That's the pivot. The technology is rapidly |
+| 25:23 | maturing and this has been a hell of a year. Got the mainnet out, got it into a |
+| 25:28 | federated state. We built up the night force. We built up the Discord. We we |
+| 25:33 | put all these amazing advancements into it. We we've cleaned up a huge amount of |
+| 25:37 | issues. We've aligned the road map. We've got our identity thing kind of |
+| 25:40 | figured out. Now we're getting the DeFi kernel plugged in. Now we're getting the |
+| 25:44 | consensus side plugged in. We're putting all these amazing pieces together that |
+| 25:48 | are relevant in a vibe engineered 2026, which is radically different than when |
+| 25:52 | we first started planning Midnight. It's a different world out there. That's our |
+| 25:57 | job. Your job as the builder is to say, "How do I make it simple, easy, mass |
+| 26:03 | adoption, low cost, low friction, and it works where the users are at, on their |
+| 26:09 | phones, on their platforms, where they're at, not where we want them to |
+| 26:12 | be. If you do that, you've changed the world, and you've made something that's |
+| 26:17 | useful for billions of people." So, that's what we're doing with Midnight. |
+| 26:21 | And that's how we're pursuing it with Midnight. And as I said, we've made |
+| 26:24 | enormous progress. is the fastest moving thing we've ever done. Every week is a |
+| 26:29 | new challenge. Every week's a new thing. We don't complain about it. We just put |
+| 26:33 | our nose to the grindstoneone. We get it done and there's always something to |
+| 26:36 | come out. It's frustrating when a bridge between |
+| 26:40 | Cardano and m and Binance gets hacked. Bunch of money gets stolen. Someone |
+| 26:45 | dumps it. Great. Got to move on. That was |
+| 26:51 | yesterday. What are we doing today? It's frustrating when you lose a core |
+| 26:56 | partner because of SecondFi and they just bow out and disappear. Great. Got |
+| 27:01 | to move on. What are you doing today? It's frustrating when you have to pivot |
+| 27:05 | and you have to conserve resources and spend it in a different area and you |
+| 27:08 | lose your DevRel. It窶冱 not a big issue when you really |
+| 27:12 | think about the broader scheme of things because the end of the day is let's get |
+| 27:16 | some great builders and great projects in and build those things up. |
+| 27:21 | And you know, if we get it done right, Midnight's going to fix it, Midnight's |
+| 27:26 | going to change everything. And it really is going to change the ecosystem |
+| 27:30 | as a whole. Uh, it's pretty special. And for people |
+| 27:35 | in Cardano land, get your heads out of your ass. Midnight is built on Cardano. |
+| 27:41 | If Midnight fixes it, Cardano made that possible. |
+| 27:46 | Isn't the purpose of Cardano to be an ecosystem of projects that change the |
+| 27:51 | world? Cardano does nothing without the projects built on it. It is a smart |
+| 27:58 | contract system to move ADA around. Where Cardano gets interesting is when |
+| 28:04 | people take the smart contracts and build projects |
+| 28:09 | and those projects have customers and users. You never had a problem with any |
+| 28:15 | of the other apps. You didn't have a problem with SNEK. You didn't have a |
+| 28:18 | problem with DexHunter. You didn't have a problem with SundaeSwap. You didn't have a |
+| 28:23 | problem with Strike. You didn't have a problem with any other |
+| 28:25 | application. And Midnight being the largest, most |
+| 28:29 | prominent, most meaningful because of its complexity, scale, and investment. |
+| 28:33 | Somehow you do. |
+| 28:37 | What are you saying to the people who are building in the Midnight ecosystem |
+| 28:41 | if you behave and act this way? You're basically saying you're not welcome |
+| 28:46 | here. What does that achieve? How does that |
+| 28:52 | help Cardano grow? You're only allowed to build on Cardano, but don't get too |
+| 28:56 | big. Don't get too successful. Don't get too sexy. Don't don't be the golden |
+| 29:02 | child. No, no, no. You have to stay and know your place. |
+| 29:10 | If Cardano is going to succeed, Cardano needs to embrace the projects that make |
+| 29:16 | it succeed. Just like Midnight has to meet the users |
+| 29:20 | where they're at, not where we want them to be. And we have to embrace |
+| 29:23 | simplicity, universality, and lowcost operation. |
+| 29:30 | This is a very pivotal thing. You can't fix it with white papers. You can't fix |
+| 29:35 | it with technology. You ha you can't fix a broken culture with more engineering |
+| 29:41 | and more committees and workshops and these types of things. It's just very |
+| 29:44 | fundamental. Either you have a welcoming environment where people are encouraged |
+| 29:49 | to come in and build on a platform or you don't. And if you don't have a |
+| 29:55 | welcoming environment, they leave. And you can't differentiate Midnight |
+| 30:01 | from Sunday or anybody else. So cut it out. Absolutely cut it out. I would like |
+| 30:08 | also the Cardano Foundation start tweeting about Midnight. |
+| 30:15 | Start talking about it. It's your biggest project on your blockchain. |
+| 30:23 | Don't you for one moment say, "Well, that's Charles's thing and we just |
+| 30:28 | ignore it." Solana every big project they have their |
+| 30:33 | foundation and their founding team talk about |
+| 30:37 | Ethereum it's the same can you do us the same favor we're carrying a lot of water |
+| 30:44 | so we'll be watching and the community will be watching let's see your tweets |
+| 30:49 | other things apparently the only time you talk about Midnight and Dreas tweets |
+| 30:54 | about how bad it is for the DevRel team to be let go they didn't seriously care |
+| 30:59 | about anything about mid night want to use Midnight or talk about Midnight once |
+| 31:06 | when good things were happening partnerships were being made did you |
+| 31:09 | retweet the Google relationship |
+| 31:14 | but when something bad has happened well you're there to be there |
+| 31:20 | what environment and culture are you creating |
+| 31:24 | pivots work in all ways are we actually committed to make this |
+| 31:29 | thing successful |
+| 31:32 | Are we actually committed to make this thing work or not? I am. I don't need to |
+| 31:39 | be here. I could retire and live on my ranch. I'm here because I choose to be |
+| 31:45 | here. I'm here because I actually think work is unfinished and we need to get it |
+| 31:49 | done. So, every day I wake up, it's a Sunday. I should be with family. I |
+| 31:56 | should be relaxing. I should be hanging around in the hot tub smoking cigars. |
+| 32:01 | Instead, I'm here writing code, |
+| 32:06 | not stopping relentlessly there. And the success of these ventures is the success |
+| 32:11 | of the ecosystem as a whole. If we get billions of dollars of TVL |
+| 32:17 | routing through these projects, whether they be Pogun or RealFi or Midnight, |
+| 32:21 | that's good for Cardano. Where is your commitment? |
+| 32:26 | Where is your discipline and dedication and effort? What are you building? |
+| 32:32 | That's why a pivot from devs to builders is such a big deal. Because builders are |
+| 32:37 | accountable to what they built. If somebody at a bar says to you and say, |
+| 32:42 | "I'm a builder." They say, "The first question you would ask is,"What did you |
+| 32:46 | build? Show me the bridge. Show me the building. |
+| 32:51 | Show me the house. If a person's a developer, they could |
+| 32:54 | say, 'Well, you know, I I'm a dev. I just uh write test cases for financial |
+| 33:00 | software, you know, I can tell you a lot about Java test frameworks and Jenkins. |
+| 33:08 | Yeah, I I work on the CI and I make sure the CI works and passes. What have you |
+| 33:13 | built? Well, I don't really build anything. I just I just write tests for |
+| 33:17 | for that for that framework and uh you know it's pretty fun. I've been doing it |
+| 33:22 | for a while and I did some automation wrote some bash scripts and things to |
+| 33:27 | coordinate. I uh also did a lot of linting on JSON to make sure the schemas |
+| 33:33 | violated validated properly. Uhhuh. And what product is that for? I don't really |
+| 33:37 | know. It's a big enterprise system. I just wanted to make sure the JSON works |
+| 33:42 | properly. A builder. I built that bridge. |
+| 33:46 | Devs can be builders. Absolutely. John Carmack built Doom. |
+| 33:52 | Made Doom. That's what we want. And we want those builders to go build |
+| 33:59 | great things. And we want those things to be worth $10 billion, hundred billion |
+| 34:02 | dollars, grow to massive ecosystems. |
+| 34:08 | That's what we want and that's what we're focused on and |
+| 34:12 | that's what Cardano should be focused on. We got AlphaGrowth now. We got |
+| 34:16 | Draper now. The funding can't go to perpetuating open-source project after |
+| 34:21 | open-source project after open-source project. The infrastructure is done. We |
+| 34:26 | Plutus is good. Leios is almost here. When it comes out, it窶冱 out. Let窶冱 now |
+| 34:31 | focus the funding and the infrastructure on big goals to get people rallied and |
+| 34:36 | excited about where we can go and what we can do and how we can be competitive |
+| 34:40 | and different from other ecos. Sure, we need to maintain and grow the |
+| 34:44 | infrastructure, but we got to start asking who are the builders and how do |
+| 34:47 | we get them the funding. The other big challenge this year and |
+| 34:51 | actually last year is I noticed that the people who fund are pathologically |
+| 34:56 | allergic to giving people money to create a commercial outcome. They say, |
+| 35:01 | "Oh, we can't fund that business. What if they make money?" Oh my lord. Lola M. |
+| 35:08 | We can't give Blockfrost money. We can't give this venture the money. Oh |
+| 35:13 | no, Pogun. No, you can't get any money. What if you succeed? |
+| 35:20 | SO, DO YOU WANT to be number one on DeFi Llama or not? If let's say one of these |
+| 35:26 | ventures is successful and they get five billion dollars of TVL for Cardano and |
+| 35:31 | they create a lot of transaction volume for Cardano, isn't that a net benefit? |
+| 35:34 | No. No. No. Because that team made some money and that's that's the treasury's |
+| 35:39 | money. Get your head out of your ass. |
+| 35:44 | Are we in it to win it or not? All of our competitors, they look at it |
+| 35:50 | like, "What KPIs are you going to bring to the table to make the chain better? |
+| 35:56 | That sounds good. Here's a $25 million check." And here we are. Say, "Hey, we |
+| 36:00 | need half a million. How dare you even ask? How dare you? No, that's greed and |
+| 36:07 | avarice. You should just pay for it or take it as a loan or do this or do |
+| 36:12 | that." It's extraordinary to me. Pogun was the |
+| 36:17 | greatest example of that because it's literally solving the DeFi problem on |
+| 36:21 | Cardano. We're going to take big ass chunks of Bitcoin, |
+| 36:26 | mirror them into Cardano, which instantly creates a [ \_\_ ] ton of TVL, lend them to |
+| 36:32 | stable coins, which instantly creates a huge minting of stable coins. the two |
+| 36:37 | big things people track TVL and stable coins and then they have to place it |
+| 36:42 | into DeFi to make a return greater than the lend cost. |
+| 36:48 | So instantly it creates a real world asset and high yield return DeFi |
+| 36:52 | ecosystem to place that stable coin. This is like |
+| 36:59 | as good as it gets for DeFi. as good as it gets and you voted against it |
+| 37:06 | where you get a permanent profit share for it |
+| 37:11 | and the ecosystem would get a chunk of the action. |
+| 37:16 | It's like when I proposed the sovereign wealth fund at 83 cent ADA, we done a |
+| 37:20 | hundred million, we'd be at 400 million in value right now. Four times as much |
+| 37:26 | ADA, right? Ah, it's just it's stupidity. And I get |
+| 37:32 | it. You know, you don't you don't want to screw up, but inaction kills you in |
+| 37:36 | these types of things, guys. You have to pivot. I can't do anything about the |
+| 37:42 | garbage foundation. I just can't. I'm sorry about Cardano. It's my greatest |
+| 37:47 | mistake. And it's just a classic example of where people who have no incentives |
+| 37:53 | do nothing and they just make up work and they go around. The reality is ADA |
+| 37:57 | goes to the moon, they make the same amount of money. If ADA collapses, they |
+| 38:01 | make the same amount of money. They're hedged in Bitcoin, too. Uh, and there's |
+| 38:05 | nobody who can be voted out of office. The board is still the board. There's no |
+| 38:10 | democracy. There's no oversight. There's no way to replace them. So, nobody's |
+| 38:14 | there to hold them accountable when they're so petty they can't tweet about |
+| 38:17 | the largest project on the chain whose success would really push the chain |
+| 38:22 | forward. That's sad. We'll succeed despite it. Bitcoin didn't need the |
+| 38:27 | Bitcoin Foundation. In fact, people hated the Bitcoin Foundation. I remember |
+| 38:31 | I was there and uh we were not wellliked the Bitcoin Foundation. They said that |
+| 38:36 | was a hostile takeover of Bitcoin from the time it was created to basically |
+| 38:40 | when it went defunct to now like trillions of dollars of value were |
+| 38:44 | created despite it. So, we don't need them. We have what we need, but the |
+| 38:48 | philosophy has to be simple. Focus on the outcome and focus on what you're |
+| 38:54 | doing to change people's lives. And why and the things that we truly are good at |
+| 38:58 | in our competitive differentiation. Why is Pogun on Cardano? Because it makes |
+| 39:03 | sense. Not because Charles Hoskinson said so, but it makes sense. UTXO |
+| 39:08 | system, UTXO system. It's a beautiful mirroring and you get huge economies of |
+| 39:12 | scale and lowcost operation as evidenced by the fact that we went from a |
+| 39:17 | transaction costing $15,000 to under $30. So, we went from a Toyota |
+| 39:24 | Camry to a steak dinner and we're going to try |
+| 39:28 | to get it down to three to five bucks. So, a cup of coffee at Starbucks. How |
+| 39:32 | about that? That's real. And that enables massive changes. You have the |
+| 39:37 | security of the Bitcoin network mirrored into Cardano. |
+| 39:41 | Cardano adding a DeFi layer to it. And then you can build a large ecosystem. |
+| 39:46 | And by the way, if you add Midnight or private transactions and you can |
+| 39:50 | orchestrate all of them throughout the rest of the cryptocurrency space and we |
+| 39:53 | gradually drag these products that live on Hyperliquid and drag these products |
+| 39:57 | that live on Solana and Ethereum into our orbit because it's real expensive to |
+| 40:02 | get them to migrate and it solves our stable coin issuance and it solves our |
+| 40:05 | TVL issue. That one product, RealFi, launching next month. Bank the unbanked, |
+| 40:12 | that's the Africa play. We've been working at it for a long long time. We |
+| 40:15 | finally figured out a route to make it happen. It's here. Again, no tweets. |
+| 40:22 | So, you need to tweet it. You need to push it. If you believe in Cardano, |
+| 40:25 | that's what we mean. We're commercializing. We got a privacy play |
+| 40:28 | with Midnight. We got a micro finance play with RealFi. We got a Bitcoin DeFi |
+| 40:33 | play with Pogun. These are not hypothetical things. These are real |
+| 40:36 | things that are launching on Cardano or have already launched on Cardano. And |
+| 40:40 | they bring people in. They bring new blood in, new ideas in, new spotlight |
+| 40:44 | in. That's what you need to do. And you have to accelerate them. And their |
+| 40:48 | success is Cardano's success. And you know what? Every one of those things, |
+| 40:53 | they fund all the things around them. Sundae works on them. Anastasia works on |
+| 40:59 | them. There's so many of these small dev boutiques that are in the Cardano |
+| 41:03 | ecosystem that get money to work on those programs and projects. It keeps |
+| 41:09 | them alive, allows them to pay the bills and keep going. |
+| 41:13 | That's what success means. Is it easy out there? No. But Jesus, |
+| 41:19 | nothing is easy right now. You got frontier AI labs that are legitimately |
+| 41:24 | wondering if the artificial intelligence is they're building is going to kill |
+| 41:28 | them in 24 months to 36 months. You got war with Iran. You got $5 gasoline. You |
+| 41:33 | got still war in Ukraine and Russia. There's an upcoming war with China and |
+| 41:37 | the United States over Taiwan. We're going to have a chip crisis in 36 months |
+| 41:42 | that's going to be unbelievable and push us into a depression. There's the AI |
+| 41:45 | bubble will eventually burst. It's hard to buy groceries. |
+| 41:50 | We're not immune to all of that, the cryptocurrency space. And you know, we |
+| 41:54 | got over our skis. You can't charge a million and a half |
+| 41:58 | dollars for a goddamn NFT picture of a [ \_\_ ] banana |
+| 42:03 | and expect that to be sustainable and stable in this ecosystem. You can't have |
+| 42:09 | memecoin mania and things that have no utility and value go to 10 billion and |
+| 42:14 | then expect that to be sustainable. You can't. So, we're living that excess and |
+| 42:20 | we're living the consequences of it as an industry. We got to process it. |
+| 42:26 | If you go crazy and you end up getting divorced, you got |
+| 42:31 | to put your life back together. Okay, you got to move out into the |
+| 42:36 | shitty apartment. You got to get new friends. You got to change a few things. |
+| 42:42 | Yeah, you'll be back if you really put some time and effort into it. Well, |
+| 42:46 | guess what? Crypto got divorced by retail. That's a fact. They left out of |
+| 42:52 | disgust because they all lost their money. |
+| 42:55 | They were lied to. They were hacked. And every time they tried to come back, they |
+| 42:58 | got lied to and hacked and extracted from again. |
+| 43:03 | Were the dumping ground of narcissistic whack jobs to come in and put their |
+| 43:09 | [ \_\_ ] trash and expect to extract. Celebrities come in. Portnoy comes in. I |
+| 43:15 | thought I was going to make so much money. I don't understand. Most |
+| 43:19 | recently, Hunter Biden and he's I launched my my laptop coin. I mean, I |
+| 43:24 | just thought it was going to the moon. Why? |
+| 43:28 | Midnight fixes stuff. Midnight solves the CAC card system at the Pentagon. |
+| 43:35 | Midnight solves sharing of health care records. Midnight solves you owning your |
+| 43:40 | own agent and not having uh the agent steal your intellectual property. And |
+| 43:45 | then Navier Stokes is solved by OpenAI, not the mathematician who actually came |
+| 43:49 | up with it. Midnight |
+| 43:53 | enables DRM. Midnight enables intellectual property royalties without |
+| 43:58 | having to reveal the spending. Midnight enables private trading strategies to be |
+| 44:02 | leased or AI skills to be leased instead of just open source so you can start |
+| 44:05 | monetizing unique agent skills. It goes on and on and on and on and on. These |
+| 44:10 | are real things influencing the lives of billions of people and collectively |
+| 44:14 | trillions of dollars of commerce on a daily basis. What does laptop solve for |
+| 44:20 | the world other than make Hunter Biden some money so he can have a vanity |
+| 44:25 | presidential run in 2028 and the Biden family grift can continue? |
+| 44:30 | What does it solve? Nothing. You got to focus on solving things. |
+| 44:35 | Bitcoin DeFi solves a problem. I don't want to sell my Bitcoin, but I'd like to |
+| 44:40 | get a return. I can't get a return on Bitcoin. There's no DeFi ecosystem. I |
+| 44:46 | want to click the button automagically according to a risk profile |
+| 44:51 | my Bitcoin's put to work and I get 5 10% whatever |
+| 44:56 | simple problem to solve you solve it $500 billion worth of Bitcoin migrate |
+| 45:00 | out to do that what are your options zero or 5%. |
+| 45:06 | Duh. People can click the button. 71% of you did with ADA staking. Click it. |
+| 45:12 | That's Bitcoin. Okay. So, Pogun solves the problem. Micro finance. We'd like to |
+| 45:18 | bank the unbanked. You get this use case. I get this use case. Let's create |
+| 45:22 | an engine where you have loans. And guess what? They get a discount on the |
+| 45:27 | loan if they get a digital ID and a wallet. |
+| 45:31 | Pretty simple, right? So, are they getting a digital ID in a wallet because |
+| 45:35 | they just want to? No, they want a lower lending rate. Now, they're banked in a |
+| 45:41 | new banking system that's web 3 native with a self-s sovereign identity and |
+| 45:44 | self-custody and their own assets, not the governmentisssued one. We've just |
+| 45:49 | created a new economy and we can use this engine to distribute |
+| 45:54 | it to tens of millions to hundreds of millions of people. And what does that |
+| 45:57 | mean? The lending rates go down from 85% to less than 10%. the re the rem |
+| 46:02 | remittance rates go free and you get rid of these evil cartels |
+| 46:08 | that extract money from the poorest people in the world. That's a real life |
+| 46:12 | use case and utility. That's what blockchain was constructed for. |
+| 46:17 | Not LAPTOP, not Trumpcoin. Absolutely not those things. We got |
+| 46:24 | addicted to the fast and soft money and vanity of celebrity and meme coins and |
+| 46:29 | these other things. And guess what happened? We lost our way. And it became |
+| 46:34 | so easy for people to shed all over the industry. |
+| 46:38 | And because of that, CLARITY will not pass two days from now. |
+| 46:42 | Been saying it for over a year. And because of that, people write off |
+| 46:48 | crypto. So only retail. It's gone. So then the institutions come in and then |
+| 46:53 | we're all surprised why they're not pumping our bag. Because they're not |
+| 46:56 | stupid. They pump their own bags. They're institutions. They're really |
+| 47:00 | smart and they're killers and they have |
+| 47:03 | amazing people with them. So, if we want to win, we got to change the game. We |
+| 47:07 | got to pivot from devs to builders. We got to rally. |
+| 47:11 | We have to support each other. And we have to realize my success is your |
+| 47:15 | success. The success of Midnight is the success |
+| 47:19 | of Cardano. And we have to hold the entities that |
+| 47:23 | refuse to acknowledge that accountable by not funding them anymore and not |
+| 47:28 | considering them relevant anymore. They're running on bad programming. |
+| 47:32 | Honestly speaking, they need to change. If they're unwilling to change, then |
+| 47:36 | they shouldn't be part of the club. We don't have time to drag people along who |
+| 47:43 | don't want to be there. And we don't have time anymore and the luxury anymore |
+| 47:48 | to admit 45 different ways of doing things. |
+| 47:51 | We need to consolidate down to a collection of them and simplify the |
+| 47:55 | goddamn experience so that all the users they just click the button. |
+| 48:02 | That's what the world has shown us with web two and the rise of all these |
+| 48:06 | entities. Click the button. It just works. |
+| 48:10 | Apple spent 20 years trying to break up the Windows monopoly, |
+| 48:16 | trying to convince people that macOS is much better than Windows. Buy a MacBook, |
+| 48:22 | buy an iMac. And you know what? If you look at the percentage distribution of |
+| 48:27 | Windows versus Mac, it didn't move. Then they built the iPhone and it was just |
+| 48:32 | push the button and it destroyed the entire Windows monopoly and made Apple |
+| 48:38 | as big or bigger than Microsoft. [snorts] |
+| 48:44 | It's just one paradigm shift. Stop grading people to migrate. Give them a |
+| 48:48 | new experience and make it so simple and easy that the old experience seems |
+| 48:52 | antiquated. And now you find that you spend the majority of your time on your |
+| 48:57 | phone, much more so than on your laptop or your computer. The majority of your |
+| 49:02 | time, even when you're on your laptop and your computer, your phone is always |
+| 49:06 | still there. It's always still around. It's haunting you. Message comes, you're |
+| 49:11 | just about to finish something. Oh, I got to answer this message on my my |
+| 49:14 | phone. Why? Because it's so easy. It's there. |
+| 49:19 | It just It's just buttons. If you just push them, you just click it. It's Oh my |
+| 49:24 | god, now I can do anything. And vast majority of you people |
+| 49:30 | listening, you you read your phone on the toilet. You do. |
+| 49:34 | How many of you take a laptop in with you to the bathroom? Some people |
+| 49:40 | developers, coders, |
+| 49:44 | okay, but the vast majority of sane people typically don't take one in, but |
+| 49:47 | they do with the phone. You know who you are. |
+| 49:51 | because the simplicity is so much. It's an extension of you. It's part of your |
+| 49:56 | body now, like your hand or your ears or these types of things. So, if Cardano is |
+| 50:01 | to win, Midnight's to win. That's the play. Make it an extension of you. Make |
+| 50:06 | it an extension of your body. Make it that simple and that easy. You |
+| 50:11 | just click the button and that's it. Bitcoin DeFi, click the toggle, get 5%. |
+| 50:16 | RealFi, click the toggle, get this thing. Midnight. Hey agent, I need this. Don窶冲 |
+| 50:22 | worry, I got you, dog. Under the hood, 14 different [ \_\_ ] transactions and |
+| 50:28 | intents and multi-chain signatures and trusted execution environments and |
+| 50:32 | multi-party computation and and and ZK, lots of ZK, a little bit of Groth16 and |
+| 50:39 | [ \_\_ ] Halo 2 and PLONK and and [ \_\_ ] we窶决e doing like four different foreign |
+| 50:44 | field arithmetics. We got like one elliptic curve over here and another |
+| 50:48 | elliptic curve and oh out in the left field we got lattises. Lattises are |
+| 50:52 | coming. AH, YOU DON'T see that [ \_\_ ] You don't know about that [ \_\_ ] You don't |
+| 50:58 | care about that [ \_\_ ] any more so than you have manually inspected a packet in |
+| 51:04 | TCP IP. Look at those datagramgrams. Last time you've done deep packet |
+| 51:08 | inspection. I know who you are, Kie. |
+| 51:14 | Okay. WireGuard people. No, Wireshark. You know, you don窶冲 do that. No, |
+| 51:21 | normie does that. They just push the [ \_\_ ] button. The internet's slow |
+| 51:25 | today. Oh well, I'll change Wi-Fi networks. I'll just wait a little bit. |
+| 51:30 | See if it speeds up. That's your thing. That's your experience. And that's why |
+| 51:34 | five billion people do it. If you had to inspect the patent packet, you'd be the |
+| 51:38 | PGP people. I started this by asking, "How many of you encrypt an email with |
+| 51:44 | PGP?" You don't because it's hard. You got keys and [ \_\_ ] It's hard. It's |
+| 51:51 | too much for the consumer to do that. Too much. So, if Midnight is to win, |
+| 51:57 | simple. If Midnight is to win builders, if Midnight is to win, one click. If |
+| 52:03 | Midnight is to win, everyone everywhere where they're actually at, not where we |
+| 52:08 | want them to be. That's the strategy. And we wake up |
+| 52:13 | every day and we say, "How do we make it magical? |
+| 52:18 | How do we make the small things big things?" |
+| 52:22 | I have a Galaxy uh Fold 8. It's a great phone. And I just saw the presentation |
+| 52:30 | for the iPhone. in one feature makes me want the iPhone |
+| 52:36 | Duo more than the Fold 8. It's when you open it up and how it just like |
+| 52:42 | gradually transitions. It looks like you're looking through a pane of glass |
+| 52:46 | as you switch from the one screen to the two screens. And that idea of the |
+| 52:49 | rounded bevels to make it look like an iPad mini. I used to have an iPad mini. |
+| 52:54 | I have very treasured memories of holding it just like that. I said, "Oh, |
+| 52:57 | that's just exactly like that." That was not a fiveminute discussion. That's the |
+| 53:02 | product of thousands of hours of attention to detail and focus to create |
+| 53:08 | that one little experience, that one little softening across it. And that is |
+| 53:14 | what makes the difference. The consumer doesn't see it, ask for it, or even know |
+| 53:19 | it's there, but they feel it emotionally and subconsciously, and they connect to |
+| 53:25 | it. It窶冱 what we窶决e doing in Midnight City. It窶冱 what we窶决e doing in RealFi. |
+| 53:29 | It窶冱 what we窶决e doing in Pogun. What we窶决e doing in Midnight and it窶冱 |
+| 53:32 | what we do with the engineering that we put into Cardano. |
+| 53:37 | We haven't always measured up. We had to learn how to be a great engineering |
+| 53:40 | company and we had to learn how to do all this stuff. It's not [ \_\_ ] easy. |
+| 53:45 | Apple had to learn how to do it, too. Were they building the iPhone Duo in |
+| 53:50 | 1995? |
+| 53:54 | No, [snorts] not even close. And we're we were not building these types of |
+| 54:01 | things 5 years ago or 10 years ago, but we are now and we put the effort in. So |
+| 54:06 | big pivot to builders. And as for the rest of the ecosystem, let the drama go, |
+| 54:13 | let the passion go and pivot to something new and different. Do you want |
+| 54:18 | to win? Do you want to be great? Do you want to be something that people |
+| 54:24 | talk about in 20 years and 30 years? Do you want to be something people |
+| 54:27 | emotionally connect to and believe in? Or do you want to fail? If you want to |
+| 54:32 | fail, then go be a keyboard warrior and complain about every single thing. If |
+| 54:37 | you want to win, grab a shovel. We need workers. We need to get this done. Be a |
+| 54:42 | builder. Build stuff. Join the Nightforce. Create an account on Midnight |
+| 54:47 | City. Sign up for the Pogun beta. Sign up for |
+| 54:52 | the RealFi testnet. Get involved. talk about these things. Get people excited |
+| 54:58 | about these things. When they say Cardano is dead, give them these |
+| 55:01 | projects and show them we got all this amazing stuff happening. Look at all |
+| 55:06 | these things. Say, we're back in the game. We've changed and we are learning. |
+| 55:11 | We're growing. That's how you win. Be an advocate. And they say, "I had no idea |
+| 55:16 | there was still something worthwhile there. That seems like it's undervalued. |
+| 55:19 | I should do something in that ecosystem. Get people excited about it." That's |
+| 55:24 | what I'm doing on a Sunday [clears throat] at 12:15. So, I'm going |
+| 55:28 | to get back to work. I hope you do, too. Thanks everyone for listening. Cheers. |

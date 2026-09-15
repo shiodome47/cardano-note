@@ -1,0 +1,45 @@
+slug: 2026-09-13-charles-hoskinson-devs-versus-builders
+title: Devs versus Builders — 「開発者の数」はもう指標にならない。Midnight が欲しいのはビルダーだ、と本人が語る
+title_en: "Devs versus Builders"
+date: 2026-09-13            # ライブ配信。本人が「日曜日の 12:15」と言い、Midnight Foundation の DevRel 縮小の発表（09-10）の後、KuCoin などの報道（09-15）の前。「CLARITY は 2 日後に通らない」の 2 日後が 09-15 の上院採決と一致。YouTube のページからは日付を取得できていないので要確認
+series: charles-hoskinson   # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: Charles Hoskinson  # oEmbed の author_name。author_url は https://www.youtube.com/@charleshoskinsoncrypto
+official_channel: true      # 本人のチャンネル（IOG や Cardano Foundation、Midnight Foundation の公式チャンネルではない）。oEmbed で確認
+duration: "55:30"           # 字幕の最終行（55:28）から。動画の実尺は要確認
+video: https://www.youtube.com/watch?v=VI5OuB6o5BU
+
+speakers:
+  - Charles Hoskinson       # 1 人語り。冒頭で名乗る。IOG 創業者、Cardano 創始者。コロラドから配信
+speaker_labels: n/a         # 1 人語りなので話者ラベルは不要
+timestamps: table           # 「Time | Subtitle」の 2 列の Markdown 表。時刻は秒（"0s"）と分:秒（"1:02"）の混在。.turn-time は 00:MM:SS に直したもの
+proper_nouns_corrected_in_docs: true
+
+# 原本について
+# - 依頼者から本文に貼り付けで受領した Markdown の表を、そのまま transcript.txt に置いた（2 列、約 700 行）。機械翻訳の列はない
+# - 話者ラベルなし。全編 1 人語り。2:52〜3:02 と 3:45〜4:07 に配信の中断（チャットの荒らし、犬）がある
+# - 伏せ字は "[ \_\_ ]"、笑い・咳などは "[snorts]" "[groaning]" のように角括弧で入っている。docs/ ではそのまま残した
+# - "窶冱" "窶决" "窶冲" は "'s" "'re" "'t" の文字化け（Shift_JIS 経由）。docs/ ではアポストロフィに戻した
+# - 大文字だけの行（"AND YOU SAY, "WOW, YEAH, THAT'S A thin product."" など）は自動字幕の癖。docs/ ではそのまま
+
+# 画面について
+# - 画面共有の発言はなく、本人が話している映像のみと推定（字幕だけを受領しており未確認）。「画面」バッジは未使用
+# - Confidential 表示の資料は出てこない
+
+# 裏取り（2026-09-15 時点）
+# - Midnight Foundation が DevRel チームの縮小を発表: 2026-09-10（CoinCentral、MoneyCheck の報道。人数は非公表。AI ネイティブのツール、Build Club、Night Sky に重点）
+# - Bun の Zig → Rust 書き換え: 2026 年 7 月、Bun（Anthropic 傘下）が Claude を使って 53 万行を 11 日で移植したと公表。Zig の作者が批判
+# - Moltbook: 2026-01 開始、2026-03 に Meta が買収。OpenClaw（旧 Clawdbot / Moltbot）、Hermes Agent（Nous Research、2026 年初）、Grok Bot（xAI、2026-08-11 ベータ）、Muse（Meta、2026-09-08）
+# - Jolt の格子ベース化: a16z crypto の Lattice Jolt / Akita（Justin Thaler ら）。動画の「lattice-based folding upgrade to Jolt」に対応
+# - ブリッジのハック: Wanchain の Cardano–BNB Chain ブリッジ、2026-07-21、約 5 億 1,500 万 NIGHT（約 1,300 万ドル）。動画では「Cardano と Binance のブリッジ」
+# - Moriarty: github.com/CharlesHoskinson/Moriarty（Midnight 向けの金融 DSL。成果物の日付 2026-09-10）。字幕の "Morardi"
+# - k-rust: github.com/midnightntwrk/k-rust（K フレームワークの Rust バックエンド）
+# - Pogun / Blockfrost の否決: 2026 年 5〜6 月の IOG の財務庫提案 9 本のうち 3 本（Pogun、Blockfrost、L2）が否決と報道
+# - CLARITY 法案: 2026-09-15（火）の上院のクローチャー採決で 60 票に届かず否決（CoinDesk）。動画（日曜）の「2 日後に通らない」と一致
+# - LAPTOP: Hunter Biden のミームコイン、2026-09-09 に Base で発行
+# - iPhone Duo: Apple が 2026-09-09 に発表した折りたたみ iPhone。Galaxy Z Fold 8 と比較される
+# - RealFi の mainnet: 2026-10-01（姉妹リポジトリ 2026RealFi の 09-11 Cardano Seminar 回で明言）
+# - Google Cloud: 2026-02 に Midnight の連合ノード運用者・エコシステムパートナーとして参加
+# - ソブリン・ウェルス・ファンド: 2025-06 に本人が提案（財務庫の ADA 1 億ドル分を BTC とステーブルコインに）

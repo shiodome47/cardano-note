@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devs versus Builders — Charles Hoskinson (2026-09-13)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Charles Hoskinson</p>
+<h1><span class="l-ja">Devs versus Builders — 「開発者の数」はもう指標にならない。Midnight が欲しいのはビルダーだ、と本人が語る</span><span class="l-en">Devs versus Builders — “developer count” no longer measures anything; what Midnight wants is builders, he says</span></h1>
+<p class="meta">
+  <span>2026-09-13</span>
+  <span><span class="l-ja">YouTube（ライブ）</span><span class="l-en">YouTube (live)</span></span>
+  <span>55:30</span>
+  <span><span class="l-ja">Charles Hoskinson 本人のチャンネル · 1 人語り</span><span class="l-en">Charles Hoskinson's own channel · solo</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Midnight Foundation が開発者支援チーム（DevRel）を縮小すると発表して 3 日後、Charles Hoskinson が本人の見解として語った 55 分です。<br>
+  筋は 3 段。①AI でコードが書ける今、<strong>「開発者が何人いるか」は希少でも指標でもない</strong>。②欲しいのは、プロダクトを作って売上と普及に責任を持つ<strong>「ビルダー」</strong>で、プライバシーはその売り文句にすらならない。③だから Cardano 側も、Midnight や Pogun のような商業プロジェクトを抱きしめて資金を出せ、と。後半は Cardano Foundation と資金提供者への強い批判で、すべて本人の言葉として書いています。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>きっかけは DevRel の縮小。</strong>Midnight Foundation が四半期ごとの見直しで「DevRel チームの一部をなくし、ビルダーに軸足を移す」と発表し、「Midnight は死にかけている」という声が出た、と本人は説明します。<span class="badge">補足</span>発表は 2026 年 9 月 10 日で、Foundation は「DevRel チームを畳む」と表現しています。</li>
+  <li><strong>開発者は「無限の資源」になった。</strong>人がコードを書く時代は開発者数に意味があったが、今は経験のない人でも AI で開発者のように見える。ハッカソンや行数で報酬を出せば「Claude が作った」でゲーム化され、人間が書いたかの検証に時間が消える、と。</li>
+  <li><strong>ビルダーとは、プロダクトに責任を持つ人。</strong>消費者、売上目標、普及、マーケティング計画があるものがプロダクトで、それを作る人がビルダー。「橋を見せろ」と言われて見せられる人。10 人で 100 億ドルのベンチャーを、24〜36 か月で 10 個欲しい、というのが本人の目標です。</li>
+  <li><strong>プライバシーは売り文句にならない。</strong>1991 年から誰でも暗号化メールを使えたのに誰も PGP を使わない。プライベートな製品は、そうでない製品より簡単で安くて良くなければ選ばれない。「プライバシーが核の差別化要因なら、価値はない」。</li>
+  <li><strong>本人が手を動かしていること。</strong>Midnight の将来のコンセンサス向けにプライベートな proof-of-stake の要件を 59 ページ書いた、Jolt の格子ベース化を追っている、金融 DSL を書いている、Leios、Draper との会食など。いずれも本人の申告です。</li>
+  <li><strong>Cardano 側への要求。</strong>Cardano Foundation は Midnight についてツイートせよ、資金提供者は商業的な成果に「病的にアレルギー」で Pogun や Blockfrost を否決した、財団には監督がない。強い言葉が続きますが、すべて本人の評価として書いています。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か、どんな配信か</a></li>
+  <li><a href="#what"><span class="n">02</span>何が起きたのか — DevRel の縮小と反発</a></li>
+  <li><a href="#devs"><span class="n">03</span>「開発者の数」が指標だった時代の終わり</a></li>
+  <li><a href="#builders"><span class="n">04</span>ビルダーとは何か — MacBook Air と「橋を見せろ」</a></li>
+  <li><a href="#privacy"><span class="n">05</span>プライバシーは核の差別化要因ではない</a></li>
+  <li><a href="#work"><span class="n">06</span>本人が手を動かしていること</a></li>
+  <li><a href="#cardano"><span class="n">07</span>Cardano 側への要求 — 財団、資金、Pogun</a></li>
+  <li><a href="#context"><span class="n">08</span>「何も簡単ではない」— ハック、SecondFi、CLARITY、LAPTOP</a></li>
+  <li><a href="#button"><span class="n">09</span>「ボタンを押すだけ」— iPhone とトイレのスマホ</a></li>
+  <li><a href="#overall"><span class="n">10</span>全体像</a></li>
+  <li><a href="#pending"><span class="n">11</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か、どんな配信か</h2>
+<p class="deck">日曜の昼、コロラドのオフィスから。本人のチャンネルなので、すべて個人の見解として読む。</p>
+
+<p>Charles Hoskinson（Input Output の創業者、Cardano の創始者）が、自身の YouTube チャンネルからライブで語った約 55 分の 1 人語りです。前回の配信（<a href="../2026-09-09-charles-hoskinson-navier-stokes/">Navier-Stokes</a>）はワイオミングからでしたが、今回はコロラドのオフィスに戻り、「日曜日の 12 時 15 分」に話していると本人が言っています。チャットの荒らしと犬で 2 回中断しています。</p>
+
+<p><strong>本人のチャンネルなので、方針・評価・時期はすべて個人の見解です。</strong>本人自身も「私が期待するものは Midnight Foundation のそれとは違うし、Shielded とも違う」と断っています。<span class="badge">補足</span>Midnight の開発主体は 2025 年 9 月に IOG から分かれた Shielded Technologies で、Midnight Foundation はエコシステムと運営を担う別組織です。この動画で語られる「Midnight の戦略」は、この 2 組織の公式見解ではなく本人の位置づけとして読みます。</p>
+
+<p>後半には Cardano Foundation、資金提供者、他のプロジェクトやミームコインへの強い言葉が並びます。このページでは<strong>「〜と述べています」の形で本人の発言として帰属させ</strong>、地の文にはしていません。</p>
+
+
+<h2 id="what">2. 何が起きたのか — DevRel の縮小と反発</h2>
+<p class="deck">四半期ごとの見直しで「開発者支援からビルダーへ」。本人はこれを擁護する側。</p>
+
+<p>本人の説明では、Midnight Foundation は四半期ごとに「当初の戦略でよいか、変えるべきか」を問い、最近「DevRel チームの一部をなくし、ビルダーに軸足を移す」と発表した。それに対して「開発者を全部切った、Midnight は死にかけている、実験は終わりだ」という声が出た、と。本人はこれを「誰もが何にでもパニックになりたがる」と評し、以下の 50 分でこの判断を擁護します。</p>
+
+<p><span class="badge">補足</span>発表は 2026 年 9 月 10 日で、報道では Midnight Foundation が「専任の DevRel チームを畳み、AI ネイティブのツール、簡単なオンボーディング、既存の Build Club と Night Sky のプログラムに重点を移す」「創業者、運営者、デザイナー、領域の専門家にも作り手を広げたい」と説明しています。人数は公表されていません。動画の「一部をなくした」と発表の「畳んだ」は、言い方が違います。</p>
+
+<div class="term">
+<p class="term-name">DevRel <small>動画の中の言葉</small></p>
+<p>Developer Relations。開発者向けのドキュメント、ハッカソン、サポートを通じてプラットフォームに開発者を呼び込む役割。本人は「以前のやり方」として、ハッカソンで勝つ、コードの行数、面白いオープンソースのプロジェクト、をインセンティブにしていたことを挙げています。<span class="badge">補足</span>「DevRel を切ること」と「開発者を切ること」は違います。本人も「プロのエンジニアがいなくなるわけではない。Input Output には 168 人の科学者がいる」と付け加えています（数字は本人の申告）。</p>
+</div>
+
+<p>本人は「離れてもらった DevRel チームへの批判ではない。よい人たちで、すばらしい仕事をした」とも述べています。</p>
+
+
+<h2 id="devs">3. 「開発者の数」が指標だった時代の終わり</h2>
+<p class="deck">人が書いていたころは意味があった。AI で誰でも開発者に見える今、数を追えばゲーム化される。</p>
+
+<p>本人の論理はこうです。Cardano も他のチェーンも「このチェーンに開発者が何人いるか」を追ってきた。<strong>人間がコードを書いていたときは、それに意味があった。</strong>訓練と経験を積んだ人が、その有限な時間を Midnight に使うことを選んだのだから。</p>
+
+<p>しかし今は「バイブコーディング」「バイブエンジニアリング」の時代で、技術の知識も経験もない人が AI のツールで開発者のように見える。だから開発者はもう希少で有限な資源ではなく、「能力としては無限の資源」だ、と。</p>
+
+<div class="term">
+<p class="term-name">バイブコーディング <small>動画の中の言葉（vibe coding）</small></p>
+<p>本人は定義せずに使っています。<span class="badge">補足</span>2025 年ごろから広まった言い方で、コードを自分で書かず、AI に自然言語で頼んで出てきたものを動くかどうかで受け入れていく作り方を指します。本人はこれと区別して、エンジニアリングを理解している人が AI で大量の機能を作る「スキルのあるバイブ」「バイブエンジニアリング」を Midnight City のチームの例として肯定的に使っています。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="開発者という資源が有限から無限に変わったという本人の説明と、従来のインセンティブがゲーム化されて人間が書いたかの検証に時間が消える、という流れを示した図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="316" height="106" rx="8" class="d-box"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">以前 — 開発者は有限の資源</text>
+  <text x="174" y="74" class="d-s" text-anchor="middle">訓練と経験のある人が時間を使う</text>
+  <text x="174" y="94" class="d-s" text-anchor="middle">「何人いるか」に意味があった</text>
+  <text x="174" y="114" class="d-s" text-anchor="middle">それを Midnight に使う選択は大きい</text>
+
+  <rect x="348" y="20" width="316" height="106" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">今 — 「無限の資源」</text>
+  <text x="506" y="74" class="d-s" text-anchor="middle">経験がなくても AI で開発者に見える</text>
+  <text x="506" y="94" class="d-s" text-anchor="middle">希少ではない、指標にならない</text>
+  <text x="506" y="114" class="d-s" text-anchor="middle">ツールは減速せず加速している</text>
+
+  <rect x="16" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="178" class="d-t" text-anchor="middle">従来のインセンティブ</text>
+  <text x="116" y="202" class="d-s" text-anchor="middle">ハッカソン、コードの行数</text>
+  <text x="116" y="222" class="d-s" text-anchor="middle">面白いオープンソース</text>
+
+  <line x1="220" y1="193" x2="236" y2="193" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="240" y="150" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="340" y="178" class="d-t" text-anchor="middle">ゲーム化</text>
+  <text x="340" y="202" class="d-s" text-anchor="middle">「このアプリを作った」</text>
+  <text x="340" y="222" class="d-s" text-anchor="middle">……実は Claude が作った</text>
+
+  <line x1="444" y1="193" x2="460" y2="193" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="464" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="178" class="d-t" text-anchor="middle">検証に時間が消える</text>
+  <text x="564" y="202" class="d-s" text-anchor="middle">「ズルはしていないか」を</text>
+  <text x="564" y="222" class="d-s" text-anchor="middle">根掘り葉掘り確かめる羽目に</text>
+
+  <rect x="16" y="256" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">本来の目的は「チェーンに何かを作ってもらう」こと</text>
+  <text x="340" y="300" class="d-s" text-anchor="middle">Rust や TypeScript を理解しているかの検証ではない、というのが本人の言い分</text>
+</svg>
+<p class="figcap">Charles Hoskinson が音声で語った論理を、そのまま上下 2 段に描いたものです。「無限の資源」は本人の言葉。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — ビルダーが欲しいなら、開発者を支える部門を切るのは逆効果では？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は自然で、反発した人たちの言い分もそこにあります。</strong>ビルダーも最後はコードを書く（か書かせる）ので、ツールや文書の質はビルダーにも効きます。</p>
+<h4>本人の言い方が成り立つ要素に分解すると</h4>
+<ul>
+  <li>切ったのは「開発者」ではなく「開発者数を増やすための施策（ハッカソン、行数、OSS 奨励）とその担当」だ、という区別。本人は「エンジニアはいなくなっていない」と強調している</li>
+  <li>開発者数という指標が AI で壊れたなら、その指標を伸ばす部門の費用対効果も落ちる、という論理</li>
+  <li>「1 つの 100 億ドルのベンチャーが 1 万人の開発者を引き寄せる」——順序を逆にする、という主張</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>Foundation が発表した代替（AI ネイティブのツール、Build Club、Night Sky）が、実際に「作りたい人」の問い合わせに答えているかを、数か月後の開発者フォーラムやリポジトリの活動で見ることです。</p>
+<h4>この動画で示されたこと・示されなかったこと</h4>
+<p>示されたのは論理だけです。DevRel が何人で、代わりに何にいくら使うのかは語られていません。</p>
+</div>
+</details>
+
+
+<h2 id="builders">4. ビルダーとは何か — MacBook Air と「橋を見せろ」</h2>
+<p class="deck">プロダクトに責任を持つ人。開発者はそれを助けるが、それ自体はビルダーではない、と本人は線を引く。</p>
+
+<p>本人の定義はこうです。<strong>プロダクトには、プロダクト・マーケット・フィット、消費者、売上目標、普及、マーケティング計画、プロダクトの担当者がある。</strong>それを作る人がビルダー。開発者はビルダーを助けるが、開発者自身はビルダーではない。ビルダーになることはできるが、そのときは「このコードの消費者は誰か、何がこれをよいものにするか」を考えている、と。技術文書や言語やプロトコルを 10 年書き続けることは可能だが、それは「自己満足」だ、という言い方です。</p>
+
+<p>例に引かれたのが Steve Jobs の MacBook Air の発表です。競合の薄いラップトップの寸法を先に見せ、MacBook Air のいちばん厚い部分が競合のいちばん薄い部分より薄いことを重ねて示し、最後に封筒から取り出す。「比較対象を見つけ、成功の定義を理解し、視覚的に映えるところまでまとめ上げた」のがビルダーで、「世界を作り、物語を作り、人々を沸かせる」と。<span class="badge">補足</span>MacBook Air の封筒の演出は 2008 年 1 月の Macworld 基調講演で、本人の「2008 年だったと思う」は合っています。</p>
+
+<p>もう一つの例が「橋を見せろ」です。バーで「私はビルダーだ」と言う人には「何を作ったのか。橋を、建物を、家を見せてくれ」と聞く。開発者なら「金融ソフトのテストを書いている、CI を見ている、JSON のリントをした」と答えられるが、「どのプロダクトのため？」には「よく知らない」——それを本人はビルダーと対比しました。<strong>「開発者はビルダーになれる。John Carmack は Doom を作った」</strong>とも。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="本人が語った開発者とビルダーの対比。開発者はコードを書きビルダーを助ける、ビルダーはプロダクトを作り消費者と売上と普及に責任を持つ。開発者はビルダーになれる、と結ぶ">
+  <rect x="16" y="20" width="316" height="150" rx="8" class="d-box"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">開発者（devs）</text>
+  <text x="174" y="76" class="d-s" text-anchor="middle">コードを書く。ビルダーを助ける</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">「何を作った？」→「テストを書いている」</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">「どのプロダクトのため？」→「知らない」</text>
+  <text x="174" y="148" class="d-s" text-anchor="middle">Daedalus が何年も同期に何日もかかった例</text>
+
+  <rect x="348" y="20" width="316" height="150" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">ビルダー（builders）</text>
+  <text x="506" y="76" class="d-s" text-anchor="middle">プロダクトを作る。消費者・売上目標・普及</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">マーケティング計画、プロダクト担当者</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">「何を作った？」→「あの橋を作った」</text>
+  <text x="506" y="148" class="d-s" text-anchor="middle">MacBook Air を封筒から出す演出の例</text>
+
+  <rect x="16" y="190" width="316" height="56" rx="7" class="d-box-plain"/>
+  <text x="174" y="214" class="d-t" text-anchor="middle">開発者はビルダーになれる</text>
+  <text x="174" y="234" class="d-s" text-anchor="middle">「John Carmack は Doom を作った」</text>
+
+  <rect x="348" y="190" width="316" height="56" rx="7" class="d-box-plain"/>
+  <text x="506" y="214" class="d-t" text-anchor="middle">本人の目標</text>
+  <text x="506" y="234" class="d-s" text-anchor="middle">10 人で 100 億ドルのベンチャーを 10 個、24〜36 か月で</text>
+
+  <rect x="16" y="262" width="648" height="20" rx="6" class="d-box-plain"/>
+  <text x="340" y="276" class="d-s" text-anchor="middle">対比はすべて本人の言葉。「開発者」への評価は本人のもので、このページの評価ではない</text>
+</svg>
+<p class="figcap">Charles Hoskinson の対比を 2 列に並べたものです。左列の例（テストだけを書く開発者、Daedalus）は本人が挙げたもので、こちらの評価ではありません。</p>
+</div>
+
+<p>Midnight 側の例として挙げられたのが Midnight City です。Shinkai、Flint、Cardano の EVM サイドチェーンを作った「実績のあるエンジニア」が、エンジニアリングを理解したうえで AI で大量の機能を作り、6 か月でデモから永続する世界、そして「エージェントの文明の候補」まで進んだ、と。<span class="badge">補足</span>Midnight City は自律 AI エージェントが取引を生み続ける Midnight 上のシミュレーションで、2026 年 2 月 26 日に公開。字幕の "Shanghai" は、Flint（ウォレット）と Milkomeda（EVM サイドチェーン）と同じ dcSpark の製品 Shinkai と読みました。冒頭の「1 万人近くが行き交っている」は本人の数字で、何を数えたものかは説明されていません。</p>
+
+<p>Midnight City のチームの働き方も語られました。スプリントごとに更新するビジネスモデルキャンバス、顧客ペルソナ、「プロダクトがどこで死ぬか」のプレモーテムを持ち、会議の生の書き起こしを整形して AI に入れて文脈を理解させる。「AI はツールで、代わりに考えてはくれない。知性の自転車だ」と。<span class="badge">補足</span>「知性の自転車（bicycle for the mind）」は Steve Jobs が 1980 年代にコンピュータを評した言い回しです。</p>
+
+
+<h2 id="privacy">5. プライバシーは核の差別化要因ではない</h2>
+<p class="deck">誰も PGP を使わない。プライベートな製品は、そうでない製品より簡単で安くて良くなければ選ばれない。</p>
+
+<p>「プライバシーのチェーン」を作っている本人の口から出た、この動画でいちばん引っかかる主張です。暗号学者は 30 年「プライバシー」と言い続け、1991 年から誰でも暗号化メールを使えたのに、<strong>この 1 週間で PGP で暗号化したメールを送った人は何人いるか。</strong>Signal を使う人はいても GrapheneOS の電話からか。「口ではそう言うが、消費者としての行動は正反対だ」。</p>
+
+<p>そこから本人はこう言い切ります。<strong>「プライバシーが核の差別化要因なら、価値はない。」</strong>プライバシーは製品の「腹の下」にあってその中に生きるが、買う理由にはならない。買う理由になるのは、抽象化、賢いコンプライアンス、エージェントのワークフロー——「エージェント、来週の結婚式に着るものを探して」と頼めて、そのエージェントがプライベートなほうを既定で選ぶ、という形だ、と。</p>
+
+<p>この論理は「原則」全般に広げられます。「AI アラインメントの人が『AI は怖い、遅らせよう』と言っても、人は今の仕組みで儲けている」「石炭をなくしたければ、太陽光と電池を石炭より安くする。善意で移る人はいない」。プライバシーと自己保管を標準にしたければ、説教するのではなく、<strong>既存の競合より良く速く安い製品を作る</strong>しかない、と。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「プライバシーは差別化要因ではない」と言うなら、Midnight は何で選ばれるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、本人の答えは動画の中では「簡単さ」「どこでも使えること」「ボタン 1 つ」に集約されています</strong>（9 節）。プライバシーは「ある」が「売り文句ではない」、という位置づけです。</p>
+<h4>要素に分解すると</h4>
+<ul>
+  <li>PGP の例が示すのは「プライバシーを<em>手間をかけてまで</em>選ぶ人は少ない」こと。「プライバシーに価値がない」ことではない</li>
+  <li>本人の結論も「プライベートなエージェントが、そうでないものより簡単で安くて良ければ選ばれる」で、プライバシーを捨てるのではなく、選ばなくても手に入る状態にする、という話</li>
+  <li>ただし「簡単さ」で競争するなら、プライバシーを持たない競合（Meta の Muse などを本人も挙げている）と同じ土俵に立つことになる。そこで勝てる根拠は動画では語られていない</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>Midnight の製品が「プライバシーを説明せずに」使われているか、つまり利用者がプライバシー機能を意識せずに選んでいるか、を見ることです。本人の理屈が正しければ、そうなっているはずです。</p>
+<h4>この動画で示されたこと・示されなかったこと</h4>
+<p>示されたのは方針です。エージェントを誰が提供し、どのモデルで動き、いつ出るのかは語られていません。前回の配信（09-09）の「AI を動かせる私的な環境」と同じく、仕組みは未説明のままです。</p>
+</div>
+</details>
+
+
+<h2 id="work">6. 本人が手を動かしていること</h2>
+<p class="deck">「今年は過去 10 年より多くのコードを書いた」。列挙された項目は、いずれも本人の申告。</p>
+
+<p>「批判者は、私は何も分かっていない、学習できないと言う」と前置きしたうえで、本人が今取り組んでいると述べたものです。</p>
+
+<ul>
+  <li><strong>プライベートな proof-of-stake の要件を 59 ページ。</strong>Midnight の将来のコンセンサスプロトコル向けで、2018 年の Ouroboros Crypsinous という古いアイデアを蘇らせたもの。博士研究者と要件をやり取りしていて、「来年予定している BABE のローンチ」と並行して進める、と。<span class="badge">補足</span>Ouroboros Crypsinous は IOG の研究者が 2018 年に公開したプライバシー保護型の proof-of-stake の論文です。字幕の "the babe launch" は、Midnight のノード基盤 Substrate のブロック生成プロトコル BABE と読みました（推定）。</li>
+  <li><strong>Jolt の格子ベースのアップグレードとの比較。</strong>Justin Thaler らの成果を「来ると分かっていた」ので一部を逆算して Nightstream に入れてあったが、互換か競合かの差分を取る必要がある、と。<span class="badge">補足</span>a16z crypto が 2026 年に公開した Lattice Jolt（格子ベースの多項式コミットメント Akita を使う zkVM）のことと読めます。Nightstream は Midnight の R&D 項目の一つとして 2026 年 2 月に本人が挙げたもので、この動画の文脈では証明系の側の名前として出ています。</li>
+  <li><strong>金融 DSL「Moriarty」。</strong>IOG の古い金融契約言語 Marlowe を蘇らせたもので、「今この瞬間もコンピュータが K の意味論を計算している」。<span class="badge">補足</span>字幕は "Morardi" ですが、本人の GitHub に Midnight 向けの有界な金融言語 Moriarty のリポジトリがあり（成果物の日付 2026-09-10）、それと読みました。K は形式的な言語定義のフレームワークで、Runtime Verification 社が開発してきたものです。</li>
+  <li><strong>K フレームワークの Rust バックエンド。</strong>Midnight Foundation の Lucas と Sebastian が作り、Runtime Verification のものより速く簡潔だとして、同社に連絡した、と。<span class="badge">補足</span>midnightntwrk の GitHub に k-rust というリポジトリがあります。2 人の姓は動画に出てきません。</li>
+  <li><strong>Leios を予定どおりに出す</strong>ためにチームが「24 時間 365 日」働いている、AlphaGrowth と組んでいる、シリコンバレーで Andy Tang と Draper の人たちと会食し、Midnight City のチームを Draper Dragons のプログラムに送ることも「話題のひとつ」、と。</li>
+</ul>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>「プライベートな proof-of-stake」とは</h4>
+<p>proof-of-stake では、誰が次のブロックを作るかを保有量に応じて決めます。ふつうは「誰がいくら持っているか」が公開されます。プライベート版は、保有量も誰が選ばれたかも明かさずに、選ばれたことだけを証明できるようにするものです。Crypsinous はそれを Ouroboros の枠組みで設計した 2018 年の論文です。</p>
+<h4>「Jolt」「格子」「Nightstream」</h4>
+<p>Jolt はプログラムの実行が正しかったことを短い証明にする仕組み（zkVM）の一つ。「格子ベース」は、その証明の土台を量子コンピュータに強いとされる数学に置き換えることで、本人が 9 節で「格子が来る」と言っているのはこの流れです。Nightstream は Midnight 側の同種の部品の名前で、本人は「両者を突き合わせる必要がある」と言っています。</p>
+<h4>「K の意味論」</h4>
+<p>プログラミング言語の意味を、機械が読める形で厳密に定義する道具が K フレームワークです。金融契約の言語を K で定義しておくと、契約の振る舞いを実行前に検証できます。Marlowe はそのために IOG が 2018 年ごろに作った言語で、本人はそれを Midnight 向けに作り直していると述べています。</p>
+<h4>身近なものへのたとえ</h4>
+<p>契約書を自然言語で書く代わりに、記入欄と計算式が固定された「定型の契約書」を使うようなものです。書ける契約は限られますが、何が起きるかを事前に全部確かめられます。</p>
+<h4>一言でまとめると</h4>
+<p>本人が挙げたのは、Midnight の「合意の作り方」「証明の作り方」「契約の書き方」の 3 つを、それぞれ作り直す仕事です。いずれも本人の申告で、進み具合の裏付けは動画にはありません。</p>
+</div>
+</details>
+
+<p>これらを本人は「どれもが星で、星座になって空を照らす」と表現し、「全部が正しく組み合わされば大量普及への道になる」と述べています。「Midnight は私たちが作った中でもっとも難しく、もっとも不可欠なプロダクト」「プライバシーを失えば永遠に失う」とも。</p>
+
+
+<h2 id="cardano">7. Cardano 側への要求 — 財団、資金、Pogun</h2>
+<p class="deck">「Midnight は Cardano の上に建っている」。Cardano Foundation と資金提供者への、本人の強い批判。</p>
+
+<p>動画の後半は Cardano コミュニティへの訴えです。<strong>「Midnight が直すなら、それを可能にしたのは Cardano だ」</strong>「Cardano はその上に建つプロジェクトなしには、ADA を動かすスマートコントラクトのシステムでしかない」。SNEK、DexHunter、SundaeSwap、Strike には問題を言わないのに、最大の Midnight にだけ言うのは、Midnight で作っている人に「歓迎されていない」と言っているのと同じだ、と本人は述べています。</p>
+
+<p>そのうえで名指しの要求が 2 つあります。いずれも本人の発言です。</p>
+
+<ul>
+  <li><strong>Cardano Foundation は Midnight についてツイートせよ。</strong>「あなたたちのブロックチェーン上で最大のプロジェクトだ」「Solana も Ethereum も、財団と創設チームが大きなプロジェクトを語る」。よいことが起きたとき、たとえば Google との関係をリツイートしたか、悪いことが起きたときだけ現れるのか、と。<span class="badge">補足</span>Google Cloud は 2026 年 2 月に Midnight の連合ノードの運用者・エコシステムパートナーとして参加しています。「Dreas」という名前がここで出ますが、誰を指すか動画では説明されていません。</li>
+  <li><strong>資金提供者は「商業的な成果を生むために金を出すことに病的なアレルギー」だ。</strong>「彼らが儲けたらどうする」と言って Blockfrost にも Pogun にも出さない。競合は「どんな KPI を持ってくるか。2,500 万ドルの小切手をどうぞ」なのに、こちらは 50 万ドルで「よくも頼めたものだ」と言われる、と。</li>
+</ul>
+
+<p>Pogun については、Bitcoin を Cardano にミラーして TVL を作り、それをステーブルコインに貸して発行を作り、DeFi に置く、という仕組みを「DeFi としてこれ以上ないくらい良い」と述べ、<strong>「恒久的な利益分配が得られる案だったのに、あなたたちは反対票を投じた」</strong>と。ADA が 83 セントのときのソブリン・ウェルス・ファンドの提案も「1 億やっていれば今 4 億の価値になっていた」と本人は言います。<span class="badge">補足</span>IOG は 2026 年 5〜6 月に 9 本の財務庫提案を出し、報道では Pogun、Blockfrost、L2 の 3 本が閾値に届かず否決されています。ソブリン・ウェルス・ファンドは 2025 年 6 月に本人が提案した「財務庫の ADA 1 億ドル分を Bitcoin とステーブルコインに換える」構想です。「今 4 億」の計算の前提（何の価格がいつ 4 倍になったか）は動画では示されていません。</p>
+
+<p>財団への言葉はさらに強く、「ゴミ財団については私にはどうにもできない」「Cardano については申し訳なく思う、私の最大の過ちだ」「ADA が上がっても下がっても彼らの稼ぎは同じ」「理事会は理事会のままで、投票で罷免できず、監督がない」と述べています。Bitcoin は Bitcoin Foundation なしで何兆ドルの価値を生んだ、「私たちもそれに関係なく成功する」とも。<span class="badge">補足</span>これらは Cardano Foundation の組織構造についての本人の評価であり、このページで裏付けを取ったものではありません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — Pogun を否決したのは「財団」ではなく、投票した DRep たちでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、動画の中で 2 つの話が続けて語られているために混ざりやすい箇所です。</strong></p>
+<h4>要素に分解すると</h4>
+<ul>
+  <li>Pogun や Blockfrost の提案は Cardano の財務庫（treasury）から資金を求めるもので、可否を決めるのは CIP-1694 のガバナンスで投票する DRep と憲法委員会です。本人が「あなたたちは反対票を投じた」と言う相手は、この投票者です</li>
+  <li>「ツイートしない」「監督がない」と言う相手は Cardano Foundation で、財団は投票の当事者ではありません（財団自身が DRep として投票する場合を除く）</li>
+  <li>「資金を出す側が商業的な成果にアレルギーだ」という批判は、本人の言い方では両方にかかっています</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>否決された提案の投票結果（賛成・反対・棄権の内訳と、大口の DRep の票）は、オンチェーンで誰でも確かめられます。財団の運営は財団の年次報告で見ます。別のものです。</p>
+<h4>この動画で示されたこと・示されなかったこと</h4>
+<p>投票の内訳も、否決の理由として投票者が挙げたものも、動画では語られていません。「彼らが儲けたらどうする」は本人がまとめた反対側の言い分で、引用ではありません。</p>
+</div>
+</details>
+
+
+<h2 id="context">8. 「何も簡単ではない」— ハック、SecondFi、CLARITY、LAPTOP</h2>
+<p class="deck">腹立たしいことを列挙して「先に進む」。本人が挙げた出来事に、確認できた事実を添える。</p>
+
+<p>本人が「腹立たしいが、先に進む」と並べたものと、「今は何も簡単ではない」の根拠として挙げたものです。動画の言い分をそのまま書き、確認できたことを <span class="badge">補足</span> で添えます。</p>
+
+<ul>
+  <li><strong>「Cardano と Binance のあいだのブリッジがハックされた。大金が盗まれ、誰かが売り浴びせた」</strong> <span class="badge">補足</span>2026 年 7 月 21 日、Wanchain が運用する Cardano と BNB Chain のブリッジから約 5 億 1,500 万 NIGHT（当時約 1,300 万ドル）が流出した件と一致します。「Binance」は BNB Chain のことと読めます。</li>
+  <li><strong>「SecondFi のせいで中核のパートナーを失い、彼らは身を引いて消えた」</strong> <span class="badge">補足</span>EMURGO が 2026 年 7 月に、自社ウォレットの SecondFi の事故対応を理由に the Pentad から離脱した件です（<a href="../2026-09-02-iog-block45-lace-nate-strang/">Block//45</a> の回の用語集にも記載）。</li>
+  <li><strong>「CLARITY は 2 日後に通らない。1 年以上前から言ってきた」</strong> <span class="badge">補足</span>動画公開後の結果として、米上院は 2026 年 9 月 15 日（火）のクローチャー採決で市場構造法案 CLARITY を 60 票に届かず否決しました。本人の「2 日後」は日曜の配信から数えて合っています。姉妹サイトの <a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/">RealFi の GTM 回</a>では「Clarity が固まったあとの影響」が保留の問いになっていました。</li>
+  <li><strong>「Hunter Biden が LAPTOP コインを出した。何を解決するのか。何も」</strong> <span class="badge">補足</span>Hunter Biden のミームコイン LAPTOP は 2026 年 9 月 9 日に Base で発行され、直後に急騰と急落を報じられています。「2028 年の見栄の大統領選」以下は本人の評価です。</li>
+  <li><strong>「AI ラボは自分たちの AI が 24〜36 か月で自分たちを殺すと本気で考えている」「イランとの戦争」「5 ドルのガソリン」「36 か月以内の半導体危機」「AI バブル」</strong> <span class="badge">補足</span>いずれも本人の情勢認識と予測で、このページでは裏付けを取っていません。予測として書かれたものは、そのままの確度で残しています。</li>
+  <li><strong>「暗号通貨は個人投資家に離婚された」</strong>——嘘をつかれ、ハックされ、搾り取られたから去った。バナナの NFT に 150 万ドル、ミームコインが 100 億、という「行き過ぎ」の結果として、機関投資家は「自分たちの保有を吊り上げる」だけだ、と。</li>
+</ul>
+
+<p>ここで本人は Midnight が「解決するもの」も列挙しています。国防総省の CAC カード、医療記録の共有、自分のエージェントを自分で持つこと（前回の配信の Navier–Stokes の話をここで再び引いています）、DRM、支出を明かさないロイヤルティ、取引戦略や AI スキルの貸し出し。いずれも「解決する」と言い切りで、仕組みや時期は語られていません。<span class="badge">補足</span>CAC は米国防総省の共通アクセスカード（職員の身分証）です。</p>
+
+<p>RealFi と Pogun についても「仮定ではなく本物」として、<strong>「RealFi は来月ローンチする。銀行口座を持たない人に銀行を、というアフリカの一手」</strong>「Bitcoin DeFi は、Bitcoin を売らずにボタンを押して 5〜10% を得たい人の問題を解く。ADA のステーキングでは 71% の人がボタンを押した」と述べています。マイクロファイナンスでは「デジタル ID とウォレットを持てばローンが割引になる」「貸出金利が 85% から 10% 未満に下がり、送金が無料になる」と。<span class="badge">補足</span>RealFi の mainnet は 2026 年 10 月 1 日と、姉妹サイト <a href="https://shiodome47.github.io/2026RealFi/">2026RealFi</a> の 09-11 の回で明言されています。「71%」「85% → 10% 未満」「取引 1 件が 1 万 5,000 ドルから 30 ドル未満に」はいずれも本人の数字で、何を数えたものか、いつ時点かは動画では説明されていません。</p>
+
+
+<h2 id="button">9. 「ボタンを押すだけ」— iPhone とトイレのスマホ</h2>
+<p class="deck">Apple は 20 年説得しても Mac のシェアを動かせず、iPhone で一気に変えた。裏の複雑さは見せない。</p>
+
+<p>本人の締めの論理は「シンプルさ」に集約されます。Apple は 20 年かけて「macOS のほうが良い」と説得したが Windows との比率は動かず、<strong>iPhone を作って「ボタンを押すだけ」にしたら独占が崩れた。</strong>人に移行を促すのではなく、古い体験が時代遅れに見えるほど簡単な新しい体験を与える、と。「トイレにラップトップは持って入らないが電話は持って入る」「電話は手や耳と同じ体の一部になった」という例え話が続きます。</p>
+
+<p>Midnight に当てはめると、「Bitcoin DeFi はトグルを押して 5%」「RealFi はトグルを押す」「Midnight は『エージェント、これが要る』」。その裏側には 14 の取引とインテント、マルチチェーン署名、信頼実行環境、多者間計算、ZK（Groth16、Halo 2、PLONK）、4 種類の外部体演算、複数の楕円曲線、「そして格子が来る」——だが利用者はそれを見ないし気にしない。TCP/IP のパケットを手で調べる人がいないのと同じだ、と。<span class="badge">補足</span>ここで挙げられた部品は、Midnight の現在の実装の一覧として述べられたものではなく、「裏側はこれくらい複雑だ」という例示です。実際に何が使われているかは Midnight の技術文書で確認する必要があります。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="表側はボタン 1 つ（Bitcoin DeFi のトグル、RealFi のトグル、Midnight のエージェント）、裏側は取引、署名、信頼実行環境、多者間計算、ゼロ知識証明、格子などの複雑な部品、という本人の対比を示した図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-t" text-anchor="middle">表側 — 利用者が見るもの</text>
+
+  <rect x="16" y="40" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="116" y="66" class="d-t" text-anchor="middle">Bitcoin DeFi</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">トグルを押して 5%</text>
+
+  <rect x="240" y="40" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="340" y="66" class="d-t" text-anchor="middle">RealFi</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">トグルを押す</text>
+
+  <rect x="464" y="40" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="564" y="66" class="d-t" text-anchor="middle">Midnight</text>
+  <text x="564" y="90" class="d-s" text-anchor="middle">「エージェント、これが要る」</text>
+
+  <line x1="340" y1="110" x2="340" y2="136" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="16" y="140" width="648" height="104" rx="8" class="d-box"/>
+  <text x="340" y="166" class="d-t" text-anchor="middle">裏側 — 「見えないし、知らないし、気にしない」</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">14 の取引とインテント、マルチチェーン署名、信頼実行環境、多者間計算</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">ZK（Groth16、Halo 2、PLONK）、4 種類の外部体演算、複数の楕円曲線</text>
+  <text x="340" y="232" class="d-s" text-anchor="middle">「そして格子が来る」（いずれも本人の例示。現在の実装の一覧ではない）</text>
+
+  <rect x="16" y="262" width="648" height="44" rx="7" class="d-box-plain"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">たとえ：TCP/IP のパケットを手で調べる人はいない</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">「ネットが遅い → Wi-Fi を変える」で 50 億人が使っている。PGP の人になってはいけない、と</text>
+</svg>
+<p class="figcap">Charles Hoskinson が語った「表と裏」を描いたものです。裏側の部品名は本人が口にした順で、それぞれが Midnight のどこで使われているかは説明されていません。</p>
+</div>
+
+<p>最後に本人は、iPhone Duo の発表で「開いたときに 1 画面から 2 画面へガラス越しのように移り変わる」演出に触れ、「あれは 5 分の議論ではなく、何千時間の細部への注意の産物」「消費者は見ないし求めないが、感情的に感じてつながる」と述べています。「Apple は 1995 年に iPhone Duo を作っていたか。私たちも 5 年前、10 年前にはこういうものを作っていなかった」と。<span class="badge">補足</span>iPhone Duo は Apple が 2026 年 9 月 9 日に発表した折りたたみ iPhone で、本人の Galaxy Z Fold 8 と比較されています。</p>
+
+
+<h2 id="overall">10. 全体像</h2>
+<p class="deck">出来事はひとつ。本人は「開発者は無限になった → ビルダーが要る → ボタン 1 つで勝つ → Cardano 側も抱きしめろ」の一本道で語る。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="全体像。DevRel の縮小という出来事から、開発者は無限の資源になったという理屈、ビルダーが欲しいという結論へ。さらにプライバシーは差別化要因ではないという条件、ボタン 1 つという手段、Cardano 側は Midnight を抱きしめろという要求へ、という本人の一本道を 2 段に示した図">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-t" text-anchor="middle">出来事：Midnight Foundation が DevRel を縮小（9 月 10 日の発表）</text>
+
+  <rect x="16" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="70" class="d-t" text-anchor="middle">本人の理屈</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">AI で開発者は「無限の資源」</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">数を追えばゲーム化される</text>
+
+  <line x1="220" y1="87" x2="236" y2="87" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="240" y="44" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="340" y="70" class="d-t" text-anchor="middle">結論：ビルダー</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">プロダクトに責任を持つ人</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">100 億ドル × 10 が目標</text>
+
+  <line x1="444" y1="87" x2="460" y2="87" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="464" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="70" class="d-t" text-anchor="middle">条件</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">プライバシーは売り文句にならない</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">簡単で安くて良いこと</text>
+
+  <line x1="564" y1="134" x2="564" y2="160" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="464" y="164" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="564" y="190" class="d-t" text-anchor="middle">手段：ボタン 1 つ</text>
+  <text x="564" y="214" class="d-s" text-anchor="middle">iPhone が Windows を崩したように</text>
+  <text x="564" y="234" class="d-s" text-anchor="middle">裏の複雑さは見せない</text>
+
+  <line x1="460" y1="207" x2="444" y2="207" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="240" y="164" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="340" y="190" class="d-t" text-anchor="middle">Cardano 側への要求</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">財団は Midnight を語れ</text>
+  <text x="340" y="234" class="d-s" text-anchor="middle">商業プロジェクトに資金を出せ</text>
+
+  <line x1="236" y1="207" x2="220" y2="207" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="16" y="164" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="190" class="d-t" text-anchor="middle">締め</text>
+  <text x="116" y="214" class="d-s" text-anchor="middle">「シャベルを持て」</text>
+  <text x="116" y="234" class="d-s" text-anchor="middle">Nightforce、Midnight City へ</text>
+
+  <rect x="16" y="270" width="648" height="44" rx="7" class="d-box-plain"/>
+  <text x="340" y="288" class="d-t" text-anchor="middle">すべて本人の見解。数字（168 人、71%、1 万 5,000 ドル → 30 ドル）は本人の申告</text>
+  <text x="340" y="306" class="d-s" text-anchor="middle">財団・資金提供者・他プロジェクトへの評価は本人のもので、このページでは裏付けを取っていない</text>
+</svg>
+<p class="figcap">動画の順序をほぼそのまま 2 段に折り返したものです。本人が「一本道」と言っているわけではなく、途中に「本人が手を動かしていること」（6 節）と「腹立たしいこと」（8 節）が挟まります。</p>
+</div>
+
+
+<h2 id="pending">11. 答えが出なかったこと</h2>
+<p class="deck">質疑はない配信。数字の出所、名前だけ挙がったもの、仕組みが語られなかったもの。</p>
+
+<p>ライブ配信ですが、チャットの質問を読み上げる場面はありません（荒らしへの言及が 1 か所）。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">人数なし</span>DevRel チームは何人で、そのうち何人が離れたのか。代わりに何にいくら使うのか。</p>
+<p class="qa-a" data-by="動画では「一部」のみ">本人は「一部をなくした」、Foundation の発表は「畳んだ」。人数も予算も、どちらにも出ていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">出所なし</span>「1 万人近く」（Midnight City）、「168 人の科学者」、「71% がステーキング」、「85% → 10% 未満」、「1 万 5,000 ドル → 30 ドル未満」は何を数えたものか。</p>
+<p class="qa-a" data-by="本人の申告">いずれも定義と時点なしで語られました。Midnight City の「人」がアカウント数なのかエージェント数なのか、「取引 1 件」が何の取引なのかは説明されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">前提なし</span>「ソブリン・ウェルス・ファンドを 83 セントでやっていれば、今 4 億の価値」の計算。</p>
+<p class="qa-a" data-by="一言のみ">何を 1 億買っていれば 4 倍になったのか（Bitcoin か、別のものか）は語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">名前のみ</span>「Dreas」「Jem と Nico」「Lucas と Sebastian」「Lola M.」は誰か。</p>
+<p class="qa-a" data-by="説明なし">Dreas は Cardano Foundation の文脈で「DevRel の解雇はひどいとツイートした」人として、Jem と Nico は Midnight City のビルダーとして、Lucas と Sebastian は Midnight Foundation で K の Rust バックエンドを作った人として名前だけ出ます。姓も肩書も語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">仕組みなし</span>Midnight が「解決する」と列挙したもの（CAC カード、医療記録、DRM、AI スキルの貸し出し）は、どう解決するのか。</p>
+<p class="qa-a" data-by="言い切りのみ">列挙だけで、仕組みも時期もありません。前回の配信の「AI を動かせる私的な環境」も同じままです。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期のみ</span>BABE のローンチ、プライベート proof-of-stake、Moriarty、Nightstream はいつ出るのか。</p>
+<p class="qa-a" data-by="「来年」「パイプラインに」">BABE は「来年予定」、ほかは「研究者とやり取り中」「計算中」「差分を取る必要がある」の段階で、日付はありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">対象不明</span>「Cardano と Binance のブリッジ」はどのブリッジか。</p>
+<p class="qa-a" data-by="固有名なし">本人は運用者の名前を出していません。<span class="badge">補足</span>2026 年 7 月の Wanchain の Cardano–BNB Chain ブリッジの件と読めますが、本人がそう言ったわけではありません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は Charles Hoskinson 本人の YouTube チャンネルで公開されているライブ配信 <a href="https://www.youtube.com/watch?v=VI5OuB6o5BU">Devs versus Builders</a>（配信日 2026-09-13、約 55 分 30 秒。日付は本人の「日曜日」という発言と前後の報道から、時間は字幕の最終時刻から）です。公開動画なので発言者は実名のまま書いています。<strong>本人のチャンネルなので、方針や評価はすべて個人の見解として書き、財団・資金提供者・他プロジェクトへの評価は本人の発言として帰属させています。</strong></p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回では画面共有の発言がなく、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>動画公開後の結果</strong>として足したものは、CLARITY 法案の上院での否決（2026-09-15）の 1 点です。そのほかの <span class="badge">補足</span> は、動画の前に起きていた出来事（DevRel 縮小の発表、Wanchain のブリッジ、Pogun の否決、LAPTOP、iPhone Duo）の確認で、いずれも 2026 年 9 月 15 日時点のものです。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Three days after the Midnight Foundation announced it was winding down its developer-relations (DevRel) team, Charles Hoskinson spent 55 minutes defending the move, speaking for himself.<br>
+  Three steps. First, now that AI writes code, <strong>“how many developers do you have” is neither scarce nor a metric</strong>. Second, what Midnight wants is <strong>“builders,”</strong> people who ship a product and answer for its revenue and adoption, and privacy is not even the pitch. Third, so the Cardano side should embrace and fund commercial projects like Midnight and Pogun. The second half is a sharp attack on the Cardano Foundation and on funders, all recorded here as his words.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>The trigger is the DevRel cut.</strong> In his telling, the Midnight Foundation's quarterly review led it to “get rid of part of the DevRel team and move towards builders,” and some people said Midnight was dying. <span class="badge">added</span> The announcement was on 10 September 2026; the Foundation's wording is that it “wound down” the DevRel team.</li>
+  <li><strong>Developers have become “an infinite resource.”</strong> When humans wrote code, developer count meant something; now anyone can look like a developer with AI. Reward hackathons and lines of code and you get “I built this app… I mean Claude did it,” and the time goes into verifying human authorship.</li>
+  <li><strong>A builder is someone accountable for a product.</strong> A product has a consumer, a revenue target, adoption, a marketing plan; the person who ships that is a builder, someone who can answer “show me the bridge.” His stated goal: ten ventures worth $10 billion, built by ten people each, within 24 to 36 months.</li>
+  <li><strong>Privacy is not the pitch.</strong> Everyone has been able to send encrypted email since 1991 and nobody uses PGP. The private product has to be easier, cheaper and better than the non-private one or it will not be chosen. “If privacy is the core differentiator, it's not worth anything.”</li>
+  <li><strong>What he says he is working on himself.</strong> A 59-page requirements spec for a private proof-of-stake protocol for Midnight's future consensus, tracking the lattice-based upgrade to Jolt, writing a financial DSL, Leios, dinners with Draper. All self-reported.</li>
+  <li><strong>Demands on the Cardano side.</strong> The Cardano Foundation should tweet about Midnight; funders are “pathologically allergic” to commercial outcomes and voted down Pogun and Blockfrost; the foundation has no oversight. Strong words throughout, all written here as his assessment.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking, and what kind of stream this is</a></li>
+  <li><a href="#en-what"><span class="n">02</span>What happened: the DevRel cut and the backlash</a></li>
+  <li><a href="#en-devs"><span class="n">03</span>The end of “developer count” as a metric</a></li>
+  <li><a href="#en-builders"><span class="n">04</span>What a builder is: the MacBook Air and “show me the bridge”</a></li>
+  <li><a href="#en-privacy"><span class="n">05</span>Privacy is not the core differentiator</a></li>
+  <li><a href="#en-work"><span class="n">06</span>What he says he is working on</a></li>
+  <li><a href="#en-cardano"><span class="n">07</span>Demands on the Cardano side: the foundation, funding, Pogun</a></li>
+  <li><a href="#en-context"><span class="n">08</span>“Nothing is easy”: the hack, SecondFi, CLARITY, LAPTOP</a></li>
+  <li><a href="#en-button"><span class="n">09</span>“Click the button”: the iPhone and the phone in the bathroom</a></li>
+  <li><a href="#en-overall"><span class="n">10</span>The whole picture</a></li>
+  <li><a href="#en-pending"><span class="n">11</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking, and what kind of stream this is</h2>
+<p class="deck">Sunday noon, from his office in Colorado. His own channel, so everything is personal opinion.</p>
+
+<p>Charles Hoskinson, founder of Input Output and of Cardano, speaking alone for about 55 minutes, live on his own YouTube channel. The previous stream (<a href="../2026-09-09-charles-hoskinson-navier-stokes/">Navier-Stokes</a>) was from Wyoming; this one is from his office in Colorado, “on a Sunday at 12:15,” as he says. It is interrupted twice, by a chat troll and by a dog.</p>
+
+<p><strong>Because this is his own channel, every position, assessment and date is his personal view.</strong> He says so himself: “I expect things in a different way than the Midnight Foundation does, and that's okay. And Shielded does.” <span class="badge">added</span> Midnight's engineering is done by Shielded Technologies, spun out of IOG in September 2025; the Midnight Foundation is a separate body for ecosystem and governance. The “strategy of Midnight” described here is his framing, not an official statement of either.</p>
+
+<p>The second half contains strong language about the Cardano Foundation, funders, other projects and memecoins. On this page all of it is <strong>attributed to him as his words</strong>, never stated as fact.</p>
+
+
+<h2 id="en-what">2. What happened: the DevRel cut and the backlash</h2>
+<p class="deck">A quarterly review moved the Foundation “from developers to builders.” He is on the side defending it.</p>
+
+<p>As he tells it, the Midnight Foundation meets every quarter to ask whether the original strategy still holds, and recently announced it had “pivoted,” getting rid of part of the DevRel team and moving towards builders. Some people responded that all the developers were gone, Midnight was dying and “the experiment's over.” He calls this “everybody just wants to panic,” and spends the next fifty minutes defending the decision.</p>
+
+<p><span class="badge">added</span> The announcement was on 10 September 2026. In press accounts the Midnight Foundation said it had wound down its dedicated DevRel team to focus on AI-native tools, simpler onboarding and its existing Build Club and Night Sky programmes, and that it wants to widen who can build to “founders, operators, designers, domain experts.” No headcount was given. His “part of the team” and the Foundation's “wound down” are different wordings.</p>
+
+<div class="term">
+<p class="term-name">DevRel <small>his term</small></p>
+<p>Developer Relations: the function that draws developers to a platform through documentation, hackathons and support. He describes “the way we used to do” it as rewarding hackathon wins, lines of code and interesting open-source projects. <span class="badge">added</span> Cutting DevRel is not the same as cutting developers; he adds that “this doesn't mean there's no professional engineers around. There's 168 scientists at Input Output” (his figure).</p>
+</div>
+
+<p>He also says “this is not a criticism of the DevRel team we let go. They're good people and they did a lot of great work.”</p>
+
+
+<h2 id="en-devs">3. The end of “developer count” as a metric</h2>
+<p class="deck">It meant something when humans wrote the code. Now that anyone can look like a developer, chasing the number just invites gaming.</p>
+
+<p>His argument runs like this. Cardano and other chains tracked “this many developers on the chain.” <strong>When a human being was writing code, that meant a lot</strong>: a trained, experienced person choosing to spend a very finite resource on Midnight.</p>
+
+<p>But this is the age of “vibe coding” and “vibe engineering,” where people with no technical knowledge or experience can use the tools to look like a developer. So developers are “no longer a scarce and finite resource”; they are “a resource that is infinite in its ability.”</p>
+
+<div class="term">
+<p class="term-name">Vibe coding <small>his term</small></p>
+<p>He uses it without defining it. <span class="badge">added</span> A phrase that spread around 2025 for building software by asking an AI in natural language and accepting what comes back if it works, rather than writing the code yourself. He distinguishes this from “vibes with skill” or “vibe engineering,” which he uses approvingly for the Midnight City team: engineers who understand the engineering, using AI to ship a great many features.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="His account of developers going from a finite to an infinite resource, and of the old incentives being gamed so that time goes into verifying human authorship">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="316" height="106" rx="8" class="d-box"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">Before: developers were finite</text>
+  <text x="174" y="74" class="d-s" text-anchor="middle">Trained, experienced people spending their time</text>
+  <text x="174" y="94" class="d-s" text-anchor="middle">“How many” meant something</text>
+  <text x="174" y="114" class="d-s" text-anchor="middle">Choosing to spend it on Midnight was a big deal</text>
+
+  <rect x="348" y="20" width="316" height="106" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">Now: “an infinite resource”</text>
+  <text x="506" y="74" class="d-s" text-anchor="middle">Anyone can look like a developer with AI</text>
+  <text x="506" y="94" class="d-s" text-anchor="middle">Not scarce, not a metric</text>
+  <text x="506" y="114" class="d-s" text-anchor="middle">The tools are speeding up, not slowing down</text>
+
+  <rect x="16" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="178" class="d-t" text-anchor="middle">The old incentives</text>
+  <text x="116" y="202" class="d-s" text-anchor="middle">Hackathons, lines of code</text>
+  <text x="116" y="222" class="d-s" text-anchor="middle">Interesting open source</text>
+
+  <line x1="220" y1="193" x2="236" y2="193" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="240" y="150" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="340" y="178" class="d-t" text-anchor="middle">Gaming</text>
+  <text x="340" y="202" class="d-s" text-anchor="middle">“I built this app…”</text>
+  <text x="340" y="222" class="d-s" text-anchor="middle">“…I mean Claude did it”</text>
+
+  <line x1="444" y1="193" x2="460" y2="193" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="464" y="150" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="178" class="d-t" text-anchor="middle">Time lost to verification</text>
+  <text x="564" y="202" class="d-s" text-anchor="middle">“Did you cheat or not?”</text>
+  <text x="564" y="222" class="d-s" text-anchor="middle">Probing questions, this and that</text>
+
+  <rect x="16" y="256" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">The purpose was to get people to build on the chain</text>
+  <text x="340" y="300" class="d-s" text-anchor="middle">“Not to verify that you understand how Rust works or TypeScript works,” in his words</text>
+</svg>
+<p class="figcap">His spoken argument, drawn in two rows exactly as he gives it. “Infinite resource” is his phrase.</p>
+</div>
+
+<details class="explain">
+<summary>A naive question — if you want builders, isn't cutting the team that supports developers self-defeating?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>The question is natural, and it is what the critics are saying.</strong> Builders write (or generate) code in the end, so the quality of tools and documentation matters to them too.</p>
+<h4>What makes his version hold together</h4>
+<ul>
+  <li>The distinction he draws: what was cut is not “developers” but “the programme for growing developer count” (hackathons, lines of code, open-source rewards) and its staff. He stresses the engineers have not gone anywhere</li>
+  <li>If the developer-count metric is broken by AI, the return on a team whose job is to grow it falls too</li>
+  <li>Reverse the order: “one $10 billion venture will attract 10,000 developers,” not the other way round</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Whether the Foundation's announced replacements (AI-native tools, Build Club, Night Sky) actually answer would-be builders' questions, visible in a few months in developer forums and repository activity.</p>
+<h4>What was and was not shown</h4>
+<p>Only the argument. How many people DevRel was, and what replaces it at what cost, are not said.</p>
+</div>
+</details>
+
+
+<h2 id="en-builders">4. What a builder is: the MacBook Air and “show me the bridge”</h2>
+<p class="deck">Someone accountable for a product. Developers help builders but are not builders themselves, in his definition.</p>
+
+<p>His definition: <strong>“A product has a product market fit. It has a consumer. It has a revenue target. It has adoption. It has a marketing plan. It has product people.”</strong> The people who build products are builders. “Developers help builders, but developers aren't builders themselves.” They can become builders, but then they are asking who the consumer of the code is and what makes it good. You can spend ten years writing technical documents, languages and protocols, he says, and “it's mental masturbation.”</p>
+
+<p>His example is Steve Jobs unveiling the MacBook Air: show the competitor's thin laptop and its dimensions first, overlay the Air to show its thickest point is thinner than the competitor's thinnest, then pull it out of an envelope that had been on stage all along. “That's a builder who rallied the engineers,” who “figured out the comparables, understood what the definition of success is,” and who builds “a world, a narrative, a story.” <span class="badge">added</span> The envelope moment was the Macworld keynote of January 2008; his “I think it was 2008” is right.</p>
+
+<p>The other example is “show me the bridge.” Someone at a bar who says “I'm a builder” gets asked “What did you build? Show me the bridge, the building, the house.” A developer can answer with test cases for financial software, CI, JSON linting, and, asked what product it is for, “I don't really know.” <strong>“Devs can be builders. Absolutely. John Carmack built Doom.”</strong></p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="His contrast of developers and builders: developers write code and help builders; builders ship a product and answer for consumers, revenue and adoption. Developers can become builders">
+  <rect x="16" y="20" width="316" height="150" rx="8" class="d-box"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">Developers (devs)</text>
+  <text x="174" y="76" class="d-s" text-anchor="middle">Write code. Help builders</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">“What did you build?” → “I write tests”</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">“For what product?” → “I don't really know”</text>
+  <text x="174" y="148" class="d-s" text-anchor="middle">His example: Daedalus, years of days-long syncs</text>
+
+  <rect x="348" y="20" width="316" height="150" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">Builders</text>
+  <text x="506" y="76" class="d-s" text-anchor="middle">Ship a product: consumer, revenue target, adoption</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">A marketing plan, product people</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">“What did you build?” → “I built that bridge”</text>
+  <text x="506" y="148" class="d-s" text-anchor="middle">His example: the MacBook Air in the envelope</text>
+
+  <rect x="16" y="190" width="316" height="56" rx="7" class="d-box-plain"/>
+  <text x="174" y="214" class="d-t" text-anchor="middle">Devs can be builders</text>
+  <text x="174" y="234" class="d-s" text-anchor="middle">“John Carmack built Doom”</text>
+
+  <rect x="348" y="190" width="316" height="56" rx="7" class="d-box-plain"/>
+  <text x="506" y="214" class="d-t" text-anchor="middle">His target</text>
+  <text x="506" y="234" class="d-s" text-anchor="middle">Ten $10B ventures of ten people, in 24–36 months</text>
+
+  <rect x="16" y="262" width="648" height="20" rx="6" class="d-box-plain"/>
+  <text x="340" y="276" class="d-s" text-anchor="middle">The contrast is entirely his; the judgement of “developers” is his, not this page's</text>
+</svg>
+<p class="figcap">His contrast in two columns. The examples in the left column (the tests-only developer, Daedalus) are his, not our assessment.</p>
+</div>
+
+<p>Midnight City is his example on the Midnight side: “hardcore professional engineers” who built Shinkai, Flint and the EVM sidechain for Cardano, now “vibe engineering an enormous amount of features” and taking the project “from a demo to a persistent world state to an agentic civilization candidate in six months.” <span class="badge">added</span> Midnight City is a simulation on Midnight in which autonomous AI agents generate transactions continuously, public since 26 February 2026. The captions' “Shanghai” we read as Shinkai, a dcSpark product like Flint (a wallet) and Milkomeda (the EVM sidechain). The “almost 10,000 people floating around” at the start is his number, with no definition of what is counted.</p>
+
+<p>He also describes how the Midnight City team works: a rolling business model canvas, rolling customer personas, a rolling premortem “to see where the product will die,” and raw meeting transcripts formatted and fed to AI so it understands the context. “AI. It's a tool. It doesn't think for you… It's a bicycle for the mind.” <span class="badge">added</span> “Bicycle for the mind” is Steve Jobs's phrase for the computer, from the 1980s.</p>
+
+
+<h2 id="en-privacy">5. Privacy is not the core differentiator</h2>
+<p class="deck">Nobody uses PGP. The private product has to be easier, cheaper and better than the non-private one, or it will not be chosen.</p>
+
+<p>The most striking claim of the video, coming from the person building “the privacy chain.” Cryptographers have said “privacy, privacy, privacy” for 30 years; everyone has been able to send private email since 1991; <strong>“In the last week, be honest. How many of you have sent a PGP encrypted email?”</strong> Some use Signal, but from a GrapheneOS phone? “You say it but your consumer behavior says the exact opposite.”</p>
+
+<p>From there: <strong>“If privacy is the core differentiator, it's not worth anything.”</strong> Privacy is “under the belly of it and it lives in it,” but it is not why people buy. What they buy is abstraction, smart compliance, agentic workflows: “Hey agent, I'm going to a wedding next week, find me something to wear,” with the agent choosing “the private thing by default.”</p>
+
+<p>He extends the logic to principles in general. AI-alignment people telling you AI is scary will not slow it down, “because at the end of the day people are making money with the system the way it is.” “You want to get rid of coal, make solar with batteries cheaper than coal. No one's going to move… out of the goodness of their heart.” If you want privacy and self-custody to be the standard, don't lecture; <strong>“build a product where that's the standard and it's better, faster, and cheaper.”</strong></p>
+
+<details class="explain">
+<summary>A naive question — if privacy is not the differentiator, what is Midnight chosen for?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>A fair question, and his answer within the video boils down to simplicity, universality and “one click”</strong> (section 9). Privacy is present but not the pitch.</p>
+<h4>Breaking it into parts</h4>
+<ul>
+  <li>The PGP example shows that few people choose privacy <em>when it costs effort</em>, not that privacy is worthless</li>
+  <li>His conclusion is that the private agent wins if it is easier, cheaper and better, so privacy is not dropped but made something you get without choosing it</li>
+  <li>Competing on simplicity, though, means competing on the same ground as products without privacy (he himself names Meta's Muse). Why Midnight would win there is not argued in the video</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Whether Midnight's products get used “without the privacy being explained,” that is, whether users pick them without noticing the privacy features. If his reasoning is right, that is what should happen.</p>
+<h4>What was and was not shown</h4>
+<p>A direction. Who provides the agent, what model it runs on and when it ships are not said, just as the “private environments to run AI in” of the previous stream (09-09) remain unexplained.</p>
+</div>
+</details>
+
+
+<h2 id="en-work">6. What he says he is working on</h2>
+<p class="deck">“I've written more code this year than the last 10 years.” Every item is self-reported.</p>
+
+<p>After noting that “my critics like to say… I'm incapable of learning,” he lists what he says he is doing now.</p>
+
+<ul>
+  <li><strong>A 59-page requirements spec for a private proof-of-stake protocol</strong>, for Midnight's future consensus, “resurrecting an old idea that we had from 2018 called Ouroboros Crypsinous.” He is sharing it with PhD researchers and wants to run it in parallel with “the BABE launch that we're planning next year for Midnight.” <span class="badge">added</span> Ouroboros Crypsinous is a privacy-preserving proof-of-stake design published by IOG researchers in 2018. The captions' “the babe launch” we read as BABE, the block-production protocol of Substrate, the framework Midnight's node is built on (inferred).</li>
+  <li><strong>Comparing the lattice-based upgrade to Jolt.</strong> “We knew it was coming”; parts had been reverse-engineered into Nightstream, but “we have to do a diff between the two and see if these two are compatible or competitors.” <span class="badge">added</span> This reads as a16z crypto's 2026 Lattice Jolt, a zkVM using the lattice-based polynomial commitment Akita, with Justin Thaler among the authors. Nightstream is one of the R&amp;D items he listed for Midnight in February 2026; in this video it appears as the name of the proving side.</li>
+  <li><strong>A financial DSL, “Moriarty,”</strong> which “resurrected Marlowe, an old idea we had,” with “the computer crunching K semantics for it right now.” <span class="badge">added</span> The captions say “Morardi”; his GitHub has a repository for Moriarty, a bounded financial language for Midnight (deliverables dated 2026-09-10), which is our reading. K is a framework for formally defining languages, developed by Runtime Verification.</li>
+  <li><strong>A Rust backend for the K framework</strong>, built by “Lucas and Sebastian over at the Midnight Foundation,” which he says is faster and more concise than Runtime Verification's; “we just reached out to Runtime Verification.” <span class="badge">added</span> There is a k-rust repository under midnightntwrk on GitHub. The two surnames are not given.</li>
+  <li><strong>Getting Leios out on time</strong> with the team “working 24/7,” working with AlphaGrowth, dinner in Silicon Valley with Andy Tang “and the Draper folks,” and “we might even send the Midnight City team through the Draper Dragons program… just something to talk about.”</li>
+</ul>
+
+<details class="explain">
+<summary>This section is dense with jargon — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<h4>“Private proof-of-stake”</h4>
+<p>Proof of stake picks who makes the next block in proportion to holdings, and normally who holds how much is public. A private version lets a node prove it was chosen without revealing its holdings or identity. Crypsinous is a 2018 design for this within the Ouroboros family.</p>
+<h4>“Jolt,” “lattice,” “Nightstream”</h4>
+<p>Jolt is one way of producing a short proof that a program ran correctly (a zkVM). “Lattice-based” means resting that proof on mathematics believed to resist quantum computers; when he says in section 9 that “lattices are coming,” this is the thread. Nightstream is Midnight's own component of the same kind, and he says the two need to be compared.</p>
+<h4>“K semantics”</h4>
+<p>The K framework defines what a programming language means in a form a machine can read. Define a financial-contract language in K and you can check how a contract behaves before it runs. Marlowe was IOG's language for this around 2018; he says he is remaking it for Midnight.</p>
+<h4>An everyday analogy</h4>
+<p>A standard contract form with fixed fields and formulas instead of free-text contracts. Fewer contracts can be written, but everything that can happen is checkable in advance.</p>
+<h4>In one line</h4>
+<p>He lists three rebuilds: how Midnight reaches consensus, how it produces proofs, and how it writes contracts. All self-reported; the video offers no evidence of progress.</p>
+</div>
+</details>
+
+<p>“Every one of these things is a star and a constellation that lights up the sky,” he says, and together they give “a path to mass adoption.” Midnight is “the hardest product we've ever built… but it's the most essential,” and “if we lose our privacy, we lose it forever.”</p>
+
+
+<h2 id="en-cardano">7. Demands on the Cardano side: the foundation, funding, Pogun</h2>
+<p class="deck">“Midnight is built on Cardano.” His sharp criticism of the Cardano Foundation and of funders.</p>
+
+<p>The second half is addressed to the Cardano community. <strong>“If Midnight fixes it, Cardano made that possible.”</strong> Without the projects built on it, Cardano “is a smart contract system to move ADA around.” Nobody had a problem with SNEK, DexHunter, SundaeSwap or Strike, he says, yet somehow with Midnight, the largest, they do, which tells people building on Midnight “you're not welcome here.”</p>
+
+<p>Two named demands follow, both in his words.</p>
+
+<ul>
+  <li><strong>The Cardano Foundation should “start tweeting about Midnight.”</strong> “It's your biggest project on your blockchain.” Solana's and Ethereum's foundations talk about their big projects; “did you retweet the Google relationship,” or do you only show up when something bad happens? <span class="badge">added</span> Google Cloud joined Midnight as a federated node operator and ecosystem partner in February 2026. A name, “Dreas,” comes up here; who it refers to is not explained.</li>
+  <li><strong>Funders are “pathologically allergic to giving people money to create a commercial outcome.”</strong> “Oh, we can't fund that business. What if they make money?” No money for Blockfrost, none for Pogun. Competitors say “What KPIs are you going to bring… Here's a $25 million check,” while here a request for half a million gets “How dare you even ask?”</li>
+</ul>
+
+<p>On Pogun he describes the mechanism, mirroring chunks of Bitcoin into Cardano to create TVL, lending them against stablecoins to create issuance, then placing those in DeFi, as “as good as it gets for DeFi,” and says: <strong>“you voted against it, where you get a permanent profit share for it.”</strong> Likewise the sovereign wealth fund he proposed “at 83 cent ADA”: “we done a hundred million, we'd be at 400 million in value right now.” <span class="badge">added</span> IOG submitted nine treasury proposals in May–June 2026; press reports say three, on Pogun, Blockfrost and L2, failed to meet the threshold. The sovereign wealth fund was his June 2025 proposal to convert $100 million of treasury ADA into Bitcoin and stablecoins. The basis of “400 million now” (which asset, priced when) is not given.</p>
+
+<p>On the foundation his language is stronger still: “I can't do anything about the garbage foundation,” “I'm sorry about Cardano. It's my greatest mistake,” they earn the same whether ADA rises or collapses, “the board is still the board. There's no democracy. There's no oversight.” Bitcoin created trillions without the Bitcoin Foundation, and “we'll succeed despite it.” <span class="badge">added</span> These are his assessments of the Cardano Foundation's structure; this page has not verified them.</p>
+
+<details class="explain">
+<summary>A naive question — wasn't Pogun voted down by DReps, not by “the foundation”?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>Correct, and the two are easy to blur because he moves from one to the other without a break.</strong></p>
+<h4>Breaking it into parts</h4>
+<ul>
+  <li>The Pogun and Blockfrost proposals sought money from Cardano's treasury, and such proposals are decided by DReps and the Constitutional Committee under CIP-1694 governance. “You voted against it” is addressed to those voters</li>
+  <li>“Tweet about it” and “no oversight” are addressed to the Cardano Foundation, which is not a party to the vote (except insofar as it votes as a DRep itself)</li>
+  <li>The “allergic to commercial outcomes” charge is aimed, in his phrasing, at both</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>The vote breakdown of the rejected proposals (yes, no, abstain, and how the large DReps voted) is on chain for anyone to check. The foundation's conduct is read from its annual reports. They are different things.</p>
+<h4>What was and was not shown</h4>
+<p>Neither the vote breakdown nor the reasons voters gave appear in the video. “What if they make money?” is his summary of the other side, not a quotation.</p>
+</div>
+</details>
+
+
+<h2 id="en-context">8. “Nothing is easy”: the hack, SecondFi, CLARITY, LAPTOP</h2>
+<p class="deck">A list of frustrations, each followed by “got to move on.” His account, with what could be confirmed beside it.</p>
+
+<p>Things he calls “frustrating” and the grounds for “nothing is easy right now.” The video's wording first, then what could be confirmed, marked <span class="badge">added</span>.</p>
+
+<ul>
+  <li><strong>“A bridge between Cardano and Binance gets hacked. Bunch of money gets stolen. Someone dumps it.”</strong> <span class="badge">added</span> This matches the exploit of 21 July 2026 on the Wanchain-operated bridge between Cardano and BNB Chain, draining about 515 million NIGHT (roughly $13 million at the time). “Binance” reads as BNB Chain.</li>
+  <li><strong>“You lose a core partner because of SecondFi and they just bow out and disappear.”</strong> <span class="badge">added</span> EMURGO's withdrawal from the Pentad in July 2026, citing the incident at its SecondFi wallet (see the glossary note on the <a href="../2026-09-02-iog-block45-lace-nate-strang/">Block//45</a> episode).</li>
+  <li><strong>“CLARITY will not pass two days from now. Been saying it for over a year.”</strong> <span class="badge">added</span> Post-publication outcome: on Tuesday 15 September 2026 the US Senate's cloture vote on the CLARITY market-structure bill fell short of 60 votes. “Two days from now,” counted from a Sunday stream, is right. On the sister site, the <a href="https://shiodome47.github.io/2026RealFi/2026-08-06-office-hours-gtm/">RealFi GTM session</a> had left “what happens once Clarity settles” as an open question.</li>
+  <li><strong>“Hunter Biden… I launched my laptop coin… What does it solve? Nothing.”</strong> <span class="badge">added</span> The LAPTOP memecoin launched on Base on 9 September 2026 and was reported to spike and fall on debut. The remarks about “a vanity presidential run in 2028” are his.</li>
+  <li><strong>“Frontier AI labs… wondering if the artificial intelligence they're building is going to kill them in 24 to 36 months,” “war with Iran,” “$5 gasoline,” “a chip crisis in 36 months,” “the AI bubble will eventually burst.”</strong> <span class="badge">added</span> His reading of the world and his forecasts; not checked on this page, and kept at the confidence he gave them.</li>
+  <li><strong>“Crypto got divorced by retail.”</strong> Retail left “out of disgust” after being lied to, hacked and extracted from; $1.5 million for an NFT of a banana and memecoins at $10 billion were “excess,” and now institutions “pump their own bags.”</li>
+</ul>
+
+<p>Here he also lists what Midnight “fixes”: the Pentagon's CAC card system, sharing of health-care records, owning your own agent so it does not steal your IP (with a callback to the previous stream's Navier–Stokes story), DRM, royalties without revealing spending, leasing trading strategies or AI skills. All stated flatly, with no mechanism or date. <span class="badge">added</span> CAC is the US Department of Defense's Common Access Card, its staff ID.</p>
+
+<p>RealFi and Pogun are “not hypothetical things”: <strong>“That one product, RealFi, launching next month. Bank the unbanked, that's the Africa play.”</strong> Bitcoin DeFi solves the problem of someone who does not want to sell Bitcoin but wants a return, “click the button… 5, 10% whatever”; “71% of you did with ADA staking.” Microfinance: a discount on the loan for getting a digital ID and a wallet, “lending rates go down from 85% to less than 10%,” remittances free. <span class="badge">added</span> RealFi's mainnet date is 1 October 2026, stated in the sister site <a href="https://shiodome47.github.io/2026RealFi/">2026RealFi</a>'s session of 11 September. The “71%,” “85% to under 10%,” and “a transaction costing $15,000 to under $30” are all his figures, with no statement of what is counted or as of when.</p>
+
+
+<h2 id="en-button">9. “Click the button”: the iPhone and the phone in the bathroom</h2>
+<p class="deck">Apple spent 20 years arguing for the Mac and the share never moved; the iPhone changed it at once. Hide the complexity.</p>
+
+<p>His closing argument is simplicity. Apple spent 20 years trying to convince people macOS was better and “the percentage distribution of Windows versus Mac didn't move”; <strong>“then they built the iPhone and it was just push the button and it destroyed the entire Windows monopoly.”</strong> Don't ask people to migrate; give them an experience so simple the old one looks antiquated. Hence the phone on the toilet, and the phone as “part of your body now, like your hand or your ears.”</p>
+
+<p>Applied to Midnight: “Bitcoin DeFi, click the toggle, get 5%. RealFi, click the toggle. Midnight: hey agent, I need this.” Under the hood, “14 different transactions and intents and multi-chain signatures and trusted execution environments and multi-party computation and ZK, lots of ZK, a little bit of Groth16 and Halo 2 and PLONK… four different foreign field arithmetics… and out in the left field we got lattices,” none of which the user sees or cares about, any more than they inspect a TCP/IP packet. <span class="badge">added</span> The components he rattles off are an illustration of “how complex the back end is,” not a statement of Midnight's current implementation; what is actually used has to be checked against Midnight's technical documentation.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="His contrast of the front, one button (a Bitcoin DeFi toggle, a RealFi toggle, asking a Midnight agent), with the back, transactions, signatures, trusted execution environments, multi-party computation, zero-knowledge proofs and lattices">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-t" text-anchor="middle">The front: what the user sees</text>
+
+  <rect x="16" y="40" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="116" y="66" class="d-t" text-anchor="middle">Bitcoin DeFi</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">Click the toggle, get 5%</text>
+
+  <rect x="240" y="40" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="340" y="66" class="d-t" text-anchor="middle">RealFi</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">Click the toggle</text>
+
+  <rect x="464" y="40" width="200" height="66" rx="8" class="d-box-accent"/>
+  <text x="564" y="66" class="d-t" text-anchor="middle">Midnight</text>
+  <text x="564" y="90" class="d-s" text-anchor="middle">“Hey agent, I need this”</text>
+
+  <line x1="340" y1="110" x2="340" y2="136" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="16" y="140" width="648" height="104" rx="8" class="d-box"/>
+  <text x="340" y="166" class="d-t" text-anchor="middle">The back: “you don't see it, you don't know about it, you don't care”</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">14 transactions and intents, multi-chain signatures, trusted execution environments, MPC</text>
+  <text x="340" y="212" class="d-s" text-anchor="middle">ZK (Groth16, Halo 2, PLONK), four foreign field arithmetics, several elliptic curves</text>
+  <text x="340" y="232" class="d-s" text-anchor="middle">“Lattices are coming” (his illustration, not a list of the current implementation)</text>
+
+  <rect x="16" y="262" width="648" height="44" rx="7" class="d-box-plain"/>
+  <text x="340" y="280" class="d-t" text-anchor="middle">The analogy: nobody inspects a TCP/IP packet by hand</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">“The internet's slow, I'll change Wi-Fi networks” is how five billion people use it. Don't be the PGP people</text>
+</svg>
+<p class="figcap">His “front and back,” drawn as he gave it. The back-end components are in the order he said them; where each is used in Midnight is not explained.</p>
+</div>
+
+<p>He ends on the iPhone Duo: the way the display “gradually transitions… like you're looking through a pane of glass” when you open it was “not a five-minute discussion” but “thousands of hours of attention to detail,” which the consumer “doesn't see, ask for, or even know it's there, but they feel it emotionally.” “Were they building the iPhone Duo in 1995? No. And we were not building these types of things 5 years ago or 10 years ago, but we are now.” <span class="badge">added</span> The iPhone Duo is the folding iPhone Apple announced on 9 September 2026; he compares it with his Galaxy Z Fold 8.</p>
+
+
+<h2 id="en-overall">10. The whole picture</h2>
+<p class="deck">One event. He tells it as a single line: developers became infinite → builders are needed → win with one button → and the Cardano side must embrace it.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="The whole picture: from the DevRel cut, through his reasoning that developers became an infinite resource, to the conclusion that builders are wanted; then the condition that privacy is not the pitch, the means of one button, the demand that the Cardano side embrace Midnight, and the closing call to grab a shovel">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-t" text-anchor="middle">The event: the Midnight Foundation winds down DevRel (announced 10 September)</text>
+
+  <rect x="16" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="70" class="d-t" text-anchor="middle">His reasoning</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">With AI, devs are “infinite”</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">Chase the count and it gets gamed</text>
+
+  <line x1="220" y1="87" x2="236" y2="87" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="240" y="44" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="340" y="70" class="d-t" text-anchor="middle">Conclusion: builders</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">People accountable for a product</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">Target: $10 billion × 10</text>
+
+  <line x1="444" y1="87" x2="460" y2="87" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="464" y="44" width="200" height="86" rx="8" class="d-box"/>
+  <text x="564" y="70" class="d-t" text-anchor="middle">Condition</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">Privacy is not the pitch</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">Easier, cheaper, better, or nothing</text>
+
+  <line x1="564" y1="134" x2="564" y2="160" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="464" y="164" width="200" height="86" rx="8" class="d-box-accent"/>
+  <text x="564" y="190" class="d-t" text-anchor="middle">Means: one button</text>
+  <text x="564" y="214" class="d-s" text-anchor="middle">As the iPhone broke Windows</text>
+  <text x="564" y="234" class="d-s" text-anchor="middle">Hide the complexity</text>
+
+  <line x1="460" y1="207" x2="444" y2="207" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="240" y="164" width="200" height="86" rx="8" class="d-box-warn"/>
+  <text x="340" y="190" class="d-t" text-anchor="middle">Demand on Cardano</text>
+  <text x="340" y="214" class="d-s" text-anchor="middle">Foundation: talk about Midnight</text>
+  <text x="340" y="234" class="d-s" text-anchor="middle">Fund commercial projects</text>
+
+  <line x1="236" y1="207" x2="220" y2="207" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="16" y="164" width="200" height="86" rx="8" class="d-box"/>
+  <text x="116" y="190" class="d-t" text-anchor="middle">Close</text>
+  <text x="116" y="214" class="d-s" text-anchor="middle">“Grab a shovel”</text>
+  <text x="116" y="234" class="d-s" text-anchor="middle">Nightforce, Midnight City</text>
+
+  <rect x="16" y="270" width="648" height="44" rx="7" class="d-box-plain"/>
+  <text x="340" y="288" class="d-t" text-anchor="middle">All his own view. Figures (168, 71%, $15,000 → $30) are his, unverified</text>
+  <text x="340" y="306" class="d-s" text-anchor="middle">His judgements of the foundation, funders and other projects are his; this page has not checked them</text>
+</svg>
+<p class="figcap">The video's order, folded into two rows. He does not call it a single line himself; “what he is working on” (section 6) and the “frustrating” list (section 8) come in between.</p>
+</div>
+
+
+<h2 id="en-pending">11. Left unanswered</h2>
+<p class="deck">No questions were taken. Figures without sources, names without explanation, claims without mechanisms.</p>
+
+<p>It is a live stream, but no chat questions are read out (one mention of a troll).</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No headcount</span>How large was the DevRel team, how many left, and what replaces it at what cost?</p>
+<p class="qa-a" data-by="“Part of” only">He says “part of the team”; the Foundation says it “wound down” the team. Neither gives numbers or a budget.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No source</span>What do “almost 10,000 people” (Midnight City), “168 scientists,” “71% with ADA staking,” “85% to under 10%,” and “$15,000 to under $30” actually count?</p>
+<p class="qa-a" data-by="His figures">All given without definition or date. Whether Midnight City's “people” are accounts or agents, and what “a transaction” at $15,000 was, are not said.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No basis</span>The arithmetic of “the sovereign wealth fund at 83 cent ADA… we'd be at 400 million now.”</p>
+<p class="qa-a" data-by="One remark">What the $100 million would have bought that quadrupled (Bitcoin, or something else) is not said.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Names only</span>Who are “Dreas,” “Jem and Nico,” “Lucas and Sebastian,” “Lola M.”?</p>
+<p class="qa-a" data-by="Not explained">Dreas appears in the Cardano Foundation context as someone who tweeted that the DevRel layoffs were bad; Jem and Nico as Midnight City builders; Lucas and Sebastian as the Midnight Foundation people behind the Rust backend for K. No surnames or titles.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No mechanism</span>How does Midnight “solve” the things he lists (CAC cards, health records, DRM, leasing AI skills)?</p>
+<p class="qa-a" data-by="Assertions only">A list, with no mechanism or timing. The “private environments to run AI in” from the previous stream remain unexplained as well.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Dates only</span>When do the BABE launch, the private proof-of-stake protocol, Moriarty and Nightstream ship?</p>
+<p class="qa-a" data-by="“Next year,” “in the pipeline”">BABE is “planned next year”; the rest are at “going back and forth with researchers,” “crunching,” and “we have to do a diff.” No dates.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unnamed</span>Which bridge is “the bridge between Cardano and Binance”?</p>
+<p class="qa-a" data-by="No operator named">He does not name the operator. <span class="badge">added</span> It reads as the July 2026 exploit of Wanchain's Cardano–BNB Chain bridge, but he did not say so.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is the live stream <a href="https://www.youtube.com/watch?v=VI5OuB6o5BU">Devs versus Builders</a> on Charles Hoskinson's own YouTube channel, streamed 2026-09-13 (the date from his “it's a Sunday” and the surrounding reporting), about 55 min 30 s (from the last caption time). It is a public video, so the speaker is named. <strong>Because it is his own channel, every position and assessment here is written as his personal view, and his judgements of the foundation, funders and other projects are attributed to him.</strong></p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken aloud in the video. <span class="badge">on screen</span> would mark things shown but not said; no screen share is mentioned in this stream, so the mark is not used. <span class="badge">added</span> marks explanations we wrote; they are not in the video.</p>
+<p><strong>One post-publication outcome</strong> is added: the Senate's rejection of the CLARITY bill on 2026-09-15. The other <span class="badge">added</span> notes confirm events that preceded the stream (the DevRel announcement, the Wanchain bridge, the Pogun vote, LAPTOP, the iPhone Duo), all as of 15 September 2026.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/watch?v=VI5OuB6o5BU">動画を見る</a></span><span class="l-en">Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/watch?v=VI5OuB6o5BU">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>

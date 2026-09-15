@@ -99,3 +99,12 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 - **事実と違う紹介**: Jay Cummings を「UCSD の教授」と言っているが、所属はカリフォルニア州立大学サクラメント校。動画の言い分を残し、`補足` で添えた
 - **動画に出てこない当事者**: 報道で先行研究者として出る Tristan Buckmaster と Levent Alpöge。本人は触れていない。まとめでは `補足` の時系列で示した
 
+### 2026-09-13 Charles Hoskinson — Devs versus Builders
+
+**1 人語り。**冒頭で名乗る。本人のチャンネル（oEmbed で確認）。話者の割り当ての問題はない。
+
+- **書き方**: 本人のチャンネルなので、方針・評価・時期・数字はすべて「本人の見解として」「本人の申告」。Midnight の戦略も本人の位置づけとして書き、Midnight Foundation / Shielded Technologies の公式見解にはしない（本人自身が「私の期待は Foundation とも Shielded とも違う」と断っている）
+- **第三者への評価が多い回**: Cardano Foundation（「ゴミ財団」「監督がない」）、資金提供者・DRep（「商業的な成果にアレルギー」）、Hunter Biden、Portnoy、DevRel チーム（「批判ではない」）、Apple・Steve Jobs（肯定）。すべて本人の発言として帰属させ、地の文にしない。まとめの 7 節と 8 節で特に注意
+- **確度が低かった箇所**: 固有名詞の推定が 4 つ（Moriarty、Grok Bot、Shinkai、BABE）。根拠は `glossary.md` の同回の見出し。名前だけで特定できなかったものが 6 つ（Dreas、Lola M.、Kie、Jem と Nico、Lucas と Sebastian、ARC）
+- **日付の根拠**: 本人の「日曜日の 12 時 15 分」、Foundation の発表（09-10）の後、報道（09-15）の前、「CLARITY は 2 日後に通らない」が 09-15 の採決と一致。YouTube のページからは未取得
+

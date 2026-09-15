@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devs versus Builders (2026-09-13) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Charles Hoskinson</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-09-13</span>
+  <span>55:30</span>
+  <span>YouTube (live)</span>
+  <span>Devs versus Builders</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> This is a public live stream on Charles Hoskinson's own YouTube channel, so the speaker is named. It is a single-speaker broadcast of about 55 minutes; everything he says here is his personal view, not a statement of IOG, the Cardano Foundation or the Midnight Foundation.</p>
+<p>The source is YouTube's auto-generated captions, supplied as a two-column table of start times and caption lines with <strong>no speaker labels</strong>. Since there is one speaker, turns are split at changes of topic, and the same split is used on the Japanese page. Times are the start time of the first caption line in each turn. The stream is interrupted twice, once by a chat troll (2:52–3:02) and once by a dog (3:45–4:07); both are left in.</p>
+<p><strong>Only proper-noun misrecognitions are corrected</strong>: <code>A16Z</code> → a16z, <code>bun</code> / <code>zig</code> / <code>rust</code> → Bun / Zig / Rust, <code>night force</code> → Nightforce, <code>DeFi Llama</code> → DefiLlama, <code>Sunday</code> (30:01) → Sundae, <code>Manila envelope</code> → manila envelope, <code>Draper Dragons</code> kept. Four names are corrected on inference from context and marked <em>(inferred)</em> in the text: <code>Morardi</code> → Moriarty (his financial DSL for Midnight, published on GitHub), <code>Crockbot</code> → Grok Bot (xAI's agent, named beside Muse from Meta), <code>Shanghai</code> → Shinkai (named with Flint and the Cardano EVM sidechain, all dcSpark products), and <code>the babe launch</code> → the BABE launch (Substrate's block-production protocol). Names left as heard: <code>Dreas</code> (30:49), <code>Lola M.</code> (35:01), <code>Kie</code> (51:08), <code>Jem and Nico</code>, <code>ARC</code> (20:13), <code>Lucas and Sebastian</code>.</p>
+<p><strong>Everything else is unchanged</strong>, mistranscriptions included (<code>lattises</code>, <code>datagramgrams</code>, <code>grindstoneone</code>, <code>governmentisssued</code>, <code>Sony Mac laptop</code>, <code>patent packet</code>, the all-caps stretches). Bleeped words appear as <code>[ __ ]</code> in the captions and are kept. Mojibake in the source (<code>窶冱</code> for “'s” and the like) is restored to apostrophes.</p>
+<p><strong>No screen share is mentioned.</strong> Only what was spoken aloud appears on this page.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-open">00:00:00 — Opening: Midnight is “our fastest moving project”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:00:00</span></div>
+  <div class="turn-body"><p>Hi, this is Charles Hoskinson broadcasting live from warm and sunny Colorado. I was actually just in Wyoming and uh I was just about to say rough and rugged Wyoming, but actually I'm back back in the office heading to uh to work tomorrow. Uh but I want to make a quick video uh this weekend about something that's come up. Midnight is our most responsive, fastest moving, most agile, and forward-looking project that we have. Uh, you know, there are things that are being done in Midnight at a speed I've never seen in the history of software development. Uh, we're building a DeFi kernel. Uh, we're building a specialized DeFi language that is secure by construction. Um, to complement it, we're we're doing chain abstraction. We have Midnight Passport moving along really quickly. Uh, you know, we have Midnight City building the agentic Civilization. There's almost 10,000 people floating around. Uh, and it's growing by leaps and bounds. We're actually constraining it till we have the bring your own agent and there's a ton of amazing things that are there. Uh, you know, recursion is uh coming along quite well. Composition is coming along quite well. Um, and really we're thinking around the dimensions of how do you productize a privacy preserving ecosystem and how do you make that privacy preserving ecosystem become a VPN for finance? You know, you just click a button and it just works everywhere. And we're already having conversations about how do these things work with things like Bitcoin DeFi and lending and all those other things. Awesome.</p></div>
+</div>
+
+<p class="sec" id="t-pivot">00:01:38 — The Foundation's quarterly review, and the DevRel change</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:01:38</span></div>
+  <div class="turn-body"><p>So what this means is every quarter the Midnight foundation gets together and they say is the original strategy that we had good or do we need to change and pivot that strategy to accommodate an evolving roadmap an evolving ecosystem and an evolving landscape. Uh so recently they announced that they've pivoted and they've gotten rid of part of the DevRel team and they're moving towards builders and some people are floating around say, "Oh, how dare you do that? That's the worst thing in the world. Oh no. Oh no. It's like so bad. You've gotten rid of all the build the developers and that means Midnight's dying and the experiment's over." Ah, you know, because everybody just wants to panic and be shitty about everything.</p></div>
+</div>
+
+<p class="sec" id="t-devs">00:02:20 — Developers used to be a finite resource</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:02:20</span></div>
+  <div class="turn-body"><p>Here's the thing. We focused a lot on developers with Cardano as did other blockchains and it was a metric people would track this many developers on the chain and it meant something when a human being is writing code it meant a lot. There's a person using their brain to type on a keyboard with a lot of training and experience and they have chosen to take that very finite resource and apply that very finite resource to to basically and we got that guy doing that. Not sure why I'm not able to ban him. Huh. All right. Well, I can't block him in the chat. Oh well. uh they take that very finite resource and uh basically they they choose to spend it on Midnight. Okay, that's a big deal. But we live in an age where there's vibe coding and vibe engineering and you can have people who have no technical knowledge and no experience use these tools to look like a developer. So it's no longer a scarce and finite resource. It's no longer a resource that matters much. This is a resource that is infinite in its ability. And excuse me, I just have to. Sorry about that. Dog was trying to come in.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:04:07</span></div>
+  <div class="turn-body"><p>It's a resource that's not finite anymore. It's a resource that's infinite. So if you build DevRel and you create incentives the way we used to do, winning hackathons, how many lines of code, uh interesting open- source projects, what'll end up happening is you have a huge amount of people come in and game the system. They say, "Oh, well uh I built this app. I mean Grok. I mean Claude did it, and then what ends up happening is you spend an enormous amount of time on verification of human authorship. So then you have to go and ask lots of probing questions and this that and the other and even though they have something that works and they have something that demonstrates that they've interfaced with the platform, you now have to go into the well did you cheat or not? Well, the entire purpose is to attract people to the chain to build things on the chain. It's not to verify that you understand how Rust works or TypeScript works or any of these other programming languages work.</p></div>
+</div>
+
+<p class="sec" id="t-builders">00:05:19 — “Can you build something valuable?”: Midnight City as the example</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:05:19</span></div>
+  <div class="turn-body"><p>And so, you have to pivot in 2026 because these tools are growing exponentially. They're not slowing down. They're they're speeding up. And if you chart the next 12 months to 24 months, what's going to happen is these tools will get so sophisticated that really it's less about are you a developer and it's now about can you build something valuable? Can you specify something a vision and can you use the tools that we've provided in the right way to build a new business experience that you've never seen before that's intrinsically interesting. A great example is Midnight City. We have a lot of hardcore professional engineers on Midnight City uh who have built things like Shinkai <em>(inferred)</em> and Flint and uh they built the the side chain for Cardano that ran an EVM. So they're proven engineers and they handwrote code. I mean down to a point where they're messing with assembly in some cases. These guys are good, but they're vibe engineering an enormous amount of features and they're able because they understand the engineering to make those features real, secure, realistic and deliver them at a pace and cadence that's unheard of and unseen before. And it's gone from a demo to a persistent world state to an agentic civilization candidate in six months as a result of that stream. We're building. And I look at them, I say, how long will it take to get us to a million users and millions of agents doing interesting things? And people being able to bring their own intelligence and have that exist across many devices, their cell phones left on at night, their PlayStation left on at night to create the largest distributed computer in history and apply it towards living in the Midnight City world. That's an extraordinary exciting thing if you really think about it.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:07:06</span></div>
+  <div class="turn-body"><p>And so that's an example of vibes with skill to build something that's new that people have never seen before and get people very excited about it. So the strategy of Midnight is stuff like that. We want builders. We want people that take the best tools, the vibe tools, intuition, community building, marketing, the whole package, and they're capable of putting it together into a venture that's investable. a venture that Draper or a16z or others would get very excited about, want to cut a check for. We're not really super keen on vanity metrics for the sake of vanity metric. We can go to you say we have 10,000 developers. Awesome. Great. What are they building? What are they producing? What will that translate to to the growth of TVL and the growth of transaction volume and the utilization of the Midnight capabilities? And if you can't answer that mapping, it's a vanity metric.</p></div>
+</div>
+
+<p class="sec" id="t-drama">00:08:10 — Drama and cynicism; “not a criticism of the DevRel team”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:08:10</span></div>
+  <div class="turn-body"><p>I think people have become pathologically addicted to drama and to cynicism and they look at every event as this is the event where people die. And you say contradictory things. You say you have to speed up and be adaptable and not be addicted to the past and be iconoclastic. You have to tear down the conceptions and have a vision of the future. But at the same time, every time you make a decision to achieve the future, chase the future, um it's obviously the wrong decision because it's not going with best practices in the past as an indication that you guys are failing. You can't have it both ways. You can't say be traditional and be liberal. You have to pick a lane. You have to say either follow the way everybody else has done it and fail or do it a new way and you could fail or you could do something that no one's ever seen before and make it work.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:09:03</span></div>
+  <div class="turn-body"><p>So we're focused on builders and by by the way this is not a criticism of the DevRel team we let go. They're good people and they did a lot of great work and there's a lot of smart things that they're focused on. And no, this doesn't mean there's no professional engineers around. There's 168 scientists at Input Output. There's hundreds of engineers at Input Output and across the broader ecosystem with PhDs in computer science. They haven't gone away. They're in the orbit. They're building things. So absolutely we're in a good position if a great builder comes in and says, I need to write operational semantics for a DSL that's Turing- incomplete that I want to embed into my game world. We will have the ability not only tell them how to do that an opinion on the format that they should look like and how you can test it and work with it. Absolutely. But that's not a product. That's not commercialization. That's not marketing. That's not adoption. You can spend the next 10 years writing technical documents, programming languages, protocols, and it's mental masturbation.</p></div>
+</div>
+
+<p class="sec" id="t-product">00:10:17 — What a product is; Steve Jobs and the MacBook Air</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:10:17</span></div>
+  <div class="turn-body"><p>A product has a product market fit. It has a consumer. It has a revenue target. It has adoption. It has a marketing plan. It has product people. That's a product. And the people who build products are builders. Developers help builders, but developers aren't builders themselves. They can become builders, but then they do more than just write code. They think about, okay, well, who's the consumer of this code? What makes this good? What's the standard of it? If you go back and watch all the Steve Jobs keynotes and what made them so special and so magical was that he would always start with the same pattern. He'd say, "Okay, we want to build a thin laptop, the MacBook Air." So, he'd start with the Sony Mac laptop. He said, "This is the best-in-class thin laptop." And he'd show the dimensions and he'd show the product capabilities. He said, "Well, if we're going to innovate, we need to do something better than this." And then he overlaid the MacBook Air on the the Sony and he showed that the thickest part of the MacBook Air is thinner than the thinnest part of the Sony Ultrabook that he was competing against. AND YOU SAY, "WOW, YEAH, THAT'S A thin product. That looks great. That's incredible." That's a builder who rallied the engineers to figure out how to do that. figured out the comparables, understood what the definition of success is, and and put it all together to a point where it it visually pops. So, what did he do when he came out on the stage, he was carrying a manila envelope, he put it on that little envelope that you see in the office, and nobody knew what was in it. And so, when he was talking about the MacBook Air, an hour later, he walks over that envelope, he opens it up and pulls out the MacBook Air and said, "Oh my god, it's been on stage all along." I think it was the 2008. I just mind is blown. You say that is amazing. That's showmanship. That's what builders do. They build a world. They build a narrative. They build a story. They get people excited about it.</p></div>
+</div>
+
+<p class="sec" id="t-privacy">00:12:23 — “Do you really care about privacy?”: PGP, Signal, GrapheneOS</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:12:23</span></div>
+  <div class="turn-body"><p>So, you need privacy. Why do I need privacy? For over 30 years, the cryptographers have been trying to tell everybody privacy, privacy, privacy. Since 1991, all of you, everyone listening, has had the ability to have private email. In the last week, be honest. How many of you have sent a PGP encrypted email? How many of you even know how to send a PGP encrypted email? You don't. And yes, you can do hyper secure communication on Signal. And some of you do, but do you do it from a GrapheneOS phone? Well, [groaning] no, I do it for my iPhone. Oh, there's a back door in that. Oh, I do it for my Android. Well, there's a back door in that. So, do you really care about privacy? So much so it is the product differentiator and it's the thing that you wake up every day say I need that and I I will only buy it if it has that. You say it but your consumer behavior says the exact opposite. So you have to have more to make that work and privacy is under the belly of it and it lives in it but it's not the core differentiator. If privacy is the core differentiator, it's not worth anything. It has to be something more.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:13:56</span></div>
+  <div class="turn-body"><p>So abstraction, smart compliance, agentic workflows. If you put the privacy in the agent, the agent chooses the private thing by default. You're not buying or consuming that product for the privacy. You're buying consuming it for the simplicity, the universality, and the ease that agents bring to you. Hey agent, find me a great hat to buy. Hey agent, I'm going to a wedding next week. I need something to wear. Find me something to wear. Hey agent, I'm going to Tahiti. Where should I stay? What should I do? The agent goes boop boop boop. Comes back to you and tells you that. It would be nice if that's running with your agent and it's private and it doesn't get leaked. But the consumer is not going to make the decision that I'm only going to choose the private agent. The private agent has to be easier, cheaper, simpler, and better than the non-private agent. And if it isn't, they're always going to choose the non-private agent. That is what we've learned for 30 years. This is what builders do. Developers say, "I have to have privacy, and here's this highly complex thing that you have to do. It's only 28 steps." Developers are how we ended up with Daedalus for years and years and years and years, taking days to sync. They just can't conceive and get over the hump of usability, product market fit, the story, the narrative. They can't get to that MacBook Air in the envelope and that magic of pulling it out. Builders can. That's what they do.</p></div>
+</div>
+
+<p class="sec" id="t-tools">00:15:34 — AI as “a bicycle for the mind”; how the Midnight City team works</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:15:34</span></div>
+  <div class="turn-body"><p>And that's what Midnight wants. We want builders. We want people who have that holistic knowledge. And you bring it all together. The tools of the day. Absolutely. AI. It's a tool. It doesn't think for you. It shouldn't because it'll think wrong. It amplifies your thinking. It's a bicycle for the mind. It allows you to go faster than you've ever gone before. Challenge yourself in ways that you've never challenged before. Every time we talk about a sprint for Midnight City, we have a rolling business model canvas. We have rolling customer personas. We have a rolling premortem to see where the product will die. That's why we're able to so effectively tune things. But we can only do that because every time we have a meeting, these things we have raw transcripts. We take them, format them, and put them into AI. And the AI can then understand the context of what we're trying to achieve. And it applies the deepest thinking it can to help us navigate it. So, we're speeding up. And as these AI tools get more advanced and our harness gets more advanced, the features get more interesting and intricate and the strategy gets more interesting and intricate. humans are in the loop. We're still the builders. Jem and Nico and myself and others. So, that type of team is what we're looking for because if I have that team, 10 people can build a $10 billion venture. And I want 10 of those on Midnight in the next 24 36 months. I'm not going to get there with look at our documentation, look at our hackathons, look at our developer count. Just not. I have one $10 billion venture. They themselves will attract 10,000 developers into the ecosystem. That's just the way it is. So, I figured I'd make a video about it.</p></div>
+</div>
+
+<p class="sec" id="t-competitive">00:17:26 — “A brutally competitive space”: critics, Bun, Moltbook, OpenClaw, Muse</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:17:26</span></div>
+  <div class="turn-body"><p>I expect things in a different way than the Midnight Foundation does, and that's okay. Uh, and Shielded does. I tell you the direct thing and I really dig into it into its core and the direct thing is that this is a brutally competitive space and you don't die but you lose your turn and you have to spend a lot of time, effort and money to get back in line for your next turn. Uh, and having watched Ethereum go way up and go down and up and having watched Cardano go way up and go down and now slowly going back up and having watched all these things for 15 years, my critics like to say that I'm [ __ ] I don't know anything. I I'm either too principled or not principled enough. I'm either hyper competent but bad or incompetent and unethical. They just say everything and I'm incapable of learning. And the reality is, every time we've had a failure, every time we've had a misstep, every time we haven't done something right, we talk about it. We admit it. We're not tonedeaf and blind. And we say, "How do we win in the future? Who's going to win in the future? What do we need to do differently? Where are anomalies occurring?" If Anthropic can rewrite Bun in 11 days from Zig to Rust then the code is no longer the moat got to move on. If you can with Moltbook gain millions of users in 24 hours and these agentic harnesses uh like OpenClaw and Hermes are the fastest growing open source projects and everybody's building them. They have Grok Bot <em>(inferred)</em>. Now Muse just came out from Meta. That's the future. Okay. So, how do you win in a world that looks like that? What does your technology need to look like? How do you pivot to make that happen?</p></div>
+</div>
+
+<p class="sec" id="t-work">00:19:24 — What he is working on: Crypsinous, Jolt and Nightstream, Moriarty, K, Leios, Draper</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:19:24</span></div>
+  <div class="turn-body"><p>What do we have that brings something new and interesting to the table? And how do we need to adapt and change? And me personally, I have to adapt and change and do work. I've written more code this year than the last 10 years. It's not easy stuff like vibe coding uh a website or something like that. It's hardcore engineering where I've thought a lot about language design. Uh just the other day I wrote a 59page specification for the requirements for a private proofofstake protocol for Midnight for the future consensus protocol for Midnight resurrecting an old idea that we had from 2018 called Ouroboros Crypsinous and I already started sharing this document with PhD researchers and we're going back and forth now about these requirements what the team needs to look like how we run it to ARC how we run it parallel with the BABE <em>(inferred)</em> launch that we're planning next year for Midnight so we can get it into the pipeline. Concurrently, I'm also taking a look at what Justin Thaler and these other guys did with uh their lattice-based folding upgrade to Jolt. We knew it was coming. We had backward engineered a few things that they had done and put it into Nightstream, but we have to do a diff between the two and see if these two are compatible or competitors where they exist. And in parallel also writing Moriarty <em>(inferred)</em>, a financial DSL that resurrected Marlowe, an old idea we had. And as I speak, uh, the computer is crunching K semantics for it right now. Uh, then you look at Lucas and and Sebastian over at the Midnight Foundation and they have upgraded the K framework to have a Rust backend and it's much faster, much more concise, much more powerful than anything Runtime Verification created. So they can get that integrated in. So we just reached out to Runtime Verification, said hey we got to do that.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:21:13</span></div>
+  <div class="turn-body"><p>At the same time we're also talking about how do we actually get Leios out on time and the team is working 24/7 and they're putting everything in on the Cardano side of the house same time working with AlphaGrowth same time we sent people over to Silicon Valley have dinner with Andy Tang and uh the Draper folks and talk about how we actually get this ball on the roll ball rolling and for investments into things and what builders need to be and how do we use their cohorts and get our people through. We might even send the Midnight City team through the the Draper Dragons program. You know, it's just something to talk about. Actually going to go do a workshop in Miami at the end of this week. Flying down to Dallas, go see my glowing plants. Busy guy, lot going on.</p></div>
+</div>
+
+<p class="sec" id="t-constellation">00:22:04 — “Every one of these things is a star”; the hardest product</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:22:04</span></div>
+  <div class="turn-body"><p>But all these things are directional. Every one of these things is a star and a constellation that lights up the sky. And what it does is it gives us a path to mass adoption if they all come together the right way and make our products used by millions and change the lives of millions of people because they're universal, they're simple, they're affordable, and they're very, very easy to adopt and integrate in the workflows you have. works on your PlayStation, works on your phone, works on your laptop, one-click install. That's what we need. What I bring to the table is we make sure it's private. We make sure it's secure. We defend it against the vibe code Armageddon of security issues that uh we have and everybody's being stung right now, no matter who you are. Uh and yeah, we lose a cycle, we come back, we try the next cycle. Midnight is the hardest product we've ever built because it has to be everything to everyone and you can't be everything to everyone. Uh but it's the most essential product we've ever built. We're right at a precipice whereas if we lose our privacy, we lose it forever. We're never getting it back and we're going to live in a dystopian hellscape.</p></div>
+</div>
+
+<p class="sec" id="t-principles">00:23:27 — Principles only win when they are cheaper: coal and solar, builders and the iPhone</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:23:27</span></div>
+  <div class="turn-body"><p>We all know it. I can't just by telling people the problem get people to take it seriously and actually change consumer behavior any more so than any of these AI alignment people can go and by telling you hey AI is getting super scary uh let's uh let's go and uh you know slow down AI progress good luck because at the end of the day people are making money with the system the way it is [snorts] so the only way you can bring principles in is if you make the principles better, faster, and cheaper than the bad stuff. You want to get rid of coal, make solar with batteries cheaper than coal. No one's going to move from coal to solar and batteries out of the goodness of their heart. They move it because it's a business decision. That's what you do. And analogously, if you want privacy and self- sovereignty and self-custody to be the standard, don't complain about it like that annoying pious ass hat, you know, and lecturing you. You just build a product where that's the standard and it's better, faster, and cheaper than the competitors that exist. You get there with builders who have a vision. They're laser focused. They're pragmatic. They understand staging and pacing and they attract an ecosystem of people around them. Developers, marketers, product managers, lawyers, accountants, everybody. The shared contributo services and the direct execution of the idea. But builders get you everywhere. You need builders. That's what made the iPhone the iPhone. It wasn't Steve Jobs holding it. It was the thousand builders behind it who built apps on it that made the iPhone so much more than a phone and changed our reality. And that's what we got to do with Midnight. That's the pivot.</p></div>
+</div>
+
+<p class="sec" id="t-year">00:25:21 — The year so far; “frustrating” things: the bridge hack, SecondFi, DevRel</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:25:21</span></div>
+  <div class="turn-body"><p>The technology is rapidly maturing and this has been a hell of a year. Got the mainnet out, got it into a federated state. We built up the Nightforce. We built up the Discord. We we put all these amazing advancements into it. We we've cleaned up a huge amount of issues. We've aligned the road map. We've got our identity thing kind of figured out. Now we're getting the DeFi kernel plugged in. Now we're getting the consensus side plugged in. We're putting all these amazing pieces together that are relevant in a vibe engineered 2026, which is radically different than when we first started planning Midnight. It's a different world out there. That's our job. Your job as the builder is to say, "How do I make it simple, easy, mass adoption, low cost, low friction, and it works where the users are at, on their phones, on their platforms, where they're at, not where we want them to be. If you do that, you've changed the world, and you've made something that's useful for billions of people." So, that's what we're doing with Midnight. And that's how we're pursuing it with Midnight. And as I said, we've made enormous progress. is the fastest moving thing we've ever done. Every week is a new challenge. Every week's a new thing. We don't complain about it. We just put our nose to the grindstoneone. We get it done and there's always something to come out.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:26:36</span></div>
+  <div class="turn-body"><p>It's frustrating when a bridge between Cardano and m and Binance gets hacked. Bunch of money gets stolen. Someone dumps it. Great. Got to move on. That was yesterday. What are we doing today? It's frustrating when you lose a core partner because of SecondFi and they just bow out and disappear. Great. Got to move on. What are you doing today? It's frustrating when you have to pivot and you have to conserve resources and spend it in a different area and you lose your DevRel. It's not a big issue when you really think about the broader scheme of things because the end of the day is let's get some great builders and great projects in and build those things up.</p></div>
+</div>
+
+<p class="sec" id="t-cardanoland">00:27:21 — To “Cardano land”: Midnight is built on Cardano</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:27:21</span></div>
+  <div class="turn-body"><p>And you know, if we get it done right, Midnight's going to fix it, Midnight's going to change everything. And it really is going to change the ecosystem as a whole. Uh, it's pretty special. And for people in Cardano land, get your heads out of your ass. Midnight is built on Cardano. If Midnight fixes it, Cardano made that possible. Isn't the purpose of Cardano to be an ecosystem of projects that change the world? Cardano does nothing without the projects built on it. It is a smart contract system to move ADA around. Where Cardano gets interesting is when people take the smart contracts and build projects and those projects have customers and users. You never had a problem with any of the other apps. You didn't have a problem with SNEK. You didn't have a problem with DexHunter. You didn't have a problem with SundaeSwap. You didn't have a problem with Strike. You didn't have a problem with any other application. And Midnight being the largest, most prominent, most meaningful because of its complexity, scale, and investment. Somehow you do. What are you saying to the people who are building in the Midnight ecosystem if you behave and act this way? You're basically saying you're not welcome here. What does that achieve? How does that help Cardano grow? You're only allowed to build on Cardano, but don't get too big. Don't get too successful. Don't get too sexy. Don't don't be the golden child. No, no, no. You have to stay and know your place. If Cardano is going to succeed, Cardano needs to embrace the projects that make it succeed. Just like Midnight has to meet the users where they're at, not where we want them to be. And we have to embrace simplicity, universality, and lowcost operation.</p></div>
+</div>
+
+<p class="sec" id="t-cf">00:29:30 — “You can't fix a broken culture with more engineering”; to the Cardano Foundation</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:29:30</span></div>
+  <div class="turn-body"><p>This is a very pivotal thing. You can't fix it with white papers. You can't fix it with technology. You ha you can't fix a broken culture with more engineering and more committees and workshops and these types of things. It's just very fundamental. Either you have a welcoming environment where people are encouraged to come in and build on a platform or you don't. And if you don't have a welcoming environment, they leave. And you can't differentiate Midnight from Sundae or anybody else. So cut it out. Absolutely cut it out. I would like also the Cardano Foundation start tweeting about Midnight. Start talking about it. It's your biggest project on your blockchain. Don't you for one moment say, "Well, that's Charles's thing and we just ignore it." Solana every big project they have their foundation and their founding team talk about Ethereum it's the same can you do us the same favor we're carrying a lot of water so we'll be watching and the community will be watching let's see your tweets other things apparently the only time you talk about Midnight and Dreas tweets about how bad it is for the DevRel team to be let go they didn't seriously care about anything about mid night want to use Midnight or talk about Midnight once when good things were happening partnerships were being made did you retweet the Google relationship but when something bad has happened well you're there to be there what environment and culture are you creating pivots work in all ways are we actually committed to make this thing successful</p></div>
+</div>
+
+<p class="sec" id="t-commit">00:31:32 — “Am I committed?”; builders are accountable: “show me the bridge”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:31:32</span></div>
+  <div class="turn-body"><p>Are we actually committed to make this thing work or not? I am. I don't need to be here. I could retire and live on my ranch. I'm here because I choose to be here. I'm here because I actually think work is unfinished and we need to get it done. So, every day I wake up, it's a Sunday. I should be with family. I should be relaxing. I should be hanging around in the hot tub smoking cigars. Instead, I'm here writing code, not stopping relentlessly there. And the success of these ventures is the success of the ecosystem as a whole. If we get billions of dollars of TVL routing through these projects, whether they be Pogun or RealFi or Midnight, that's good for Cardano. Where is your commitment? Where is your discipline and dedication and effort? What are you building?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:32:32</span></div>
+  <div class="turn-body"><p>That's why a pivot from devs to builders is such a big deal. Because builders are accountable to what they built. If somebody at a bar says to you and say, "I'm a builder." They say, "The first question you would ask is,"What did you build? Show me the bridge. Show me the building. Show me the house. If a person's a developer, they could say, 'Well, you know, I I'm a dev. I just uh write test cases for financial software, you know, I can tell you a lot about Java test frameworks and Jenkins. Yeah, I I work on the CI and I make sure the CI works and passes. What have you built? Well, I don't really build anything. I just I just write tests for for that for that framework and uh you know it's pretty fun. I've been doing it for a while and I did some automation wrote some bash scripts and things to coordinate. I uh also did a lot of linting on JSON to make sure the schemas violated validated properly. Uhhuh. And what product is that for? I don't really know. It's a big enterprise system. I just wanted to make sure the JSON works properly. A builder. I built that bridge. Devs can be builders. Absolutely. John Carmack built Doom. Made Doom. That's what we want. And we want those builders to go build great things. And we want those things to be worth $10 billion, hundred billion dollars, grow to massive ecosystems.</p></div>
+</div>
+
+<p class="sec" id="t-funding">00:34:08 — Funding: “pathologically allergic to a commercial outcome”; Pogun, Blockfrost</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:34:08</span></div>
+  <div class="turn-body"><p>That's what we want and that's what we're focused on and that's what Cardano should be focused on. We got AlphaGrowth now. We got Draper now. The funding can't go to perpetuating open-source project after open-source project after open-source project. The infrastructure is done. We Plutus is good. Leios is almost here. When it comes out, it's out. Let's now focus the funding and the infrastructure on big goals to get people rallied and excited about where we can go and what we can do and how we can be competitive and different from other ecos. Sure, we need to maintain and grow the infrastructure, but we got to start asking who are the builders and how do we get them the funding. The other big challenge this year and actually last year is I noticed that the people who fund are pathologically allergic to giving people money to create a commercial outcome. They say, "Oh, we can't fund that business. What if they make money?" Oh my lord. Lola M. We can't give Blockfrost money. We can't give this venture the money. Oh no, Pogun. No, you can't get any money. What if you succeed? SO, DO YOU WANT to be number one on DefiLlama or not? If let's say one of these ventures is successful and they get five billion dollars of TVL for Cardano and they create a lot of transaction volume for Cardano, isn't that a net benefit? No. No. No. Because that team made some money and that's that's the treasury's money. Get your head out of your ass. Are we in it to win it or not? All of our competitors, they look at it like, "What KPIs are you going to bring to the table to make the chain better? That sounds good. Here's a $25 million check." And here we are. Say, "Hey, we need half a million. How dare you even ask? How dare you? No, that's greed and avarice. You should just pay for it or take it as a loan or do this or do that." It's extraordinary to me.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:36:12</span></div>
+  <div class="turn-body"><p>Pogun was the greatest example of that because it's literally solving the DeFi problem on Cardano. We're going to take big ass chunks of Bitcoin, mirror them into Cardano, which instantly creates a [ __ ] ton of TVL, lend them to stable coins, which instantly creates a huge minting of stable coins. the two big things people track TVL and stable coins and then they have to place it into DeFi to make a return greater than the lend cost. So instantly it creates a real world asset and high yield return DeFi ecosystem to place that stable coin. This is like as good as it gets for DeFi. as good as it gets and you voted against it where you get a permanent profit share for it and the ecosystem would get a chunk of the action. It's like when I proposed the sovereign wealth fund at 83 cent ADA, we done a hundred million, we'd be at 400 million in value right now. Four times as much ADA, right? Ah, it's just it's stupidity. And I get it. You know, you don't you don't want to screw up, but inaction kills you in these types of things, guys. You have to pivot.</p></div>
+</div>
+
+<p class="sec" id="t-foundation">00:37:36 — “The garbage foundation”; no oversight; the Bitcoin Foundation</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:37:36</span></div>
+  <div class="turn-body"><p>I can't do anything about the garbage foundation. I just can't. I'm sorry about Cardano. It's my greatest mistake. And it's just a classic example of where people who have no incentives do nothing and they just make up work and they go around. The reality is ADA goes to the moon, they make the same amount of money. If ADA collapses, they make the same amount of money. They're hedged in Bitcoin, too. Uh, and there's nobody who can be voted out of office. The board is still the board. There's no democracy. There's no oversight. There's no way to replace them. So, nobody's there to hold them accountable when they're so petty they can't tweet about the largest project on the chain whose success would really push the chain forward. That's sad. We'll succeed despite it. Bitcoin didn't need the Bitcoin Foundation. In fact, people hated the Bitcoin Foundation. I remember I was there and uh we were not wellliked the Bitcoin Foundation. They said that was a hostile takeover of Bitcoin from the time it was created to basically when it went defunct to now like trillions of dollars of value were created despite it. So, we don't need them. We have what we need, but the philosophy has to be simple. Focus on the outcome and focus on what you're doing to change people's lives. And why and the things that we truly are good at in our competitive differentiation.</p></div>
+</div>
+
+<p class="sec" id="t-pogun">00:38:58 — Why Pogun is on Cardano; “$15,000 to under $30”; RealFi next month</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:38:58</span></div>
+  <div class="turn-body"><p>Why is Pogun on Cardano? Because it makes sense. Not because Charles Hoskinson said so, but it makes sense. UTXO system, UTXO system. It's a beautiful mirroring and you get huge economies of scale and lowcost operation as evidenced by the fact that we went from a transaction costing $15,000 to under $30. So, we went from a Toyota Camry to a steak dinner and we're going to try to get it down to three to five bucks. So, a cup of coffee at Starbucks. How about that? That's real. And that enables massive changes. You have the security of the Bitcoin network mirrored into Cardano. Cardano adding a DeFi layer to it. And then you can build a large ecosystem. And by the way, if you add Midnight or private transactions and you can orchestrate all of them throughout the rest of the cryptocurrency space and we gradually drag these products that live on Hyperliquid and drag these products that live on Solana and Ethereum into our orbit because it's real expensive to get them to migrate and it solves our stable coin issuance and it solves our TVL issue. That one product, RealFi, launching next month. Bank the unbanked, that's the Africa play. We've been working at it for a long long time. We finally figured out a route to make it happen. It's here. Again, no tweets. So, you need to tweet it. You need to push it. If you believe in Cardano, that's what we mean. We're commercializing. We got a privacy play with Midnight. We got a micro finance play with RealFi. We got a Bitcoin DeFi play with Pogun. These are not hypothetical things. These are real things that are launching on Cardano or have already launched on Cardano. And they bring people in. They bring new blood in, new ideas in, new spotlight in. That's what you need to do. And you have to accelerate them. And their success is Cardano's success. And you know what? Every one of those things, they fund all the things around them. Sundae works on them. Anastasia works on them. There's so many of these small dev boutiques that are in the Cardano ecosystem that get money to work on those programs and projects. It keeps them alive, allows them to pay the bills and keep going. That's what success means.</p></div>
+</div>
+
+<p class="sec" id="t-macro">00:41:13 — “Nothing is easy right now”: AI labs, wars, chips; crypto's excess; “crypto got divorced by retail”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:41:13</span></div>
+  <div class="turn-body"><p>Is it easy out there? No. But Jesus, nothing is easy right now. You got frontier AI labs that are legitimately wondering if the artificial intelligence is they're building is going to kill them in 24 months to 36 months. You got war with Iran. You got $5 gasoline. You got still war in Ukraine and Russia. There's an upcoming war with China and the United States over Taiwan. We're going to have a chip crisis in 36 months that's going to be unbelievable and push us into a depression. There's the AI bubble will eventually burst. It's hard to buy groceries. We're not immune to all of that, the cryptocurrency space. And you know, we got over our skis. You can't charge a million and a half dollars for a goddamn NFT picture of a [ __ ] banana and expect that to be sustainable and stable in this ecosystem. You can't have memecoin mania and things that have no utility and value go to 10 billion and then expect that to be sustainable. You can't. So, we're living that excess and we're living the consequences of it as an industry. We got to process it. If you go crazy and you end up getting divorced, you got to put your life back together. Okay, you got to move out into the shitty apartment. You got to get new friends. You got to change a few things. Yeah, you'll be back if you really put some time and effort into it. Well, guess what? Crypto got divorced by retail. That's a fact. They left out of disgust because they all lost their money. They were lied to. They were hacked. And every time they tried to come back, they got lied to and hacked and extracted from again. Were the dumping ground of narcissistic whack jobs to come in and put their [ __ ] trash and expect to extract. Celebrities come in. Portnoy comes in. I thought I was going to make so much money. I don't understand. Most recently, Hunter Biden and he's I launched my my laptop coin. I mean, I just thought it was going to the moon. Why?</p></div>
+</div>
+
+<p class="sec" id="t-fixes">00:43:28 — “Midnight fixes stuff”; what LAPTOP solves; Bitcoin DeFi; microfinance</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:43:28</span></div>
+  <div class="turn-body"><p>Midnight fixes stuff. Midnight solves the CAC card system at the Pentagon. Midnight solves sharing of health care records. Midnight solves you owning your own agent and not having uh the agent steal your intellectual property. And then Navier Stokes is solved by OpenAI, not the mathematician who actually came up with it. Midnight enables DRM. Midnight enables intellectual property royalties without having to reveal the spending. Midnight enables private trading strategies to be leased or AI skills to be leased instead of just open source so you can start monetizing unique agent skills. It goes on and on and on and on and on. These are real things influencing the lives of billions of people and collectively trillions of dollars of commerce on a daily basis. What does laptop solve for the world other than make Hunter Biden some money so he can have a vanity presidential run in 2028 and the Biden family grift can continue? What does it solve? Nothing. You got to focus on solving things.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:44:35</span></div>
+  <div class="turn-body"><p>Bitcoin DeFi solves a problem. I don't want to sell my Bitcoin, but I'd like to get a return. I can't get a return on Bitcoin. There's no DeFi ecosystem. I want to click the button automagically according to a risk profile my Bitcoin's put to work and I get 5 10% whatever simple problem to solve you solve it $500 billion worth of Bitcoin migrate out to do that what are your options zero or 5%. Duh. People can click the button. 71% of you did with ADA staking. Click it. That's Bitcoin. Okay. So, Pogun solves the problem. Micro finance. We'd like to bank the unbanked. You get this use case. I get this use case. Let's create an engine where you have loans. And guess what? They get a discount on the loan if they get a digital ID and a wallet. Pretty simple, right? So, are they getting a digital ID in a wallet because they just want to? No, they want a lower lending rate. Now, they're banked in a new banking system that's web 3 native with a self-s sovereign identity and self-custody and their own assets, not the governmentisssued one. We've just created a new economy and we can use this engine to distribute it to tens of millions to hundreds of millions of people. And what does that mean? The lending rates go down from 85% to less than 10%. the re the rem remittance rates go free and you get rid of these evil cartels that extract money from the poorest people in the world. That's a real life use case and utility. That's what blockchain was constructed for. Not LAPTOP, not Trumpcoin. Absolutely not those things. We got addicted to the fast and soft money and vanity of celebrity and meme coins and these other things. And guess what happened? We lost our way. And it became so easy for people to shed all over the industry.</p></div>
+</div>
+
+<p class="sec" id="t-clarity">00:46:38 — “CLARITY will not pass two days from now”; institutions; hold entities accountable; consolidate</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:46:38</span></div>
+  <div class="turn-body"><p>And because of that, CLARITY will not pass two days from now. Been saying it for over a year. And because of that, people write off crypto. So only retail. It's gone. So then the institutions come in and then we're all surprised why they're not pumping our bag. Because they're not stupid. They pump their own bags. They're institutions. They're really smart and they're killers and they have amazing people with them. So, if we want to win, we got to change the game. We got to pivot from devs to builders. We got to rally. We have to support each other. And we have to realize my success is your success. The success of Midnight is the success of Cardano. And we have to hold the entities that refuse to acknowledge that accountable by not funding them anymore and not considering them relevant anymore. They're running on bad programming. Honestly speaking, they need to change. If they're unwilling to change, then they shouldn't be part of the club. We don't have time to drag people along who don't want to be there. And we don't have time anymore and the luxury anymore to admit 45 different ways of doing things. We need to consolidate down to a collection of them and simplify the goddamn experience so that all the users they just click the button.</p></div>
+</div>
+
+<p class="sec" id="t-button">00:48:02 — “Click the button”: Apple versus Windows, the iPhone, the phone in your hand</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:48:02</span></div>
+  <div class="turn-body"><p>That's what the world has shown us with web two and the rise of all these entities. Click the button. It just works. Apple spent 20 years trying to break up the Windows monopoly, trying to convince people that macOS is much better than Windows. Buy a MacBook, buy an iMac. And you know what? If you look at the percentage distribution of Windows versus Mac, it didn't move. Then they built the iPhone and it was just push the button and it destroyed the entire Windows monopoly and made Apple as big or bigger than Microsoft. [snorts] It's just one paradigm shift. Stop grading people to migrate. Give them a new experience and make it so simple and easy that the old experience seems antiquated. And now you find that you spend the majority of your time on your phone, much more so than on your laptop or your computer. The majority of your time, even when you're on your laptop and your computer, your phone is always still there. It's always still around. It's haunting you. Message comes, you're just about to finish something. Oh, I got to answer this message on my my phone. Why? Because it's so easy. It's there. It just It's just buttons. If you just push them, you just click it. It's Oh my god, now I can do anything. And vast majority of you people listening, you you read your phone on the toilet. You do. How many of you take a laptop in with you to the bathroom? Some people developers, coders, okay, but the vast majority of sane people typically don't take one in, but they do with the phone. You know who you are. because the simplicity is so much. It's an extension of you. It's part of your body now, like your hand or your ears or these types of things.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:49:56</span></div>
+  <div class="turn-body"><p>So, if Cardano is to win, Midnight's to win. That's the play. Make it an extension of you. Make it an extension of your body. Make it that simple and that easy. You just click the button and that's it. Bitcoin DeFi, click the toggle, get 5%. RealFi, click the toggle, get this thing. Midnight. Hey agent, I need this. Don't worry, I got you, dog. Under the hood, 14 different [ __ ] transactions and intents and multi-chain signatures and trusted execution environments and multi-party computation and and and ZK, lots of ZK, a little bit of Groth16 and [ __ ] Halo 2 and PLONK and and [ __ ] we're doing like four different foreign field arithmetics. We got like one elliptic curve over here and another elliptic curve and oh out in the left field we got lattises. Lattises are coming. AH, YOU DON'T see that [ __ ] You don't know about that [ __ ] You don't care about that [ __ ] any more so than you have manually inspected a packet in TCP IP. Look at those datagramgrams. Last time you've done deep packet inspection. I know who you are, Kie. Okay. WireGuard people. No, Wireshark. You know, you don't do that. No, normie does that. They just push the [ __ ] button. The internet's slow today. Oh well, I'll change Wi-Fi networks. I'll just wait a little bit. See if it speeds up. That's your thing. That's your experience. And that's why five billion people do it. If you had to inspect the patent packet, you'd be the PGP people. I started this by asking, "How many of you encrypt an email with PGP?" You don't because it's hard. You got keys and [ __ ] It's hard. It's too much for the consumer to do that. Too much. So, if Midnight is to win, simple. If Midnight is to win builders, if Midnight is to win, one click. If Midnight is to win, everyone everywhere where they're actually at, not where we want them to be. That's the strategy.</p></div>
+</div>
+
+<p class="sec" id="t-magic">00:52:08 — “How do we make it magical?”: the Galaxy Fold 8 and the iPhone Duo</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:52:08</span></div>
+  <div class="turn-body"><p>And we wake up every day and we say, "How do we make it magical? How do we make the small things big things?" I have a Galaxy uh Fold 8. It's a great phone. And I just saw the presentation for the iPhone. in one feature makes me want the iPhone Duo more than the Fold 8. It's when you open it up and how it just like gradually transitions. It looks like you're looking through a pane of glass as you switch from the one screen to the two screens. And that idea of the rounded bevels to make it look like an iPad mini. I used to have an iPad mini. I have very treasured memories of holding it just like that. I said, "Oh, that's just exactly like that." That was not a fiveminute discussion. That's the product of thousands of hours of attention to detail and focus to create that one little experience, that one little softening across it. And that is what makes the difference. The consumer doesn't see it, ask for it, or even know it's there, but they feel it emotionally and subconsciously, and they connect to it. It's what we're doing in Midnight City. It's what we're doing in RealFi. It's what we're doing in Pogun. What we're doing in Midnight and it's what we do with the engineering that we put into Cardano. We haven't always measured up. We had to learn how to be a great engineering company and we had to learn how to do all this stuff. It's not [ __ ] easy. Apple had to learn how to do it, too. Were they building the iPhone Duo in 1995? No, [snorts] not even close. And we're we were not building these types of things 5 years ago or 10 years ago, but we are now and we put the effort in.</p></div>
+</div>
+
+<p class="sec" id="t-close">00:54:06 — “Big pivot to builders”; “grab a shovel”</p>
+
+<div class="turn">
+  <div class="turn-who host">Charles<span class="turn-time">00:54:06</span></div>
+  <div class="turn-body"><p>So big pivot to builders. And as for the rest of the ecosystem, let the drama go, let the passion go and pivot to something new and different. Do you want to win? Do you want to be great? Do you want to be something that people talk about in 20 years and 30 years? Do you want to be something people emotionally connect to and believe in? Or do you want to fail? If you want to fail, then go be a keyboard warrior and complain about every single thing. If you want to win, grab a shovel. We need workers. We need to get this done. Be a builder. Build stuff. Join the Nightforce. Create an account on Midnight City. Sign up for the Pogun beta. Sign up for the RealFi testnet. Get involved. talk about these things. Get people excited about these things. When they say Cardano is dead, give them these projects and show them we got all this amazing stuff happening. Look at all these things. Say, we're back in the game. We've changed and we are learning. We're growing. That's how you win. Be an advocate. And they say, "I had no idea there was still something worthwhile there. That seems like it's undervalued. I should do something in that ecosystem. Get people excited about it." That's what I'm doing on a Sunday [clears throat] at 12:15. So, I'm going to get back to work. I hope you do, too. Thanks everyone for listening. Cheers.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the proper-noun corrections noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/watch?v=VI5OuB6o5BU">Watch the video</a></p>
+</footer>
+
+</div>
+</body>
+</html>
