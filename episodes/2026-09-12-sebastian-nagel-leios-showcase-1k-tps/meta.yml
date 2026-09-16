@@ -1,7 +1,7 @@
-slug: 2026-09-15-sebastian-nagel-leios-showcase-1k-tps
+slug: 2026-09-12-sebastian-nagel-leios-showcase-1k-tps
 title: Leios: Showcase 1k TPS — 「1,000 TPS」は何を数えた数字か。12 ノードの手元の実験で見せたもの
 title_en: "Leios: Showcase 1k TPS"
-date: 2026-09-15            # 要確認。YouTube のページはこの環境から読めず、依頼者からも日付の指定なし。Leios のリポジトリで「1k TPS の動画を撮る」Issue #1097 が 09-15 に立ち、同日の報道がこのデモに触れているので、その前後と推定
+date: 2026-09-12            # 依頼者が動画ページで確認（2026-09-16。最初 09-15 と置いていたのを訂正）。Leios のリポジトリの Issue #1097（09-15）と報道（09-15）はこの動画の 3 日後
 series: sebastian-nagel     # shared/series.yml のキー。本人の個人チャンネル
 chatham_house_rule: false   # 公開動画。常に false
 
@@ -26,9 +26,11 @@ proper_nouns_corrected_in_docs: true
 # - 話者ラベルなし。全編 1 人語り。画面共有（スライド、ネットワークの可視化、Grafana 風のダッシュボード、エクスプローラ）を口頭で説明している
 
 # 画面について
-# - スライド（Leios の仕組みの図、規模感の図、ネットワーク構成の図）、ネットワークの可視化、チェーンの可視化、ダッシュボード、mempool のモニター、Kleioscan、パラメータ画面が映っていると発言から分かる
-# - 字幕だけを受領しており画面は確認していない。まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用。図は本人の口頭説明から組み立てたもので、スライドの写しではない
-# - Confidential 表示の資料は出てこない（オープンソースのプロトタイプのデモ）
+# - スライド（Leios の仕組みの図、規模感の図、ネットワーク構成の図）、ネットワークの可視化、チェーンの可視化、ダッシュボード、mempool のモニター、Kleioscan、パラメータ画面が映る
+# - **スライドの右下に「LEIOS | 2026 Confidential and Proprietary」の表示がある**（依頼者から受け取ったスクリーンショット 5 枚で確認、2026-09-16）。
+#   CLAUDE.md の規則により、スライドにしかない内容（EB の大きさや参照数、投票者数、mainnet のパラメータ値、監視スタックの構成など）は docs/ に再現していない
+# - まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用。図は本人の口頭説明から組み立てたもので、スライドの写しではない
+# - スライドの題は「Prelude: How Leios works」「Prelude: cardinalities」「The Dozen Devnet」など。実験ネットワークの名前 dozen-devnet はリポジトリの公開 Issue #1097 にも出ている
 
 # 裏取り（2026-09-16 時点）
 # - Leios のロードマップ（https://leios.cardano-scaling.org/docs/roadmap/）の 7 段階の 3 番目が "Showcase 1k TPS"。定義は「制御されたネットワークのプロトタイプで 200 TkB/s を示す」。日付はページにない
