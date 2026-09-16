@@ -1,7 +1,7 @@
-slug: 2026-09-15-sebastian-nagel-leios-showcase-1k-tps
+slug: 2026-09-12-sebastian-nagel-leios-showcase-1k-tps
 title: Leios: Showcase 1k TPS — 「1,000 TPS」は何を数えた数字か。12 ノードの手元の実験で見せたもの
 title_en: "Leios: Showcase 1k TPS"
-date: 2026-09-15            # 依頼者が動画ページで確認（2026-09-16）。Leios のリポジトリの Issue #1097（09-15）と同日の報道とも整合
+date: 2026-09-12            # 依頼者が動画ページで確認（2026-09-16。最初 09-15 と置いていたのを訂正）。Leios のリポジトリの Issue #1097（09-15）と報道（09-15）はこの動画の 3 日後
 series: sebastian-nagel     # shared/series.yml のキー。本人の個人チャンネル
 chatham_house_rule: false   # 公開動画。常に false
 
