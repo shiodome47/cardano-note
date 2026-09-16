@@ -186,6 +186,20 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 
 **動画の言い分と事実が違う固有名詞**: 「Cardano と Binance のブリッジ」は、2026-07-21 の Wanchain の Cardano–BNB Chain ブリッジの件と読める。docs/ では動画の言い分を残し、`補足` で添えた。
 
+### 2026-09-15 Sebastian Nagel — Leios: Showcase 1k TPS
+
+本人の個人チャンネル。受領した文字起こしは時刻なしで、同じ動画の 2 版（"Leios" 表記と "Leos" 表記）が続けて入っていた。docs/ は前者を底本にし、数字の聞き取りが違う箇所は併記。
+
+| 誤変換 | 正しい表記 |
+| --- | --- |
+| Leos | Leios（もう一方の版では正しい） |
+| linear layers | linear Leios（もう一方の版は "linear Leos"。CIP-164 の方式の名前） |
+| main net / test net | mainnet / testnet |
+
+**2 版で聞き取りが違う箇所**（両方を残した）: "20 TX here" / "20, 30X here"（確定データレートの Praos 比。文脈から「20〜30 倍」が妥当）、"two to 500 transaction per second, 100 to 500 transaction kilobytes" / "200 to 500 ... 200 to 500"、"epoch boundary" / "network boundary"、"Kleioscan.com" / "kleoscan.com"（Musashi Dojo のエクスプローラ。正式な綴りは未確認）。
+
+**説明なしに使われた語**: **closure**（クロージャ）— EB が参照する取引の集合一式と読める。「20 KB のクロージャ」「メガバイト級のクロージャ」と大きさで語られる。
+
 ## Cardano の基本用語
 
 | 用語 | 説明 | 訳し方 |
@@ -200,6 +214,15 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **エポック（epoch）** | Cardano の時間の単位。約 5 日 | エポック |
 | **Ouroboros** | Cardano のプルーフ・オブ・ステークのコンセンサス・プロトコル群の名前。Praos が現行、Leios と Peras はその拡張 | 訳さない |
 | **Leios** | ブロック生成を段階に分けて並列化し、スループット（単位時間あたりの処理量）を上げるための Ouroboros の拡張。**時期・仕様は動画ごとに違うことを言っている可能性がある**ので、必ず公開日を添える | 訳さない |
+| **エンドーサーブロック（EB）／ランキングブロック（RB）** | Leios の 2 種類のブロック。RB は今までどおりの鎖のブロック（順序と正しさ）。EB は RB の脇に付く「追加の取引の参照の一覧」で、取引の中身は持たない。投票で証明書ができると次の RB に取り込まれる（2026-09-15、Sebastian Nagel の説明） | EB／RB（初出で補う）。**要点では「追加の取引の一覧」と書く** |
+| **承認レート／確定レート（endorsement rate / confirmed rate）** | 承認レートは EB に名指しされた取引が毎秒何件か。確定レートは証明されて RB に取り込まれチェーン上に確定した取引が毎秒何件（何 KB）か。**「Leios で 1,000 TPS」と聞いたら、どちらの数字かを必ず確かめる**。2026-09-15 の動画の「約 1,000」は承認レート | 承認レート／確定レート（原語を添える） |
+| **linear Leios** | 承認できるのは「証明された一つ前の EB」だけ、と制限した Leios の方式。並行度と引き換えに取引の衝突が起きない。CIP-164 で提案されている方式 | 訳さない |
+| **定足数（quorum）／証明書（certificate）** | EB への投票が閾値に達した状態と、それをまとめた小さなデータ。次の RB は証明書だけを含めればよい | 定足数／証明書（原語を添える） |
+| **クロージャ（closure）** | 2026-09-15 の動画で説明なしに使われた語。EB が参照する取引の集合一式（EB の検証に必要なデータ）と読める | クロージャ（原語を添える） |
+| **Musashi Dojo** | Leios の公開テストネット。「水の段階（water phase）」でパラメータを探り、「火の段階（fire phase）」で負荷を上げる、と 2026-09-15 の動画で説明。約 50 のブロック生成プール（本人の数字、同日時点）。IOG の公式チャンネルに「Musashi Dojo Water Phase」（2026-09-01）の動画がある | 訳さない |
+| **Showcase 1k TPS** | Leios のロードマップ（<https://leios.cardano-scaling.org/docs/roadmap/>）の 7 段階の 3 番目。定義は「制御されたネットワークのプロトタイプで 200 TkB/s を示す」。次が Leios Testnet、High Confidence、Release Candidate、Hardfork | 訳さない |
+| **BLS の投票鍵** | EB への投票に使う署名鍵。プールが Leios に参加するときに登録する（mainnet の既存プールも追加登録が要る、と 2026-09-15 で言及） | BLS 投票鍵 |
+| **消火ホース（fire hose）** | Leios チームの負荷生成器。mempool に空きがある限り、指定した大きさの取引を注ぎ込む。実利用の需要ではない | 消火ホース（原語を添える） |
 | **Peras** | ブロックの確定（finality）を速くするための Ouroboros の拡張。投票でチェーンの重みを付ける | 訳さない |
 | **Hydra（Hydra Head）** | Cardano のレイヤー 2。参加者どうしがオフチェーンで高速に取引し、結果だけをレイヤー 1 に書く | 訳さない |
 | **Mithril** | ステークにもとづく署名で、ノードの同期を速くする仕組み | 訳さない |
@@ -350,6 +373,9 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | **LAPTOP** | Hunter Biden のミームコイン。2026-09-09 に Base で発行。2026-09-13 で本人が「何も解決しない」例として挙げた |
 | **Cardano のソブリン・ウェルス・ファンド提案** | 2025-06 に Hoskinson が提案した、財務庫の ADA 1 億ドル分を Bitcoin とステーブルコインに換える構想。2026-09-13 で「83 セントのときにやっていれば今 4 億」と |
 | **IOG の財務庫提案（2026 年 5〜6 月）** | 9 本のうち Pogun、Blockfrost、L2 の 3 本が否決と報道。2026-09-13 で本人が「あなたたちは反対票を投じた」と言及した対象 |
+| **Sebastian Nagel** | Input Output の Leios 技術責任者（以前は Hydra を率いた）。GitHub: ch1bo。個人チャンネル: <https://www.youtube.com/@sebastiannagel8354> |
+| **ouroboros-leios（GitHub）** | Leios のプロトタイプと設計のリポジトリ（<https://github.com/input-output-hk/ouroboros-leios>）。Haskell の Cardano ノードのフォークとして週次で prototype-2026wNN をリリース。Issue #1097（2026-09-15）が「1k TPS の動画を撮る」段階 |
+| **Kleioscan** | Musashi Dojo のエクスプローラとして 2026-09-15 の動画で映った。綴りは字幕の 2 版で違い（Kleioscan / kleoscan）、公式ドメインは未確認なので URL は張らない |
 | **Cardano Foundation のリレー** | 2026-09-02 のデモで "CF relays" として、Demeter と並ぶ接続先の選択肢に出た |
 
 ## 数字を書くときの単位

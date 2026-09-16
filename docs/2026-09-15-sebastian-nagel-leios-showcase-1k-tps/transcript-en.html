@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leios: Showcase 1k TPS (2026-09-15) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Sebastian Nagel</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2026-09-15</span>
+  <span>YouTube</span>
+  <span>Leios: Showcase 1k TPS</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> This is a public video on Sebastian Nagel's personal YouTube channel, so the speaker is named. He leads the Leios work at Input Output, but this is his own channel, not IOG's; what he says here is the developer's own account. It is a single-speaker screen recording.</p>
+<p>The source is a transcript <strong>without timestamps or speaker labels</strong>, supplied as plain text. It contains two versions of the same transcript back to back (one spelling the project “Leios,” one “Leos,” with slightly different phrasing). This page uses the first version as its base. Where the two versions hear a number differently, both readings are given here: “<code>20 TX here</code>” / “<code>20, 30X here</code>” (the confirmed rate relative to Praos), “<code>two to 500 transaction per second, 100 to 500 transaction kilobytes per second</code>” / “<code>200 to 500 transactions per second, 200 to 500 transaction kilobytes per second</code>” (the run from the night before), “<code>epoch boundary</code>” / “<code>network boundary</code>,” and “<code>Kleioscan.com</code>” / “<code>kleoscan.com</code>.” Turns are split at changes of topic, and the same split is used on the Japanese page; without timestamps, no times are shown.</p>
+<p><strong>Only proper-noun misrecognitions are corrected</strong>: <code>linear layers</code> → linear Leios (the second version has “linear Leos”; Linear Leios is the name of the protocol variant), <code>main net</code> → mainnet, <code>test net</code> → testnet. Everything else, mistranscriptions included (“un-expected,” “hatch our options,” “related to everyone,” “VCPUs”), is unchanged.</p>
+<p><strong>Screens were shared throughout</strong>: slides, a live network visualiser, a chain view, dashboards, a mempool monitor, an explorer and a parameter screen. Only what was spoken aloud appears on this page.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-intro">Opening: what “1,000 TPS” means in this case</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>Hello, my name is Sebastian and I'm going to show you today progress on the Leios project. That is a Cardano consensus upgrade, I want to showcase to you today what it means to have 1,000 TPS, or what that actually means in our case. I want to start first with a quick explainer how Leios works, that gives you a bit of information in what you're going to see.</p></div>
+</div>
+
+<p class="sec" id="t-explainer">How Leios works: endorser blocks, votes, certificates</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>And you can see pictured here a blockchain, blocks B0 to B4 forming a chain, there's an epoch boundary, not so important right now, and this is basically how Cardano works, it's a simple chain of blocks where each references the past one and we have a longest chain rule, we select the chain, we validate all of these blocks. With Leios, we get the additional opportunity to endorse transactions, so whenever we produce a block, we can also produce an endorser block, which names more transactions than already are in the B1 here, for example, and this additional transaction information, the sequence of that is diffused, sent around and voted upon, it's validated whether it is a fine extension of B1, and if we garner enough votes, we can actually create a certificate before we can use that certificate to sequence everything into the chain. In this example here, EB1 was not voted or was not successfully voted or diffused, but EB2 here endorsed and pictured maybe as a vote carrying EB2 into B3. So you can always ever endorse or sequence certified a previous EB, this is a bit of specialty of linear Leios and this allows us to be very linear in the way of transaction history works, it is a bit limiting in fact of what you can actually endorse and what you need to endorse in time, but you get a lot of determinism for free, so there cannot be any transaction conflicts and the latency we'll see between announcing transactions within that one block here and sequencing it is generally lower than a multi-pipeline stage as it was also published by researchers. So remember, whenever we announce an EB, we vote and certify on it and then it becomes part of the chain, once we see it certified, we can count it as certified confirmed throughput.</p></div>
+</div>
+
+<p class="sec" id="t-scale">A sense of scale: Praos at ~10 TPS, then 100, then 1,000</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>I want to give you also a bit of a feeling and the cardinalities involved. So pictured here is albeit a bit old, it is the current capability of Cardano, the Ouroboros Praos, what they call as it is parameterized for the mainnet, it can handle roughly 10 transactions per second. So this is roughly 100 transactions, spend over time, let's assume a continuous demand here, you will see blocks un-expected every 20 seconds, this is a Bernoulli process, so you would see them sometimes be earlier or later, um, but the expected value or time between is about 20 seconds. Uh, blocks contain transactions and they in this example, we carry uh about 200 or 186 here, 200 here, whatever, um, transactions in a block and this is from an example of fairly small, smallish transactions of 400 bytes each. What we want to do with Leios is be able to at least have this much capacity here, so what does 100 TPS of these 400 byte transactions look like, this is basically this picture here on the right hand side, a tenfold of that. At this demand, right, you naturally don't want to send all of these transactions around again on the network, that's why EBs are actually only containing transaction references, IDs it says here, but we just point to these transactions and um block producers would make sure they have all of these transactions and fetch them, the missing ones, the ones we they didn't really get see yet through the mempool diffusion. We also see votes that are cast on each EB roughly in their order of magnitude here and the actual blocks which sequence everything, which contain a certificate, they're painted a bit too big still here, there's a couple bytes only these days, so it's uh will be very small blocks which anchor everything into the chain when it's successful. But that's not the end of it, right, what does 1,000 TPS look like, right, it's a geometric um, yeah. It's exponential and uh that is about 1,000 TPS here and our target is of course to ramp this up, it depends really on the size of the transactions, right, so the demand of data rate is really dependent on what kind of transactions we're looking at, so our target will be somewhere in between here and this is what I'm going to show now.</p></div>
+</div>
+
+<p class="sec" id="t-setup">The test network: three block producers, nine relays, 20 ms, 50 Mbps, “fire hoses”</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>For that, we're going to use um a fairly small network, but already with kind of realistic latencies, at least uh in parts of the Cardano network, um, so we will have three block producers, each having three relays and those relays are fully connected, all the connections are on a uniform 20 milliseconds round trip time. And uh 50 megabit per second is the limit on each of these links, so you see it's uh it's a same continent, quite pessimistic, same continent round trip time, at the same uh with not too high but also not too low um upstream link per node, the this is not exactly capturing what the Cardano mainnet looks like, um the diameter of the Cardano mainnet is I think around five or six hops, here we will have at maximum like three hops, right, so it's about half the diameter, the degree here is also a bit lower, but it's already at the at the level that we can saturate these links with transactions, um we have a degree of uh 10 here, whereas in uh the Cardano node, the average degree will be also only around that order, but some relays will have like 20 upstreams and 100 downstreams, right, uh peers, so that that is quite different. Uh what we also will have on this network is a quite challenging, not very realistic, but already not impossible, right, so metrics right could do that, um demand, so we see these fire hoses here, the transaction fire hose, uh three attaching at three edges or corners of the network here, these will produce like infinite demand whenever we ask it to and of certain transaction sizes. So we're going to see transactions flowing in from here and basically filling the mempools all around. We have observability about the whole network and also a mempool monitor which I, yeah, probably also show, um how these mempools are actually forming.</p></div>
+</div>
+
+<p class="sec" id="t-network">The live network view: what the packets are</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>Let me switch now to the real deal, um, so we're going to see this is our network, um, very similar auto layout, let me just refresh, you see some activity already, uh, this is probably a similar layout as you just saw, right, so you have like the block producer, the whole three relays all connected. Maybe more interesting than this, let's just map it onto a continent, right, so this is example cities which are roughly 20 millisecond round trip time um between each, it's not accurate, but to give you a bit of a feeling of what's going on here, we see multiple packets being sent around on this network, we do see endorser blocks, transactions, the missing ones actually, not the ones on the actual load, we would be all green, uh because we have been running like all transactions through here, uh so you only see the green which is the the transactions which haven't been diffused through the mempool diffusion, so the missing ones only, uh pink or purple are votes, which is in the new basic package too also in Leios, and red is basically the ranking blocks, this is the normal block diffusion you would already have on Cardano.</p></div>
+</div>
+
+<p class="sec" id="t-chain">The chain view: announcement, votes, and when a certificate can be included</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>So let's uh you see some things flying by, it's a bit quick if we do it in one second, we'll come back to this in a bit, this is a live monitoring of the cluster running on this machine, all network emulated as I said, we can also switch to a chain view, seeing what's happening logically, we saw before two ranking blocks, we saw an EB being announced, we saw it voted on, the purple ones, now we're waiting for the next block opportunity, this is the same schedule as Praos is already running on, we just do more work on the side if if we get the chance to do it, right. So, um, any moment now, we can just make this a bit quicker here, so this is the past replayed, um, so we see quite a long minute pause here already on between these uh these blocks here, all right, this is very long, maybe my, let me refresh briefly, so I can actually connect again to the to the data source and see, this is basically a snapshot of the view happening, right, so it may be slightly incomplete, uh but it's only our monitoring here which shows it, right, so we we see now here, um also the act of certifying an EB, so the following block can certify the previous EB when we had quorum on it and the time between was long enough, so we ensure the data is available to everyone on the network, this is governed by timing parameters, um, so we see here a gap which was too quick, too not too long, so it's only 11 slots, it's a bit too short, uh like a run up of smaller um like gaps between EBs, uh between ranking blocks, uh will not allow for certification, but this one here is now running for a few seconds, so we probably see a certification about this in a bit, let me just speed it up a bit, yeah, so it's try, try to catch it up on, long slot pause again, yeah, here you go, certified.</p></div>
+</div>
+
+<p class="sec" id="t-diffusion">Stepping through diffusion: an EB announced, missing transactions fetched, votes in waves</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>All right, um so we can look at it on the chain logic, but also on the network, uh going back to this view here, right, uh I can, let me try to show you what's happening if I just skip to the next event, the yellow block here is an announcement, so here we will see, for example, how the in original endorsement is actually diffused, it's sent around, you see these announcements travel the network uh very quickly, it's lagging a bit because already lots of events in the visualizer, um, this is a broadcast, so now everyone knows about the existence of an EB and they will start pulling that information, hey, okay, great, let's what's what's the latest EB, right, give me the news, so I skip over to the next event, we already see, oh, this is probably some old, uh, EBs, uh, transactions, so this is the ranking blocks themselves, flowing, for example, uh, which also come with the announcement, let's skip to the next event, more ranking blocks, I want to show you the the EB, this one here, you see this one is much bigger than uh, I think the ranking blocks are pictured correctly, but these are about 60 kilobytes in this example here, the one we just picked here, uh, you see it's kind of uh getting downloaded over time on the, we're stepping milliseconds here, right, really, very, very slow, we see it progress, uh, it gets diffused this way. And now we need to skip ahead for when it actually uh is relayed further, uh, so we see already some missing transactions being requested by a few other peers, you see here, this is what we sent it before, it was relayed further, so we here see here even arrays of EBs, so we have multiple upstreams and we need to kind of pull it from a few, not from everyone, but we want to hatch our options in case somebody's serving slow or um not at all, right, that's really not at all. So once the EBs diffused, we actually download the transactions we're missing, so we have here quite a lot of transactions to kind of fetch, this was basically an EB which was fresh, which was not endorsed before and the mempool was not being able to catch up all of it, it's only 400 kilobytes here, but yeah, and yeah, let me just skip ahead, maybe we can jump a bit to the votes which are then, let me just do the diffusion, oh, there was, right, let me just skip to the, that's an announcement, I'll I'll just find another uh vote, vote cast, announcements, votes are cast roughly three seconds after the initial announcement, so I'm I'm skipping over many right now, I can't really, here maybe, I need to improve my tooling here a bit, all announcements, I'll I'll just find another, yeah, weird, so these the Leios ones are here, but there's also sizes about endorser blocks, right, how many transactions you can put in there, so the UI will be still further improved here. All right, now, what's too quick already, but you see votes are also broadcast from all and you see they come in waves, when when the block producers or all cast their vote, they basically get related to everyone, sometimes they vote at exactly the same time, but sometimes they kind of acquire the closures a bit delayed or a bit later and then the the votes are cast roughly at the same time, but not exactly the same moment. Yeah, um, certification is basically then ultimately if we have garnered all votes, which is currently happened, we have full quorum, we reached the threshold, now we can certify it by including it.</p></div>
+</div>
+
+<p class="sec" id="t-numbers">The numbers: mempool, confirmed data rate against Praos, endorsement rate</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>Okay, so much for the logic in the network, let's see how that does that look like in numbers and hard numbers on uh like overall, I've been running this for the last two days, this is the latest version by the way for prototype, um which is a fork of the Cardano node, the Haskell Cardano node, um with has the Leios stuff already integrated and we're releasing that every week, so we're just pushing a lot there, while now at the same time we make the real release candidate on the main line Cardano node release track. So I've been running that version in various configurations over the last two or three days, let's look at uh some of them, um this is currently running right now, let me just show you what's what's currently running, um so we see on the top left, the mempool filling right now, you see it's mostly full because we just loaded super hard from the from the fire hoses, as we call the ingestion, um whenever it drops down, we saw our certification, because that much of a drop can only be a Leios certification and Leios block. Um, top right is the rate of change of the mempools, this will show us can the actual transaction gossip keep up with the orange demand line and seems to be quite good, can be improved still. From the top left to the bottom right, the bottom right is actually what ends up on the chain, we make this big, right, so this is the actual confirmed data rate throughput what is on the chain and if we look at these bumps here, this 4.6 transaction kilobytes per second or 9.2 somewhere in between, depends on how you average it, oh sorry, this was a refresh, but still on the left here, that was was Praos can do, what our current mainnet can do, and this is basically what we have been just sequenced whenever we get a certificate in the right last five minutes here, so we're already looking at the what is it, uh 20 TX here, um and this is the confirmed data rate. In between, so we get the confirmed data rate, right, we need to have certifications, so you see here in yellow the time since last announcement and in pink the last certificate, so we're tracking well, everyone is voting, things are flowing well here right now, and in this row here in between, from mempool, we need to endorse, so we need to put endorser blocks, this is the the number of transactions in an endorser block, right, so here we see about like two to three, 4,000, uh transactions in each EB, this is only the references about these transactions, right, and uh from this you can um look at how many transactions per second are endorsed here, we're now at the rate of like 100 to 200 transactions per second here, this is really depending on what kind of transactions are we endorsing, right, this is now I think a kilobyte transactions, not the smallest ones, this is the median, I think, what we're loading.</p></div>
+</div>
+
+<p class="sec" id="t-mempool">Twelve nodes on one machine; how consistent the mempools are</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>Oh, by the way, this is running here, oh, I'm not going to start it, right, this is the 12 nodes running on my machine, all network emulated and this is the the ingestion, the network ingestion, I run it from three, three edges now, right, this is already quite a stressful situation, um, let me just do that here, um, this shows the current mempool structure from um if you color like each unique demand, which is fully loaded, whatever the mempool can give, um, you see the demand goes ingest here, here and here, this is the the ingestion relays, I showed in the picture before, and the red fire hose attaches to this one, the green attaches to this one and the blue attaches to this one, the block producers sit just always behind, they are biased, of course, to whichever fire hose they're in, but you see they're still kind of having a fair mix of what kind of transactions are flowing, right, and it is even more uniform if you look at like further out in the network, this is the bottom six panels, which is the relays which are just always sitting behind, one hop away from the original data source, right, so we see we have a fairly consistent picture of the mempool, whatever just happened to be sequenced and flushed out, this is what the mempool looks like.</p></div>
+</div>
+
+<p class="sec" id="t-runs">Other runs: hundreds of TPS, a ~1,000 TPS endorsement rate, and the hardware caveat</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>Yeah, that's something I wanted to show, and maybe the I tried various runs, so let's just look at this was last night, last night was also smallish transactions, similar to what we just looked at, so we see similar rates here, two to 500 transaction per second, 100 to 500 transaction kilobytes per second, this would be like a, yeah, not exactly 100X, right, at peaks here, to what we have on mainnet, and um, let me just find another example where I tried a lot of transactions, that was yesterday evening maybe, I think, right, so here this one here, for example, is um, you see the EBs are much fuller here, right, so here we see mempools around 10 megabytes, still plenty, we can probably go with lower, this is lots and lots of small transactions, uh ingested, always whenever there's free space in the mempool, we do endorse here 10 to 15 or 16K, sometimes, that's more like the ceiling here, we see by a parameter, um endorsed at a time, and this translates to roughly 1,000 transactions per second, endorsement rate, we're not there yet on the confirmed rate, of course, uh but this is actually using the real timing parameters, which we're hoping to be enabling also on the global scale, this small network what we're looking here could go faster. It actually has lots of good consistency on the mempool, so even even when we just load from all sides, we always have like a very good 80% or so mempool consistency, the transmission can can actually handle much more, we're waiting still a lot in this configuration, we're not running at limits here, but um, yeah, it's something to explore, um, this is all running on one machine, running running by one disk, so um, enough CPUs, well, maybe not enough, we have probably a bit too little here, um, still running with two VCPUs per per node here, four is probably going to be the recommendation and a dedicated SSD, this one is basically 12 machines, or 12 nodes running on one SSD, just in terms of IOs.</p></div>
+</div>
+
+<p class="sec" id="t-conclusion">Conclusion: “a start”; the Musashi testnet, its parameters</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>Um, and yeah, that's basically it, I think, I think we can conclude it's a nice showcase, it's a start, it's definitely uh proves that the protocol can work, um, when laid out correctly, uh there's more tuning to be needed, especially on our net on our public testnet, for example, the Musashi network, so you might want to go there, you can find more information there, how to participate, how to join in, we are currently in the water phase, trying to kind of find a few parameters and flexibility, next up will be load testing exactly at this global scale of the mainnet after, not yet the mainnet, of the testnet. Uh, you can see the testnet is also covered by this explorer here, for example, so this is Kleioscan.com, has covered the Musashi Dojo, and we just respawned this yesterday, two days ago, yesterday, yeah, recently, and you see this one is currently, um, also every now and then loaded with some transactions, this is also initial parameterization here, this is not the the same parameters I used now here locally, um, and you will see that these blocks are a lot smaller, right, so this is the the EBs, we see here about 20 kilobytes, um, closure. Um, I have been running megabytes closure just before, so we're still kind of just idling this system here, and in the fire phase, we want to ramp this up similar and see where where it can go with the same timing parameters which um are then also validated to be, oh yeah, maybe we can see the parameters already. What's this? Oh yeah, here we go, nice, yeah, these are the timing parameters I mentioned about like how long we can announce EBs, how long voting can actually happen and this is the safety parameter about how long the minimum time to ensure wide coverage uh is after voting needs to be before we can include the cert. And I think there is more, I'm not sure how it's ordered here, yeah, it's missing the endorser, yeah, weird, so these the Leios ones are here, but there's also sizes about endorser blocks, right, how many transactions you can put in there, so the UI will be still further improved here.</p></div>
+</div>
+
+<p class="sec" id="t-close">Around 50 pools on Musashi Dojo; the monthly update on September 30</p>
+
+<div class="turn">
+  <div class="turn-who host">Sebastian</div>
+  <div class="turn-body"><p>Okay, um, maybe one thing, yeah, you see on the Musashi Dojo testnet, um, we have around 50 block producing pools here, um, so this will be a much better representation than my local network, everyone's registered since the respawn, so everyone gets going right now, we see all the everyone registered their pools right away with the BLS voting keys, which is something you need to do after already existing bootstrapped uh pools already exist on mainnet, right, but that's going here and we can then do nice parameter sweeps here and see how we can take this. Okay, so, if you want to have more information, there our next monthly update will be in September 30th, 1400 UTC, um, similar format actually, as this recorded video, um, showcase by all the people working on the Leios project, what they did the last month, uh any notable advancements, challenges faced and overcome, and also look in our roadmap and any kind of time timelines. As always, open an issue, chime in, join the Musashi Dojo and uh going to see you around.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited apart from the proper-noun corrections noted above.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Sebastian Nagel · <a href="https://www.youtube.com/watch?v=8LAvr2TbslM">Watch the video</a></p>
+</footer>
+
+</div>
+</body>
+</html>

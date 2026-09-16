@@ -108,3 +108,11 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 - **確度が低かった箇所**: 固有名詞の推定が 4 つ（Moriarty、Grok Bot、Shinkai、BABE）。根拠は `glossary.md` の同回の見出し。名前だけで特定できなかったものが 6 つ（Dreas、Lola M.、Kie、Jem と Nico、Lucas と Sebastian、ARC）
 - **日付の根拠**: 本人の「日曜日の 12 時 15 分」、Foundation の発表（09-10）の後、報道（09-15）の前、「CLARITY は 2 日後に通らない」が 09-15 の採決と一致。YouTube のページからは未取得
 
+### 2026-09-15 Sebastian Nagel — Leios: Showcase 1k TPS
+
+**1 人語り。**冒頭で "my name is Sebastian" と名乗る。姓はチャンネル名（oEmbed の author_name "Sebastian Nagel"）から。Input Output の Leios 技術責任者だが、**動画は本人の個人チャンネル**（登録者 16 人）で、IOG の公式チャンネルではない。
+
+- **書き方**: 「開発者本人の説明」として書く。数字はすべて本人がダッシュボードを読み上げたもので、「本人の読み上げ」と明記。IOG の公式発表とは区別する。同じ内容が IOG 公式の Leios 月次レビューで扱われたら、両方をリンクして差分を書く
+- **文字起こし**: 時刻なし。2 版が続けて貼られていて、数字の聞き取りが違う箇所は併記（`glossary.md` の同回の見出し）。全文ページの .turn-time は付けていない
+- **確度**: 話者の割り当ての問題はない。固有名詞の推定は "linear layers" → linear Leios のみ
+

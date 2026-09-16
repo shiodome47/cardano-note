@@ -52,3 +52,14 @@ alphagrowth:
   numbered: false
   channel_url: https://www.youtube.com/@alphagrowth
   channel_id: UCyFQsWYz95f2jYOiRr1g7hg
+
+sebastian-nagel:
+  title_ja: Sebastian Nagel
+  title_en: Sebastian Nagel
+  blurb_ja: Input Output で Leios を率いる Sebastian Nagel が、本人のチャンネルで公開した動画。開発者本人の説明として扱い、IOG の公式見解にはしません。発言者は実名のまま扱います。
+  blurb_en: Videos published on the personal channel of Sebastian Nagel, who leads Leios at Input Output. Treated as the developer's own account, not IOG's official position. Speakers are named.
+  chatham_default: false
+  numbered: false
+  channel_url: https://www.youtube.com/@sebastiannagel8354
+  channel_id: UC4H2YqCtZ12MhcNQJVh6Tqg   # 2026-09-16 時点で RSS が 404 を返す。new_videos.py はこのチャンネルを飛ばして報告する
+
