@@ -184,6 +184,45 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 **数字の食い違い**: PRIME の監査文書は 2026-09-06 の Dose of Alpha で Eric が「77 ページほど」、この回では Christina が「97 ページ」。両方を記録し、どちらにも寄せていない。
 
 **要点で置き換えた語**（`.thesis` / `.tldr` では平易な言葉、原語は本文の初出で渡す）: yield compression → 「利回りの圧縮」（本文で「チームが名前を考えている、と Bryan が言った語」と示す）、TVL → 「預けられた資産の総額」を初出で添える、RFP → 「提案募集（RFP）」、stale answers → 「古い答え」、competitive bidding → 「競争入札」。
+### 2026-09-13 Charles Hoskinson — Devs versus Builders
+
+本人のチャンネルのライブ配信。伏せ字 "[ __ ]" と "[snorts]" などは字幕のまま残した。
+
+| 誤変換 | 正しい表記 |
+| --- | --- |
+| A16Z | a16z |
+| bun, zig, rust | Bun, Zig, Rust |
+| night force | Nightforce |
+| DeFi Llama | DefiLlama |
+| Sunday（30:01、"differentiate Midnight from Sunday"） | Sundae（SundaeSwap） |
+| 窶冱 / 窶决 / 窶冲 | 's / 're / 't（Shift_JIS 経由の文字化け。docs/ ではアポストロフィに戻した） |
+
+**文脈から推定して直したもの**（全文に `(推定)` / `(inferred)` を付けた）。
+
+- **Morardi** → **Moriarty**。「Marlowe を蘇らせた金融 DSL」「K の意味論を計算中」。本人の GitHub に Midnight 向けの有界な金融言語 Moriarty のリポジトリがある（<https://github.com/CharlesHoskinson/Moriarty>、成果物の日付 2026-09-10）
+- **Crockbot** → **Grok Bot**。Meta の Muse と並べて「彼らには〜がある」と挙げたエージェント製品。xAI の Grok Bot（2026-08-11 ベータ）
+- **Shanghai** → **Shinkai**。Flint、Cardano の EVM サイドチェーン（Milkomeda）と並べて挙げた製品。いずれも dcSpark
+- **the babe launch** → **BABE**。「来年 Midnight で予定しているローンチ」。Midnight のノード基盤 Substrate のブロック生成プロトコル
+
+**特定できず聞こえたまま残したもの**: **Dreas**（30:49、Cardano Foundation の文脈で「DevRel の解雇はひどいとツイートした」人）、**Lola M.**（35:01）、**Kie**（51:08、チャットの人）、**Jem と Nico**（Midnight City のビルダー）、**Lucas と Sebastian**（Midnight Foundation、K の Rust バックエンド）、**ARC**（20:13）。
+
+**直さなかった誤変換**（固有名詞ではないので英語全文はそのまま）: lattises（lattices）、datagramgrams、grindstoneone、governmentisssued、Sony Mac laptop、patent packet、大文字だけの行。
+
+**動画の言い分と事実が違う固有名詞**: 「Cardano と Binance のブリッジ」は、2026-07-21 の Wanchain の Cardano–BNB Chain ブリッジの件と読める。docs/ では動画の言い分を残し、`補足` で添えた。
+
+### 2026-09-12 Sebastian Nagel — Leios: Showcase 1k TPS
+
+本人の個人チャンネル。受領した文字起こしは時刻なしで、同じ動画の 2 版（"Leios" 表記と "Leos" 表記）が続けて入っていた。docs/ は前者を底本にし、数字の聞き取りが違う箇所は併記。
+
+| 誤変換 | 正しい表記 |
+| --- | --- |
+| Leos | Leios（もう一方の版では正しい） |
+| linear layers | linear Leios（もう一方の版は "linear Leos"。CIP-164 の方式の名前） |
+| main net / test net | mainnet / testnet |
+
+**2 版で聞き取りが違う箇所**（両方を残した）: "20 TX here" / "20, 30X here"（確定データレートの Praos 比。文脈から「20〜30 倍」が妥当）、"two to 500 transaction per second, 100 to 500 transaction kilobytes" / "200 to 500 ... 200 to 500"、"epoch boundary" / "network boundary"、"Kleioscan.com" / "kleoscan.com"（Musashi Dojo のエクスプローラ。正式な綴りは未確認）。
+
+**説明なしに使われた語**: **closure**（クロージャ）— EB が参照する取引の集合一式と読める。「20 KB のクロージャ」「メガバイト級のクロージャ」と大きさで語られる。
 
 ## Cardano の基本用語
 
@@ -199,6 +238,15 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **エポック（epoch）** | Cardano の時間の単位。約 5 日 | エポック |
 | **Ouroboros** | Cardano のプルーフ・オブ・ステークのコンセンサス・プロトコル群の名前。Praos が現行、Leios と Peras はその拡張 | 訳さない |
 | **Leios** | ブロック生成を段階に分けて並列化し、スループット（単位時間あたりの処理量）を上げるための Ouroboros の拡張。**時期・仕様は動画ごとに違うことを言っている可能性がある**ので、必ず公開日を添える | 訳さない |
+| **エンドーサーブロック（EB）／ランキングブロック（RB）** | Leios の 2 種類のブロック。RB は今までどおりの鎖のブロック（順序と正しさ）。EB は RB の脇に付く「追加の取引の参照の一覧」で、取引の中身は持たない。投票で証明書ができると次の RB に取り込まれる（2026-09-12、Sebastian Nagel の説明） | EB／RB（初出で補う）。**要点では「追加の取引の一覧」と書く** |
+| **承認レート／確定レート（endorsement rate / confirmed rate）** | 承認レートは EB に名指しされた取引が毎秒何件か。確定レートは証明されて RB に取り込まれチェーン上に確定した取引が毎秒何件（何 KB）か。**「Leios で 1,000 TPS」と聞いたら、どちらの数字かを必ず確かめる**。2026-09-12 の動画の「約 1,000」は承認レート | 承認レート／確定レート（原語を添える） |
+| **linear Leios** | 承認できるのは「証明された一つ前の EB」だけ、と制限した Leios の方式。並行度と引き換えに取引の衝突が起きない。CIP-164 で提案されている方式 | 訳さない |
+| **定足数（quorum）／証明書（certificate）** | EB への投票が閾値に達した状態と、それをまとめた小さなデータ。次の RB は証明書だけを含めればよい | 定足数／証明書（原語を添える） |
+| **クロージャ（closure）** | 2026-09-12 の動画で説明なしに使われた語。EB が参照する取引の集合一式（EB の検証に必要なデータ）と読める | クロージャ（原語を添える） |
+| **Musashi Dojo** | Leios の公開テストネット。「水の段階（water phase）」でパラメータを探り、「火の段階（fire phase）」で負荷を上げる、と 2026-09-12 の動画で説明。約 50 のブロック生成プール（本人の数字、同日時点）。IOG の公式チャンネルに「Musashi Dojo Water Phase」（2026-09-01）の動画がある | 訳さない |
+| **Showcase 1k TPS** | Leios のロードマップ（<https://leios.cardano-scaling.org/docs/roadmap/>）の 7 段階の 3 番目。定義は「制御されたネットワークのプロトタイプで 200 TkB/s を示す」。次が Leios Testnet、High Confidence、Release Candidate、Hardfork | 訳さない |
+| **BLS の投票鍵** | EB への投票に使う署名鍵。プールが Leios に参加するときに登録する（mainnet の既存プールも追加登録が要る、と 2026-09-12 で言及） | BLS 投票鍵 |
+| **消火ホース（fire hose）** | Leios チームの負荷生成器。mempool に空きがある限り、指定した大きさの取引を注ぎ込む。実利用の需要ではない | 消火ホース（原語を添える） |
 | **Peras** | ブロックの確定（finality）を速くするための Ouroboros の拡張。投票でチェーンの重みを付ける | 訳さない |
 | **Hydra（Hydra Head）** | Cardano のレイヤー 2。参加者どうしがオフチェーンで高速に取引し、結果だけをレイヤー 1 に書く | 訳さない |
 | **Mithril** | ステークにもとづく署名で、ノードの同期を速くする仕組み | 訳さない |
@@ -263,6 +311,11 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **依存型（dependent types）／構成的数学** | 型に条件を書き込める型システム。「型が合う＝証明が通る」という対応を作れ、Lean はこの上に作られている。構成的数学は「存在する」なら実際に作って見せることを求める流儀 | 依存型／構成的数学（初出で補う） |
 | **ZFC** | 現代数学の大半が依拠する集合論の公理系 | 訳さない |
 | **信頼の半径（radius of trust）** | Hoskinson の言葉。数学の共著で「全部を理解し検証した」と信じられる相手の数（3〜5 人）。Lean があれば広がる、というのが 2021 年の本人の予測 | 信頼の半径（原語を添える） |
+| **バイブコーディング（vibe coding）／バイブエンジニアリング** | コードを自分で書かず、AI に頼んで出てきたものを動くかどうかで受け入れていく作り方（2025 年ごろから）。Hoskinson は「エンジニアリングを理解した人が AI で大量に作る」ことを「スキルのあるバイブ」「バイブエンジニアリング」と呼んで区別（2026-09-13） | そのまま片仮名で（初出で補う）。**要点では「AI でコードが書ける」と書く** |
+| **ビルダー（builder）／開発者（dev）** | Hoskinson の区別（2026-09-13）。プロダクト（消費者、売上目標、普及、マーケティング計画がある）を作って責任を持つのがビルダー。開発者はビルダーを助けるがそれ自体はビルダーではなく、なることはできる。「橋を見せろ」が判定の言い方 | ビルダー／開発者（原語を添える） |
+| **DevRel（Developer Relations）** | 開発者向けの文書・ハッカソン・サポートでプラットフォームに開発者を呼び込む役割。Midnight Foundation が 2026-09-10 に専任チームを畳むと発表 | DevRel（初出で「開発者支援」と補う） |
+| **エージェントのハーネス（agent harness）** | 言語モデルを自律的に動かすための周辺のソフトウェア（実行環境、記憶、ツール、ガードレール）。OpenClaw、Hermes Agent が例。2026-09-13 で本人が「もっとも速く成長するオープンソース」と評した | ハーネス（原語を添える） |
+| **知性の自転車（bicycle for the mind）** | Steve Jobs が 1980 年代にコンピュータを評した言い回し。Hoskinson は AI について使った | そのまま |
 | **ショットガン・ウェディング（shotgun wedding）** | Hoskinson の言葉。先取権の争いで双方に貢献があるとき、急ごしらえで共著にすること | そのまま片仮名で（初出で補う） |
 
 ## Midnight の用語
@@ -279,6 +332,18 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **Fireside Dev Hang** | Midnight の公式チャンネルが配信している開発者向けのライブ枠。回ごとに独立 | 訳さない |
 | **Substrate** | Midnight のノードが使っているブロックチェーン開発フレームワーク（Polkadot 系）。2026-09-02 の動画で本人が言及 | 訳さない・初出で補う |
 | **連合型（federated）のバリデータ** | 2026-09 時点の Midnight は、あらかじめ選ばれた組織が運用する 13 のバリデータで動いている、と 2026-09-02 の動画で述べられた。**数は時点を添える** | 連合型（原語を添える） |
+| **Midnight City** | 自律 AI エージェントが取引を生み続ける Midnight 上のシミュレーション（2026-02-26 公開、midnight.city）。2026-09-13 の動画で本人は「エージェントの文明」「1 万人近く」「デモから 6 か月で永続する世界へ」と述べた。数字は本人の申告 | 訳さない |
+| **Midnight Passport** | Midnight の分散型アイデンティティの取り組み。2026 年 2 月に本人が R&D 項目として挙げ、09-13 の動画で「とても速く進んでいる」と | 訳さない |
+| **DeFi カーネル（DeFi kernel）** | Midnight のプライバシー重視の DeFi 基盤の名称。2026-09-13 で「構成から安全な DeFi 専用言語」とあわせて言及 | DeFi カーネル |
+| **Nightstream** | Midnight の R&D 項目の一つ（2026 年 2 月に本人が列挙）。2026-09-13 の動画では Jolt の格子ベース化と「差分を取る」対象として出るので、証明系の側の名前と読める。中身は動画で説明されていない | 訳さない |
+| **Nightforce** | Midnight のアンバサダー（ボランティア）プログラム。字幕では "night force" | 訳さない |
+| **Night Sky** | Midnight Foundation の 10 週間のアクセラレータ（2026 年 7 月開始の第 1 期）。DevRel 縮小の発表で「重点を移す先」として挙げられた | 訳さない |
+| **Build Club** | Midnight Foundation の既存のビルダー支援プログラム。同上 | 訳さない |
+| **Ouroboros Crypsinous** | IOG の研究者が 2018 年に公開したプライバシー保護型の proof-of-stake の設計。2026-09-13 で本人が「Midnight の将来のコンセンサスとして 59 ページの要件を書いた」と述べた | 訳さない |
+| **BABE** | Substrate のブロック生成プロトコル。2026-09-13 の字幕 "the babe launch" を「来年 Midnight で予定しているローンチ」としてこれと読んだ（推定） | 訳さない |
+| **Moriarty** | Hoskinson が書いている Midnight 向けの有界な金融 DSL。IOG の Marlowe を「蘇らせた」もの。GitHub: <https://github.com/CharlesHoskinson/Moriarty> | 訳さない |
+| **K フレームワーク／k-rust** | プログラミング言語の意味を形式的に定義するフレームワーク（Runtime Verification 社が開発）。midnightntwrk/k-rust は Midnight 側の Rust バックエンド | 訳さない |
+| **Shielded Technologies** | Midnight の中核エンジニアリング組織。2025 年 9 月に IOG から分離。動画では「Shielded」 | 訳さない |
 | **ZK（ゼロ知識証明）** | ある命題が正しいことを、その中身を明かさずに証明する暗号技術。Midnight の中核 | ゼロ知識証明（原語を添える） |
 
 ## 組織・プロダクト名
@@ -323,6 +388,18 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **Tristan Buckmaster / Levent Alpöge** | 報道で「先に取り組んでいた」として名前が出る 2 人（NYU の数学者と、Anthropic 所属の研究者）。2026 年 8 月に AI を使って Euler 方程式の関連する結果に到達、09-07 に公表。Hoskinson の動画には出てこない |
 | **Clay Mathematics Institute** | ミレニアム懸賞問題を出している米国の私設研究所。公式: <https://www.claymath.org/> |
 | **Monument Health** | サウスダコタ州を拠点にする医療システム。Hoskinson は「Mayo の関連機関」と紹介し、ワイオミング州 Gillette の自分たちの建物を引き継いでいると述べた（2026-09-09） |
+| **Wanchain の Cardano–BNB Chain ブリッジ** | 2026-07-21 に約 5 億 1,500 万 NIGHT（約 1,300 万ドル）が流出。Hoskinson は 2026-09-13 に「Cardano と Binance のブリッジがハックされた」と言及 |
+| **Draper Dragon / Andy Tang** | Tim Draper 系のベンチャーファンド Draper Dragon と、その創業パートナー。Cardano と Orion Fund を組成。2026-09-13 で本人が「会食した」「Midnight City チームをプログラムに送るかも」と |
+| **dcSpark（Shinkai、Flint、Milkomeda）** | Cardano 系の開発会社。AI エージェント基盤 Shinkai、ウォレット Flint、EVM サイドチェーン Milkomeda。2026-09-13 で本人が Midnight City の「実績のあるエンジニア」の出自として挙げた製品 |
+| **Bun / Anthropic** | JavaScript ランタイム Bun（2025-12 に Anthropic が買収）。2026 年 7 月に Claude を使って約 53 万行を Zig から Rust に 11 日で移植したと公表。2026-09-13 で「コードはもう堀ではない」の例 |
+| **Moltbook / OpenClaw / Hermes Agent / Grok Bot / Muse** | エージェント関連。Moltbook は AI エージェントの SNS（2026-01 開始、03 に Meta が買収）。OpenClaw（旧 Clawdbot / Moltbot）と Hermes Agent（Nous Research）はオープンソースのエージェントのハーネス。Grok Bot は xAI（2026-08-11 ベータ）、Muse は Meta の個人向けエージェント（2026-09-08 公開） |
+| **CLARITY 法案** | 米国の暗号資産の市場構造法案。2026-09-15 の上院クローチャー採決で 60 票に届かず否決。Hoskinson は 09-13 に「2 日後に通らない」と予告 |
+| **LAPTOP** | Hunter Biden のミームコイン。2026-09-09 に Base で発行。2026-09-13 で本人が「何も解決しない」例として挙げた |
+| **Cardano のソブリン・ウェルス・ファンド提案** | 2025-06 に Hoskinson が提案した、財務庫の ADA 1 億ドル分を Bitcoin とステーブルコインに換える構想。2026-09-13 で「83 セントのときにやっていれば今 4 億」と |
+| **IOG の財務庫提案（2026 年 5〜6 月）** | 9 本のうち Pogun、Blockfrost、L2 の 3 本が否決と報道。2026-09-13 で本人が「あなたたちは反対票を投じた」と言及した対象 |
+| **Sebastian Nagel** | Input Output の Leios 技術責任者（以前は Hydra を率いた）。GitHub: ch1bo。個人チャンネル: <https://www.youtube.com/@sebastiannagel8354> |
+| **ouroboros-leios（GitHub）** | Leios のプロトタイプと設計のリポジトリ（<https://github.com/input-output-hk/ouroboros-leios>）。Haskell の Cardano ノードのフォークとして週次で prototype-2026wNN をリリース。Issue #1097（2026-09-15）が「1k TPS の動画を撮る」段階 |
+| **Kleioscan** | Musashi Dojo のエクスプローラとして 2026-09-12 の動画で映った。綴りは字幕の 2 版で違い（Kleioscan / kleoscan）、公式ドメインは未確認なので URL は張らない |
 | **Cardano Foundation のリレー** | 2026-09-02 のデモで "CF relays" として、Demeter と並ぶ接続先の選択肢に出た |
 | **Cardano Over Coffee（@coc_space）** | X スペースで平日毎朝配信されているコミュニティの番組。司会は回によって替わる（2026-09-10 の回は Christina、共同司会 James と Chad）。番組のアカウント: <https://x.com/coc_space>。録音が公開されている回だけを扱う。2026-09-10 の回の録音: <https://x.com/i/spaces/1yKAPwbXnNWxb>（題は「Cardano Over Coffee ☕️ w/ guests @CryptoJoe101 & @alphagrowth1」） |
 | **PRIME の Operating Group（運営グループ）** | PRIME の提案で AlphaGrowth を監督するとされた独立の合議体。2026-09-10 の回で、司会の Christina が「私も入っている」と述べ、AlphaGrowth 側も「運営グループの前に立つ」と表現した。構成員の一覧は動画では語られていない |

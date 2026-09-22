@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leios: Showcase 1k TPS — Sebastian Nagel (2026-09-12)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Sebastian Nagel</p>
+<h1><span class="l-ja">Leios: Showcase 1k TPS — 「1,000 TPS」は何を数えた数字か。12 ノードの手元の実験で見せたもの</span><span class="l-en">Leios: Showcase 1k TPS — what the “1,000 TPS” actually counts, shown on a twelve-node network on one machine</span></h1>
+<p class="meta">
+  <span>2026-09-12</span>
+  <span>YouTube</span>
+  <span><span class="l-ja">Sebastian Nagel 本人のチャンネル · 1 人語り · 画面録画</span><span class="l-en">Sebastian Nagel's personal channel · solo · screen recording</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Cardano の処理量を上げる仕組み Leios について、開発を率いる Sebastian Nagel が、自分のマシン 1 台に立てた 12 ノードのネットワークで「1,000 TPS」を見せた動画です。<br>
+  肝心なのは数字の中身。<strong>毎秒約 1,000 件は「承認した」件数</strong>で、チェーンに確定した件数ではありません。確定した量は、今の Cardano の 20〜30 倍程度と読み上げられました。本人も「良いショーケースで、始まり」と位置づけ、次は公開テストネット Musashi で調整する、と述べています。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>仕組みの説明が先。</strong>Leios では、通常のブロックに加えて「エンドーサーブロック（EB）」で追加の取引を名指しし、投票で証明書を作り、次のブロックがそれをチェーンに取り込む。EB に入るのは取引そのものではなく参照だけ、と説明されました。</li>
+  <li><strong>規模感。</strong>今の Cardano（Praos）は約 20 秒に 1 ブロック、400 バイトの小さな取引なら 1 ブロック約 200 件で、毎秒約 10 件。Leios で目指すのは、その 10 倍から 100 倍の間、と述べられました。</li>
+  <li><strong>実験は小さく、負荷は厳しい。</strong>ブロック生成 3 台とリレー 9 台、すべての接続が往復 20 ms・50 Mbps、3 か所から「消火ホース」で無限に取引を流す。全部 1 台のマシンで動かし、ネットワークはエミュレーションです。</li>
+  <li><strong>数字は 3 種類ある。</strong>直近の走行では承認が毎秒 100〜200 件、確定したデータ量は Praos の 20〜30 倍。前夜の走行では毎秒 200〜500 件。小さな取引を大量に流した走行では承認レートが約 1,000 件で、「確定レートではまだそこまで行っていない」と本人が明言しています。</li>
+  <li><strong>但し書きも本人から。</strong>mainnet より小さく浅いネットワークであること、ノードあたり 2 vCPU で 12 ノードが 1 台の SSD を共有していること、この構成は限界で動かしていないこと。</li>
+  <li><strong>次は Musashi。</strong>公開テストネット Musashi Dojo には約 50 のプールがあり、今は「水の段階」でパラメータを探っている。次の月次更新は 9 月 30 日 14:00 UTC、と述べられました。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>誰が、どんな動画か</a></li>
+  <li><a href="#what1k"><span class="n">02</span>「1,000 TPS」は何を数えた数字か</a></li>
+  <li><a href="#how"><span class="n">03</span>Leios の仕組み — 本人の説明</a></li>
+  <li><a href="#scale"><span class="n">04</span>規模感 — 10、100、1,000</a></li>
+  <li><a href="#setup"><span class="n">05</span>実験の構成 — 12 ノード、20 ms、50 Mbps、消火ホース</a></li>
+  <li><a href="#demo"><span class="n">06</span>画面で見せた流れ — 告知、取得、票、証明</a></li>
+  <li><a href="#numbers"><span class="n">07</span>数字 — 承認レートと確定レート</a></li>
+  <li><a href="#next"><span class="n">08</span>次の段階 — Musashi Dojo</a></li>
+  <li><a href="#overall"><span class="n">09</span>全体像</a></li>
+  <li><a href="#pending"><span class="n">10</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 誰が、どんな動画か</h2>
+<p class="deck">Leios の技術責任者が、自分のチャンネルに上げた画面録画。開発者本人の説明として読む。</p>
+
+<p>Sebastian Nagel は Input Output で Leios の開発を率いるエンジニアです（以前は Hydra を率いていました）。この動画は IOG や Leios プロジェクトの公式チャンネルではなく、<strong>本人の個人チャンネル</strong>（登録者 16 人）に置かれたもので、冒頭で「Sebastian です。今日は Leios プロジェクトの進捗をお見せします」と始まります。<span class="badge">補足</span>公式の場ではないので、ここで語られる数字や見通しは「開発者本人の説明」として書き、IOG の公式発表とは区別します。同じ内容は Leios の月次レビュー（IOG の公式チャンネル）でも扱われる可能性がありますが、この時点では未確認です。</p>
+
+<p>全編が画面録画で、スライド、ネットワークの可視化、チェーンの可視化、ダッシュボード、mempool のモニター、テストネットのエクスプローラを次々に映しながら説明しています。<strong>スライドには「Confidential and Proprietary」の表示があります。</strong>このアーカイブの決まりにしたがい、スライドにしかない内容（具体的な大きさや件数、パラメータ値、監視の構成など）は再現していません。このページは音声で語られた範囲だけから作っており、図はすべて本人の口頭説明から組み立てたもので、スライドの写しではありません。<span class="badge">補足</span>実験ネットワークの名前は「dozen-devnet」で、Leios のリポジトリの公開 Issue（#1097、その 3 日後の 2026-09-15）にも同じ名前で「1k TPS を動画で示す」段階として出ています。</p>
+
+<p><span class="badge">補足</span>Leios のロードマップは 7 段階で、この動画の題「Showcase 1k TPS」はその 3 番目の段階の名前です。ロードマップ上の定義は「制御されたネットワークのプロトタイプで 200 TkB/s（毎秒 200 キロバイト分の取引）を示す」で、TPS ではなくデータ量で書かれています。動画で本人が「取引の大きさに左右される」と繰り返すのはこのためです。</p>
+
+
+<h2 id="what1k">2. 「1,000 TPS」は何を数えた数字か</h2>
+<p class="deck">承認した件数と、チェーンに確定した件数は別。動画の中で本人がその区別を先に置いている。</p>
+
+<p>この動画を読むうえで最初に押さえるべきことを、本人は仕組みの説明の最後で言っています。<strong>「EB を告知するたびに、投票し、証明し、それがチェーンの一部になる。証明されたのを見た時点で、証明済み・確定済みのスループットとして数えられる」</strong>。つまり Leios には「承認された（endorsed）」と「証明されて確定した（certified）」の 2 つの段階があり、数字もそれぞれにあります。</p>
+
+<div class="term">
+<p class="term-name">承認レートと確定レート <small>動画の中の言葉（endorsement rate / confirmed rate）</small></p>
+<p>承認レートは、エンドーサーブロックに名指しされた取引が毎秒何件か。確定レートは、投票で証明書ができて次のブロックに取り込まれ、チェーン上に確定した取引が毎秒何件（あるいは何キロバイト）か。動画の「約 1,000 TPS」は前者で、本人は「確定レートではまだそこまで行っていない」と明言しています。<span class="badge">補足</span>承認された取引がすべて確定するわけではありません。投票が定足数に届かなかったり、次のブロックまでの間隔が短すぎたりすると、その EB は証明されず、取引は次の機会に回ります（6 節）。</p>
+</div>
+
+<p>動画の題は「1k TPS」ですが、本人が冒頭で「1,000 TPS を持つとはどういうことか、私たちの場合それが実際に何を意味するのか」と断っているとおり、内容は「その数字がどういう条件で、どの段階の数字として出るか」の説明です。</p>
+
+
+<h2 id="how">3. Leios の仕組み — 本人の説明</h2>
+<p class="deck">ブロックの鎖はそのまま。脇で「エンドーサーブロック」を出し、投票で証明書を作り、次のブロックに取り込む。</p>
+
+<p>本人の説明はスライドの図に沿っています。まず今の Cardano。ブロック B0 から B4 が鎖をなし、各ブロックが前のブロックを参照し、最長チェーンの規則で選び、すべてのブロックを検証する。「単純な鎖」です。</p>
+
+<p>Leios では、ブロックを作るときに<strong>エンドーサーブロック（EB）</strong>もあわせて作れる。EB は、そのブロックに入っている以上の取引を名指しするもので、その並びが拡散され、投票にかけられ、元のブロックの妥当な延長かが検証される。十分な票が集まれば<strong>証明書</strong>を作れて、次のブロックがその証明書を使って取引をチェーンに並べる。スライドの例では、EB1 は投票か拡散に失敗し、EB2 は承認されて B3 に運ばれた、と説明されました。</p>
+
+<p>本人が「linear Leios の特徴」と呼んだのが、承認できるのは常に「証明された一つ前の EB」だけ、という制約です。何をいつまでに承認するかは縛られるが、取引の履歴が直線的になり、<strong>取引の衝突が起こりえない</strong>決定性が「ただで手に入る」。告知から並べるまでの遅延も、研究者が発表した多段パイプラインの方式より一般に短い、と述べられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="本人の説明を描いた図。ランキングブロック B1、B2、B3 が鎖をなし、B1 の脇の EB1 は投票に失敗、B2 の脇の EB2 は投票で証明書を得て B3 に取り込まれる">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-s" text-anchor="middle">上の段：今までどおりのブロックの鎖（動画では「ランキングブロック」）</text>
+
+  <rect x="40" y="40" width="150" height="56" rx="8" class="d-box"/>
+  <text x="115" y="64" class="d-t" text-anchor="middle">B1</text>
+  <text x="115" y="84" class="d-s" text-anchor="middle">取引 ＋ EB1 を告知</text>
+
+  <line x1="194" y1="68" x2="260" y2="68" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="265" y="40" width="150" height="56" rx="8" class="d-box"/>
+  <text x="340" y="64" class="d-t" text-anchor="middle">B2</text>
+  <text x="340" y="84" class="d-s" text-anchor="middle">取引 ＋ EB2 を告知</text>
+
+  <line x1="419" y1="68" x2="485" y2="68" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="490" y="40" width="150" height="56" rx="8" class="d-box-accent"/>
+  <text x="565" y="64" class="d-t" text-anchor="middle">B3</text>
+  <text x="565" y="84" class="d-s" text-anchor="middle">EB2 の証明書を取り込む</text>
+
+  <rect x="40" y="130" width="150" height="70" rx="8" class="d-box-warn"/>
+  <text x="115" y="154" class="d-t" text-anchor="middle">EB1</text>
+  <text x="115" y="174" class="d-s" text-anchor="middle">票が足りない／拡散失敗</text>
+  <text x="115" y="192" class="d-s" text-anchor="middle">→ 証明されない</text>
+
+  <rect x="265" y="130" width="150" height="70" rx="8" class="d-box-accent"/>
+  <text x="340" y="154" class="d-t" text-anchor="middle">EB2</text>
+  <text x="340" y="174" class="d-s" text-anchor="middle">取引の参照を名指し</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">投票 → 定足数 → 証明書</text>
+
+  <line x1="419" y1="165" x2="540" y2="100" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="16" y="222" width="648" height="62" rx="7" class="d-box-plain"/>
+  <text x="340" y="246" class="d-t" text-anchor="middle">承認できるのは「証明された一つ前の EB」だけ（linear Leios）</text>
+  <text x="340" y="268" class="d-s" text-anchor="middle">制約と引き換えに、履歴が直線的になり取引の衝突が起きない、と本人は説明</text>
+</svg>
+<p class="figcap">Sebastian Nagel が口頭で説明したスライドの内容を、こちらで描き直したものです。スライドそのものの写しではありません。EB1 が失敗した理由は「投票されなかったか、拡散に成功しなかったか」とだけ述べられています。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>そもそも「ランキングブロック」「エンドーサーブロック」とは</h4>
+<p>Leios では、今までのブロックを「ランキングブロック（RB）」と呼びます。鎖の順序と正しさを決める役です。エンドーサーブロック（EB）は RB の脇に付く「追加の取引の一覧」で、取引の中身ではなく ID の一覧だけを持ちます。ノードは一覧を見て、手元にない取引だけを取りに行きます。</p>
+<h4>なぜ投票と証明書が要るのか</h4>
+<p>EB の一覧が「全員に届いていて、正しい」ことを確かめないと、次の RB に取り込めません。そこで、ステークを持つノードが EB に投票し、十分な票（定足数）が集まったことを小さな証明書にまとめます。次の RB はその証明書だけを含めればよいので、RB 自体は数バイトの小さなものでよい、と本人は言っています。</p>
+<h4>「linear（直線的）」とは</h4>
+<p>いくつもの EB を並行して走らせる設計（研究論文に出てくる多段パイプライン）に対して、「一つ前の証明された EB の続きしか承認できない」と制限した設計です。並行度は落ちますが、同じ取引が別々の EB に入って衝突する、という事態が起きません。CIP-164 で提案されているのはこの方式です。</p>
+<h4>身近なものへのたとえ</h4>
+<p>会議の議事録（RB）に、資料の一覧（EB）を添付するようなものです。議事録には「資料 1〜3,000 を承認」とだけ書き、資料本体は各自が持っている。次の会議で「前回の一覧は全員が確認した」と判子（証明書）を押して初めて、正式な記録になります。</p>
+<h4>一言でまとめると</h4>
+<p>鎖の速さは変えずに、各ブロックが「参照で」抱えられる取引を増やし、投票でその参照を正当化する仕組みです。</p>
+</div>
+</details>
+
+
+<h2 id="scale">4. 規模感 — 10、100、1,000</h2>
+<p class="deck">今の Cardano は毎秒約 10 件。Leios が目指すのは、その 10 倍から 100 倍の間。</p>
+
+<p>本人はスライドで 3 つの規模を並べました。まず今の Cardano（Ouroboros Praos、mainnet のパラメータ）。ブロックは期待値として 20 秒に 1 つ（ベルヌーイ過程なので早い遅いはある）、400 バイトの小さめの取引なら 1 ブロックに約 200 件、毎秒およそ 10 件。次にその 10 倍の 100 TPS。この量になると取引を「もう一度ネットワークに送り回したくない」ので、EB には参照だけを入れ、ブロック生成者は足りない取引だけを取ってくる。票の量もその桁で描かれ、証明書を含むブロックは「今では数バイトしかない」ので図より小さい。そして 1,000 TPS は「指数的」に増える図で、<strong>目標はこの間のどこか</strong>、取引の大きさに左右される、と述べられました。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="本人が並べた 3 つの規模。Praos は毎秒約 10 件、20 秒に 1 ブロック約 200 件。100 TPS では EB に参照だけを入れる。1,000 TPS は指数的に増え、目標はその間、取引の大きさしだい">
+  <rect x="16" y="20" width="200" height="200" rx="8" class="d-box"/>
+  <text x="116" y="46" class="d-t" text-anchor="middle">今の Praos — 約 10 TPS</text>
+  <rect x="96" y="150" width="40" height="40" rx="3" class="d-box-accent"/>
+  <text x="116" y="70" class="d-s" text-anchor="middle">20 秒に 1 ブロック（期待値）</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">1 ブロック約 200 件</text>
+  <text x="116" y="110" class="d-s" text-anchor="middle">400 バイトの小さな取引で</text>
+  <text x="116" y="210" class="d-s" text-anchor="middle">mainnet の今のパラメータ</text>
+
+  <rect x="240" y="20" width="200" height="200" rx="8" class="d-box"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">100 TPS — 10 倍</text>
+  <rect x="320" y="110" width="40" height="80" rx="3" class="d-box-accent"/>
+  <text x="340" y="70" class="d-s" text-anchor="middle">EB には取引の参照だけ</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">足りない取引だけ取りに行く</text>
+  <text x="340" y="210" class="d-s" text-anchor="middle">「少なくともこの容量を」</text>
+
+  <rect x="464" y="20" width="200" height="200" rx="8" class="d-box-accent"/>
+  <text x="564" y="46" class="d-t" text-anchor="middle">1,000 TPS — 指数的に</text>
+  <rect x="544" y="70" width="40" height="120" rx="3" class="d-box"/>
+  <text x="564" y="210" class="d-s" text-anchor="middle">目標は「この間のどこか」</text>
+
+  <rect x="16" y="236" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="258" class="d-t" text-anchor="middle">データ量の需要は「取引の大きさしだい」と本人が繰り返した</text>
+  <text x="340" y="278" class="d-s" text-anchor="middle">棒の高さは規模の順序を示すだけで、比率は動画のスライドに合わせたものではない</text>
+</svg>
+<p class="figcap">3 つの規模の並べ方は本人のスライドの順序どおりですが、棒の高さは目安で、スライドの数値を写したものではありません。「1 ブロック約 200 件」は本人が「200 か 186 か、その程度」と言った数字です。</p>
+</div>
+
+<p><span class="badge">補足</span>「毎秒約 10 件」は 400 バイトの取引を前提にした本人の計算です。Cardano のブロックの上限は取引の件数ではなくバイト数（2026 年 9 月時点で 88 KB）で決まるので、取引が大きければ件数はもっと少なくなります。Leios のロードマップも目標を「140〜300 TxB/s 以上」のようにデータ量で書いていて、TPS は取引の大きさを置いたときの換算値です。</p>
+
+
+<h2 id="setup">5. 実験の構成 — 12 ノード、20 ms、50 Mbps、消火ホース</h2>
+<p class="deck">小さくて浅いが、遅延と帯域は現実寄り。負荷は「現実的ではないが不可能でもない」厳しさ。</p>
+
+<p>実験のネットワークは、本人の説明では次のとおりです。</p>
+
+<ul>
+  <li>ブロック生成者 3 台、それぞれにリレー 3 台。リレーどうしは全結合。合計 12 ノード</li>
+  <li>すべての接続が往復 20 ミリ秒、各リンクの上限 50 Mbps。「同一大陸内の、かなり悲観的な往復時間」で、上り回線は「高すぎず低すぎず」</li>
+  <li>3 か所の「消火ホース（fire hose）」から、指定した大きさの取引を「頼めばいくらでも」流し込む。これが mempool を満たしていく</li>
+  <li>全部が 1 台のマシンで動き、ネットワークはエミュレーション。ノードあたり 2 vCPU、12 ノードで 1 台の SSD を共有</li>
+</ul>
+
+<p>mainnet との違いも本人が挙げています。mainnet の直径は 5〜6 ホップと思うが、ここは最大 3 ホップで「直径の半分」。次数は 10 で、Cardano ノードの平均もその程度だが、リレーによっては上流 20・下流 100 のピアを持つものがあり「そこはかなり違う」。負荷は「かなり厳しく、あまり現実的ではないが、不可能でもない」。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="実験の構成と mainnet との違いを並べた図。構成はブロック生成 3 台とリレー 9 台、往復 20 ms、50 Mbps、3 か所の消火ホース、1 台のマシン。mainnet は直径 5〜6 ホップ、大きなリレーは上流 20・下流 100">
+  <rect x="16" y="20" width="316" height="170" rx="8" class="d-box-accent"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">今回の構成（本人の説明）</text>
+  <text x="174" y="76" class="d-s" text-anchor="middle">ブロック生成 3 台 × リレー 3 台 ＝ 12 ノード</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">リレーは全結合、最大 3 ホップ、次数 10</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">全接続が往復 20 ms、上限 50 Mbps</text>
+  <text x="174" y="136" class="d-s" text-anchor="middle">3 か所の消火ホースが無限に取引を流す</text>
+  <text x="174" y="166" class="d-s" text-anchor="middle">1 台のマシン、2 vCPU/ノード、SSD 1 台を共有</text>
+
+  <rect x="348" y="20" width="316" height="170" rx="8" class="d-box"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">mainnet との違い（本人の説明）</text>
+  <text x="506" y="76" class="d-s" text-anchor="middle">直径は 5〜6 ホップ「だと思う」→ ここは半分</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">平均の次数は同程度だが、</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">上流 20・下流 100 のリレーもある</text>
+  <text x="506" y="136" class="d-s" text-anchor="middle">負荷は「現実的ではないが不可能でもない」</text>
+  <text x="506" y="166" class="d-s" text-anchor="middle">「限界で動かしているわけではない」</text>
+
+  <rect x="16" y="208" width="648" height="66" rx="7" class="d-box-plain"/>
+  <text x="340" y="232" class="d-t" text-anchor="middle">「同一大陸内の、かなり悲観的な往復時間」— 本人の位置づけ</text>
+  <text x="340" y="254" class="d-s" text-anchor="middle">遅延と帯域は現実寄りに、規模と深さは小さく。推奨は 4 vCPU と専用 SSD になるだろう、と</text>
+</svg>
+<p class="figcap">両方の列とも Sebastian Nagel の発言をそのまま並べたものです。「直径 5〜6 ホップ」は本人が「だと思う」と留保した数字です。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>「ホップ」「直径」「次数」</h4>
+<p>ホップは、あるノードから別のノードへ情報が渡る回数。直径は、ネットワークで最も遠い 2 点の間のホップ数。次数は、1 つのノードがつながっている相手の数です。直径が小さいほど情報は速く行き渡るので、「mainnet の半分の直径」は、この実験が mainnet より有利な条件だという意味になります。</p>
+<h4>「往復 20 ms」「50 Mbps」</h4>
+<p>往復 20 ミリ秒は、同じ大陸の都市間の典型的な遅延です（大西洋をまたぐと 70〜100 ms 程度）。50 Mbps は家庭の光回線より遅い程度で、ノードの上り回線としては控えめな想定です。本人が「悲観的」と言うのは、同一大陸としては遅めに置いた、という意味です。</p>
+<h4>「消火ホース」「mempool」</h4>
+<p>mempool は、まだブロックに入っていない取引をノードが溜めておく場所。消火ホースは本人たちが作った負荷生成器で、mempool に空きがある限り取引を注ぎ込みます。実際の利用者の需要ではなく、「上限を測るための人工的な需要」です。</p>
+<h4>身近なものへのたとえ</h4>
+<p>高速道路の設計を、実物より短い試験コースで試すようなものです。路面（遅延と帯域）は本物に近づけてあるが、コースは短く分岐も少ない。試験コースで出た速度を、そのまま実際の道路の速度とは言えません。</p>
+<h4>この動画では分からないこと</h4>
+<p>mainnet 相当の規模（数百のリレー、大陸をまたぐ遅延）でどうなるかは、この実験では測れません。本人も「次は地球規模の負荷テスト」と、まだ先の段階として述べています。</p>
+</div>
+</details>
+
+
+<h2 id="demo">6. 画面で見せた流れ — 告知、取得、票、証明</h2>
+<p class="deck">EB は約 60 KB、告知から約 3 秒で票、票は波のように来る。間隔が 11 スロットでは証明できない。</p>
+
+<p>本人はネットワークの可視化を大陸の地図に重ね、パケットの種類を色で説明しました。緑は「mempool の拡散で行き渡っていなかった取引」だけ（実負荷を全部描くと真緑になる）、ピンクか紫は票、赤は今までどおりのブロック（ランキングブロック）の拡散。</p>
+
+<p>次にチェーンの表示に切り替え、証明の条件を説明します。次のブロックが前の EB を証明できるのは、<strong>定足数に達していて、かつ間の時間が十分に長いとき</strong>。データが全員に行き渡ったことを確かめるためで、タイミングのパラメータで決まる。画面には「11 スロットしかない、短すぎる」間があり、ブロックの間隔が短く続くと証明はできず、数秒たった次のもので「ほら、証明された」と見せています。</p>
+
+<p>そのうえで、イベントを一つずつ進めて拡散を見せました。</p>
+
+<ul>
+  <li><strong>告知。</strong>黄色のブロックが EB の告知で、ブロードキャストとして「とても速く」ネットワークを伝わる。これで全員が EB の存在を知り、中身を取りに行き始める</li>
+  <li><strong>EB 本体。</strong>この例では約 60 KB で、ミリ秒単位で少しずつダウンロードされていく。上流が複数あるので、いくつかから引く。「誰かが遅かったり返してこなかったりする場合の保険」</li>
+  <li><strong>足りない取引。</strong>EB が届いたら、手元にない取引をダウンロードする。この例は新しい EB で mempool が追いついておらず、取りに行く量が多かった。「それでも 400 KB」</li>
+  <li><strong>票。</strong>最初の告知からおよそ 3 秒後に投じられ、全員にブロードキャストされる。ブロック生成者が同時に投票することもあれば、「クロージャ」を少し遅れて取得して時刻がずれることもあり、「波のように来る」</li>
+  <li><strong>証明。</strong>すべての票が集まり、定足数と閾値に達した時点で、次のブロックに取り込んで証明する</li>
+</ul>
+
+<p>可視化ツールについては、イベントが多くて遅れる、票を探すのに手間取る、「ツールをもう少し改良する必要がある」「UI はまだ改良していく」と本人が何度か口にしています。<span class="badge">補足</span>「クロージャ（closure）」は動画で説明なしに使われた言葉で、EB が参照する取引の集合全体（EB を検証するのに必要なデータ一式）を指すと読めます。後半で「20 KB のクロージャ」「メガバイト級のクロージャ」と大きさの話で出てくるのはそのためです。</p>
+
+
+<h2 id="numbers">7. 数字 — 承認レートと確定レート</h2>
+<p class="deck">承認は毎秒 100〜200 件、確定は Praos の 20〜30 倍。別の走行で承認レート約 1,000 件。すべて本人の読み上げ。</p>
+
+<p>ダッシュボードの読み上げです。本人は「この 2 日間」「2〜3 日」いろいろな構成で動かした、と言っており、プロトタイプは Haskell の Cardano ノードのフォークに Leios を組み込んだもので毎週リリースしている、本線の Cardano ノードではリリース候補も並行して作っている、と述べました。</p>
+
+<ul>
+  <li><strong>今動いている走行（1 KB 程度の取引、中央値）。</strong>mempool はほぼ満杯で、大きく落ち込むのは Leios の証明があったところ。1 つの EB に約 2,000〜4,000 件の参照。承認レートは毎秒 100〜200 件。チェーンに確定したデータ量は、左に示した Praos の毎秒 4.6〜9.2 KB に対して「20〜30 倍」と読み上げられました（文字起こしの一方の版では「20 TX」と聞こえます）</li>
+  <li><strong>前夜の走行（小さめの取引）。</strong>毎秒 200〜500 件、毎秒 100〜500 KB（もう一方の版では 200〜500 KB）。ピークで「100 倍とまではいかないが」mainnet と比べてそれくらい</li>
+  <li><strong>小さな取引を大量に流した走行。</strong>mempool は約 10 MB、一度に 10,000〜16,000 件を承認し、これは「パラメータで決まる上限に近い」。これが<strong>承認レートで毎秒約 1,000 件</strong>。「確定レートではもちろんまだそこまで行っていない」</li>
+</ul>
+
+<p>本人が添えた条件も 3 つあります。使っているタイミングのパラメータは「地球規模でも有効にしたい実際のもの」で、この小さなネットワークならもっと速くできるはずであること。全方向から負荷をかけても mempool の一貫性は 80% 程度と良く、伝送はもっとさばけて「限界で動かしているわけではない」こと。そして 1 台のマシン、ノードあたり 2 vCPU、SSD 1 台の共有で、「推奨は 4 vCPU と専用 SSD になるだろう」ということ。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — これで「1,000 TPS を達成した」と言えるのでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>言えません。本人も言っていません。</strong>動画で「約 1,000」が付くのは承認レートだけで、確定レートは Praos の 20〜30 倍、つまり毎秒数百 KB の範囲です。本人の結論も「良いショーケースで、始まり」「プロトコルが動くことを証明した」までです。</p>
+<h4>それでも「1k TPS」と題する理由（要素に分解すると）</h4>
+<ul>
+  <li>ロードマップの段階名がそのまま「Showcase 1k TPS」で、定義は「制御されたネットワークで 200 TkB/s」。この動画はその段階の成果報告なので題が同じ</li>
+  <li>承認レート 1,000 件は、EB に取引を詰めて拡散し投票する経路が毎秒 1,000 件分を通せた、という意味では実測値</li>
+  <li>確定に至らない差は、証明書を入れられる間隔（タイミングのパラメータ）と、EB が失敗する分から来る。本人は「この小さなネットワークならもっと速くできる」と、パラメータ側の余地を示唆している</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>「毎秒何件」の数字を見たら、それが承認か確定か、取引の大きさは何バイトか、ネットワークは何ノードで遅延はいくつか、の 4 つを確かめます。この動画はその 4 つを本人が全部言っているので、比較の基準にできます。</p>
+<h4>この動画で示されたこと・示されなかったこと</h4>
+<p>示されたのは、12 ノード・20 ms の構成での承認レートと確定レートの目安です。示されなかったのは、mainnet 規模での数字、取引の大きさごとの確定レートの表、そして「確定レートが 1,000 件に届く条件」です。本人は最後の点を「探る余地がある」としています。</p>
+</div>
+</details>
+
+
+<h2 id="next">8. 次の段階 — Musashi Dojo</h2>
+<p class="deck">公開テストネットに約 50 プール。今は「水の段階」、次に「火の段階」で負荷を上げる。</p>
+
+<p>結論として本人は、「良いショーケースで、始まりで、正しく組めばプロトコルが動くことを証明した」「調整はもっと必要で、とくに公開テストネットで」と述べ、Musashi ネットワークへの参加を呼びかけました。</p>
+
+<div class="term">
+<p class="term-name">Musashi Dojo <small>動画の中の言葉</small></p>
+<p>Leios の公開テストネット。本人の説明では、今は「水の段階（water phase）」でパラメータと柔軟性を探っており、次の「火の段階（fire phase）」で負荷を上げて、同じタイミングのパラメータでどこまで行けるかを見る。「最近立て直した」ばかりで、初期のパラメータでは EB のクロージャは 20 KB 程度と、手元の実験よりずっと小さい。約 50 のブロック生成プールがあり、全員が BLS の投票鍵付きで登録し直した、と述べられました。<span class="badge">補足</span>「BLS の投票鍵」は EB への投票に使う署名鍵で、既存のプールが mainnet で Leios に参加するときにも追加の登録が要る、と本人が触れています。段階の名前は Leios のプロジェクトが公開しているもので、IOG の公式チャンネルにも「Musashi Dojo Water Phase」の動画があります（このアーカイブでは未追加）。</p>
+</div>
+
+<p>エクスプローラ Kleioscan で Musashi Dojo のブロックとパラメータ画面も映しました。タイミングのパラメータは「EB をどれだけの間告知できるか」「投票がどれだけの間行えるか」「証明書を含める前に、投票のあと広く行き渡ることを確かめる最短時間（安全のパラメータ）」の 3 種類と説明され、EB の大きさのパラメータは「画面に出ていない、UI はまだ改良する」とのことでした。</p>
+
+<p>最後に告知が一つ。<strong>次の月次更新は 9 月 30 日 14:00 UTC</strong>。この録画と似た形式で、Leios に関わる全員がその月の進展と課題を示し、ロードマップと時期の見通しも扱う、と述べられました。<span class="badge">補足</span>Leios のロードマップでは、この「Showcase 1k TPS」の次が「Leios Testnet」（より大規模な公開テストネットでのパラメータ検証と継続的な負荷試験）、その先に「High Confidence」「Release Candidate」「Hardfork」が並びます。動画では mainnet の時期には触れていません。</p>
+
+
+<h2 id="overall">9. 全体像</h2>
+<p class="deck">mempool から承認、投票、証明、確定へ。数字は段階ごとに違い、次の段階は公開テストネット。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="全体像。mempool の取引が EB で承認され（毎秒 100〜200 件、小さな取引なら約 1,000 件）、約 3 秒後の投票で証明書ができ、次のブロックで確定する（Praos の 20〜30 倍）。次の段階は Musashi Dojo での調整">
+  <defs>
+    <marker id="m4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="150" height="110" rx="8" class="d-box"/>
+  <text x="91" y="50" class="d-t" text-anchor="middle">mempool</text>
+  <text x="91" y="74" class="d-s" text-anchor="middle">消火ホースで満杯</text>
+  <text x="91" y="94" class="d-s" text-anchor="middle">一貫性は 80% 程度</text>
+  <text x="91" y="114" class="d-s" text-anchor="middle">証明のたびに減る</text>
+
+  <line x1="170" y1="79" x2="178" y2="79" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="182" y="24" width="150" height="110" rx="8" class="d-box-accent"/>
+  <text x="257" y="50" class="d-t" text-anchor="middle">承認（EB）</text>
+  <text x="257" y="74" class="d-s" text-anchor="middle">参照 2,000〜4,000 件</text>
+  <text x="257" y="94" class="d-s" text-anchor="middle">毎秒 100〜200 件</text>
+  <text x="257" y="114" class="d-s" text-anchor="middle">小さな取引で約 1,000 件</text>
+
+  <line x1="336" y1="79" x2="344" y2="79" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="348" y="24" width="150" height="110" rx="8" class="d-box"/>
+  <text x="423" y="50" class="d-t" text-anchor="middle">投票</text>
+  <text x="423" y="74" class="d-s" text-anchor="middle">告知から約 3 秒</text>
+  <text x="423" y="94" class="d-s" text-anchor="middle">波のように届く</text>
+  <text x="423" y="114" class="d-s" text-anchor="middle">定足数で証明書</text>
+
+  <line x1="502" y1="79" x2="510" y2="79" class="d-line-accent" marker-end="url(#m4)"/>
+
+  <rect x="514" y="24" width="150" height="110" rx="8" class="d-box-accent"/>
+  <text x="589" y="50" class="d-t" text-anchor="middle">確定（次の RB）</text>
+  <text x="589" y="74" class="d-s" text-anchor="middle">間隔が短いと不可</text>
+  <text x="589" y="94" class="d-s" text-anchor="middle">Praos の 20〜30 倍</text>
+  <text x="589" y="114" class="d-s" text-anchor="middle">1,000 件には未到達</text>
+
+  <rect x="16" y="154" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="178" class="d-t" text-anchor="middle">条件：12 ノード・1 台のマシン・往復 20 ms・50 Mbps・限界ではない</text>
+  <text x="340" y="198" class="d-s" text-anchor="middle">数字はすべて本人がダッシュボードを読み上げたもの。取引の大きさで変わる</text>
+
+  <rect x="16" y="226" width="648" height="56" rx="7" class="d-box-warn"/>
+  <text x="340" y="250" class="d-t" text-anchor="middle">次：Musashi Dojo（約 50 プール）で「水の段階」→「火の段階」</text>
+  <text x="340" y="270" class="d-s" text-anchor="middle">同じタイミングのパラメータで負荷を上げる。月次更新は 9 月 30 日 14:00 UTC</text>
+</svg>
+<p class="figcap">動画の説明を 1 本の流れに並べたものです。段階ごとの数字は 7 節のとおりで、走行によって違います。</p>
+</div>
+
+
+<h2 id="pending">10. 答えが出なかったこと</h2>
+<p class="deck">確定レートの絶対値、mainnet 規模での見通し、名前だけ出た言葉。</p>
+
+<p>質疑のない録画です。本人が「探る余地がある」「UI は改良する」と言って先送りにしたものと、動画で語られなかったものを並べます。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>確定レートは毎秒何件・何キロバイトだったのか。</p>
+<p class="qa-a" data-by="「20〜30 倍」のみ">確定したデータ量は「Praos の 4.6〜9.2 KB/s に対して 20〜30 倍」という相対値だけで、絶対値は読み上げられていません。文字起こしの一方の版では「20 TX」と聞こえ、両方を残しています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">条件なし</span>確定レートが承認レート（約 1,000 件）に追いつく条件は何か。</p>
+<p class="qa-a" data-by="「探る余地がある」">「この小さなネットワークならもっと速くできる」「限界で動かしていない」と述べるのみで、パラメータをどう変えればよいかは語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">対象外</span>mainnet 規模（直径 5〜6 ホップ、大きなリレー）ではどうなるのか。</p>
+<p class="qa-a" data-by="次の段階">「次は地球規模の負荷テスト、まだ mainnet ではなくテストネットで」とだけ。この実験はそれを測るものではない、と本人が位置づけています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">説明なし</span>「クロージャ」「11 スロット」の閾値、タイミングのパラメータの実際の値。</p>
+<p class="qa-a" data-by="画面のみ">パラメータの画面は映しましたが、値は読み上げられていません。クロージャは説明なしに使われた言葉です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>Musashi Dojo の「火の段階」はいつ始まるのか。mainnet はいつか。</p>
+<p class="qa-a" data-by="言及なし">「次は」とだけで、日付はありません。mainnet の時期は動画で触れられていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は Sebastian Nagel 本人の YouTube チャンネルで公開されている動画 <a href="https://www.youtube.com/watch?v=8LAvr2TbslM">Leios: Showcase 1k TPS</a>（公開日 2026-09-12）です。長さは未確認です。公開動画なので発言者は実名のまま書いています。<strong>本人の個人チャンネルなので、数字と見通しは「開発者本人の説明」として書き、IOG の公式発表とは区別しています。</strong></p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回は全編が画面共有ですが、<strong>スライドに「LEIOS | 2026 Confidential and Proprietary」の表示があるため</strong>、スライドにしかない内容（EB の大きさや参照数、投票者数、mainnet のパラメータ値、監視スタックの構成など）は再現しておらず、このマークは使っていません。図はすべて口頭の説明から組み立てたもので、スライドの写しではありません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>文字起こしについて。</strong>受け取ったテキストには同じ動画の文字起こしが 2 版含まれ、数字の聞き取りが違う箇所（「20 TX」と「20〜30 倍」、「100〜500 KB」と「200〜500 KB」）は両方を書いています。時刻は付いていません。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Sebastian Nagel, who leads the work on Leios, Cardano's throughput upgrade, shows “1,000 TPS” on a twelve-node network running on his own machine.<br>
+  What matters is what the number counts. <strong>About 1,000 per second is the endorsement rate</strong>, not what lands on the chain; the confirmed rate he reads off is around 20 to 30 times today's Cardano. He calls it “a nice showcase, a start,” with tuning to follow on the public Musashi testnet.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>The mechanism first.</strong> Alongside each normal block, Leios can issue an “endorser block” (EB) naming extra transactions; votes turn it into a certificate, and the next block pulls it into the chain. EBs carry only references to transactions, not the transactions themselves, he explains.</li>
+  <li><strong>The scale.</strong> Today's Cardano (Praos) produces a block about every 20 seconds, with roughly 200 small 400-byte transactions per block, about 10 per second. Leios aims somewhere between ten and a hundred times that, he says.</li>
+  <li><strong>Small network, harsh load.</strong> Three block producers and nine relays, every link at 20 ms round trip and 50 Mbps, with “fire hoses” pouring in unlimited transactions from three corners. All twelve nodes run on one machine with the network emulated.</li>
+  <li><strong>Three kinds of number.</strong> In the run on screen, 100–200 transactions per second endorsed and a confirmed data rate 20–30 times Praos. The previous night, 200–500 per second. A run of many small transactions reached an endorsement rate of about 1,000 per second, and he says plainly: “we're not there yet on the confirmed rate.”</li>
+  <li><strong>Caveats from him.</strong> A network smaller and shallower than mainnet, two vCPUs per node with twelve nodes sharing one SSD, and a configuration that is “not running at limits.”</li>
+  <li><strong>Next is Musashi.</strong> The public testnet Musashi Dojo has around 50 pools and is in its “water phase” of parameter exploration. The next monthly update is on 30 September at 14:00 UTC, he says.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who, and what kind of video</a></li>
+  <li><a href="#en-what1k"><span class="n">02</span>What the “1,000 TPS” counts</a></li>
+  <li><a href="#en-how"><span class="n">03</span>How Leios works, in his words</a></li>
+  <li><a href="#en-scale"><span class="n">04</span>A sense of scale: 10, 100, 1,000</a></li>
+  <li><a href="#en-setup"><span class="n">05</span>The setup: twelve nodes, 20 ms, 50 Mbps, fire hoses</a></li>
+  <li><a href="#en-demo"><span class="n">06</span>What the screens showed: announce, fetch, vote, certify</a></li>
+  <li><a href="#en-numbers"><span class="n">07</span>The numbers: endorsement rate versus confirmed rate</a></li>
+  <li><a href="#en-next"><span class="n">08</span>What comes next: Musashi Dojo</a></li>
+  <li><a href="#en-overall"><span class="n">09</span>The whole picture</a></li>
+  <li><a href="#en-pending"><span class="n">10</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who, and what kind of video</h2>
+<p class="deck">The Leios lead's screen recording, on his own channel. Read as the developer's account.</p>
+
+<p>Sebastian Nagel is the engineer leading Leios at Input Output (he previously led Hydra). This video sits on <strong>his personal channel</strong> (16 subscribers), not on IOG's or the Leios project's, and opens with “my name is Sebastian and I'm going to show you today progress on the Leios project.” <span class="badge">added</span> Because it is not an official venue, the figures and outlook here are written as the developer's own account and kept apart from IOG announcements. The same material may appear in the Leios monthly review on IOG's official channel; that is unconfirmed at the time of writing.</p>
+
+<p>The whole video is a screen recording: slides, a network visualiser, a chain view, dashboards, a mempool monitor and a testnet explorer, narrated as he goes. <strong>The slides carry a “Confidential and Proprietary” footer.</strong> Following this archive's rule, content that appears only on the slides (specific sizes and counts, parameter values, the monitoring stack) is not reproduced. This page is built only from what he says aloud, and every figure is reconstructed from his spoken explanation, not copied from a slide. <span class="badge">added</span> The test network is called “dozen-devnet”; the name also appears in a public issue in the Leios repository (#1097, three days later, 2026-09-15) describing this stage as recording a 1k TPS video.</p>
+
+<p><span class="badge">added</span> The Leios roadmap has seven stages, and the video's title, “Showcase 1k TPS,” is the name of the third. The roadmap defines it as “demonstrate 200 TkB/s in a controlled network prototype,” a data rate rather than a transaction count, which is why he keeps saying the numbers depend on transaction size.</p>
+
+
+<h2 id="en-what1k">2. What the “1,000 TPS” counts</h2>
+<p class="deck">Endorsed and confirmed are different counts, and he draws that line before showing anything.</p>
+
+<p>The one thing to hold on to, he states at the end of his explainer: “whenever we announce an EB, we vote and certify on it and then it becomes part of the chain; <strong>once we see it certified, we can count it</strong> as certified confirmed throughput.” Leios has two stages, “endorsed” and “certified,” and each has its own number.</p>
+
+<div class="term">
+<p class="term-name">Endorsement rate and confirmed rate <small>his terms</small></p>
+<p>The endorsement rate is how many transactions per second are named in endorser blocks. The confirmed rate is how many transactions (or kilobytes) per second end up certified by a vote, pulled into the next block, and settled on the chain. The video's “roughly 1,000 TPS” is the former, and he says “we're not there yet on the confirmed rate.” <span class="badge">added</span> Not every endorsed transaction gets confirmed: if the vote misses quorum or the gap to the next block is too short, the EB is not certified and its transactions wait for the next chance (section 6).</p>
+</div>
+
+<p>The title says “1k TPS,” but as he says at the start, the video is about “what it means to have 1,000 TPS, or what that actually means in our case”: under which conditions, and at which stage, that number appears.</p>
+
+
+<h2 id="en-how">3. How Leios works, in his words</h2>
+<p class="deck">The chain stays as it is. Beside it, an “endorser block” is issued, votes make a certificate, and the next block takes it in.</p>
+
+<p>He follows a slide. First today's Cardano: blocks B0 to B4 forming a chain, each referencing the previous one, a longest-chain rule, every block validated. “A simple chain of blocks.”</p>
+
+<p>With Leios, whenever a block is produced, an <strong>endorser block (EB)</strong> can be produced too, naming more transactions than the block itself holds. The sequence is diffused and voted on, validated as a fine extension of the block, and “if we garner enough votes, we can actually create a <strong>certificate</strong>” that the next block uses to sequence everything into the chain. In the slide's example, EB1 “was not successfully voted or diffused,” while EB2 was endorsed and carried into B3.</p>
+
+<p>What he calls “a bit of a specialty of linear Leios” is the constraint that you can only ever endorse or sequence the previous certified EB. It limits what can be endorsed and by when, “but you get a lot of determinism for free, so <strong>there cannot be any transaction conflicts</strong>,” and the latency from announcing to sequencing “is generally lower than a multi-pipeline stage as it was also published by researchers.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="His explanation drawn out: ranking blocks B1, B2, B3 form a chain; EB1 beside B1 fails its vote, EB2 beside B2 gets a certificate through voting and is pulled into B3">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <text x="340" y="24" class="d-s" text-anchor="middle">Top row: the chain of blocks as before (“ranking blocks” in the video)</text>
+
+  <rect x="40" y="40" width="150" height="56" rx="8" class="d-box"/>
+  <text x="115" y="64" class="d-t" text-anchor="middle">B1</text>
+  <text x="115" y="84" class="d-s" text-anchor="middle">txs + announces EB1</text>
+
+  <line x1="194" y1="68" x2="260" y2="68" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="265" y="40" width="150" height="56" rx="8" class="d-box"/>
+  <text x="340" y="64" class="d-t" text-anchor="middle">B2</text>
+  <text x="340" y="84" class="d-s" text-anchor="middle">txs + announces EB2</text>
+
+  <line x1="419" y1="68" x2="485" y2="68" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="490" y="40" width="150" height="56" rx="8" class="d-box-accent"/>
+  <text x="565" y="64" class="d-t" text-anchor="middle">B3</text>
+  <text x="565" y="84" class="d-s" text-anchor="middle">includes EB2's certificate</text>
+
+  <rect x="40" y="130" width="150" height="70" rx="8" class="d-box-warn"/>
+  <text x="115" y="154" class="d-t" text-anchor="middle">EB1</text>
+  <text x="115" y="174" class="d-s" text-anchor="middle">vote or diffusion fails</text>
+  <text x="115" y="192" class="d-s" text-anchor="middle">→ not certified</text>
+
+  <rect x="265" y="130" width="150" height="70" rx="8" class="d-box-accent"/>
+  <text x="340" y="154" class="d-t" text-anchor="middle">EB2</text>
+  <text x="340" y="174" class="d-s" text-anchor="middle">names tx references</text>
+  <text x="340" y="192" class="d-s" text-anchor="middle">votes → quorum → cert</text>
+
+  <line x1="419" y1="165" x2="540" y2="100" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="16" y="222" width="648" height="62" rx="7" class="d-box-plain"/>
+  <text x="340" y="246" class="d-t" text-anchor="middle">Only the previous certified EB can be endorsed (linear Leios)</text>
+  <text x="340" y="268" class="d-s" text-anchor="middle">In exchange, history stays linear and transactions cannot conflict, he explains</text>
+</svg>
+<p class="figcap">Redrawn from Sebastian Nagel's spoken walk-through of his slide; not a copy of the slide. Why EB1 failed is given only as “not successfully voted or diffused.”</p>
+</div>
+
+<details class="explain">
+<summary>This section is dense with jargon — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<h4>“Ranking blocks” and “endorser blocks”</h4>
+<p>In Leios the blocks you already know are called ranking blocks (RBs); they fix order and validity. An endorser block (EB) rides alongside an RB as “an extra list of transactions,” holding only IDs, not contents. Nodes read the list and fetch only what they do not already have.</p>
+<h4>Why votes and certificates</h4>
+<p>Before the next RB can pull an EB in, the network needs to know the list has reached everyone and is valid. Stake-holding nodes vote on the EB, and enough votes (a quorum) are folded into a small certificate. The next RB includes only the certificate, which is why he says the RB itself is now “a couple bytes.”</p>
+<h4>“Linear”</h4>
+<p>Against designs that run several EBs in parallel (the multi-stage pipelines of the research papers), the linear design allows only “the continuation of the previous certified EB.” Less parallelism, but the same transaction can never land in two competing EBs. This is the variant proposed in CIP-164.</p>
+<h4>An everyday analogy</h4>
+<p>Minutes of a meeting (the RB) with an attached list of documents (the EB). The minutes say only “documents 1 to 3,000 approved”; everyone holds the documents themselves. Only when the next meeting stamps “the previous list was checked by all” (the certificate) does it become the official record.</p>
+<h4>In one line</h4>
+<p>The chain keeps its pace; each block carries far more transactions by reference, and voting legitimises the references.</p>
+</div>
+</details>
+
+
+<h2 id="en-scale">4. A sense of scale: 10, 100, 1,000</h2>
+<p class="deck">Today's Cardano does about 10 per second. Leios aims somewhere between ten and a hundred times that.</p>
+
+<p>His slide lines up three scales. Today's Cardano (Ouroboros Praos with mainnet parameters): a block about every 20 seconds in expectation (“a Bernoulli process, so sometimes earlier or later”), around 200 transactions per block if they are small 400-byte ones, about 10 per second. Then 100 TPS, ten times that. At this demand “you naturally don't want to send all of these transactions around again,” so EBs carry references only and block producers fetch what they miss; votes are drawn at their rough magnitude, and the certificate-carrying blocks are “a couple bytes only these days,” smaller than drawn. Then 1,000 TPS, which grows “exponentially”; <strong>“our target will be somewhere in between,”</strong> depending on transaction size.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="The three scales he lines up: Praos at about 10 per second with a block of about 200 every 20 seconds; 100 TPS with references only in EBs; 1,000 TPS growing exponentially, with the target somewhere in between depending on transaction size">
+  <rect x="16" y="20" width="200" height="200" rx="8" class="d-box"/>
+  <text x="116" y="46" class="d-t" text-anchor="middle">Praos today: ~10 TPS</text>
+  <rect x="96" y="150" width="40" height="40" rx="3" class="d-box-accent"/>
+  <text x="116" y="70" class="d-s" text-anchor="middle">A block every ~20 s (expected)</text>
+  <text x="116" y="90" class="d-s" text-anchor="middle">About 200 txs per block</text>
+  <text x="116" y="110" class="d-s" text-anchor="middle">at 400 bytes each</text>
+  <text x="116" y="210" class="d-s" text-anchor="middle">Mainnet's current parameters</text>
+
+  <rect x="240" y="20" width="200" height="200" rx="8" class="d-box"/>
+  <text x="340" y="46" class="d-t" text-anchor="middle">100 TPS: tenfold</text>
+  <rect x="320" y="110" width="40" height="80" rx="3" class="d-box-accent"/>
+  <text x="340" y="70" class="d-s" text-anchor="middle">EBs hold references only</text>
+  <text x="340" y="90" class="d-s" text-anchor="middle">Fetch only the missing txs</text>
+  <text x="340" y="210" class="d-s" text-anchor="middle">“At least this much capacity”</text>
+
+  <rect x="464" y="20" width="200" height="200" rx="8" class="d-box-accent"/>
+  <text x="564" y="46" class="d-t" text-anchor="middle">1,000 TPS: exponential</text>
+  <rect x="544" y="70" width="40" height="120" rx="3" class="d-box"/>
+  <text x="564" y="210" class="d-s" text-anchor="middle">Target “somewhere in between”</text>
+
+  <rect x="16" y="236" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="258" class="d-t" text-anchor="middle">The data-rate demand “depends really on the size of the transactions,” he repeats</text>
+  <text x="340" y="278" class="d-s" text-anchor="middle">Bar heights show order only; they are not scaled to the slide</text>
+</svg>
+<p class="figcap">The three scales are in the order of his slide, but the bar heights are indicative, not copied from it. “About 200 per block” is his “200 or 186, whatever.”</p>
+</div>
+
+<p><span class="badge">added</span> The “about 10 per second” assumes 400-byte transactions. Cardano's block limit is in bytes (88 KB as of September 2026), not transactions, so larger transactions mean fewer per block. The Leios roadmap likewise states targets as data rates (“140–300+ TxB/s”); TPS is a conversion at an assumed transaction size.</p>
+
+
+<h2 id="en-setup">5. The setup: twelve nodes, 20 ms, 50 Mbps, fire hoses</h2>
+<p class="deck">Small and shallow, but with realistic latency and bandwidth. A load he calls “not very realistic, but already not impossible.”</p>
+
+<p>The test network, as he describes it:</p>
+
+<ul>
+  <li>Three block producers, each with three relays; relays fully connected; twelve nodes in all</li>
+  <li>Every link at a uniform 20 ms round trip, capped at 50 Mbps: “same continent, quite pessimistic,” with an upstream link “not too high but also not too low”</li>
+  <li>Three “fire hoses” injecting transactions of a chosen size, “infinite demand whenever we ask it to,” filling the mempools</li>
+  <li>Everything on one machine with the network emulated; two vCPUs per node; twelve nodes sharing one SSD</li>
+</ul>
+
+<p>He names the differences from mainnet himself. Mainnet's diameter is “I think around five or six hops”; here it is at most three, “about half.” The degree is 10, which he says is about the Cardano node's average too, “but some relays will have like 20 upstreams and 100 downstreams, so that is quite different.” The demand is “quite challenging, not very realistic, but already not impossible.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="The setup beside the differences from mainnet. Setup: three block producers and nine relays, 20 ms round trip, 50 Mbps, three fire hoses, one machine. Mainnet: five or six hops in diameter, large relays with 20 upstreams and 100 downstreams">
+  <rect x="16" y="20" width="316" height="170" rx="8" class="d-box-accent"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">This setup (his description)</text>
+  <text x="174" y="76" class="d-s" text-anchor="middle">3 block producers × 3 relays = 12 nodes</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">Relays fully connected, max 3 hops, degree 10</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">Every link 20 ms round trip, 50 Mbps cap</text>
+  <text x="174" y="136" class="d-s" text-anchor="middle">Three fire hoses of unlimited transactions</text>
+  <text x="174" y="166" class="d-s" text-anchor="middle">One machine, 2 vCPUs per node, one shared SSD</text>
+
+  <rect x="348" y="20" width="316" height="170" rx="8" class="d-box"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">Versus mainnet (his description)</text>
+  <text x="506" y="76" class="d-s" text-anchor="middle">Diameter “I think” 5–6 hops → half of that here</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">Average degree similar, but</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">some relays have 20 upstreams, 100 downstreams</text>
+  <text x="506" y="136" class="d-s" text-anchor="middle">Load “not very realistic, but not impossible”</text>
+  <text x="506" y="166" class="d-s" text-anchor="middle">“We're not running at limits here”</text>
+
+  <rect x="16" y="208" width="648" height="66" rx="7" class="d-box-plain"/>
+  <text x="340" y="232" class="d-t" text-anchor="middle">“Same continent, quite pessimistic round trip time”: his framing</text>
+  <text x="340" y="254" class="d-s" text-anchor="middle">Realistic latency and bandwidth; small size and depth. Four vCPUs and a dedicated SSD, probably</text>
+</svg>
+<p class="figcap">Both columns are Sebastian Nagel's own statements. The “five or six hops” carries his own “I think.”</p>
+</div>
+
+<details class="explain">
+<summary>This section is dense with jargon — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<h4>“Hops,” “diameter,” “degree”</h4>
+<p>A hop is one hand-off of information from one node to another. The diameter is the hop count between the two most distant nodes. The degree is how many peers a node is connected to. A smaller diameter spreads information faster, so “half of mainnet's diameter” is a condition that favours this experiment.</p>
+<h4>“20 ms round trip,” “50 Mbps”</h4>
+<p>Twenty milliseconds round trip is typical between cities on the same continent (crossing the Atlantic is more like 70–100 ms). Fifty megabits per second is slower than a home fibre line, a modest assumption for a node's upstream. “Pessimistic” here means slow for a same-continent link.</p>
+<h4>“Fire hose,” “mempool”</h4>
+<p>The mempool is where a node holds transactions not yet in a block. The fire hose is their load generator, pouring transactions in as long as the mempool has room: artificial demand for measuring a ceiling, not real user demand.</p>
+<h4>An everyday analogy</h4>
+<p>Testing a motorway design on a short test track. The road surface (latency and bandwidth) is close to the real thing, but the track is short with few junctions. A speed reached on the track is not yet the speed of the real road.</p>
+<h4>What this video cannot tell you</h4>
+<p>What happens at mainnet scale (hundreds of relays, intercontinental latency) is not measured here. He himself places “load testing at global scale” as the next step.</p>
+</div>
+</details>
+
+
+<h2 id="en-demo">6. What the screens showed: announce, fetch, vote, certify</h2>
+<p class="deck">An EB of about 60 KB, votes roughly three seconds after the announcement, arriving in waves. A gap of 11 slots is too short to certify.</p>
+
+<p>He maps the network visualiser onto a continent and explains the packet colours: green is only the transactions “which haven't been diffused through the mempool diffusion” (drawing the whole load would be “all green”), pink or purple is votes, red is the normal block diffusion Cardano already has (ranking blocks).</p>
+
+<p>Then the chain view, and the condition for certification: the following block can certify the previous EB <strong>“when we had quorum on it and the time between was long enough,”</strong> to make sure the data is available to everyone, governed by timing parameters. A gap on screen is “only 11 slots, a bit too short”; a run of short gaps “will not allow for certification,” and a later one that has run a few seconds gets “here you go, certified.”</p>
+
+<p>He then steps through diffusion event by event.</p>
+
+<ul>
+  <li><strong>Announcement.</strong> The yellow block is an EB announcement, a broadcast that “travels the network very quickly.” Now everyone knows the EB exists and starts pulling it.</li>
+  <li><strong>The EB itself.</strong> About 60 KB in this example, downloaded progressively at millisecond steps. With multiple upstreams a node pulls from a few, “in case somebody's serving slow or not at all.”</li>
+  <li><strong>Missing transactions.</strong> Once the EB is in, the node downloads the transactions it lacks. This was a fresh EB the mempool had not caught up with, so there was “quite a lot to fetch… it's only 400 kilobytes here.”</li>
+  <li><strong>Votes.</strong> Cast “roughly three seconds after the initial announcement” and broadcast to all. Producers sometimes vote at exactly the same time, sometimes “acquire the closures a bit delayed,” so votes “come in waves.”</li>
+  <li><strong>Certification.</strong> Once all votes are in, “we have full quorum, we reached the threshold, now we can certify it by including it.”</li>
+</ul>
+
+<p>On the visualiser itself he says several times that it lags with many events, that finding a vote is fiddly, and that “I need to improve my tooling” and “the UI will be still further improved.” <span class="badge">added</span> “Closure” is used without explanation; it reads as the full set of transactions an EB references (everything needed to validate the EB), which is why it later appears as a size: “about 20 kilobytes closure,” “megabytes closure.”</p>
+
+
+<h2 id="en-numbers">7. The numbers: endorsement rate versus confirmed rate</h2>
+<p class="deck">100–200 per second endorsed, 20–30 times Praos confirmed; another run at about 1,000 endorsed. All read off by him.</p>
+
+<p>He reads from dashboards. He has been running “for the last two days,” “two or three days,” in various configurations; the prototype is a fork of the Haskell Cardano node with Leios integrated, released weekly, while “the real release candidate” is being made on the mainline Cardano node track.</p>
+
+<ul>
+  <li><strong>The run on screen (transactions around a kilobyte, the median).</strong> Mempool mostly full; big drops are Leios certifications. About 2,000–4,000 references per EB. Endorsement rate 100–200 transactions per second. Confirmed data rate on chain, against Praos's 4.6–9.2 KB/s on the left, “20–30X” (the other transcript version hears “20 TX”).</li>
+  <li><strong>The previous night (smallish transactions).</strong> 200–500 transactions per second, 100–500 transaction kilobytes per second (the other version hears 200–500). “Not exactly 100X” at peaks against mainnet.</li>
+  <li><strong>A run of many small transactions.</strong> Mempools around 10 MB, endorsing 10,000–16,000 at a time, “more like the ceiling here, set by a parameter.” This “translates to roughly <strong>1,000 transactions per second endorsement rate</strong>. We're not there yet on the confirmed rate, of course.”</li>
+</ul>
+
+<p>He attaches three conditions. The timing parameters are “the real” ones “we're hoping to be enabling also on the global scale,” and this small network “could go faster.” Mempool consistency stays around 80% even under load from all sides, transmission “can actually handle much more,” and “we're not running at limits here.” And it is one machine, two vCPUs per node, twelve nodes on one SSD; “four is probably going to be the recommendation and a dedicated SSD.”</p>
+
+<details class="explain">
+<summary>A naive question — so can this be called “1,000 TPS achieved”?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>No, and he does not call it that.</strong> The only number near 1,000 in the video is the endorsement rate; the confirmed rate is 20–30 times Praos, a few hundred kilobytes per second. His own conclusion stops at “a nice showcase, a start, it definitely proves that the protocol can work.”</p>
+<h4>Why the title still says “1k TPS” (in parts)</h4>
+<ul>
+  <li>The roadmap stage is literally named “Showcase 1k TPS,” defined as “200 TkB/s in a controlled network,” and this video reports on that stage</li>
+  <li>An endorsement rate of 1,000 is a real measurement of one path: packing transactions into EBs, diffusing and voting on them at that rate</li>
+  <li>The gap to confirmation comes from how often a certificate can be included (timing parameters) and from EBs that fail; he hints at room on the parameter side (“this small network could go faster”)</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>For any “per second” figure, check four things: endorsed or confirmed, transaction size in bytes, node count, and latency. This video states all four, which makes it usable as a baseline.</p>
+<h4>What was and was not shown</h4>
+<p>Shown: rough endorsement and confirmed rates on a twelve-node, 20 ms setup. Not shown: mainnet-scale numbers, a table of confirmed rate by transaction size, and the conditions under which the confirmed rate would reach 1,000. He leaves the last as “something to explore.”</p>
+</div>
+</details>
+
+
+<h2 id="en-next">8. What comes next: Musashi Dojo</h2>
+<p class="deck">About 50 pools on the public testnet. A “water phase” now, then a “fire phase” of load.</p>
+
+<p>His conclusion: “a nice showcase, it's a start, it definitely proves that the protocol can work when laid out correctly,” with “more tuning to be needed, especially on our public testnet,” and an invitation to join the Musashi network.</p>
+
+<div class="term">
+<p class="term-name">Musashi Dojo <small>his term</small></p>
+<p>The public Leios testnet. In his account it is in its “water phase,” finding parameters and flexibility, with a “fire phase” next to ramp load and see how far the same timing parameters go. It was “respawned” recently; under its initial parameters the EB closure is about 20 KB, far smaller than his local runs. Around 50 block-producing pools have registered, all with BLS voting keys. <span class="badge">added</span> BLS voting keys are the signing keys used to vote on EBs; he notes that existing pools on mainnet will need to add them too. The phase names are the Leios project's own, and IOG's official channel has a “Musashi Dojo Water Phase” video (not yet in this archive).</p>
+</div>
+
+<p>He also shows the Kleioscan explorer on Musashi Dojo and a parameter screen. The timing parameters are three kinds: how long EBs can be announced, how long voting can happen, and “the safety parameter,” the minimum time after voting to ensure wide coverage before the certificate can be included. The EB size parameters are “missing” from the screen; “the UI will be still further improved.”</p>
+
+<p>One announcement to close: <strong>the next monthly update is on 30 September at 14:00 UTC</strong>, in a similar format, with everyone on Leios showing the month's progress and challenges, plus the roadmap and timelines. <span class="badge">added</span> On the Leios roadmap the stage after “Showcase 1k TPS” is “Leios Testnet” (a larger public network for parameter validation and continuous load testing), followed by “High Confidence,” “Release Candidate” and “Hardfork.” Mainnet timing is not mentioned in the video.</p>
+
+
+<h2 id="en-overall">9. The whole picture</h2>
+<p class="deck">From mempool to endorsement, votes, certificate and confirmation. Each stage has its own number; the next stage is the public testnet.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="The whole picture: mempool transactions are endorsed in EBs (100 to 200 per second, about 1,000 for small transactions), votes about three seconds later make a certificate, and the next block confirms them (20 to 30 times Praos). Next: tuning on Musashi Dojo">
+  <defs>
+    <marker id="e4" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="24" width="150" height="110" rx="8" class="d-box"/>
+  <text x="91" y="50" class="d-t" text-anchor="middle">Mempool</text>
+  <text x="91" y="74" class="d-s" text-anchor="middle">Filled by fire hoses</text>
+  <text x="91" y="94" class="d-s" text-anchor="middle">~80% consistent</text>
+  <text x="91" y="114" class="d-s" text-anchor="middle">Drops at each cert</text>
+
+  <line x1="170" y1="79" x2="178" y2="79" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="182" y="24" width="150" height="110" rx="8" class="d-box-accent"/>
+  <text x="257" y="50" class="d-t" text-anchor="middle">Endorse (EB)</text>
+  <text x="257" y="74" class="d-s" text-anchor="middle">2,000–4,000 refs</text>
+  <text x="257" y="94" class="d-s" text-anchor="middle">100–200 per second</text>
+  <text x="257" y="114" class="d-s" text-anchor="middle">~1,000 for small txs</text>
+
+  <line x1="336" y1="79" x2="344" y2="79" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="348" y="24" width="150" height="110" rx="8" class="d-box"/>
+  <text x="423" y="50" class="d-t" text-anchor="middle">Vote</text>
+  <text x="423" y="74" class="d-s" text-anchor="middle">~3 s after announce</text>
+  <text x="423" y="94" class="d-s" text-anchor="middle">Arrives in waves</text>
+  <text x="423" y="114" class="d-s" text-anchor="middle">Quorum → certificate</text>
+
+  <line x1="502" y1="79" x2="510" y2="79" class="d-line-accent" marker-end="url(#e4)"/>
+
+  <rect x="514" y="24" width="150" height="110" rx="8" class="d-box-accent"/>
+  <text x="589" y="50" class="d-t" text-anchor="middle">Confirm (next RB)</text>
+  <text x="589" y="74" class="d-s" text-anchor="middle">Not if the gap is short</text>
+  <text x="589" y="94" class="d-s" text-anchor="middle">20–30× Praos</text>
+  <text x="589" y="114" class="d-s" text-anchor="middle">Not yet 1,000</text>
+
+  <rect x="16" y="154" width="648" height="56" rx="7" class="d-box-plain"/>
+  <text x="340" y="178" class="d-t" text-anchor="middle">Conditions: 12 nodes, one machine, 20 ms round trip, 50 Mbps, not at limits</text>
+  <text x="340" y="198" class="d-s" text-anchor="middle">All figures read by him from dashboards; they change with transaction size</text>
+
+  <rect x="16" y="226" width="648" height="56" rx="7" class="d-box-warn"/>
+  <text x="340" y="250" class="d-t" text-anchor="middle">Next: Musashi Dojo (~50 pools), “water phase” then “fire phase”</text>
+  <text x="340" y="270" class="d-s" text-anchor="middle">Ramp load under the same timing parameters. Monthly update 30 September, 14:00 UTC</text>
+</svg>
+<p class="figcap">His explanation laid out as one flow. The per-stage figures are those of section 7 and differ from run to run.</p>
+</div>
+
+
+<h2 id="en-pending">10. Left unanswered</h2>
+<p class="deck">The absolute confirmed rate, the outlook at mainnet scale, and words used without explanation.</p>
+
+<p>A recording without Q&amp;A. Listed here are things he deferred (“something to explore,” “the UI will be improved”) and things the video does not cover.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No figure</span>What was the confirmed rate in transactions or kilobytes per second?</p>
+<p class="qa-a" data-by="“20–30X” only">The confirmed data rate is given only relative to Praos's 4.6–9.2 KB/s; no absolute figure is read out. One transcript version hears “20 TX”; both readings are kept.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No condition</span>Under what conditions would the confirmed rate catch up with the ~1,000 endorsement rate?</p>
+<p class="qa-a" data-by="“Something to explore”">He says this small network “could go faster” and is “not running at limits,” but not which parameters would change what.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Out of scope</span>What happens at mainnet scale (5–6 hops, large relays)?</p>
+<p class="qa-a" data-by="Next stage">“Next up will be load testing at global scale… not yet the mainnet, of the testnet.” This experiment is not meant to measure it, by his own framing.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unexplained</span>“Closure,” the 11-slot threshold, and the actual timing parameter values.</p>
+<p class="qa-a" data-by="Screen only">The parameter screen is shown but the values are not read out. “Closure” is used without definition.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When does Musashi Dojo's “fire phase” start, and when is mainnet?</p>
+<p class="qa-a" data-by="Not given">Only “next up.” Mainnet timing is not mentioned.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is <a href="https://www.youtube.com/watch?v=8LAvr2TbslM">Leios: Showcase 1k TPS</a>, on Sebastian Nagel's personal YouTube channel. Published 2026-09-12; the length is unconfirmed. It is a public video, so the speaker is named. <strong>Because it is his personal channel, figures and outlook are written as the developer's own account, kept apart from IOG's official announcements.</strong></p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken aloud in the video. <span class="badge">on screen</span> would mark things shown but not said; the whole video is a screen share, but <strong>the slides carry a “LEIOS | 2026 Confidential and Proprietary” footer</strong>, so slide-only content (EB sizes and reference counts, voter counts, mainnet parameter values, the monitoring stack) is not reproduced and the mark is not used. Every figure here is reconstructed from his narration rather than copied from a slide. <span class="badge">added</span> marks explanations we wrote; they are not in the video.</p>
+<p><strong>On the transcript.</strong> The text received contains two versions of the same transcript; where they hear a number differently (“20 TX” versus “20–30X,” “100–500 KB” versus “200–500 KB”) both are given. It carries no timestamps.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — Sebastian Nagel · <a href="https://www.youtube.com/watch?v=8LAvr2TbslM">動画を見る</a></span><span class="l-en">Cardano note — Sebastian Nagel · <a href="https://www.youtube.com/watch?v=8LAvr2TbslM">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>

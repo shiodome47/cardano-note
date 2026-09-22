@@ -13,6 +13,16 @@ Cardano まわりの**公開されている動画**（Midnight・IOG・Charles H
 - **動画の中に「Confidential」と明示された資料が映っていたら、その部分は再現しない。**公開動画に映っていても、資料そのものが配布物とは限らない。末尾の `.note` に、映っていたことと再現していないことを書く
 - **迷ったら載せない。**Public なリポジトリに一度出したものは取り消せない
 
+## 新しい動画に気づくには
+
+```
+python3 tools/new_videos.py
+```
+
+`shared/series.yml` の `channel_id` から各チャンネルの YouTube の RSS を読み、`episodes/*/meta.yml` の `video:` にない動画を新しい順に列挙する。「次の動画を頼まれたとき」と「しばらく間が空いたとき」に流す。RSS には配信予定のライブも混ざるので、URL を開いて公開済みかを確かめる。字幕はこのツールでは取れないので、依頼者から受け取る。
+
+新しいチャンネルを足したら `series.yml` に `channel_url` と `channel_id` を書く。ID はチャンネルページの HTML の `"externalId"` にある（動画の URL から oEmbed の `author_url` でチャンネルページを引ける）。`docs/index.html` の見出しの説明文にもチャンネルへのリンクを付ける。
+
 ## 新しい動画を追加するときの手順
 
 「これは Midnight の YouTube の文字起こし、よろしく」と URL と字幕ファイルを渡されたら、**この手順で最後まで作る。**途中で判断がつかないことがあれば、そこだけ聞く。
@@ -348,6 +358,7 @@ push すれば数分で反映される。`episodes/` と `shared/` は Pages で
 │   ├── speakers.md         話者の特定メモ
 │   └── open-questions.md   保留になった問い
 ├── tools/
+│   ├── new_videos.py       各チャンネルの RSS から未追加の動画を列挙
 │   ├── check.py            機械的な検証
 │   └── build_standalone.py 1 枚版の生成
 └── docs/              公開する成果物（GitHub Pages のルート）

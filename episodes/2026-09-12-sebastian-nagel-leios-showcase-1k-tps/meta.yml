@@ -1,0 +1,41 @@
+slug: 2026-09-12-sebastian-nagel-leios-showcase-1k-tps
+title: Leios: Showcase 1k TPS — 「1,000 TPS」は何を数えた数字か。12 ノードの手元の実験で見せたもの
+title_en: "Leios: Showcase 1k TPS"
+date: 2026-09-12            # 依頼者が動画ページで確認（2026-09-16。最初 09-15 と置いていたのを訂正）。Leios のリポジトリの Issue #1097（09-15）と報道（09-15）はこの動画の 3 日後
+series: sebastian-nagel     # shared/series.yml のキー。本人の個人チャンネル
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: Sebastian Nagel    # oEmbed の author_name。author_url は https://www.youtube.com/@sebastiannagel8354。登録者 16 人（依頼者のスクリーンショット）
+official_channel: false     # IOG や Leios プロジェクトの公式チャンネルではなく、Leios の技術責任者本人の個人チャンネル
+duration: "要確認"          # 字幕に時刻がなく、動画ページも読めていない
+video: https://www.youtube.com/watch?v=8LAvr2TbslM
+
+speakers:
+  - Sebastian Nagel         # 1 人語り。冒頭で "my name is Sebastian" と名乗る。Input Output の Leios 技術責任者（GitHub: ch1bo）。姓はチャンネル名から
+speaker_labels: n/a         # 1 人語り
+timestamps: none            # 時刻なしのテキスト。全文ページの .turn-time は付けていない
+proper_nouns_corrected_in_docs: true
+
+# 原本について
+# - 依頼者から本文に貼り付けで受領。同じ動画の文字起こしが 2 版続けて入っている
+#   （前半は "Leios" 表記で 1 段落が長め、後半は "Leos" 表記で文が短く区切られている）。両方をそのまま置いた
+# - 2 版で聞き取りが違う箇所がある。docs/ の全文は前半（"Leios" 表記）を底本にし、数字が違う箇所は .note と まとめで併記
+#   例: "20 TX here" / "20, 30X here"、"two to 500 transactions per second, 100 to 500 transaction kilobytes" / "200 to 500 ... 200 to 500"、
+#       "linear layers" / "linear Leos"、"epoch boundary" / "network boundary"、"Kleioscan.com" / "kleoscan.com"
+# - 話者ラベルなし。全編 1 人語り。画面共有（スライド、ネットワークの可視化、Grafana 風のダッシュボード、エクスプローラ）を口頭で説明している
+
+# 画面について
+# - スライド（Leios の仕組みの図、規模感の図、ネットワーク構成の図）、ネットワークの可視化、チェーンの可視化、ダッシュボード、mempool のモニター、Kleioscan、パラメータ画面が映る
+# - **スライドの右下に「LEIOS | 2026 Confidential and Proprietary」の表示がある**（依頼者から受け取ったスクリーンショット 5 枚で確認、2026-09-16）。
+#   CLAUDE.md の規則により、スライドにしかない内容（EB の大きさや参照数、投票者数、mainnet のパラメータ値、監視スタックの構成など）は docs/ に再現していない
+# - まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用。図は本人の口頭説明から組み立てたもので、スライドの写しではない
+# - スライドの題は「Prelude: How Leios works」「Prelude: cardinalities」「The Dozen Devnet」など。実験ネットワークの名前 dozen-devnet はリポジトリの公開 Issue #1097 にも出ている
+
+# 裏取り（2026-09-16 時点）
+# - Leios のロードマップ（https://leios.cardano-scaling.org/docs/roadmap/）の 7 段階の 3 番目が "Showcase 1k TPS"。定義は「制御されたネットワークのプロトタイプで 200 TkB/s を示す」。日付はページにない
+# - input-output-hk/ouroboros-leios の Issue #1097「Demonstrate using dozen-devnet」が 2026-09-15 に立ち、小さな取引で 1k TPS、中くらいの取引で同じデータレートを動画で示す、とある
+# - 同リポジトリは週次で prototype-2026wNN をリリース（w31、w34 を確認）。動画の「毎週リリースしている」「Haskell の Cardano ノードのフォーク」と整合
+# - 報道（KuCoin、2026-09-15）が「ブロック生成 3 台とリレー 9 台、往復 20 ms、50 Mbps」「約 1,000 TPS は承認レートで確定レートではない」「次は Musashi」と、動画と同じ内容を伝えている
+# - Musashi Dojo は Leios の公開テストネット。IOG の公式チャンネルに「Musashi Dojo Water Phase」（2026-09-01）の動画がある（未追加）
+# - Sebastian Nagel は Input Output の Leios 技術責任者（以前は Hydra を率いた）。GitHub: ch1bo

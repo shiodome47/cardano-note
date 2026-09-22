@@ -7,6 +7,9 @@
 # このリポジトリは公開動画だけを扱うので chatham_default は常に false。
 # 1 本ごとに独立した収録なので通し番号は振らない（numbered: false）。
 #
+# channel_url はチャンネルのページ、channel_id は RSS（tools/new_videos.py が使う）。
+# 新しいチャンネルを足したら両方書く。ID はチャンネルページの HTML の "externalId" にある。
+#
 # シリーズはチャンネルで切る。番組名や話題（Leios など）でシリーズを作らない。
 # 話題は複数のチャンネルにまたがるので、glossary.md と open-questions.md で束ねる。
 
@@ -17,6 +20,8 @@ midnight:
   blurb_en: Videos published on Midnight's official YouTube channel. Speakers are named.
   chatham_default: false
   numbered: false
+  channel_url: https://www.youtube.com/@midnight.network
+  channel_id: UCy3oZ64F3FOtjZ5sZGQNgkA
 
 iog:
   title_ja: Input Output（IOG）
@@ -25,6 +30,8 @@ iog:
   blurb_en: Videos published on Input Output's official channel, including the technical explainers on Leios and Peras. Speakers are named.
   chatham_default: false
   numbered: false
+  channel_url: https://www.youtube.com/@InputOutputGroup
+  channel_id: UCBJ0p9aCW-W82TwNM-z3V2w
 
 charles-hoskinson:
   title_ja: Charles Hoskinson
@@ -33,6 +40,8 @@ charles-hoskinson:
   blurb_en: Videos from Charles Hoskinson's own channel. Much of it is personal opinion rather than the official position of IOG or the Cardano Foundation. Speakers are named.
   chatham_default: false
   numbered: false
+  channel_url: https://www.youtube.com/@charleshoskinsoncrypto
+  channel_id: UCiJiqEvUZxT6isIaXK7RXTg
 
 alphagrowth:
   title_ja: AlphaGrowth
@@ -41,6 +50,19 @@ alphagrowth:
   blurb_en: Videos published on the channel of AlphaGrowth (@alphagrowth), a DeFi growth firm, including its show "Dose of Alpha". AlphaGrowth also runs Cardano's PRIME programme, so what it says about Cardano DeFi is read as the view of an interested party. Speakers are named.
   chatham_default: false
   numbered: false
+  channel_url: https://www.youtube.com/@alphagrowth
+  channel_id: UCyFQsWYz95f2jYOiRr1g7hg
+
+sebastian-nagel:
+  title_ja: Sebastian Nagel
+  title_en: Sebastian Nagel
+  blurb_ja: Input Output で Leios を率いる Sebastian Nagel が、本人のチャンネルで公開した動画。開発者本人の説明として扱い、IOG の公式見解にはしません。発言者は実名のまま扱います。
+  blurb_en: Videos published on the personal channel of Sebastian Nagel, who leads Leios at Input Output. Treated as the developer's own account, not IOG's official position. Speakers are named.
+  chatham_default: false
+  numbered: false
+  channel_url: https://www.youtube.com/@sebastiannagel8354
+  channel_id: UC4H2YqCtZ12MhcNQJVh6Tqg   # 2026-09-16 時点で RSS が 404 を返す。new_videos.py はこのチャンネルを飛ばして報告する
+
 
 cardano-over-coffee:
   title_ja: Cardano Over Coffee
@@ -49,3 +71,4 @@ cardano-over-coffee:
   blurb_en: "Cardano Over Coffee" (@coc_space), a community morning show streamed on X Spaces every weekday. Only sessions with a public recording are covered. Hosts and participants are individuals speaking for themselves, named by their display names.
   chatham_default: false
   numbered: false
+  channel_url: https://x.com/coc_space   # X スペース。YouTube ではないので channel_id はなく、new_videos.py の対象外。新しい回は依頼者から受け取る

@@ -132,3 +132,21 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 - **共同司会 James の所属**は "product committee" の自称だけ。Intersect のものと読んだが、動画の中で組織名は言っていない
 
 **まとめでの書き方**: AlphaGrowth の 2 人は PRIME の運営者、Christina はその運営グループの一員なので、監査の数字・RFP の条件・互いの評価は当事者の発言として帰属させた。Phil の安全性の主張、OpenZeppelin の提案への賛否、ノードの版の情報は各参加者の見解として書いた。
+### 2026-09-13 Charles Hoskinson — Devs versus Builders
+
+**1 人語り。**冒頭で名乗る。本人のチャンネル（oEmbed で確認）。話者の割り当ての問題はない。
+
+- **書き方**: 本人のチャンネルなので、方針・評価・時期・数字はすべて「本人の見解として」「本人の申告」。Midnight の戦略も本人の位置づけとして書き、Midnight Foundation / Shielded Technologies の公式見解にはしない（本人自身が「私の期待は Foundation とも Shielded とも違う」と断っている）
+- **第三者への評価が多い回**: Cardano Foundation（「ゴミ財団」「監督がない」）、資金提供者・DRep（「商業的な成果にアレルギー」）、Hunter Biden、Portnoy、DevRel チーム（「批判ではない」）、Apple・Steve Jobs（肯定）。すべて本人の発言として帰属させ、地の文にしない。まとめの 7 節と 8 節で特に注意
+- **確度が低かった箇所**: 固有名詞の推定が 4 つ（Moriarty、Grok Bot、Shinkai、BABE）。根拠は `glossary.md` の同回の見出し。名前だけで特定できなかったものが 6 つ（Dreas、Lola M.、Kie、Jem と Nico、Lucas と Sebastian、ARC）
+- **日付の根拠**: 本人の「日曜日の 12 時 15 分」、Foundation の発表（09-10）の後、報道（09-15）の前、「CLARITY は 2 日後に通らない」が 09-15 の採決と一致。YouTube のページからは未取得
+
+### 2026-09-12 Sebastian Nagel — Leios: Showcase 1k TPS
+
+**1 人語り。**冒頭で "my name is Sebastian" と名乗る。姓はチャンネル名（oEmbed の author_name "Sebastian Nagel"）から。Input Output の Leios 技術責任者だが、**動画は本人の個人チャンネル**（登録者 16 人）で、IOG の公式チャンネルではない。
+
+- **書き方**: 「開発者本人の説明」として書く。数字はすべて本人がダッシュボードを読み上げたもので、「本人の読み上げ」と明記。IOG の公式発表とは区別する。同じ内容が IOG 公式の Leios 月次レビューで扱われたら、両方をリンクして差分を書く
+- **文字起こし**: 時刻なし。2 版が続けて貼られていて、数字の聞き取りが違う箇所は併記（`glossary.md` の同回の見出し）。全文ページの .turn-time は付けていない
+- **確度**: 話者の割り当ての問題はない。固有名詞の推定は "linear layers" → linear Leios のみ
+- **スライドは Confidential 表示**: 依頼者から受け取ったスクリーンショット（5 枚）で、スライドの右下に「LEIOS | 2026 Confidential and Proprietary」があると確認。CLAUDE.md の規則により、スライドにしかない数字や構成は docs/ に載せていない。図は口頭説明からの再構成のみ。追加のスクリーンショットが来ても同じ扱い
+

@@ -20,6 +20,7 @@ Cardano まわりの**公開動画**（Midnight・Input Output・Charles Hoskins
 動画の URL と字幕ファイル（`.srt` または `.txt`）を渡す。作り方は `CLAUDE.md` にすべて書いてある。
 
 ```
+python3 tools/new_videos.py              # 各チャンネルの RSS を見て、まだ追加していない動画を列挙
 python3 tools/check.py                   # 生成物の検証（コミット前に必ず）
 python3 tools/build_standalone.py        # 1 枚版の再生成
 ```
