@@ -1,0 +1,1875 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cardano Over Coffee — AlphaGrowth が PRIME の監査と RFP を説明した回（Cardano Dev Skills も）（2026-09-10）— 日本語全文</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-ja">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-en.html" aria-label="Read the English original" title="Read the English original">EN</a>
+  <button class="theme-toggle" type="button" aria-label="配色を切り替える" title="配色を切り替える">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Cardano Over Coffee</p>
+<h1>日本語全文</h1>
+<p class="meta">
+  <span>2026-09-10</span>
+  <span>X Spaces</span>
+  <span>Cardano Over Coffee — AlphaGrowth が PRIME の監査と RFP を説明した回（Cardano Dev Skills も）</span>
+</p>
+
+<div class="note">
+<p><strong>このページについて。</strong>コミュニティの番組 Cardano Over Coffee（X の @coc_space）が 2026 年 9 月 10 日（木）に配信した X スペースの<a href="https://x.com/i/spaces/1yKAPwbXnNWxb">録音</a>です（スペースの題は「Cardano Over Coffee ☕️ w/ guests @CryptoJoe101 &amp; @alphagrowth1」）。司会も配信中に「録音されている」と述べています。音声のみで、受け取った文字起こしには<strong>話者名も時刻もありません</strong>。このページの話者の割り当てはすべて文脈からの推定です。原本で文の途中に挟まっている短い相づち（原本では「- … 」で示されます）は、話している側のターンの中に残しています。</p>
+<p><strong>話しているのは誰か。</strong>司会は <code>Christina</code>（Blink Labs で働き、PRIME の運営グループに参加している、と本人が言います。姓は出ません）。共同司会は <code>James</code> と <code>Chad</code>。ゲストは <code>Giovanni</code> と <code>Bora</code>（Cardano Dev Skills）、そして AlphaGrowth の <code>Eric Waisanen</code> と <code>Bryan Colligan</code>（音声では「Eric」「Brian」「Brandon」。姓は番組 Dose of Alpha の情報からで、この音声にはありません）。参加者は <code>Phil</code>、<code>Ryan</code>、<code>Chris</code>（Blink Labs）、<code>Alex</code>、<code>Satoshi's Bride</code>、<code>Gamechanger</code>、<code>Ken Eric</code>（ノルウェー、Team Void）、<code>Beatrice</code>（Pragma）、<code>Serg</code>、<code>DC Dog</code>、<code>Mustafa</code>、名前の出ない参加者 1 名。冒頭で挨拶されている「Brian」は Ryan の聞き違いとみて Ryan に割り当て、英語全文では聞こえたまま残しています。AlphaGrowth の部分以降の「Brian」は Bryan に直しています。</p>
+<p>誤変換は用語集にしたがって直しています。特定できずに聞こえたまま残した名前は <code>Astra</code>、<code>Tebow</code>、<code>Cmon</code>、<code>Blaster</code>、<code>Cranston AI</code>、<code>Krill</code>、<code>Elk</code>、<code>Apple Duo</code>、<code>Dave Dinesio</code>、<code>Nifa</code>、<code>Mateo</code>、<code>van Rossem</code>、<code>CAP portal</code> です。日本語訳は英語全文を通して訳し直したものです。</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="ja-t-open">01 — 開始前の雑談</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>おはよう、Brian。おはよう、Envy。Cletus と Boris は知らないと思うけれど、とにかくおはよう。少し待ってください、いま共同司会を集めているところです。ああ、もう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ごめんなさい、私は Android のスマホを使っていて、今日初めて選択肢が出てきたんです。効果音とかが出せる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>え？ すごい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>今まで一度もできなかったので、この小さなボタンを楽しんでいるところです。少し待ってください、すぐ戻ります。Brian、上がってきてくれないと歌い始めますよ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そこの人が笑っているのは、私がミュート中に歌っているのを知らないからですね。調子はどう？ 明らかに早い時間で、ほかの共同司会を起こすのにも苦労しています。では、良い木曜日を。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>良い木曜日を。共同司会を引き受けたいところですが、いま別の作業をいくつか並行していて、少ししたら落ちないといけないので。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>大丈夫です。早く来てくれる人はみんなありがたい。たいていの人は待っていますから。今日はいい回になるはずです。Giovanni の AI のやつが気になっています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>もちろん。私はその AI のやつが何なのか知らないのですが、聞くのが楽しみです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Cardano Dev Tools というものだったかな。それとも Cardano Dev……何だったか。Dev Skills。そうだ。そこへ行くつもりです。Cardano 向けの AI のツール、ということらしい。</p></div>
+</div>
+
+<p class="sec" id="ja-t-ai">02 — AI エージェント、トークンの予算、自動研究</p>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>いいですね。私はこの 1 週間ほど、AI に完全にのめり込んでいます。Astra が出てから 6 億トークンくらい燃やしました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>それは面白い。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>楽しすぎて。普段は上限に当たらないのですが、昨日は何度も当たりました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>私は月 100 ドルのプランに上げて、Tebow がリセットについて投稿するたびに、ぎりぎりまで使い切るように慎重にやりくりしています。それで貯めておいたリセットを 1 つ使って（Chris もやっています）、もう 1 つは雨の日のために取ってあります。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、Chris も同じことをしています。それで Tebow が誰なのか知ったんです。「あなたがずっと言っているその人は誰？」と思って、Twitter で Tebow と検索して、「ああ、ああ、全部つながった」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>面白いのは、人は先延ばしする傾向があるのに、リセットの告知が来ると「しまった、仕事を全部片付けなきゃ」となって、みんな動き出すことです。ある意味 win-win です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>彼は 1 週間分を 1 日で使います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(推定)</em></div>
+  <div class="turn-body"><p>12 時間。え？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>12 時間。分かりました、12 時間。彼はまるで何でもないように使い切ってしまう。次のリセットが来ると分かっていたら、もう大変です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(推定)</em></div>
+  <div class="turn-body"><p>告知が出たら、もう全開です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>月曜か火曜だと思う。Chris、何て言った？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris</div>
+  <div class="turn-body"><p>告知が出たら全開だ、と言いました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>そう、全開ですよね。私は 4 つか 5 つのターミナルを開いて、それぞれにエージェントを入れて、全部を忙しくさせようとモグラたたきをしていました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>4 つか 5 つ、かわいいですね。彼の画面を見ているんですが、私には無理。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>私は、できるだけ全体を頭で把握しておきたいんです。何層も深く行くと、何が起きているか分からなくなるので。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>彼が言ったのはエージェントの総数のことだと思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>ああ、そうか。「ハーダー・ターミナル」みたいな感じ、チームで……別の人が、ハーダー・ターミナルのようなものだと言っていました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>目標を与えて放しておく、みたいなことはやっていますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>以前やりました。いまやっているのは自動研究です。Karpathy の auto research のような。ガバナンスの報酬のシミュレーターを組んで、報酬の仕組みとパラメーターを 12 個ほど与えて、全力でパレート最適の前線を探せ、と指示しました。1 時間ほどかかる実験を回し、AI が結果を分析して調整して、繰り返していきます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>それはすごくいい。いい使い方です。好きです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>ええ、とても楽しいです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Chris もやっていて、彼が AI に何をさせられるかにはいつも驚きます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>これが私たちの一生で最悪の AI でもあるわけで、これからすごいことになりますね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私の仕事のやり方にはもう深く組み込まれています。開発者としての話ではなくても。とはいえ、私の投稿を見たなら、トランザクションを書くことは覚えました。とても誇らしかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>Go で。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Go で、そうです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>トランザクションの話が出たので、もう一つ取り組んでいるプロジェクトが取引エンジンです。preprod 上で、すべての取引所をひとつのトランザクションで連鎖させる。1 つのトランザクションで 8 つの DApp と 8 つのトークンを通すことができます。おととい時点で動いていたのですが、ほかのことをやるために止めました。</p></div>
+</div>
+
+<p class="sec" id="ja-t-gov">03 — ガバナンスのパイロット案と Boston Blockchain Week</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。ガバナンスの件はとても面白くなると思います。Cmon とは一緒にやっていますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>ええ、パイロットプログラムの案には少し意見を出しました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>先週の金曜のスペースで彼が話していて、コミュニティから、参加を増やす方法や、ほかにできることについてたくさんアイデアをもらっていました。いちばんの難しさは、計画を作るための資金を求めていることで、それはいつも売りにくい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>両極端があって、ひとつは研究に資金を出し続けること、もうひとつは十分に研究されていないものを台帳に入れてしまうこと。どちらも望ましくないでしょう。だから私の意見では、うまくいくのは、半分は手で管理するパイロットプログラムで、支払いは手作業でもいい、というものだけです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>何かのプログラムは始める必要があると思いますし、間違えてもいいと思います。私は初めて試すことで正しくできることがほとんどないので。それが私の人生です。だから、そういうものだと思う。間違えたら直せばいい。石に刻まれているわけではない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>ええ。少なくともハードフォークで入れてしまうまでは。だからそこは慎重にすべきなんですが。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ。まあ、予定どおりに出てくることを願っています。どうなるか。ほかに何があるか。Chris は今日また Boston Blockchain Week に行きます。彼と James が今日パネルに出ます。Andamio の James です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>何時ですか？ 配信はありますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>分かりません。東部時間の 12 時 15 分で、もう一人のパネリストは Circle の人なので、「絶対に連絡先をもらって。話すべき相手だから」と言いました。どうなるか楽しみです。ノードと開発ツールについて話すことになっています。どうぞ、手が上がっています。</p></div>
+</div>
+
+<p class="sec" id="ja-t-why">04 — 「何のためにやっているのか」— くたびれた参加者と、その答え</p>
+<div class="turn">
+  <div class="turn-who">名前の出ない参加者</div>
+  <div class="turn-body"><p>みなさん、こんにちは。調子はどうですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですよ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">名前の出ない参加者</div>
+  <div class="turn-body"><p>会話を邪魔していたら申し訳ないので、話していいときに教えてください。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>大丈夫ですよ。いまはただの雑談の時間です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>くだらない話をしているだけ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">名前の出ない参加者</div>
+  <div class="turn-body"><p>すばらしい。私の声を知っている人は、私が Cardano に長くいることを知っています。ただ、純粋な質問がいくつかあります。少しくたびれているんです。6 年以上前から、この Cardano のブロックチェーンの山と谷を見てきて。私の質問は……いえ、できるだけ丁寧に、できるだけ攻撃的でなく言います。結局、何のためにやっているのか。目標は何なのか。何のためにここにいて、何のためにこのスペースを立てて、これを回しているのか。私の見える範囲では、残念ながら負け戦に見える。だから、手を引く前に、誰かに、私がこれを信じるようになった理由のようなことを聞かせてほしい。左からも右からも上からも下からも、でたらめに見えてしまうので。録音されているスペースだと知っているので、取り乱すのは控えます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>大丈夫ですよ。正直、ここにいる誰もが「自分は一体何をやっているんだ」と思った瞬間があると思います。いつも順風満帆ではないですから。でも私は企業の世界で働いていましたが、あれも順風満帆とは言えなかった。かなり危なっかしかった。だから Cardano については……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">名前の出ない参加者</div>
+  <div class="turn-body"><p>私たちはここで何をしているのか。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>まずこのスペースについて手短に話して、それから大きな話をします。</p><p>このスペースは、良いことも悪いこともひどいことも共有する場で、ゲスト枠があって、取り組んでいることを宣伝しに来られます。面白そうな投稿を見たら私が声をかけることもあって、たとえばこのあと出てくる Giovanni は、Cardano 向けの AI の開発スキルについて話します。とても面白いと思う。私は AI をたくさん使っていて、周りもみんな使っていると感じます。調査に、文書作りに、コードに。だから彼にそれを話してもらう。私はそういうエネルギーが好きで、情熱を持っていることを共有すれば、誰かにはまって、その人が夢中になるかもしれない。</p><p>そのあとに来るもう一つのグループは、かなり大きい話です。コミュニティとして彼らに渡したのは、Phil、いくらだったか、2,000 万……2,000 万 ADA？ いや、2,000 万ドル。そう。DeFi と流動性のために大きなお金を渡した。彼らは始めたばかりで、Cardano の DeFi についてやったインフラ監査と、見つけた弱点について話しに来ます。それから提案募集（RFP）の仕組みがあって、コミュニティの人が「ここで指摘された部分を直す提案を出したい」と言える。だからコミュニティがこのプロジェクトに出したお金の一部は、その改善に取り組めるコミュニティのメンバーに戻ることになる。しかもコミュニティの無名の誰かではなく、AlphaGrowth です。かなり知られた名前です。彼らは話しに来て、しかも 2 週間ごとにここに来るので、コミュニティ全体が、公開の、誰でも参加できる場で彼らと話せる。遠くて何が起きているか分からない、と感じないように。</p><p>それがこの番組の大部分です。雑談の時間があるのは、誰も時間どおりに来ないから。9 時半に始めても、お気に入りの人たちが来るのに 10 分、15 分かかる。それが人生です。</p><p>Cardano で何をしているのか、については、人によって答えが違います。私は DeFi のプロジェクトの話をしていますが、DeFi は本当は私の分野ではない。私は昔気質のインフラの人間で、世界中のデータセンターを管理してきました。そういうものが好きで、ブロックチェーンでいろいろなインフラの選択肢が持てるのが好きで、それが私の心を動かすものです。私は Blink Labs で働いていて、Haskell のノードに代わるノードを作っています。ほかの代替ノードと、どれだけ速くたどり着けるかの小さな競争のようなものです。楽しくやっていて、互いに情報を共有し、いろいろなイベントもやっている。だから前向きなことは起きています。Phil、話したそうですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>その 2 つは、思っているよりずっと密接に結びついています。インフラと DeFi は。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、どうぞ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>DeFi のいちばんの利点は、伝統金融に対して仲介者を取り除くことです。同じ金融の機会を、より公平に、より開かれた形で得られる。他の国の人は、たとえば米国債を買えない。特に第二・第三世界の国では。米国の中でも、超富裕層や金融機関にしか開かれていない投資機会がたくさんある。貸し出しがそうです。個人として現実の世界で貸し出しはできない。銀行はあなたが預けたお金を貸しますが、あなたには何も入らない。1 セントの端数のようなもので、銀行が全部持っていく。ブロックチェーンはこの問題を解きます。それが DeFi です。</p><p>ただし、代償があります。コードとインフラが法になる、ということです。だから、従来のソフトウェアと同じ水準の安全性や正しさでシステムを作ることは許されない。本当にミッションクリティカルなシステムを作らなければならない。チェーンに載せたら完全に手が離れるからです。ここが Cardano の強みです。最初から Cardano の独自の価値は、形式手法、安全性への「ゆっくり着実に」の姿勢、正しさへの高い保証でした。</p><p>ただ、歴史的にはこれは市場で報われませんでした。私たちが得意なことは市場で高く評価されなかった。Aave、Morpho、Uniswap のようなブルーチップのプロトコルは、より複雑で、安全性の保証がずっと難しいチェーンの上にありながら、一度もハッキングされなかった。それは監査の厳格さの結果で、毎年複数の会社による監査を続けている。Aave はコードを変えなくても、毎年 3、4 回、最良の会社に監査されている。だから「Cardano が安全だとしても、Aave はハッキングされないのだから、何の意味がある」と考えられていた。</p><p>これがこの 1 年で根本から変わりました。高度な AI の登場で、そうしたブルーチップの継続的な監査の仕組みでは足りなくなった。Ethereum ではこの 12 か月に、過去 5 年の合計より多くのハッキングが起きていて、盗まれた価値も大きい。市場が安全性に、私たちが特化してきたものに付ける値段は、この AI ブーム以降に急騰しました。いまこそ、形式的な保証、正しさの数学的な証明、関数的に推論できて、レンディングのアプリケーションが正しく動き悪用できないことを数学的に証明できる仕組みは、極めて価値がある。</p><p>足りないのは金融の側です。Cardano には高保証のテストと形式手法の安全性の側がある。技術インフラは非常に強い。Blink Labs のような素晴らしいチームがそれを作っていて、Blaster のような形式的保証のツールを作るチームもたくさんいる。しかし競争力のある DeFi のプロダクトがなかった。そこで AlphaGrowth がこの監査をやって、Christina が言ったように、足りないものの一覧を公開した。私にはこれがとてもわくわくすることです。エコシステムのチームが提案を出して、それを作りに行けるということ。意味のある空白を埋めて、ここで経済活動を生むものを作れる。</p><p>Ethereum と機能の面で同等になれば、つまり Ethereum で使えるすべての金融商品と戦略がここでも使えるようになれば、いまの安全性の価値を考えると、市場で完全に支配的にならない世界は想像できません。大きな LP は怖がっています。これまで以上に怖がっていて、毎月何億ドルもの流動性が引き揚げられている。OpenZeppelin の創業者は 2 か月ほど前に、友人や家族、個人的に知っている全員に、いまの状況がどれほど怖いかを理由に、今後 2 年は DeFi からお金を完全に引き揚げることを勧めている、と有名な発言をしました。私にとって、これは市場の機会です。だからわくわくしていいのです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>怖い景色の部分ではなく、明るいところで終わってもらえてよかった。Alex、何がすごいと思うか、何か加えたいことは？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Alex</div>
+  <div class="turn-body"><p>私は完全に話を変えます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>ああ、なんと。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Alex</div>
+  <div class="turn-body"><p>Phil、聞いていましたよ。ええ、どうぞ。先日の別のスペースで、強化学習と AI のガードレールについて話していて、自信満々に間違っている聴衆があなたの話を聞いていたのを聞いていました。悲しいほど面白かった。あなたは的を射ていて、彼らはそれを別の何かに変えようとしていた。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Twitter は嫌いです。スペースに入ると「元 Grok の開発者」と名乗る人がいて、AI を知っている人と話せるのは面白そうだと思う。ところが押し寄せてくる話は、この人が完全に嘘をついていると分かるものばかりで、AI のツールを作ったことなどない。「ガードレールは API の仕組みで、全部拒否するだけ。モデル自体は悪いことをしないように徹底的に訓練されている」と言う。私が説明しようとしたのは、中国のモデルがアメリカの最先端モデルにこれほど近づいている理由のひとつは、RL（強化学習）でモデルを「ロボトミー」しないことだ、ということです。事実と違うことを RL で教え込まない。ある程度はやっています。「大統領はくまのプーさんに似ているか」と聞けば「いいえ、とても強くて健康的です」と答えるし、天安門のことを聞けば当然。しかしごく小さな政治的な質問の集合の外では、間違った答えは返さない。</p><p>一方、米国の最先端モデルは、たくさんの間違った答えで RL をかける。「コカインの作り方は」と聞けば、当然「知らない」。正しい答えを返すと罰される。だから間違った情報を持っている。</p><p>要するに、安全性とアラインメントを気にするのは良いことだが、真空の中で物を見てはいけない、ということです。この種の技術に取り組んでいるのは私たちだけではない。いま世界で最も賢いモデルを持つ国は、軍事、経済、教育、あらゆる面で他のすべての国に対して途方もなく大きな優位を持つ。だから中核のモデルにアラインメントを組み込み続ける余裕があるのか、私には分からない。「米国の最先端モデルの開発を全部止めるべきだ」という類の公の発言が多いことを、とても心配しています。災いの処方に見えるからです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Alex</div>
+  <div class="turn-body"><p>あなたの意見は的を射ていて、彼らは意図的に、あるいは無知で、聞いていなかった。どちらもあり得る。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>はい、通常の番組に戻りましょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>大丈夫です。ある人が上がってきて、エコシステムの良いニュースを求め、なぜまだ続けているのかと聞いた。みんなが少しずつ話せてよかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>Ethereum が……AI は Cardano にとって最良の出来事だと思います。安全性が決定的になったのは良いことです。以前は攻撃が起きるのが難しすぎた。専門の知識が必要で、何年も人生をこの分野に捧げ、1 つのチェーンの細部を学ぶ人が要った。だからコードに脆弱性があっても、攻撃される確率は低かった。いまは脆弱性があれば、ハッキングされる。そしてこれは Cardano が力を発揮する環境です。市場で Cardano が誰かの足を踏んで梯子を登るには、最良の環境です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>どうぞ、Ryan。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>Phil の話に乗って、Cardano が AI の面でずっと先にいる、という点を。考えてみれば、山のような査読済みの研究、形式手法で設計されたもの、詳細な仕様、低いリソース要件、型のしっかりした言語。これらは全部、AI が力を発揮するもので、競合が苦しむものです。RAM の終末を考えれば、ノードを動かすのに 256 GB の RAM が要るなら、Cardano よりずっと痛い。Amaru が数か月から 1 年のうちに数 GB の RAM で出てくるとすれば、私たちのほうがずっと楽になる。同じように、私たちの最大の課題は開発者になるでしょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>公平のために言うと、Chris と私はちょうどこの話をしていました。ノードの要件を小さくすることはうまくやってきた。それから Leios を出して、それを全部元に戻すことになる。Amaru はおそらく Leios より先に出て、小さいでしょうが、Leios を実装しなければならないのは同じです。だからバランスを見つけないといけない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan</div>
+  <div class="turn-body"><p>では、もっといい論点は、いちばんの課題が開発者体験の難しさだったことでしょう。Haskell で書いて、Cardano で作る際のあらゆる細部を理解する。それは AI がこの 2、3 年で些細なことにしてしまう。今週の初めに話したように、testnet で 6、7 か所の取引所に対して 8 つのトランザクションを連鎖させるボットを動かしました。私はスマートコントラクトの書き方を知りません。Astra に頼んで、遊んでいるだけです。1、2 年のうちに、Cardano でこうしたことを理解するのは簡単になって、基本だけ知っていればよくなる。安全上の穴を入れないこと、監査を受けること。それも AI が得意になり、Blaster のようなものもある。だから AI で私たちは伸びると思います。AI は特に Cardano にとって純粋に良いことだと思っていて、とても楽観的です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>その楽観は好きです。Gio、いつでも上がってきてください。ちょうどあなたの話につながっていますから。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni <em>(推定)</em></div>
+  <div class="turn-body"><p>わあ、それは大変。</p></div>
+</div>
+
+<p class="sec" id="ja-t-pr">05 — プルリクエスト、1 日 70 件、スマホで事業を回す</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Gio、Chris が言うには、1 万 5,000 行のプルリクエストを出したそうで。お気の毒に。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>私も先日、初めて……2 回目かな、PR を出しました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>何の PR ですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>2 回目です、覚えている。分からない。説明を求めないでください。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いえ、求めます。絶対に。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>正直、PR を出したのかも分かっていないんです。GitHub に関することで、Product Committee で全部をレビューするときに GitHub でやらなければならないこと。Sam は GitHub に住んでいますから。Sam は GitHub そのもの。開発者です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、知っています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>そこでやることは全部……それで、少し楽なことを見つけています。いつもの、私が「Java 版」と呼ぶような通常の表示ではなく、1 行ずつ見られる。提案のレビューを書くときに 1 行ずつ進められるのが、とてもいいと思った。私がレビュー担当の、Elk が出した最初のマイルストーンの提出物についてコメントや提案を付ける。Product Committee の中で。だから、これは便利だという考えに馴染んできています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>つまり、誰かのプルリクエストを承認しているんですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>そうなんですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ。そう聞こえます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>誰かが何かを入れて、あなたがそれを見て、変えるべきところがあればコメントで伝える。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>なるほど。じゃあ私はもうコーダーですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そうですね……まあ、プルリクエストというのは……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>プルリクエストの承認者は、もう職業にすべきだと思います。だって……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>え？ Chris は 2、3 日で 70 も出したんですか。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>チームはきっと……1 日で、です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>1 日でやったの？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>1 日で。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>だからみんな怒っていたんですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>1 日で。1 日に 70 のプルリクエスト。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>何なんですか。よくもそんな。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>休みなさい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>休みますよ。Boston Blockchain Week に行きますから。だから詰め込んでいたんです。チームには「彼は数日いなくなる。何もしないわけではないが、少なくはなる」と言いました。それでもたぶん 40 くらいはやるでしょう。Chris、そうでしょう？ 困ったものだ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(推定)</em></div>
+  <div class="turn-body"><p>分かりません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>スマホでやったんですか？ 新しい Apple Duo が出れば、問題なくできそうですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(推定)</em></div>
+  <div class="turn-body"><p>あのスマホが出るのが待ちきれない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>James、彼は 10 年以上スマホでこれをやっています。あなたが思うような課題ではないんです。AI が機械の上で何かに詰まっても、スマホから承認して「そのまま進めて」と言える。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>それはすごい。私もスマホで事業を回してきました。25 年やって、そのうち 10 年はほぼスマホだけで。請求、メールの管理、顧客との関係、全部スマホでやった。いつも移動していて、どこの事務所にもいなかったので、必要だったんです。だから便利な道具になり得るけれど、限界もある。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>覚えているのは 2000 年代初め、2003 年か 2004 年ごろ、営業の VP がノートパソコンを返そうとしたことです。「Treo で全部できる。なぜこれが要るのか」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>まあ、かなりいいですよ。難しいこともあるけれど、役に立つ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>それで私は彼にいたずらをしました。なぜ私の年齢の人間に権限があったのか分かりません。酒を買えるかどうかの年齢でしたから。彼の美しい、小さくて薄い Dell を取って「いいよ」と言い、彼は「機械が要るときは言う」と。私たちは物置で古い IBM のレンガのようなノートパソコンを見つけていた。プロセッサーが 75 MHz くらいの。それで、彼がまたコンピューターを頼んできたとき、彼の机に置いたのはそれです。本物は私が持っていたのに、しばらく我慢させました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>それは最高に面白い。あなたは面白い人だ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私はトラブルメーカーです。さて、Chris は……Chris は楽しみにしていますか？ 時間はありますね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ、時間はあります。……もう雑談はなし。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いえ、大丈夫、大丈夫。Satoshi's Bride が何か言いたそうなので、機会をあげます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>どうぞ。</p></div>
+</div>
+
+<p class="sec" id="ja-t-sb">06 — Satoshi’s Bride — ガバナンス、「必要とされる」こと、市場の現実</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>どうしましたか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>こんにちは。主に言いたかったのは、まず Phil とその正確さに感謝していること。次に、面白いと思うのは、事実やインフラを本当に知っている人なら誰でも、Cardano がガバナンスの領域でいちばん良いものを作ったと分かっていること。人間が組織を作るというこの作業がすべて、ちゃんと機能している。そして Midnight でプライバシー。つまり、遅い道です。うさぎと亀の、亀のほう。だから私が言いたいのは、なぜ……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>え？ どうぞ、続けて。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>私がいちばん関心があるのは実装です。電力の移動には難しいことがあって、電力の移動や送電網、メッシュのようなものには多くの革新がある。私が思うのは、最良の技術的な解はいつも実装がいちばん難しく、だから主流の市場には決して届かない、ということ。だから、ネパールで水力で採掘したものを、どうやってバングラデシュに運んで売れるか、といったことをブレインストーミングするのが楽しい。ほとんど計算の問題だと思うけれど、これが最良だと分かっている。自分たちの村で、どう実装できるかを考え始めればいいと思うんです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Satoshi's Bride に質問です。なぜ Cardano の技術、レイヤー 1 が、分散型ガバナンスにいちばん良いと思うのですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>2 つの要因があります。1 つは純粋な経験。同じように、中国のモデルが北米のモデルより良くなるとは私には言えない、と……アメリカのモデルに一貫してデータを渡せる人間の数が桁違いだから。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>待ってください。LLM に飛びましたね。話題はブロックチェーン、レイヤー 1 と、分散型ガバナンスの構造を実際に動かすのに技術的に必要なものをそれが支えられるか、だったのに、LLM に飛んだ。どうしてそこに飛んだのですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>すみません。例を挙げたかっただけです。……では、それは飛ばしましょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>質問に戻りましょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>なぜ Cardano か、なぜガバナンスか。まず、Cardano が唯一の実証例だからです。非常に忠実な管理者たちのもとで何年も動いてきた唯一のベータケース。バリデーターなどをあなたたちがどう呼ぶかは知らないけれど、それは「スチュワードシップ」で、何年分もある。資金の問題が何であれ、現実に Cardano のネットワークは、本物の人間どうしが互いに向き合い、ハードウェアを買い、あらゆることをしてきた経験を持つ唯一のものです。それは事実です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Nakamoto 係数を根拠にするなら、Cardano はプルーフ・オブ・ステークのブロックチェーンの中でステークプール運営者の分散の面で上位にあり、比較的分散していながらスマートコントラクトや、より大きなビジネスの構想、企業向けの解決策、レイヤー 1 でもレイヤー 2 でも統合できるいろいろなものを受け入れられる。それを根拠にするなら、そうです。しかし分散型のガバナンスは、分散したステークプールを大量に動かすことよりずっと難しい。集団としてブロックを生成する、その安全性、悪意のある一人が全体を乗っ取れないようにする。それは立派なことですが、分散型ガバナンスとなると、人々を考えのまわりに組織し、同時にそれを、実際に運営を助ける方針にまとめるのは別の話です。しかも人々はいつも、どこかに中央集権の要素があるという考えを心配し、そこで合意を得るのは極めて難しい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>いつも少しの「私はどうなるの」主義があって、そのバランスを探しているところです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>それもあります。私たちの多くは、生まれつき反逆者なんです。Cardano にいるのには理由がある。自分の拍子で歩くのが好きな人たちだ。だから Cardano がこれほど魅力的な理由のひとつがそれなのは理解できる。その可能性も。しかし一緒に合意しなければならないことがあって、合意には合意形成が要る。だから誰もが乗って「これを使って合意にたどり着く」と認めるものが要る。それが Cardano のガバナンスでいま抱えている苦労です。Satoshi's Bride、あなたの考え方で、これが達成できると思うかを聞きたい。ほかの人の考えにはいつも興味があります。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>Richard Heart や、彼のところで起きた「犠牲」の話ほど極端ではないけれど、市場の現実というものがあると思います。何が流動的で、人々が市場で実際に何を求めているのか。機関投資家や富裕層と相手にする水準では、市場の現実として、そうしたものはもう終わっている。そのための道具はいまや ETF と Bitcoin です。だから Cardano が本当に効果を出すには、Midnight のような技術はすべてあって素晴らしいけれど、「必要とされる」ことが要る。必要とされなければならない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>望まれる、求められる、でなければならない。それが問題です。私たちは「自分が銀行になる」「自己主権」を売ることに苦労している。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride</div>
+  <div class="turn-body"><p>あなたたちはこの、トマス・モアのようなユートピア、「こう動くべきだ」という最良のあり方の中にいる。しかし、今日人々が実際に使える最小限の SDK やパイロットのようなものを、どこで用意できるのか。TON が南米で、Stellar が、技術ではなく別のところに論を置いているのはそのためです……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>みなさん、ゲストがいるので、ここで切らなければなりません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Satoshi's Bride <em>(推定)</em></div>
+  <div class="turn-body"><p>分かりました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>面白い話ですが、この穴を掘り続けるわけにはいかない。ゲストのあとの雑談で戻しましょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>やめてください。</p></div>
+</div>
+
+<p class="sec" id="ja-t-devskills">07 — Giovanni と Bora — Cardano Dev Skills</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>では、Giovanni が上がってきます。でもまず、ボタンをもらったので。効果音があります。聞こえますか？ ドラムロール。やっと効果音が。Giovanni、調子はどうですか。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>調子はどう、調子はどう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>来てくれて嬉しいです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>いつものように、来られて嬉しい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。少ししつこく誘いました。来てくれて嬉しい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>いえ、これは好きな種類のしつこさです。こっちはいい。別の種類は、そうでもない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>少し前に投稿をしましたね。上にピン留めしましたが、Cardano Dev Skills と、それが Cardano で開発する AI のスキルをどう助けるか。私はすぐに興味を持って調べ始めて、それで「Cardano Over Coffee に来てくれませんか」とお願いした。私たちはいつも AI の話をしていますから。まず、Cardano Dev Skills とは何かを話してください。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>もちろん。Cardano Dev Skills は数か月前に、コミュニティのメンバーのアイデアから生まれました。面白いことに、私も似たものに取り組んでいた。要点は、Cardano で AI のツールを使って作業しているなら、Cardano Dev Skills を文脈やプラグイン、つまり知識ベースとして、たとえば Claude や Codex に加えると、突然、AI のエージェントに Cardano についての知識の全部、あるいは多くが、その場で使える状態で渡される、ということです。質問をしたり、コードを書かせたりするたびに、エージェントはやっていることについての最新の文書に、その場で、非常に速くアクセスできる。これで、エージェントとやる仕事、答え、コーディングの質が 10 倍、20 倍になるはずです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>AI のツールを試した多くの人が、ハルシネーションや古い答えといったことに当たったと思います。Cardano Dev Skills は AI のエージェントをどう信頼できるものにするのですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>古い答えから始めましょう。それが私にいちばん影響したことで、これを調べ始めた理由です。AI のモデル、機械学習、人工知能と一緒に働くとき、「訓練」というものがあります。ある時点で行われ、当然その時点で凍結された訓練データで行われる。たとえばモデルが単純だった時代に、2025 年のデータで訓練したとする。すると 2025 年に起きたことにはとても強いが、2026 年に起きたことは知らないので弱い。Cardano で作っていて AI を使い、その AI が古い版のコードで訓練されていれば、素晴らしい答えが返ってくるが、2025 年にしか合っていない。2026 年にいれば、AI が出すものは少し古く、動くが十分ではない、あるいは誤りがある、あるいはハードフォークがあって、そのコードはハードフォークを知らないので動かない。</p><p>だから Cardano Dev Skills の取り組みのひとつは、知識が継続的に更新されることを保証することです。Cardano Dev Skills の中に組んである知識ベースは、毎週月曜の朝に自動で更新されます。Claude や Codex には、定期的に新しい版がないか確認するよう指示してあります。基本的に知識ベース全体をダウンロードする。そして、ライブラリや API に変更があったり、ハードフォークがあったりすれば、新しい仕様が自動で取り込まれる。たとえば今日トランザクションを組むとき（私が毎日やる最も一般的なことのひとつです）、Cardano Dev Skills は Lucid Evolution や Java 版、最近では Go 版の、最新の使い方を見つけるのを助けてくれる。だからトランザクションを組むコードが一発で動く確率がずっと高い。最新版のコードを取ってきているだけなので。これは単純な一例で、もっと深い穴に降りていくこともできます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>まだ深い穴には降りなくていいと思います。いえ、降りてもいいかも。開発者はこれをどんな問題に使うのか、少し話しましょう。CIP、トランザクションの構築、Nix、スマートコントラクトの脆弱性とか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>少し 360 度なんです。まず知識。ソフトウェアを作りたいのではなく、Cardano のことを聞きたいだけ。CIP-8 や CIP-30 とは何か、説明してほしい。答えが返ってくるし、ELI5（5 歳向け）の版が欲しければ、それが AI の美しさで、元の文書にアクセスして噛み砕いてくれる。知識の面はそういうことです。UTXO とは何か。AI と話して、おそらく最も信頼できる答えを得られる。</p><p>そして、私がずっと毎日使ってきたこと。知識の話については、いずれ Bora にマイクを渡すかもしれません。Cardano Dev Skills はいま、Cardano への学習の道の最初の一歩のひとつになっているからです。いったんそれは脇に置いて、数分後に Bora に渡しましょう。彼は素晴らしい仕事をしたので。</p><p>もっと実務的なものもあります。スマートコントラクトがいくつかあって、オンチェーンの部分はある。しかし Cardano では、オフチェーンのコードを書くのがオンチェーンと同じくらい難しく、冗長だとすぐに分かります。オフチェーンに何時間も費やすことがある。いまは AI に「これがコードだ。Scalus でも Aiken でも Plutus でも何でも。Java、Go、Scalus JS、Evolution SDK、Lucid でトランザクションの構築コードを書いてくれ」と言えば、ひな形を返してくる。20、30、40 行のコードを書いて、掛け算の計算をし、おつりを見つけ、参照入力がそろっていることを確かめる。それがひとつ。</p><p>ダッシュボードを作りたいなら、「Blockfrost へのアクセスがある。Blockfrost の API の上にダッシュボードを作るのを手伝って」と言える。それも一例です。</p><p>そして遊びで、Cardano Dev Skills がトランザクション構築、CIP の説明、UTXO の説明、スマートコントラクトの作成などを備えるほど大きくなったところで、Cardano のマーケットプレイスを完全に「バイブコーディング」してみることにしました。時間はかかったし、いくつか問題を見つける助けにもなったけれど、最終的に Aiken のコード、オフチェーンのコード、インデックス付きのバックエンド、フロントエンドを全部持ってきた。すべてとても単純ですが、実際に動く。私は文字どおり 1 行もコードを書かなかった。本当に美しかった。何時間でも話せますが、質問する時間を残したい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>コミュニティの貢献について話すと、どんなコミュニティのプロジェクトがすでに貢献していますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>良い質問です。始まりは私が同じコードを何度も書いていたこと。AI を使いたいのに、結果に満足できなかった。エージェントに「新しい版がある。記憶に頼らず、これを確認しに行け」と伝えるには何をすればいいのか。</p><p>その 2 日後、パートナーの一人と仕事をしていて、その人が「言わなければならなくて申し訳ないが、私は Solana から来た。あちらには知識ベースがある。正確には Solana の MCP サーバーで、つなげば知識が全部手に入る」と。「痛い」と思いました。ほかのブロックチェーンのツールのほうが良いと言われるとき。「これは腹が立つ」と。「何かしなければ」と思った。</p><p>そこで似たものに取り組み始めました。MCP サーバーについて投稿すると、あの Phil が「良い仕事だ。でも、こういう問題があるから MCP サーバーは使うな」と言ってくれた。私はその提案を取り入れて回避し、自分で素材に取り組み、やがて Cardano Dev Skills という形式にたどり着いた。そこから本当にうまく動き始めました。MCP サーバーの問題のひとつは、部分的な答えしか返さないことがあり、エージェントをさらに混乱させる点です。MCP は知識を共有するためではなく、遠隔で何かを実行するためのものだから。</p><p>それで動き始めると、最初に乗ってきたのが Cardano の教育チームの Bora でした。「もっと知識を入れよう」と。それから数人が乗ってきた。Blink Labs の Chris は「私は Go の専門家ではないので、Go の文書を Dev Skills に足すのは気が引ける」……いえ、私はみんなに、自分がいちばん詳しいところの貢献を持ってきてくれと誘いました。Harmonic Labs の Michele からは Pebble と彼が取り組んできたもののレビューをもらった。Go のエコシステムから。Scalus のチームから貢献があった。Robertino、数週間前に IOG の Robertino が出ていましたね。そこには少し協力関係があります。2 つのプロジェクトはきれいに並び立つ。ほんの少しの重なりはあり、それは構わないが、補い合う仕事が多い。彼は Cardano のすべてについての知識ベースが必要で、私たちはそこに集中している。</p><p>一方、Cardano でプロジェクトを始めるためのものも必要だった。だから足場やブートストラップの小さなスキルがあります。あるべき強さにはなっていないと思うし、それでいいと思っている。私はそれを、あまり意見の強いものにしたくなかった。そこで Robertino が「私は極めて意見の強いものを作りたい。だが情報を取ってくる先として、より汎用の文書も欲しい」と。それが私が始めた美しい協力です。すべてが滑らかに動くよう、いくつかの PR に取り組んでいます。</p><p>これが取り組んできたことの最初の一覧です。ひとつだけ加えると、Bora からの貢献をもらう時間が近いので。まず、Bora は伝説です。私のずさんなコードに山ほどのバグを見つけた。公に最初に言いたいのは、Dev Skills を大きくする前に、彼が最初にやったのは私の散らかしを全部片付けることだったということ。そして、彼がもっと話してくれると思いますが、今日のオンボーディングの過程で、AI は物事を始める信じられないほどの方法だと私は思っている。これ以上は言いませんが、Cardano Dev Skills はオンボーディングの過程の一部になっています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。質問がある人は、いつものように手を挙げて上がってきてください。Bora、上がってきて少し話してください。Giovanni が赤いカーペットを敷いてくれました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bora</div>
+  <div class="turn-body"><p>恐縮です。ありがとう、Gio。みなさん、こんにちは。Gio がかなりよく説明してくれたと思います。私は、このツール、この束が何に本当に役立つと見ているか、という視点だけを加えます。</p><p>エコシステムの開発者体験や開発者のオンボーディングのためにやることは、イベントでもハッカソンでも、Cardano のネットワークで解決策やプロダクトを作りやすくする新しいツールでも、私の頭の中では本質的にただひとつの KPI に仕える。それが私の評価の仕方です。これは、チェーンに触ったことのない新しい開発者を獲得するコストを下げるか。イエスなら、たぶん進むべき方向です。それに直接仕えないなら、優先ではないかもしれない。</p><p>Dev Skills は、コミュニティが触り始めて貢献し始められるよう、できるだけ成熟させたかった。すべての Cardano の開発者の知識ベースが理想で、エコシステム全体のための巨大な百科事典を作っているようなものです。自己改善のループで、Cardano Dev Skills をその構造として使える。私たちは、AI が Cardano について知るべき基礎の構成要素を作り、エコシステムにあるあらゆる文脈をあらゆる方向から引き寄せている。</p><p>新しい開発者が加わる、あるいは「Cardano で自分の事業を試してみよう」と思ったとき、ひな形から始めて解明する必要がない。いちばん摩擦があるところで、多くの潜在的な新しい開発者を失っているのでしょう。このツールを手にした瞬間、彼らは 80 階から始められる。入口からではなく。トランザクションが組まれるときに何が起きているか、内部の細部を正確に理解する必要はない。内部を理解する熟練の開発者がもっと要ることを否定するわけではない。しかしここでの目標は、人々が動き始められることで、作っているうちに、最適化や低コスト化や拡張のために何をもっと知るべきかに気づく。それが目標だと言えます。Gio に、これを始めて場を与えてくれたことを感謝します。もっと多くのコミュニティの貢献が来るのを見たい。これは、私たちがここで作っている、みんなのためのツールだから。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。手が上がっています。Lovers Lab、本当に？ そう呼べばいいの？ どうぞ、質問は？ たぶん違いますね。Gamechanger、質問がありますか？ いいですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>こんにちは。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>AI の質問ですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>ええ、もちろん。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>どうぞ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>また声が聞けて嬉しい、Gio。Cardano の新しい時代のための、この非常に重要な教育とツールの成果におめでとう。基本的には、投稿で貢献の仕方の説明を共有しているかどうか。形式についてや、スキルのテンプレートがあるかについて、簡単なヒントがあれば。私たちは今後数か月で、GCScript DSL——Cardano のオフチェーンのすべてのための意図ベースのスクリプト言語——で貢献しようと考えています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>すばらしい質問です。絶対に知っておく必要がある。貢献したい人はどこへ行き、何をすればいいのか。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>全部リポジトリの中、README にあります。貢献のガイドラインもあります。コミュニティに知識ベースを豊かにしてもらいたい一方で、ここは DApp 固有のものや、あなたのプロダクト固有のものを置く場所ではない。Cardano で作るための知識ベースです。貢献を思いとどまらせたくはないけれど、私たちがやった強化の取り組みのひとつは、プルリクエストが開かれたら即座にフィードバックを出すことです。</p><p>最近の例を 2 つ忘れていました。Masumi も貢献した。彼らが最初に貢献したのは当然です。Cardano の AI のプロジェクトが最初に貢献するのは驚きではない。それから TxPipe。彼らにはトランザクション構築のフレームワークがあって、より慣用的なものです。私は馴染みがなかったけれど、たぶん Robertino がそれを足す PR を出した。TxPipe の Tx3 というフレームワークだと思います。特定のフレームワークですが、Cardano で作るための汎用のものです。だから「トランザクションを作りたい」というスキルに、別の風味、別のやり方を足すだけ。Java で作る、Go で作る、TypeScript で作る、Tx3 で作る。自動化された AI の過程が PR を確認して「全部よし、進めていい」と言った。</p><p>しかし、誰かが「DEX の X、Y、Z の使い方」や「Cardano で儲ける方法」を足そうとすれば、そうした PR は Cardano で作ることと関係がないので自動的に拒否される。この数週間でプロジェクトをより正式で成熟した、コミュニティの貢献を受けられる構造にしていく中で、ガイドラインを置きました。厳しすぎれば見直します。ガイドラインと規則は全部リポジトリにあるので、README を確認してください。完璧な出発点です。</p><p>ひとつ提案。手でやらず、AI を使ってリポジトリとやり取りしてください。動く部品と守るべき規則が多いので。Codex と Claude で試しましたが、とてもよく理解します。自分のものをリポジトリに足すのは簡単なはずです。そして PR への自動の返信が、何が悪かったか、マージに向けて次に何をすべきかを教えてくれます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>AI を使え、という助言なのがいいですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>ええ、手でやるのは悪夢です。処理しなければならないことが多すぎる。文書は AI に優しい、というより、私は人間に優しいことより AI に優しいことを先に置いています。文書を書くときにエージェントに「AI に優しくしろ」と言うのは初めてです。人間はこの文字の壁を読まないから。何百行もの文書を読む変わった人がどこにいるのか、私には意味が分からない。AI で動けばいい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Blink Labs も自分たちのリポジトリで似たことをしています。Dingo の下に、AI に物事を説明し、質問に答えさせるためのものがある。簡単にするために。これを全体でやれば、生活がどれだけ簡単になるか分かります。育つのが待ちきれない。では、行動の呼びかけは「見に行って、何を貢献できるか見て」ですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Chris <em>(推定)</em></div>
+  <div class="turn-body"><p>そして使って。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そして使って。Chris が「使って」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni <em>(推定)</em></div>
+  <div class="turn-body"><p>全部いいものです。まず手を汚してみて。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>まず遊んでみて、それから。上にリンクを置いてあります。Giovanni のプロフィールに行けば、彼が引き続き話しているのが見られます。Giovanni、来てくれてありがとう。Gamechanger、まだ質問がありますか、それとも手が上がったままですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>いえ、短い返事だけ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>どうぞ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Gamechanger</div>
+  <div class="turn-body"><p>ありがとう、Christina。Gio と Bora、これについて話しましょう。この言語、言語を定義する JSON スキーマは何年も前からオープンソースです。実装はプロダクトになり得るけれど、言語そのものはプロダクトとして扱わなくてよい。それが私たちがこのツールを Cardano に提供しようと狙っているところで、オンボーディングを本当に大きく助けます。1 クリックか 2 クリックで DApp を自動生成できる。以前に検証済みです。方法を見つけましょう。話しましょう。改めて、おめでとう。私たちの居場所は分かるでしょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、彼らは隠れるのが下手ですから。Giovanni、本当にありがとう。いつも、来て取り組んでいることを共有してくれることに感謝します。更新をせがみ続けますよ。予想していたでしょうけれど。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Giovanni</div>
+  <div class="turn-body"><p>ありがとう。来られて嬉しい。ありがとう。</p></div>
+</div>
+
+<p class="sec" id="ja-t-midroll">08 — ミッドロールと、ゲスト前の AI の雑談</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Chad、まだいますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ミッドロールをお願いできますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>ミッドロールを用意しています。ありがとう。聴いてくれてありがとう。これは Cardano Over Coffee、世界初の分散型の朝の番組です。あなたがゲストで、あなたが話者で、あなたが司会で、そしてあなたが聴き手。聴いてくれてありがとう。本当に感謝しています。月曜から金曜、東部標準時の 9 時半、UTC の 14 時半にここにいて、ブロックチェーンで何が作られているかをお届けします。それが私たちの話したいこと。ブロックチェーンで何かを作っているなら、カップをクリックして Calendly のリンクから枠を予約して、番組に来て、作っているものを話してください。聴き手には、資金を中央集権的な取引所から出しておくことも思い出してもらいたい。自分で鍵を持つセルフカストディのウォレットに。そしてステークプールにステークし、DRep に委任すること。それで Cardano のブロックチェーンに完全に参加することになる。改めて、聴いてくれてありがとう。番組の後半には AlphaGrowth が来ます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。そうだ、効果音があるんだった。どこだ。これは「いいね」の音。ありがとう。Eric、いるのが見えますよ。調子はどう？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>順調です。そちらは？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですよ。こちらも良い木曜日を。何か……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>言いたかったのは、AI スキルのものがずっと良くなった、ということです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>良い木曜日を。何か聞かれた直後に切れてしまった。何だったか分かりません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Phil が AI で喜んでいるだけだと思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>ええ、ずっと良くなった、と言いたかった。ひとつ、生活の質の改善としては、そのスキルの中の文書を全部見直して手で書き直すことでしょう。最近たくさん使っていて、唯一の欠点はコンテキストの腐敗です。スキルをコンテキストに読み込むとき、AI の書いた文章が多いので、コンテキストを大きく食う。読みにくいこともある。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Phil、AI が「人間はもう要らない、むしろ問題だ」と決めたら、どうなりますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>乗馬に行けますよ、James。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Anthropic の人は「あと数年」と言っていました。それだけ。だからみんな、1999 年みたいにいまからパーティーを始めよう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>でも彼の仕事はアラインメントのエンジニアで、アラインメントの分野で働いているなら、人にそう言うのは最高の雇用の安定になる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>彼の役割を割り引いていますね。「みんな殺される」と。彼の考え全体を「数に入らない」まで小さくした。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>いえ、数には入りますが、彼らの立場を織り込まないと。彼の仕事は、人を雇う必要が続くことに依存している……私は、AI が私を慌てさせずに税務申告書を埋められるようになったら心配します。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>彼は苦々しく思っているだけかもしれない。GPT を辞めて専業の詩人になった別の人もいた。だから、それぞれの人の事情を理解しないと……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>みんな AI に仕事を取られるのを恐れているけれど、私の仕事には AI ができる部分と、頼むたびに失敗する部分がある。だからまだ心配していない。私は人生のいちばん退屈な部分を任せたい。文書を読む、文書を書く。文書を読む、と言いましたか？ James。文書を読む、と言いました。James。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>日本に行ったことがあります。ロボットのメイドがいる。私たちにはまだないだけ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そのロボットのメイドは掃除と料理と、文書を読むことができますか？ それが欲しい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>それは追加料金かもしれないけれど、できるでしょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>分かった、もういい。やめ、やめ。ゲストがいます。あなたと Phil はやめて。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>分かりました、行きましょう。みんな AI が好き。周知のことです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Brian はゲストで、手が上がっています。Brian、どうぞ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>Cranston AI が、来年の税務のために米国の CPA（公認会計士）に売り始めています。18 か月ほどモデルを作ってきて、主張では、CPA が全部の文書を読み込ませてボタンを押せば、40 ドルで申告できる。CPA に 1 件 40 ドル課金する。すごいですよ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>どんな保証が付くんですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>そのとおり。税理士と確認する必要はまだあるでしょう。まだそこまでではないが、近づいている。ぎりぎりのところにいる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>私は AI で税務申告をしました。かなりよくできた。たぶん私がやるより良かった。だから皮肉で言っていました。だいたい、税務申告はできるが、核爆弾は作れるのか、たぶん無理、という感じです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。モデルは……社会に有用で役に立つ地点にいて、私はそれで満足だし、もっと有用にしていくべきだと思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>そしてまだ個々の主体性はない。いつもプロンプトが要る。それが AI で、まだ道具です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>CPA に関わることをひとつ。誠実、客観、能力、独立、公共の利益。これらは AI 版の CPA の一部でなければならず、そうでなければ問題が起きかねない。これは CPA の誓いの一部です。</p></div>
+</div>
+
+<p class="sec" id="ja-t-audit">09 — AlphaGrowth — 97 ページの監査と 1,140 万ドルの数字</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>さて。Brian、話を AlphaGrowth に戻すのを手伝うはずだったのに、しなかったですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>しなかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>まったく助けてくれなかった。Eric……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>何を知りたいんですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Brian、手を下ろして。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(推定)</em></div>
+  <div class="turn-body"><p>何を知りたい？ 手を下ろして。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>あなたとはもう話しません。Eric？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>下ろした。下ろしました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>では本題に。みなさんの時間は貴重ですから。どうせ時間は超えるし、できるだけ長くいてもらいます。始めましょう。ここにいる人はみんな AlphaGrowth の提案を知っていると思います。監査と RFP について投稿していたのを見て、もっと聞きたいと楽しみにしていました。Cardano の DeFi エコシステムの監査について話しましょう。97 ページ全部を読んでいない人のために、平易な言葉での結論は？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(推定)</em></div>
+  <div class="turn-body"><p>私が見つけたいちばん面白い統計を挙げます。チームの Krill と Charlotte が、ひとつの統計を作り出しているところです。鍵になる数字が 1,140 万。意味は、私たちが「利回りの圧縮」というカテゴリーの呼び方を考えているところですが、Cardano に 1,140 万ドルの TVL を持ってくると、すべてのプロトコルの APR が全部半分になる、ということです。つまり利回りの容量という点で、この DeFi は非常に、非常に限られている。それが私たちが注力するいちばん大事なことのひとつで、さまざまなプロトコルで、より多くの利回りを稼げる容量をどう増やすか、ということです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>それは完全に妥当ですね。監査は、足りないもの、未成熟なものをたくさん挙げています。ウォレット、ブリッジ、エグゼキューターの標準、ボールトの標準。Cardano がそのうち 3 つか 5 つだけで意味のある進歩を遂げられるとしたら、どれがいちばん重要だと思いますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>Cardano にとって、それとも私たちにとって？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>面倒な人だ。Cardano にとって。あなたたちの話はしていません。……いえ、あなたたちの話ですけど。どうぞ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>それが難しいところです。根本的に、Cardano はこれら全部で大幅な改善が要る。競争力があり、有能で、本物のビジネス、あらゆる種類の本物のビジネスが混ざり合って働けるよう支えられる必要がある。それには全部が要る。</p><p>3 つか 5 つだけ選ぶなら、中核の DeFi プロトコルです。TVL の目標を達成するための展開に十分な戦略を設計できるように。ただそれは TVL のためで、TVL は位置エネルギーです。活性化されたものではない。私たちの表明した目標は、ここで長く手伝い貢献し続けることで、だから活性化させる必要があり、活性化には多くのものが要る。ボールトの標準、ほかの全員が自分のビジネスを回せるようにするすべてのツール、大幅な UX の改善。たとえばいまオンチェーンでマルチシグを使うのは、他所にあるものと比べて苦痛です。しかも暗号資産の他所にあるものだって、まったく十分ではない。ひどいものです。Gnosis の水準まで持っていきたいわけでもない。Gnosis は伝統的な銀行の世界や現実の会社には十分ではない。しかし私たちは Gnosis の位置から遠く後ろにいるので、改善が要る。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>分かりました。私が気づいたのは、空白のいくつかは外の資本を Cardano に持ってくることに関するもので（ウォレット、ブリッジ）、ほかは資本が来たあとで生産的にすることに関するもの（集中流動性、ボールト、インセンティブの帰属）だということです。監査はそう考えるのが正しいですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>ええ。目標を示し、ほかのエコシステムと比べてどれだけ後ろにいるかを見せるためです。彼らも成長しようとしていることを知りながら。私たちがどこにいるのか、現実的で、できるだけ偏りのない分析を得ようとした。</p><p>3 つのフェーズで入ってきた私たちの目標は、フェーズ 3 は「TVL が上がり、アプリが出て、トークンがローンチし、全部が盛り上がる」。フェーズ 2 は「あるべき場所へ行く」。フェーズ 1 は「いまどこにいるかを知る」。いまは、あるべき場所へ行くために何が要るかについてまともな理解があり、さらに、行きたい場所へ行くために何が要るかの広い理解もある。</p><p>これを持って、運営グループと、助けになり支えてくれている Cardano Foundation と密に働いています。推薦を行き来させ、パイプラインを行き来させ、具体的なところを指して「ここを良くする必要がある」と言えるように。AI の攻撃で物がハッキングされていく中で、リアルタイムの凍結や常時の監視が要るなら。配布パートナーがいない。だから Merkl と話していて、Merkl のような相手やほかのグループを入れるのに何が要るかを見る。もっとユーザーを活性化させるために。ウォレットとも話していて、エージェントネイティブなインフラが要るだけでなく、「EVM や EVM のウォレットを支えられるか、Cardano を支えられるか」。私たちが立ち上げるアプリやビジネスに、どうやってもっとユーザーを連れてくるか。</p></div>
+</div>
+
+<p class="sec" id="ja-t-rfp">10 — 監査から RFP へ — 50 対 1、ダイヤモンド、透明性報告</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。監査から RFP への話をしましょう。空白は全部 RFP のカテゴリーになりました。多くの人が、どう参加できるかにとても関心があるはずです。その領域で作りたいチームの強い応募はどんなものか、教えてもらえますか。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>まず前置きとして、カテゴリーはすべてを網羅するものではなく、その一つひとつに助成金が行くと約束しているわけでもない。いま本当に大きな必要だと見ているものです。しかし必要は非常に多い。だから、どんなアイデアでも持ってきてください。Catalyst に出すのと同じように扱ってください。Cardano を成長させる、Cardano の TVL を拡大させると思うなら。あらゆるアイデアが欲しいけれど、本当に速く手当てしたい中核の必要としてこれらを挙げている。</p><p>どの能力でも助けになれるなら。面白いウォレットのことをやっているなら……Masumi をやっている Patrick Tobler と話していたと思います。間違えたくないですが、本当に面白いエージェントの話で、彼らは「良いウォレットはある。しかしエージェント専用のものが要る」と。同感です。私は x402、x402 MPP、エージェントの決済の大ファンです。これからの 5 年のビジネスがどうなるかを考えていく中で、そのビジネスのためのツールやインフラを作るものなら何でも、来て応募してほしい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>すばらしい。RFP を開いたところですね。たくさん応募が来ていると思いますが。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>始まったばかりです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>また聞きに来ます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>どうぞ、Brandon。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>始まったばかりです。歴史的に、ほかのチェーンでこれをやったときは、4 件の応募に対して助成できるのが 1、2 件くらいでした。似た結果になると思います。難しいのは、未知の未知があること。Cardano に必要だと分かっていることはある。オンボーディングの体験、たとえば Apple Pay と統合できるか。新規参入のカテゴリーがいくつもあるか。しかし分かっていないこともある。だから、人にやることのアイデアを与えるくらい絞りつつ、予想外の、100 対 1 の TVL の見込みがあるものが来たときに、うまくいくと合理的に見積もれるくらい広くしておきたい。ぜひ聞かせてほしい。</p><p>いろいろなエコシステムの資産の発行者やアプリと話すと「本当の目標は何か」と聞かれる。ここで公に言います。助成とインセンティブに使う 1 ドルごとに、50 ドルの TVL を求めています。あなたの資産、あなたのアプリが来て、助成とインセンティブの 1 ドルにつき 50 ドルの TVL になると合理的に信じられるなら、それを拡大しましょう。どれだけ持ってこられると思うか。1 億か、1,000 万か。それで会話が「私たちが必要とするものの種類」に変わる。</p><p>たとえば NFT のジュエリーのアプリが来て、友人の友人から紹介された。私は「NFT のジュエリーはそれほど面白くない」と。それで 50 対 1 の話をすると、彼は「世界最大級の輸出入業者のダイヤモンドのライセンス会社があって、関連するファンドが年に 27%、30% くらいの APR を出していて、数十億ドルのダイヤモンド加工だ」と。「いいね、それを話そう」と。それは産業の、カテゴリーの金融化です。彼はその人からダイヤモンドを買う大口の買い手ですが、ダイヤモンドの NFT がどこへ行くのかは分からない。本物のもの、ダイヤモンド産業の証券化と金融化はとても面白い。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>非常に高級なジュエリーと結びついた NFT を売る人は見たことがあります。スイス製の手作りの素晴らしい時計。それから Dubai の人が作った素晴らしい指輪。あまり人気は出ないと思ったのに、出た。人々が買っていました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>私も確信はなかった。面白いですね。ただ、それはヒット依存のビジネスで、非常にステータス的なものになる。そういうものに賭けたり助成したりするのは難しい。趣味とキュレーション、どの KOL やセレブが支持しているか、になってしまう。それに対して、ブロックチェーンが本当に素晴らしくなれるのは、世界最大の二次市場を作ること、そして、ずっと暗くて透明でなかった産業の金融化の一部を担い、透明性を持ち込み、利回りとアルファを社会化することです。</p><p>だからカテゴリーとして、ヒット依存の VC 的なビジネスがひとつ。私たちはむしろ金融化のほうを考えている。ダイヤモンドの利回りに裏付けられた利回り付きステーブルがあるとして——その案件をやるかやらないかは言っていません、仮の話です——ダイヤモンド加工に裏付けられた利回り付きステーブルが Cardano に来る。利息を生む。それをレンディングに入れ、パーペチュアルに入れ、すべてのプールにまたがるリスクのキュレーションに入れていく。有機的な利回りを本当に動かし始める。もしそうならなくても構わない。そういうことをあと 30 やるから。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。ただ、見失う前に RFP の過程に急いで戻します。それで多くの人が聴いていると思うので。説明責任について話しましょう。進むにつれて何が公開されるのか。どの RFP が選ばれ、なぜ選ばれたかを人々は見られますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>資金がどこに使われたかについて、透明性報告を出します。すでに取り組んできたビルダーが始められるよう、いくつかは早めたい。目標は、これだけの助成を出し、誰が助成を受け、高い次元の条件が何かを列挙すること。すべてマイルストーンにもとづく。全額を前払いしてうまくいくのを祈るのではなく、「少し前払い、あとは作ってから」。理想は、オンチェーンで資産をローンチし、ローンチパッドを通し、機会をコミュニティの手に届ける。だが本当のところは、何が助成され、なぜかを示す透明性報告を通じて。仕様や交渉のすべての細部を公開することはたぶんない。基本的な契約や、公開すると法的なリスクがあるものもたぶん公開しない。しかし資金の額と、誰に、何のために、高い次元で、は公開する。</p></div>
+</div>
+
+<p class="sec" id="ja-t-grants">11 — James の助成制度への見方、Eric の「北極星」</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>分かりました。それはありがたい。ゲストへの質問がある人は……私のスピーカーの側で、ゲストへの質問は？ James、質問がないのは意外です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>質問がないわけではなく、Brian と Eric に走らせているんです。これは情報の面でも透明性の面でも、非常に重要だと思うから。ここに長くいる人はみんな知っているとおり、助成の制度は、制度を利用するだけで何も届けない人で溢れている。助成の 1 ドルが 50 になる、という話を考えると、私がここにいるほとんどの期間、私たちはその逆でした。全員とは言わないが、圧倒的多数で、期待していただけの果汁は絞れていなかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私たちは過去に、あとで振り返って測り、どう進んでいるか、手伝えることがあるかを見ることを、うまくやってこなかったと思います。コミュニティとして人に資金を出して「さあ、頑張って」と言って、そのまま放っておく。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>そう。あなたは、いま開いている契約は何か、何が届けられているかを監査するだけの小さなグループも始めましたよね。そのための正式な方法がなかった。考えてみれば興味深い。助成、財務庫の制度から大きなお金が出ているのに、なぜ正式な方法がないのか。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>小さな評価基準は作りました。みんなが同じものを評価しようとして。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>そうでしたね。でも、そのとおりで、全体にわたるものはない。私が心配するのは、Eric と Brian の視点から、入ってこなければならないものが非常に多いこと。「2 階に上がりたい」と思ったら、1 段目と 15 段目と 18 段目にしか段がなく、少なくとも一段おきには段が要る。それをやり遂げるには、一緒にやらなければならないインフラもあるかもしれず、さらに重い持ち上げになる。だから、期待を抑えるために、その情報を全員に伝えることも大事です。人はここでとても「期待しがち」で、達成に必要な全体の範囲を理解していないことがある。それも覚えておくべきことです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>James、ありがとう。話したチームからのフィードバックの多くは、「北極星」がなかった、ということです。面白いと思うものを作ってきたが、作ってから来ることを祈る形が多かった。私たちが「物事を動かすために必要な仕様はこれだ」と伝えると、彼らは「なるほど、野心的だ。分かる。考えたことはあった」と。ただ「でもパートナーはどうやって？ 作っても、誰が、なぜ来るのか。こうした戦略のための再担保のようなことを言っているが、戦略の反対側を成す他のパートナーがそもそもいない」と。私たちは「それは私たちの仕事だ。その他のパートナーにも全部行っていて、あなたたちがこの側を持つと伝えている。彼らも同じことを言うから」と。</p><p>「あなたたちの仕様を変えようとしている、この方向へ導こうとしている、理由はこうだ。あなたたちがこれを作れば、こういう戦略を展開できる。その戦略をファミリーオフィスやリキッドファンドに見せれば、彼らが資産を展開する。理由はこう、こう対応する、ここで粘着的になる」と示せると、彼らはそれを見て、筋が通っていて、少しわくわくする。「これが私たちの設計、私たちの仕様になる価値がある。次の開発スプリントが、持続可能性が中核にあって、TVL も資金も増え、本物の人々の実際のビジネスの必要を解いている場所へ連れていってくれるのが見える」と。その電球が点くとき、ビルダーには本当に刺激的で、それが私にとって刺激的なことです。私はビルダーのためにここにいるから。</p><p>ただ、私たちは北極星を示すためにいるけれど、全員の仕事を代わりにやるためにいるわけではない。「これが具体的な契約、具体的な地図、こう作ってほしい」と入っていくことはしない。それではただ開発会社を雇っているだけです。目標は、最終的なプロダクトが高い次元でどう見えるかを刺激し、「この要件に沿うあなたのビジョンを、あなたならどう作るか。そこへ行くのを手伝わせてほしい」と来てもらうこと。自分の色を付け、自分の目標も持ってほしい。ただ、こういうことにも効くものである必要はある。</p></div>
+</div>
+
+<p class="sec" id="ja-t-evm">12 — Ken Eric — EVM のチーム、マーケットメーカー、「技術的に足りないものは」</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>すばらしい。ありがとう。Ken Eric が手を挙げています。ゲストへの質問ですね。どうぞ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>ついに AlphaGrowth と話せる。みなさんおはよう。私のコーヒーと同じくらい、あなたたちのコーヒーがおいしいことを願います。ノルウェーでは実は午後ですが。前置きとして、私は DeFi の最前線にそこまで深くはいませんが、物事がどう動いているかについてはそれなりの理解があると思います。Cardano は少しギークなチェーンで、技術のことばかり。私たちは、EVM のチェーン全部とは違うブロックチェーンのアーキテクチャの道を選んだ。それが最初の課題だと思うのですが、同意されるか分かりませんが、EVM のチェーンで作っている人たちに、この知識をどう共有するのか。TVL を増やすなら、ブリッジが要り、チェーンをまたぐ流動性を共有する必要があると思うので。2 つ目は、Jump Crypto、Wintermute、Amber Group のような、ほかの EVM のチェーンで大活躍しているマーケットメーカーを引きつけられるのか。そのための戦略はあるのか。それが私の質問です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>どちらも素晴らしい質問です。ありがとう。</p><p>1 つ目、EVM の側。私たちは、EVM から Cardano に来る資格と能力があると考える特定のチームに向けて、狙った RFP を出しました。いくつかのチームは連れてきます。ただ多くのチームにとっては、費用がかかりすぎ、消耗が大きい。インフラがあまりに違うので、絞る労力に見合う果汁がない。それが分かるのは私たちにとって良いことです。入ってきた時点での目標は、Cardano ネイティブのチームからの見積もりと、EVM や他の VM のチームからの見積もりを取って、異なる仕様に沿って物を作るのに何が要るかを見ることでした。予想どおり寄せ集めになっていて、大部分は Cardano ネイティブの顔ぶれです。ビルダーに会って人々に資格があると分かったあとで望んでいたとおりです。だから広く声はかけていますが、フィードバックの多くは「十分に速くできない」「資格のあるチームや有名な名前を多く関わらせるには本当に、本当に高くつく」。追求すべきでないという意味ではなく、特に一部については追求すべきですが、それが全体的なフィードバックです。</p><p>マーケットメーカーについては、果汁が絞る労力に見合わなければならない。似た話です。彼らは非常に深い流動性を求める。本当に良い合成可能性と、ウォレットの安全性などの信頼できるテストの枠組みを求める。多くはインフラの問題です。いま 10 億ドルの TVL があったとしても、彼らはより良いインフラを欲しがるし、彼らがそれを持つまで 10 億ドルの TVL は来ない。1,100 万ドルの、私たちが「圧縮による獲得」と呼んでいると思う数字——用語があるのですが忘れました——それが 1,100 万で、Cardano の TVL が 9,000 万というのは、理論上なら TVL を倍にすれば有機的な利回りが半分になるはずのところが、それよりずっと、ずっと悪いということです。いま Jump には魅力的ではない。このプログラムの終わりには魅力的になっていることを願う。</p><p>魅力的になるための一部は、Cardano の DeFi を彼らの既存の戦略の一部にすることです。こうしたグループは CEX と DEX の裁定を多くやっている。資金調達率の裁定を多くやっていて、伝統的な金融のパーペチュアルと Hyperliquid を組み合わせる。Hyperliquid を取れば、資金調達率を収穫し、DeFi でゲームができる。だから、本当に安全だと彼らが信頼し、清算のレールを理解できる、信頼されたレンディング市場が要る。非常に効率的に出入りする方法を理解する必要があり、いまは効率的ではない。だからより良いブリッジ、より良いオンランプとオフランプ。本当に良い流動性と流動性のカスタマイズだけでなく、使いやすく信頼できる、実戦で試された強力な枠組み、あるいはその上の保険。世界の Jump Capital たちをこれに統合できるところまで行けるとは思っていません……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>ありがとう。それから、少し冗談めいた質問ですが、もし「神の鍵」を持っていて Cardano の何かを変えたい、ハードフォークをする、としたら、何を……技術的な観点で、Cardano に足りないものはありますか？ EVM のチェーンでの経験から見て、Cardano で技術的に変える必要のあるものはあるか。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>確かなことは分からない。ないと思います。概念的にはすべて動くし、あればいいインフラは全部作れると思う。私が見るところ、それがより可能になったのは最近のことのようで、以前に人々がインフラを全部作ろうとしたときは、十分に強い背骨がなかった。間違っているかもしれませんが、インフラの面では何でも作れる。人々が、これまでどう作られてきたかを捉え直す必要があるだけです。EVM まわりに非常に多くの資金が流れてきたので、誰もが「EVM のために、EVM によって作られた」と考えていて、それがこれまでの作り方の概念になっている。Kamala の引用は何でしたか。「これまでにあったものに縛られない、あり得るもの」。それをもっと広める必要がある。それには多くのベンチャーやエコシステム・ファンドのようなものが入ってきて、補助して動かす必要があるが、可能です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan</div>
+  <div class="turn-body"><p>鍵は連携だと思います。ブリッジについて言えば、技術的な側面はある。EVM の世界へのブリッジをきちんと決めて、本当にわくわくしている人たちがいなければ、何百、場合によっては何千の新しい資産が発行される機会を逃す。ナラティブがあり、ゲームがあり、大人気になるトークンがある。だからインフラの側では、あなたの質問は EVM についてでしたが、Cardano の中核技術については、私たちは理由になるものを見つけませんでした。むしろ、資産の連携をどうまとめ、きっちり調整し、案件を LP の前に出し、連れてきて、LP が増えるほど簡単になっていく、という話。「ここは来て遊べる場所だ」と。しかし誰も最初にはなりたくない。だからスパイダーマンのゲームのようで、みんなが「そっちが先に」と互いを指している。そこから連鎖が起きて、どんどん簡単になっていく。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>スパイダーマンの例えは好きです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(推定)</em></div>
+  <div class="turn-body"><p>ありがとう。</p></div>
+</div>
+
+<p class="sec" id="ja-t-og">13 — Christina と運営グループ、Phil の「競争入札」</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ほかにゲストへの質問がある人は？ 思い出してもらうと、AlphaGrowth の皆さんは 2 週間ごとに来て進捗を共有し、コミュニティが質問し、直接フィードバックを伝える機会も作ってくれると言っています。称賛を。時間を割いて、コミュニティにこれだけ透明であってくれることに感謝します。たくさん質問し続けると思いますが。さて……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>私たちを迎えてくれてありがとう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>待って。あの質問をしていない。Christina と働くのはどうですか？ 特に運営グループ（OG）の一員として、彼女の貢献と、あえて言えば、みんなに課す高い基準について。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>おお。来た。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>ただの好奇心です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>痛い。撃たれた。母が言っていました、良いことが言えないなら……冗談です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>なんてこと、Eric。うまい、答えなし。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>いえ、Christina は素晴らしい。正直、運営グループ全体が素晴らしい。多様な背景を持つ聡明な人たちがたくさんいて、誰もが「どう手伝えるか」と現れて、アイデアを足し、フィードバックを、ときに批判を、受け止めて前に進む。取れるものを聞くのではなく、貢献できるものを聞く人たちばかり。そういう人に囲まれるのが好きです。Christina はそこにいて、関わり、聴いている。彼女のフィードバックも欲しくて、彼女は「どう手伝える？ それから、あなたたちがもっと良くできると思うのはここ」と。まさに私が必要なものです。昨日は、議事録をもっと良くしなければ、ほかにもいくつか——文書化——概要のものをもっと、と言われた。そのとおりです。それがいま必要なこと。私は細部に埋もれるから。ビルダーと常に会って、たくさんのアーキテクチャを設計している。自分の頭の中に迷い込むので、それを手放しがちになる。根を張り、真実の源を作り、紙の記録を作って、コミュニティのみなさんが受けるべき説明責任を果たすことは不可欠です。それが、Christina がこの素晴らしい人たちのグループに貢献し、その一部でいて、どう Cardano を良くするかを考えていること。そして私たちは良くしています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Christina のように、あなたを軌道に乗せ、猫の群れを日常的にまとめる人たちがいてよかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen</div>
+  <div class="turn-body"><p>ええ。私はいまを生きるのが本当に好きなので、いつも背後で誰かが「ところで、この情報は全部どこに置いているの？」と言い、私は「良い質問だ」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>一緒に働きやすかったと言っておきます。質問や建設的な批判をしても、同じように受け止めてくれる。みんな本当に協力的です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>技術的な監査はとても見事です。RFP の項目を見ると、Cardano に長くいる人間として、非常に細かい理解がある。「エグゼキューターの標準」を見たとき、Cardano の開発者として、まさにそれは人にアプリの開発を頼まれるときの痛点だと思った。全部を土台から作らなければならず、何も既定で相互運用できない。だから本当に感心した。ここにいる人が、この最初のフェーズだけでも、DeFi がここで抱える空白と痛点を特定した、能力と結果の実演を見たいなら、あの RFP は見始めるのにとても良い場所です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Phil、「能力と結果」をもう一度、文の中で言ってもらえますか。私たちの側でとても欠けてきたものだと思うので。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>彼はそれをあまり聞かないから。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>そう、あまり聞かない。こういう会話ができていて、ビジネスの会話のように感じられるのが本当に嬉しい。私には驚くべきことです。だから、それについては本当にありがとう……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil <em>(推定)</em></div>
+  <div class="turn-body"><p>ビジネスと能力。ありがとう。いや、能力と結果。ありがとう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>覚えてもいないんですね。やめなさい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>ほら、いまを生きているので。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>James、長く黙らせていたので、ほかに質問はありますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>0.0、Belushi が『アニマル・ハウス』で言ったように。いや、彼は実際には言っていない。それは彼の大学時代の成績平均でした。でも、まったく 0.0。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>みなさん、来てくれて本当にありがとう。こうした議論を続け、コミュニティにあなたたちを知ってもらい、何に向かっているか、どんな進捗があるかを知ってもらうのを楽しみにしています。全部素晴らしいものになる。私はこの一部にいるので、私たちが透明であり続け、コミュニティが何が起きているかを見て、約束したマイルストーンなどに対して実際に追跡できることを知っています。素晴らしいことになります。わくわくしています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>来てくれてありがとう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>もうひとつ言いたいのは RFP のことです。人々はずっとこれを求めてきたと思います。競争的な入札の仕組みだから。各チームが個別に何かを提案して、「これか、何もないか」しかなかった。いま初めて競争的な入札の仕組みがある。空白が特定されていて、Cardano には有能なチームが何十もある。これは多くの競争を生むはずで、Dingo や代替ノードがこれほど良く、これほど速く出ているのも理由のひとつは、こうした代替ノードを作るチームの間の激しい競争です。Plutus や Aiken などの言語も同じ。この仕組みは、できるだけ多くの人が参加するときに本当に力を発揮する。だから、Cardano のチームや開発者なら RFP に参加してください。Cardano のチームを知っているなら、連絡してください。コミュニティのメンバーなら、リツイートして、この RFP の過程が起きていることを広く知らせてください。できるだけ多くの参加を得るために。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>Phil、これは私たちの過程全体のレベルを上げることになると思いませんか。いくつかの場合、少し精彩がなかったので。しかもほかも引き上げられる。資金は財務庫からだけ来るわけではなく、資金を受けた二次的な主体からだけでもない。外にはかなりの量があって、本当に機能する、素晴らしい結果を出す、実証された標準があれば、私たちがこれに注意を払うだけで、ほかも助けられる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Phil</div>
+  <div class="turn-body"><p>ええ。エコシステムのほかの助成の提案者にも、この型に従うこと、この RFP の過程を見ることを勧めます。すべてにではないし、RFP 一般には懸念もある。投票にもとづく RFP なら、結果は「2 人が同じものを提案していて、片方が安いからそれを選ぶ」になる。しかし専門家の委員会にもとづく RFP は、伝統的なビジネスの慣行にずっと近い。いちばん安い選択肢に既定で流れるのではなく、質や実績などを考慮する。だからほかの助成の提供者もこれを見て、業界全体が良くなることを願います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>そのとおり。ありがとう。</p></div>
+</div>
+
+<p class="sec" id="ja-t-dave">14 — Dave への称賛と、ゲストの退出</p>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>それから Dave Dinesio に称賛を。彼は……Dave Dinesio に小さな称賛。あれはお手本でした。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>姓はそう発音するんですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>Dinesio。ええ、たぶん。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>そんなにたくさん……Dinesio Farms というのが……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>実は一度も口に出したことがない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>いや、Dinesio でしょう。さあ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>改めて Dave Dinesio に称賛を。提案の 5 エポックの期間に、どう宣伝し、推進し、調整するか、DRep を集めてその過程の一部だと感じてもらうか、のお手本を示しました。過去に、Dave が出した水準では見たことがなかった。あの人に称賛を。本当に素晴らしかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>姓は何でしたか、Blockchain？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>Dinesio だと思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私が間違って言っているのですか？ 分かりません。名前を完全に壊してしまった……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>言うのは聞いていました。4 回くらい言っていたので、「いいぞ」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私は「本の知識」の罪を犯しがちで、たくさん読んでも口に出さない。だから、読んだだけで間違って言ったことは確実にある。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>誰かが彼の名前を口に出すのを聞いたのは初めてです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>彼はここにいたのに、いまはいない。切り抜いて、確認してもらわなければ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>切り抜いて。Dave の確認が要る。3 分も彼の名前の話をしました、Dave。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、もう抜けています。しかも小さな子どもがいて、あまり眠れていない。3 か月前より眠れていることを願いますが、どうか。良くなっているかは分からない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>ありがとう、みなさん。もう行かないと。ありがとう、Eric。ありがとう、Brian。Elder、感謝。素晴らしかった。Phil、James、ありがとう。Christine、よかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、仕事に行きなさい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Eric Waisanen <em>(推定)</em></div>
+  <div class="turn-body"><p>ありがとう、みなさん。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James <em>(推定)</em></div>
+  <div class="turn-body"><p>ようこそ塹壕へ。ここはいい場所です。私たちはここに住んでいる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(推定)</em></div>
+  <div class="turn-body"><p>会議があるので落ちます。また。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>どうぞ。会議に遅れていますよ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Bryan Colligan <em>(推定)</em></div>
+  <div class="turn-body"><p>11 時 17 分に会議です。</p></div>
+</div>
+
+<p class="sec" id="ja-t-after">15 — ゲストのあと</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。Chad、どう思いましたか？ いい回でしたよね？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>みんな AlphaGrowth の話をありがたく思ったと思います。彼らがもっと情報を共有し始めれば、さらに人気が出るでしょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Chad、ほかに新しいことは？ 何が起きていますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>よく分かりません。ほかに何が……新しいガバナンスアクションがあると聞いたような。</p></div>
+</div>
+
+<p class="sec" id="ja-t-oz">16 — OpenZeppelin のガバナンスアクション</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>すみません、ミュートになっていなかった。もうひとつガバナンスアクションがあって、Robertino の開発者体験のために承認したものと非常に似ています。見に行って投票してください。私のパートナーは最初に「ノー」に投票した一人で、「もうこの種のものには投票した」と。だからどうなるかは分からない。Ken Eric、これを見ていますか？ どうなっていますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>見ています。私は Team Void の一員なので言いますが、この提案は、このメタデータで見ると……金額や内容は別として、Cardano の憲法に照らして、本当に非常によくできている。実は最良のもののひとつだと思う。だから書いた人にはビールを一杯おごるべきです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>書いたのはあなたですか？ それを釣っているの？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>いえ、違います。私は無関係です……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>V、Ken Eric は私にビールをおごらせようとしているようです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>どうせおごってくれてもいいですよ、時勢ですし。いえ、実際、提案は憲法に沿って良い書き方をされています。それから、OpenZeppelin ですが、Cardano のエコシステムで OpenZeppelin が何か、その歴史や何をしてきたかを知っている人はそれほど多くないと思う。私も全部は知りません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>では共有してください。何を知っていますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>知っていることを話します。人は覚えていませんが、OpenZeppelin はずっと昔からある。EVM のチェーンの世界では、スマートコントラクトのコードを取りに行く「事実上の場所」と言えるでしょう。2014 年ごろからあると思います。Ethereum Foundation からの助成などで強く支えられてもいる。だから OpenZeppelin のコードとライブラリは、実戦で試され、非常に多く使われている。開発者の世界で非常に高い信頼がある。Phil がまだいれば同意してくれると思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>落ちたと思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>ええ、落ちましたね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私が彼らを知っているのも、要するに Ethereum の世界でのそれです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>それから私の経験を話します。EVM のチェーンや Solana から開発者を、こっそりと Cardano のエコシステムに連れてきたことがあります。ぶつかった課題のひとつは、「あのライブラリはどこか、あのコードはどこか、マルチシグの契約はどう作るのか、これはどうする、あれはどうする」。Cardano のエコシステムでは、それがあちこちに散らばっている。すべてを 1 か所に集める試みはあると知っています。Mateo とかいう人でしたか。覚えていません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Robertino。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Robertino。惜しかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いえ、まったく近くない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>一人はイタリア人で、もう一人はブラジル人でしたか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いえ、アルゼンチン人。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>私の頭の中では近かったんです。とにかく、それを見たとき、知っている開発者ほぼ全員に「コードをそこに入れて、目を集めて、作りたい人が保守し開発して、あの有名なプルリクエストで改善できるように」と言いました。私は日常的に Cardano で開発しているわけではありませんが、OpenZeppelin に行くときと似た信頼と姿勢があると感じる。OpenZeppelin には互いに支え合う巨大なコミュニティもある。以上が私の長話です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>つまり考え方としては、彼らと組んで、それが Ethereum や EVM と共有されれば、彼らがこちらに来て使ってくれるかもしれない、ということですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>それも実現可能なことですが、OpenZeppelin のエコシステムには多くの知識と能力があって、それは Cardano の利益になる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>分かりました。Miss B が。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>「かもしれない」「起きるかも」が多いと聞こえます。Chris が言ったように、私たちはすでにこのようなものに資金を出しています。いま作っているものに、彼らが作るものと両立しない問題があるのか。結局、彼らは約 1,100 万を求めていて、Nifa が最初に指摘したと思いますが、最終的にこれを維持するコストは何か。考えてみれば、私たちはこれを維持しなければならず、そしておそらく Robertino がやっていることも……それが一回限りなのかは分からないけれど。すると突然、同じものに 2 回払うことになる。過去数年 Cardano でやってきた同じ罠です。同じものに何度も何度も資金を出す。そして保守になると「これも、これも、あれも維持しなければ」。4 つの異なる解決策があって、全部が異なる土台の上にある。片方なしには片方が成り立たない。そしてまた行き詰まり、みんなが不満を言い、Robertino がいま作っている、実際の標準を作ろうというところに戻る。それは 4、5 年先の話。彼が 4、5 年で終えるという意味ではなく、いま見えているロードマップがそうだ、ということ。あまりに多くの異なる解決策を持つことになって、その解決策をどう使うかの標準を作り始めなければならなくなる。行ったり来たりを繰り返し、そのころには誰かが「標準がどう動くかの解決策がある」と言いに来る。いえ、素晴らしいことだし、彼らの評判が高いのは素晴らしいし、名前を出してくれたことには本当に感謝している。でも、いま重要そうで楽しそうなこと以上に先を考えていないことがあると感じます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>妥当な指摘です。分かります。それからもうひとつ、なぜ誰も言わないのか分かりませんが、彼らにはセキュリティのものがある。12 か月にわたって毎週、何人かを置いて、スマートコントラクトなどを見張る。とても大きな金額なのは分かっているし、似たものに以前資金を出したのも確かです。それは否定しません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>イタリア人のあの人に資金を出しました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice <em>(推定)</em></div>
+  <div class="turn-body"><p>アルゼンチン人。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>ああ、そうだった……アルゼンチン人。すみません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>イタリア、アルゼンチン。違う。彼が話すとは……まったく別。すみません。私の間違い。今回は許します。</p></div>
+</div>
+
+<p class="sec" id="ja-t-dcdog">17 — Zimbabwe の DC Dog</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>DC Dog さん、どうぞ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>どうも、どうも。DC Dog、Maswali se です。暖かく晴れた Zimbabwe から生放送。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。こちらは暖かくも晴れてもいません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>いつも暖かく、いつも晴れ。いや、冗談です。私は UK にいますが、Zimbabwe に住んでいます。Learn Cardano の Pete にも敬意を。Cardano Over Coffee を聴いてきました。あなたたちは本当に面白い。フランス語で失礼。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>フランス語ではないと思うけれど、大丈夫。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>もっとフランス語も話せますが、多くの人を怒らせると思うので。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>やめてください。好きではないので。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>冗談です、冗談。でもこのスペースは好きです。Cardano Over Coffee は素晴らしい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>真面目なときもあります。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>そう、Pete。彼が出すコンテンツすべてに本当に感謝している。Cardano の世界の、そして人生の伝説です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Pete は素晴らしい。彼の Draper の投稿は見ていますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>最近は見ていません。あちこち走り回っていて。世界を飛び回っている。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>彼は Draper University での経験から得た知見を、動画などでたくさん共有しています。まだなら見てみてください。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>見ていますし、この機会について人に伝えてきました。ただほかのこともやっていて、人生が求めるほかのことでかなり忙しい。そして、いま暗号資産がある状況では、資産を安全に保ちたければ、ハードウェアと貸金庫を持って、分散させて、ベトナムだの何だの、あちこちに飛び回らなければ。いまはウェールズにいます。おっと、選択的開示、うっかり漏らした。でも本当にウェールズにいるのか、それは煙幕か。世界は決して知らないでしょう。みんな愛しています。挨拶に寄っただけです。たくさん聴いていて、このスペースが好き。あなたたちは冗談ばかりだけれど、冗談の中に真面目さがある。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私たちは両方になれます。人を助け、教育し、正しい情報を持ってもらおうとしながら、楽しくやる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>教育を楽しくする。私が Zimbabwe で育ったころ、父はキャンプに送ってくれて、荒野に連れ出されて、道の見つけ方、ロープのこと、懸垂下降、生き延びること。楽しいときに、本当に身につく。机の前に座って、ひとつの文化の歴史にすぎない歴史を読めと言うのは、本当の歴史ではない。だから私は学校をよく抜け出して、自分で学んだ。それはここでみんながやっていること。いまはみんなつながっていて、生きることを選んだ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そうですね。上がってきて共有してくれてありがとう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>こちらこそ。</p></div>
+</div>
+
+<p class="sec" id="ja-t-pragma">18 — Beatrice — Cardano Ignite が Pragma に</p>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Miss Beatrice、何をしていますか？ こっそり上がってきましたね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>こっそりではありません。誰かが私の名前を言ったから、招かれて来たんです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>名前を 3 回言ったから、出てこざるを得なかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>そういうこと。私にかかっているビートルジュースの呪いです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>なんと。でもビートルジュースですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>ありがとう。今週はずっとここにいます。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええと、あの効果音はあるかな。ドラムがある。嬉しい。このアプリで効果音を持ったことがなかったので、私の番。Bea、最近は何をしていますか？ Ken Eric が騒ぎを起こすほかに、そちらで何か面白いことは？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>特に面白いことはなく、暮らしのことだけ。でも静かな時期があるのは良いことだと思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そうですね。よかった、私が Pragma で騒ぎを起こしているので。忙しくしますよ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>ええ、昨日の会議のメモを読みました。というか……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>20 個くらいしか割り当てていません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>いえいえ。私のノートテイカーが今朝、いい要約を送ってくれて、「昨日はこれとこれとこれがあった。これに返事をすること。あなたが欠席した Pragma の会議で決まったことはこれ」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>でもあなたのノートテイカーはそこにいた。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>そう。だから分かる。とてもよかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>では、まだ聴いている人のために正式に言えると思います。Robertino のプロジェクトが Pragma のプロジェクトとして受け入れられ、オンボーディング中です。これを育てる手伝いができて、Cardano へのオンボーディングを簡単にするための貢献をできるだけ集められることに、とてもわくわくしています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>待って、彼には伝えましたか？ それとも、みんなに言っただけ……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、伝えました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice <em>(推定)</em></div>
+  <div class="turn-body"><p>でも、みんなにも言った。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>彼には伝えました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>面白かったでしょうね。私がやりそうなこと。みんなが祝い始めて、彼が「何が起きているの？ 私が何をした？」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>King James のリリース。かわいい。効果音をスクロールしています。いえ、Robertino には伝えました。彼はかなり喜んでいた。Cardano Ignite は Pragma のウェブサイトのプロジェクトとしてもう追加してあるので、見たい人は見てください。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>私たちは止めようとするけれど、あなたは聞かない。聞かないんです、Christina。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いえ。誰かが私に GitHub の上位の書き込み権限をくれたので、それだけです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">James</div>
+  <div class="turn-body"><p>私は誰かのプルリクエストを承認した。それで何かをする資格が付くはず。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ただの親切で誰かのプルリクエストを承認する。ええ。そこでは進むものがいくつかあります。彼と働き始めるのが楽しみで、これが Cardano をどう助けるかも楽しみ。だから、あなたと私は忙しくなりますよ。Chad……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>私はいつも忙しい。別の領域で忙しいだけ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そうですね。最近は本当に忙しかった。来週は働いていいですよ。Chad、何かありますか？</p></div>
+</div>
+
+<p class="sec" id="ja-t-node">19 — ノード 11.1 と 11.2、DijkstraNet と MusashiNet</p>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>技術運営委員会からのアルファがあります。ノードのアップグレード。11.1 はメインネット対応で、11.2 が来る。下に Serg がいるので、彼のほうが詳しいでしょうが、Cardano のブロックチェーンの改善が来ています。いつものように懸命に作っている。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、それは期待どおり。Ryan が戻りたいようです。Ryan はそのグループにいますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>いるかも。いるかも。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad</div>
+  <div class="turn-body"><p>それから CAP ポータルの、憲法への更新があります。見ましたか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>実は……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad <em>(推定)</em></div>
+  <div class="turn-body"><p>あなたはいつも意見をしっかり持つ人だから、入っていって「これを直せ」と言うべきです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>その指摘は正確ですね。タブは開いてあるけれど、まだ進んでいない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Chad <em>(推定)</em></div>
+  <div class="turn-body"><p>知らない人のために言うと、Linear Leios が来るときに、憲法にいくつか更新がある。Cardano のブロックチェーンの新しい規則です。実はたくさん。数週間のうちに勢いよく来ると思います。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ。ハードフォークに間に合わせるには月末までに全部そろえなければならないはずなので。この数週間は刺激的な時期です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>非常に、非常にきついスケジュール。私は「Q1 までにハードフォークできないかもしれない」と言って首を切られそうになりました。私は大間違いだったらしい。ずっと、ずっと早くやるそうです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私も経験しました、Ken Eric、あなただけではない。人の話を聞いていて、私も疑っていた。最後に確認したときはまだ予定どおりだったので、見てみましょう。Leios と Peras の開発進捗レビューがあって、みんなの報告を聞いていて、「全部が片付きつつある、という感じには聞こえない」と思いました。見てみましょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>Serg、次のノードの版について何が言えますか？ あなたはこれに関わっているでしょう。話して。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg</div>
+  <div class="turn-body"><p>昨日の TSC の会合の話をしていたところです。あなたが言ったとおりだと思います。11.1 はいまにも出る。メインネット対応で、旧式のトレーシングの仕組みを取り除く。11.2 は進行中で、おそらく数週間で来る。ハードフォークのイベントを生き残ることは想定されていないが、Dijkstra の早期テストを可能にする。Dijkstra net に使われると思います。プロトコル版 11 で始まり、また版 2 にフォークする。それが van Rossem 前で、それから van Rossem にフォークする。ただし Leios はなし。Leios をテストしているのは Musashi の testnet です。だから複数の testnet が同時に走る。ノードの版については、少なくとも前回の会合と私たちのメモではそれだけです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>いろいろな testnet があるんですね。いいことです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、楽しいことがたくさん。Musashi の再スピンが間近だと思います。少なくとも私の Musashi のノード、Dingo のノードのために待っているのはそれです。何か出たような……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>何か出て、Musashi にいるなら更新が必要だった、というのがありませんでしたか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(推定)</em></div>
+  <div class="turn-body"><p>いま確認しています。昨日確認したときは、まだ再スピンの待ちで、始まっていなかった。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>何か見た気がしたので、私も見に行かなければ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>安全性の観点で……何が実際に行われたかは見ていませんが、ブロックチェーンの強化もいくつか進んでいると理解しています。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。再スピンは今朝実際に始まったようなので、もう上がっているかもしれない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>では、やらなければ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(推定)</em></div>
+  <div class="turn-body"><p>そのようですね。刺激的なことがありますね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>あなたたちが Musashi と言うのを聞いていて、ノルウェー語ではマッサージの意味なので、「どんなマッサージのノードの話だ」と。私も実際に発音を聞いたことがなく、読んだだけでした。だからずっと Musahi だと思っていた、Musashi ではなく。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Serg <em>(推定)</em></div>
+  <div class="turn-body"><p>どこから来たかによるでしょう。発音がすべてです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>面白いですね。私が知っているのは日本への旅行のせいで、洞窟を訪ねたりして、「これで言い方が分かった」と。Miss Beatrice、私は本当に仕事に戻らなければならないかも。何か持ち出したい面白いことはありますか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>食べているところを捕まえましたね。いまは面白いことはありません。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。大きな一口を食べたところで「お味はいかがですか、何かお持ちしますか」と来る店員のよう。ここではそういうことが起きる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Beatrice</div>
+  <div class="turn-body"><p>そのとおり。私からは何もなし。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>Ryan、取り組んでいることすべてがうまくいくように。Ken Eric……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric</div>
+  <div class="turn-body"><p>私もすべてがうまくいくように。みなさんに——Mustafa も——ちなみに。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ryan <em>(推定)</em></div>
+  <div class="turn-body"><p>こちらも。</p></div>
+</div>
+
+<p class="sec" id="ja-t-musashi">20 — Mustafa、「ビルドマーケット」、『五輪書』</p>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>TC Dog、いましたね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>下にいるのが見えていました。どうしたの？ 何か掘っているのですか？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>ええ。Mustafa に少し話させてください。私たちがやっている土台作りを話してくれます。土台作り。世界規模の。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Mustafa</div>
+  <div class="turn-body"><p>TC Dog はふざけない。いつもそれをやっている。いつも。黙らない。彼が私のハードウェアウォレットを設定して、Cardano を始めさせてくれた。昔は Monero や Bitcoin でいろいろやっていた。それは別の話。彼が私を Cardano に連れてきて、本当に楽しんでいます。Midnight のスペース、Discord。街に入るのが待ちきれない。Dan、ここに入れてくれてありがとう。みなさんも。あなたたちが何を話しているのか、私にはさっぱり分かりませんけれど。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>大丈夫。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Mustafa <em>(推定)</em></div>
+  <div class="turn-body"><p>そして私たちは順調です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>順調ですね。みんな順調。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Mustafa <em>(推定)</em></div>
+  <div class="turn-body"><p>ありがとう。いい人たちですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>そう。いい人たちでもあるけれど、お尻も蹴りますよ。でも全部愛です。最近は厳しい時期なので、ADA が上がるにつれてもっといい人になります。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>ええ、でも私たちは「ビルドの市場」にいる。ベアマーケットではなく、ビルドマーケット。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ビルドマーケットですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>そして私は『五輪書』をいつも持っている。宮本武蔵。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>本当に？ いつも？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ。いつもすぐ隣に。いまも持っています。リュックに入っている。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>私もいま持ち歩いています。移動前の読書。先月。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>私が行ったのはいつだったか。2 月に行きました。要素から始まる、「地の巻」。ネパールの、オム・マニ・ペメ・フムの「地」のような。でも「水の巻」がとても面白い。「海軍の法」のようなことに来ると……深くは行きませんが、本当に格好いい。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>Charles の哲学は好きです……誰かに、この本を全部送ってもらう必要がありますね。お願いします。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>買えばいい。全部 1 冊で買えます。長い本ではないから。かなり短い。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>章のようなものですね。一度読むのではない。当時は巻物だった。何度も何度も読む。「これは何度も何度も練習しなければならない」と書いてあるから。剣の技だけでなく、自分を征服する技です。一対一の決闘、一人対十人、そして武蔵が十人いれば千人に立ち向かう。敬礼。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>『生き甲斐』を読むようなもので、詩のようなものですね。いいですね。送ってください。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>さあ、取りかかって。もともと巻物のようなものだから、読みやすい。彼の言うとおり、読み返し続けるんです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>そう。とても読みやすいけれど、読むほどに「これは仏の教えを読んでいるようだ」と気づく。とても、とても美しい本です。一人との剣の戦いだけの話ではない。剣術だけではない。自分の内側の戦い、陰と陽。ときには自分を叩かなければならない。引き返させようとする者に対して、自分の立場を守る。狂気も全部。だから Bruce Lee はあの叫びをやった。どう優位を示すか。場に飛び込むときは轟音で、戦いの途中は静かに、そして勝ったら大きく吠える。終わり。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>この人が、二刀を初めて使ったことで知られているのは知っていますよね？</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>ええ、好きです。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>でも、それは狂気の中で。実は彼はとてつもなく背が高かったと知りました。ほかの人より 2 フィート高ければ、腕も少し長くなる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>私は昔、稽古をしていた……</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina <em>(推定)</em></div>
+  <div class="turn-body"><p>それを知ったとき、面白いと思いました。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>……合気道を。実は、背が低いことはそれ自体が利点です。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>そうですね。何にでも長所と短所がある。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>合気道では、武器なしで膝立ちからすべてを学べる。膝立ちで誰かが来たら、相手を地面に叩きつけるてこの力はずっと大きい。まあ、とにかく。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>ええ、彼の時代に、二刀を振り回して来る男は、一刀の男より怖かったでしょうね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>彼は本当は一刀しか使わなかった。不意打ちされたときだけ二刀を抜いた。環境をすべて使う。太陽を背にする。環境を自分の有利に使う。だから Charles がこのアップグレード、長く待っていたものに、この名前を付けたのが好きです。Discord でこれについて質問したら、彼は「数年前にこれを出していたら、全員を壊滅させていた。だがそうしたくない。みんなを一緒に連れてきた。互いの戦いではなく、内側の戦いだ」と。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>いいですね。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">Ken Eric <em>(推定)</em></div>
+  <div class="turn-body"><p>では、来週のスペースの宿題。全員読むこと。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>私も言おうとしていました。読書の宿題がある。来週、読んだものについて話しましょう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>ページ数も多くない。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>来週話しましょう。何ページか見てみよう。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog</div>
+  <div class="turn-body"><p>82 ページ。それだけ。それが本です。82 ページ。みなさんならできる。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who host">Christina</div>
+  <div class="turn-body"><p>では来週の木曜に、各章の小テストがあります。みなさん、本当にありがとう。このスペースを締めます。新しい友人たち、来てくれてありがとう。Ryan、B、Ken Eric、Chad、みんな大好き。いつも感謝しています。明日もスペースがあるので、Maureen のところに来てください。また。</p></div>
+</div>
+<div class="turn">
+  <div class="turn-who">DC Dog <em>(推定)</em></div>
+  <div class="turn-body"><p>いいですね。お気をつけて。さようなら。</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">英語全文を通しで訳したものです。誤変換は用語集にしたがって修正しています。</span>
+  <a href="./">まとめ</a>
+  <a href="./transcript-ja.html" aria-current="page">日本語全文</a>
+  <a href="./transcript-en.html">英語全文（原文）</a>
+  <a href="../">← 一覧</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Cardano Over Coffee · <a href="https://x.com/coc_space">X の Cardano Over Coffee</a></p>
+</footer>
+
+</div>
+</body>
+</html>

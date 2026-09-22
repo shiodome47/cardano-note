@@ -63,3 +63,12 @@ sebastian-nagel:
   channel_url: https://www.youtube.com/@sebastiannagel8354
   channel_id: UC4H2YqCtZ12MhcNQJVh6Tqg   # 2026-09-16 時点で RSS が 404 を返す。new_videos.py はこのチャンネルを飛ばして報告する
 
+
+cardano-over-coffee:
+  title_ja: Cardano Over Coffee
+  title_en: Cardano Over Coffee
+  blurb_ja: X（旧 Twitter）のスペースで平日毎朝配信されているコミュニティの番組「Cardano Over Coffee」（@coc_space）。録音が公開されている回だけを扱います。司会も参加者もコミュニティの個人で、発言は各自の見解です。発言者は表示名のまま扱います。
+  blurb_en: "Cardano Over Coffee" (@coc_space), a community morning show streamed on X Spaces every weekday. Only sessions with a public recording are covered. Hosts and participants are individuals speaking for themselves, named by their display names.
+  chatham_default: false
+  numbered: false
+  channel_url: https://x.com/coc_space   # X スペース。YouTube ではないので channel_id はなく、new_videos.py の対象外。新しい回は依頼者から受け取る
