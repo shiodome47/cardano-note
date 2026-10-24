@@ -1074,6 +1074,23 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </ul>
 
 <details class="explain">
+<summary>「escape hatch」とは何か — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。仕様書 3.5 と「検閲耐性」の節の記述をもとにしています。</p>
+<h4>そもそも「escape hatch」とは</h4>
+<p>直訳は「非常口」。<strong>オペレーターが全員止まってブロックが出なくなったときに、誰でも引けるレイヤー 1 のレバー</strong>です。仕様書では、state queue の最後のブロックが一定の古さ（escape hatch block age というパラメータ）を超えると発動できます。発動すると「緊急期間」（emergency duration）に入り、その間は<strong>担保の要件を下げて新しいオペレーターが登録できる</strong>。緊急期間が終わると、減額した担保で入ったオペレーターは猶予期間のうちに退くか担保を増やすかを選び、残ったままの者は誰でも退かせることができて、小さな罰金がその人の報酬になります。</p>
+<h4>なぜそれが要るのか</h4>
+<p>利用者の資金はレイヤー 1 の Midgard のコントラクトにあり、取り出すには「引き出し」がブロックに取り込まれる必要があります。ブロックを作るのはオペレーターなので、全員が止まると引き出しも止まり、資金が動かせなくなります。escape hatch は<strong>ブロック生産を再開させるための仕組み</strong>で、資金を直接取り出す仕組みではありません。</p>
+<h4>公式サイトの「直接提出できる」との関係</h4>
+<p>公式サイトの「利用者はレイヤー 1 の state queue に直接取引を出せる」は、これとは別の、検閲への備えです。仕様書では、入出金と「transaction order」（レイヤー 1 経由で出すレイヤー 2 の取引）にはレイヤー 1 で提出時刻が付き、その時刻を含むべきブロックがそれを取り込まなければ、そのブロック自体が無効になります。つまり<strong>ブロックが出続けている限り、オペレーターは利用者の要求を無視できない</strong>。ブロックが出なくなったときの備えが escape hatch で、2 段構えになっています。</p>
+<h4>身近なたとえ</h4>
+<p>鉄道で運転士が全員いなくなったとき、保証金を下げて臨時の運転士を募れる規則のようなものです。列車（ブロック）を動かし直すための規則であって、乗客が線路を歩いて帰る（資金を自分で取り出す）仕組みではありません。</p>
+<h4>一言でまとめ</h4>
+<p>escape hatch は「オペレーターが全滅しても、担保のハードルを下げて誰かにブロック生産を再開させる非常用の規則」。公式サイトの「資金が永久に取り出せなくなることはない」は、この規則と、ブロックが出ている限り要求を無視できない規則の、2 つで支えられています。</p>
+</div>
+</details>
+
+<details class="explain">
 <summary>素朴な疑問 — 3〜7 日も待つのは、Cardano が遅いからでは？</summary>
 <div class="explain-body">
 <p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
@@ -1161,6 +1178,23 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>仕様書は、Leios の数年がかりの道筋の「途中の到達点」として blob を位置づけ、「Midgard の mainnet 展開より前に実現できると考えている」と書いています。<span class="badge">補足</span>IOG が 2026 年 10 月 20 日に公開した Leios の mainnet までの道筋のどの段階で blob が使えるようになるかは、こちらでは確認できていません。Leios そのもの（レイヤー 1 の処理量を増やす改良）と、その一部として提案されている blob（データの一時的な置き場）は、別のものとして読んでください。</p>
 <h4>一言でまとめ</h4>
 <p>Leios の blob は「Cardano が 30 日だけ預かる、安い公開データ置き場」。Midgard はそこにブロックの中身を置きたい、という話です。</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>「Mithril」とは何か — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。仕様書 6.1.2 の記述をもとにしています。</p>
+<h4>そもそも「Mithril」とは</h4>
+<p>Input Output が開発した、<strong>Cardano のステークプール運営者（SPO）が、ステークの重みで署名を持ち寄る仕組み</strong>です。「十分なステークを持つ参加者たちが、これは正しいと署名した」という証明書を作れます。もともとは、チェーンの状態の写し（スナップショット）にこの証明書を付けて、新しいノードが最初から全部を検証しなくても速く立ち上がれるようにするために使われています。</p>
+<h4>Midgard での使い方</h4>
+<p>仕様書は、Leios の blob が mainnet に間に合わなかった場合の代替として挙げています。流れはこうです。オペレーターがブロックの中身を公開の場所に置く → Mithril の参加者が各自でそれを取りに行き、「読める」「見出しの Merkle root と一致する」の 2 点を確かめる → 確かめた参加者が署名する → <strong>しきい値（da multisig threshold）以上の署名がそろった証明書がないと、見出しを state queue に足せない</strong>。中身を隠した見出しは、そもそも受け付けられません。</p>
+<h4>Leios の blob との違い</h4>
+<p>仕様書自身が違いを書いています。Leios の blob は Cardano の全ステークで守られるのに対し、Mithril は「Mithril を動かしている SPO のステーク」だけで守られる。参加する SPO が増えるほど差は縮み、全員が参加すれば同じになる、と。つまり Mithril 案での信頼の範囲は「署名する SPO の顔ぶれ」で決まります。</p>
+<h4>身近なたとえ</h4>
+<p>連判状です。「帳簿を自分の目で見た、確かにある」という署名が一定数そろわないと、要約を受け付けない。署名する人が町内の一部だけなら、その人たちの範囲が信頼の範囲です。</p>
+<h4>一言でまとめ</h4>
+<p>Mithril は「ステークの重みで署名を集める Cardano の仕組み」で、Midgard では「中身が公開されていることを SPO たちが署名で保証する」代替案として使われます。</p>
 </div>
 </details>
 
@@ -1615,6 +1649,23 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </ul>
 
 <details class="explain">
+<summary>What the “escape hatch” is: open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, based on section 3.5 of the spec and its passage on censorship resistance.</p>
+<h4>What it is</h4>
+<p><strong>A lever on the Layer 1 that anyone can pull when every operator has stopped and no blocks are being produced.</strong> In the spec it can be triggered once the last block in the state queue is older than a parameter, the escape hatch block age. Triggering it opens an “emergency period” (the emergency duration) during which <strong>new operators can register with a reduced bond</strong>. When the period ends, reduced-bond operators get a grace period to retire or top up their bond; anyone can then retire those who did neither, taking a small penalty from their bond as a reward.</p>
+<h4>Why it is needed</h4>
+<p>Users' funds sit in Midgard's Layer 1 contracts, and getting them out requires a withdrawal to be included in a block. Blocks are made by operators, so if all of them stop, withdrawals stop and funds cannot move. The escape hatch is <strong>a way to restart block production</strong>, not a way to pull funds out directly.</p>
+<h4>How it relates to the site's “submit directly”</h4>
+<p>The site's line that users can submit transactions directly to the Layer 1 state queue is a different mechanism, a defence against censorship. In the spec, deposits, withdrawals and “transaction orders” (Layer 2 transactions submitted via the Layer 1) receive an inclusion time on the Layer 1, and a block that should have included them but did not is itself invalid. So <strong>as long as blocks keep coming, operators cannot ignore users' requests</strong>. The escape hatch covers the case where blocks stop coming; the two are a double defence.</p>
+<h4>An everyday comparison</h4>
+<p>Like a railway rule that, if every driver walks out, lets temporary drivers be hired on a reduced deposit. It is a rule for getting the trains (blocks) moving again, not a way for passengers to walk home along the tracks (withdraw funds by themselves).</p>
+<h4>In one line</h4>
+<p>The escape hatch is “an emergency rule that lowers the bond so someone can restart block production if all operators vanish”. The site's claim that funds “can never be permanently stranded” rests on this rule together with the rule that running operators cannot ignore requests.</p>
+</div>
+</details>
+
+<details class="explain">
 <summary>A naive question: is the 3–7 day wait because Cardano is slow?</summary>
 <div class="explain-body">
 <p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
@@ -1702,6 +1753,23 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>The spec places blobs as “a natural intermediate point” on Leios' multi-year roadmap and says “we believe that they are achievable before Midgard's planned deployment on mainnet”. <span class="badge">added</span> At which stage of the mainnet path IOG published on 20 October 2026 blobs become available is not something we could confirm. Read Leios itself (the upgrade to Layer 1 throughput) and blobs (a temporary data store proposed as part of it) as two different things.</p>
 <h4>In one line</h4>
 <p>A Leios blob is “a cheap public data store that Cardano keeps for 30 days”, and Midgard wants to put its block contents there.</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>What “Mithril” is: open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, based on section 6.1.2 of the spec.</p>
+<h4>What it is</h4>
+<p>A protocol developed by Input Output in which <strong>Cardano's stake pool operators (SPOs) pool signatures weighted by their stake</strong>, producing a certificate that says “participants holding enough stake signed that this is correct”. Its original use is to certify snapshots of the chain state so that a new node can start quickly without verifying everything from the beginning.</p>
+<h4>How Midgard would use it</h4>
+<p>The spec offers it as the fallback if Leios blobs are not on mainnet in time. The flow: the operator publishes the block's full contents at a public location → each Mithril participant fetches them independently and checks two things, that the data is available and that it matches the Merkle roots in the header → participants who confirm this sign → <strong>a header cannot be appended to the state queue without a certificate carrying signatures above a threshold</strong> (the da multisig threshold parameter). A header whose contents were withheld is never accepted.</p>
+<h4>How it differs from Leios blobs</h4>
+<p>The spec draws the difference itself. Leios blobs are secured by all of Cardano's stake; Mithril only by the stake of SPOs running Mithril. The gap narrows as more SPOs take part and vanishes at full participation. So under the Mithril option, the circle of trust is the set of SPOs that sign.</p>
+<h4>An everyday comparison</h4>
+<p>A signed petition: the summary is not accepted until enough people have signed “I saw the ledger with my own eyes, it is there”. If only part of the town signs, that part is the circle of trust.</p>
+<h4>In one line</h4>
+<p>Mithril is “Cardano's stake-weighted signature scheme”, and in Midgard it is the fallback in which SPOs certify by signature that the block contents are public.</p>
 </div>
 </details>
 
