@@ -301,6 +301,23 @@
 <p>オペレーターがブロックの中身を、少なくとも maturity period の間、公開しておく場所。レイヤー 1 には見出ししか書かれないので、ここが読めなければ監視者は不正を見つけられません。<span class="badge">補足</span>rollup の設計で「何を信頼しているか」が最も現れる部分です。</p>
 </div>
 
+<details class="explain">
+<summary>「データ可用性（DA）層」とは何か — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。仕様書の記述ではありません。</p>
+<h4>そもそも「データ可用性」とは</h4>
+<p>「可用性」は、ここでは<strong>「データが読める状態にあること」</strong>です。正しいかどうかではなく、手に入るかどうか。Midgard がレイヤー 1 に書くのはブロックの「見出し」（中身のハッシュを含む短い要約）だけなので、中身そのものは別の場所に置く必要があります。その置き場が DA 層です。</p>
+<h4>なぜそれが要るのか</h4>
+<p>Midgard の安全は「不正があれば誰かが証明できる」ことで成り立っています。証明するには中身を読まなければなりません。もしオペレーターが見出しだけ出して中身を隠したら、ブロックが正しいかどうか誰にも確かめられず、不正があっても証明できません。<strong>中身を隠す、というのが optimistic rollup でいちばん警戒される攻撃</strong>で、DA 層はそれを防ぐための仕組みです。PR #471 の訓練項目に「DA の喪失」があるのは、この場所が止まったときの備えを試すためです。</p>
+<h4>身近なたとえ</h4>
+<p>決算の「要約」だけを公開して、帳簿の本体は見せない会社を想像してください。要約の数字が合っているかは、帳簿を見ないと検算できません。DA 層は「帳簿の本体を、期間中は誰でも閲覧できる場所に置く」という約束に当たります。閲覧できる場所が会社の金庫なら会社を信じるしかなく、公的な保管所なら保管所を信じることになる。置き場によって、信じる相手が変わります。</p>
+<h4>Midgard の候補</h4>
+<p>下の 3 つです。Cardano 自身に置く（Leios の blob）、決められた運営者たちが署名して置く（マルチシグの委員会）、ステークに基づく署名の仕組みを使う（Mithril）。どれを使うかで「誰を信じるか」が変わる、というのが次の「素朴な疑問」の中身です。</p>
+<h4>一言でまとめ</h4>
+<p>DA 層は「ブロックの中身を、不正を証明できる期間中、誰でも読める場所に置く」仕組み。正しさを保証する場所ではなく、正しさを確かめるための材料を保証する場所です。</p>
+</div>
+</details>
+
 <ol>
   <li><strong>Cardano の Leios の blob</strong>（仕様書が「理想的な解」と呼ぶもの）。Leios の道筋の途中に生まれるデータの置き場で、仕様書は「Midgard の mainnet 展開より前に実現できると考えており、Leios チームを支援する」と書いています</li>
   <li>マルチシグの委員会。決められた複数の運営者の署名で中身の公開を保証する</li>
@@ -824,6 +841,23 @@
 <p class="term-name">Data availability layer <small>the spec's term</small></p>
 <p>Where operators keep block contents public for at least the maturity period. Since the Layer 1 holds only headers, watchers cannot find fraud unless this layer is readable. <span class="badge">added</span> It is the part of any rollup design where “what you are trusting” shows most clearly.</p>
 </div>
+
+<details class="explain">
+<summary>What a “data availability (DA) layer” is: open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of the spec.</p>
+<h4>What “data availability” means</h4>
+<p>Availability here means <strong>that the data can be read</strong>: not whether it is correct, but whether it can be obtained. Midgard writes only a block's header (a short summary including a hash of the contents) to the Layer 1, so the contents themselves must live somewhere else. That somewhere is the DA layer.</p>
+<h4>Why it is needed</h4>
+<p>Midgard's safety rests on “if there is fraud, someone can prove it”. Proving it requires reading the contents. If an operator posted a header and hid the contents, nobody could check the block, and fraud could not be proved even if present. <strong>Withholding data is the attack an optimistic rollup guards against most</strong>, and the DA layer is the defence. PR #471's drill for “DA loss” tests what happens when that place fails.</p>
+<h4>An everyday comparison</h4>
+<p>Imagine a company that publishes only a summary of its accounts and never the ledger. Whether the summary adds up cannot be checked without the ledger. The DA layer is the promise to keep the ledger somewhere anyone can inspect for the period. If that place is the company's own safe, you trust the company; if it is a public registry, you trust the registry. The choice of place decides whom you trust.</p>
+<h4>Midgard's candidates</h4>
+<p>The three below: inside Cardano itself (Leios blobs), posted under the signatures of a fixed set of operators (a multi-signature committee), or under a stake-based signature scheme (Mithril). Which one is used changes whom you trust, which is what the naive question further down is about.</p>
+<h4>In one line</h4>
+<p>The DA layer is “where block contents are kept readable by anyone for as long as fraud can be proved”. It does not guarantee correctness; it guarantees the material needed to check correctness.</p>
+</div>
+</details>
 
 <ol>
   <li><strong>Cardano Leios blobs</strong>, which the spec calls “the ideal solution”. A data store that appears partway along Leios' roadmap; the spec says “we believe that they are achievable before Midgard's planned deployment on mainnet, and we will support the Leios team”</li>
