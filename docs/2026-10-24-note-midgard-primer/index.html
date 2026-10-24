@@ -554,6 +554,26 @@
 </details>
 
 
+<details class="explain">
+<summary>素朴な疑問 — Leios で Cardano 本体が速くなるなら、Midgard は要らないのでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>その疑問は正しい部分があります。</strong>IOG の 2026 年 10 月 20 日の道筋どおりに Leios が入り、処理量が 10〜15 倍になれば、いま「Cardano は向かない」と言われる用途の一部はレイヤー 1 だけで足ります。Leios が十分なら、Midgard の需要は小さくなります。</p>
+<h4>それでも両方の話が成り立つ理由</h4>
+<ul>
+  <li><strong>倍率の掛け算になる。</strong>Midgard がレイヤー 1 に書くのは見出しだけで、見出しの大きさは中身に関係なく一定です。つまり Midgard の処理量は「レイヤー 1 が受け取れる見出しの数 × 1 ブロックに詰めた取引の数」で、レイヤー 1 が Leios で速くなれば、その分 Midgard の上限も上がります。Leios は Midgard の競争相手であると同時に、Midgard の土台でもあります</li>
+  <li><strong>直す場所が違う。</strong>Leios はレイヤー 1 の取引をそのまま速くするので、手数料も確定の性質もレイヤー 1 のままです。Midgard は取引をレイヤー 1 の外に出すので、手数料をさらに下げ、中の確定を数秒にできる代わりに、出口で 3〜7 日待ちます。「速さ」の中身が違います</li>
+  <li><strong>片方がもう片方の部品を待っている。</strong>Midgard の仕様書は、ブロックの中身の置き場として Leios の blob を「理想」とし、「Midgard の mainnet より前に実現できると考える」と書いています。2026 年 7 月の動画で Dave Dionisio も Midgard を「Leios の上で Cardano をスケールさせるもの」と説明しました。Leios が進まないと、Midgard の設計もいちばん望ましい形にならない関係です</li>
+  <li><strong>時期はどちらも決まっていない。</strong>Leios は Dijkstra ハードフォークを含む段階的な導入で、初期は 3〜5 倍、10〜15 倍はそのあとのガバナンスの判断。Midgard は公開テストネットが 11 月 7 日目標で、mainnet は未定。「Leios が来るから Midgard は不要」も「Midgard があるから Leios は急がない」も、いまの時点では言えません</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>レイヤー 1 のブロックが実際にどれだけ埋まっているか（利用率）と、手数料の推移を見れば足ります。Leios のあとも埋まり続けるならレイヤー 2 の出番があり、空いているなら「速さが足りない」は理由になっていません。<span class="badge">補足</span>2026 年 7 月の動画で Dave Dionisio は「Cardano の活動を増やして、スケールする必要が出るようにしたい」と語っており、作る側も現時点では需要が先だと認めています。</p>
+<h4>一次情報で示されていないこと</h4>
+<p>Leios 導入後のレイヤー 1 に対して Midgard が何倍になるのか、Midgard の mainnet が Leios を前提にするのか、Leios のどの段階で blob が使えるのか。いずれも公開資料にありません。DRep の Sebastien Guillemot の理由書（第 5 節）も、DA 層と Leios の重なりを「整合を考える必要がある」点として挙げています。</p>
+</div>
+</details>
+
+
 <h2 id="overall">7. 全体像</h2>
 <p class="deck">決まっていること、決め切っていないこと、公開資料にないこと。この 3 つに分けると、Midgard の現在地が見える。</p>
 
@@ -1149,6 +1169,26 @@
 <p>Ask whether you need someone's permission, or a fixed participant list, to start using it. If yes, it is the Hydra Head kind; if not, the Midgard kind.</p>
 <h4>What the primary sources do not say</h4>
 <p>Neither discusses combining the two in one application, or the effect of liquidity splitting between them.</p>
+</div>
+</details>
+
+
+<details class="explain">
+<summary>A naive question: if Leios makes Cardano itself faster, is Midgard needed at all?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>Partly a fair point.</strong> If Leios lands as IOG's path of 20 October 2026 describes and capacity rises 10–15 times, some of the uses for which Cardano is said to be “not well suited” would fit on the Layer 1 alone. If Leios is enough, demand for Midgard shrinks.</p>
+<h4>Why both still make sense</h4>
+<ul>
+  <li><strong>The multipliers stack.</strong> Midgard writes only headers to the Layer 1, and a header has a fixed size whatever the block holds. So Midgard's capacity is “headers the Layer 1 can take × transactions packed per block”, and a faster Layer 1 raises Midgard's ceiling too. Leios is both a competitor to Midgard and its foundation</li>
+  <li><strong>They fix different things.</strong> Leios speeds up Layer 1 transactions as they are, so fees and finality keep their Layer 1 character. Midgard moves transactions off the Layer 1, so it can cut fees further and settle inside in seconds, at the price of a 3–7 day wait at the exit. The “speed” is of different kinds</li>
+  <li><strong>One is waiting on a part of the other.</strong> Midgard's spec calls Leios blobs the “ideal” home for block contents and says they should be “achievable before Midgard's planned deployment on mainnet”. In the July 2026 video Dave Dionisio also described Midgard as scaling Cardano “on top of Leios”. Without progress on Leios, Midgard's design does not reach its preferred shape</li>
+  <li><strong>Neither has a date.</strong> Leios arrives in stages with the Dijkstra hard fork, 3–5x at first and 10–15x only after later governance votes; Midgard's public testnet is targeted for 7 November, with no mainnet date. Neither “Leios makes Midgard unnecessary” nor “Midgard means Leios can wait” can be said today</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Watch how full Layer 1 blocks actually are (utilisation) and how fees move. If blocks stay full after Leios, there is room for a Layer 2; if they sit empty, “not fast enough” was not the reason. <span class="badge">added</span> In the July 2026 video Dave Dionisio said the aim is to increase activity on Cardano “so that we need to scale”, an admission from the builders' side that demand comes first.</p>
+<h4>What the primary sources do not say</h4>
+<p>Midgard's multiple over a post-Leios Layer 1, whether Midgard's mainnet presupposes Leios, and at which stage of Leios blobs become usable. None of this is in public material. DRep Sebastien Guillemot's rationale (section 5) likewise lists the overlap between a DA layer and Leios as something that needs reconciling.</p>
 </div>
 </details>
 
