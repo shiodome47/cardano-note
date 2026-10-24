@@ -9,7 +9,7 @@ chatham_house_rule: false   # 公開動画。常に false
 platform: YouTube
 channel: alphagrowth        # YouTube 上の表示名（@alphagrowth）。会社名の表記は AlphaGrowth
 official_channel: true      # oEmbed の author_url が https://www.youtube.com/@alphagrowth であることを確認。AlphaGrowth 自身の番組
-duration: "要確認"          # 字幕に時刻がない。章立て（18:57〜23:49 が Midgard）から 50 分台と推定し、ページでは「約 56 分」と書いた。実尺は要確認
+duration: "1:06:35"         # 依頼者が YouTube で確認（2026-10-24）。字幕には時刻がない
 video: https://www.youtube.com/watch?v=ZrRDqtg6q6g
 
 speakers:
