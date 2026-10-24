@@ -1131,6 +1131,23 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p>つまり、いちばん望ましい置き場は、Midgard の外側で進む Leios の設計に依存しています。<span class="badge">補足</span>Leios は Cardano 本体の処理量を増やす改良で、IOG は 2026 年 10 月 20 日に mainnet までの段階的な道筋を公開しましたが、その道筋のどの段階で blob が使えるようになるかは、こちらでは確認できていません。</p>
 
 <details class="explain">
+<summary>「Leios の blob」とは何か — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。仕様書 6.1.1 の記述をもとにしています。</p>
+<h4>そもそも「blob」とは</h4>
+<p>blob は「大きなデータのかたまり」を指す言葉です。Leios の blob は、Cardano に提案されている機能で、<strong>大量のデータを一時的に置ける置き場</strong>です。仕様書の説明では、中身は Ouroboros の合意形成で検証されず（正しいかどうかは見ない）、保存されるのも最長 30 日ですが、「いつ置かれたか」と「中身のハッシュ（指紋）」はレイヤー 1 の合意で保証され、置かれている間は誰でも読めます。永久に残る取引のメタデータに比べて、費用は「桁違いに安い」と仕様書は見込んでいます。</p>
+<h4>なぜ Midgard に要るのか</h4>
+<p>Midgard がレイヤー 1 に書くのはブロックの見出しだけで、中身はどこか別の場所で公開しなければ監視者が不正を見つけられません。その「別の場所」を Cardano 自身の中に持てるのが Leios の blob です。仕様書の設計では、オペレーターが料金を払ってブロックの中身をそのまま blob に入れ、maturity period のあいだ置いておく。レイヤー 1 の Midgard のコントラクトは blob のタイムスタンプとハッシュを直接参照でき、監視者は blob から中身を取り出して不正証明を組み立てます。blob の料金はレイヤー 1 のブロック生成者の収入になる、とも書かれています。</p>
+<h4>身近なたとえ</h4>
+<p>役所の掲示板に「30 日間の掲示」を申し込むようなものです。役所は貼り紙の中身が正しいかは確かめませんが、「いつ、どの紙が貼られたか」は記録し、期間中は誰でも読めるようにします。見出し（レイヤー 1）だけでは中身が分からないので、本文を掲示板（blob）に貼っておく、という関係です。</p>
+<h4>いまどこにあるのか</h4>
+<p>仕様書は、Leios の数年がかりの道筋の「途中の到達点」として blob を位置づけ、「Midgard の mainnet 展開より前に実現できると考えている」と書いています。<span class="badge">補足</span>IOG が 2026 年 10 月 20 日に公開した Leios の mainnet までの道筋のどの段階で blob が使えるようになるかは、こちらでは確認できていません。Leios そのもの（レイヤー 1 の処理量を増やす改良）と、その一部として提案されている blob（データの一時的な置き場）は、別のものとして読んでください。</p>
+<h4>一言でまとめ</h4>
+<p>Leios の blob は「Cardano が 30 日だけ預かる、安い公開データ置き場」。Midgard はそこにブロックの中身を置きたい、という話です。</p>
+</div>
+</details>
+
+<details class="explain">
 <summary>素朴な疑問 — Leios に blob が間に合わなかったら、何を信頼することになるのか？</summary>
 <div class="explain-body">
 <p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
@@ -1636,6 +1653,23 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 </ol>
 
 <p>So the preferred home for block data depends on Leios, which is designed outside Midgard. <span class="badge">added</span> Leios is the upgrade to Cardano's own throughput; IOG published a staged path to mainnet on 20 October 2026, but at which stage blobs become usable is not something we could confirm.</p>
+
+<details class="explain">
+<summary>What “Leios blobs” are: open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, based on section 6.1.1 of the spec.</p>
+<h4>What a “blob” is</h4>
+<p>A blob is simply a large chunk of data. Leios blobs are a proposed Cardano feature: <strong>a place to park large amounts of data temporarily</strong>. In the spec's description, the contents are not verified by Ouroboros consensus (nobody checks whether they are right) and are kept for at most 30 days, but the time of posting and a hash (fingerprint) of the contents are secured by Layer 1 consensus, and anyone can read them while they are there. The spec expects the cost to be “several orders of magnitude lower” than transaction metadata, which is stored forever.</p>
+<h4>Why Midgard needs it</h4>
+<p>Midgard writes only block headers to the Layer 1; the contents must be published somewhere else or watchers cannot find fraud. Leios blobs would let that “somewhere else” sit inside Cardano itself. In the spec's design, operators pay to store their full blocks in blobs for the maturity period; Midgard's Layer 1 contracts can read the blobs' timestamps and hashes directly, and watchers pull the contents out of the blob to build fraud proofs. Blob fees, the spec adds, would become income for Layer 1 block producers.</p>
+<h4>An everyday comparison</h4>
+<p>Like renting a slot on a public notice board for 30 days. The office does not check whether your notice is true, but it records when each sheet went up and keeps it readable for the period. The header on the Layer 1 says nothing about the contents, so the full text goes on the board.</p>
+<h4>Where it stands</h4>
+<p>The spec places blobs as “a natural intermediate point” on Leios' multi-year roadmap and says “we believe that they are achievable before Midgard's planned deployment on mainnet”. <span class="badge">added</span> At which stage of the mainnet path IOG published on 20 October 2026 blobs become available is not something we could confirm. Read Leios itself (the upgrade to Layer 1 throughput) and blobs (a temporary data store proposed as part of it) as two different things.</p>
+<h4>In one line</h4>
+<p>A Leios blob is “a cheap public data store that Cardano keeps for 30 days”, and Midgard wants to put its block contents there.</p>
+</div>
+</details>
 
 <details class="explain">
 <summary>A naive question: if Leios blobs are not ready in time, what would users be trusting?</summary>
