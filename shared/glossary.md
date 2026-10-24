@@ -240,7 +240,7 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 - **Ren**（"Ren we did deals with"）、**Silk**（"They should use Silk for that"）— 特定できず。聞こえたまま
 - **Tony from BitPay** — BitPay 共同創業者の Tony Gallippi とみられるが、動画では姓が出ない。まとめでは「とみられる」で書いた
 
-### 2024 Intersect Open Source Office — Project Spotlight Anastasia Labs（Philip DiSarro）
+### 2024-07-25 Intersect Open Source Office — Project Spotlight Anastasia Labs（Philip DiSarro）
 
 **直すべき固有名詞の誤変換はなかった。**Charli3、Minswap、SundaeSwap、Meld、Polygon、Optimism、Arbitrum、zkSync、Hydra はいずれも各プロジェクトの綴りどおり。"roll-up" は原文のまま（表記は optimistic rollup に統一して訳す）。
 

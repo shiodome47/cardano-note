@@ -1,7 +1,7 @@
-slug: 2024-intersect-oso-spotlight-anastasia-labs
+slug: 2024-07-25-intersect-oso-spotlight-anastasia-labs
 title: Project Spotlight — Anastasia Labs。「土台を 10 回作らない」ためのオープンソースと、次の一手としての Midgard（Philip DiSarro）
 title_en: Project Spotlight Anastasia Labs
-date: 2024                  # 要確認。依頼者の指示は「2024 年の動画」のみ。月日は YouTube のページで確認できていない（この環境からは取得できなかった）。確認できたらディレクトリ名と docs/ の表記を直す
+date: 2024-07-25            # 動画の公開日。依頼者が YouTube で確認（2026-10-24）。この環境からは取得できなかった
 series: intersect-oso       # shared/series.yml のキー
 chatham_house_rule: false   # 公開動画。常に false
 
