@@ -109,7 +109,7 @@
 
 <p>Midgard を作っているのは <strong>Midgard Labs</strong> です。公式サイトは自らを「Anastasia Labs の背後にいるチームの次の章」と説明しています。Anastasia Labs は Cardano のスマートコントラクトの監査と開発、Plutarch や Aiken といった開発ツールへの貢献で知られたチームで、創業者・CEO は Philip DiSarro、COO は Dave Dionisio（元 Input Output）です。<span class="badge">補足</span>2 人がそれぞれ語っている動画は、このアーカイブの <a href="../2024-07-25-intersect-oso-spotlight-anastasia-labs/">2024-07-25 の回</a>（Philip DiSarro、Anastasia Labs の使命と Midgard の構想）と <a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/#midgard">2026-07-10 の回</a>（Dave Dionisio、「新しいセキュリティモデルを受け入れなくてよい」）にあります。</p>
 
-<p>もうひとつ大きな出来事があります。Input Output（IOG）は 2026 年 9 月 17 日に、Cardano のスマートコントラクト言語 <strong>Plutus の開発を 10 月 1 日付で Midgard Labs に移す</strong>と発表しました。IOG の記事は、Midgard Labs がほかのチームの Plutus コントラクトの監査と開発を手がけ、Plutarch と Aiken に貢献してきたことを理由に挙げ、専門の組織へ機能を移す 5 件目の例だとしています。つまり Midgard Labs は、レイヤー 2 を作る会社であると同時に、レイヤー 1 のスマートコントラクト基盤を引き継いだ会社です。</p>
+<p>もうひとつ大きな出来事があります。Input Output（IOG）は 2026 年 9 月 17 日に、Cardano のスマートコントラクト言語 <strong>Plutus の開発を 10 月 1 日付で Midgard Labs に移す</strong>と発表しました。IOG の記事は、Midgard Labs がほかのチームの Plutus コントラクトの監査と開発を手がけ、Plutarch と Aiken に貢献してきたことを理由に挙げ、専門の組織へ機能を移す 5 件目の例だとしています。つまり Midgard Labs は、レイヤー 2 を作る会社であると同時に、レイヤー 1 のスマートコントラクト基盤を引き継いだ会社です。<span class="badge">補足</span>名前は似ていますが、Midgard はレイヤー 2 のプロトコル、Midgard Labs はそれを作る会社で、指すものが違います。このページでは区別して書きます。</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 290" role="img" aria-label="Midgard Labs が担う 2 つのもの。IOG から 2026 年 10 月 1 日付で移管された Plutus と、自社で開発する Midgard">
@@ -244,7 +244,7 @@
 <p>公式サイトと仕様書から、使う側が押さえておきたい点を並べます。いずれも 2026 年 10 月 24 日時点の記述です。</p>
 
 <ul>
-  <li><strong>確定までの時間。</strong>公式サイトでは、ソフトな確定（レイヤー 2 の中で「ほぼ確定」）は数秒、ハードな確定（レイヤー 1 に引き出せる状態）は 3〜7 日。「3–7 day challenge window」と書かれています。</li>
+  <li><strong>確定までの時間。</strong>公式サイトでは、ソフトな確定（レイヤー 2 の中で「ほぼ確定」）は数秒、ハードな確定（レイヤー 1 に引き出せる状態）は 3〜7 日。「3–7 day challenge window」と書かれています。数秒の段階はまだ最終確定の前で、理屈の上では不正が証明されればそのブロックは取り消されます。</li>
   <li><strong>トークンはない。</strong>「Tokenless · Pure ADA」。手数料も担保もすべて ADA です。</li>
   <li><strong>レイヤー 2 でできないこと。</strong>仕様書によれば、レイヤー 2 の取引はレイヤー 1 と同じ形式ですが機能は縮小され、ステーキングとガバナンスの操作はできません。Midgard の合意形成は Ouroboros のプルーフ・オブ・ステークに基づかないため、と理由が書かれています。</li>
   <li><strong>対応ウォレット。</strong>公式サイトでは Lace のみで、「More wallets coming soon」。</li>
@@ -514,7 +514,7 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">記載なし</span>第三者によるセキュリティ監査やペネトレーションテストは、あるのか。予定はあるのか。</p>
-<p class="qa-a" data-by="見つからず">公式サイト、仕様書、GitHub のいずれにも記載を見つけられませんでした。利用者の資金を預かるレイヤー 2 にとって、いちばん先に知りたい点です。</p>
+<p class="qa-a" data-by="見つからず">公式サイト、仕様書、GitHub のいずれにも記載を見つけられませんでした。公開資料で確認できないことと、実施されていないことは別で、ここで言えるのは前者だけです。利用者の資金を預かるレイヤー 2 にとって、いちばん先に知りたい点です。</p>
 </div>
 
 <div class="qa pending">
@@ -539,7 +539,7 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">根拠なし</span>公式サイトの「up to 300x faster」は、何と比べて何を測った数字か。</p>
-<p class="qa-a" data-by="条件の記載なし">測定条件は示されていません。見出しの大きさが中身に関係なく一定だという仕様書の説明は、上限がどう決まるかの説明にはなっていません。</p>
+<p class="qa-a" data-by="条件の記載なし">測定条件は示されていません。見出しの大きさが中身に関係なく一定だという仕様書の説明は、上限がどう決まるかの説明にはなっていません。<span class="badge">補足</span>「速さ」には、処理できる量（スループット）と、確定までの時間（数秒の反映か、3〜7 日の最終確定か）の 2 つがあり、どちらの話かを分けて読む必要があります。</p>
 </div>
 
 <div class="qa pending">
@@ -616,7 +616,7 @@
 
 <p>Midgard is built by <strong>Midgard Labs</strong>, whose site calls itself “the next chapter for the team behind Anastasia Labs”. Anastasia Labs is known for auditing and writing Cardano smart contracts and for contributing to developer tooling such as Plutarch and Aiken. Its founder and CEO is Philip DiSarro; its COO is Dave Dionisio, formerly of Input Output. <span class="badge">added</span> This archive has each of them on video: <a href="../2024-07-25-intersect-oso-spotlight-anastasia-labs/">the 2024-07-25 episode</a> (Philip DiSarro on Anastasia Labs' mission and the idea of Midgard) and <a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/#en-midgard">the 2026-07-10 episode</a> (Dave Dionisio: “you don't have to accept a new security model”).</p>
 
-<p>There is one more large event. On 17 September 2026 Input Output (IOG) announced that development of <strong>Plutus, Cardano's smart-contract language, moves to Midgard Labs from 1 October</strong>. IOG's post cites Midgard Labs' record of auditing and writing Plutus contracts for other teams and contributing to Plutarch and Aiken, and calls it the fifth major function moved to a specialised partner. Midgard Labs is thus both a company building a Layer 2 and the one now maintaining the Layer 1's smart-contract foundation.</p>
+<p>There is one more large event. On 17 September 2026 Input Output (IOG) announced that development of <strong>Plutus, Cardano's smart-contract language, moves to Midgard Labs from 1 October</strong>. IOG's post cites Midgard Labs' record of auditing and writing Plutus contracts for other teams and contributing to Plutarch and Aiken, and calls it the fifth major function moved to a specialised partner. Midgard Labs is thus both a company building a Layer 2 and the one now maintaining the Layer 1's smart-contract foundation. <span class="badge">added</span> The names are similar but refer to different things: Midgard is the Layer 2 protocol, Midgard Labs the company building it. This page keeps them apart.</p>
 
 <div class="fig">
 <svg viewBox="0 0 680 290" role="img" aria-label="The two things Midgard Labs carries: Plutus, handed over by IOG on 1 October 2026, and Midgard, which it builds itself">
@@ -751,7 +751,7 @@
 <p>From the official site and the spec, as of 24 October 2026:</p>
 
 <ul>
-  <li><strong>Time to finality.</strong> The site gives soft finality (nearly final inside the Layer 2) in seconds and hard finality (withdrawable to the Layer 1) in 3–7 days, described as a “3–7 day challenge window”.</li>
+  <li><strong>Time to finality.</strong> The site gives soft finality (nearly final inside the Layer 2) in seconds and hard finality (withdrawable to the Layer 1) in 3–7 days, described as a “3–7 day challenge window”. The seconds stage is still before finality: in principle a proven fraud cancels that block.</li>
   <li><strong>No token.</strong> “Tokenless · Pure ADA.” Fees and bonds are all ADA.</li>
   <li><strong>What the Layer 2 cannot do.</strong> Per the spec, Layer 2 transactions have the same form as Layer 1 ones but reduced functionality: no staking or governance actions, because Midgard's consensus is not based on Ouroboros proof-of-stake.</li>
   <li><strong>Wallets.</strong> The site lists Lace only, with “More wallets coming soon”.</li>
@@ -1021,7 +1021,7 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">Not stated</span>Has there been, or will there be, a third-party security audit or penetration test?</p>
-<p class="qa-a" data-by="not found">Nothing on the site, in the spec or on GitHub. For a Layer 2 holding users' funds, it is the first thing one would want to know.</p>
+<p class="qa-a" data-by="not found">Nothing on the site, in the spec or on GitHub. Not being confirmable from public material is not the same as not having happened; only the former can be said here. For a Layer 2 holding users' funds, it is the first thing one would want to know.</p>
 </div>
 
 <div class="qa pending">
@@ -1046,7 +1046,7 @@
 
 <div class="qa pending">
 <p class="qa-q"><span class="qa-who">No basis</span>What does the site's “up to 300x faster” measure, against what?</p>
-<p class="qa-a" data-by="no conditions given">No measurement conditions are stated. The spec's point that a header is the same size whatever the block holds does not explain how the ceiling is set.</p>
+<p class="qa-a" data-by="no conditions given">No measurement conditions are stated. The spec's point that a header is the same size whatever the block holds does not explain how the ceiling is set. <span class="badge">added</span> “Speed” can mean two things, throughput and time to finality (seconds for soft, 3–7 days for hard), and the claim has to be read against one or the other.</p>
 </div>
 
 <div class="qa pending">
