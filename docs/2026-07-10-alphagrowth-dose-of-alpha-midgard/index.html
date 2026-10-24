@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dose of Alpha — Why Cardano is Ready to Win: Midgard, UTXO, DeFi Mullet (Dave Dionisio, 2026-07-10)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">AlphaGrowth</p>
+<h1><span class="l-ja">Dose of Alpha — 「Cardano は勝つ準備ができている」。Midgard、三院制の政治、そして当事者どうしの PRIME 談義</span><span class="l-en">Dose of Alpha — “Cardano is ready to win”: Midgard, tricameral politics, and two interested parties on PRIME</span></h1>
+<p class="meta">
+  <span>2026-07-10</span>
+  <span>YouTube</span>
+  <span><span class="l-ja">約 56 分</span><span class="l-en">~56 min</span></span>
+  <span><span class="l-ja">AlphaGrowth 公式チャンネル · Bryan Colligan、Eric Waisanen、Dave Dionisio</span><span class="l-en">AlphaGrowth's official channel · Bryan Colligan, Eric Waisanen, Dave Dionisio</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Input Output を離れて Midgard Labs に移った Dave Dionisio が、AlphaGrowth の番組で<strong>「Cardano は勝つ準備ができている」</strong>と語った回です。UTXO と分散化の説明、Cardano のセキュリティをそのまま使うレイヤー 2 の Midgard、そして「三院制だが行政がない」という Cardano ガバナンスの診断。<br>
+  収録はちょうど、司会の AlphaGrowth が財務庫から 1 億 2,000 万 ADA を求める PRIME 提案をオンチェーンに出す日で、ゲストはその提案を Input Output 側で後押しした人です。<strong>全員が当事者の会話</strong>として読む必要があります。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>全員が当事者。</strong>司会 2 人は PRIME の提案者、ゲストは「つなぐ手伝いをした」と自ら述べる元 Input Output の人。互いを褒める場面が多く、評価はすべて本人たちの発言として読みます。</li>
+  <li><strong>Midgard は「新しいセキュリティモデルを受け入れなくてよい」レイヤー 2。</strong>Cardano の eUTXO 向けで、落ちたことのない基盤のチェーンにつながる、と。テストネットの直前で「半分ステルス」。開発パートナーの Phil DiSarro は「天才」。</li>
+  <li><strong>UTXO の売りは「グローバルな状態がない」こと。</strong>攻撃面が小さい、手数料が事前に分かる、MEV が少ない、トークンがネイティブ資産。ただし本人が「技術的に正確ではないかもしれない」と断っています。</li>
+  <li><strong>Cardano のガバナンスは三院制で、行政がない。</strong>SPO、DRep、憲法の裁定者の 3 つ。1,000 の DRep がいても動かせるのは上位 100。いずれ「AlphaGrowth、この DeFi 戦略を実行せよ」と委任する行政の機能が要る、と本人の見方。</li>
+  <li><strong>なぜ AlphaGrowth か。</strong>月間ユーザー、TVL、トランザクションが足りない。LayerZero、Pyth、Circle を入れたが、「差し込むだけ」のばらばらな戦略ではなく一貫した戦略が要る。「ここで何億ドルの TVL を動かした人はいない」。</li>
+  <li><strong>「作れば来る」は例外。</strong>司会側の Tether Gold の話。マーケティング、事業開発、ポイントが要る。財務庫は「実質的にソブリン・ウェルス・ファンド」で成長のために使える、とゲスト。</li>
+  <li><strong>3 つの物語の順位。</strong>ゲストの答えは DeFi マレットが 1 位、エージェント金融が 2 位、RWA（実世界資産）は「いちばん資本は集まるが最下位」。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か、いつ収録されたか</a></li>
+  <li><a href="#background"><span class="n">02</span>銀行規制当局から Input Output、そして Midgard へ</a></li>
+  <li><a href="#utxo"><span class="n">03</span>Vitalik、分散化、そして UTXO が与えてくれるもの</a></li>
+  <li><a href="#midgard"><span class="n">04</span>Midgard — Cardano のセキュリティをそのまま使うレイヤー 2</a></li>
+  <li><a href="#governance"><span class="n">05</span>三院制だが、行政がない</a></li>
+  <li><a href="#parties"><span class="n">06</span>政党の芽と、委員会という未来</a></li>
+  <li><a href="#rfp"><span class="n">07</span>なぜ AlphaGrowth か — RFP の裏側</a></li>
+  <li><a href="#marketing"><span class="n">08</span>「作れば来る」は例外 — Tether Gold と、使える余剰</a></li>
+  <li><a href="#narratives"><span class="n">09</span>3 つの物語 — RWA、エージェント、DeFi マレット</a></li>
+  <li><a href="#privacy"><span class="n">10</span>自分で握るか、任せるか — 監視とプライバシー</a></li>
+  <li><a href="#ai"><span class="n">11</span>AI の話と、300 の壺</a></li>
+  <li><a href="#overall"><span class="n">12</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">13</span>やり取りから</a></li>
+  <li><a href="#pending"><span class="n">14</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か、いつ収録されたか</h2>
+<p class="deck">提案者 2 人と、その提案を後押しした元 Input Output のゲスト。提案がチェーンに載る当日の収録。</p>
+
+<p>AlphaGrowth の番組「Dose of Alpha」のボーナス回です。司会は 2 人、ゲストは 1 人。</p>
+
+<ul>
+  <li><strong>Bryan Colligan</strong> —— 司会。AlphaGrowth の CEO。動画内では名乗らず、Dave から「Bryan と私」と呼ばれる側。Tether Gold の話、「300 の壺」の寓話、AI の話を担当。<span class="badge">補足</span>姓と肩書は番組の公開情報から。このアーカイブの 2026-09-06 の回と同じ根拠です。</li>
+  <li><strong>Eric Waisanen</strong> —— 司会。AlphaGrowth の DeFi Strategist。「Eric」と呼ばれ、Vitalik、UTXO、ガバナンス、「哲学者と実務家」の話を担当。</li>
+  <li><strong>Dave Dionisio</strong> —— ゲスト。Midgard Labs。冒頭で「Midgard Labs の Dave Dionisio」と紹介され、本人は「Input Output に入り、最近辞めたばかり」「Midgard はごく最近」と語っています。<span class="badge">補足</span>公開プロフィールでは Midgard Labs の COO。経歴は CFPB、FS Vector、Fannie Mae、Input Output。</li>
+</ul>
+
+<p><strong>この回は、全員が当事者です。</strong>Eric は途中で「今日、Cardano で提案をオンチェーンに出す」と言い、Dave は「私はつなぐ手伝いのほうだった」「あなたたちの提案に人々が結集してほしい」と述べます。<span class="badge">補足</span>その提案が Cardano PRIME で、財務庫から 1 億 2,000 万 ADA を求める財務引き出しです。2026 年 7 月 9 日にオンチェーンに載ったので、収録はその日、公開は翌 10 日とみられます。提案は 2026 年 8 月に DRep の投票で可決され、AlphaGrowth がその運営者になりました。つまりこの動画は、<strong>資金を求める側と、それを推した側が、投票の始まる日に互いの仕事を語っている記録</strong>です。評価や数字はすべて本人たちの発言として書き、地の文にはしません。</p>
+
+<p><span class="badge">補足</span>同じ番組の 16 日後の回には Charles Hoskinson が出て、「ゴーストチェーン論は半分正しい」「DeFi 側を外部の実行部隊に任せたい」と語っています（姉妹サイトの <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#ghost">2026-07-26 A Dose of Alpha</a>）。可決後の経過は、このアーカイブの <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/#prime">2026-09-06 の回</a>（監査、戦略、RFP）と <a href="../2026-09-10-cardano-over-coffee-alphagrowth-rfp/#audit">2026-09-10 の回</a>（監査の結論と RFP の条件）にあります。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 提案者と支援者が互いを褒める番組を、どう読めばよいのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、この回の褒め言葉はすべて利害のある側からのものです。</strong>「あなたたちは好かれる人たち」「これを通すために死ぬ気でやる」はゲストの、「6 年で 200 のプロトコルに資本を投じた」は司会自身の宣伝です。</p>
+<h4>それでも読む価値があるところ</h4>
+<ul>
+  <li>提案の<strong>側の論理</strong>が本人の口から出ている。「ばらばらの統合ではなく一貫した戦略」「何億ドルの TVL を動かした人はここにはいない」という創業組織側の自己認識は、ほかでは聞きにくい</li>
+  <li>ゲストが<strong>留保を付けている</strong>箇所がある。「RFP の正確なところは話せない」「私は世界的な専門家ではない」「技術的に正確ではないかもしれない」</li>
+  <li>投票の<strong>前の時点</strong>の言葉なので、あとの回（監査、RFP の条件）と突き合わせると、何が言われたとおりになり、何が変わったかが分かる</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>発言が「事実の説明」か「評価」かを分けて読むことです。「LayerZero、Pyth、Circle を入れた」は確認できる事実、「あなたたちは分かっている」は評価。このページでは評価を本人に帰属させ、事実は裏取りできた範囲で `補足` を付けています。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>提案の金額（1 億 2,000 万 ADA）、目標の TVL、マイルストーンといった中身は、この動画では一つも語られていません。「ambitious」「成果を出せばインセンティブはそろう」という言い方だけです。</p>
+</div>
+</details>
+
+
+<h2 id="background">2. 銀行規制当局から Input Output、そして Midgard へ</h2>
+<p class="deck">政府の内側を見て、「法律をブロックチェーンに書き込めないか」と考えた、という自己紹介。</p>
+
+<p>Dave Dionisio は、ワシントン DC の銀行規制当局で銀行監査をしていた、と語ります。Elizabeth Warren が作ったドッド・フランク法下の CFPB（消費者金融保護局）に、銀行の実務の視点を持ち込むために雇われた。Trump 当選後に Mick Mulvaney が来て「壮大な政治ドラマ」を内側から見た、と。そこで出てきたのが「政策と法律を作ってデータを山ほど集めるのか、それとも法をブロックチェーンに書き込んで平等な仕組みにできないのか」という問いで、「虫に噛まれた」。</p>
+
+<p>その後は FinTech のコンサルティング会社 FS Vector を経て Input Output に入り、「最近辞めたばかり」で Midgard Labs へ。本人は「まだ同じ家族の中」「IOG のチームがいなくて寂しいが、今も一緒に同じことに取り組んでいる」と繰り返しています。Cardano を選んだ理由として挙げたのは、Charles Hoskinson が描いた「ほかとは違う」設計と、<strong>コードの堅さ</strong>です。「永遠に生きるなら落ちてはいけない。できるだけ数学に近いもので守られていなければならない」。</p>
+
+<p>司会の Bryan も「学校を出てすぐ Oracle に入って労働省で働いた」と DC の経験を重ねています。<span class="badge">補足</span>司会 2 人の経歴は動画の中の自己申告だけで、こちらでは確認していません。</p>
+
+
+<h2 id="utxo">3. Vitalik、分散化、そして UTXO が与えてくれるもの</h2>
+<p class="deck">「Ethereum が Cardano に寄ってきた」という司会の問いに、ゲストは分散化の話から答えた。</p>
+
+<p>Eric が「Vitalik が、Charles が 8〜9 年語ってきたことを描き出している。ETH の人たちはどう見ているか」と聞きます。Dave の答えは「光栄で、裏付けになる」と前置きしたうえで、Ethereum の<strong>レイヤー 2 がネットワークに寄生している</strong>という見方でした。マイアミで大きな DAT（デジタル資産財務会社）の発行者が「なぜ Ethereum の価格が上がらないのか」と聞くのを耳にした、と。スケールさせるなら<strong>収益をレイヤー 1 に戻すか</strong>が問題で、それは Midgard で取り組めることだ、と結びます。Vitalik 自身の動きについては「詳しく追っていない」「リーンになるとか方向転換とか聞いた」と留保しています。<span class="badge">補足</span>司会が言う「UTXO を Ethereum に持ち込む話」は司会の発言で、動画の中で出典は示されていません。</p>
+
+<p>UTXO の説明を求められると、Dave はまず<strong>分散化</strong>から始めました。創業の 3 組織（開発会社、財団、事業開発部門）は「鍵を焼いて野に放った」。ADA には投票権という「不可侵の権利」が付いていて、ノードの地理的分散だけを分散化と呼ぶほかのチェーンとは次元が違う、と。</p>
+
+<p>Bryan はこれに 2017 年の Bitcoin の話を重ねます。BitGo の Mike Belshe や BitPay の Tony らが「Bitcoin をアップグレードしたい」とマイナーにフラグを立てさせようとしたが、話し合って詰めることができなかった。「あの日が、私にとって Bitcoin が死んだ日」。<span class="badge">補足</span>2017 年の SegWit2x（ニューヨーク合意）を指すとみられます。マイナーがブロックにビットを立てて支持を示す方式で、最終的に取り下げられました。「Tony」は BitPay 共同創業者の Tony Gallippi とみられますが、動画では姓は出ません。Dave は「十分速くアップグレードできないのは心配だが、Bitcoin にとってはバグではなく機能」と、ここでも留保を付けています。</p>
+
+<p>UTXO そのものについて Dave が挙げたのは次の点です。「暗号学者を呼ぶべきだが、自分の考え方で噛み砕く。技術的に正確ではないかもしれない」と断ったうえで。</p>
+
+<ul>
+  <li><strong>グローバルな状態を管理しなくてよい。</strong>口座の一覧ではなく UTXO があるだけなので、攻撃面が小さい</li>
+  <li><strong>決定性。</strong>スマートコントラクトが何をするか事前に分かり、送信前に手数料が分かる。MEV（取引順序の操作で抜く利益）は「それほど問題にならない」</li>
+  <li><strong>1 つのトランザクションで多くの資産を送れる。</strong>だからトランザクション数では損をして見えるが、「実際に計算すると、それでも活動が足りない」</li>
+  <li><strong>トークンがネイティブ資産。</strong>Ethereum の ERC-20 はスマートコントラクトだが、Cardano では発行した資産が ADA と同じ「一級市民」。セキュリティのリスクも減る、と</li>
+  <li><strong>Plutus と形式検証。</strong>Haskell 系の言語は「数学に近く表現力が低い」が、「常に書いてあるとおりに動くことを証明できる」。その代わり新しく来た人には難しい</li>
+</ul>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>そもそも「UTXO」と「口座」の違い</h4>
+<p>Ethereum の台帳は、銀行の口座一覧のように「誰がいくら持っているか」を一つの表で持ちます。これを<strong>グローバルな状態</strong>と呼びます。Cardano や Bitcoin の台帳は、未使用の「小切手」の束です。送金は手元の小切手を使い切って新しい小切手を作る行為で、全体の表を書き換えません。</p>
+<h4>なぜ「手数料が事前に分かる」のか</h4>
+<p>小切手方式では、取引が使う入力と出力が送る前に決まっているので、結果と費用を先に計算できます。口座方式では、同じブロックの中の他人の取引が自分の取引の前提を変えうるので、結果が確定するのは実行後です。「決定性」とはこのことです。</p>
+<h4>身近なものへのたとえ</h4>
+<p>共同の家計簿に全員が書き込む（口座）のと、各自が封筒に現金を入れて持ち歩く（UTXO）の違いです。封筒方式は、誰かが家計簿を書き換える心配がない代わりに、封筒の管理が面倒になります。</p>
+<h4>この動画では分からないこと</h4>
+<p>「攻撃面が小さい」「MEV がそれほど問題にならない」は、Dave 自身が「技術的に正確ではないかもしれない」と断った説明です。どの攻撃がどう防がれるのか、Cardano にも存在する取引順序の問題（バッチャーによるもの）には触れていません。司会が触れた「Ethereum に UTXO を持ち込む話」の出典も示されていません。</p>
+</div>
+</details>
+
+<p>司会の Eric はこれを「状態が永久に膨らんでいく問題」と受け、「トランザクションベースは筋が通っている」と同意しています。</p>
+
+
+<h2 id="midgard">4. Midgard — Cardano のセキュリティをそのまま使うレイヤー 2</h2>
+<p class="deck">「新しいセキュリティモデルを受け入れなくてよい」が売り。テストネット直前、と本人は言う。</p>
+
+<p>Midgard について語る前に、Dave は Phil DiSarro との関係を話します。IOG と密に働くようになってからの知り合いで、一緒に<strong>プログラマブル・アセットの標準</strong>に取り組んだ。Cardano のネイティブトークンはスマートコントラクトではないので「凍結と差し押さえ」がなく、銀行との提携では規制上の要件を満たせない。ワイオミング州のステーブルコインの案件で、1 か月ほどで実装できることを証明した、と。Phil は「私が持ち込みを手伝った USDCx のブリッジの技術アーキテクト」で、「技術だけでなく事業や法務でも天才」。<span class="badge">補足</span>Phil DiSarro は Anastasia Labs の創業者で、Midgard の設計者。Anastasia Labs は 2026 年に Midgard Labs として活動しており、Dave はこの動画のあとの発言で「私の創業者の Phil DiSarro」と呼んでいます。プログラマブル・アセットの標準は CIP-113 として議論されているもので、2026-09-06 の回でも「完成度」が話題になりました。</p>
+
+<p>Midgard の説明は次のとおりです。</p>
+
+<ul>
+  <li>目的は「今のところ、基盤の台帳の中核のスケーリング（Leios）の上で Cardano をスケールさせること」。TPS の増加の数字は「忘れた」。ファイナリティ（確定）も課題で、中核側でも作業が進んでいる</li>
+  <li>「実質的に、レイヤー 2 のように見えるもので、<strong>Cardano の eUTXO 向け</strong>」</li>
+  <li>いちばん独特なのは「<strong>新しいセキュリティモデルを受け入れる必要がない</strong>」こと。「落ちたことのない基盤の Cardano に本当につながる」「ノードを再起動するためにファミコンのカートリッジに息を吹きかけなくていい」</li>
+  <li>いずれは「許可不要の世界で UTXO が決済される場所」になり、Canton などとつなぎたい</li>
+  <li>「まだごく初期だが、技術はそうではない。<strong>テストネットを立ち上げる直前</strong>」「半分ステルス」。Cardano の活動を増やして「スケールする必要が出るように」したい</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Dave Dionisio の説明にもとづき、独自のセキュリティモデルを持つ一般的なレイヤー 2 と、Cardano の基盤のセキュリティに接続する Midgard を対比した図">
+  <text x="340" y="24" class="d-s" text-anchor="middle">動画で語られた対比をそのまま描いたもの。細部は補足を参照</text>
+
+  <rect x="16" y="40" width="316" height="168" rx="8" class="d-box"/>
+  <text x="174" y="68" class="d-t" text-anchor="middle">多くのレイヤー 2（本人の対比）</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">利用者は新しいセキュリティモデルを</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">受け入れる必要がある</text>
+  <text x="174" y="148" class="d-s" text-anchor="middle">「レイヤー 2 がネットワークに寄生」</text>
+  <text x="174" y="168" class="d-s" text-anchor="middle">収益がレイヤー 1 に戻るか、が問題</text>
+  <text x="174" y="192" class="d-s" text-anchor="middle">（Ethereum についての本人の見方）</text>
+
+  <rect x="348" y="40" width="316" height="168" rx="8" class="d-box-accent"/>
+  <text x="506" y="68" class="d-t" text-anchor="middle">Midgard（本人の説明）</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">Cardano の eUTXO 向けのレイヤー 2</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">「新しいセキュリティモデルは不要」</text>
+  <text x="506" y="148" class="d-s" text-anchor="middle">落ちたことのない基盤に直接つながる</text>
+  <text x="506" y="168" class="d-s" text-anchor="middle">いずれ「UTXO が決済される場所」に</text>
+  <text x="506" y="192" class="d-s" text-anchor="middle">テストネット直前、半分ステルス（7 月時点）</text>
+
+  <rect x="16" y="226" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="250" class="d-t" text-anchor="middle">補足：Midgard は optimistic rollup 型</text>
+  <text x="340" y="272" class="d-s" text-anchor="middle">提出された取引を正しいと仮定し、一定期間に不正の証明があれば巻き戻す方式。中央のシーケンサーは置かない設計</text>
+</svg>
+<p class="figcap">上の 2 つの箱は Dave Dionisio の言葉を並べたもので、対比の仕方も本人のものです。<span class="badge">補足</span>下の箱は Midgard の技術仕様書（Anastasia Labs）と Midgard Labs のサイトからの補足で、動画では「optimistic rollup」という言葉は出ていません。「新しいセキュリティモデルは不要」という主張の成り立つ条件は、次の折りたたみに書きました。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — 「新しいセキュリティモデルを受け入れなくてよい」は、本当にそう言えるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、レイヤー 2 の種類によって答えが変わります。</strong>「レイヤー 1 の安全性を継承する」は多くのレイヤー 2 が使う言い方で、何をどこまで継承するかは設計しだいです。</p>
+<h4>Dave の言い方が成り立つ部分</h4>
+<p>Midgard は optimistic rollup です。レイヤー 2 の状態の要約を定期的に Cardano に書き込み、誰かが不正を見つけたら<strong>一定期間（チャレンジ期間）の間に Cardano 上で証明して巻き戻せる</strong>。この仕組みでは、レイヤー 2 のオペレーターが悪意を持っても、最終的な決済は Cardano のルールで守られます。「新しいバリデータの集合を信頼しなくてよい」という意味では、本人の言い方は成り立ちます。</p>
+<h4>それでも増えるもの</h4>
+<ul>
+  <li><strong>待ち時間。</strong>チャレンジ期間が終わるまで、レイヤー 2 からレイヤー 1 に資産を引き出せない</li>
+  <li><strong>監視する誰か。</strong>不正の証明は「誰かが見ていて提出する」ことが前提です。見ている人がいなければ守られない</li>
+  <li><strong>データの置き場所。</strong>巻き戻しには元の取引データが要り、それをどこに置くかはレイヤー 1 とは別の問題です</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>「レイヤー 2 のオペレーターが全員消えたら、自分の資産を Cardano 側で取り戻せるか」を聞けば足ります。取り戻せるなら本人の主張どおり、取り戻せないなら新しい信頼を受け入れています。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>チャレンジ期間の長さ、誰がブロックを作るのか、データをどこに置くのか、テストネットの日付。いずれも語られていません。「TPS の増加の数字は忘れた」とも本人が言っています。<span class="badge">補足</span>動画公開後の結果として、Midgard Labs のサイトは 2026 年 10 月 24 日時点で「プレアルファのテストネットを開発中」と記載し、公開テストネットは出ていません。Input Output の財務庫提案の概要では「2026 年第 3〜4 四半期を目標」とされています。</p>
+</div>
+</details>
+
+<p><span class="badge">補足</span>Leios についての「最近出た（has just come out）」という言い方は、2026 年 7 月の時点では当てはまりません。Leios は Ouroboros の拡張として研究・開発中で、このアーカイブの <a href="../2026-09-12-sebastian-nagel-leios-showcase-1k-tps/">2026-09-12 の回</a>は、開発者本人が 12 ノードのテスト環境で 1,000 TPS を見せたデモの記録です。mainnet に入った、という発言はどの回にもありません。</p>
+
+
+<h2 id="governance">5. 三院制だが、行政がない</h2>
+<p class="deck">SPO、DRep、憲法の裁定者。「大統領も王も要らないが、組織化は要る」と本人の見方。</p>
+
+<p>Eric が「DAO のベテランでも毎日新しい用語にぶつかる。鳥の目で構造を見たい」と頼み、Dave が説明します。出発点は<strong>財務庫</strong>です。「15 億 ADA が財務庫にあって、取引のかけらを積み上げてきた。だから台帳の上に本質的に DAO があり、資金がある」。<span class="badge">補足</span>15 億 ADA は本人が挙げた数で、時点は収録時（2026 年 7 月）の概数とみられます。</p>
+
+<p>憲法については、本人が「最終段階に参加した」と言い、「世界中で 40 のワークショップ」「100 か国くらい」「ブエノスアイレスでの美しい式典、私はナイロビのサテライトを率いていた」と語ります。<span class="badge">補足</span>憲法制定会議は 2024 年 12 月 4〜6 日にブエノスアイレスとナイロビで同時開催され、ワークショップの数は資料によって 63〜65、国の数は 50〜52 とされています。動画の「40」「100 か国」とは食い違うので、両方そのまま示します。憲法は会議で承認されたあと、2025 年 1 月末の Plomin ハードフォーク後に DRep と憲法委員会のオンチェーン投票にかけられました。</p>
+
+<div class="term">
+<p class="term-name">三院制 <small>tricameral、動画の中の言葉</small></p>
+<p>Dave は Cardano のガバナンスを「世界の政治の仕組みとよく似ている」と言い、3 つの役者を挙げます。<strong>ステークプールのオペレーター（SPO）</strong>はネットワークを動かし、アップグレードを決める。<strong>DRep</strong>は「議会、下院」で、ADA 保有者が保管を失わずに票を委ねる相手。そして<strong>憲法の裁定者</strong>は「最高裁」。<span class="badge">補足</span>3 つ目は正式には憲法委員会（Constitutional Committee）で、提案が憲法に沿っているかを判定します。Dave は「細かいところには入らない」と言い、名前は出していません。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Cardano のガバナンスの 3 つの役者（SPO、DRep、憲法の裁定者）と、Dave Dionisio が「ない」と指摘した行政の機能を示した図">
+  <text x="340" y="24" class="d-s" text-anchor="middle">Dave Dionisio のたとえ（議会・最高裁）をそのまま描いたもの</text>
+
+  <rect x="16" y="40" width="200" height="110" rx="8" class="d-box"/>
+  <text x="116" y="68" class="d-t" text-anchor="middle">SPO</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">ネットワークを動かす</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">アップグレードを決める</text>
+  <text x="116" y="134" class="d-s" text-anchor="middle">他チェーンの validator に相当</text>
+
+  <rect x="240" y="40" width="200" height="110" rx="8" class="d-box-accent"/>
+  <text x="340" y="68" class="d-t" text-anchor="middle">DRep</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">「議会、下院」</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">ADA 保有者が票を委ねる</text>
+  <text x="340" y="134" class="d-s" text-anchor="middle">1 人 1 票ではなく ADA の量</text>
+
+  <rect x="464" y="40" width="200" height="110" rx="8" class="d-box"/>
+  <text x="564" y="68" class="d-t" text-anchor="middle">憲法の裁定者</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">「最高裁」</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">憲法に沿うかを判定</text>
+  <text x="564" y="134" class="d-s" text-anchor="middle">補足：憲法委員会</text>
+
+  <rect x="16" y="170" width="648" height="60" rx="8" class="d-box-plain"/>
+  <text x="340" y="196" class="d-t" text-anchor="middle">行政 —— 「なかった」と本人が指摘</text>
+  <text x="340" y="218" class="d-s" text-anchor="middle">「大統領も王も要らないが、財務長官に当たる人やグループを指名するような組織化は要る」</text>
+
+  <rect x="16" y="246" width="648" height="40" rx="7" class="d-box-warn"/>
+  <text x="340" y="271" class="d-s" text-anchor="middle">本人の見方：「AlphaGrowth、この DeFi 戦略を実行せよ」と委任する形へ。「今はそうなっていないし、抵抗もあるだろう」</text>
+</svg>
+<p class="figcap">たとえ（議会、最高裁、財務長官）は Dave Dionisio のもので、実際の制度との対応はたとえの範囲です。<span class="badge">補足</span>「行政がない」という診断と「外部の実行部隊に DeFi を任せたい」という方向は、16 日後に同じ番組で Charles Hoskinson が語った「第三の府」の議論（姉妹サイト <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#executive">2026-07-26</a>）と重なります。ただしこの回の Dave の発言は本人の見方で、Input Output の公式見解ではありません。</p>
+</div>
+
+<p>Dave の診断は、<strong>「行政の機能がなかった」</strong>というものです。「大統領も王も要らないが、組織化を始める必要があり、すでに始まっている」。成熟すれば「財務長官に当たる人かグループ」「マーケティング」「保健やエネルギーに当たるもの」を指名するようになる、と。そして DRep については「1,000 人いるとして、動かせるのは上位 100 人だけ。さらに集約されて、考えや政策のまわりに集まる」という見方を示しました。<span class="badge">補足</span>1,000 と 100 は本人が「分からないが」と前置きして挙げた概数です。</p>
+
+<p>司会の Bryan は、ここで「代表に UI、経済学、トークノミクス、セキュリティ、マーケティング、事業開発の専門家であることを求めている。5 歳児にも分かるように説明すること自体が大仕事」と課題を挙げ、Dave は「初期には誰もが政治家になりたいと言うが、『何を掲げるのか』となる。私は決して政治家になりたくないし、DeFi を決めるべき人でもない」と応じています。</p>
+
+
+<h2 id="parties">6. 政党の芽と、委員会という未来</h2>
+<p class="deck">「成長して支出する党」「財政タカ派」「ニヒリズム」。本人が見ている分化と、望む形。</p>
+
+<p>Eric が「情報カスケード」と、イングランドの王・貴族・教会の三者の話を持ち出し、「ブロックチェーンの道徳的権威は何か。価格が上がる経済以外に明文化していない」と問いかけます。Dave の答えは「道徳は見る人次第」と前置きしつつ、Cardano に<strong>政党の芽</strong>が見えている、というものでした。</p>
+
+<ul>
+  <li>「成長して支出する党」</li>
+  <li>財政タカ派——「この財務庫から 1 ドルも使うな」</li>
+  <li>「権力を制限して大衆に押し出せ」という、ほとんど社会主義のようなもの</li>
+  <li>ニヒリズム——「憲法ごと燃やしてしまえ」</li>
+</ul>
+
+<p>「小さな政府のようだし、実際そうだ。それが狙いだった」。そして「真ん中にいれば安全だが、進まない」と、立場を選ぶ段階に来ているという見方です。</p>
+
+<p>望む形として語ったのが<strong>委員会（コーカス）</strong>です。「私は ZK 暗号の深みは決して理解できない。でも代表として、うまくやっている仲間を見て『この人の専門だ、票を合わせよう』と言える」。マーケティングや DeFi を知らない人は、棄権する代わりに「仲間を信頼する」と言ってほしい。「投票ブロックを作って敵と戦争するためではなく、専門家を集めて互いに頼るため」。米国の下院軍事委員会や上院銀行委員会を例に挙げつつ、「アメリカ政治にあまり寄せたくない。あれもゴミ箱の火事だ」と締めました。</p>
+
+<p>Eric はこれを「民主的共和制の目的は、機密の情報を扱える賢い人を選ぶこと」と受け、「Cardano の人たちは新しい情報に進んで適応する」と、自分たちが会ってきたチームの印象を語っています。<span class="badge">補足</span>「委任先に専門家を選ぶ」という考えは DRep 制度の設計そのものと重なりますが、Dave が言っているのは、DRep どうしがさらに互いに票を合わせる、という一段上の集約です。その仕組みが制度としてあるわけではなく、本人の「そうなると思う」という見通しです。</p>
+
+
+<h2 id="rfp">7. なぜ AlphaGrowth か — RFP の裏側</h2>
+<p class="deck">「差し込むだけの統合」ではなく一貫した戦略を。「何億ドルの TVL を動かした人はここにはいない」。</p>
+
+<p>Bryan が「あなたたちは RFP を始めていて、私たちは話した相手の一つだった。何を探していて、私たちの何に感心したのか」と聞きます。Dave の答えは、まず<strong>指標の不足</strong>から始まりました。月間アクティブユーザー、TVL、トランザクションが「あるべき水準にない」。経済活動と貨幣の流通速度が「仕組みの生命線」。</p>
+
+<p>そのうえで、創業組織側の経緯を語ります。「ちょうど LayerZero、Pyth、Circle を持ち込んだところだった」。統合をいくつかやると、「あっちに金がある」と統合に来たいという電話が鳴りやまなくなった。でも<strong>「これを差し込む」というばらばらの戦略</strong>はやりたくなかった。「創業組織として、私たちは世界的な専門家ではないと気づいた。ルーピングやプリミティブの話はできない」。Cardano のチームは面白いものを作っているが、「競合なら手札を全部見せたくない」ので、外から来る相手が要った、と。</p>
+
+<p>AlphaGrowth を選んだ理由として本人が挙げたのは、「好きな人と働きたい。それが第一」と、「いろいろな場所で助けてもらえる」こと。ボールトのキュレーションだけでなく、<strong>首尾一貫した戦略</strong>を一緒に作れる、と。「誰もかれも Cardano の問題は正確にこれだと思っているが、ここで何億ドルもの TVL を規模で動かした人はいない」「DRep は『戦略が要る』と言っている」。ただし「RFP の正確なところは話せない。私はつなぐ手伝いのほうだった」と断っています。</p>
+
+<p><span class="badge">補足</span>LayerZero、Pyth、Circle（USDCx）の統合は、姉妹サイトの用語集では the Pentad（Cardano の主要組織の共同体制）の「重要統合予算」の対象として記録されています。USDCx は 2026 年 2 月に mainnet 稼働、Pyth は 6 月時点で稼働、LayerZero は 5 月時点で開発中です。Dave が「持ち込んだ」と言うのは、その流れの Input Output 側の仕事を指すとみられます。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="PRIME 提案の経過。この動画の収録日（オンチェーン化）から、公開、同番組への Charles Hoskinson の出演、8 月の可決、9 月の監査と RFP までを並べた図">
+  <text x="340" y="22" class="d-s" text-anchor="middle">この動画の位置。収録日以外は、動画公開後に分かったこと（補足）</text>
+
+  <rect x="16" y="40" width="104" height="104" rx="8" class="d-box-accent"/>
+  <text x="68" y="64" class="d-t" text-anchor="middle">7 月 9 日</text>
+  <text x="68" y="88" class="d-s" text-anchor="middle">提案が</text>
+  <text x="68" y="106" class="d-s" text-anchor="middle">オンチェーンに</text>
+  <text x="68" y="126" class="d-s" text-anchor="middle">「今日出す」</text>
+
+  <rect x="124" y="40" width="104" height="104" rx="8" class="d-box-accent"/>
+  <text x="176" y="64" class="d-t" text-anchor="middle">7 月 10 日</text>
+  <text x="176" y="88" class="d-s" text-anchor="middle">この動画の</text>
+  <text x="176" y="106" class="d-s" text-anchor="middle">公開</text>
+  <text x="176" y="126" class="d-s" text-anchor="middle">Dave が出演</text>
+
+  <rect x="232" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="284" y="64" class="d-t" text-anchor="middle">7 月 26 日</text>
+  <text x="284" y="88" class="d-s" text-anchor="middle">同じ番組に</text>
+  <text x="284" y="106" class="d-s" text-anchor="middle">Charles Hoskinson</text>
+  <text x="284" y="126" class="d-s" text-anchor="middle">（姉妹サイト）</text>
+
+  <rect x="340" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="392" y="64" class="d-t" text-anchor="middle">8 月</text>
+  <text x="392" y="88" class="d-s" text-anchor="middle">DRep の投票で</text>
+  <text x="392" y="106" class="d-s" text-anchor="middle">可決</text>
+  <text x="392" y="126" class="d-s" text-anchor="middle">1 億 2,000 万 ADA</text>
+
+  <rect x="448" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="500" y="64" class="d-t" text-anchor="middle">9 月 6 日</text>
+  <text x="500" y="88" class="d-s" text-anchor="middle">監査、戦略、</text>
+  <text x="500" y="106" class="d-s" text-anchor="middle">RFP を予告</text>
+  <text x="500" y="126" class="d-s" text-anchor="middle">（この一覧の回）</text>
+
+  <rect x="556" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="608" y="64" class="d-t" text-anchor="middle">9 月 10 日</text>
+  <text x="608" y="88" class="d-s" text-anchor="middle">監査の結論と</text>
+  <text x="608" y="106" class="d-s" text-anchor="middle">RFP の条件</text>
+  <text x="608" y="126" class="d-s" text-anchor="middle">（この一覧の回）</text>
+
+  <line x1="16" y1="164" x2="660" y2="164" class="d-line"/>
+
+  <rect x="16" y="182" width="14" height="14" rx="3" class="d-box-accent"/>
+  <text x="38" y="194" class="d-s">動画で語られた、またはこの動画そのもの</text>
+  <rect x="340" y="182" width="14" height="14" rx="3" class="d-box"/>
+  <text x="362" y="194" class="d-s">動画公開後の結果（補足）</text>
+  <text x="340" y="232" class="d-s" text-anchor="middle">提案の中身（金額、目標、マイルストーン）は、この動画では一つも語られていない</text>
+  <text x="340" y="252" class="d-s" text-anchor="middle">可決時の投票数などは二次報道にもとづくため、本文では概要だけを書いている</text>
+</svg>
+<p class="figcap">この動画は、提案が投票にかかる<strong>前</strong>の記録です。<span class="badge">補足</span>可決は 2026 年 8 月。Cardano Foundation は 8 月 11 日に賛成票の理由を公表しています。二次報道では参加したステークのうち約 51 億 ADA が賛否を投じ、約 99 億 ADA が棄権とされますが、一次の集計は確認できていません。可決後の経過は <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/#prime">2026-09-06</a> と <a href="../2026-09-10-cardano-over-coffee-alphagrowth-rfp/#audit">2026-09-10</a> の回に続きます。</p>
+</div>
+
+
+<h2 id="marketing">8. 「作れば来る」は例外 — Tether Gold と、使える余剰</h2>
+<p class="deck">司会の持論と、ゲストの「財務庫はソブリン・ウェルス・ファンド」。どちらも支出を正当化する側の話。</p>
+
+<p>Bryan が「話をしましょう」と切り出したのが Tether の話です。3〜4 年前、Tether のかなり上の人から「Tether Gold を出したが普及しない」と相談された。インセンティブは？ マーケティングは？ 事業開発は？ 「何もやっていない。Tether ではやる必要がなかったから」。Bryan はこれを<strong>「作れば来る」という誤解</strong>の典型だと言います。Tether が始まったときは Bitcoin を持つ人がドルでヘッジしたいという本来の需要があったが、「たいてい何十億ドルの繰り延べられた需要はない」。マーケティング、事業開発、ポイントプログラムが要る。「F1 の車を設計する人と運転する人は別」。</p>
+
+<p>新しいチェーンはみんなそれをやる、と例を続けます。Ethena のポイントプログラム、「Ren（聞こえたまま）」との取引とローンチ後の時価総額「7 億ドルほど」。<span class="badge">補足</span>「Ren」は字幕のとおりで、どのプロジェクトか動画では説明されていません。時価総額の数字も Bryan の発言で、こちらでは確認していません。最後に「6 年やってきて、DeFi の 200 以上のプロトコルに資本を投じた。DeFi にいるなら誰かが AlphaGrowth と会っている」と、本人が「ちょっと宣伝」と断って自社を語っています。</p>
+
+<p>Dave は「おっしゃる点はよく分かる」と受けたうえで、2 つを足しました。ひとつは、代表たちが報酬なしで働いている現状と、Cardano の開発者が「形式手法と関数型プログラミングの、地球上でいちばん賢いコーダーたち」であって金融サービスのプロダクトの人ではないこと。「<strong>資本市場の専門性がもっと要る</strong>」。もうひとつが財務庫の位置づけです。</p>
+
+<div class="term">
+<p class="term-name">ソブリン・ウェルス・ファンド <small>sovereign wealth fund、動画の中のたとえ</small></p>
+<p>「私が DRep なら『なぜお金を使うのか』と言うだろう。でも Cardano には余剰がある。実質的にソブリン・ウェルス・ファンドだ。40 兆ドルの借金を抱えた米国ではない。財務庫の残高を見れば、成長のために使える」。<span class="badge">補足</span>ソブリン・ウェルス・ファンドは国家が余剰資金を運用する基金のことです。たとえとして使われていますが、Cardano の財務庫は投票で支出が決まる資金であって、運用益を目的に投資する基金ではありません。「成長のために使える」は、提案を推す側の正当化として読む必要があります。</p>
+</div>
+
+<p>Dave は「結局は純粋に政治に戻る。そう言いたくはないが」と締め、「あなたたちは好かれる人たちで、人々は結集すると思う。これを通すために死ぬ気でやる」と述べています。</p>
+
+
+<h2 id="narratives">9. 3 つの物語 — RWA、エージェント、DeFi マレット</h2>
+<p class="deck">ゲストの順位は、DeFi マレット、エージェント金融、RWA の順。理由は「自分のお金を自分で」。</p>
+
+<p>Eric が「Fuck・Marry・Kill」のゲームになぞらえて、DeFi の 3 つの物語の順位を求めました。AI（エージェント金融）、RWA（実世界資産）、DeFi マレット。Dave はまず「DeFi マレットは、前が仕事で後ろがパーティー？」と確認しています。</p>
+
+<div class="term">
+<p class="term-name">DeFi マレット <small>DeFi mullet、動画の中の言葉</small></p>
+<p>Eric の説明は「後ろが DeFi、前が中央集権的な取引所やカストディアン」。髪型のマレット（前は短く、後ろは長く）になぞらえて、<strong>利用者は見慣れた中央集権のアプリを使い、裏側の運用が DeFi</strong>になっている構成を指します。<span class="badge">補足</span>同じ番組の 2026-07-26 の回で Charles Hoskinson も使い、Coinbase と Morpho の組み合わせが例に挙がりました（姉妹サイト <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#mullet">2026-07-26</a>）。このアーカイブの 2026-09-06 の回でも同じ 3 択のゲームが出ています。</p>
+</div>
+
+<p>Dave の答えは、順に次のとおりです。</p>
+
+<ul>
+  <li><strong>RWA は最下位。</strong>「いちばん資本は形成されると思うが、私の中では最下位」。実物資産がオンチェーンに来るのは歓迎するが、「すでにアプリで何かを持っている人がそれを使いに行くのか分からない」。「Ondo の人たちは私が間違っていると言うだろう」</li>
+  <li><strong>エージェント金融は 2 位。</strong>「私の全エージェントを制御するアイデンティティが要るようになる。そうでないと暴れ回る」。セキュリティの観点で心配で、「思っているより少し長くかかる」。Alpaca や Robinhood が LLM から取引を流し込めるのは「魅力的」</li>
+  <li><strong>DeFi マレットが 1 位。</strong>「人々が、許可の管理なしに自分のお金とやり取りできるようにしたいだけ」「自分のお金とデータと価値を管理できないなら、監視と CBDC の世界には住みたくない」</li>
+</ul>
+
+<p><span class="badge">補足</span>同じ番組で Charles Hoskinson は 3 つのうちエージェント金融にもっとも強気でした（<a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#agentic">2026-07-26</a>）。Dave の順位は本人のもので、Midgard Labs や Input Output の見解ではありません。Bryan は「自分のエージェントに任せるか、取引所や投資顧問に委任するか、両方あってよい」と受けています。</p>
+
+
+<h2 id="privacy">10. 自分で握るか、任せるか — 監視とプライバシー</h2>
+<p class="deck">元規制当局の人が「NSA に次ぐデータを集めていた」と言う。お金は「最後の砦」。</p>
+
+<p>Dave は自分を「真のリバタリアンではないが、プライバシーと制御を愛する変わり者」と言います。「隠すものは何もない」という人には同意できない、「一挙手一投足が監視される世界は許せない」。ただし「銀行やステーブルコインを使わないとは言っていない」とも。Eric は「『隠すものは何もない』と言う人には母親の旧姓と社会保障番号を聞く。一人もくれない」と返しています。</p>
+
+<p>規制当局の内側の話も出ました。「銀行の規制当局では<strong>NSA に次ぐ量のデータ</strong>を集めていた。クレジットカードの全取引を、銀行は当然、規制当局に渡す」。Bryan は投資銀行時代の話として、Tencent と Alibaba に買収されそうだった決済処理会社を司法省が止めた例を挙げ、「取引の位置情報があれば、上院議員の息子が毎週火曜に食料品店に行くことが分かる」と説明します。<span class="badge">補足</span>2018 年に Ant Financial（Alibaba 系）による MoneyGram の買収が米国の審査で阻まれた件を指すとみられますが、動画では会社名は出ていません。</p>
+
+<p>Dave の結論は「<strong>お金こそが最後の砦</strong>」です。「誰も見ていない野原で誰かに 20 ドル札を手渡してよいのか、それとも全取引が追跡されるべきなのか」。自分も Claude や Codex に「私は毎日仕事で何をしているか」と聞いて「不気味なほど私を知っていた」と言い、「恐怖を煽るつもりはないが」と留保しています。Cardano については、「国家や企業だけのための完全に許可制のサイドチェーンも作れる。みんながやりたいことを全部やれればいい」。</p>
+
+<p>この節の最後に、Dave は PRIME への訴えを置きました。「この提案は、ほかのどれよりも草の根の参加が要る。IOG、創業組織、CF（Cardano Foundation）とも調整している」「巨大な TAM（市場規模）がある。全員が食べられる」「DRep がこれを見るなら、成長のラチェットを回し始める機会だ。心をつかまなければならない。この 1 か月ほど、みんなでそれをする」。</p>
+
+
+<h2 id="ai">11. AI の話と、300 の壺</h2>
+<p class="deck">司会 2 人の雑談。Claude Fable の宣伝と、「完璧を待つな、数を打て」という寓話。</p>
+
+<p>Dave が残ったまま、Bryan が AI の話に移ります。「今日が Fable の最終日」と言い、Claude Fable に「2030 年、2040 年のイベント業界はどうなるか」を午前 3 時まで聞いていた、と。クレジットが切れると「Bryan、まだ起きているね」と出た、「中毒性がある」。Dave は「出たときはマーケティングの心理作戦かと思った」「あの数日間は本当にすばらしく、それから取り上げられた。今は少し柔らかく感じる」と述べ、「Sam Altman が言うように、今日使うモデルは今後いちばん愚かなモデルだ」と。<span class="badge">補足</span>Claude Fable は Anthropic の Claude のモデルの名前です。収録時点で期間限定の提供だった、という司会の言い方以上のことは動画からは分かりません。2026 年 10 月時点では Claude Fable 5.1 として一般提供されています。</p>
+
+<p>Bryan はこれを Cardano のガバナンスに戻します。1960 年代の月面着陸で、命令がないのに海軍と空軍がハワイの山にアンテナを置いた話を引いて、「十分な人を集められるビジョンは何か。到達すべき 1 番の<strong>北極星の指標</strong>は何か。それに合意できれば、正しい結論に何度でも反復していける」。Dave は「AI が裁定者になれるかもしれないが、100 人の弁護士に聞けば 100 の答えが返る」と留保し、Midgard Labs では「Phil DiSarro と、私たちが何を掲げるかを書いてしまおうと決めた。提案やアイデアをその原則に当てれば、整合しているかの下働きをしてくれる」と述べました。</p>
+
+<p>締めは Bryan の寓話です。2013〜14 年のスタートアップで聞いた<strong>陶芸の師の話</strong>——「最高の 3 つの壺」で成績を付けられた組より、「上位 300 の壺」で付けられた組のほうが、あらゆる点で優れた壺を作った。「教訓はシュートの数（shots on goal）。練習したものになる。すべてが完璧になるのを待てば永遠に待つ」。Dave は「Brian Armstrong も 10 回目の事業で成功した」と重ね、「完璧を善の敵にしない」と応じています。<span class="badge">補足</span>この寓話は写真教育の本に出る「量と質」の話として広く引用されるもので、Bryan 自身も「有名な話」と言っています。</p>
+
+<p>最後に Bryan は「今日あとで、あるいはこれを見ているときに、Cardano の私たちの提案を見て投票してください。2 週間か 1 か月ほど出ているはず」と呼びかけて終わります。</p>
+
+
+<h2 id="overall">12. 全体像</h2>
+<p class="deck">技術の話も政治の話も、最後は「だから PRIME に投票してほしい」に収束する。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="この回の 3 本の筋（Midgard と UTXO、ガバナンスの診断、マーケティング論）が、PRIME 提案への支持の呼びかけに収束することを示した図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">技術 — ゲスト</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">UTXO：状態がない、決定性</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">Midgard：L1 のセキュリティ</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">「道具はそろった、言い訳はない」</text>
+
+  <rect x="240" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">政治 — ゲスト</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">三院制だが行政がない</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">政党の芽、委員会の未来</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">「実行を委任する形へ」</text>
+
+  <rect x="464" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">成長 — 司会</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">「作れば来る」は例外</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">マーケティング、BD、ポイント</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">「6 年、200 プロトコル」（自社）</text>
+
+  <line x1="116" y1="144" x2="116" y2="170" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="340" y1="144" x2="340" y2="170" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="564" y1="144" x2="564" y2="170" class="d-line-accent" marker-end="url(#m1)"/>
+
+  <rect x="16" y="176" width="648" height="64" rx="8" class="d-box-accent"/>
+  <text x="340" y="202" class="d-t" text-anchor="middle">「だから PRIME に投票してほしい」—— 提案者と、それを後押しした人の共同の訴え</text>
+  <text x="340" y="226" class="d-s" text-anchor="middle">「財務庫はソブリン・ウェルス・ファンド。成長のために使える」（ゲスト）／「この 1 か月、心をつかむ」</text>
+
+  <rect x="16" y="256" width="648" height="50" rx="7" class="d-box-plain"/>
+  <text x="340" y="278" class="d-s" text-anchor="middle">提案の中身（金額・目標・マイルストーン）は語られていない。可決・監査・RFP は、この一覧の 9 月の 2 回に続く</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">3 本の筋をこう束ねたのはこちらの読み。本人たちは「全部が投票のため」とは言っていない</text>
+</svg>
+<p class="figcap">束ね方はこちらの読みです。動画の中では、技術の話、政治の話、成長の話がそれぞれ独立して語られ、PRIME への呼びかけは節の終わりごとに挟まれます。<span class="badge">補足</span>「全員が当事者」という前提で読むと、3 本の筋がどれも支出の正当化として機能していることが見えます。それが意図かどうかは動画からは分かりません。</p>
+</div>
+
+
+<h2 id="qa">13. やり取りから</h2>
+<p class="deck">インタビュー形式なので、司会の問いと答えを 4 つ抜き出した。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>Vitalik が Charles の言ってきたことを描き出している。ETH の人たちはどう見ているか。</p>
+<p class="qa-a" data-by="Dave Dionisio">「光栄で、多くの点で裏付けになる」。ただし Vitalik の最新の動きは「詳しく追っていない」。代わりに語ったのは、Ethereum のレイヤー 2 が「ネットワークに寄生している」という見方と、<strong>収益をレイヤー 1 に戻すか</strong>という問題。それを Midgard で取り組む、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>Midgard は Cardano のスタックのどこに位置づくのか。Phil とはどう働いているのか。</p>
+<p class="qa-a" data-by="Dave Dionisio">Phil DiSarro は USDCx ブリッジの技術アーキテクトで「天才」。Midgard は Leios の上で Cardano をスケールさせる、eUTXO 向けのレイヤー 2。<strong>「新しいセキュリティモデルを受け入れる必要がない」</strong>のがいちばん独特。テストネットの直前。TPS の数字は「忘れた」。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>RFP で何を探していて、私たちの何に感心したのか。</p>
+<p class="qa-a" data-by="Dave Dionisio（留保つき）">指標が足りない。LayerZero、Pyth、Circle を入れたが、「差し込むだけ」のばらばらな戦略ではなく一貫した戦略が要った。「好きな人と働きたい、それが第一」。<strong>「RFP の正確なところは話せない。私はつなぐ手伝いのほうだった」</strong>と断っています。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>AI、RWA、DeFi マレットの 3 つを順位付けしてほしい。</p>
+<p class="qa-a" data-by="Dave Dionisio">1 位 DeFi マレット（「自分のお金を許可なしに」）、2 位 エージェント金融（「エージェントを制御するアイデンティティが要る。長くかかる」）、3 位 RWA（「いちばん資本は集まるが、私の中では最下位」）。</p>
+</div>
+
+
+<h2 id="pending">14. 答えが出なかったこと</h2>
+<p class="deck">時期と数字が、ほとんど出ていない回。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>Midgard のテストネットはいつか。</p>
+<p class="qa-a" data-by="「直前」">「テストネットを立ち上げる直前」「半分ステルス」とだけ。<span class="badge">補足</span>2026 年 10 月 24 日時点で Midgard Labs のサイトは「プレアルファのテストネットを開発中」。Input Output の財務庫提案の概要では公開テストネットは「2026 年第 3〜4 四半期を目標」。収録から 3 か月半で、公開テストネットは出ていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>Midgard は何倍速くなるのか。チャレンジ期間は、誰がブロックを作るのか。</p>
+<p class="qa-a" data-by="「忘れた」">TPS の増加の数字は本人が「忘れた」。optimistic rollup としての設計（待ち時間、オペレーター、データの置き場所）は動画では触れられていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">食い違い</span>Leios は「最近出た」のか。</p>
+<p class="qa-a" data-by="当てはまらない">Dave は「最近出た Leios」と言いましたが、2026 年 7 月時点で Leios は mainnet に入っていません。このアーカイブの 2026-09-12 の回は、テスト環境でのデモの記録です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">食い違い</span>憲法のワークショップは「40」で、国は「100 か国」か。</p>
+<p class="qa-a" data-by="資料と異なる">公開資料ではワークショップ 63〜65、国は 50〜52。本人は「思う」「くらい」と概数で言っています。両方そのまま示しました。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">中身なし</span>PRIME 提案の金額、目標、マイルストーン。</p>
+<p class="qa-a" data-by="「ambitious」のみ">この動画では提案の中身が一つも語られていません。「野心的」「成果を出せばインセンティブはそろう」「2 週間か 1 か月ほど出ている」だけです。可決後の数字は 9 月の 2 回にあります。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">名前のみ</span>「Ren」と「Silk」。</p>
+<p class="qa-a" data-by="説明なし">Bryan が「Ren と取引をした」「時価総額 7 億ドルほど」と挙げた相手と、Eric の「Silk を使うべき」は、どちらも動画で説明がなく、字幕のまま残しています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未確認</span>「6 年で 200 以上のプロトコルに資本を投じた」。</p>
+<p class="qa-a" data-by="自社の宣伝">Bryan が「ちょっと宣伝」と断って述べた AlphaGrowth の実績です。こちらでは確認していません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は AlphaGrowth の公式 YouTube チャンネルで公開されている動画 <a href="https://www.youtube.com/watch?v=ZrRDqtg6q6g">Why Cardano is Ready to Win: Midgard L2, UTXO, &amp; The "DeFi Mullet" w/ Dave Dionisio | Bonus Ep.</a>（公開日 2026-07-10）です。公開動画なので発言者は実名のまま書いています。収録は、司会が「今日、提案をオンチェーンに出す」と言っていることから、PRIME 提案がチェーンに載った 2026 年 7 月 9 日とみられます。</p>
+<p><strong>当事者の記録です。</strong>司会 2 人は PRIME の提案者、ゲストはそれを Input Output 側で後押しした人で、この動画の中の評価はすべて本人たちの発言として帰属させています。AlphaGrowth のチャンネルの回は、このアーカイブでは一貫して「当事者の見解」として読みます。</p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回は字幕だけから作っており画面は確認していないので、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>動画公開後の結果</strong>として足したものは、PRIME 提案の可決（2026 年 8 月）、Midgard のテストネットの状況（2026 年 10 月 24 日時点）、Claude Fable の一般提供の 3 点で、いずれも <span class="badge">補足</span> と日付を付けています。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。原本には時刻がないので、全文ページにも時刻はありません。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Dave Dionisio, newly moved from Input Output to Midgard Labs, tells AlphaGrowth's show that <strong>“we're ready to win.”</strong> He explains UTXO and decentralisation, Midgard as a layer 2 that keeps Cardano's own security, and diagnoses Cardano governance as “tricameral” with no executive.<br>
+  It was recorded on the day the hosts' PRIME proposal, a 120 million ADA treasury withdrawal, went on chain, and the guest helped connect them from the Input Output side. <strong>Everyone in the room is an interested party.</strong></p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Everyone is an interested party.</strong> The two hosts are PRIME's proposers; the guest, formerly of Input Output, says he “was more helping connect.” There is a lot of mutual praise, and every judgement here is attributed to the person who made it.</li>
+  <li><strong>Midgard is a layer 2 where “you don't have to accept a new security model.”</strong> Built for Cardano's eUTXO, it “truly connects to the base core Cardano blockchain, which has never gone down.” “About to launch testnet,” in “quasi stealth mode.” Partner Phil DiSarro is “a genius.”</li>
+  <li><strong>UTXO's pitch is “no global state.”</strong> Smaller attack surface, fees known in advance, less MEV, tokens as native assets. He adds that his account is “probably not technically accurate.”</li>
+  <li><strong>Cardano governance is tricameral, with no executive.</strong> SPOs, DReps, and a constitutional arbiter. Of “maybe 1,000 DReps,” only the top 100 move anything. In his view an executive function will be needed: “AlphaGrowth, please go deliver on this DeFi strategy.”</li>
+  <li><strong>Why AlphaGrowth.</strong> Monthly users, TVL and transactions are short. LayerZero, Pyth and Circle were brought in, but a “disjointed strategy of plug this thing in” was not wanted. “No one here has driven hundreds of millions of TVL at scale.”</li>
+  <li><strong>“If you build it, they will come” is the exception.</strong> The hosts' Tether Gold story: marketing, BD and points are needed. The treasury is “effectively a sovereign wealth fund” that “can spend for growth,” the guest says.</li>
+  <li><strong>Ranking three narratives.</strong> The guest puts the DeFi mullet first, agentic finance second, and RWAs “at the bottom for me,” even if they attract the most capital.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">In this session</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking, and when it was recorded</a></li>
+  <li><a href="#en-background"><span class="n">02</span>From a bank regulator to Input Output, and on to Midgard</a></li>
+  <li><a href="#en-utxo"><span class="n">03</span>Vitalik, decentralisation, and what UTXO buys you</a></li>
+  <li><a href="#en-midgard"><span class="n">04</span>Midgard: a layer 2 that keeps Cardano's security</a></li>
+  <li><a href="#en-governance"><span class="n">05</span>Tricameral, with no executive</a></li>
+  <li><a href="#en-parties"><span class="n">06</span>The first parties, and a future of caucuses</a></li>
+  <li><a href="#en-rfp"><span class="n">07</span>Why AlphaGrowth: behind the RFP</a></li>
+  <li><a href="#en-marketing"><span class="n">08</span>“Build it and they will come” is the exception: Tether Gold, and a surplus to spend</a></li>
+  <li><a href="#en-narratives"><span class="n">09</span>Three narratives: RWA, agents, the DeFi mullet</a></li>
+  <li><a href="#en-privacy"><span class="n">10</span>Control or delegate: surveillance and privacy</a></li>
+  <li><a href="#en-ai"><span class="n">11</span>The AI segment, and three hundred pots</a></li>
+  <li><a href="#en-overall"><span class="n">12</span>The whole picture</a></li>
+  <li><a href="#en-qa"><span class="n">13</span>From the exchange</a></li>
+  <li><a href="#en-pending"><span class="n">14</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking, and when it was recorded</h2>
+<p class="deck">Two proposers and the former Input Output insider who backed their proposal, recorded the day it went on chain.</p>
+
+<p>A bonus episode of AlphaGrowth's show “Dose of Alpha.” Two hosts, one guest.</p>
+
+<ul>
+  <li><strong>Bryan Colligan</strong> — host, CEO of AlphaGrowth. Not named in the video; the one Dave refers to as “Bryan and I.” Carries the Tether Gold story, the “three hundred pots” fable and the AI segment. <span class="badge">added</span> Surname and title from the show's public information, as in this archive's 2026-09-06 episode.</li>
+  <li><strong>Eric Waisanen</strong> — host, AlphaGrowth's DeFi Strategist. Addressed as “Eric”; asks about Vitalik, UTXO, governance, and talks of “philosophers and a pragmatist.”</li>
+  <li><strong>Dave Dionisio</strong> — guest, Midgard Labs. Introduced as “Dave Dionisio from Midgard Labs”; says he “eventually joined Input Output and have since just left,” and that “Midgard was just recent.” <span class="badge">added</span> COO of Midgard Labs per his public profile; earlier at the CFPB, FS Vector, Fannie Mae and Input Output.</li>
+</ul>
+
+<p><strong>Everyone in this episode is an interested party.</strong> Eric says “we are going on-chain today with our proposal on Cardano,” and Dave says “I was more helping connect” and “we want people to rally around your proposal.” <span class="badge">added</span> The proposal is Cardano PRIME, a treasury withdrawal of 120 million ADA. It reached the chain on 9 July 2026, so the recording is that day and publication the next. DReps approved it in August 2026, making AlphaGrowth its operator. This video is therefore <strong>a record of the party asking for funds and the party that backed them, talking up each other's work on the day voting began</strong>. Judgements and figures are attributed to their speakers throughout, never stated as fact.</p>
+
+<p><span class="badge">added</span> Sixteen days later Charles Hoskinson appeared on the same show, calling the “ghost chain” critique half right and saying he wanted an external team to run the DeFi side (sister site, <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#ghost">2026-07-26 A Dose of Alpha</a>). What happened after the vote is in this archive's <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/#prime">2026-09-06 episode</a> (audit, strategy, RFP) and <a href="../2026-09-10-cardano-over-coffee-alphagrowth-rfp/#audit">2026-09-10 episode</a> (audit findings and RFP terms).</p>
+
+<details class="explain">
+<summary>A fair question — how should one read a show where proposers and their backer praise each other?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<p><strong>The question is fair: every compliment in this episode comes from a side with a stake.</strong> “You guys are really likeable” and “we're going to die trying to make sure this goes through” are the guest's; “we've deployed capital into over 200 protocols” is the hosts' own pitch.</p>
+<h4>What is still worth reading</h4>
+<ul>
+  <li>The <strong>proposer-side logic</strong> is spoken by the people themselves. “Not a disjointed strategy of plug this thing in” and “no one here has driven hundreds of millions of TVL at scale” is the founding entities' self-assessment, rarely heard elsewhere</li>
+  <li>The guest <strong>qualifies himself</strong>: “I can't actually speak to the exact RFP,” “I'm probably not the world-renowned expert,” “probably not technically accurate”</li>
+  <li>It is dated <strong>before the vote</strong>, so set against the later episodes (audit, RFP terms) it shows what came true as said and what changed</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Separate statements of fact from judgements. “We had just brought on LayerZero, and Pyth, and Circle” can be checked; “these people get it” cannot. This page attributes the judgements and marks the facts it could verify as added.</p>
+<h4>What the video does not say</h4>
+<p>Not one detail of the proposal itself: not the 120 million ADA, not the TVL target, not the milestones. Only “ambitious” and “incentives are aligned if you deliver.”</p>
+</div>
+</details>
+
+
+<h2 id="en-background">2. From a bank regulator to Input Output, and on to Midgard</h2>
+<p class="deck">Having seen government from the inside, he asked whether the laws could be written into a blockchain instead.</p>
+
+<p>Dave Dionisio says he did bank audits at a regulator in Washington, DC: “Elizabeth Warren's Dodd-Frank CFPB agency,” where he was “hired to bring banking operations perspective to the government.” He watched “this grand political drama” when Mick Mulvaney came in after Trump's election. The question that followed was whether to “make policy and laws and collect a bunch of data and kind of overreach, in my opinion, or could we codify these laws into the blockchain.” “I caught the bug.”</p>
+
+<p>Then the fintech consultancy FS Vector, then Input Output, which he has “since just left” for Midgard Labs. He repeats that it is “still all in the same family” and that he “missed the IOG team so much” but still works with them. What drew him to Cardano was Charles Hoskinson's “very unique blockchain” and <strong>“the hardness of the code”</strong>: “if this thing is going to live forever… it can't go down. It must be secured by as close to math as you can get.”</p>
+
+<p>Host Bryan matches this with his own DC story, joining Oracle “right out of school” and working at the Department of Labor. <span class="badge">added</span> The hosts' biographies here are their own account; this page has not checked them.</p>
+
+
+<h2 id="en-utxo">3. Vitalik, decentralisation, and what UTXO buys you</h2>
+<p class="deck">Asked how it feels that Ethereum has come round to Cardano's ideas, the guest answers with decentralisation first.</p>
+
+<p>Eric asks how “the ETH heads” take it that Vitalik is “mapping out a lot of what Charles has talked about for the last 8 or 9 years.” Dave calls it “flattering” and “validating in many ways,” then turns to his own view: Ethereum's <strong>layer twos are “in some ways parasitic onto the network itself.”</strong> In Miami he heard “a big DAT issuer ask, ‘Why isn't the Ethereum price going up?’” The question for any scaling effort is “are you driving revenue back to the layer one?” — “something that we can work on with Midgard.” On Vitalik himself he is careful: “I don't follow too close,” “I saw something about becoming lean.” <span class="badge">added</span> The host's claim that Ethereum is “talking about bringing UTXO into Ethereum” is the host's; no source is given in the video.</p>
+
+<p>Asked to explain UTXO, Dave starts with <strong>decentralisation</strong> instead. The three founding entities “burned their keys and just pushed this thing out in the wild.” ADA “comes with inalienable rights”: “you get voting power with every single ADA that you have,” a level of decentralisation beyond the “geographic dispersion of the nodes” other chains count.</p>
+
+<p>Bryan adds a Bitcoin story from 2017: BitGo's Mike Belshe, “Tony from BitPay” and others wanted to upgrade Bitcoin by having miners flip a bit, and “weren't able to communicate and have discourse.” “That to me was the day that Bitcoin died.” <span class="badge">added</span> This appears to be SegWit2x, the New York Agreement, where miners signalled support with a block flag; it was later called off. “Tony” is most likely BitPay co-founder Tony Gallippi; no surname is given. Dave hedges again: “I worry that they can't upgrade fast enough, but that's not a bug. It's a feature in many ways for Bitcoin.”</p>
+
+<p>On UTXO proper, prefaced with “we should probably get our cryptographers in here… it's probably not technically accurate”:</p>
+
+<ul>
+  <li><strong>“We don't have to manage global state, because it's just UTXOs.”</strong> A “much smaller attack surface”: you “would have to crack all of those individuals instead of… a list of accounts”</li>
+  <li><strong>Determinism.</strong> “You know exactly what those smart contracts are going to do,” “you know the exact fee before you submit it. MEV is not as much of a thing”</li>
+  <li><strong>Many assets in one transaction.</strong> So “sometimes we feel like we get cheated on the transaction volume, but when you look at the real math… we don't have the activity even with that kind of nuance”</li>
+  <li><strong>Native assets.</strong> Ethereum's ERC-20 tokens are smart contracts; on Cardano an issued token “has first class citizen rights as if it was ADA itself,” which “probably reduces some of the security risks”</li>
+  <li><strong>Plutus and formal verification.</strong> A Haskell-derived language that is “more like math and very less expressive,” where “you can prove that it will always do exactly what it says,” at the cost of being “very hard for a newcomer”</li>
+</ul>
+
+<details class="explain">
+<summary>Dense section — open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<h4>UTXO versus accounts</h4>
+<p>Ethereum's ledger is like a bank's list of accounts: one table of who holds what, the <strong>global state</strong>. Cardano's and Bitcoin's ledgers are bundles of unspent “cheques.” A payment spends some cheques and writes new ones; it never edits a shared table.</p>
+<h4>Why the fee is known in advance</h4>
+<p>With cheques, a transaction's inputs and outputs are fixed before it is sent, so its outcome and cost can be computed first. With accounts, someone else's transaction in the same block can change the premises of yours, so the result is only known after execution. That is what “determinism” means here.</p>
+<h4>An everyday comparison</h4>
+<p>A shared household ledger everyone writes into (accounts) versus each person carrying cash in envelopes (UTXO). Envelopes mean nobody can rewrite the ledger on you, at the price of managing a lot of envelopes.</p>
+<h4>What the video does not say</h4>
+<p>“Smaller attack surface” and “MEV is not as much of a thing” are claims Dave himself flags as “probably not technically accurate.” Which attacks are prevented and how, and the ordering issues Cardano does have (around batchers), are not discussed. No source is given for the host's remark about UTXO coming to Ethereum.</p>
+</div>
+</details>
+
+<p>Eric takes it as the problem of “bloated state over time” and agrees that “the idea of just being transaction-based does make sense.”</p>
+
+
+<h2 id="en-midgard">4. Midgard: a layer 2 that keeps Cardano's security</h2>
+<p class="deck">The pitch is “you don't have to accept a new security model.” Testnet is “about to launch,” he says.</p>
+
+<p>Before Midgard, Dave talks about Phil DiSarro, whom he has known “since I've been working more closely with IOG.” Together they worked on <strong>the programmable asset standard</strong>: Cardano “never had freeze and seize,” which banking partnerships require, because native tokens “are not smart contracts.” On “some Wyoming stablecoin” they “proved in like a month's time that we can implement this feature.” Phil was “the technical architect of the USDCx bridge that I helped bring on,” and is “a genius, not just in the technical space, but truly in business, legal.” <span class="badge">added</span> Phil DiSarro founded Anastasia Labs and designed Midgard; in 2026 the team operates as Midgard Labs, and later in this video Dave calls him “my founder.” The programmable asset standard is the one discussed as CIP-113, whose maturity came up in the 2026-09-06 episode.</p>
+
+<p>Midgard, in his words:</p>
+
+<ul>
+  <li>Its purpose “for now” is “scaling Cardano on top of the actual base ledger core scaling that has just come out called Leios.” He “forget[s] what the number of TPS increase” is; finality “is also a challenge” being worked on at the core</li>
+  <li>“Effectively what looks like a layer 2, but <strong>for eUTXO on Cardano</strong>”</li>
+  <li>“The most unique thing to me is that <strong>you don't have to accept a new security model</strong> for it. It truly connects to the base core Cardano blockchain, which has never gone down. You don't have to blow to the Nintendo cartridge to kickstart the nodes again”</li>
+  <li>Eventually “the place where UTXO settles in the non-permissioned world,” connecting to “the Cantons, etc.”</li>
+  <li>“Still super early days, but the tech is not. We're about to launch <strong>testnet</strong>,” in “quasi stealth mode,” aiming to build activity on Cardano so there is “the need to scale”</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Based on Dave Dionisio's account: layer twos that require a new security model, contrasted with Midgard, which connects to Cardano's base-layer security">
+  <text x="340" y="24" class="d-s" text-anchor="middle">The contrast as drawn in the video; details in the added note below</text>
+
+  <rect x="16" y="40" width="316" height="168" rx="8" class="d-box"/>
+  <text x="174" y="68" class="d-t" text-anchor="middle">Many layer 2s (his contrast)</text>
+  <text x="174" y="96" class="d-s" text-anchor="middle">Users must accept a new</text>
+  <text x="174" y="116" class="d-s" text-anchor="middle">security model</text>
+  <text x="174" y="148" class="d-s" text-anchor="middle">“In some ways parasitic onto the network”</text>
+  <text x="174" y="168" class="d-s" text-anchor="middle">Does revenue flow back to layer 1?</text>
+  <text x="174" y="192" class="d-s" text-anchor="middle">(his view of Ethereum)</text>
+
+  <rect x="348" y="40" width="316" height="168" rx="8" class="d-box-accent"/>
+  <text x="506" y="68" class="d-t" text-anchor="middle">Midgard (his account)</text>
+  <text x="506" y="96" class="d-s" text-anchor="middle">A layer 2 for eUTXO on Cardano</text>
+  <text x="506" y="116" class="d-s" text-anchor="middle">“Don't have to accept a new security model”</text>
+  <text x="506" y="148" class="d-s" text-anchor="middle">Connects to a base chain that never went down</text>
+  <text x="506" y="168" class="d-s" text-anchor="middle">Eventually “where UTXO settles”</text>
+  <text x="506" y="192" class="d-s" text-anchor="middle">“About to launch testnet,” quasi stealth (July)</text>
+
+  <rect x="16" y="226" width="648" height="60" rx="7" class="d-box-plain"/>
+  <text x="340" y="250" class="d-t" text-anchor="middle">Added: Midgard is an optimistic rollup</text>
+  <text x="340" y="272" class="d-s" text-anchor="middle">Transactions assumed valid; a fraud proof within a window can revert them. No central sequencer</text>
+</svg>
+<p class="figcap">The two upper boxes are Dave Dionisio's words, and the contrast is his. <span class="badge">added</span> The lower box comes from the Midgard technical specification (Anastasia Labs) and the Midgard Labs website; the phrase “optimistic rollup” is not used in the video. The conditions under which “no new security model” holds are in the next fold.</p>
+</div>
+
+<details class="explain">
+<summary>A fair question — can one really say “you don't have to accept a new security model”?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows was written to help; it is not from the video.</p>
+<p><strong>The question is fair, and the answer depends on the kind of layer 2.</strong> “Inherits layer 1 security” is a phrase many layer 2s use; what is inherited, and how far, is a matter of design.</p>
+<h4>Where his phrasing holds</h4>
+<p>Midgard is an optimistic rollup. It periodically writes a summary of layer-2 state to Cardano, and if anyone finds fraud they can <strong>prove it on Cardano within a challenge window and roll it back</strong>. Under that design, a malicious layer-2 operator is still bound by Cardano's rules at settlement. In the sense of “you need not trust a new validator set,” his phrasing holds.</p>
+<h4>What is still added</h4>
+<ul>
+  <li><strong>Waiting.</strong> Assets cannot leave for layer 1 until the challenge window closes</li>
+  <li><strong>Someone watching.</strong> Fraud proofs assume somebody is watching and submits one. With nobody watching, nobody is protected</li>
+  <li><strong>Where the data lives.</strong> Reverting needs the original transaction data, and where that is kept is a question separate from layer 1</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Ask: “if every layer-2 operator vanished, could I recover my assets on Cardano?” If yes, his claim stands; if no, you have accepted new trust.</p>
+<h4>What the video does not say</h4>
+<p>The length of the challenge window, who produces blocks, where data is kept, and the testnet date. He also says he forgot the TPS figure. <span class="badge">added</span> Post-publication: as of 24 October 2026 the Midgard Labs site lists a “pre-alpha testnet in development” and no public testnet has launched. Input Output's overview of treasury proposals gives a Q3/Q4 2026 target.</p>
+</div>
+</details>
+
+<p><span class="badge">added</span> Describing Leios as scaling that “has just come out” does not fit July 2026. Leios is an Ouroboros extension still in research and development; this archive's <a href="../2026-09-12-sebastian-nagel-leios-showcase-1k-tps/">2026-09-12 episode</a> records its developer showing 1,000 TPS on a twelve-node test setup. No episode has it on mainnet.</p>
+
+
+<h2 id="en-governance">5. Tricameral, with no executive</h2>
+<p class="deck">SPOs, DReps, a constitutional arbiter. “Nobody wants a president or a king, but we will need to start organizing,” in his view.</p>
+
+<p>Eric asks for “the architecture from a bird's-eye view,” saying that even “DAO veterans” run into “new terminology and new blockers every day.” Dave starts from <strong>the treasury</strong>: “There's 1.5 billion ADA sitting in a treasury that has been accumulating bits of transactions… So, there's money in inherently what is a DAO on the ledger.” <span class="badge">added</span> 1.5 billion is his round figure, presumably as of the July 2026 recording.</p>
+
+<p>On the constitution he says he “joined in the final stages,” with “meetings all over the world. I think there were 40 different workshops,” “like 100 countries,” “a beautiful ceremony in Buenos Aires,” and “I was leading a satellite in Nairobi.” <span class="badge">added</span> The constitutional convention ran 4–6 December 2024 simultaneously in Buenos Aires and Nairobi; sources put the workshops at 63 to 65 across 50 to 52 countries. Those figures differ from his “40” and “100 countries,” so both are shown. After the convention, the text went to an on-chain vote of DReps and the constitutional committee following the Plomin hard fork at the end of January 2025.</p>
+
+<div class="term">
+<p class="term-name">Tricameral <small>the speaker's term</small></p>
+<p>Dave says Cardano governance is “very akin to our political systems of the world” and names three actors. <strong>Stake pool operators</strong> power the network and decide upgrades. <strong>DReps</strong> are “congress, or even like the House of Representatives”: ADA holders delegate to them without losing custody. And a <strong>“supreme court type of arbiter of the Cardano Constitution.”</strong> <span class="badge">added</span> The third is formally the Constitutional Committee, which judges whether proposals conform to the constitution. He says he “won't get too much into the nitty-gritty there” and does not name it.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="The three actors in Cardano governance named by Dave Dionisio (SPOs, DReps, constitutional arbiter) and the executive function he says is missing">
+  <text x="340" y="24" class="d-s" text-anchor="middle">Dave Dionisio's analogies (Congress, Supreme Court) drawn as given</text>
+
+  <rect x="16" y="40" width="200" height="110" rx="8" class="d-box"/>
+  <text x="116" y="68" class="d-t" text-anchor="middle">SPOs</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">Power the network</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">Decide on upgrades</text>
+  <text x="116" y="134" class="d-s" text-anchor="middle">Validators elsewhere</text>
+
+  <rect x="240" y="40" width="200" height="110" rx="8" class="d-box-accent"/>
+  <text x="340" y="68" class="d-t" text-anchor="middle">DReps</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">“Congress, the House”</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">ADA holders delegate to them</text>
+  <text x="340" y="134" class="d-s" text-anchor="middle">Not one person one vote: ADA</text>
+
+  <rect x="464" y="40" width="200" height="110" rx="8" class="d-box"/>
+  <text x="564" y="68" class="d-t" text-anchor="middle">Constitutional arbiter</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">“Supreme court type”</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">Judges constitutionality</text>
+  <text x="564" y="134" class="d-s" text-anchor="middle">Added: Constitutional Committee</text>
+
+  <rect x="16" y="170" width="648" height="60" rx="8" class="d-box-plain"/>
+  <text x="340" y="196" class="d-t" text-anchor="middle">Executive — “there wasn't an executive function,” he says</text>
+  <text x="340" y="218" class="d-s" text-anchor="middle">“Nobody wants a president or a king, but maybe we have the Secretary of the Treasury person or group appointed”</text>
+
+  <rect x="16" y="246" width="648" height="40" rx="7" class="d-box-warn"/>
+  <text x="340" y="271" class="d-s" text-anchor="middle">His view: delegate execution, "AlphaGrowth, go deliver on this DeFi strategy." Not happening yet, he says</text>
+</svg>
+<p class="figcap">The analogies (Congress, Supreme Court, Secretary of the Treasury) are Dave Dionisio's, and map to the actual institutions only as far as analogies do. <span class="badge">added</span> The diagnosis that there is no executive, and the wish to hand the DeFi side to an outside team, match what Charles Hoskinson said on the same show sixteen days later about a “third branch” (sister site, <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#executive">2026-07-26</a>). Here it is Dave's own view, not Input Output's position.</p>
+</div>
+
+<p>His diagnosis is that <strong>“there wasn't an executive function.”</strong> “I don't think any of us want a president of Cardano or a king on top of it, but we will need to start organizing, and it's already starting.” Maturity would mean appointing “the Secretary of the Treasury person or group,” “the marketing,” the equivalents of “health care and the energy.” On DReps: “if we have like, I don't know, maybe 1,000 DReps, but really only the top 100 can make this way. I have a feeling that it will be consolidated further and people just start to rally around ideas and policies.” <span class="badge">added</span> The 1,000 and 100 are his rough figures, prefaced with “I don't know.”</p>
+
+<p>Host Bryan adds the difficulty of asking a representative to be “an expert in UI, economics, tokenomics, security, product management, go-to-market, marketing, business development,” and that explaining each proposal at the right “information density” is “an amazing task in and of itself.” Dave: in the early days “everyone's like, ‘This sounds fun. I want to be a politician’… and then, ‘But what do you stand for?’” “I, personally, never want to be a politician,” and “even like DeFi, I'm not the right guy to decide.”</p>
+
+
+<h2 id="en-parties">6. The first parties, and a future of caucuses</h2>
+<p class="deck">“The growth and spend party,” “the fiscal hawks,” “nihilism.” The divisions he sees, and the shape he hopes for.</p>
+
+<p>Eric brings up “information cascades” and England's king, lords and church, and asks what the “moral authority” is in a blockchain “other than the economics and price going up.” Dave answers that morality is “in the eyes of the beholder,” then describes the <strong>parties beginning to form</strong> in Cardano:</p>
+
+<ul>
+  <li>“the growth and spend party”</li>
+  <li>“the fiscal hawks, ‘Don't spend one more dollar out of this treasury’”</li>
+  <li>“almost like socialism or, ‘We should limit power and push it all out to the masses’”</li>
+  <li>“nihilism, ‘Let's burn the entire constitution down’”</li>
+</ul>
+
+<p>“I find it is like a mini government, and it is. I mean that is the point.” And: “you got to pick a side because if you kind of stay in the middle, it's safe, but you don't make much progress.”</p>
+
+<p>The shape he hopes for is <strong>caucusing</strong>. “If I just will never understand the depths of ZK cryptography… if I was a representative, and I see some doing it well, they look to their peer and they say, ‘Wow, this guy's an expert in that thing. I'm going to align my vote with them.’” Those who do not know marketing or DeFi should, “instead of abstaining,” say “I trust my peer.” Not “forcing voting blocks and just go to war,” but “if you can gather experts together and rely on each other, that is tremendously valuable.” He cites the House Armed Services and Senate Banking committees, then adds that he doesn't “want to equate it too close to American politics, cuz I also think it's a dumpster fire.”</p>
+
+<p>Eric takes this as the case for a “Democratic Republic, rather than a democracy,” electing people who can “handle sensitive information,” and praises Cardano's builders for being “willing to adapt to new information.” <span class="badge">added</span> Choosing an expert to delegate to is what the DRep design already does; what Dave describes is one level up, DReps aligning with one another. No such mechanism exists as an institution; this is his forecast that “we're going to end up in a world where you gather sort of caucusing or political parties.”</p>
+
+
+<h2 id="en-rfp">7. Why AlphaGrowth: behind the RFP</h2>
+<p class="deck">Not “plug this thing in” but a coherent strategy. “No one here has driven hundreds of millions of TVL at scale.”</p>
+
+<p>Bryan asks what the founding entities were looking for in their RFP and “what impressed you guys about us.” Dave begins with <strong>the shortfall in metrics</strong>: monthly active users, TVL and transactions are “not where they need to be,” and “economic activity and velocity of money is the lifeblood of a system.”</p>
+
+<p>Then the inside view. “We had just brought on LayerZero, and Pyth, and Circle.” Once a few integrations were done, “we're getting calls off the hook to come integrate,” from people saying “there's money over there. We should go.” What they did not want was <strong>“a disjointed strategy of like, ‘Plug this thing in.’”</strong> “We need to realize, and we did as the founding entities, we're not the world-renowned experts. I can't tell you about looping and all these primitives.” Cardano teams build interesting things, but “if those people are your competitors, you don't natively want to just join and show all your cards,” so an outside party was needed.</p>
+
+<p>Why AlphaGrowth: “you guys are great guys, so it's just like we want to work with people that we like, and so that's the first,” and the ability to “plug in in any place,” beyond “vault curation” to “a coherent strategy.” “Everybody and their brother, mother, sister thinks they know what the exact problem is in Cardano… but no one here has driven hundreds of millions of TVL at scale.” “We've seen the representatives, these DReps, saying, ‘We need a strategy.’” He adds the caveat: “I can't actually speak to the exact RFP because I was more helping connect.”</p>
+
+<p><span class="badge">added</span> The LayerZero, Pyth and Circle (USDCx) integrations are recorded on the sister site's glossary as items under the Pentad's critical-integrations budget, the joint arrangement of Cardano's main organisations. USDCx went live on mainnet in February 2026; Pyth was live as of June; LayerZero was still in development in May. “Brought on” here refers to Input Output's part in that work.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-label="Timeline of the PRIME proposal: on-chain on the day of this recording, publication, Charles Hoskinson on the same show, approval in August, and the September episodes on the audit and the RFP">
+  <text x="340" y="22" class="d-s" text-anchor="middle">Where this video sits. Everything after the recording date was learned later (added)</text>
+
+  <rect x="16" y="40" width="104" height="104" rx="8" class="d-box-accent"/>
+  <text x="68" y="64" class="d-t" text-anchor="middle">9 July</text>
+  <text x="68" y="88" class="d-s" text-anchor="middle">Proposal goes</text>
+  <text x="68" y="106" class="d-s" text-anchor="middle">on chain</text>
+  <text x="68" y="126" class="d-s" text-anchor="middle">on-chain today</text>
+
+  <rect x="124" y="40" width="104" height="104" rx="8" class="d-box-accent"/>
+  <text x="176" y="64" class="d-t" text-anchor="middle">10 July</text>
+  <text x="176" y="88" class="d-s" text-anchor="middle">This video</text>
+  <text x="176" y="106" class="d-s" text-anchor="middle">published</text>
+  <text x="176" y="126" class="d-s" text-anchor="middle">Dave as guest</text>
+
+  <rect x="232" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="284" y="64" class="d-t" text-anchor="middle">26 July</text>
+  <text x="284" y="88" class="d-s" text-anchor="middle">Charles Hoskinson</text>
+  <text x="284" y="106" class="d-s" text-anchor="middle">on the same show</text>
+  <text x="284" y="126" class="d-s" text-anchor="middle">(sister site)</text>
+
+  <rect x="340" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="392" y="64" class="d-t" text-anchor="middle">August</text>
+  <text x="392" y="88" class="d-s" text-anchor="middle">Approved by</text>
+  <text x="392" y="106" class="d-s" text-anchor="middle">DRep vote</text>
+  <text x="392" y="126" class="d-s" text-anchor="middle">120 million ADA</text>
+
+  <rect x="448" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="500" y="64" class="d-t" text-anchor="middle">6 September</text>
+  <text x="500" y="88" class="d-s" text-anchor="middle">Audit, strategy,</text>
+  <text x="500" y="106" class="d-s" text-anchor="middle">RFP announced</text>
+  <text x="500" y="126" class="d-s" text-anchor="middle">(in this archive)</text>
+
+  <rect x="556" y="40" width="104" height="104" rx="8" class="d-box"/>
+  <text x="608" y="64" class="d-t" text-anchor="middle">10 September</text>
+  <text x="608" y="88" class="d-s" text-anchor="middle">Audit findings,</text>
+  <text x="608" y="106" class="d-s" text-anchor="middle">RFP terms</text>
+  <text x="608" y="126" class="d-s" text-anchor="middle">(in this archive)</text>
+
+  <line x1="16" y1="164" x2="660" y2="164" class="d-line"/>
+
+  <rect x="16" y="182" width="14" height="14" rx="3" class="d-box-accent"/>
+  <text x="38" y="194" class="d-s">Said in the video, or the video itself</text>
+  <rect x="340" y="182" width="14" height="14" rx="3" class="d-box"/>
+  <text x="362" y="194" class="d-s">Post-publication outcome (added)</text>
+  <text x="340" y="232" class="d-s" text-anchor="middle">Not one detail of the proposal (amount, targets, milestones) is given in this video</text>
+  <text x="340" y="252" class="d-s" text-anchor="middle">Vote tallies rest on secondary reports, so the text gives only the outline</text>
+</svg>
+<p class="figcap">This video is a record from <strong>before</strong> the vote. <span class="badge">added</span> Approval came in August 2026; the Cardano Foundation published its rationale for voting yes on 11 August. Secondary reports put about 5.11 billion ADA voting yes or no and about 9.90 billion abstaining, but no primary tally was found. The story continues in the <a href="../2026-09-06-alphagrowth-dose-of-alpha-usdm/#prime">2026-09-06</a> and <a href="../2026-09-10-cardano-over-coffee-alphagrowth-rfp/#audit">2026-09-10</a> episodes.</p>
+</div>
+
+
+<h2 id="en-marketing">8. “Build it and they will come” is the exception: Tether Gold, and a surplus to spend</h2>
+<p class="deck">The host's thesis, and the guest's “sovereign wealth fund.” Both are arguments for spending, from the side that wants to spend.</p>
+
+<p>Bryan tells a Tether story. Three or four years ago “a very high-level up person at Tether” said: “We launched Tether Gold, and we're not getting the adoption that we want.” Incentive campaign? Marketing? Who runs BD? “Oh, we're not doing any of that… we didn't have to do that for Tether.” For Bryan this is the <strong>“common misconception that if you build a technology… if you build it, they will come.”</strong> Tether had “inherent product-market fit demand,” people with Bitcoin who “want to print some dollars to hedge exposure,” but “most of the time, you don't have billions and billions of dollars of just pent-up demand there. You need marketing. You need BD. You need a points program.” “The people that engineer and make the F1 cars are not the same people who drive it.”</p>
+
+<p>All new chains do it, he continues: Ethena's “crazy points program,” and “Ren” (as heard), with whom “we did deals,” now “at like a $700 million market cap.” <span class="badge">added</span> “Ren” is left as in the captions; the video does not explain which project is meant, and the market-cap figure is Bryan's, unverified here. He closes with “a little quick shill”: “we've been doing this for 6 years… deployed capital into like over 200 different protocols in DeFi… If you're in DeFi, somebody's met with, or had a meeting, or done a deal with the AlphaGrowth team.”</p>
+
+<p>Dave “totally take[s] your point” and adds two things. First, incentives: the representatives “are not getting paid,” and Cardano's developers are “some of the smartest coders on Earth in a language that most developers couldn't even read or touch,” which “is not a native financial services product persona.” Hence <strong>“we would need more capital markets expertise here.”</strong> Second, how to think about the treasury.</p>
+
+<div class="term">
+<p class="term-name">Sovereign wealth fund <small>the speaker's analogy</small></p>
+<p>“If I'm a DRep, and I say, ‘Oh, my gosh, why should we be spending money?’ Well, look, Cardano has a surplus. It's effectively a sovereign wealth fund. This is not the US in $40 trillion in debt. So when you look at the treasury balance, we can spend for growth.” <span class="badge">added</span> A sovereign wealth fund is a state fund that invests surplus capital. Used here as an analogy; Cardano's treasury is spent by vote rather than invested for returns. “We can spend for growth” is the justification of a side pushing a proposal.</p>
+</div>
+
+<p>“It does just come back to purely politics,” Dave says, “I hate to say that.” And: “you guys are really likeable, and people will rally around this. And you know, we're going to die trying to make sure this goes through.”</p>
+
+
+<h2 id="en-narratives">9. Three narratives: RWA, agents, the DeFi mullet</h2>
+<p class="deck">The guest's order: DeFi mullet, agentic finance, RWA. The reason: “interact with their own money without permission.”</p>
+
+<p>Eric frames it as a “Fuck Marry Kill” and asks for a ranking of three DeFi narratives: AI (agentic finance), RWA (real-world assets), and the DeFi mullet. Dave first checks: “DeFi mullet in a business in front, party in the back?”</p>
+
+<div class="term">
+<p class="term-name">DeFi mullet <small>the speaker's term</small></p>
+<p>Eric's gloss: “DeFi in the back, centralized exchange, custodians in the front.” After the haircut, short in front and long behind: <strong>the user sees a familiar centralised app, and DeFi does the work behind it.</strong> <span class="badge">added</span> Charles Hoskinson used the same term on this show on 2026-07-26, with Coinbase and Morpho as the example (sister site, <a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#mullet">2026-07-26</a>). The same three-way game appears in this archive's 2026-09-06 episode.</p>
+</div>
+
+<p>Dave's answers, in order:</p>
+
+<ul>
+  <li><strong>RWA last.</strong> “RWAs I think will have the most capital formed, but I would put those at the bottom for me.” He welcomes real assets on chain but doesn't “know how necessary it is and if people will want to go use those if they're already holding something in their app. I'm sure like the Ondo people would tell me how wrong I am”</li>
+  <li><strong>Agentic finance second.</strong> “We're going to need some level of identity that controls all my agents, otherwise, they're just kind of running amuck.” A security worry; “that'll take maybe a little bit longer than we expect it to.” Alpaca and Robinhood letting an “LLM harness” inject trades is “fascinating”</li>
+  <li><strong>DeFi mullet first.</strong> “We just want people to be able to interact with their own money without permission control.” “If I can't control my own money and data and value, for me, I don't want to live in a world of surveillance and CBDCs”</li>
+</ul>
+
+<p><span class="badge">added</span> On the same show Charles Hoskinson was most bullish on agentic finance of the three (<a href="https://shiodome47.github.io/2026RealFi/2026-07-26-a-dose-of-alpha/#agentic">2026-07-26</a>). Dave's ranking is his own, not Midgard Labs' or Input Output's. Bryan's response is that both futures can coexist: your own agents managing your money, or delegating to “centralized exchange… RIA… money manager,” “dependent upon your own value system.”</p>
+
+
+<h2 id="en-privacy">10. Control or delegate: surveillance and privacy</h2>
+<p class="deck">A former regulator says his agency collected data “second only to the NSA.” Money is “the last bastion.”</p>
+
+<p>Dave describes himself as “not” a true libertarian but “a weird person in that I love privacy and control.” He rejects “I have nothing to hide”: “we cannot let the world go full identity that's not truly self-sovereign in some way where every move is surveilled.” “I'm not saying I don't use banks and stablecoins.” Eric's version: whenever anyone says they have nothing to hide, “I immediately ask them for their mother's maiden name, their social security card number, and all of their credit card information… not a single one of them has given it to me.”</p>
+
+<p>From inside the regulator: “we were collecting more data, second only to the NSA… Every credit card transaction, of course, the banks are going to freely give this to the regulators.” Bryan recalls, from his investment-bank days, a payment processor whose sale to “Tencent and Alibaba” the DOJ blocked, because with every transaction's IP address and geolocation “you effectively know exactly when that senator's son is going to the grocery store.” <span class="badge">added</span> This most likely refers to the blocked 2018 acquisition of MoneyGram by Ant Financial, an Alibaba affiliate; the company is not named in the video.</p>
+
+<p>Dave's conclusion: <strong>“money of all things is the last kind of bastion.”</strong> “Am I allowed to hand someone a $20 bill in a field where no one's watching, or should every transaction be tracked?” He admits asking “my Claude or Codex” what he does at work every day and finding it “freaky… it knows me,” adding “I'm not trying to be so fearmongering.” On Cardano: “you can make sidechains that are fully permissioned and it's just for a nation state or a business. I want everyone to do everything they want to do.”</p>
+
+<p>He closes the segment with his pitch for PRIME: “This proposal of all others… needs to have full grassroots participation. Obviously, we're coordinating with IOG and the founding entities, the CF as well.” “There's a massive TAM. There's enough to eat for everybody.” “My pitch, should the DRep see this, is that this is the opportunity to start to crank growth. But we have to win hearts and minds and I guess we'll all be doing that over the next month or so.”</p>
+
+
+<h2 id="en-ai">11. The AI segment, and three hundred pots</h2>
+<p class="deck">The hosts' chat: a plug for Claude Fable, and a fable about shots on goal.</p>
+
+<p>With Dave still on, Bryan turns to AI. “Today's last day of Fable,” he says, and plugs Claude Fable: he was up until 3 a.m. asking it what the events business looks like in 2030 and 2040, and when his credits ran out it said “Bryan, you're still awake.” “It's really addictive.” Dave says that when Fable came out he wondered whether it was “a marketing psyop from Anthropic,” but “Fable was truly phenomenal on those couple days, and then it got taken away. It feels a little bit softer now.” He quotes Sam Altman: today's model “is the dumbest model you'll ever use.” <span class="badge">added</span> Claude Fable is the name of one of Anthropic's Claude models. Beyond the host's remark that it was available for a limited time at recording, the video says nothing more; as of October 2026 it is generally available as Claude Fable 5.1.</p>
+
+<p>Bryan brings it back to Cardano. Recalling the 1960s moon landing, where the Navy and Air Force put an antenna on a Hawaiian mountain without orders because “this is for the moon landing,” he asks: “what is the vision that you can get enough people to get around? … what is that number one <strong>north star metric</strong> that we need to hit? … if we can just agree on that, then we can iterate to the right conclusion again and again.” Dave thinks “AI could probably be this arbiter in a way,” but “when you ask a hundred lawyers the question, you get a hundred answers.” At Midgard Labs, “Phil DiSarro, my founder,” and he “decided… ‘Why don't we just put what we stand for?’” so that proposals can be checked against stated principles.</p>
+
+<p>The close is Bryan's fable, heard at a start-up in 2013 or 2014: a <strong>ceramics teacher</strong> graded one half of a class on their three best pots and the other half on their top 300. The 300-pot half “were far superior… in every single capacity.” “The moral of the story is shots on goal, and you become what you practice… if we kind of like wait for everything to be perfect, you might wait forever.” Dave adds that “even Brian Armstrong… was successful in his 10th venture” and warns against making “perfect the enemy of the good.” <span class="badge">added</span> The story is a widely quoted quantity-versus-quality parable from a book on art and fear; Bryan himself says “it's pretty famous.”</p>
+
+<p>Bryan signs off: “go see our prop on Cardano later today or whenever you guys are watching this. It should be live for a couple weeks, a month or so, and go vote for it.”</p>
+
+
+<h2 id="en-overall">12. The whole picture</h2>
+<p class="deck">Technology, politics, growth: each thread ends in “so vote for PRIME.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="The episode's three threads (Midgard and UTXO, the governance diagnosis, the marketing thesis) converging on the call to support the PRIME proposal">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+
+  <rect x="16" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">Technology — guest</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">UTXO: no global state, determinism</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">Midgard: layer-1 security</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">“All the tools… no excuse”</text>
+
+  <rect x="240" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">Politics — guest</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">Tricameral, no executive</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">Parties forming, caucuses ahead</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">“Delegate the execution”</text>
+
+  <rect x="464" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">Growth — hosts</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">“Build it and they come” is rare</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">Marketing, BD, points</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">"6 years, 200 protocols" (own)</text>
+
+  <line x1="116" y1="144" x2="116" y2="170" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="340" y1="144" x2="340" y2="170" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="564" y1="144" x2="564" y2="170" class="d-line-accent" marker-end="url(#e1)"/>
+
+  <rect x="16" y="176" width="648" height="64" rx="8" class="d-box-accent"/>
+  <text x="340" y="202" class="d-t" text-anchor="middle">So vote for PRIME: a joint appeal by proposers and backer</text>
+  <text x="340" y="226" class="d-s" text-anchor="middle">“A sovereign wealth fund… we can spend for growth” (guest) / “win hearts and minds over the next month” </text>
+
+  <rect x="16" y="256" width="648" height="50" rx="7" class="d-box-plain"/>
+  <text x="340" y="278" class="d-s" text-anchor="middle">No detail of the proposal is given. Approval, audit and RFP follow in this archive's two September episodes</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">Bundling the threads this way is our reading; the speakers do not say it is all for the vote</text>
+</svg>
+<p class="figcap">The bundling is our reading. In the video the technology, politics and growth threads run separately, and the appeal for PRIME is slipped in at the end of each. <span class="badge">added</span> Read with the premise that everyone present has a stake, all three threads work as justifications for spending. Whether that was the intent, the video does not say.</p>
+</div>
+
+
+<h2 id="en-qa">13. From the exchange</h2>
+<p class="deck">An interview, so here are four host questions with the answers.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>Vitalik is mapping out what Charles has said for years. How are the ETH heads taking it?</p>
+<p class="qa-a" data-by="Dave Dionisio">“Flattered” and “validating in many ways,” though he doesn't “follow too close with Vitalik.” What he talks about instead is Ethereum's layer twos being “parasitic” and whether <strong>revenue flows back to layer 1</strong>, which Midgard can work on.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>Where does Midgard sit in the Cardano stack, and how is it working with Phil?</p>
+<p class="qa-a" data-by="Dave Dionisio">Phil DiSarro was the USDCx bridge's technical architect and is “a genius.” Midgard scales Cardano on top of Leios, a layer 2 for eUTXO. Most unique: <strong>“you don't have to accept a new security model.”</strong> “About to launch testnet.” He forgot the TPS figure.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Bryan Colligan</span>What were you looking for in the RFP, and what impressed you about us?</p>
+<p class="qa-a" data-by="Dave Dionisio, with a caveat">Metrics were short. LayerZero, Pyth and Circle had been brought on, but a “disjointed strategy of plug this thing in” was not wanted. “We want to work with people that we like, and so that's the first.” <strong>“I can't actually speak to the exact RFP because I was more helping connect.”</strong></p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Eric Waisanen</span>Rank AI, RWA and the DeFi mullet.</p>
+<p class="qa-a" data-by="Dave Dionisio">1. DeFi mullet (“interact with their own money without permission control”); 2. agentic finance (“identity that controls all my agents… a little bit longer”); 3. RWA (“the most capital formed, but… at the bottom for me”).</p>
+</div>
+
+
+<h2 id="en-pending">14. Left unanswered</h2>
+<p class="deck">Very few dates and very few numbers in this episode.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When is Midgard's testnet?</p>
+<p class="qa-a" data-by="“About to launch”">Only “we're about to launch testnet” and “quasi stealth mode.” <span class="badge">added</span> As of 24 October 2026 the Midgard Labs site says “pre-alpha testnet in development”; Input Output's overview of treasury proposals targets Q3/Q4 2026 for a public testnet. Three and a half months after the recording, none has launched.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No figure</span>How much faster is Midgard? What is the challenge window, who produces blocks?</p>
+<p class="qa-a" data-by="“I forget”">He “forget[s] what the number of TPS increase” is. The optimistic-rollup design (waiting time, operators, data placement) is not discussed in the video.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Discrepancy</span>Has Leios “just come out”?</p>
+<p class="qa-a" data-by="Does not fit">Dave says “core scaling that has just come out called Leios,” but Leios was not on mainnet in July 2026. This archive's 2026-09-12 episode records a test-environment demo.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Discrepancy</span>“40 workshops” and “100 countries” for the constitution?</p>
+<p class="qa-a" data-by="Differs from the record">Public sources give 63 to 65 workshops across 50 to 52 countries. He hedges with “I think” and “or whatever.” Both are shown.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No content</span>PRIME's amount, targets, milestones.</p>
+<p class="qa-a" data-by="“Ambitious” only">Nothing of the proposal's content is said in this video: “ambitious,” “incentives are aligned if you deliver,” “live for a couple weeks, a month or so.” The post-approval figures are in the two September episodes.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Names only</span>“Ren” and “Silk.”</p>
+<p class="qa-a" data-by="Not explained">Bryan's “Ren we did deals with” with “a $700 million market cap,” and Eric's “they should use Silk for that,” are neither explained in the video; both are left as captioned.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unverified</span>“Six years, over 200 protocols.”</p>
+<p class="qa-a" data-by="Own pitch">AlphaGrowth's track record as stated by Bryan, prefaced with “a little quick shill.” Not checked here.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is <a href="https://www.youtube.com/watch?v=ZrRDqtg6q6g">Why Cardano is Ready to Win: Midgard L2, UTXO, &amp; The "DeFi Mullet" w/ Dave Dionisio | Bonus Ep.</a>, published on AlphaGrowth's official YouTube channel on 2026-07-10. A public video, so speakers are named. The hosts say “we are going on-chain today with our proposal,” and the PRIME proposal reached the chain on 9 July 2026, so that is the likely recording date.</p>
+<p><strong>A record by interested parties.</strong> The two hosts are PRIME's proposers and the guest backed the proposal from the Input Output side; every judgement in the video is attributed to its speaker. Episodes from AlphaGrowth's channel are read throughout this archive as the view of an interested party.</p>
+<p><strong>Three kinds of source.</strong> Unmarked text was spoken aloud. <span class="badge">on screen</span> would mark things shown but not said; this page is built from captions alone and the screen was not reviewed, so the mark is not used. <span class="badge">added</span> marks explanations we wrote; they are not in the video.</p>
+<p><strong>Post-publication outcomes</strong> added here are three: PRIME's approval (August 2026), the state of Midgard's testnet (as of 24 October 2026), and the general availability of Claude Fable. Each carries <span class="badge">added</span> and a date.</p>
+<p>For the exact wording see the <a href="./transcript-en.html">English transcript</a>. The source has no timestamps, so neither do the transcript pages.</p>
+</div>
+</div>
+
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — AlphaGrowth · <a href="https://www.youtube.com/watch?v=ZrRDqtg6q6g">動画を見る</a></span><span class="l-en">Cardano note — AlphaGrowth · <a href="https://www.youtube.com/watch?v=ZrRDqtg6q6g">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>

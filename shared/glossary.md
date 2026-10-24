@@ -47,6 +47,9 @@ YouTube の自動字幕は Zoom の字幕より荒い。固有名詞は毎回同
 | rabbit hole（Ethereum の教育プラットフォームの文脈） | RabbitHole |
 | DRUPS, dereppp | DReps / DRep（dereppp は 2026-09-02 Block//45 の "my DRep load"） |
 | LA's, Lac's（Lace の所有格） | Lace's |
+| Alpha Growth | AlphaGrowth |
+| Brian（AlphaGrowth の司会） | Bryan（Bryan Colligan）。Coinbase の Brian Armstrong はそのまま |
+| Circle, USDX | USDCx |
 | Trad（"what Trad wants"） | TradFi |
 | Cardono, Cardona（"Cardona coffee"） | Cardano、Cardano Over Coffee |
 | Matt Plowman, Matt Plman | Matt Plomin（USDM の創業者。2024-11 死去） |
@@ -224,6 +227,19 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 
 **説明なしに使われた語**: **closure**（クロージャ）— EB が参照する取引の集合一式と読める。「20 KB のクロージャ」「メガバイト級のクロージャ」と大きさで語られる。
 
+### 2026-07-10 AlphaGrowth Dose of Alpha ボーナス回（Midgard、Dave Dionisio）
+
+上の表に足したもののほか、固有名詞ではないので英語全文に残した誤変換。日本語全文では文脈で訳した。
+
+- **the sexes** — CEXes（中央集権的な取引所）。「取引所」
+- **bare markets** — bear markets。「弱気相場」
+- **cyberpunk** — cypherpunk（本人は直前で cypherpunk と言っている）。「サイファーパンク」
+- **deravel** — unravel。「ほどける」
+- **25 or 3,000 nodes** — 2,500 か 3,000。「2,500 か 3,000」
+- **wool person** — Game of Thrones のネタ。そのまま
+- **Ren**（"Ren we did deals with"）、**Silk**（"They should use Silk for that"）— 特定できず。聞こえたまま
+- **Tony from BitPay** — BitPay 共同創業者の Tony Gallippi とみられるが、動画では姓が出ない。まとめでは「とみられる」で書いた
+
 ## Cardano の基本用語
 
 | 用語 | 説明 | 訳し方 |
@@ -294,6 +310,14 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **キャピタルコール（capital call）** | プライベートファンドが約束済みの出資を実際に払い込ませる請求。3Jane の「キャピタルコールなし」の文脈 | キャピタルコール（原語を添える） |
 | **リキッドステーキング** | ステークした ADA の代わりに流動性のあるトークン（Lava の場合 L-ADA）を受け取り、DeFi で使える形 | リキッドステーキング |
 | **AMM（自動マーケットメーカー）** | 数式で価格を決めて交換する DEX の仕組み。「片側だけ（single-sided）」は片方の資産だけを預ける形 | AMM（初出で補う） |
+| **Midgard** | Anastasia Labs（現 Midgard Labs）が開発する Cardano の eUTXO 向けレイヤー 2。**optimistic rollup 型**（取引を正しいと仮定し、一定期間に不正の証明があれば巻き戻す。中央のシーケンサーは置かない）。2026-07-10 の動画で Dave Dionisio が「新しいセキュリティモデルを受け入れなくてよい」「テストネット直前」と説明。**2026-10-24 時点で公開テストネットは未提供**（サイトは「プレアルファを開発中」、IO の財務庫提案の概要は 2026 年 Q3〜4 目標）。仕様書: <https://anastasia-labs.github.io/midgard/midgard.pdf>、サイト: <https://midgardlabs.io> | 訳さない。**要点では「Cardano のセキュリティをそのまま使うレイヤー 2」と書く** |
+| **レイヤー 2 の「セキュリティの継承」** | 多くのレイヤー 2 が使う言い方。optimistic rollup では「レイヤー 1 でチャレンジ期間内に不正を証明して巻き戻せる」ことを指す。**待ち時間、監視する誰か、データの置き場所は別に増える**ので、`素朴な疑問` で条件を書く | 初出で説明 |
+| **UTXO / 口座モデル** | UTXO は未使用の「小切手」の束、口座モデル（Ethereum）は全員の残高の一つの表（グローバルな状態）。UTXO では取引の入力・出力が送る前に決まるので手数料と結果が事前に分かる（決定性） | 初出で説明。**要点では「グローバルな状態がない」と書き、本文で小切手のたとえを足す** |
+| **三院制（tricameral）** | Dave Dionisio が Cardano ガバナンスの 3 つの役者（SPO、DRep、憲法委員会）に使った言い方。本人は憲法委員会を「最高裁」と呼び、名前は出していない。**「行政がない」という診断と対で使われた** | 三院制（原語を添える） |
+| **情報カスケード（information cascade）** | 群衆の知恵が自己言及的になり、人々が社会的に共有されたことだけを言うようになる現象。Eric Waisanen が 2026-07-10 に持ち出した | 情報カスケード |
+| **DAT（digital asset treasury）** | 暗号資産を財務として保有する上場企業など。2026-07-10 の動画で "a big DAT issuer" として出た | 初出で補う |
+| **TAM** | total addressable market。狙える市場の総規模 | 市場規模（原語を添える） |
+| **RWA（real-world asset）** | 実世界資産のトークン化。**要点では「実世界資産」と書く** | RWA（初出で補う） |
 | **MCP / CLI** | AI エージェントがソフトウェアを操作するための接続口（Model Context Protocol、コマンドライン）。Crypto Crow が「エージェントを Lace につなぐ計画は」の文脈で挙げた | 訳さない・初出で補う |
 
 ## 数学・AI の用語（Charles Hoskinson のチャンネルで出るもの）
@@ -358,6 +382,14 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **the Pentad** | Cardano の主要組織による共同の調整・実行体制。発足時は 5 組織（Input Output / Cardano Foundation / EMURGO / Midnight Foundation / Intersect）だが、**EMURGO の離脱後は 4 組織**。**「5 組織」と書く前に時点を確認する。**プロダクトでも新会社でもない |
 | **Pogun** | Input Output が進める、Cardano 向けのエンドツーエンド型 Bitcoin DeFi 構想。音声認識では "Pogen" "Pogan" "poking" と出る。**2026-08-01 時点の提案上のロードマップ**（詳細は `2026RealFi` の glossary）。2026-09-02 の Block//45 では「ピアツーピアのクレジット市場」の側面が語られた |
 | **RealFi / USDR** | Input Output の取り組み。USDR は利回り付きのステーブルコイン。**2026-08-26 の投票でティッカーは USDrf / sUSDrf に改称と決まった**が、7 月収録の動画では USDR。各回の表記は動画のとおりにし、書き換えない。詳細は `2026RealFi` の glossary |
+| **Midgard Labs** | Anastasia Labs の「次の章」として同じチームが使う名前（ブロックチェーンのセキュリティ監査とエンジニアリング）。Midgard の開発元。創業者は Phil DiSarro、COO は Dave Dionisio（2026-07 時点）。公式: <https://midgardlabs.io> |
+| **Anastasia Labs** | Cardano の開発企業。Phil DiSarro が創業。Midgard の設計者で、Project Catalyst で Midgard の資金を受けた。2026 年には Midgard Labs として活動 |
+| **Phil DiSarro** | Anastasia Labs / Midgard Labs の創業者。Dave Dionisio によれば USDCx ブリッジの技術アーキテクト。2026-07-10 の動画には出演していない |
+| **Dave Dionisio** | Midgard Labs の COO（2026-07 時点、X のプロフィール）。元 Input Output（LayerZero・Pyth・Circle の統合や PRIME の RFP に関わったと本人が語る）、FS Vector、Fannie Mae、CFPB。音声認識では "Dinesio" などとも出る（2026-09-10 の回） |
+| **CFPB** | 米国の消費者金融保護局。ドッド・フランク法で設置。Dave Dionisio の前職 |
+| **SegWit2x（ニューヨーク合意）** | 2017 年の Bitcoin のブロックサイズ拡大の試み。BitGo の Mike Belshe らが主導し、マイナーがブロックにビットを立てて支持を示す方式だったが取り下げられた。Bryan Colligan が「Bitcoin が死んだ日」と呼んだ出来事とみられる |
+| **Canton** | Digital Asset 社の UTXO 系の許可型ネットワーク。Dave Dionisio が「Canton などとつなぐ」と言及。詳細は動画で説明されていない |
+| **Tether Gold** | Tether の金連動トークン。Bryan Colligan の「作れば来る、は例外」の例として出た。会話の相手や時期は匿名 |
 | **Block//45** | Input Output Group の公式チャンネルにある番組。司会は Wendy O と Crypto Crow（外部の配信者）。回ごとに独立 |
 | **AlphaGrowth** | DeFi の成長支援の会社。ポッドキャスト「A Dose of Alpha」を運営し、Cardano の PRIME 提案を出している |
 | **USDM / Moneta** | Cardano ネイティブのドル建てステーブルコイン（2024-03 発行開始）。米国側の発行体は Moneta Digital、開発は W3i Software、CEO は Jillian Plomin。創業者 Matt Plomin は 2024-11-14 死去。EEA 側の共同発行者は NBX。ミントは 20 の州で可。公式: <https://moneta.global>。2026-08-13 に VIA Labs との協業で Cardano↔Midnight のネイティブ移動が mainnet で稼働（USDM 公式 X） |
@@ -433,6 +465,7 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 - **プロダクト用語・チェーン名・組織名は訳さない**
 - **外部プロトコルに URL を張るときは公式ドメインを毎回確認する。**DeFi は偽サイトが多く、1 文字違いで読者を危険な場所に送る。**うろ覚えで張らない。**使った先はこのファイルに記録する
 - **testnet / mainnet** はそのまま。1 本の中では統一する
+- **ガバナンスの用語**（2026-07-10 で整理）— DRep は初出で「ADA 保有者が票を委ねる代表」、憲法委員会は「提案が憲法に沿うかを判定する委員会」、treasury は「財務庫」。**要点では「代表」「財務庫」と書く**
 - **監視・運用の用語**（2026-09-02 で整理）— mean time to acknowledgement は「平均認知時間」、mean time to resolution は「平均復旧時間」、runbook は「ランブック（対応手順書）」、debounce は「デバウンス（連続確認）」、page は「呼び出す」、observability は「可観測性」。**要点では「通知が届くまでの時間」「対応手順書」のように平易に書く**
 - 話者の発言は「ですます調」で訳す。口語のフィラーは落とす
 - 断定していない発言（"I think", "probably", "hopefully"）は**日本語でも断定しない**

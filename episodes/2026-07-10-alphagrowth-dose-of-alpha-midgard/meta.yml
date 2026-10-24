@@ -1,0 +1,37 @@
+slug: 2026-07-10-alphagrowth-dose-of-alpha-midgard
+title: Dose of Alpha — 「Cardano は勝つ準備ができている」。Midgard、三院制の政治、そして当事者どうしの PRIME 談義（Dave Dionisio）
+title_en: "Why Cardano is Ready to Win: Midgard L2, UTXO, & The \"DeFi Mullet\" w/ Dave Dionisio | Bonus Ep."
+date: 2026-07-10            # 動画の公開日（依頼者の指定）
+recorded: 2026-07-09        # 推定。司会が「今日、提案をオンチェーンに出す」と発言。PRIME の財務庫引き出しは 2026-07-09 にオンチェーン化
+series: alphagrowth         # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: alphagrowth        # YouTube 上の表示名（@alphagrowth）。会社名の表記は AlphaGrowth
+official_channel: true      # oEmbed の author_url が https://www.youtube.com/@alphagrowth であることを確認。AlphaGrowth 自身の番組
+duration: "要確認"          # 字幕に時刻がない。章立て（18:57〜23:49 が Midgard）から 50 分台と推定し、ページでは「約 56 分」と書いた。実尺は要確認
+video: https://www.youtube.com/watch?v=ZrRDqtg6q6g
+
+speakers:
+  - Bryan Colligan          # 司会。AlphaGrowth CEO。動画内では名乗らず、Dave から「Bryan と私」と呼ばれる側。姓は番組の公開情報から（2026-09-06 と同じ根拠）
+  - Eric Waisanen           # 司会。AlphaGrowth DeFi Strategist。動画内で "Eric" と呼ばれる。姓は同上
+  - Dave Dionisio           # ゲスト。Midgard Labs。冒頭で "Dave Dionisio from Midgard Labs"。肩書（COO）は公開プロフィール（X）から。元 Input Output、FS Vector、Fannie Mae、CFPB
+speaker_labels: inferred    # 字幕に話者名も交代の印もない。内容（呼びかけ、一人称の所属、司会の役割）から割り当て
+timestamps: none            # 素の文字起こし。時刻がないので .turn-time は付けていない。節（.sec）の id だけ付けた
+proper_nouns_corrected_in_docs: true
+
+# 原本について
+# - 依頼者から本文に貼り付けで受領した素の文字起こし（608 段落、約 13,300 語）をそのまま transcript.txt に置いた
+# - 末尾の "♪♪♪" は原本に残し、全文ページには載せていない。依頼者の添え書き（公開日）は原本から除いた
+# - 1 段落に 2 人の声が入る箇所（18 箇所）は手で分けた。切る位置は gen_midgard.py（生成スクリプト）の SPLIT に記録
+# - 司会 2 人の割り当てはすべて推定。詳細は shared/speakers.md
+
+# 画面について
+# - 字幕だけを受領しており画面は確認していない。まとめは音声で語られた範囲だけから作成。「画面」バッジは未使用
+
+# 裏取り（2026-10-24 時点）
+# - PRIME の財務庫引き出し提案（1 億 2,000 万 ADA）は 2026-07-09 にオンチェーン化、2026-08 に可決（Cardano Foundation は 08-11 に賛成の理由を公表）
+# - Dave Dionisio は Midgard Labs の COO（X のプロフィール）。2026-07-22 に USDCx の CoinGecko 掲載を本人が投稿
+# - Midgard は Anastasia Labs（現 Midgard Labs）の optimistic rollup 型レイヤー 2。midgardlabs.io は「プレアルファのテストネットを開発中」。公開テストネットは未提供
+# - 憲法制定会議は 2024-12-04〜06、ブエノスアイレスとナイロビで同時開催。ワークショップ数は資料により 63〜65、国は 50〜52（動画では「40」「100 か国」）
+# - 同じ番組の 2026-07-26 の回（Charles Hoskinson）は姉妹サイト 2026RealFi にある

@@ -100,11 +100,14 @@ def check_page(path):
             if href[1:] not in ids:
                 fail(rel, "アンカー %s の飛び先がない" % href)
             continue
-        target = (path.parent / href).resolve()
+        base, _, frag = href.partition("#")
+        target = (path.parent / base).resolve()
         if target.is_dir():
             target = target / "index.html"
         if not target.exists():
             fail(rel, "リンク切れ: %s" % href)
+        elif frag and ' id="%s"' % frag not in target.read_text():
+            fail(rel, "他ページへのアンカー %s の飛び先がない" % href)
 
     for fig in re.findall(r'<div class="fig">.*?</div>', text, re.S):
         for svg in re.findall(r"<svg\b[^>]*>", fig):

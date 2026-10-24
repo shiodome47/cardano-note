@@ -31,7 +31,7 @@ iog:
   chatham_default: false
   numbered: false
   channel_url: https://www.youtube.com/@InputOutputGroup
-  channel_id: UCBJ0p9aCW-W82TwNM-z3V2w
+  channel_id: UCBJ0p9aCW-W82TwNM-z3V2w   # 2026-10-24 時点で RSS が 404。ID の誤りではなく、2026-09 の乗っ取り報道のあとチャンネル自体が見られない状態（この ID の動画の oEmbed も 404）。復旧したら RSS が返るはずなので ID は変えない
 
 charles-hoskinson:
   title_ja: Charles Hoskinson

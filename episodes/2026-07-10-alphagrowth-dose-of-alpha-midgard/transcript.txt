@@ -1,0 +1,1215 @@
+Welcome in to a dose of alpha. Today, we've got a special guest, Dave Dionisio from Midgard Labs,
+
+to talk Midgard, all things Cardano, and, uh, some of the exciting stuff we've been coming out on Twitter about. So, uh, Dave, thank you so much for joining us here with the dose of alpha.
+
+Thank you, guys. Happy to be here. It's been a pleasure working with you guys, and I think we're just on the precipice of an exciting, uh, treasury budget season. And so, I'm sure we'll get into some of that.
+
+Working yet? Dude, we're we're just getting started. You haven't You haven't even seen us working yet, Dave.
+
+I can see when you guys get on these calls with teams, it's kind of like when I get on with the deep cryptographers, where all of a sudden, it hits a point where I have no idea what's going on. I mean that's happening when we get on calls with you. I'm sure the DeFi teams, you know, can know and follow, but I think you're blowing people's minds, frankly, um and that's a good thing. We need that expertise.
+
+Now, we're just basically it's it's all larping. It's all it's all magic and mirrors.
+
+We will see. We will We'll see soon.
+
+No, I'm I haven't been this excited in like many years of working in this ecosystem, even before some of my time at Input Output, you know, the core founders. I think right now is the most exciting time because we're ready to win. We're ready We have all the tools, all the the primitives, and there's really no excuse, you know? So, it's going to be great.
+
+Dude, how'd you get into this? How'd you get into Midgard and Cardano?
+
+Yeah, Midgard was, uh, just recent. You know, I was, uh, I had relationships in the Cardano ecosystem for a very long time. I was working at a bank regulator and around 2017, you know, I think many people dabbled back in in Bitcoin back in the day, but you know, I'm a I'm a broke kid, and I I sold it back, obviously. But I was working at a bank regulator in DC and I'd done a lot of bank audits, and sort of just fell into that as a kid after college. But it was at Elizabeth Warren's Dodd-Frank CFPB agency. And I was hired to bring banking operations perspective to the government.
+
+You know, I think we all know Elizabeth Warren's leanings, but it was very eye-opening to be on the inside and see the political dynamics. And, you know, Mick Mulvaney had come in when Trump won the election, and it was just this grand political drama. The reason crypto was that I had come to DC, uh, and I had family there, but I wasn't that immersed into politics. And I just felt more libertarian and, you know, sort of do do no harm. But jumping into DC, it's just, you know, a battle for the ages and, um, it was very eye-opening to see how that agency, but just, you know, government works in general. And so I was saying, "Well,
+
+should we make policy and laws and and collect a bunch of data and kind of overreach, in my opinion, or could we codify these laws into the blockchain and basically just make it a more egalitarian system?" So, I caught the bug, and, you know, going down the rabbit hole or whatever is quintessential, and I never looked back.
+
+Took me a little while to get into crypto. I was working for a really great firm, FS Vector, a lot of bank partnerships, FinTech. There wasn't enough crypto there. I mean we had some really interesting clients. But, um, I had known the Cardano folks for a while. And like many in our ecosystem, Charles Hoskinson had mapped out, uh, a very unique blockchain that's dissimilar to others. And so we can get into some of that of what makes it unique. But truly the hardness of the code, if this thing is going to live forever and persist through, you know, hopefully generations, it can't go down. It must be secured by as close to math as you can get.
+
+So, really a bunch of those pieces piqued my interest. And from then on, you know, I love all crypto and I worked a lot with the sexes and the stable coins, etc. But, uh, yeah, I caught the bug, and I eventually joined Input Output and have since just left, but it's really still all in the same family. Um, you know, Midgard we're going to launch a layer two that inherits the full security stack of the Cardano blockchain, which hasn't gone down and, you know, the 10 years it's been up and running. So, super excited and happy to get into into that.
+
+Yeah, yeah. Let's get into that for a second. I I I have to like jump in here. Um right out of school, I joined Oracle and worked at the Department of Labor. And walking out of the train, like the first day, I can still remember it, like walking out, seeing the Capitol Building, going to do some like work at the Department of Labor. I'm like, "I'm doing it. I'm doing it. I'm helping the cause, right? I'm pushing forward like America." And then it just like you just like it ticked on and ticked on and ticked on in the system, and it is a grind. It is a grind. And and was building like financial apps there, and I could feel that. I was like Dude, there's so much potential here, and then it just I got and then
+
+I felt You know, it's, to me, I love DC. I mean it was my where kind of I was born, and so there's a nostalgia when I go back, obviously, of all the good times, the people that are there. And then I see all the marble buildings, and and I'm just so patriotic. I also can't help but see the other side of what I've seen. You just can't, you know, you just can't unsee. Um, cuz a lot of the agencies are run like political like shops, like on the hill, and so. Anyway, not to not to depress us, but
+
+No, no. What about that? Like I just that inspiration of like what is built and then I think for me personally as well, it's like you can see this marble buildings. You can see that beauty. Can see that growth the liberty of of things, and, um, you know, that's what I got to say.
+
+I'm with you, and I'm so happy that we're in a at least political regime now that appreciates the freedom and, you know, I was I was worried there for a bit.
+
+Fair stuff. Uh, you mentioned Charles Hoskinson kind of like uh mapping all of this out in a unique architecture that seemed to be a big plan, uh something that Brian and I have run into a bunch of issues is kind of missing the Overton window if we're a little bit too ahead of what's going to come. So, we're not actually in a po- position that's politically correct because it takes everyone else and all the money and all the builders time to catch up to where we're going. And and that kind of thing sucks. I I think Charles runs into this a lot being obviously really brilliant. And now we've got Vitalik coming out basically mapping out a lot of what Charles has talked about for the last 8 or 9 years and has actively been building. How is it seen a lot of the ETH heads who have, you know, talked crap for a really long time about how, you know, Cardano doesn't make sense be told from, you know, their founder that uh basically Cardano was right in a lot of ways? What's feedback looking like here?
+
+Yeah, I mean, obviously, we applaud that they would and and we're so flattered that they would kind of adopt some of what we had set forth. Um, you know, I'm sure the Ethereum community isn't going to give flowers to to, you know, their competitor. But yeah, it is validating in many ways. I think Ethereum, you know, with the uh layer twos being, you know, in some ways parasitic onto the network itself. I, you know, was in Miami and I was hearing a um a big DAT issuer ask, "Why isn't the Ethereum price going up?" And I'm like I hope she's asking this in the hypothetical for her her colleagues, but um that is something that we can work on with Midgard because, you know, if we're going to scale it, how do you keep revenue? And I'm sure you guys know better than anybody, you know, you're watching the chains that are successful, are you driving revenue back to the layer one? Because that's what's feeding, you know, participants in here.
+
+So, um you know, it looks like I see I've seen recent I don't follow too close with Vitalik, but you know, they're changing things. I saw something about becoming lean and uh changing directions. So, honestly, more power to them. We We truly want to uh join forces with our crypto countrymen and actually, you know, not just make this only a centralized banker's chain. I mean, I think that core ethos of crypto and that cypherpunk kind of libertarian mindset is certainly why I'm here and almost every other person I know who's in crypto. Not to say that, you know, these regulated financial products can have a place too. I mean it's I think about blockchain is just a place for anyone to come build whatever they would like.
+
+Um so, I think it's It's interesting. I haven't followed the the latest from Vitalik, but you know, it's good to see them trying to, you know, find their way too.
+
+Yeah, I'm here for the science fair projects of what can be possible, but like turn them into a business so that, you know, tools of freedom have a chance to succeed. Uh, but but yeah, even with the idea of Ethereum getting more lean, like they're actually talking about bringing uh UTXO into Ethereum at least in modified um capability, which is leading a lot of credence to, you know, what Charles and a lot of the the people who should be getting flowers here on Cardano have said for a long time. Um, can you do a I don't want to get too technical, but can you do a brief overview of like what UTXO is for different for like our listeners who are Ethereum native and what someone like the possible USP is from it?
+
+Yeah. I mean I think one thing that may be important that we start with is like when Charles mapped out the world in in his white paper of You know, because he was working with Ethereum and and looked at some of what he wanted to kind of emulate or make better, Cardano's very unique, and I know we're going to touch on it in governance. But the founding entities, um, of the core developer, the foundation, and the business development arm, they've since burned their keys and just pushed this thing out in the wild. So, to me, it always starts with decentralization because if you own Bitcoin, we don't really have a say in the Bitcoin network. You know, the miners are more in that. But ADA itself as the native asset, it comes It's obviously like a cryptocurrency and you can hold it in and do things transactions with it. But, um, it also comes with inalienable rights. You own a piece of that network, and once we've pushed this blockchain out into the world, it's just running, and so you get voting power with every single ADA that you have. So, to me, that's another level of decentralization that most chains, you know, they don't think about.
+
+Because I think many times when decentralization is mentioned, it's about geographic dispersion of of the nodes and the validators. But this now adds voting rights that no one controls. And then I think the final step is truly who's the core de-
+
+developers and even then, as Input Output has was the core creator
+
+of Cardano and the engineering, it's not like they built this alone. There's been many, many partners.
+
+So, I think decentralization purely is when I talk to folks in Solana and others, you know, they think about maybe in the world of just validators.
+
+And so, I think that part is very important because it comes with so many other levels to this that I can't explain it sometimes to other, uh, Yeah.
+
+so, the Yeah, the way that the way that I would like completely agree. So, 2017, uh, there is a proposal by BitGo
+
+on the Bitcoin Network, Mike Belshe and Tony from BitPay and um, you know, some of these other like big guys in the ecosystem and they're like, "We want to upgrade Bitcoin."
+
+And they're like, "Hey, miners, if you want to upgrade Bitcoin, do this weird mining upgrade to all your miners and switch this little number at the
+
+to a zero or one in the front if you want to do that." And they weren't able to like communicate and have discourse and have back and forth on how to do this.
+
+And to me, like dude, I'm Bitcoin's OG, I'm not going to say like I don't like Bitcoin and it like it got us here, but that to me was the day that Bitcoin died.
+
+The unable to be able to coordinate and upgrade in a in a way. And so, I I think what's really interesting about Cardano
+
+is this uh trilemma, tricameral kind of governance thing where you can you're a token holder.
+
+It It has some economic utility, but it also has governance, but it also has what else does it have, Dave?
+
+Well, I mean uh um you can elect a representative. I'm sure we're going to get into this in some of the Yeah.
+
+Like, I I'm probably not the world-renowned expert, you know. There's people who work on parameters everyday voting on this and that.
+
+But, yeah. To us, I mean, Bitcoin, we love Bitcoin. Obviously, UTXO, to
+
+Eric's point is, like it we we chose that for a reason.
+
+It's just that if Bitcoin is supposed to be exactly what it is,
+
+we want to make a smart contract that can evolve through the ages. And, you know, so, yeah, I totally take your point.
+
+I worry that they can't upgrade fast enough, but that's not a bug. It's a feature in many ways for Bitcoin.
+
+Except though, I mean, if everything is perfect in a perfect world and you keep on doing the same thing,
+
+I agree, but like quantum stuff coming I'm not trying to publish any FUD out here,
+
+but the world changes. And if you can't update to the world, then quick enough, like
+
+we see this in DAOs, we see this on chains, we see this in protocols, right? The speed of competition is so fast,
+
+that ability to iterate, the ability to change, and take like a maybe not a 180° directional change, but 5% here, 2% there,
+
+you know, that that's super important to stay competitive.
+
+I totally agree. I When I talk to Bitcoin maxis and you know, these are like the most fun conversations, 'cause I'm a nerd, like, you know, my wife's like, "I don't care.
+
+Please stop ta- telling me about this." Um, but that that's my point. It's like you assume that the world
+
+would never innovate. Well, every other part of society innovates, and so, I hope that they can actually modernize.
+
+And I know that hey, you know, that'd be good on quantum and all that, but you know, it's I think it is beautiful in just what it is, you know. It's not supposed to be a smart contract system, maybe,
+
+but anyway. But um you want to touch on some UTXO? Um, Yeah.
+
+We should probably get our cryptographers in here. I I like to be able to uh distill it in a way that I think about it.
+
+So, it's probably not technically accurate. But, um, obviously we don't have to manage global state, because it's just UTXOs. And so, I think most people are familiar with that unlike,
+
+you know, the EVM and and Ethereum. And as what I'm learning, and honestly just an active learner and through all this AI that it creates a much uh smaller attack surface,
+
+basically because of the UTXO model. Really would have to crack all of those individuals instead of like a global state of a network where it's just, you know, a list of accounts.
+
+We there's determinism before like you know exactly what those smart contracts are going to do. So, maybe not UTXO, but the broader Cardano stack.
+
+Um, you know the exact fee before you submit it. MEV is not as much of a thing. There's so many other interesting things about Cardano. Like, you can send
+
+many different asset types in one transaction. So, one transaction on another chain, I've I've seen some charts where there's like hundreds of tokens going
+
+in different places um to UTXOs. And that's one transaction. So, sometimes we feel like we get cheated on the transaction volume,
+
+but when you look at the real math, you know, where you know, we don't have the activity even even with that kind of nuance.
+
+A lot of the Well, I think all of the Ethereum ERC-20 tokens are smart contracts. Cardano, and I think some others have adopted it as well,
+
+if you issue a token on Cardano, it is a native asset, and it has first class citizen rights as if it was ADA itself.
+
+So, the idea of a native token, yes, we have one, but any asset issued is a fully it kind of inherits the same
+
+properties. And I think that's some nuance that maybe we've even yet to to tap into. Um,
+
+yeah, so those are some of them. Um, I think the smart contracts and ERC-20 also probably reduces some of the security risks as these are native assets.
+
+And one of the coolest things and I think Cardano uh when people talk about Cardano,
+
+it's like they only focus on the research, academic approach, and that is something we are extremely proud about.
+
+But there's a domain-specific language called Plutus, which is um really like a domain-specific of Haskell,
+
+which, you know, to me, I'm not a computer scientist or a cryptographer, but the way I think about it is just more like math and very less expressive.
+
+It's not like a foreign language, and you can pretty much prove math, I mean, until these new AIs are
+
+are basically cracking mathematics and physics right now, but you can prove that it will always do exactly what it says.
+
+You know, determinism and uh there's a really cool tool that's not just useful for Cardano smart contracts,
+
+but it takes um you know, these pro- these functional programming languages, and converts it to a it compiles to another language of math, and you can prove
+
+with absolute certainty that that thing will not break. And that's just very unique in the sense, but it makes it very hard, you know, for a newcomer
+
+to come write in these math-based languages. And so, you know, I'm probably doing a disservice to uh kind of
+
+dumb it down in some ways. But I think those things are just phenomenal, and they piqued my interest early on, and I've ve- been very happy to see them
+
+grow. And honestly, UTXO seems to be having some resurgence in the market right now. I mean, I'd love your guys' thoughts on that. We see Canton, we see others that
+
+even like you said, Vitalik is uh looking at this. So, yeah.
+
+Yeah. Yeah, I think the concept of like bloated state over time, where it just keeps getting bigger and clunkier, um, I don't know if a lot of hear people going to even realize this at like, "Hey, eventually everything
+
+that you do now is going to have to be indexed, in bigger index, like in perpetuity. Like it does get ugly. It does get clunky. The idea of just being transaction-based
+
+does make sense. So, we just we've seen so much successfully built in the other way, which is a little bit easier to understand for a lot of people. It's like, "Hey, I've got a wallet that I spend."
+
+Whereas, for actual long-term scalability, it might be different. Uh pivot a little bit. Um you said you're uh we we've asked about Midgard. You said kind of new to Midgard,
+
+but you gave us a great uh info on your background from DC and banking. Uh can you tell us a little bit more about Midgard? Where is it going to position into the Cardano ecosystem stack?
+
+Why Midgard? How is it working with Phil?
+
+Yeah. Phil's great. I mean, I've known him for uh really since I've been working more closely with IOG.
+
+And so, we together were working on the programmable asset standard, because Cardano never had freeze and seize, you know. If we didn't have all these regulatory,
+
+you know, in banking partnerships, there's really you cannot freeze them natively, and they're not smart contracts, like I said, these native tokens.
+
+So, we worked on some Wyoming stablecoin, they ended up coming back and say, "Oh, you need this partner, this and that." But we just proved in like a month's time that we can implement this feature.
+
+I've worked with Phil on many things. He was the technical architect of the USDCx bridge that I helped bring on,
+
+and so, we have Circle on-chain. The dude is a genius, uh not just in the technical space, but truly in business, legal,
+
+and so, I mean, he's the complete package. I loved working with IO, and we've done so many different things.
+
+I feel like now we can even work towards the exact same goals together, because Midgard, its purpose
+
+is I mean, for now, we're going to be scaling Cardano on top of the actual
+
+base ledger core scaling that has just come out um called Leios, which is very exciting.
+
+Um, I forget what the number of uh TPS increase,
+
+um but finality is also a challenge. And there's also work at the core to say when are these transactions, you know, fully final.
+
+And so, Midgard is effectively, you know, what looks like a layer 2, but for eUTXO on Cardano.
+
+And uh the most unique thing to me is that you don't have to accept a new security model for it. It truly connects to
+
+the base core Cardano blockchain, which has never gone down. You don't have to blow to the Nintendo cartridge to kickstart the nodes
+
+again. And so, we're going to be doing a lot of different things. I think there's a lot more that's coming, but we could eventually just be,
+
+you know, and we hope to be the place where UTXO settles um in the non-permissioned world and connect to the Cantons, etc.
+
+So, yeah, it's still super early days, but the tech is not. I mean, we're about to launch uh testnet, and so, we're super excited about that. And I feel like we're in like quasi stealth mode,
+
+um you know, people know about it, but we're trying to kind of build some excitement and um and get
+
+more activity on Cardano in order to scale and have the need to scale. So,
+
+yeah, it's been great. It feels just, uh, amazing, and, honestly, I like missed the IOG team so much because they're such talented people over there.
+
+But I get to I get to hang out with them all the time still and work on the same thing. So, for me, it's like I I never left, almost.
+
+I love the freshness of coming into an ecosystem and actually seen a bunch of decentralized contributors.
+
+Um, that that's what was beautiful back 2017-2018 when I was getting really involved
+
+where there're can be so many different companies, different personalities, different focuses all contributing to us to a shared ecosystem
+
+and path forward. And not everyone had to agree, um, but everyone was making their own contributions, and there's no like negative to defecting.
+
+It's like anything that's built is a new opportunity, a new possibility. So, um, it's nice to kind of see that
+
+libertarian sprinting, uh uh, again if you will. Um, but for the idea of decentralization,
+
+I mean, we've Brian and I have gone through a whole bunch of DAOs. We've done a whole bunch of proposals before. Uh, we are going on-chain today
+
+with our proposal on Cardano. Woot! Um, but lets you know when this is recorded if you're watching it back.
+
+But, um, what like Can you walk me through kind of like the high-level
+
+setup of Cardano governance? Cuz it is unique. It is different, and even for us who are, you know, DAO veterans at this point,
+
+uh, we're running into kind of new terminology and new, um, blockers, uh, every day, and it it's kind of cool, but it'd also be nice to kind of see the architecture from a bird's-eye view.
+
+Yeah, I mean if you've worked in any company, any ecosystem, you always have these new acronyms and you're like, "Oh, I gotta get caught up to speed on yet a new thing."
+
+I mean the way I think about it, um, and the way we've stayed, it's Cardano governance once
+
+we burn the keys and push this baby out into the world, um,
+
+you know, you can't just have Lord of the Flies and expect people to coalesce into the ether.
+
+There's 1.5 billion ADA sitting in a treasury
+
+that has been accumulating bits of transactions, and then it's locked there. So, there's money in inherently what is a DAO
+
+on the ledger, not not a side. So, um, what happened and I had come and joined in the early or really the final stages
+
+of the Cardano Constitution. There was meetings all over the world. I think there were 40 different workshops.
+
+And they culminated. They worked on a constitution. What does this system mean? What rights
+
+do ADA holders have? And, um, it's just it's just unlike anything that exists anywhere else.
+
+But to me, it's very akin to our political systems of the world, and like how governments function.
+
+So, when we say tricameral, um, there's a couple of different stakeholders or actors you could call them.
+
+First, there was the stake pool operators known as validators, miners, in other ecosystems,
+
+so they're powering the network. If they want to upgrade to the next version, you know, they need to get together and decide to upgrade.
+
+I don't think that's bit too dissimilar from, you know, almost all other, uh, decentralized ecosystems.
+
+But then the constitution put forward, uh, this idea of a decentralized representative.
+
+I think about that is congress, or even like the House of Representatives where
+
+if you own ADA, you can delegate it, align it to yourself. You never, you know, lose custody of it.
+
+But if you want to say, "I believe in this policy or this,
+
+you know, parameter change, or where the future goes," I could say, "I like Eric. I think he has the best,
+
+uh, you know, for this ecosystem, his ideas. I'm going to align my vote to to Eric."
+
+And then Eric becomes a politician on this, which has come with the good and the bad.
+
+Um, so that's the second thing. And then what they've also done is say, "Well,
+
+there's the constitution. If we let our US Congress just just go without the Supreme Court,
+
+things are going to go haywire. Um, so there's a there's a supreme court type of arbiter
+
+of the Cardano Constitution, and that's been fascinating as well.
+
+I won't get too much into the nitty-gritty there, but you can imagine when
+
+a democracy first starts, everyone's excited, we we have a government, and then,
+
+you know, if it looks like human nature and every other government, things start to deravel, or they they,
+
+you know, pendulum swings side to side, but, you know, not all is, you know, terrible. It's just we're going through growing pains right now, and
+
+I can certainly tell you more about about Did you Did you see the latest Game of Thrones?
+
+No, I I need to watch. I saw the commercial. Okay, I'm not going to I'm not going to like
+
+like doxxed the whole thing, but effectively somebody wins, they get control, and now they own all the problems.
+
+Exact-
+
+How am I going to be like become a wool person or whatever?
+
+There's a lot a lot of challenges. Like what people don't realize, especially in governance,
+
+at Cardano, we're we're learning, we're we're new to the to the scenario. But,
+
+you know, running a protocol is in or in a chain is insanely difficult.
+
+You have security, you have UI, you have product, you have like economic systems that you have to build.
+
+You have to do revenue generation. You have to have security. Like everything that you need to be successful in this
+
+is is a specialty where you could have a whole career and a whole entire lifetime on any single one of those threads.
+
+The challenge that I think in in all of this, and I don't I don't have an answer, but the challenge that I've seen in these is like,
+
+at some point in time, you're asking a holder, you're asking a representative to be an expert in UI,
+
+economics, Yes. tokenomics, security,
+
+product management, go-to-market, marketing, business development. It's an insanely
+
+insanely massive. And And to be able to frame it and ELI5 it to like each one of the representatives
+
+is like an amazing task in and of itself. Because otherwise, you're basically talking over everybody's heads every single time,
+
+and it's You can't talk to the right scale and information density of like an individual delegate to get to the point where you're communicating, having clean discourse.
+
+It It's a real challenge. It It certainly is because,
+
+um, well in in the early days, everyone's like, "This sounds fun. I want to be a politician." I, personally, never want to be a politician.
+
+I don't have any You know, but like everyone's like, "I could lead," and then, "But what do you stand for?"
+
+And And I think this will I'll probably start to message this more, but you get to decide on some parameters.
+
+I would never be the right person, um, but even like DeFi, I'm not the right guy to decide.
+
+It's like saying, "I work in finance." Yeah, but which Or tech, it's like, "Which piece of this entire crazy world?"
+
+Exactly. Are you doing bonds? Are you doing equities? Are you doing derivatives?
+
+Like I mean these are like drastically different expertises. Exactly. And I think that that is where
+
+these reps, they, you know, at first, everyone wants to be a DRep,
+
+and that's great. And they want to, you know, be a leader in this ecosystem. That That makes sense.
+
+But then the fog lifts and you start to see who has power and who doesn't. And it's not like one person, one vote.
+
+It's truly how much ADA you have aligned to you.
+
+And so there's people that say, "I know about cryptography,
+
+and I do not know anything about marketing." And sometimes those people are are abstaining,
+
+but it's right now it is wisdom of the crowds. And so, notably, when I mentioned this government
+
+of sorts, there wasn't an executive function. And I don't think any of us want a president of Cardano or a king on top of it,
+
+but we will need to start organizing, and it's already starting.
+
+I can see just like our human foundational and moral beliefs, almost,
+
+Yeah. are starting to come out. And so, I would imagine that we mature
+
+and become saying, "Okay, maybe we have the Secretary of the Treasury
+
+person or group appointed to do that thing. Maybe there's the marketing. Maybe there's the, you know,
+
+like the health care and the energy, but it's going to be an equivalent of that, I think. That's where we'll get to
+
+because right now, if we have like, I don't know, maybe 1,000 DReps,
+
+but really only the top 100 can make this way. I have a feeling that it will be consolidated further
+
+and people just start to rally around ideas and policies, you know? It's
+
+I just Yeah, to that point, started recently learning about information cascades
+
+where you have like a lot of wisdom of the crowds, and then over time, the wisdom of the crowds becomes reflexive,
+
+and people only say to each other what is socialized. And it And it gets
+
+usually down to a two-party system or some sort of binary outcome, and then you have like just Anyways, um, I think
+
+I a little bit of a side tangent, but also a challenge I think I want to double click on.
+
+Uh, a little bit of a little bit of history, pre-America, there were there was a three-party system in England.
+
+There was the king, there was the lords, and then there was the church.
+
+And those three parties kept them in check. I guess what I don't see other than kind of like
+
+the socialized ideology in blockchain, you kind of need a king for war to make big decisions quickly.
+
+You need the You need the delegates to keep them in check, but what's the moral authority?
+
+Like how do we How do we keep that? And I And I don't think we've kind of like codified,
+
+quote, unquote, "what the moral authority is" that keeps this whole thing in line other than the economics and price going up. Maybe that's the ultimate moral authority.
+
+Yeah, I mean I've just seen so many interesting YouTubes or podcasts about this of like morality,
+
+right and wrong, and it's like obviously in the eyes of the beholder. Yeah. I
+
+I guess I It's We have not formed these political parties.
+
+What's the joke, um, like if you are on the left, uh, you're a Democrat,
+
+you absolutely believe that you are right. You know you're right, without a shadow of a doubt.
+
+And then if you're on the right, you know you're right. So, these like weird,
+
+you know, whether it's ethical, or moral, or just like core values, we're starting to see the bubblings up of
+
+It's very interesting, especially being in DC. I just generally have a distaste for politics,
+
+Yeah. um, normally, but we're starting to see like there's the growth and spend party.
+
+There's the fiscal hawks, "Don't spend one more dollar out of this treasury. We should..."
+
+There's this almost like socialism or, "We should limit power and push it all out to the masses."
+
+There's nihilism, Yeah, there's like nihilism, "Let's burn the entire constitution down."
+
+I mean it's just I mean it's fascinating. I find it is like a mini
+
+government, and it is. I mean that is the point. When, you know, we had all these countries
+
+from all over the world, I I don't I like 100 countries or whatever,
+
+they all came together. They worked on the constitution and we codified it. It was a beautiful ceremony
+
+in Buenos Aires, Argentina, and then I was leading a satellite in Nairobi, but it's just human nature,
+
+and I think we're at the early stages of you got to pick a side because if you kind of stay in the middle,
+
+it's safe, but you don't make much progress that way. So, yeah, I it's it's interesting.
+
+I hope I do hope we get to a point where, even if we don't have a President of the United States or a Prime Minister, we have, "All right.
+
+Alpha Growth, please go deliver on this DeFi strategy. That's your executive mandate,
+
+executive." And the people through their delegation to,
+
+yeah, and the constituents for the DReps, um, they're going to nominate these people.
+
+That's not happening now and I'm sure it'll get resistance, but I have a feeling we're going to need to mature just as
+
+all governments, I'm sure, the same way. Good good points. Yeah.
+
+It's difficult to get radical authority and decentralized, um, because everyone can always just kind of pass the buck off.
+
+So, it's it's good to lean into the people who are able to take it. Your Your, um, comment on,
+
+you know, people on the left knowing they're right, people on the right knowing they're right, the purpose for a Democratic Republic,
+
+rather than a democracy, is to elect people who are, you know, smart and able to handle sensitive information in ways
+
+that the general public is like We don't actually know everything that, you know, you need clearance to understand.
+
+There are decisions that are being made that we're going to armchair quarterback, but we don't We're not privy to all the information. And so, we have to elect people that we trust to do that.
+
+One thing that's been encouraging with us coming in, like I'm not going to toot our own horn that much, but we do know DeFi at the highest level
+
+as as we're meeting with a lot of these teams and having these educational conversations.
+
+I mean so many brilliant people in Cardano, they're so great at their niches as we're able to expose them to more things that have been previously outside of their purview that they haven't been able to see yet.
+
+They're very welcoming to like, "Oh, this is new information that we didn't have," and willing to have conversations on how to move forward
+
+and align to a bigger picture than, um, they had previously had in their head. I would love to see that happen for more of America,
+
+in general, but it's really encouraging to come into this micro-governance system and see that people readily are willing to adapt to new information.
+
+I love I love that, and I would even take it a step further. If I just will never understand the depths of ZK cryptography,
+
+once the math comes out, I'm gone. But if I was a representative, and I see some doing it well,
+
+they look to their peer and they say, "Wow, this guy's an expert in that thing. I'm going to align my vote with them."
+
+Now, if you don't know marketing or DeFi specifically, I would love for those other people, instead of abstaining
+
+on a vote, we'll say, "Look, I trust my peer." And there's so many,
+
+uh, bills, we'll say, but like funding proposals and parameter changes.
+
+I think we're going to end up in a world where you gather sort of caucusing or political parties,
+
+not just for forcing voting blocks and just go to war, you know, with your opponent, but truly because if you can gather
+
+experts together and rely on each other, that is tremendously valuable.
+
+And I'm sure that's what the world governments do. The House Armed Committee, and Senate Banking.
+
+Well, like if you don't work in that, you look to your peer and I don't want to equate it too close to American politics, cuz I also think it's a dumpster fire.
+
+So,
+
+Awesome. Thank you. Uh, so as you are looking for trusted people in different sections, and you're acknowledging that like, "Hey,
+
+um, you know, you're great at a lot of things, but it would be nice to have some DeFi experts," I know we got connected to you from
+
+some of the partners that you helped bring in who recommended us, which was very humbling. Thank you to those partners.
+
+But you guys had already you were embarking on an RFP process, and we're one of the teams you talk to.
+
+What were you guys looking for and why, and what impressed you guys about us that made you guys want to move forward with us to to go on-chain for this proposal?
+
+Yeah, I think it first starts where where we see Cardano metrics where they're not where they need to be on monthly active users,
+
+TVL, transactions. And we all know that, um, economic activity and velocity of money is the lifeblood of a system.
+
+But we had just brought on LayerZero, and Pyth, and and, uh, Circle.
+
+And so, we're starting to realize, uh, that, you know, we don't just think that we're the smartest people, and we can stay in this isolated
+
+island. And it's very important, and many, uh, DeFi protocols in order to be successful, they need seed liquidity at a minimum
+
+just to make this, uh, economically viable. And for ADA users, they didn't have a place where they can go, because they'd get,
+
+you know, totally burned by impermanent loss and all these things. And so,
+
+I I can't actually speak to the exact, uh, RFP because,
+
+you know, I was more helping connect, um, but ultimately, we didn't want just one solution. "Oh, we can bring this one,"
+
+you know, because we had done some integrations, and now, uh, frankly, there's a lot of other crypto people
+
+who say, "Oh, there's money over there. We should go." So, we're getting calls off the hook to come integrate.
+
+But what we didn't want to do is have, um, a disjointed strategy of like, "Plug this thing in."
+
+And honestly, we're sitting there, we're trying to rank, you know, integrations and who we should pursue next,
+
+but we need to realize, and we did as the founding entities, we're not the world-renowned experts.
+
+I can't tell you about looping and all these primitives, but we do see
+
+that Cardano teams have been building all sorts of interesting things.
+
+But it's hard because if those people are your competitors, you don't natively want to just join and show all your cards.
+
+And so, when we met with you all, it felt like a more,
+
+uh, and not to mention, you guys are are great guys, so it's just like we want to work with people that we like, and so that's the first.
+
+That's the first. But we felt that you guys could help us in different places, right?
+
+Like you could do curation. You could you know, um, but you could help us actually
+
+look at what the problems Everybody and their brother, mother, sister thinks they know what the exact problem is in Cardano,
+
+and some think they know the exact solution, but no one here has driven hundreds of millions of TVL
+
+at scale. So, at some point, and I hope I do this,
+
+I say, "I don't know what I don't know, and we should bring people that not could just do vault curation,
+
+or this one thing, but to get and help us do a coherent strategy." We've seen the representatives,
+
+these DReps, saying, "We need a strategy." Well, to get a full ecosystem, marketing,
+
+DeFi, all the components of that together in one one beautiful package, that's not an overnight thing.
+
+And so, when we came to you, and had vetted others, we just felt like you could plug in in any place
+
+and give active help for free, I mean to the DeFi teams. Obviously, this is a proposal that is ambitious and and,
+
+um, incentives are aligned if you deliver, you know. But I think it I would actually maybe turn it
+
+to you, because you guys have met so many of the DeFi protocols, and you can tell that they're,
+
+you know, out here hungry and fighting, but I haven't even dug into the depths that you have, and I know you're still working through the process
+
+of like who's building what piece, and how these pieces can fit together as a puzzle, because that is de facto a strategy that comes out of it.
+
+We're not solving marketing only, but this is the way. And I truly believe that,
+
+of all the proposals, the the core tech is immensely valuable. We need layers to scale, we need finality,
+
+we need, you know, developers, but this is an area where it's truly uncharted
+
+because the DeFi protocols today, they don't have the usage, but they have ambition.
+
+And I think having expert advice that you all can bring, spend 10 minutes on a call with you guys talking to these people,
+
+and they leave the call like floating on air because they're like, "These people get it."
+
+You know what I mean? So, I It's a compliment. I just Yeah. That's great.
+
+No, I I'll tell a story. And it's been it's been a couple years,
+
+so hopefully I I won't tell who, but we got on a call with a very high-level up person at Tether.
+
+And this was like 3 or 4 years ago. And they were like, "We have a problem." And they're like,
+
+what's your problem? They're like, "We launched Tether Gold, and we're not getting the adoption that we want." Like, great. What's your
+
+Where's your incentive campaign? Where's your marketing? Who's who's running BD? Like, "Oh, we're not doing any of that."
+
+And I was like, "Okay, why are you not doing that?"
+
+"Well, we didn't have to do that for Tether." See, there's this common misconception
+
+that if you build a technology that it just has like this immaculate conception and and if you build it, they will come, right?
+
+And so, it was the strangest and most eye-opening conversation that I had in the space
+
+that sometimes you don't need any of that, but it's very, very rare. They didn't You know, Tether when it started,
+
+there was inherent like product-market fit demand. Like, "I wanted to hedge by Bitcoin. I have a whole bunch of Bitcoin and I want to print some dollars to hedge exposure.
+
+Go up, go down, whatever. I just want some dollars." So, it was like one of like the first like CDPs. But
+
+most of the time, you don't have billions and billions of dollars of just pent-up demand there.
+
+You need marketing. You need BD. You need a points program. You need to figure out The people that engineer
+
+and make the F1 cars are not the same people who drive it, right? So, you need that that specialty, right?
+
+in that differentiation. And, uh, you know, Tether Gold's not doing bad today. There was like a big huge gold spike this past year.
+
+They should use Silk for that.
+
+The most interesting things is like why would we need to do marketing incentives and all this stuff if we didn't have to do it last time.
+
+Or somebody points to like Bitcoin or Ethereum. It's like, why do we need to do XYZ? Ethereum didn't have to do that.
+
+But like, all new chains do. Ethena had this crazy points program like of an incentivization.
+
+There's, you know, Ren we did deals with. They just did this amazing points program,
+
+went through the process and their launch is now at their tokens at like a $700 million market cap, which is like amazing.
+
+So you have to do those marketing. You have to do those BD deals. You have to like execute.
+
+You just can't have the infra and you can't just have, you know, Circle, USDX in there.
+
+You have to have all of the like the operation and skill sets, too.
+
+A little quick shill, we've been doing this for 6 years, we've helped out many, many chains, and we've deployed capital
+
+into like over 200 different protocols in DeFi. So like, we know almost everybody in DeFi.
+
+Somebody's touched the AlphaGrowth team. If you're in DeFi, somebody's met with, or had a meeting,
+
+or done a deal with the AlphaGrowth team. So that's kind of our claim to fame.
+
+Yeah, well, I, I totally take your point. I think to me, like, incentives matter deeply, right?
+
+If they're not aligned, and, and right now, we have lots of people who are volunteering and they're, you know, these reps, but they're not getting paid.
+
+And so I think like even some of that fundamental, we, we're going to need to think about how we attract and retain people here.
+
+Also, though, Cardano, you have to understand, fits formal methods, functional programming.
+
+These are some of the smartest coders on Earth in a language that most developers couldn't even read or touch.
+
+And so that's not a native financial services product persona.
+
+And so what I believe strongly is that we would need more capital markets expertise here,
+
+and other chains have, you know, fully kind of gone that path, but it's very complicated.
+
+And yeah, I mean, I'm just excited that we're going to rally the DeFi teams
+
+around this, because, you know, if, if I'm a DRep, and I say, "Oh, my gosh, why should we spe- be spending money?"
+
+Well, look, Cardano has a surplus. It's a, effectively a sovereign wealth fund. This is not the US in $40 trillion in debt.
+
+So when you look at the treasury balance, we can spend for growth.
+
+If the outcome is what, you know, we've stated in this proposal, that is worth the amount of money and more
+
+because we're on a path to growth. And so, yeah, it does just come back to purely
+
+politics and, and like political I, I hate to say that.
+
+We think we're post-politics, post, you know, American kind of,
+
+but it, it's not. It's inevitably money comes right into government and decision making, and humans,
+
+you know, we know how they, they, they will act here.
+
+Yeah, I'm super excited to have you guys on.
+
+And I mean really, not just the DeFi protocols, but I think you guys are really likeable,
+
+and, and people will rally around this. And you know, we're going to, we're going to die trying to make sure this goes through,
+
+and I think we have a really good case for it.
+
+Um, yeah, for the last several weeks, I know a prop hasn't passed yet, for the last several weeks, I've been trying to meet all the
+
+players, all the different teams, all the builders in the Cardano ecosystem, like we need to get a better lay of the land. If you guys are watching this, you haven't met me yet,
+
+please, please do. DMs are open. I'm trying to meet as many teams and people as I can.
+
+But something that's impressed me so much is how many of the founders, of the builders in this ecosystem
+
+have had commercial success outside of crypto and have largely put it away to focus on building things based on their,
+
+um, ideologies. A lot of philosophers, a lot of ethos-driven people, and I believe that it takes three things to build a civilization.
+
+It takes brilliance, trust, and delayed gratification.
+
+And people who like the DRep system is a good way of building trust, like you're able to see how people vote publicly.
+
+We like interacting on-chain, like we act transparently. We've been doxed forever.
+
+That's part of why you guys came to us, why we have a decent reputation in crypto where not a lot of people who have been here for so long do,
+
+but seeing like the people who are willing to have delayed gratification usually they're more driven by being right
+
+and by pursuing truth than pursuing money. And ideally then you can build wealth instead of building just
+
+um definitive revenue. But I I had a great conversation with one of the philosophers, um I'll say, who was um
+
+basically I told them that I would prefer to be the idea person, I would prefer to be the philosopher, but I get paid to be the pragmatist.
+
+And if I get to be surrounded by a whole bunch of brilliant philosophers
+
+who are looking at the 10-year, the 15-year, the 20-year plan of how to fully change a market,
+
+then I'm so much more thrilled to be the pragmatist to help take the steps to get there because I know I'm not the only one with the vision
+
+while everyone else is just trying to extract and leave in 2 years, and I'm going to be here by myself
+
+because I've seen a lot of that in crypto. But this really seems like the real people doing the right things for the right reasons.
+
+I totally agree, and maybe it's like in a different vein. I, I truly do believe that
+
+Cardano or chains that embody some of those same values, and, and at least that, like volunteerism,
+
+I, I still believe we should be incentivizing, you know, all participants, even if it's in some small ways. I mean, look at
+
+Congress makes money. I think they make more money with insider trading, but like, you know,
+
+this is a world that was fascinating to me. If I wanted to go make money, I could probably, you know, go
+
+into another, you know, purely financial ecosystem, but it is a grand
+
+and fun to me, maybe I'm, maybe I'm crazy, but an experiment where you can make this your own,
+
+and I think we even started the top of the call, where you can be a different persona and role
+
+and still contribute into this, and it's truly just a grand experiment of like, can this work at scale
+
+where the wheels are off, and if a government wants to shut down Cardano, good luck reaching 25 or 3,000
+
+nodes in different countries. There's probably some in Antarctica. I mean, it's just like, it's very to me libertarian and cyberpunk,
+
+and I think that's what attracts a lot of people to this because, you know, the distrust of our institutions in society
+
+and frankly, the distaste for the polarization in politics. It's, this is the place where, you know, it's not an actual nation,
+
+but it feels like that where everyone can play their part. And, you know, it's exciting actually, because there's real economic activity that can,
+
+can be here, so um I love it.
+
+Well, with so many people thinking 10, 20 years in the future and us having to take steps to get um success in 1 year,
+
+you know, grow the price, fund the future, uh and more of the pragmatic approach, if we are successful, so
+
+we're hoping the prop passes, we're hoping people like us and agree with the vision that we're trying to put forward with how to get Cardano from where it is
+
+to where it's going to be to set it up for where it's eventually going. What does success look like
+
+for Cardano in 1 year, what's it like in 5 years, in 10 years? How does this become, um, you know,
+
+actualize the vision that Charles and, and other founders had so many years ago?
+
+I think if you ask different people, it would be different things. Um, but to me,
+
+we need an absolute killer dApp, plural, um that people can use with confidence.
+
+We can't have these hacks that are rampant on EVM and other chains.
+
+The money that you put in should ideally make you more money, provided that the thing doesn't get hacked.
+
+And I, and I'm very concerned with, even with the hacks at whatever hundreds of millions,
+
+the amount of DeFi leaving the space is concerning. And so, if we're successful, I believe that
+
+at least every protocol who's participating with you has at least a road map or guidance on where they can be better and compete,
+
+finding a differentiation of what truly, not just UTXO, but Cardano's model,
+
+if we can tap into that, I truly believe that we can grow beyond.
+
+Once you start seeing the flywheel growing, and a lot of people will say, "Cardano is the ghost chain," or "It's a cult," and no,
+
+like people love participating in this ecosystem. I now think we just need to crank the ratchet of the economic engine,
+
+and I think, you know, if you even get close to where our goals are for TVL transactions,
+
+there's more life flowing to the system that feeds the builders. And so, I'm excited to see
+
+how far we can get, and then take it to the next level, and the next level. We don't need to maybe be the high-frequency,
+
+you know, trading chain, but like it is open and pure,
+
+and that's what makes it beautiful to me, um and I think that's the ethos that many who came here still believe in.
+
+So yeah, we'll see. I mean, you guys are going to have to tell me how it goes.
+
+All right, so let's let's get some feedback and this is a really fun question uh specifically around the dApps that we should focus on.
+
+All right, you know the the F Fuck Marry Kill? Uh, yes.
+
+Okay, cool. I don't want to get in trouble. I, I, I don't think I'll get fired, but
+
+Well, I didn't say a word. I mean there's no swearing, but I'm not for specific apps.
+
+No, no. Okay, so three narratives that are going on that are really, really exciting right now
+
+uh within the DeFi space. So you have this like AI type of narrative, you have the RWA narrative,
+
+and you have the DeFi mullet narrative. All right, sort rank them.
+
+What would you get rid of that's nonsense? What do you think from your perspective is is is number one?
+
+DeFi mullet in a business in front, party in the back?
+
+DeFi in the back, centralized exchange, custodians in the front. Yeah.
+
+I mean I love I I I like that there are custodians
+
+that, you know, do this well and can be trusted so long as that we don't fully abandon
+
+the, what is it, party in the back, and like I like that these things can automatically or the Polymarkets of the world,
+
+they're just matching in real time. Um, the did you say the agentics?
+
+Agentic finance, yeah. I think it's interesting. I have a feeling that we're we were going to need
+
+some level of identity that controls all my agents, otherwise, they're just kind of running amuck,
+
+and so that worries me from a security perspective, although, I mean huge proponent of AI, and but
+
+I think that'll take maybe a little bit longer than we expect it to, um, not to say you can't use like Alpaca and I think Robinhood now to
+
+inject trade from, you know, your LLM harness. I mean, I think that stuff's fascinating. I don't know, I don't know. What was the, what was the
+
+You got You got I'm not We're not going to let you get away with that. 1 2 3, RWAs, AI,
+
+or DeFi mullet. RWAs,
+
+I would say, what is it? Kill, marry, um Yeah, 1 2 3, you can just
+
+Okay, RWAs I think will have the most, uh, capital formed,
+
+but I would put those at the bottom for me.
+
+Even though like I applaud them, I'd rather a lot of these real assets come on-chain.
+
+I guess I just don't know how necessary it is and if people will want to go use those
+
+if they're already holding something in their app. I'm sure like the Ondo people would tell me how wrong I am.
+
+Maybe agentic, I don't know, it's, it's super interesting. I just think the world's going to change. Maybe agentic 2, and then what was the first one?
+
+DeFi mullet. DeFi mullet for us. I mean, we just want people to be able to interact
+
+with their own money without permission control, and, you know, yes, there is a time when you need identity in KYC,
+
+but at the end of the day, if I can't control my own money and data and value,
+
+for me, I, I don't want to live in a world of surveillance and CBDCs.
+
+Maybe we just hit a nail in the head talking about like the the binary outcome and the polarization of left and right.
+
+You kind of have a binary outcome here. Like if you if you play the game out long enough, my personal agent
+
+is managing my finances in a in a custodial way where I'm taking all the credit and my AIs
+
+that I that I curate and manage are taking all of the risk and in in the positioning of my portfolio,
+
+or I'm going to delegate that and say, "Hey, centralized exchange. Hey, RIA.
+
+Hey, money manager, do that for me." Maybe it's not either like either/or,
+
+it's both, and it's dependent upon your own value system whether you want to take full control, full decentralization,
+
+manage your money, or you want to delegate that and and have that institution.
+
+And as long as we can have both, I think that's that's a that's a beautiful world.
+
+That's the thing. I want everyone as like a true libertarian of which,
+
+you know, I'm not. I'm, you know, I'm like I have issues there too, but
+
+if people want to put their funds away, let agents trade on their behalf, keep them with
+
+you know, brokerages and asset managers, more power to them. I'm just a weird person in that
+
+I love privacy and control. I want to trade every stock myself, I want to manage all of it,
+
+I want full privacy. You know, there's people I was in an argument and we always hear like,
+
+"Well, I have nothing to hide." I just I cannot be I We cannot let the world
+
+go full identity that's not truly self-sovereign in some way where every move is surveilled.
+
+But I mean look, I'm not saying I don't use banks and, and stablecoins and that, you know. So but I think I'm just unique in the sense of like
+
+I don't know how many more people there are in the world, and getting to a point where even we are on this
+
+is a learning curve that is so far beyond. So yeah, I think everything can be
+
+I want blockchain and having little enclaves, and even on Cardano, you can make sidechains that are fully permissioned
+
+and it's just for a nation state or a business. I want everyone to do everything
+
+they want to do, um, so that's sort of how I view it.
+
+Whenever anyone tells me they don't have anything to hide, I immediately ask them for their mother's maiden name, their social security card number, and all of their credit card information.
+
+And not a single one of them has given it to me, which, uh, makes me just not trust them.
+
+That's what the I mean, I'm with you. The AI tools, I mean, I'm giving them all my memory, I want them to be, you know, I'm like knowingly,
+
+and Google has these records on us, and, and frankly in, in the bank regulator, we were collecting more data,
+
+second only to the NSA, and so you can see where my policy uh world was. Every credit card transaction, of course, the banks are going to freely give this to
+
+the regulators. And so I was in an argument actually over the fourth of like, what if you hate Trump
+
+and he can see everything, or if Kamala or whoever, it's like, don't you worry that at some point this evolves into something that is
+
+Orwellian? So I was um I was at an investment bank,
+
+and this is probably enough years ago that I can say tell the story, but there was a payment processor that was going to get bought by
+
+Tencent and Alibaba, and the DOJ blocked it, and because if you have the tracking, the IP address,
+
+the geolocation of all the payment transactions of a credit card system, then you effectively know exactly
+
+when that senator's son is going to the grocery store over a long enough time horizon. For some reason, they always goes on Tuesday.
+
+We don't consciously recognize this, but you can tell in the data that for some reason, Dave on Tuesday morning
+
+goes to Safeway, and he always gets uh, you know, a a Starbucks coffee and is coconut water.
+
+Seems benign, but Yeah. Right?
+
+It's creepy. I my wife and I were chatting about this actually in, in a car ride, and um
+
+even though I'm giving all this data, and like Google has, you know, we, we have to live in the world, you know, as it is,
+
+but I need these AI tools to be as powerful as they can be for me,
+
+but you better believe that whether it's Google or Facebook or the US government and
+
+they've they know me better than me, right? Like, I asked my Claude or Codex,
+
+I said, "What do I do every day at work? Tell me like how I'm using my time," because I'm just using it so much.
+
+It was freaky, the amount of, I mean it knows me. And look, I'm, I'm not trying to be so fearmongering,
+
+but it's very fascinating, and I think money of all things is the last kind of bastion of that.
+
+Am I allowed to hand someone a $20 bill in a field where no one's watching, or, or should every transaction be tracked?
+
+What are you doing in that field, Dave? What are you doing in that field, bro?
+
+What are you doing? What's going on there? The guy buried the body and I had to pay him for the hole and, you know, 20 bucks?
+
+Hey, it was, it's cheap. It was cheap. It was cheap.
+
+Um yeah, it's been good cutting up with you guys. It was fun. Yeah, we're so we're checking off on this proposal today.
+
+This proposal of all others I think is, it needs to have full grassroots participation.
+
+Obviously, we're coordinating with IOG and the founding entities, this, the CF as well,
+
+but um in order to really get this going, we want people to rally around your proposal
+
+and objectively it, you know, shows where the outcomes will get to.
+
+And so many people right now are, you know, they go over into their camps, but this is an opportunity to say,
+
+"Do we want to win? Do we want to start competing in the market that is clearly in front of us?"
+
+There's a massive TAM. There's enough to eat for everybody. And so
+
+my pitch, you know, should the DRep see this is that this is the opportunity
+
+to start to crank growth. But, you know, we have to win hearts and minds and
+
+I guess we'll all be doing that over the next month or so.
+
+Awesome. Who has a lot. Okay, we're going to pivot a little bit. Dave, thank you so much.
+
+Yeah. Feel free to stick around. We're going to we're going to pivot on to to some AI topics.
+
+Today's last day of Fable. Little stories here, there, and everywhere, and if you have
+
+I'm I'm going to shill Claude AI, because if you have Fable for one more day,
+
+I I was up to like 3:00 in the morning deep-diving in a conversation
+
+that was one of the most mind-blowing, interesting conversations on on the future of events.
+
+Okay, so I basically have a friend who's running like an event app and got into this super, super weird conversation.
+
+Hey Fable, tell me what 2030 is going to look like in the event space. Tell me what 2040 is going to like look like in the event space,
+
+and my quick little shill is if you still If you have it, if you have Claude Fable,
+
+go on whatever like you're what super nerdy about, super excited about, and just go chat with it for like 30 minutes,
+
+and tell you what's going to happen in the future and then like challenge it and go back and forth because I have to tell you,
+
+I I couldn't stop. Even like that little thing that popped I I got out of credits and the thing was like,
+
+"Brian, you're still awake. It's time."
+
+Yeah, it's like It's really addictive
+
+because um if you're if you're of the mindset of somebody who likes to be like, Eric, you were saying before, like the philosopher, the explorer,
+
+this aggregates so much data that that you never thought of on so many different disparate viewpoints
+
+that you can have like the craziest discourse. I I don't know where I was going with that, but like
+
+that's my little shill. There's 1 day left.
+
+I'll stick around for a minute and I'll let you guys I'll drop and I'll let you guys riff, but when Fable came out,
+
+I was like, "Okay, is this being hyped? Is it You know, in some ways, it could just be a marketing psyop from Anthropic,
+
+and you kind of start to see them funding the anti-AI groups, and I'm like, "Oh, no, regulatory incumbent,
+
+regulatory capture again." But Fable was truly phenomenal on those couple days, and then it got taken away.
+
+It feels a little bit softer now, but um I just think we're in a place where these things are never going to stop from here,
+
+and it's fascinating the amount of work you can do in a short amount of time, and the amount that I mean I I still think that it's
+
+mostly what capturing all the world's data as Google has done, and then compressing it, but once these things start to learn and create synthetic data,
+
+I mean, we are going to just be parabolic from there,
+
+because cracking like math problems that haven't been solved.
+
+I but yeah, I mean like chatting with it, do you find that it was what you could imagine the world would look like in 2030?
+
+Because I even that model is very It's the What is Sam Altman says is the dumbest model you'll ever use today,
+
+um which is terrifying because these things are just going to get better and better. Yeah.
+
+I I think I think it's accurate, right? Because you can challenge it, and you could pull it back to reality, and then like literally like
+
+reverse-engineer like how do we get to that existence, like how do we get to that that 2030 goal.
+
+And I'll go back to like Cardano and ecosystems and government.
+
+for a second. I think that's truly the issue when you get into deep delegation
+
+and governance. It's, what is the vision that you can get enough people to get around?
+
+And then like, the human ingenuity and combined with AI can get anything done.
+
+But we have to align on that goal.
+
+I mean, if you could you could go back and talk about like, all of the weird stuff that have to happen for like the moon landing and the and the moon launch in like the 1960s.
+
+There's like all these crazy stories about how, you know, the Navy needed to interact with the Air Force to get a satellite on the top of a mountain in Hawaii.
+
+And they just Not that they were going against orders, but they didn't have orders to do that. And they said, "This is for the moon landing."
+
+And these two organizations that have just political nonsense,
+
+just, "Yeah, we'll do it." And they just sent the helicopters and did it without orders
+
+to just get the satellite on top of the mountain so that they can get the exposure and get the project done.
+
+And so, some of the stuff in governance and some of the stuff when you're talking about like a holistic chain and all these peoples from all these traditions in different cultures,
+
+it's, what's what's the common mission that we can come together on, all agree on is a good thing for existence for Cardano, for a country, for the world,
+
+and that we can all get behind and agree to? And And, you know, we're struggling that in, you know, America politically,
+
+but we don't have to be that way within the blockchain ecosphere.
+
+Like, what is that that number one north star metric that we need to hit, right?
+
+What is that KPI?
+
+What And if we can just agree on that, then we can iterate to the right conclusion again and again.
+
+I I think AI could probably be this arbiter in a way,
+
+but, you know, obviously, there's training data, and like people say, you know, they're different, and Grok, you know, seeks the truth, but, you know, I'm not the Codex is very like mechanical.
+
+But, you know, when you ask a hundred lawyers the question, you get a hundred answers.
+
+And so, for us in Cardano,
+
+if we were to stop, and Charles has tried, we've tried,
+
+to coalesce not just like a hundred, but thousands of people around one thing that is like a goal that could take many years, if at all possible.
+
+So, if we stop and wait and say, "We need a full strategy and tactical tactics underneath."
+
+You know, we don't do this in America well. We go into our polar sides,
+
+but I do think that at some point, these AIs, we say, "Well,
+
+you know, Eric, you're making a great point, but that's your opinion." And you try to just purely get these multiple, you know, AIs.
+
+I think like they're interesting. Like the Palantir's of the world, or not just them, but they can take like every model, and run it 10 times on one prompt,
+
+and then smash them together to try to find the truth. I think that that can actually propel us very far.
+
+In fact, Phil DiSarro, you know, my founder,
+
+we decided, we said, "Why don't we just put what we stand for?"
+
+And now, if we believe in these policy principles,
+
+if we just dap any proposals or ideas against that, then at least does the legwork for us to say if it's aligned.
+
+So, yeah, I I think I'm very optimistic about about it, but...
+
+All right, one last point. And, um, I was at this start-up in, uh, 20- 2013, 2014,
+
+and this, uh, wise, uh, Chinese man who happened to be 21-year-old 21 years old told me this story.
+
+And he told me the story of this this It's like a It's like a fable or whatever.
+
+Um, there was a There was a ceramics guru, and he was teaching a class, and split the class into two separate ca- camps.
+
+And he said to the one class, "You're going to be graded on the three best pots that you make by the end of the year."
+
+And he said to the other cla- side of the class, "You're going to be graded by the top 300 pots that you do by the end of the year."
+
+And so, the one side of the class was very meticulous. They were like, "How do we perfect the every line, every stroke? How do we get there?"
+
+And the other and the other side of the class was just spinning a pot, spinning a pot, spinning a pot, spinning a pot, just again and again. How'd they get 300 of these out?
+
+At the end of the year, the guru, the ceramic guru, came to play and said, took the the best pots from the people that did the three and the best pots from the people that did the 300.
+
+And what happened was, they got to show the class that the people that spun the 300 pots were far superior, and far better in every single capacity
+
+than the people that just meticulously try to craft a single pot over the course of a couple months.
+
+And the The moral of the story is shots on goal,
+
+and you become what you practice.
+
+And so, if you were practicing to get to the right KPI, if we're practicing to get to the right iteration of the story
+
+and the and alignment, eventually, we are going to continue to do that.
+
+But if we kind of like wait for everything to be perfect, you might wait forever to like figure that out.
+
+So, you have to can keep on taking those shots, keep on having to take those activities, and experiments within reason to continue to evolve.
+
+Right, cuz it I mean, you know, how many founders have tried, you know,
+
+or even Brian Armstrong, I think. He's He like was successful in his 10th venture.
+
+That's just shots on goal, and I think sometimes that when we do try to make
+
+uh perfect the enemy of the good, you're like tinkering and tinkering, and it takes longer,
+
+whereas, if you're just spinning up a bunch of of pots,
+
+one of those is a beautiful creation. It's like it's own unique snowflake, and it ends up just being like this this very interesting thing.
+
+And then, I mean, connecting it back to the fable, um,
+
+and and AI in general, I find that you don't have to prompt it as crisp anymore because it will just execute that one thing.
+
+If you give it a broader task, it's going to find And it's not a human brain,
+
+so it can find connectivity that we would natively not have tinkered and tinkered with forever. So, that's pretty powerful
+
+story. I might I might quote you on that one day. It's pretty famous.
+
+Hey, if you guys are going to stay on, I I I can drop. I didn't I didn't like crush your AI part, but, um, such a nerd for all these things, so...
+
+No, Dave. Thank you for being here. We're We're going to go ahead and wrap up. Um, it was awesome having you on. Uh, thanks for thanks for coming by.
+
+Uh, it's been a blast working with you, dude. We're soon going to do today.
+
+Yeah, guys, thank you for tuning in for a dose of alpha. And if you want to overdose on alpha, then go see our prop on Cardano later today
+
+or whenever you guys are watching this. Uh, it should be live for a couple weeks, a month or so,
+
+and go vote for it cuz we're hoping to come in and take more shots on goal.
+
+We've built a lot of pots, want to keep building pots, and uh, make Cardano great.
+
+Thank you, guys, so much. This is really fun. We should do it again sometime.
+
+Even just to shoot the shit. Absolutely.
+
+Thank you. Appreciate it. Bye. Thanks, Dave.
+
+♪♪♪

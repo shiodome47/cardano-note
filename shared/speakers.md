@@ -150,3 +150,24 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 - **確度**: 話者の割り当ての問題はない。固有名詞の推定は "linear layers" → linear Leios のみ
 - **スライドは Confidential 表示**: 依頼者から受け取ったスクリーンショット（5 枚）で、スライドの右下に「LEIOS | 2026 Confidential and Proprietary」があると確認。CLAUDE.md の規則により、スライドにしかない数字や構成は docs/ に載せていない。図は口頭説明からの再構成のみ。追加のスクリーンショットが来ても同じ扱い
 
+### 2026-07-10 AlphaGrowth — Dose of Alpha ボーナス回: Why Cardano is Ready to Win（Midgard、Dave Dionisio）
+
+**話者 3 名。字幕に話者名も交代の印も時刻もない。**割り当てはすべて内容から。司会 2 人の切り分けは `(推定)` を基本にし、呼びかけで確定できるものだけ印なし。
+
+| 表記 | 根拠 |
+| --- | --- |
+| **Bryan Colligan**（司会） | Dave が "Bryan and I"（Eric の発言の中で）と呼ぶ相手。"Brian, you're still awake" と Fable に言われた側（AI の話を担当）。「300 の壺」「Tether Gold」「6 年で 200 プロトコル」はこの人として割り当て。番組の公開情報（2026-09-06 と同じ根拠）で姓 |
+| **Eric Waisanen**（司会） | "Eric's point"、"Eric, you were saying before, like the philosopher"、"you know, Eric, you're making a great point" と 3 回名指し。Vitalik・UTXO・ガバナンスの質問、「情報カスケード」「哲学者と実務家」「隠すものは何もない」の話はこの人 |
+| **Dave Dionisio**（ゲスト、Midgard Labs） | 冒頭で紹介。Midgard・Input Output・CFPB を一人称で語る。"the sexes" など誤変換が多い話者 |
+
+**割り当ての方針と、確度が低かった箇所**
+
+- 段落の切れ目は話者の交代と一致しないことが多い。1 段落に 2 人の声が入る 18 箇所は手で分けた（`gen_midgard.py` の SPLIT）。例：152「見ないと、CM は見た」（司会）→「全部ばらしはしない」（Dave）、174〜176 の「債券か株式かデリバティブか」の挟み込み、300 末尾の "Yeah. That's great."、423 "Agentic finance, yeah."、471 の「投資銀行にいた」から司会へ、478 "Seems benign, but / Yeah. / Right?"、596 "It's pretty famous."、605 "Even just to shoot the shit. / Absolutely."
+- **Oracle と労働省の話（14）、BitGo の話（29〜36）、「代表に全部の専門性を求めている」（156〜168）、「二択だが両方あってよい」（441〜449）、投資銀行の決済処理会社の話（471〜477）** は Bryan とした。CEO として歴史の逸話と AI・エージェントの話を担う役割が 2026-09-06 と同じため。Eric の可能性はある
+- **「科学の実験を事業に」（22）、「状態が膨らむ」と Midgard の質問（82〜87）、「情報カスケード」（194〜205）、「民主的共和制」（231〜242）、「哲学者と実務家」（352〜370）、「1 年後 5 年後」の問い（386〜391）、Fuck・Marry・Kill の出題（409〜416）** は Eric とした。本人が名指しされた箇所の話題（哲学、UTXO）とつながるため
+- 「クビにはならないと思うが」（411）は従業員側の言い方として Eric、「私は一言も言っていない」（412）は Dave。どちらも `(推定)`
+- 「Dave は火曜に Safeway に行く」（476〜477）は Dave を例に使った司会の発言で、Dave 本人ではない
+- 終わりの "Thank you. Appreciate it. Bye. Thanks, Dave."（606）は複数人の声が混ざるとみられ、Bryan として `(推定)`
+
+**まとめでの書き方**：**全員が当事者**（司会 2 人は PRIME の提案者、Dave は Input Output 側で接続を手伝った人）。互いへの評価（「好かれる人たち」「天才」）、自社の実績（「6 年で 200 プロトコル」）、財務庫の位置づけ（「ソブリン・ウェルス・ファンド」）はすべて発言者に帰属させ、地の文にしない。Dave の技術説明は本人の「技術的に正確ではないかもしれない」という留保を落とさない。
+
