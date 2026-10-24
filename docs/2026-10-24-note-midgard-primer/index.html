@@ -405,7 +405,7 @@
   <li><strong>プレアルファ。</strong>公式サイトのバナーは PRE-ALPHA TESTNET で、対応ウォレットは Lace のみ。</li>
   <li><strong>公開テストネット（stage 0）は 2026 年 11 月 7 日が目標。</strong>GitHub の作業中のプルリクエスト #471（Draft）に、ストレッチ目標 10 月 31 日、10 月 26 日にバリデータ（コントラクト）を凍結、28 日にリリース候補、30 日に「Cardano の再起動、DA の喪失、全オペレーターの停止」の訓練、という日程があります。stage 0 は「オペレーターは選抜制（curated）、チャレンジャー（監視して不正を証明する側）は誰でも」で、12 月に「regenesis」（やり直し）を予定。</li>
   <li><strong>IOG の見通し。</strong>2026 年 4 月 23 日の記事で「テストネットは 2026 年 Q3/Q4 を目標」と書いていました。上の日程と概ね合っています。</li>
-  <li><strong>mainnet の時期。</strong>2026 年 4 月 22 日に IOG と Midgard Labs が共同で出した財務庫提案「L2 Scalability Initiative」（1,042 万 5,871 ADA）には、ペネトレーションテストの後、2026 年末までに mainnet、という目標が書かれていました。この提案は <strong>2026 年 5 月 24 日に期限切れ</strong>（不成立）。DRep の投票は賛成 11 億 6,000 万 ADA に対し反対 25 億 3,000 万 ADA（うち明示的な反対 19 億 3,000 万 ADA）でした。その後の mainnet の計画は、公開資料にありません。</li>
+  <li><strong>mainnet の時期。</strong>2026 年 4 月 22 日に IOG と Midgard Labs が共同で出した財務庫提案「L2 Scalability Initiative」（1,042 万 5,871 ADA）には、ペネトレーションテストの後、2026 年末までに mainnet、という目標が書かれていました。この提案は <strong>2026 年 5 月 24 日に期限切れ</strong>（不成立）。DRep の投票は賛成 11 億 6,000 万 ADA に対し反対 25 億 3,000 万 ADA（うち明示的な反対 19 億 3,000 万 ADA）でした。その後の mainnet の計画は、公開資料にありません。<span class="badge">補足</span>共同提案のうち Hydra の部分だけは、2026 年 6 月 8 日に「IO: Hydra」（510 万 781 ADA）として単独で再提出され、7 月 13 日に施行されました。Midgard の部分は、2026 年 10 月 24 日時点のオンチェーンの提案一覧に再提出がありません。</li>
   <li><strong>資金。</strong>Project Catalyst Fund 12 の提案（50 万 ADA）と、2025 年 8 月 7 日に施行された財務庫引き出し「Midgard - Optimistic Rollups」（216 万 2,096 ADA。Intersect が Anastasia Labs のために提出）があります。<span class="badge">補足</span>Catalyst のマイルストーンの進捗は、こちらでは確認できていません。</li>
   <li><strong>第三者監査。</strong>公式サイト、仕様書、GitHub のいずれにも、監査やペネトレーションテストの記載は見つかりませんでした。</li>
 </ul>
@@ -450,6 +450,8 @@
 <p class="figcap">公開資料の日付をこちらで 1 本の線に並べたものです。<span class="badge">補足</span>11 月 7 日は GitHub の作業中の文書に書かれた目標で、公式の発表ではありません。</p>
 </div>
 
+<p><span class="badge">補足</span>共同提案に反対した DRep の理由書を 1 つ挙げます。Sebastien Guillemot（dcSpark と Paima Studios の共同創業者。DRep としての方針は「技術的な健全性で提案を審査する」）は 2026 年 5 月 18 日に反対票を投じ、理由書に「この提案は Midgard との金銭的なつながりがごく薄いので、Midgard については論じない」「DA 層を作りたいとだけ書いてあり、どう実現するかの説明がない。暗号方式の選択（楕円曲線なら量子計算機で数年後に使えなくなる）や、UTXO の文脈でどう設計するか、Leios とどう整合させるかが要る」「結局この提案はほぼ Hydra のためのもので、Hydra は当初期待された採用の水準に達していない」と書いています。本人は ZK 型のレイヤー 2「Starstream」を率いており、Midnight City の高速決済に使われる Ligero を例に挙げているので、<strong>レイヤー 2 を作る側どうしの、当事者の評価</strong>として読む必要があります。同じ人は 6 月の「IO: Hydra」にも「前の理由書を参照」として反対しましたが、そちらは可決されました。</p>
+
 <details class="explain">
 <summary>素朴な疑問 — 資金提案が不成立だったのに、なぜ開発は続いているのか？</summary>
 <div class="explain-body">
@@ -463,7 +465,7 @@
 <h4>不成立の提案が持っていたもの</h4>
 <p>共同提案は、Hydra の本番化、Midgard の mainnet、共通部品の 3 本立てで、Midgard の部分には「ペネトレーションテストの後、2026 年末までに mainnet」という目標が入っていました。不成立で消えたのは、この目標の資金的な裏付けと、監査・テストの予算です。開発そのものは、既存の資金と Midgard Labs 自身の事業（監査、受託開発、10 月からの Plutus）で続いている、と読むのが自然ですが、Midgard Labs 自身がそう説明した資料は見つかっていません。</p>
 <h4>外から見分ける方法</h4>
-<p>mainnet の新しい目標日と、監査の予定が公表されるかどうか。どちらも 2026 年 10 月 24 日時点では出ていません。</p>
+<p>mainnet の新しい目標日と、監査の予定が公表されるかどうか。どちらも 2026 年 10 月 24 日時点では出ていません。共同提案のうち Hydra の部分は 6 月に単独で再提出されて可決しましたが、Midgard の部分の再提出はありません。</p>
 </div>
 </details>
 
@@ -511,6 +513,28 @@
 </svg>
 <p class="figcap">IOG、Midnight、Midgard の各公式資料の説明をこちらで 1 枚に並べたものです。<span class="badge">補足</span>「横に立つ」「土台を太くする」はこちらの言い換えです。</p>
 </div>
+
+<details class="explain">
+<summary>素朴な疑問 — Midgard ができたら、Hydra は要らなくなるのでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>その疑問は半分正しく、半分は違います。</strong>用途が重なる部分では競合しますが、Hydra Head には Midgard が設計上持てない性質が 3 つあり、そこでは置き換わりません。</p>
+<h4>Hydra Head にあって、Midgard にないもの</h4>
+<ul>
+  <li><strong>出口で 3〜7 日待たない。</strong>Head の中の状態は参加者全員が毎回署名して確定させるので、「誰かが不正を証明する期間」を置く必要がなく、Head を閉じれば短い異議期間のあとレイヤー 1 に戻ります。Midgard の待ち時間は optimistic rollup という方式そのものの代償で、設計を変えないかぎり消えません</li>
+  <li><strong>中身を公開しない。</strong>Head の中の取引は参加者だけが見ます。Midgard は不正証明のためにブロックの中身を DA 層で公開しなければならず、取引は誰でも読めます</li>
+  <li><strong>オペレーター、担保、監視者が要らない。</strong>参加者自身が検証と署名をするので、第三者の運営者と、それを見張る人を前提にしません</li>
+</ul>
+<h4>Midgard にあって、Hydra Head にないもの</h4>
+<p>誰でも、参加者を決めずに使えること。Head は最初に決めた参加者しか入れず、全員が応答できないと動きません。不特定の相手と取引する DEX や支払いには、Midgard 型が要ります。</p>
+<h4>いま実際にどうなっているか</h4>
+<p>Input Output は Hydra を続けています。IOG と Midgard Labs の共同提案が 2026 年 5 月に不成立になったあと、Hydra の部分だけが「IO: Hydra」（510 万 781 ADA）として単独で再提出され、7 月 13 日に施行されました。2026 年 10 月 22 日には、2025 年の Glacier Drop の請求処理（24,576 件）を新しい Hydra v2 で再実行して 1.9 倍速かった、という記事を出しています。v2 では Head を開いたまま入出金ができ、「役に立つかぎり開けておける」とされています。一方で、Hydra の採用が期待の水準に達していないという見方も DRep の理由書にあります（上の第 5 節）。</p>
+<h4>外から見分ける方法</h4>
+<p>「取引の相手が最初から決まっているか」で分かれます。決まっているなら Hydra Head のほうが速くて待ちがなく、決まっていないなら Midgard しか選べません。両方の本番利用の数が、どちらが残るかの答えになります。</p>
+<h4>一次情報で示されていないこと</h4>
+<p>Input Output が 2025 年 6 月のセッション以降に Hydra と Midgard の位置づけを並べて書いた文書はなく、Midgard の仕様書も Hydra との共存や組み合わせには触れていません。</p>
+</div>
+</details>
 
 <details class="explain">
 <summary>素朴な疑問 — Hydra があるのに、なぜもうひとつレイヤー 2 が要るのか？</summary>
@@ -980,7 +1004,7 @@
   <li><strong>Pre-alpha.</strong> The official site's banner reads PRE-ALPHA TESTNET, and Lace is the only supported wallet.</li>
   <li><strong>Public testnet (stage 0) targeted for 7 November 2026.</strong> Draft pull request #471 on GitHub gives a stretch goal of 31 October, a validator (contract) freeze on 26 October, a release candidate on the 28th and drills on the 30th covering “Cardano restart, DA loss, all-operator outage”. Stage 0 has “curated operators, permissionless challengers” (anyone may watch and prove fraud) and a “regenesis” planned for December.</li>
   <li><strong>IOG's outlook.</strong> Its article of 23 April 2026 said “the testnet is targeting a release in Q3/Q4 2026”, broadly consistent with the above.</li>
-  <li><strong>Mainnet timing.</strong> The treasury proposal “L2 Scalability Initiative” (₳10,425,871), submitted jointly by IOG and Midgard Labs on 22 April 2026, set a goal of mainnet by the end of 2026 after penetration testing. It <strong>expired on 24 May 2026</strong> without passing: DReps voted ₳1.16 billion yes against ₳2.53 billion no (₳1.93 billion explicit no). No later mainnet plan appears in public material.</li>
+  <li><strong>Mainnet timing.</strong> The treasury proposal “L2 Scalability Initiative” (₳10,425,871), submitted jointly by IOG and Midgard Labs on 22 April 2026, set a goal of mainnet by the end of 2026 after penetration testing. It <strong>expired on 24 May 2026</strong> without passing: DReps voted ₳1.16 billion yes against ₳2.53 billion no (₳1.93 billion explicit no). No later mainnet plan appears in public material. <span class="badge">added</span> The Hydra part of the joint proposal was resubmitted on its own as “IO: Hydra” (₳5,100,781) on 8 June 2026 and enacted on 13 July. The Midgard part has not been resubmitted, per the on-chain proposal list as of 24 October 2026.</li>
   <li><strong>Funding.</strong> A Project Catalyst Fund 12 proposal (₳500,000) and a treasury withdrawal, “Midgard - Optimistic Rollups” (₳2,162,096, submitted by Intersect on behalf of Anastasia Labs), enacted on 7 August 2025. <span class="badge">added</span> We could not confirm the state of the Catalyst milestones.</li>
   <li><strong>Third-party audit.</strong> No mention of an audit or penetration test was found on the site, in the spec or on GitHub.</li>
 </ul>
@@ -1025,6 +1049,8 @@
 <p class="figcap">Dates from public material, laid on one line by us. <span class="badge">added</span> 7 November is a target in a draft GitHub document, not an official announcement.</p>
 </div>
 
+<p><span class="badge">added</span> One DRep's published reasoning for voting against the joint proposal: Sebastien Guillemot (co-founder of dcSpark and Paima Studios, whose stated DRep objective is to “vet proposals based on technical soundness”) voted No on 18 May 2026 and wrote that “this proposal only has very loose financial connections with Midgard, so I won't talk about it”; that it “only vaguely talks about wanting to build a DA layer, but doesn't elaborate on how” (which cryptography, given quantum computers; how to model DA in a UTXO setting; how it aligns with Leios); and that “this proposal is actually mostly for Hydra”, which “hasn't quite hit the level of adoption that was originally expected”. He leads Starstream, a ZK-based Layer 2, and cites Ligero as used for fast private payments in Midnight City, so this is <strong>one Layer 2 builder's assessment of another's funding</strong>. He also voted No on the June “IO: Hydra” proposal (“see previous rationale”), which passed.</p>
+
 <details class="explain">
 <summary>A naive question: the funding proposal failed, so why is development continuing?</summary>
 <div class="explain-body">
@@ -1038,7 +1064,7 @@
 <h4>What the failed proposal carried</h4>
 <p>The joint proposal had three pillars: hardening Hydra for production, Midgard's mainnet, and shared components. Its Midgard pillar carried the goal of “mainnet by the end of 2026 after penetration testing”. What vanished with it was the financial backing for that goal and the budget for audits and testing. Development presumably continues on existing funds and Midgard Labs' own business (audits, contract work, and Plutus from October), but no Midgard Labs statement saying so has been found.</p>
 <h4>How to tell from outside</h4>
-<p>Whether a new mainnet target and an audit schedule are published. Neither has been, as of 24 October 2026.</p>
+<p>Whether a new mainnet target and an audit schedule are published. Neither has been, as of 24 October 2026. The Hydra part of the joint proposal was resubmitted alone in June and passed; the Midgard part has not been resubmitted.</p>
 </div>
 </details>
 
@@ -1086,6 +1112,28 @@
 </svg>
 <p class="figcap">The descriptions from IOG, Midnight and Midgard's own material, arranged by us on one sheet. <span class="badge">added</span> “Stands beside” and “thickens the base” are our paraphrases.</p>
 </div>
+
+<details class="explain">
+<summary>A naive question: once Midgard exists, is Hydra redundant?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>Half right, half not.</strong> Where their uses overlap they compete, but a Hydra Head has three properties Midgard cannot have by design, and there it is not replaced.</p>
+<h4>What a Hydra Head has that Midgard does not</h4>
+<ul>
+  <li><strong>No 3–7 day wait at the exit.</strong> State inside a Head is finalised by every participant signing each step, so there is no need for a period in which someone might prove fraud; closing the Head returns to the Layer 1 after a short contestation period. Midgard's wait is the price of the optimistic-rollup method itself and does not go away without changing the design</li>
+  <li><strong>Contents stay private.</strong> Only the participants see transactions inside a Head. Midgard must publish block contents on a DA layer so fraud can be proved, so its transactions are readable by anyone</li>
+  <li><strong>No operators, bonds or watchers.</strong> Participants validate and sign for themselves, so no third-party operator and nobody to watch them are assumed</li>
+</ul>
+<h4>What Midgard has that a Hydra Head does not</h4>
+<p>Open access without a fixed participant list. A Head admits only those chosen at the start and stalls if any of them stops responding. A DEX or payments with unknown counterparties need the Midgard kind.</p>
+<h4>What is actually happening</h4>
+<p>Input Output is continuing Hydra. After the joint IOG and Midgard Labs proposal failed in May 2026, the Hydra part was resubmitted alone as “IO: Hydra” (₳5,100,781) and enacted on 13 July. On 22 October 2026 IOG published a rerun of the 2025 Glacier Drop claim settlement (24,576 claims) on the new Hydra v2, 1.9 times faster; in v2 a Head takes deposits and withdrawals while open and “can stay open for as long as it is useful”. On the other side, one DRep's rationale holds that Hydra's adoption fell short of expectations (section 5 above).</p>
+<h4>How to tell from outside</h4>
+<p>Whether the counterparties are known in advance. If they are, a Hydra Head is faster and has no exit wait; if they are not, only Midgard fits. Production usage of each is what will answer which one lasts.</p>
+<h4>What the primary sources do not say</h4>
+<p>Input Output has published nothing since its June 2025 session that places Hydra and Midgard side by side, and Midgard's spec does not discuss coexistence or combination with Hydra.</p>
+</div>
+</details>
 
 <details class="explain">
 <summary>A naive question: Hydra exists, so why another Layer 2?</summary>
