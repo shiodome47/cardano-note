@@ -1271,7 +1271,50 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap">公開資料の日付をこちらで 1 本の線に並べたものです。<span class="badge">補足</span>11 月 7 日は GitHub の作業中の文書に書かれた目標で、公式の発表ではありません。</p>
 </div>
 
-<p><span class="badge">補足</span>共同提案に反対した DRep の理由書を 1 つ挙げます。Sebastien Guillemot（dcSpark と Paima Studios の共同創業者。DRep としての方針は「技術的な健全性で提案を審査する」）は 2026 年 5 月 18 日に反対票を投じ、理由書に「この提案は Midgard との金銭的なつながりがごく薄いので、Midgard については論じない」「DA 層を作りたいとだけ書いてあり、どう実現するかの説明がない。暗号方式の選択（楕円曲線なら量子計算機で数年後に使えなくなる）や、UTXO の文脈でどう設計するか、Leios とどう整合させるかが要る」「結局この提案はほぼ Hydra のためのもので、Hydra は当初期待された採用の水準に達していない」と書いています。本人は ZK 型のレイヤー 2「Starstream」を率いており、Midnight City の高速決済に使われる Ligero を例に挙げているので、<strong>レイヤー 2 を作る側どうしの、当事者の評価</strong>として読む必要があります。同じ人は 6 月の「IO: Hydra」にも「前の理由書を参照」として反対しましたが、そちらは可決されました。</p>
+<p><span class="badge">補足</span>共同提案に反対した DRep のうち、理由書を公開している 1 人の判断を下の折りたたみに詳しく載せます。Sebastien Guillemot は Midnight Foundation の CTO で、dcSpark と Paima Studios の共同創業者、ZK 型のレイヤー 2「Starstream」を率いる人です。<strong>レイヤー 2 を作る側どうしの、当事者の評価</strong>であり、DRep としての個人の判断で、Midnight Foundation の公式見解ではありません。</p>
+
+<details class="explain">
+<summary>DRep の理由書を読む — Sebastien Guillemot は何に反対し、何に賛成したか</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はオンチェーンの投票と、本人が投票に添えた理由書（CIP-100 形式のメタデータ）をこちらで読んだものです。日付はすべて投票のブロック時刻（UTC）。本人の DRep 情報には、方針として「技術的な健全性で提案を審査する」とあります。委任は約 1 億 7,900 万 ADA（2026 年 10 月 24 日、Koios）。</p>
+<h4>投票の一覧</h4>
+<ul>
+  <li><strong>2026-05-18 反対</strong> — 「IO &amp; Midgard Labs: L2 Scalability Initiative」（1,042 万 5,871 ADA。不成立）</li>
+  <li><strong>2026-05-22 賛成</strong> — 「IO: Consensus Initiative」（2,771 万 4,342 ADA。Linear Leios。可決）</li>
+  <li><strong>2026-06-07 賛成</strong> — 「Cardano Vision 2026: Human Centred, Scalable, Post Quantum Secure - IO Research」（3,291 万 6,000 ADA。可決）</li>
+  <li><strong>2026-06-11 反対</strong> — 「IO: Hydra」（510 万 781 ADA。可決）。理由は「L2 提案への前の理由書を参照」の一文のみ</li>
+  <li>2025 年 7 月の Midgard 単独の財務庫引き出し（216 万 2,096 ADA）には投票していない</li>
+</ul>
+<h4>L2 提案への反対理由（2026-05-18）。本人の理由書の要点を、順序どおりに</h4>
+<p><strong>1. Midgard について。</strong>「この提案は Midgard との金銭的なつながりがごく薄いと思うので、Midgard については論じない」。Midgard の方式への評価は、この理由書には書かれていません。</p>
+<p><strong>2. DA 層について。</strong>提案は「DA 層を作りたい」と漠然と書くだけで、どう実現するかを説明していない。DA 層は複雑な主題なので、資金を出すなら（それ自体は重要だと思う）もっと具体的な説明が欲しい、として技術的な論点を 2 つ挙げています。</p>
+<ul>
+  <li><strong>どの暗号方式を使うのか。</strong>楕円曲線に基づくなら、量子計算機のために数年後に段階的に廃止しなければならないかもしれない。本格的な DA 層の構築に数年かかるなら、楕円曲線は選択肢にならない。Ethereum の DA 層は楕円曲線に基づいていて、すでに耐量子の暗号への移行計画を始めている。耐量子の方式としてはハッシュ（Ethereum が移行を計画しているのと同様。FRI に基づく DA の論文もある）が使えるが、Midnight と Starstream は耐量子の暗号として格子（lattice）に取り組んでいるので、やや残念な選択になる（ただし DA 層に要る格子の基本要素の研究は多くない）。暗号方式をほかの部品とそろえると性能面で大きな利点がある、と ZOTA 論文が示している。</li>
+  <li><strong>UTXO の文脈で DA 層をどう設計するか。</strong>ほかの DA 層はすべてアカウント型の設定にある（Chia に少し似た考えはあるが DA 層そのものではない）。台帳の層ではなくプロトコルの層で作るなら、Leios との整合を考えなければならない。重なりがかなりあり、かつて Leios を DA に使う「Blob Leios」という構想もあった。</li>
+</ul>
+<p><strong>3. Hydra について。</strong>以上を踏まえると、この提案は実質的に Hydra のためのものだ、と。「Hydra には利用者はいるが、当初期待された採用の水準には達していない」。固定メンバーの支払い（ステートチャネルが最も向くとされた用途）でさえ、人々はプライバシーを守る ZK の解を使っている（例：Midnight City では Ligero で約 500 tps の高速なプライベート決済をしており、たいていの用途には足りる）。再提出するなら 2 つの方向があり得る、として次を挙げています。</p>
+<ul>
+  <li><strong>「締めくくり（capstone）」だと明確にする。</strong>Hydra を v1 完成とするのに要る機能を明示する。「Hydra を使っている既存のプロジェクトが多くの機能を求めているとは感じないので、そのマイルストーンから遠くないはずだ（違っていたら教えてほしい）」</li>
+  <li><strong>L2 戦略の新しい方向を明確にする。</strong>Hydra のために築いた経験と部品はそこで大いに役立つ、として例を 2 つ。①汎用の Plutus ではない、より用途を絞った版の Hydra に ZK を加え、UTXO を使うもの。先行する発想として Midnight 向けの zSwap に基づく L2、Ethereum の intmax、Midnight City の Ligero。②ステートチャネルと汎用の ZK の解を組み合わせるもの。Starstream は 1 つの取引の中で UTXO の集合を他者に「渡して」証明を続けてもらえるので、ステートチャネルをある程度まねできる。ただし渡す際にプライバシーを失うことがあり（MPC の仕組みが要るかもしれない）、誰かが UTXO の差分をオンチェーンに出して証明を終わらせるのを止められない、という限界がある。Hydra の発想と Starstream を組み合わせればそこを埋められると感じる、と。</li>
+</ul>
+<h4>Leios（Consensus Initiative）への賛成理由（2026-05-22）</h4>
+<p>「Linear Leios は設計として筋が通っていて、Leios の概念をモジュール式に導入する妥当な方法だ」。Leios はカルダノの DA 層の概念にも再利用できる発想と構造を持ち込むので、スケーラビリティと機能の実現を速めると思う、と。透明性を求めた点が 2 つ。①Linear Leios から削られた将来の発想をどう実装するかのガバナンスの見通し。②DA 層の構想との互換性。「遅くとも来年には DA の大きな財務庫の要求が出るのはあり得ないことではない（エコシステムに本当に必要なので）」ので、Leios の設計が DA の計画と補完的か、少なくとも互換であると分かると有用だ、と。</p>
+<h4>研究提案への賛成理由（2026-06-07）。優先順位の一覧</h4>
+<ul>
+  <li><strong>優先。</strong>コンセンサスの改善、データ可用性、耐量子（VRF と KES）、EasySM（詳細が少ないので「たぶん」）、Mithril</li>
+  <li><strong>いまの Cardano の能力と優先度からは確信が持てない。</strong>コンプライアンスの用途、アイデンティティと選択的開示、SPO のインセンティブ、HSM 対応ノード、<strong>Hydra</strong></li>
+  <li><strong>研究課題だとは思わない。</strong>minUTXO とアトミックスワップの試作、エージェントチェーンの仕様、Babel 手数料（研究より先に v1 を作るべき）</li>
+  <li><strong>判断保留。</strong>Cavefish プロトコル（興味深いが、十分強力な ZK があれば再帰 SNARK で同様のことができる）、ZK 検証ツールキット（Starstream、Midnight、ブリッジ、アイデンティティのどれを狙うのか不明）</li>
+</ul>
+<h4>こちらの読み方</h4>
+<ul>
+  <li>レイヤー 2 の否定ではありません。本人は ZK 型のレイヤー 2 を作っており、DA 層は「重要」「エコシステムに本当に必要」と繰り返しています。問うているのは「どの方式に、何を実現するために追加投資するのか」です</li>
+  <li>Midgard の optimistic rollup という方式への賛否は、この理由書からは分かりません。本人が「論じない」と明記しているためです</li>
+  <li>Hydra については、採用が期待に届いていないという評価と、ZK を組み込んだ別の構成への誘導が一貫しています。研究提案でも Hydra を「確信が持てない」側に置いています</li>
+  <li>本人は Midnight Foundation の CTO で、Midnight City の Ligero や自身の Starstream を例に引いています。DRep としての個人の判断であり、Midnight Foundation の公式見解ではありません。このノートでもそう扱います</li>
+</ul>
+</div>
+</details>
 
 <details class="explain">
 <summary>素朴な疑問 — 資金提案が不成立だったのに、なぜ開発は続いているのか？</summary>
@@ -1890,7 +1933,50 @@ details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent
 <p class="figcap">Dates from public material, laid on one line by us. <span class="badge">added</span> 7 November is a target in a draft GitHub document, not an official announcement.</p>
 </div>
 
-<p><span class="badge">added</span> One DRep's published reasoning for voting against the joint proposal: Sebastien Guillemot (co-founder of dcSpark and Paima Studios, whose stated DRep objective is to “vet proposals based on technical soundness”) voted No on 18 May 2026 and wrote that “this proposal only has very loose financial connections with Midgard, so I won't talk about it”; that it “only vaguely talks about wanting to build a DA layer, but doesn't elaborate on how” (which cryptography, given quantum computers; how to model DA in a UTXO setting; how it aligns with Leios); and that “this proposal is actually mostly for Hydra”, which “hasn't quite hit the level of adoption that was originally expected”. He leads Starstream, a ZK-based Layer 2, and cites Ligero as used for fast private payments in Midnight City, so this is <strong>one Layer 2 builder's assessment of another's funding</strong>. He also voted No on the June “IO: Hydra” proposal (“see previous rationale”), which passed.</p>
+<p><span class="badge">added</span> One DRep who voted against the joint proposal published a rationale, set out in full in the fold below. Sebastien Guillemot is CTO of the Midnight Foundation, co-founder of dcSpark and Paima Studios, and leads the ZK-based Layer 2 “Starstream”. It is <strong>one Layer 2 builder's assessment of another</strong>, and a personal judgement as a DRep, not the Midnight Foundation's official position.</p>
+
+<details class="explain">
+<summary>Reading a DRep's rationale: what Sebastien Guillemot voted against, and for</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our reading of the on-chain votes and the rationales he attached to them (CIP-100 metadata). Dates are the votes' block times (UTC). His DRep profile states his objective as “vet proposals based on technical soundness”; delegated stake about ₳178.9 million (24 October 2026, Koios).</p>
+<h4>The votes</h4>
+<ul>
+  <li><strong>2026-05-18, No</strong> — “IO &amp; Midgard Labs: L2 Scalability Initiative” (₳10,425,871; expired)</li>
+  <li><strong>2026-05-22, Yes</strong> — “IO: Consensus Initiative” (₳27,714,342; Linear Leios; enacted)</li>
+  <li><strong>2026-06-07, Yes</strong> — “Cardano Vision 2026: Human Centred, Scalable, Post Quantum Secure - IO Research” (₳32,916,000; enacted)</li>
+  <li><strong>2026-06-11, No</strong> — “IO: Hydra” (₳5,100,781; enacted). Rationale is one line: “See previous rationale on L2 proposal”</li>
+  <li>No vote recorded on the July 2025 standalone Midgard withdrawal (₳2,162,096)</li>
+</ul>
+<h4>The rationale against the L2 proposal (2026-05-18), point by point</h4>
+<p><strong>1. On Midgard.</strong> “I think this proposal only has very loose financial connections with Midgard, so I won't talk about it.” The rationale contains no assessment of Midgard's method.</p>
+<p><strong>2. On the DA layer.</strong> The proposal “only vaguely talks about wanting to build a DA layer, but doesn't elaborate on how”. DA layers are a complex topic, so if one is to be funded (“which I think is important”) he would rather see a concrete pitch, and he lists two technical challenges.</p>
+<ul>
+  <li><strong>Which cryptography.</strong> If elliptic-curve based, it may have to be phased out in a few years because of quantum computers; if a proper DA layer takes years to build, elliptic curves are not an option (Ethereum's DA layer is elliptic-curve based and is already planning its post-quantum migration). Hashes could serve as the post-quantum scheme (as Ethereum plans; there are papers on FRI-based DA), but that would be “somewhat unfortunate” given Midnight and Starstream are working on lattices for post-quantum cryptography (though there is little research on lattice primitives for DA). Aligning the cryptography across primitives brings large performance gains, as the ZOTA paper shows.</li>
+  <li><strong>How to model DA in the UTXO setting.</strong> All other DA layers are in the account setting (Chia aside, which is not a DA layer as such). If it is built at the protocol level rather than the ledger level, it must be aligned with Leios, since there is considerable overlap and there was once a “Blob Leios” concept for using Leios for DA.</li>
+</ul>
+<p><strong>3. On Hydra.</strong> Given the above, he feels the proposal “is actually mostly for Hydra”. Hydra “does have some users” but “hasn't quite hit the level of adoption that was originally expected”. Even for fixed-party payment systems, the use case state channels were advertised for, people have instead used privacy-preserving ZK solutions (Ligero in Midnight City does fast private payments at about 500 tps, “enough for most use-cases”). If resubmitted, he sees two directions.</p>
+<ul>
+  <li><strong>Be clear it is a “capstone”.</strong> Identify which features Hydra needs to be v1 complete. “I don't really feel like existing projects using Hydra are demanding a lot of features, so I feel like we must not be far from this kind of milestone (let me know if I'm wrong).”</li>
+  <li><strong>Be clear about a new L2 strategy</strong>, for which the experience and components built for Hydra “can be very beneficial”. Two examples. First, a more restrictive (not general Plutus) version of Hydra that adds ZK and uses UTXOs, with prior ideas in a zSwap-based L2 for Midnight, intmax on Ethereum and Ligero in Midnight City. Second, combining state channels with general ZK: Starstream can partly model state channels because within a single transaction the UTXO set can be “passed” to someone else to continue the proof, but it cannot cover every case, since passing UTXOs may lose privacy (perhaps needing MPC) and nothing stops someone ending the proof by submitting the UTXO diff on chain; ideas from Hydra could be combined with Starstream to achieve this.</li>
+</ul>
+<h4>Why he voted for Leios (Consensus Initiative, 2026-05-22)</h4>
+<p>“Linear Leios makes sense architecturally, and is a reasonable way to introduce Leios concepts in a modular way.” Leios also introduces ideas and architectures that can be reused for DA layer concepts on Cardano, which he thinks will speed up scalability and functionality. He asked for more transparency on two points: the governance expected for ideas cut from Linear Leios, and compatibility with DA plans, since “it's not unlikely we'll see a large treasury ask for DA next year at the latest (since the ecosystem really needs it)”, so it would be useful to know Leios is complementary or at least compatible.</p>
+<h4>His priorities in the research vote (2026-06-07)</h4>
+<ul>
+  <li><strong>Priority.</strong> Consensus improvements, data availability, post-quantum (VRF/KES), EasySM (“maybe”, little detail), Mithril</li>
+  <li><strong>Less sure, given Cardano's current capabilities and priorities.</strong> Compliance use cases, identity and selective disclosure, SPO incentives, HSM-enabled nodes, <strong>Hydra</strong></li>
+  <li><strong>Not really research problems.</strong> minUTXO and atomic-swap prototypes, an agent chain specification, Babel fees (build a v1 before more research)</li>
+  <li><strong>Unsure.</strong> The Cavefish protocol (interesting, but a strong enough ZK system achieves similar results with recursive SNARKs), a ZK verification toolkit (unclear which initiative it targets: Starstream, Midnight, bridging, identity)</li>
+</ul>
+<h4>How we read it</h4>
+<ul>
+  <li>Not a rejection of Layer 2s. He builds a ZK-based one and repeatedly calls a DA layer “important” and something “the ecosystem really needs”. What he questions is which method gets further investment, and to achieve what</li>
+  <li>His view of Midgard's optimistic-rollup method cannot be read from this rationale, because he states he will not discuss it</li>
+  <li>On Hydra he is consistent: adoption below expectations, and a push toward designs that bring in ZK. In the research vote he also places Hydra among the items he is “less sure of”</li>
+  <li>He is CTO of the Midnight Foundation and cites Midnight City's Ligero and his own Starstream. This is a personal judgement as a DRep, not the Midnight Foundation's official position, and this note treats it as such</li>
+</ul>
+</div>
+</details>
 
 <details class="explain">
 <summary>A naive question: the funding proposal failed, so why is development continuing?</summary>
