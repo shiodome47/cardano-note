@@ -281,7 +281,7 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **Hydra（Hydra Head）** | Cardano のレイヤー 2。参加者どうしがオフチェーンで高速に取引し、結果だけをレイヤー 1 に書く | 訳さない |
 | **Mithril** | ステークにもとづく署名で、ノードの同期を速くする仕組み | 訳さない |
 | **EUTXO** | Cardano の台帳モデル。Ethereum のアカウント型と違い、取引の結果が事前に決まる。**他チェーンの仕組みを Cardano に持ってくるときに「単純移植できない」理由としてよく出る** | 訳さない・初出で補う |
-| **Plutus / Aiken** | Cardano のスマートコントラクト言語（Plutus は Haskell 系の本家、Aiken はコミュニティ発の代替） | 訳さない |
+| **Plutus / Plutarch / Aiken** | Cardano のスマートコントラクトの基盤と言語。Plutus は本家の言語と、チェーン上で動く仮想マシン（Plutus Core）。Plutarch は Haskell から効率のよいコントラクトを書くためのライブラリ（Anastasia Labs が主要な貢献者）。Aiken はコミュニティ発の別の言語。Plutarch も Aiken も最終的には Plutus の仮想マシンで動くコードを出す。**「Plutarch と Aiken に貢献」は Plutus の誤記ではない**（IOG の 2026-09-17 の記事の原文どおり） | 訳さない。初出で 1 行説明 |
 | **Voltaire** | Cardano のロードマップでガバナンスを指す時代の名前（Byron → Shelley → Goguen → Basho → Voltaire） | 訳さない |
 | **partner chain（パートナーチェーン）** | Cardano のインフラ（SPO、ステーク）を使って立ち上げる別チェーンの枠組み。Midnight がその最初の例として語られることが多い | パートナーチェーン（原語を添える） |
 | **cardano-db-sync（db-sync）** | Cardano の全データを PostgreSQL に流し込む索引ツール。エクスプローラやウォレットの裏で使われる「汎用インデクサ」。Midnight のノードは Cardano の状態を読むのにこれを要求している（2026-09 時点）。動画の字幕では "DB sync" と出るが、docs/ の本文では **db-sync** に統一。英語全文は "DB sync" のまま | db-sync。**要点では「Cardano 側の巨大な索引データベース」と書く** |
