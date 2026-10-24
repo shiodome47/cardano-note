@@ -1,0 +1,2009 @@
+<title>Project Spotlight Anastasia Labs — 「土台を 10 回作らない」オープンソースと、次の Midgard / Open-source so nobody builds the base ten times, then Midgard (Philip DiSarro, Intersect OSO, 2024)</title>
+<style>
+/* Cardano セッションのアーカイブ — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.35rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* 通し番号を振るシリーズの番号。カードの見出しの上に小さく出す */
+.card-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+
+/* 全文は畳んでおく。開くまでは、このページはまとめだけの長さで開く。 */
+details.part { display: block; }
+details.part > summary.part-head { cursor: pointer; list-style: none; margin: 0; }
+details.part > summary.part-head::-webkit-details-marker { display: none; }
+details.part[open] > summary.part-head { margin-bottom: 2rem; }
+details.part > summary.part-head::after {
+  content: "開く"; margin-left: auto; white-space: nowrap;
+  font-size: .75rem; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .75rem;
+}
+details.part[open] > summary.part-head::after { content: "閉じる"; }
+:root[data-lang="en"] details.part > summary.part-head::after { content: "Open"; }
+:root[data-lang="en"] details.part[open] > summary.part-head::after { content: "Close"; }
+details.part > summary.part-head:hover { background: var(--surface-alt); }
+details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<script>
+// 全文は畳んであるので、リンクや印刷で中に入るときは開いておく。
+(function () {
+  function openTo(el) {
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+  }
+  function openHash() {
+    if (!location.hash) return;
+    try { openTo(document.querySelector(location.hash)); } catch (e) {}
+  }
+  window.addEventListener('hashchange', openHash);
+  window.addEventListener('DOMContentLoaded', openHash);
+  window.addEventListener('beforeprint', function () {
+    var all = document.querySelectorAll('details');
+    for (var i = 0; i < all.length; i++) all[i].open = true;
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Intersect Open Source Office</p>
+<h1><span class="l-ja">Project Spotlight — Anastasia Labs。「土台を 10 回作らない」ためのオープンソースと、次の一手としての Midgard</span><span class="l-en">Project Spotlight — Anastasia Labs: open source so nobody builds the base ten times, and Midgard as the next move</span></h1>
+<p class="meta"><span><span class="l-ja">2024 年（月日は要確認）</span><span class="l-en">2024 (day to be confirmed)</span></span><span>YouTube</span><span>16:42</span><span><span class="l-ja">Open Source Office at Intersect MBO · Tex、Philip DiSarro</span><span class="l-en">Open Source Office at Intersect MBO · Tex, Philip DiSarro</span></span>
+</p>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Anastasia Labs の創業者 Philip DiSarro が、Intersect の Open Source Office のインタビューで、会社の使命を<strong>「本番品質のコードをオープンソースで出し、エコシステムの重複した支出を減らすこと」</strong>と説明した 2024 年の動画です。ベスティング、ピアツーピア取引、サブスクリプション、ステーキングの「差し込めば使える」コントラクトと、形式検証のツールキット、設計パターンのリポジトリがその成果。<br>
+  そして本人の振り返りでは「Cardano は開発しにくい」という主張はもう説得力を失ったので、次の一手は <strong>Midgard</strong>、Cardano のセキュリティに頼るレイヤー 2 を作るための枠組みだ、と語ります。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>使命は「土台を 10 回作らない」。</strong>似たアプリが 10 あれば土台は同じなのに、全員がゼロから作って同じお金を使っている。それをオープンソースの本番コードで置き換える、と本人。</li>
+  <li><strong>無料で差し込めるコントラクト。</strong>チームのトークンのベスティング、NFT などのピアツーピア取引、サブスクリプション支払い、ステーキング。Charli3 などが使って「数万ドル節約した」と本人の見積もり。</li>
+  <li><strong>正しさを数学的に示す道具を、普通の開発者に。</strong>修士や博士の専門家に頼らず、ドキュメントを読めば証明を書き始められるツールキットを出した、と。ツールキットの名前と場所は動画では言われていません。</li>
+  <li><strong>いちばん効いたのは「設計パターンのリポジトリ」。</strong>IOG、Minswap、SundaeSwap で共有されているのを見た、と本人。新人の受け入れで見せるのが「ほぼ標準になった」と本人は言います。</li>
+  <li><strong>次は Midgard。</strong>Ethereum の成長を牽引したのは本体の改良ではなくレイヤー 2 だった、という見立てから、Cardano のセキュリティに頼るレイヤー 2 を誰でも作れる枠組み（SDK）を目指す、と。「唯一のレイヤー 2」にするつもりはない、とも。</li>
+  <li><strong>2024 年の記録として読む。</strong>その後 Anastasia Labs は Midgard Labs として活動し、2026 年 10 月時点で Midgard の公開テストネットはまだ出ていません。<span class="badge">補足</span>動画公開後の結果は末尾にまとめました。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か、いつの動画か</a></li>
+  <li><a href="#mission"><span class="n">02</span>「土台を 10 回作らない」— Anastasia Labs の使命</a></li>
+  <li><a href="#verify"><span class="n">03</span>形式検証を「普通の開発者」の手に</a></li>
+  <li><a href="#plug"><span class="n">04</span>差し込めば使えるコントラクト — ベスティングからコーヒーショップまで</a></li>
+  <li><a href="#patterns"><span class="n">05</span>いちばん効いたのは「設計パターンのリポジトリ」</a></li>
+  <li><a href="#midgard"><span class="n">06</span>振り返りの先に — レイヤー 2 の枠組みとしての Midgard</a></li>
+  <li><a href="#community"><span class="n">07</span>コミュニティへの入り口と、Intersect の宣伝</a></li>
+  <li><a href="#overall"><span class="n">08</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">09</span>やり取りから</a></li>
+  <li><a href="#pending"><span class="n">10</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か、いつの動画か</h2>
+<p class="deck">Intersect の職員が司会、紹介される会社の創業者がゲスト。2024 年の動画で、月日は要確認。</p>
+
+<p>Intersect の Open Source Office（OSO）のチャンネルが出している「Project Spotlight」の 1 本で、16 分 42 秒のインタビューです。司会は OSO の <strong>Tex</strong>（冒頭で「Open Source Office の Tex です」と名乗る。姓は出ません）。ゲストは <strong>Philip DiSarro</strong> で、「Anastasia Labs の CEO で創業者」「Cardano のスマートコントラクトと dApp のプロトコル開発を専門にする研究開発会社」と自己紹介します。</p>
+
+<p><span class="badge">補足</span>Intersect は 2023 年にできた Cardano の会員制組織で、ガバナンスの運営と開発の調整を担います。その中の Open Source Office は、Intersect のオープンソースの方針と手続きを管理する部署です。この動画はエコシステムのプロジェクトを紹介する企画なので、<strong>自分の会社についての評価はすべて Philip DiSarro 本人の発言</strong>として書き、地の文では断定しません。</p>
+
+<p><span class="badge">補足</span>公開日は、依頼者の指示にある「2024 年」までしか確定していません。月日はこの環境から YouTube のページで読み取れず、要確認です。2024 年の文脈として、Philip DiSarro は同年の Intersect の委員会選挙で Open Source Committee の候補者になっており、候補者ページには「Anastasia Labs は Intersect の創設メンバー」「生産するコードはすべてオープンソースにすると誓う」とあります。また Intersect の 2024 年 9 月 27 日の開発アップデートでは、Anastasia Labs が Enterprise メンバーとして紹介されています。動画の中で Tex が最後に「Intersect のメンバーになって関わってください」と呼びかけるのは、この文脈の中の宣伝です。</p>
+
+
+<h2 id="mission">2. 「土台を 10 回作らない」— Anastasia Labs の使命</h2>
+<p class="deck">似たアプリの土台は同じ。それを全員が自前で作る分の時間とお金を、オープンソースで浮かせる、という考え。</p>
+
+<p>Philip DiSarro は、Anastasia Labs を作った目的を「オープンソースで本番品質の dApp プロトコルのコードを、エコシステム全体でもっと手に入るようにすること、それだけ」と言い切ります。Cardano の「大きな痛点」は、そこから組み立てられるオープンソースの本番コードベースがなかったことで、それが「お金と時間という目に見える形」でエコシステムを傷つけてきた、と。</p>
+
+<p>本人の説明は、新しいチームの選択肢を 2 つ並べる形です。ひとつは、すでにある成果物の上に事業固有のロジックを足して、機能開発と事業要件に集中する道。もうひとつは、インフラも dApp の土台も含めて全部をゼロから作る道。後者しかないエコシステムは「ずっと魅力が薄い」。似たプロダクトを作るアプリが 10 あれば、土台はほぼ同じで、上のほうで機能が少し違うだけ。けれども全員が土台を作らなければならず、そこに注いだ時間とお金は<strong>「重複して使われた」</strong>もので、機能開発や開発者の増員やセキュリティに回せたはずだ、と述べます。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 310" role="img" aria-label="Philip DiSarro の説明にもとづき、各チームがゼロから土台を作る場合と、Anastasia Labs のオープンソースの土台に乗る場合を対比した図">
+  <rect x="16" y="16" width="310" height="196" rx="8" class="d-box"/>
+  <text x="171" y="44" class="d-t" text-anchor="middle">ゼロから作る（本人が挙げた現状）</text>
+  <rect x="36" y="60" width="270" height="44" rx="6" class="d-box-plain"/>
+  <text x="171" y="87" class="d-s" text-anchor="middle">事業に固有のロジック、機能</text>
+  <rect x="36" y="114" width="270" height="84" rx="6" class="d-box-warn"/>
+  <text x="171" y="140" class="d-t" text-anchor="middle">土台（インフラ、dApp の基盤）</text>
+  <text x="171" y="164" class="d-s" text-anchor="middle">10 のアプリがそれぞれ自前で作る</text>
+  <text x="171" y="184" class="d-s" text-anchor="middle">「重複した支出」</text>
+
+  <rect x="354" y="16" width="310" height="196" rx="8" class="d-box"/>
+  <text x="509" y="44" class="d-t" text-anchor="middle">既存の土台に乗る（本人の提案）</text>
+  <rect x="374" y="60" width="270" height="44" rx="6" class="d-box-plain"/>
+  <text x="509" y="87" class="d-s" text-anchor="middle">事業に固有のロジック、機能</text>
+  <rect x="374" y="114" width="270" height="84" rx="6" class="d-box-accent"/>
+  <text x="509" y="140" class="d-t" text-anchor="middle">Anastasia Labs のオープンソース</text>
+  <text x="509" y="164" class="d-s" text-anchor="middle">無料。参考資料にも、土台にも使える</text>
+  <text x="509" y="184" class="d-s" text-anchor="middle">ベスティング、P2P 取引、設計パターン…</text>
+
+  <rect x="16" y="230" width="648" height="64" rx="7" class="d-box-plain"/>
+  <text x="340" y="256" class="d-s" text-anchor="middle">浮いた時間とお金は「機能開発、開発者の増員、セキュリティ」に回せた、と本人</text>
+  <text x="340" y="278" class="d-s" text-anchor="middle">「10 のアプリ」は本人が挙げた例の数。実際に何チームが土台を作り直したかは動画で示されていない</text>
+</svg>
+<p class="figcap">動画で語られた対比をそのまま 2 つの箱に描いたものです。<span class="badge">補足</span>「土台」と「事業固有のロジック」の線引きは本人の言い方で、どこまでが共有できる土台かはアプリによって変わります。</p>
+</div>
+
+
+<h2 id="verify">3. 形式検証を「普通の開発者」の手に</h2>
+<p class="deck">正しさを数学的に証明する手法を、修士・博士の専門家でなくても使えるツールキットにした、と本人。名前は動画に出ない。</p>
+
+<p>司会の「データの信頼性とセキュリティを高める独自の特徴は何か」という問いに、Philip DiSarro は監査のためのツールをいくつも作っていると答え、「旗艦」として<strong>形式検証のツールキット</strong>を挙げます。動画ではこれを "formal verification toolkit for Cardano smart contracts" と呼んでいるので、以下もその言葉で書きます。</p>
+
+<div class="term">
+<p class="term-name">形式検証 <small>formal verification、動画の中の言葉</small></p>
+<p>本人の説明では「プログラムの正しさを数学的に証明する仕組み」。<span class="badge">補足</span>テストが「試した入力では正しかった」を示すのに対し、形式検証は「仕様に書いた性質が、どんな入力でも成り立つ」ことを論理的に示します。証明できるのは仕様に書いた性質だけで、仕様そのものの正しさは別の問題です。</p>
+</div>
+
+<p>本人の論理はこうです。Cardano で使う言語とツールは形式検証に「とても向いている」。貸付や取引のような「金融のオペレーティングシステム」では、非カストディアル（利用者の資産を運営者が預からない）である以上、アプリケーションのロジックは「隙がない」必要がある。問題があれば利用者の資金が失われるか盗まれる。だからエコシステムは形式手法を使える設計を重視してきた。<strong>ただし、これまで「普通の開発者」の手に届くツールキットはなかった</strong>。やっているのは形式手法の修士か博士で、小さなチームにはそういう人を雇うのも自前で学ぶのも高くつく。出したツールキットは「参入障壁を下げる」もので、標準的な開発者がドキュメントを読んで証明を書き始められるはずだ、と述べます。</p>
+
+<p>ツールキットの名前、リポジトリの場所、対応する言語（Plutarch か Aiken か）、どんな性質を証明できるかは、この動画では語られていません。<span class="badge">補足</span>Anastasia Labs の GitHub には <code>formal-verification</code> という名前のリポジトリがあります（2026 年 10 月 24 日時点）。動画の「ツールキット」がこれを指すかどうかは動画からは決められません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「数学的に正しさを証明」できるなら、バグはなくなるのでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は半分正しく、半分は言葉の問題です。</strong>形式検証が証明するのは「このプログラムは、仕様に書いたこの性質を満たす」ということで、「このプログラムにバグがない」ではありません。</p>
+<h4>証明が守ってくれる範囲</h4>
+<ul>
+  <li><strong>仕様に書いた性質。</strong>「預けた人以外は引き出せない」「合計は変わらない」のように書いた性質は、どんな入力でも成り立つことが示せます。テストでは試し切れない組み合わせも含めて</li>
+  <li><strong>書き忘れた性質は守られない。</strong>仕様に「期限が切れたら誰でも引き出せる」と書き忘れていれば、そのバグは証明をすり抜けます</li>
+  <li><strong>仕様が間違っていれば、間違いが証明される。</strong>仕様を書く作業そのものに、まだ人間の判断が残ります</li>
+</ul>
+<h4>本人の言い方が成り立つ理由</h4>
+<p>Philip DiSarro が強調しているのは「証明すれば万全」ではなく、<strong>専門家でなくても証明を書き始められる</strong>という「手に届くかどうか」の話です。証明という作業の入口を下げる、という意味では本人の言い方は成り立ちます。</p>
+<h4>外から見分ける方法</h4>
+<p>「どの性質が証明されているのか」を一覧で出しているかどうかを見れば足ります。証明済みの性質の一覧があれば、何が守られていて何が守られていないかが分かります。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>ツールキットの名前、何が証明できるか、実際に証明されたコントラクトの例。いずれも語られていません。</p>
+</div>
+</details>
+
+
+<h2 id="plug">4. 差し込めば使えるコントラクト — ベスティングからコーヒーショップまで</h2>
+<p class="deck">チームのトークンの段階的な付与、NFT のピアツーピア取引、サブスクリプション、ステーキング。全部無料で、Cardano を知らずに使える、と本人。</p>
+
+<p>「主な用途は何か」という問いへの答えは、「Cardano で何を作っていても、すでに作ってあるオープンソースのものから何らかの便益が得られるはず」で、<strong>すべて無料、すべてオープンソース</strong>と強調します。本人が例に挙げたのは 4 つです。動画では "plug and play solution" と呼んでいるので、以下では「差し込めば使えるソリューション」と書きます。</p>
+
+<ul>
+  <li><strong>ベスティング。</strong>トークンを出す新しいプロジェクトは、チーム向けに段階的な付与のスケジュールを持ちたがる。全員がスケジュールを守るか、投げ売りされないか、誰が預かるか、という問題があるのでスマートコントラクトでやるのが一般的だが、そのために開発者を雇うと「本来のプラットフォームではなく、ベスティングのインフラを作っている」。既存のソリューションを使えばよく、「Charli3 などエコシステムの大きなプロジェクト」がそうして「自分で作って監査するより数万ドル節約した」、と本人の見積もり。<span class="badge">補足</span>数万ドルは本人が述べた概数で、内訳は示されていません。Charli3 は Cardano のオラクルのプロジェクトです。</li>
+  <li><strong>ピアツーピアの取引。</strong>NFT のような標準的でない資産や、NFT 数点を別の NFT と交換するような取引は DEX ではできないので、人は仲介者に資産を送る。これが「本当に危険で、詐欺を大量に生む」。差し込めば使えるソリューションで、どんなウェブサイトでもスワップを支えられる、と。</li>
+  <li><strong>サブスクリプションの支払い。</strong>名前が挙がっただけで、中身の説明はありません。</li>
+  <li><strong>ステーキング。</strong>報酬や投票権のためにトークンをステークできるようにしたいプロジェクトが多い。それも用意してある、と。</li>
+</ul>
+
+<p>締めは「コーヒーショップでも、世界のどんなウェブアプリケーションでも」、ブロックチェーンを知らなくても「ADA での支払い」「ADA のサブスクリプション」「コーヒーを追跡する NFT」を、<strong>Cardano も UTXO も理解しないまま</strong>ウェブサイトに差し込める、という言い方です。</p>
+
+<p><span class="badge">補足</span>Anastasia Labs の GitHub には、動画の 4 つに対応するとみられるリポジトリがあります（2026 年 10 月 24 日時点）。<code>linear-vesting</code>（ベスティング）、<code>direct-offer</code>（ピアツーピアの取引）、<code>payment-subscription</code> と <code>payment-subscription-offchain</code>（サブスクリプション）、<code>yieldfarming</code> と、Project Catalyst Fund 10 の提案に含まれる単一資産のステーキング。その Fund 10 の提案「Anastasia Labs - Open Source Production Grade DApps」（135,500 ADA）は 4 つのマイルストーンがすべて完了と記録されています。動画はこれらの名前を挙げていないので、対応はこちらの推定です。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「Cardano も UTXO も理解しないまま差し込める」は、本当か？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、「差し込む」の中身によって答えが変わります。</strong>スマートコントラクトの本体を書かなくてよい、という意味では本人の言い方は成り立ちます。ただ、ウェブサイトから使うには本体の外側が要ります。</p>
+<h4>コントラクト本体の外に残るもの</h4>
+<ul>
+  <li><strong>ウォレットとの接続。</strong>利用者が ADA を払うには、ブラウザのウォレットとつなぎ、取引に署名してもらう画面が要ります</li>
+  <li><strong>取引を組む側のコード。</strong>チェーンの状態を読み、正しい形の取引を組み立てて送る部分（オフチェーンのコード）は、コントラクトとは別に動かす必要があります。<code>payment-subscription-offchain</code> のようなリポジトリが別にあるのは、この部分があるからです</li>
+  <li><strong>UTXO 特有の制約。</strong>同じコントラクトに同時に多数の利用者が触ると取引が衝突する、手数料と最低残高の計算、といった事情は、使う側が知らなくても設計側は知っている必要があります</li>
+</ul>
+<h4>本人の言い方が成り立つ部分</h4>
+<p>「何を証明すべきか」「どう攻撃されうるか」を自分で考えてコントラクトを書く作業は、確かに省けます。そこが「数万ドル」の中身だ、というのが本人の主張です。</p>
+<h4>外から見分ける方法</h4>
+<p>リポジトリに「コントラクトだけ」があるのか、「ウェブサイトから呼ぶための SDK と手順書」まであるのかを見れば足ります。後者がなければ、Cardano を知る開発者が間に要ります。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>実際にコーヒーショップやブロックチェーン外のウェブサイトが使った例は挙げられていません。使った例として名前が出たのは Charli3 で、これは Cardano のプロジェクトです。</p>
+</div>
+</details>
+
+
+<h2 id="patterns">5. いちばん効いたのは「設計パターンのリポジトリ」</h2>
+<p class="deck">ベスティングは「誰が使っているか把握しきれない」ほど広がった、と本人。それ以上に効いたのは、作り方を説明した文書。</p>
+
+<p>「成功例を 1 つか 2 つ」と聞かれて、Philip DiSarro はまずベスティングを挙げます。「エコシステムのたくさんのチーム」が使っていて、「この時点ではすべてのチームを把握しているわけでもない」「人が使っていると分かって驚くことがしばしばある」と。</p>
+
+<p>そのうえで「おそらくいちばん影響が大きかった」と言うのが、<strong>設計パターンのリポジトリ</strong>です。最先端の dApp の設計パターンを詳しく説明した文書で、動機は Cardano へのオンボーディングの難しさ。ほかの分野でどれほど有能なプログラマーでも、Cardano に入ってくるのは難しい。ベストプラクティスを学ぶには大量のオープンソースの成果物が要るが、全員が違うツールを使う分断されたエコシステムでは、技法を学ぶだけで込み入ってしまう。しかもその技法は「ほかのどこのベストプラクティスとも大きく違う」。</p>
+
+<p>効果については、ほかのチームが本人にこの文書を勧めてきて「はい、それを書いたのは私です」となることが絶えずある、と笑い話にし、大きなプロジェクトが新しい開発者を受け入れるときに見せるのが「ほぼ標準になった」と言います。<strong>IOG でスタッフにトピックを説明するために共有されているのを見た</strong>、Minswap でも SundaeSwap でも、「Cardano の主要なアプリのほとんど」で見た、と。<span class="badge">補足</span>これらは本人が「見た」と述べた採用例で、各組織側の発言ではありません。Anastasia Labs の GitHub には <code>design-patterns</code> と、Aiken 向けの <code>aiken-design-patterns</code> があります（2026 年 10 月 24 日時点）。</p>
+
+
+<h2 id="midgard">6. 振り返りの先に — レイヤー 2 の枠組みとしての Midgard</h2>
+<p class="deck">「開発しにくい」という主張はもう説得力を失った、と本人。だから次は、Cardano のセキュリティに頼るレイヤー 2 を誰でも作れる枠組み。</p>
+
+<p>今後の計画を聞かれた Philip DiSarro は、まずオープンソースのコントラクトと設計パターンの拡充を続ける、と答えてから、「会社として大きく変わったこと」を話します。最初に入ってきたときと今とで dApp エコシステムを振り返ると、人が学べるオープンソースのコードは「大幅に」増え、<strong>「Cardano で開発するのは難しい」と主張することがそれほど説得力を持たなくなった</strong>。最良のアプリのコードを見て学べる。「これにはとても満足していて、では次の一歩は何か、と考えた」。</p>
+
+<p>次の一歩の根拠は Ethereum の観察です。本人の見立てでは、Ethereum の経済成長のいちばん大きな推進力はコアプロトコルの変更ではなかった。過去 3〜4 年の変更は「比較的小さく、あまり好評でもなかった」。成長の触媒は、独立したチームが作ったレイヤー 2、つまり Polygon、Optimism、Arbitrum、zkSync で、どれもセキュリティは Ethereum に頼りつつ機能では独自の違いを出せた。ブロックチェーンにはトリレンマ（セキュリティ、スケーラビリティ、分散性のトレードオフ）があるので、ひとつのチェーンがすべてのアプリに合うことはできない。レイヤー 2 なら、レイヤー 1 を離れずにアプリが必要とする機能を持たせられる。「きわめて高いスループットが要る人に、今の Cardano はあまり向いていないかもしれない」が、Hydra やほかのレイヤー 2 ならエコシステムの中で作れる、と。</p>
+
+<p>そこで「今作っている旗艦プロダクト」が <strong>Midgard</strong> です。本人の説明は次のとおり。</p>
+
+<ul>
+  <li>「Cardano 向けの optimistic rollup で、レイヤー 2 を作るためのフレームワーク」</li>
+  <li>「これを Cardano の唯一のレイヤー 2 にしたいわけではない」。<strong>Optimism のような SDK</strong>、つまり人がアプリケーションや要件に合わせてレイヤー 2 を作るのに使う道具にしたい</li>
+  <li>例として、連合型（federated）のネットワーク、サプライチェーン追跡のレイヤー 2、ゲームのレイヤー 2。「そういうものがすべて Midgard で作れる」</li>
+  <li>Midgard 自体も単独のレイヤー 2 として存在する</li>
+  <li>狙いは「Cardano に経済的なセキュリティを頼るたくさんのレイヤー 2」が現れること。Cardano の上に作りたくないアプリにレイヤー 2 を売り込めれば、「経済活動がレイヤー 1 に乗る」。レイヤー 2 は Cardano に頼り、セキュリティの対価を Cardano に払うから</li>
+  <li>その例として「Meld は清算とスループットについての懸念からエコシステムを去った」と挙げる。<span class="badge">補足</span>MELD が Cardano から Avalanche のサブネットに移ったのは 2023 年です。理由の説明は本人のもので、MELD 側の発表を当たったものではありません</li>
+</ul>
+
+<div class="term">
+<p class="term-name">optimistic rollup <small>動画の中の言葉</small></p>
+<p>本人は Midgard を「optimistic rollup」と呼ぶだけで、仕組みは説明していません。<span class="badge">補足</span>レイヤー 2 で処理した取引をまとめてレイヤー 1 に書き込み、いったん正しいと仮定（optimistic）して、一定期間に不正の証明が出れば巻き戻す方式です。利用者は新しいバリデータの集合を信頼しなくてよい代わりに、引き出しに待ち時間がかかり、誰かが監視している前提が要ります。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="Philip DiSarro の説明にもとづき、Midgard を SDK として作られた複数のレイヤー 2 が Cardano のレイヤー 1 にセキュリティを頼る構図を描いた図">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="8" y="12" width="664" height="132" rx="8" class="d-box-plain"/>
+  <text x="340" y="38" class="d-t" text-anchor="middle">Midgard ＝ レイヤー 2 を作るための枠組み（SDK）。本人は Optimism になぞらえる</text>
+  <rect x="24" y="56" width="148" height="70" rx="6" class="d-box"/>
+  <text x="98" y="86" class="d-s" text-anchor="middle">ゲームのレイヤー 2</text>
+  <text x="98" y="108" class="d-s" text-anchor="middle">（本人の例）</text>
+  <rect x="188" y="56" width="148" height="70" rx="6" class="d-box"/>
+  <text x="262" y="86" class="d-s" text-anchor="middle">サプライチェーン追跡</text>
+  <text x="262" y="108" class="d-s" text-anchor="middle">（本人の例）</text>
+  <rect x="344" y="56" width="148" height="70" rx="6" class="d-box"/>
+  <text x="418" y="86" class="d-s" text-anchor="middle">連合型のネットワーク</text>
+  <text x="418" y="108" class="d-s" text-anchor="middle">（本人の例）</text>
+  <rect x="508" y="56" width="148" height="70" rx="6" class="d-box-accent"/>
+  <text x="582" y="86" class="d-s" text-anchor="middle">Midgard 自体</text>
+  <text x="582" y="108" class="d-s" text-anchor="middle">単独のレイヤー 2</text>
+
+  <line x1="98" y1="146" x2="98" y2="196" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="262" y1="146" x2="262" y2="196" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="418" y1="146" x2="418" y2="196" class="d-line-accent" marker-end="url(#m1)"/>
+  <line x1="582" y1="146" x2="582" y2="196" class="d-line-accent" marker-end="url(#m1)"/>
+  <text x="340" y="176" class="d-s" text-anchor="middle">Cardano にセキュリティを頼り、その対価を Cardano に払う（本人の説明）</text>
+
+  <rect x="16" y="204" width="648" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="230" class="d-t" text-anchor="middle">Cardano（レイヤー 1）</text>
+  <text x="340" y="252" class="d-s" text-anchor="middle">「経済活動がレイヤー 1 に乗る」—— 成長の触媒になる、と本人の見通し</text>
+
+  <rect x="16" y="278" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="303" class="d-s" text-anchor="middle">類推の元は Ethereum：Polygon、Optimism、Arbitrum、zkSync が成長を牽引した、という本人の見立て</text>
+</svg>
+<p class="figcap">動画で語られた構図をそのまま描いたものです。各レイヤー 2 の中身（誰が運営し、データをどこに置くか）は動画で語られていません。<span class="badge">補足</span>「セキュリティの対価を払う」の具体的な形（レイヤー 1 への手数料か、別の仕組みか）も、この動画では説明されていません。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<h4>そもそも「レイヤー 2」とは</h4>
+<p>土台のブロックチェーン（レイヤー 1。ここでは Cardano）の外で取引を処理し、結果だけを土台に書き戻す仕組みの総称です。土台の混雑や手数料を避けつつ、最終的な安全は土台に預ける、というのが基本の考えです。</p>
+<h4>なぜそれが要るのか</h4>
+<p>本人が「トリレンマ」と呼んだとおり、ひとつのチェーンでセキュリティ、処理量、分散性を全部最大にはできません。ゲームは処理量、金融はセキュリティ、と求めるものが違うので、用途ごとに別の層を作り、安全だけを共通の土台に頼る、という分業になります。</p>
+<h4>身近なたとえ</h4>
+<p>銀行の本店（レイヤー 1）と、街の支店（レイヤー 2）のようなものです。日々の取引は支店で速く済ませ、帳簿の確定は本店で行う。支店が勝手なことをしても本店の帳簿で正される、というのが「土台のセキュリティに頼る」の意味です。本人が言う Midgard は、個々の支店ではなく「支店を開くための共通の設計図」に当たります。</p>
+<h4>Hydra との違い</h4>
+<p>本人は Hydra を「ほかのレイヤー 2」の例として挙げるだけです。<span class="badge">補足</span>Hydra は Input Output が開発する状態チャネル型のレイヤー 2 で、参加者を決めた小さな集まりの中で高速に処理する設計です。Midgard のような rollup は、不特定の利用者が入れる点で性格が違います。</p>
+<h4>一言でまとめ</h4>
+<p>Midgard は「Cardano の上に、用途別の速い層を作るための共通の道具箱」として語られています。道具箱の中身の仕様は、この動画では出てきません。</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>素朴な疑問 — レイヤー 2 が増えればレイヤー 1 が成長する、は本当か？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、Ethereum ではまさにこの点が論争になりました。</strong>レイヤー 2 が活動を吸い上げてレイヤー 1 の手数料収入が減る、という「レイヤー 2 は寄生的だ」という見方があります。</p>
+<h4>本人の言い方が成り立つ部分</h4>
+<ul>
+  <li><strong>来なかったはずの活動が来る。</strong>Cardano の上に作らなかったアプリがレイヤー 2 に来れば、ゼロよりは増えます。本人の例が「去った Meld」なのはこのためです</li>
+  <li><strong>対価の支払い。</strong>レイヤー 2 が状態を書き戻すたびにレイヤー 1 の取引が発生し、手数料が払われます</li>
+</ul>
+<h4>成り立たなくなる条件</h4>
+<p>レイヤー 1 でできていた活動がレイヤー 2 に移るだけなら、レイヤー 1 の取引数と手数料は減ります。レイヤー 1 の「成長」が何を数えた数字か（取引数か、手数料か、ロックされた資産か）で、答えが変わります。</p>
+<h4>外から見分ける方法</h4>
+<p>レイヤー 2 の稼働前後で、レイヤー 1 の手数料収入とロックされた資産の額がどう動いたかを見れば足ります。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>「成長」が何を指すかの定義、Ethereum の数字、Cardano での見込みの数字。いずれも出てきません。<span class="badge">補足</span>同じ問いは、2026 年 7 月の Dave Dionisio の回でも本人が「収益をレイヤー 1 に戻すか」という問題として触れています（このアーカイブの <a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/#midgard">2026-07-10 の回</a>）。</p>
+</div>
+</details>
+
+<p><span class="badge">補足</span><strong>動画公開後の結果</strong>（2026 年 10 月 24 日時点）。Anastasia Labs の同じチームは 2026 年には Midgard Labs の名前で活動しています。Midgard は optimistic rollup として技術仕様書が公開され、Midgard Labs のサイトは「プレアルファのテストネットを開発中」と記載しており、公開テストネットはまだ出ていません。2026 年 7 月の Dave Dionisio（Midgard Labs COO）の回では「テストネット直前」「半分ステルス」と語られました。この 2024 年の動画では、Midgard の時期の見通しは一切語られていません。</p>
+
+
+<h2 id="community">7. コミュニティへの入り口と、Intersect の宣伝</h2>
+<p class="deck">技術的な質問が「いちばんよい関わり方」。足りないものがあれば言ってくれれば作る、と本人。司会は Intersect の会員になることを勧めて締める。</p>
+
+<p>コミュニティとの関わりを聞かれた Philip DiSarro の答えは短いものです。Discord に入る、本人に Discord・Twitter・メールで連絡する。「いちばんよい関わり方は技術的な質問。それを手伝うために私たちはいる」。オープンソースのリポジトリやツールの使い方の質問、そして「エコシステムに足りていないもの」の提案。「XYZ のオープンソースのソリューションがあればいいのに存在しない」というものがあれば連絡してほしい、<strong>十分な需要があれば間違いなく出す</strong>、と。</p>
+
+<p>司会の Tex は、連絡先と Discord のリンクを説明欄に付けると約束し、視聴者に「いいね、コメント、チャンネル登録」を頼んだあと、<strong>「Intersect のメンバーになることでも Cardano のエコシステムに関われる」</strong>と呼びかけて締めます。<span class="badge">補足</span>これは Intersect 自身のチャンネルでの会員募集で、この動画が Intersect の広報の一部でもあることを示しています。</p>
+
+
+<h2 id="overall">8. 全体像</h2>
+<p class="deck">第 1 段の「オープンソースの本番コード」が目的をほぼ果たしたので、第 2 段の Midgard へ、という本人の筋書き。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 310" role="img" aria-label="Anastasia Labs の第 1 段（オープンソースの本番コード）から、振り返りを経て第 2 段（Midgard）に移る本人の筋書きと、動画公開後の結果を示した図">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="16" width="200" height="140" rx="8" class="d-box"/>
+  <text x="116" y="44" class="d-t" text-anchor="middle">第 1 段：本番コードを公開</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">差し込めば使えるコントラクト</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">形式検証のツールキット</text>
+  <text x="116" y="112" class="d-s" text-anchor="middle">設計パターンのリポジトリ</text>
+  <text x="116" y="138" class="d-s" text-anchor="middle">「重複した支出を減らす」</text>
+
+  <line x1="220" y1="86" x2="238" y2="86" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="244" y="16" width="192" height="140" rx="8" class="d-box-plain"/>
+  <text x="340" y="44" class="d-t" text-anchor="middle">振り返り（本人）</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">学べるコードは大幅に増えた</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">「開発しにくい」という主張は</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">説得力を失った</text>
+  <text x="340" y="138" class="d-s" text-anchor="middle">「では次の一歩は何か」</text>
+
+  <line x1="440" y1="86" x2="458" y2="86" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="464" y="16" width="200" height="140" rx="8" class="d-box-accent"/>
+  <text x="564" y="44" class="d-t" text-anchor="middle">第 2 段：Midgard</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">レイヤー 2 を作る枠組み（SDK）</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">Cardano のセキュリティに頼る</text>
+  <text x="564" y="112" class="d-s" text-anchor="middle">用途別の L2 が増える、と見通し</text>
+  <text x="564" y="138" class="d-s" text-anchor="middle">時期は語られていない</text>
+
+  <rect x="16" y="176" width="648" height="118" rx="7" class="d-box-plain"/>
+  <text x="340" y="202" class="d-t" text-anchor="middle">補足：動画公開後の結果（2026 年 10 月 24 日時点）</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">同じチームが Midgard Labs の名前で活動。Midgard は optimistic rollup として仕様書を公開</text>
+  <text x="340" y="250" class="d-s" text-anchor="middle">プレアルファのテストネットを開発中。公開テストネットはまだ出ていない</text>
+  <text x="340" y="272" class="d-s" text-anchor="middle">設計パターンは Aiken 向けの版も公開。Fund 10 の提案（135,500 ADA）は 4 マイルストーン完了</text>
+</svg>
+<p class="figcap">上の 3 つの箱は本人の筋書きを順に並べたものです。<span class="badge">補足</span>下の箱はこちらで足した動画公開後の結果で、動画にはありません。</p>
+</div>
+
+
+<h2 id="qa">9. やり取りから</h2>
+<p class="deck">司会の 6 つの問いのうち、答えに固有名詞や数字が出た 3 つを抜き出した。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Tex</span>作っているものの独自の特徴で、データの信頼性とセキュリティを高めるものは？</p>
+<p class="qa-a" data-by="Philip DiSarro">監査ツールをいくつも作っていて、旗艦は形式検証のツールキット。形式手法は「修士か博士」の分野で、小さなチームには高くつく。<strong>「普通の開発者がドキュメントを読んで証明を書き始められる」</strong>ものを出した、と。名前は出ません。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Tex</span>取り入れた組織のうち、成功例として挙げられるものは？</p>
+<p class="qa-a" data-by="Philip DiSarro">ベスティングは「誰が使っているか把握しきれない」。いちばん効いたのは設計パターンのリポジトリで、<strong>IOG、Minswap、SundaeSwap で共有されているのを見た</strong>と本人。「それを書いたのは私です」と言う場面が絶えずある、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Tex</span>今後の計画、新しいプロダクトは？</p>
+<p class="qa-a" data-by="Philip DiSarro">オープンソースの拡充は続ける。ただ振り返ると「開発しにくい」という主張は説得力を失ったので、次は Midgard。<strong>「唯一のレイヤー 2 にしたいのではなく、Optimism のような SDK にしたい」</strong>。Meld のように去ったアプリをレイヤー 2 で呼び戻せる、と。</p>
+</div>
+
+
+<h2 id="pending">10. 答えが出なかったこと</h2>
+<p class="deck">名前と数字と時期が、ほとんど出ない回。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">名前なし</span>形式検証のツールキットは、何という名前で、どこにあるのか。</p>
+<p class="qa-a" data-by="「ツールキット」のみ">対応言語も、証明できる性質も語られていません。<span class="badge">補足</span>Anastasia Labs の GitHub に <code>formal-verification</code> リポジトリがあります（2026-10-24 時点）が、動画の「ツールキット」がこれかどうかは動画からは決められません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">根拠なし</span>「数万ドル節約した」の内訳。</p>
+<p class="qa-a" data-by="本人の概数">Charli3 などがベスティングを使って「自分で作って監査するより数万ドル」節約した、と本人。開発費と監査費のどちらがいくらか、何社の合計かは示されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">把握なし</span>ベスティングを使っているのは誰か。</p>
+<p class="qa-a" data-by="「全部は知らない」">名前が出たのは Charli3 だけで、本人が「すべてのチームを把握しているわけではない」と述べています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>Midgard はいつ使えるのか。</p>
+<p class="qa-a" data-by="言及なし">「今作っている」とだけ。テストネットも mainnet も時期は出ません。<span class="badge">補足</span>2026 年 7 月の Dave Dionisio の回で「テストネット直前」、2026 年 10 月 24 日時点で公開テストネットは未提供です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">特定なし</span>Ethereum の「あまり好評でなかった」コアプロトコルの変更とは何か。</p>
+<p class="qa-a" data-by="一般論のみ">「過去 3〜4 年の変更は比較的小さく、好評でもなかった」と本人の評価だけで、どの変更を指すかは語られていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">相手側の説明なし</span>Meld が去った理由は「清算とスループット」か。</p>
+<p class="qa-a" data-by="本人の説明">本人の説明としてそう語られています。<span class="badge">補足</span>MELD が Cardano から Avalanche のサブネットに移ったのは 2023 年で、理由についての MELD 側の発表はこちらでは当たっていません。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は Intersect の Open Source Office のチャンネル「Open Source Office at Intersect MBO」（@osointersectmbo）で公開されている動画 <a href="https://www.youtube.com/watch?v=JY_573d57AA">Project Spotlight Anastasia Labs</a>（16 分 42 秒）です。公開動画なので発言者は実名のまま書いています。<strong>公開日は 2024 年とだけ分かっており、月日は要確認です。</strong>この環境から YouTube のページを読み取れなかったためで、確認できたら直します。</p>
+<p><strong>紹介される側の発言の記録です。</strong>Intersect のチャンネルがエコシステムのプロジェクトを紹介する企画で、Anastasia Labs についての評価（「数万ドル節約」「ほぼ標準になった」「成長の触媒になる」）はすべて Philip DiSarro 本人の発言として帰属させています。司会の Tex は Intersect の職員で、最後に Intersect の会員になることを勧めます。</p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回は字幕と、題・チャンネル名・尺が分かるスクリーンショットだけから作っており、画面の中身は確認していないので、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>動画公開後の結果</strong>として足したものは、Anastasia Labs が Midgard Labs の名前で活動していること、Midgard の公開テストネットが 2026 年 10 月 24 日時点で未提供であること、GitHub のリポジトリ名と Project Catalyst Fund 10 の提案の完了、MELD の 2023 年の移転、Philip DiSarro の 2024 年の委員会選挙への立候補と Anastasia Labs の Intersect Enterprise メンバー入り（2024 年 9 月）で、いずれも <span class="badge">補足</span> と日付を付けています。</p>
+<p>正確な内容を確認したい場合は <a href="#en">英語全文</a>、通して日本語で読みたい場合は <a href="#ja">日本語全文</a> をご覧ください。原本には時刻がないので、全文ページにも時刻はありません。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>A 2024 interview on the channel of Intersect's Open Source Office, in which Anastasia Labs founder Philip DiSarro states the company's mission as <strong>“increasing the availability of open-source production-grade dApp protocol code”</strong> so that the ecosystem stops paying for the same base ten times over. The results, as he lists them: plug-and-play contracts for vesting, peer-to-peer trading, subscriptions and staking, a formal verification toolkit, and a design-patterns repository.<br>
+  By his own retrospective the “Cardano is hard to build on” argument is “not so compelling” any more, so the next step is <strong>Midgard</strong>: a framework for building Layer 2s that rely on Cardano for security.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>The mission is “don't build the base ten times”.</strong> Ten similar apps share the same base, yet each builds it from scratch and spends the same money. Open-source production code replaces that, he says.</li>
+  <li><strong>Free, plug-and-play contracts.</strong> Team-token vesting, peer-to-peer trading of NFTs and other odd assets, subscription payments, staking. Charli3 and others used the vesting and “saved tens of thousands of dollars”, by his estimate.</li>
+  <li><strong>Mathematical proof of correctness for ordinary developers.</strong> A toolkit so that a team need not hire a master's or PhD in formal methods: read the docs and start writing proofs, he says. The toolkit is not named in the video.</li>
+  <li><strong>The design-patterns repository mattered most.</strong> He has seen it shared at IOG, Minswap and SundaeSwap, and says showing it to new developers has become “pretty much standard”.</li>
+  <li><strong>Next comes Midgard.</strong> From the view that Ethereum's growth came from Layer 2s, not core changes, he aims at a framework (an SDK) anyone can use to build a Layer 2 secured by Cardano. Not “the Layer 2 on Cardano”, he stresses.</li>
+  <li><strong>Read it as a 2024 record.</strong> The same team now works as Midgard Labs, and as of October 2026 Midgard has no public testnet. <span class="badge">added</span> Post-publication outcomes are collected at the end.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">Contents</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking, and when the video is from</a></li>
+  <li><a href="#en-mission"><span class="n">02</span>“Don't build the base ten times”: the mission</a></li>
+  <li><a href="#en-verify"><span class="n">03</span>Formal verification for the everyday developer</a></li>
+  <li><a href="#en-plug"><span class="n">04</span>Plug-and-play contracts, from vesting to the coffee shop</a></li>
+  <li><a href="#en-patterns"><span class="n">05</span>What mattered most: the design-patterns repository</a></li>
+  <li><a href="#en-midgard"><span class="n">06</span>After the retrospective: Midgard as a Layer 2 framework</a></li>
+  <li><a href="#en-community"><span class="n">07</span>How to get involved, and the Intersect plug</a></li>
+  <li><a href="#en-overall"><span class="n">08</span>The whole picture</a></li>
+  <li><a href="#en-qa"><span class="n">09</span>From the exchange</a></li>
+  <li><a href="#en-pending"><span class="n">10</span>What was left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking, and when the video is from</h2>
+<p class="deck">An Intersect staffer hosts; the founder of the company being featured is the guest. A 2024 video whose exact date is still to be confirmed.</p>
+
+<p>One of the “Project Spotlight” videos on the channel of Intersect's Open Source Office (OSO), a 16-minute-42-second interview. The host is <strong>Tex</strong> of the OSO (“It's Tex with the Open Source Office”; no surname is given). The guest is <strong>Philip DiSarro</strong>, who introduces himself as “CEO and founder of Anastasia Labs”, a “research and development firm specializing in Cardano smart contracts and dApp protocol development”.</p>
+
+<p><span class="badge">added</span> Intersect is Cardano's member-based organisation, set up in 2023 to run governance processes and coordinate development; its Open Source Office manages Intersect's open-source policy and processes. Since the format is a showcase of an ecosystem project, <strong>every assessment of Anastasia Labs is attributed to Philip DiSarro</strong> rather than stated as fact.</p>
+
+<p><span class="badge">added</span> The publication date is known only as “2024”, which is what the requester supplied. The day could not be read from YouTube from this environment and is marked as to be confirmed. For context, Philip DiSarro stood as a candidate for the Open Source Committee in Intersect's 2024 committee elections; his candidate page says Anastasia Labs is “a founding member of Intersect” and pledges “to have all our produced code to be open-source”. Intersect's development update of 27 September 2024 lists Anastasia Labs among its newest Enterprise members. Tex's closing call to “become a member of Intersect” belongs to that context.</p>
+
+
+<h2 id="en-mission">2. “Don't build the base ten times”: the mission</h2>
+<p class="deck">Similar apps share a base. The time and money each team spends rebuilding it is what open source is meant to save.</p>
+
+<p>Philip DiSarro says he founded Anastasia Labs “with the sole intention of increasing the availability of open-source production-grade dApp protocol code throughout the ecosystem”. Cardano's “main pain point” was the lack of open-source production code bases to build from, and that “really hurts the ecosystem in very tangible financial and time ways”.</p>
+
+<p>His argument lays out two paths for a new team. One starts from an existing body of work, adds business-specific logic and focuses on features and requirements. The other starts “from the ground up”, infrastructure and the base of the dApp included, with nothing to draw from. An ecosystem that offers only the second path is “much less attractive”. If ten apps build similar products, the core infrastructure is mostly the same and the deviation is at the top, in features. Yet every one of them ends up building the base, and whatever they invest there is <strong>“redundantly spent”</strong>, money that “could have been spent in more feature development, or hiring more devs, or more security”.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 310" role="img" aria-label="Based on Philip DiSarro's account: each team building the base from scratch, contrasted with building on Anastasia Labs' open-source base">
+  <rect x="16" y="16" width="310" height="196" rx="8" class="d-box"/>
+  <text x="171" y="44" class="d-t" text-anchor="middle">From scratch (his status quo)</text>
+  <rect x="36" y="60" width="270" height="44" rx="6" class="d-box-plain"/>
+  <text x="171" y="87" class="d-s" text-anchor="middle">Business-specific logic and features</text>
+  <rect x="36" y="114" width="270" height="84" rx="6" class="d-box-warn"/>
+  <text x="171" y="140" class="d-t" text-anchor="middle">The base (infra, dApp core)</text>
+  <text x="171" y="164" class="d-s" text-anchor="middle">Ten apps each build their own</text>
+  <text x="171" y="184" class="d-s" text-anchor="middle">“Redundant spending”</text>
+
+  <rect x="354" y="16" width="310" height="196" rx="8" class="d-box"/>
+  <text x="509" y="44" class="d-t" text-anchor="middle">On an existing base (his proposal)</text>
+  <rect x="374" y="60" width="270" height="44" rx="6" class="d-box-plain"/>
+  <text x="509" y="87" class="d-s" text-anchor="middle">Business-specific logic and features</text>
+  <rect x="374" y="114" width="270" height="84" rx="6" class="d-box-accent"/>
+  <text x="509" y="140" class="d-t" text-anchor="middle">Anastasia Labs' open source</text>
+  <text x="509" y="164" class="d-s" text-anchor="middle">Free; a reference and a foundation</text>
+  <text x="509" y="184" class="d-s" text-anchor="middle">Vesting, P2P trading, design patterns…</text>
+
+  <rect x="16" y="230" width="648" height="64" rx="7" class="d-box-plain"/>
+  <text x="340" y="256" class="d-s" text-anchor="middle">The saving could go to “feature development, hiring more devs, or more security”, he says</text>
+  <text x="340" y="278" class="d-s" text-anchor="middle">“Ten apps” is his illustrative number; how many teams actually rebuilt a base is not shown</text>
+</svg>
+<p class="figcap">The contrast as drawn in the video, in two boxes. <span class="badge">added</span> Where “the base” ends and “business-specific logic” begins is his framing; the share that can really be common varies by app.</p>
+</div>
+
+
+<h2 id="en-verify">3. Formal verification for the everyday developer</h2>
+<p class="deck">A toolkit that puts mathematical proof of correctness within reach of developers who are not formal-methods specialists, he says. It is not named.</p>
+
+<p>Asked what unique features enhance “data reliability and security”, Philip DiSarro says the firm has “a number of auditing tools” built and in progress, and names as a flagship release a <strong>“formal verification toolkit for Cardano smart contracts”</strong>. That is the phrase the video uses, so it is the phrase used below.</p>
+
+<div class="term">
+<p class="term-name">Formal verification <small>the video's term</small></p>
+<p>In his words, “a mechanism you can use to mathematically prove the correctness of a program”. <span class="badge">added</span> Where testing shows “it was correct for the inputs we tried”, formal verification shows that a property written in a specification holds for every input. Only the properties written down are proved; whether the specification itself is right is a separate question.</p>
+</div>
+
+<p>His reasoning runs like this. The languages and tooling used on Cardano are “very well suited for formal verification”. For “financial operating systems” such as lending or trading platforms, which are non-custodial (the operator never holds users' assets), the application logic “must be airtight”, because any issue means user funds are lost or stolen. That is why the ecosystem “put so much importance on designing this facilitation for formal methods”. <strong>But no toolkit had yet made this accessible to “your everyday developer”.</strong> The people doing it have a master's or PhD in formal methods, and for small Cardano teams hiring them or learning it in-house is “very expensive”. The toolkit released “brings down the barrier to entry” so that “any standard developer should be able to quickly go through the documentation and start writing proofs”.</p>
+
+<p>The toolkit's name, where it lives, which language it targets (Plutarch or Aiken) and what properties it can prove are not discussed in the video. <span class="badge">added</span> Anastasia Labs' GitHub has a repository named <code>formal-verification</code> (as of 24 October 2026). Whether the video's “toolkit” means that repository cannot be settled from the video.</p>
+
+<details class="explain">
+<summary>A naive question: if correctness can be “mathematically proved”, do bugs disappear?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not something said in the video.</p>
+<p><strong>The question is half right, and half a matter of wording.</strong> What formal verification proves is “this program satisfies this property written in the specification”, not “this program has no bugs”.</p>
+<h4>What a proof covers</h4>
+<ul>
+  <li><strong>The properties written down.</strong> “Only the depositor can withdraw” or “the total is conserved” can be shown to hold for every input, including combinations tests never reach</li>
+  <li><strong>Properties nobody wrote down are not covered.</strong> If the specification forgot “after the deadline anyone can withdraw”, that bug walks straight past the proof</li>
+  <li><strong>A wrong specification proves the wrong thing.</strong> Writing the specification is still human judgement</li>
+</ul>
+<h4>Why his wording still holds</h4>
+<p>Philip DiSarro's emphasis is not “a proof makes you safe” but <strong>accessibility</strong>: that someone who is not a specialist can start writing proofs at all. As a claim about lowering the entrance to that work, it stands.</p>
+<h4>How to tell from outside</h4>
+<p>Look for a published list of which properties have been proved. With such a list you know what is covered and what is not.</p>
+<h4>What the video did not show</h4>
+<p>The toolkit's name, what it can prove, and any example of a contract actually proved. None of these come up.</p>
+</div>
+</details>
+
+
+<h2 id="en-plug">4. Plug-and-play contracts, from vesting to the coffee shop</h2>
+<p class="deck">Team-token vesting, peer-to-peer trades of NFTs, subscriptions, staking. All free, and usable without knowing Cardano, he says.</p>
+
+<p>Asked about primary use cases, he answers that “no matter what you're building on Cardano, you should be able to derive some utility” from what is already published, and stresses that it is <strong>“all free, it's all open-source”</strong>. He gives four examples, and calls each a “plug and play solution”; that phrase is kept below.</p>
+
+<ul>
+  <li><strong>Vesting.</strong> A new project issuing a token usually wants a team vesting schedule, with questions of who obeys it, whether tokens get dumped and who custodies the funds, so a smart contract is the common answer. But hiring a developer for that means “instead of building your actual platform, you're building infrastructure for vesting schedules”. Use the existing solution instead; “large projects throughout the ecosystem like Charli3 and others” did, and “it saved them tens of thousands of dollars” against building and auditing their own, by his estimate. <span class="badge">added</span> The figure is his round number, with no breakdown. Charli3 is an oracle project on Cardano.</li>
+  <li><strong>Peer-to-peer trading.</strong> Non-standard assets such as NFTs, or odd trades of several NFTs for others, are not served by a DEX, so people send assets to a middleman, which “is really risky” and “breeds a lot of scamming”. The plug-and-play solution can “support swaps on any website”, he says.</li>
+  <li><strong>Subscription payments.</strong> Named only, with no description.</li>
+  <li><strong>Staking.</strong> Many projects want a token that can be staked for rewards or voting power; that is another ready solution.</li>
+</ul>
+
+<p>He closes with the claim that “a coffee shop or any web application in the world”, knowing nothing about blockchain, could “accept payments in ADA”, “allow ADA subscriptions” or “have some NFT functionality that tracks my coffee” by plugging these into a website <strong>“without understanding Cardano or UTXO or anything”</strong>.</p>
+
+<p><span class="badge">added</span> Anastasia Labs' GitHub holds repositories that appear to match the four examples (as of 24 October 2026): <code>linear-vesting</code>, <code>direct-offer</code> (peer-to-peer trading), <code>payment-subscription</code> with <code>payment-subscription-offchain</code>, and <code>yieldfarming</code> plus the single-asset staking contract listed in the Project Catalyst Fund 10 proposal. That proposal, “Anastasia Labs - Open Source Production Grade DApps” (135,500 ADA), is recorded as complete across all four milestones. The video names none of these repositories, so the mapping is ours.</p>
+
+<details class="explain">
+<summary>A naive question: can you really plug this in “without understanding Cardano or UTXO”?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not something said in the video.</p>
+<p><strong>The question is fair, and the answer depends on what “plug in” covers.</strong> In the sense that you do not write the smart contract itself, his wording holds. To use it from a website, though, you need everything around the contract.</p>
+<h4>What remains outside the contract</h4>
+<ul>
+  <li><strong>Wallet connection.</strong> For a customer to pay in ADA, the site has to connect to a browser wallet and get the transaction signed</li>
+  <li><strong>Transaction-building code.</strong> Reading chain state, assembling a correctly shaped transaction and submitting it (the off-chain code) runs separately from the contract. A repository such as <code>payment-subscription-offchain</code> exists precisely because this part is needed</li>
+  <li><strong>UTXO-specific constraints.</strong> Many users touching one contract at once can collide, and fees and minimum balances have to be computed. The end user need not know this, but whoever integrates it does</li>
+</ul>
+<h4>Where his wording holds</h4>
+<p>Working out what to prove and how the contract could be attacked, then writing it, is genuinely skipped. That, he argues, is what the “tens of thousands of dollars” consists of.</p>
+<h4>How to tell from outside</h4>
+<p>Check whether a repository ships only the contract, or also an SDK and instructions for calling it from a website. Without the latter, a developer who knows Cardano has to sit in between.</p>
+<h4>What the video did not show</h4>
+<p>No coffee shop or non-blockchain website is cited as having done this. The one named adopter is Charli3, a Cardano project.</p>
+</div>
+</details>
+
+
+<h2 id="en-patterns">5. What mattered most: the design-patterns repository</h2>
+<p class="deck">Vesting spread further than he can track, he says. What mattered more was a document explaining how to build.</p>
+
+<p>Asked for one or two success stories, Philip DiSarro first names vesting: picked up by “many teams throughout the ecosystem”, so many that “we don't even know all the teams at this point”, and “it comes as a surprise to me when I find out people are using our stuff”.</p>
+
+<p>Then comes what he calls “probably our most impactful release”, the <strong>design patterns repository</strong>: detailed explanations of “state-of-the-art dApp design patterns”. The motivation is how hard onboarding into Cardano is. Even an extremely competent programmer from the most complex of other fields struggles, because learning best practices needs “a large body of available open source work”, and in “a fragmented ecosystem where everyone is using different tooling” merely learning the techniques is complicated. Those techniques are “very non-standard”: Cardano's best practices “are very different than the best practices anywhere else”.</p>
+
+<p>On impact, he jokes that other teams keep referring him to the document (“Yes, I'm the dude that wrote this”), and says it has become “pretty much standard” for large projects to show new developers. <strong>He has seen it “used and shared throughout IOG to explain topics to staff”</strong>, and shared at Minswap, at SundaeSwap, “and on most major apps on Cardano”. <span class="badge">added</span> These are adoptions he says he has seen, not statements by those organisations. Anastasia Labs' GitHub has <code>design-patterns</code> and an Aiken-oriented <code>aiken-design-patterns</code> (as of 24 October 2026).</p>
+
+
+<h2 id="en-midgard">6. After the retrospective: Midgard as a Layer 2 framework</h2>
+<p class="deck">The “hard to build on” argument has lost its force, he says. So the next move is a framework for Layer 2s that rely on Cardano for security.</p>
+
+<p>Asked about future plans, Philip DiSarro first says the open-source contracts and the design-patterns repository will keep growing, then describes “one of the big shifts that we've had as the company”. Comparing the dApp ecosystem when they first arrived with now, the amount of open-source code to learn from “has increased significantly”, to the point where <strong>“it's not so compelling to argue that it's hard to develop on Cardano”</strong>: you can look at the best applications, see the code, and learn relatively quickly. “We're very satisfied with this, and we thought, okay, well, what's the next step?”</p>
+
+<p>The next step is grounded in his reading of Ethereum. The biggest drivers of economic growth there, he says, “weren't core protocol changes”; the changes of the past three or four years were “relatively minimal and not very well received”. The catalyst was independent teams building Layer 2s, Polygon, Optimism, Arbitrum and zkSync, all relying on Ethereum for security while deviating in features. Because of the trilemma (trade-offs between security, scalability and decentralisation) “one blockchain can't suit every single application”, and a Layer 2 lets you build what an application needs “without leaving the Layer 1”. Someone needing “an extremely high-throughput blockchain” might find Cardano “not very well suited” today, but Hydra and other Layer 2s let them build it inside the ecosystem.</p>
+
+<p>Hence “what we're building now”, the flagship <strong>Midgard</strong>. In his words:</p>
+
+<ul>
+  <li>“An optimistic roll-up for Cardano, which is a framework for building Layer 2s”</li>
+  <li>“We don't want this to be the Layer 2 on Cardano.” <strong>Like Optimism</strong>, it is meant as “an SDK that people can use to build Layer 2s for their applications” or to meet their needs</li>
+  <li>Examples: a federated network, a supply-chain-tracking Layer 2, a gaming Layer 2. “All of these things can be built via Midgard”</li>
+  <li>Midgard itself “will exist as a standalone Layer 2, of course”</li>
+  <li>The aim is “a ton of different Layer 2s that rely on Cardano for economic security”. Pitch a Layer 2 to an application that would not build on Cardano, and “you're getting that economic activity on the Layer 1”, because the Layer 2 “relies on Cardano and pays to Cardano for security”</li>
+  <li>His example: “Meld left the ecosystem because of some concerns with liquidations and throughput.” <span class="badge">added</span> MELD moved from Cardano to an Avalanche subnet in 2023. The reasons given are his account; MELD's own statements were not consulted here</li>
+</ul>
+
+<div class="term">
+<p class="term-name">Optimistic rollup <small>the video's term</small></p>
+<p>He calls Midgard “an optimistic roll-up” and does not explain the mechanism. <span class="badge">added</span> A rollup batches transactions processed on the Layer 2 and writes them to the Layer 1, assuming them valid (optimistic) unless a fraud proof arrives within a challenge window, in which case they are rolled back. Users need not trust a new validator set, but withdrawals wait out the window and someone has to be watching.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="Based on Philip DiSarro's account: several Layer 2s built with Midgard as an SDK, each relying on Cardano's Layer 1 for security">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="8" y="12" width="664" height="132" rx="8" class="d-box-plain"/>
+  <text x="340" y="38" class="d-t" text-anchor="middle">Midgard = a framework (SDK) for building Layer 2s; his comparison is Optimism</text>
+  <rect x="24" y="56" width="148" height="70" rx="6" class="d-box"/>
+  <text x="98" y="86" class="d-s" text-anchor="middle">A gaming Layer 2</text>
+  <text x="98" y="108" class="d-s" text-anchor="middle">(his example)</text>
+  <rect x="188" y="56" width="148" height="70" rx="6" class="d-box"/>
+  <text x="262" y="86" class="d-s" text-anchor="middle">Supply-chain tracking</text>
+  <text x="262" y="108" class="d-s" text-anchor="middle">(his example)</text>
+  <rect x="344" y="56" width="148" height="70" rx="6" class="d-box"/>
+  <text x="418" y="86" class="d-s" text-anchor="middle">A federated network</text>
+  <text x="418" y="108" class="d-s" text-anchor="middle">(his example)</text>
+  <rect x="508" y="56" width="148" height="70" rx="6" class="d-box-accent"/>
+  <text x="582" y="86" class="d-s" text-anchor="middle">Midgard itself</text>
+  <text x="582" y="108" class="d-s" text-anchor="middle">a standalone Layer 2</text>
+
+  <line x1="98" y1="146" x2="98" y2="196" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="262" y1="146" x2="262" y2="196" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="418" y1="146" x2="418" y2="196" class="d-line-accent" marker-end="url(#e1)"/>
+  <line x1="582" y1="146" x2="582" y2="196" class="d-line-accent" marker-end="url(#e1)"/>
+  <text x="340" y="176" class="d-s" text-anchor="middle">Each relies on Cardano for security and “pays to Cardano for security” (his account)</text>
+
+  <rect x="16" y="204" width="648" height="60" rx="8" class="d-box-accent"/>
+  <text x="340" y="230" class="d-t" text-anchor="middle">Cardano (Layer 1)</text>
+  <text x="340" y="252" class="d-s" text-anchor="middle">“You're getting that economic activity on the Layer 1”: a growth catalyst, in his outlook</text>
+
+  <rect x="16" y="278" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="303" class="d-s" text-anchor="middle">The analogy is Ethereum: Polygon, Optimism, Arbitrum and zkSync drove its growth, in his reading</text>
+</svg>
+<p class="figcap">The structure as described in the video. What is inside each Layer 2 (who operates it, where its data lives) is not discussed. <span class="badge">added</span> Nor is the concrete form of “paying for security”, whether Layer 1 fees or something else.</p>
+</div>
+
+<details class="explain">
+<summary>A dense section: open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not something said in the video.</p>
+<h4>What a “Layer 2” is</h4>
+<p>A general name for systems that process transactions outside the base blockchain (the Layer 1, here Cardano) and write only results back to it. The idea is to avoid the base chain's congestion and fees while leaving final safety with the base chain.</p>
+<h4>Why it is needed</h4>
+<p>As he says under the name “trilemma”, one chain cannot maximise security, throughput and decentralisation at once. Games want throughput, finance wants security, so each use gets its own layer and only safety is shared, a division of labour.</p>
+<h4>An everyday comparison</h4>
+<p>A bank's head office (Layer 1) and its branches (Layer 2). Daily business is handled quickly at the branch; the ledger is settled at head office, and a branch that misbehaves is corrected by head office's books. That is what “relying on the base layer's security” means. Midgard, as he describes it, is not a branch but the common blueprint for opening branches.</p>
+<h4>How this differs from Hydra</h4>
+<p>He names Hydra only as another example of a Layer 2. <span class="badge">added</span> Hydra is Input Output's state-channel Layer 2, designed for a fixed small group of participants to transact fast among themselves. A rollup such as Midgard differs in admitting the public.</p>
+<h4>In one line</h4>
+<p>Midgard is presented as “a shared toolbox for building fast, purpose-specific layers on top of Cardano”. What is in the toolbox is not specified in this video.</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>A naive question: do more Layer 2s really make the Layer 1 grow?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not something said in the video.</p>
+<p><strong>The question is fair, and on Ethereum exactly this became a dispute.</strong> One view holds that Layer 2s are “parasitic”: they absorb activity and the Layer 1's fee income falls.</p>
+<h4>Where his wording holds</h4>
+<ul>
+  <li><strong>Activity that would never have come.</strong> An app that would not build on Cardano but does come to a Layer 2 is a gain over zero. That is why his example is Meld, which left</li>
+  <li><strong>Payment for security.</strong> Each time a Layer 2 writes state back, a Layer 1 transaction happens and a fee is paid</li>
+</ul>
+<h4>Where it stops holding</h4>
+<p>If activity that already happened on the Layer 1 merely moves to the Layer 2, Layer 1 transaction counts and fees fall. The answer depends on what “growth” counts: transactions, fees, or assets locked.</p>
+<h4>How to tell from outside</h4>
+<p>Compare Layer 1 fee income and locked assets before and after a Layer 2 goes live.</p>
+<h4>What the video did not show</h4>
+<p>No definition of “growth”, no Ethereum figures, no projection for Cardano. <span class="badge">added</span> The same question comes up in the July 2026 Dave Dionisio episode, where he frames it as whether revenue flows back to the Layer 1 (see <a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/#en-midgard">the 2026-07-10 episode</a> in this archive).</p>
+</div>
+</details>
+
+<p><span class="badge">added</span> <strong>Post-publication outcomes</strong> (as of 24 October 2026). The same team now operates under the name Midgard Labs. Midgard's technical specification describes an optimistic rollup, and the Midgard Labs site says a pre-alpha testnet is in development; no public testnet has been released. In the July 2026 episode, Dave Dionisio (COO, Midgard Labs) described it as “right before launching a testnet” and “semi-stealth”. This 2024 video gives no timeline for Midgard at all.</p>
+
+
+<h2 id="en-community">7. How to get involved, and the Intersect plug</h2>
+<p class="deck">Technical questions are “the best way to engage”; ask for what is missing and, given demand, it gets built, he says. The host closes by recruiting Intersect members.</p>
+
+<p>Asked how Anastasia Labs engages with the community, Philip DiSarro's answer is short: join the Discord, contact him on Discord, Twitter or email. “The best way to engage is with technical questions, cuz that's what we're here to help you do.” Questions about using the repositories and tooling are welcome, as are requests: if “you'd like to have some open-source solution for XYZ, and it doesn't exist, then definitely reach out”, and <strong>“if there's enough demand, for sure, it's something that we would release”</strong>.</p>
+
+<p>Tex promises to put contact details and the Discord link in the description, asks viewers to “like, comment, subscribe”, and closes with <strong>“you can get involved here in the Cardano ecosystem by becoming a member of Intersect as well”</strong>. <span class="badge">added</span> That is Intersect recruiting on its own channel, a reminder that the video is also part of Intersect's outreach.</p>
+
+
+<h2 id="en-overall">8. The whole picture</h2>
+<p class="deck">Stage one, open-source production code, has largely done its job, so on to stage two, Midgard: his storyline.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 310" role="img" aria-label="Anastasia Labs' storyline as told by Philip DiSarro: stage one, open-source production code; a retrospective; stage two, Midgard; plus post-publication outcomes">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="16" width="200" height="140" rx="8" class="d-box"/>
+  <text x="116" y="44" class="d-t" text-anchor="middle">Stage 1: production code</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">Plug-and-play contracts</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">Formal verification toolkit</text>
+  <text x="116" y="112" class="d-s" text-anchor="middle">Design-patterns repository</text>
+  <text x="116" y="138" class="d-s" text-anchor="middle">“Reduce redundant spending”</text>
+
+  <line x1="220" y1="86" x2="238" y2="86" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="244" y="16" width="192" height="140" rx="8" class="d-box-plain"/>
+  <text x="340" y="44" class="d-t" text-anchor="middle">Retrospective (his)</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">Far more code to learn from</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">“Hard to develop on Cardano”</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">is “not so compelling” now</text>
+  <text x="340" y="138" class="d-s" text-anchor="middle">“What's the next step?”</text>
+
+  <line x1="440" y1="86" x2="458" y2="86" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="464" y="16" width="200" height="140" rx="8" class="d-box-accent"/>
+  <text x="564" y="44" class="d-t" text-anchor="middle">Stage 2: Midgard</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">A framework (SDK) for Layer 2s</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">Secured by Cardano</text>
+  <text x="564" y="112" class="d-s" text-anchor="middle">Many purpose-built L2s, he expects</text>
+  <text x="564" y="138" class="d-s" text-anchor="middle">No timeline given</text>
+
+  <rect x="16" y="176" width="648" height="118" rx="7" class="d-box-plain"/>
+  <text x="340" y="202" class="d-t" text-anchor="middle">Added: outcomes after publication (as of 24 October 2026)</text>
+  <text x="340" y="228" class="d-s" text-anchor="middle">The same team now works as Midgard Labs; Midgard's spec describes an optimistic rollup</text>
+  <text x="340" y="250" class="d-s" text-anchor="middle">A pre-alpha testnet is in development; no public testnet yet</text>
+  <text x="340" y="272" class="d-s" text-anchor="middle">An Aiken edition of the design patterns exists; the Fund 10 proposal (135,500 ADA) completed all four milestones</text>
+</svg>
+<p class="figcap">The three upper boxes follow his storyline in order. <span class="badge">added</span> The lower box is our addition of post-publication outcomes and is not in the video.</p>
+</div>
+
+
+<h2 id="en-qa">9. From the exchange</h2>
+<p class="deck">Of the host's six questions, the three whose answers carried names or numbers.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Tex</span>What unique features of what you are building enhance data reliability and security?</p>
+<p class="qa-a" data-by="Philip DiSarro">A number of auditing tools, the flagship being a formal verification toolkit. Formal methods is a “master's or PhD” field and expensive for small teams; the toolkit lets <strong>“any standard developer quickly go through the documentation and start writing proofs”</strong>. No name is given.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Tex</span>Which adopters would you highlight as success stories?</p>
+<p class="qa-a" data-by="Philip DiSarro">Vesting, by more teams than he can track. Above all the design-patterns repository, which he has <strong>seen shared at IOG, Minswap and SundaeSwap</strong>; he is constantly referred to it (“I'm the dude that wrote this”).</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Tex</span>What are the future plans: development, new features, new products?</p>
+<p class="qa-a" data-by="Philip DiSarro">Keep expanding the open source. But since “hard to develop on Cardano” no longer convinces, the next step is Midgard: <strong>“we don't want this to be the Layer 2 on Cardano, we want it to be much like Optimism”</strong>, an SDK. Apps that left, like Meld, could be won back on a Layer 2, he says.</p>
+</div>
+
+
+<h2 id="en-pending">10. What was left unanswered</h2>
+<p class="deck">An episode with few names, few numbers and no dates.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No name</span>What is the formal verification toolkit called, and where is it?</p>
+<p class="qa-a" data-by="“toolkit” only">Neither the target language nor the provable properties are discussed. <span class="badge">added</span> Anastasia Labs' GitHub has a <code>formal-verification</code> repository (as of 2026-10-24); whether the video's “toolkit” is that repository cannot be settled from the video.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No basis</span>What makes up the “tens of thousands of dollars” saved?</p>
+<p class="qa-a" data-by="his round number">Charli3 and others saved that much by using the vesting instead of building and auditing their own, he says. How much was development and how much audit, and across how many firms, is not shown.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not tracked</span>Who is using the vesting contract?</p>
+<p class="qa-a" data-by="“we don't know all the teams”">Charli3 is the only name given, and he says himself that he does not know all the teams.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When will Midgard be usable?</p>
+<p class="qa-a" data-by="not mentioned">Only “what we're building now”. No testnet or mainnet timing. <span class="badge">added</span> In July 2026 Dave Dionisio said “right before launching a testnet”; as of 24 October 2026 there is no public testnet.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unspecified</span>Which Ethereum core changes were “not very well received”?</p>
+<p class="qa-a" data-by="generality only">“The changes to the core Ethereum protocol in the past three or four years have been relatively minimal and not very well received” is his assessment; no specific change is named.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">One side only</span>Did Meld leave over “liquidations and throughput”?</p>
+<p class="qa-a" data-by="his account">That is how he puts it. <span class="badge">added</span> MELD moved from Cardano to an Avalanche subnet in 2023; MELD's own stated reasons were not consulted here.</p>
+</div>
+
+
+<div class="note">
+<p><strong>About this page.</strong> The source is <a href="https://www.youtube.com/watch?v=JY_573d57AA">Project Spotlight Anastasia Labs</a> (16:42), published on “Open Source Office at Intersect MBO” (@osointersectmbo), the channel of Intersect's Open Source Office. It is a public video, so speakers are named. <strong>The publication date is known only as 2024; the day is to be confirmed.</strong> YouTube's page could not be read from this environment; the date will be corrected once confirmed.</p>
+<p><strong>A record of a featured party's own account.</strong> The format is Intersect's channel showcasing an ecosystem project, so every assessment of Anastasia Labs (“saved tens of thousands of dollars”, “pretty much standard”, “a large catalyst for growth”) is attributed to Philip DiSarro. The host, Tex, is Intersect staff and ends by inviting viewers to become Intersect members.</p>
+<p><strong>Three kinds of source.</strong> Unmarked statements were said aloud in the video. <span class="badge">on screen</span> would mark things shown but not spoken; this episode was built from the transcript and a screenshot showing only the title, channel and duration, so the mark is not used. <span class="badge">added</span> marks our own additions, which are not in the video.</p>
+<p><strong>Post-publication outcomes</strong> added here: Anastasia Labs operating as Midgard Labs; no public Midgard testnet as of 24 October 2026; the GitHub repository names and the completed Project Catalyst Fund 10 proposal; MELD's 2023 move; Philip DiSarro's 2024 committee candidacy and Anastasia Labs' Intersect Enterprise membership (September 2024). Each carries <span class="badge">added</span> and a date.</p>
+<p>For the exact wording see the <a href="#en">English transcript</a>; a full Japanese translation is on the <a href="#ja">Japanese transcript</a> page. The source has no timestamps, so neither do the transcript pages.</p>
+</div>
+</div>
+</section>
+
+<details class="part" id="ja">
+<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
+<p class="sec" id="ja-t-intro">冒頭 — 自己紹介</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>皆さん、こんにちは。Open Source Office の Tex です。今日はまた組織スポットライトの回で、Anastasia Labs の Philip に来てもらいました。何をしているところなのか、もう少し話してもらいます。Philip、簡単に自己紹介をお願いできますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>はい。Philip DiSarro です。Anastasia Labs の CEO で創業者です。Anastasia Labs は、Cardano のスマートコントラクトと dApp のプロトコル開発を専門にする研究開発会社です。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>すばらしい。ありがとうございます。いくつか質問をして、はっきりさせていきましょう。Cardano のエコシステムの中で、Anastasia Labs の主な使命はどういうものか、概要を話してもらえますか。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-mission">使命 — オープンソースの本番コード</p>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>はい。私が Anastasia Labs を作ったのは、オープンソースで本番品質の dApp プロトコルのコードを、エコシステム全体でもっと手に入るようにする、それだけが目的でした。Cardano の大きな痛点のひとつが、そこから組み立てられるオープンソースの本番コードベースがないことでした。これはエコシステムに、お金と時間という目に見える形で実害を与えます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>たとえば、新しいチームがどのプロトコルの上に作るかを決めるとします。選択肢が 2 つあって、ひとつは、すでにある成果物から始めて、自分たちの事業に固有のロジックを足し、機能開発と事業要件に集中できる道。もうひとつは、ゼロから始めて、インフラも dApp の土台も含めて全部を自分で作らなければならず、引き出せるものも乗れるものも何もない道。後者だと、ずっと魅力が薄くなります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>ですから Anastasia Labs を立ち上げたとき、主な焦点は、オープンソースのスマートコントラクトと、端から端までそろった dApp を大量に出すことでした。ひとつには、新しく入ってくるプロジェクトが、設計パターンや本番アプリケーションの作り方を学ぶ参考資料として使えるように。もうひとつには、全部をゼロから作るのではなく、この既存の成果物の上に作れるように。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>そうしないと、重複した支出がたくさん生まれます。よく似たプロダクトを作ろうとしているアプリが 10 あれば、そのプロダクトの土台、中核のインフラの大半は同じです。上のほうで少し違いが出ます。あるものにはほかにない機能がある、というように。ただ、そこに行くまでに、全員が土台を作らなければならない。そこに注ぎ込んだ時間とお金は重複して使われたもので、機能開発にも、開発者の増員にも、セキュリティにも回せたはずのものです。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-security">セキュリティ — 形式検証のツールキット</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>まったくそのとおりです。とても重要なことですね。最後のほうで触れたことが次の質問につながります。dApp と、失礼、スマートコントラクトの話で、Cardano のブロックチェーンとどう結びつくかは分かりました。では、作っているものの独自の特徴で、データの信頼性とセキュリティを高めるものは何でしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>セキュリティについては、監査のためのツールを、作ったものも作っているものも、いくつも持っています。たとえば、旗艦となるツールのリリースのひとつが、Cardano のスマートコントラクト向けの形式検証ツールキットです。Cardano と、Cardano の上でアプリケーションを作ることの大きな利点のひとつは、使う言語とツールが形式検証にとても向いていることです。形式検証とは、プログラムの正しさを数学的に証明する仕組みです。これは、金融のオペレーティングシステムのようなミッションクリティカルなアプリケーション、つまり貸付のプラットフォームや取引のプラットフォームなどを作るときに本当に大事です。結局、非カストディアルのプラットフォームを作るなら、アプリケーションのロジックは隙がないものでなければならない。問題があれば利用者の資金が失われるし、悪意のある者に盗まれることもある。だからこそエコシステムは、形式手法を使えるようにする設計をこれほど重視したのです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>ただ、これまでは、それを普通の開発者の手に届くものにしたツールキットは出ていませんでした。形式手法はとても参入の難しい分野です。やっている人はたいてい形式手法の修士号か博士号を持っていて、とくに Cardano の小さなチームにとっては、そういう人を雇うのも、自分たちでプロトコルの正しさを形式的に証明できるようになるのも、とても高くつきます。私たちが出したのは、基本的にその参入障壁を下げるツールキットで、標準的な開発者なら誰でも、ドキュメントをさっと読んで、自分の dApp の正しさについての証明を書き始められるはずのものです。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-usecases">用途 — 差し込めば使えるコントラクト</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>すばらしい。では、Cardano のエコシステムでの Anastasia Labs のプロダクトの主な用途はどういうものでしょうか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>私たちがやってきたことのよいところは、Cardano で何を作っていても、すでに作ってあるオープンソースのものを使えば何らかの便益が得られるはずだ、という点です。既存の成果物はどれも無料で、すべてオープンソースです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>目的は、エコシステムの重複した支出を減らすことです。たとえば Cardano で新しいプロジェクトを始めるとして、とてもよくあるのが、トークンを出して、チーム向けのベスティング（段階的な付与）のスケジュールを持ちたい、という場合です。これには厄介なことが多い。全員がベスティングのスケジュールを守ると、どう信じるのか。全員がきちんと受け取り、トークンが投げ売りされないと、どう信じるのか。資金を誰が預かるのか。そこで、スマートコントラクトでベスティングをやるのがとても一般的です。ということは、開発者を雇ってそのスマートコントラクトを作ることになり、本来のプラットフォームを作る代わりに、チームのトークンのベスティングのインフラのようなものを作っている。筋が通りません。そうする代わりに、私たちの既存のベスティングの「差し込めばすぐ使える（plug and play）」ソリューションを使えます。実際、Charli3 などエコシステムの大きなプロジェクトがそうしていて、自分たちで作って監査するのに比べて数万ドル節約できました。ほかにも同じようなアプリケーションがたくさんあります。私たちの GitHub を見ると、ベスティングがひとつ、シンプルなピアツーピアの取引がもうひとつ。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>人はよく、標準的でない資産、たとえば NFT などを取引したいとか、いくつかの NFT をほかの NFT や資産と交換するような変わった取引をしたいと思いますが、これは DEX ではできません。そこで人がやるのが、仲介者を置くことです。自分の資産をその仲介者に送って、仲介者が 2 者の間の取引を取り次ぐ。これは本当に危険で、そういうやり方は詐欺を大量に生みます。ですから、この差し込めば使えるソリューションを使って、どんなウェブサイトでもスワップを支えられる、というのがもうひとつです。サブスクリプションの支払いもあります。ステーキングもあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>エコシステムの多くのプロジェクトが、報酬や投票権などのために何かにステークできるトークンを持ちたがります。それも私たちの差し込めば使えるソリューションのひとつです。これらすべてのよいところは、自分のアプリケーションに組み込むのに Cardano について何も知らなくてよいことです。たとえばコーヒーショップでも、世界のどんなウェブアプリケーションでも、ブロックチェーンのことは何も知らないけれど、「ADA での支払いを受け付けたいかも」「ADA のサブスクリプションを許したい」「コーヒーを追跡する NFT の機能を持ちたい」と思ったら、私たちの GitHub にある差し込めば使えるソリューションに行って、Cardano も UTXO も何も理解しないまま、自分のウェブサイトに差し込めます。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-adoption">採用例 — 設計パターンのリポジトリ</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>とても効率的で、面白そうですね。いや、面白そうで、とても効率的、と言うべきでした。あなたのツールを取り入れた組織やプロジェクトがいくつかある、と言っていましたね。重要な成功例、あるいはいちばん目立つものとして挙げられるものが 1 つか 2 つありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>はい。ベスティングは確実に、エコシステムのたくさんのチームに取り入れられています。実際、この時点ではすべてのチームを把握しているわけでもありません。人が私たちのものを使っていると分かって驚くことが、しばしばあります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>いちばん影響が大きかったリリースは、おそらく設計パターンのリポジトリだと思います。開発者向けに、最先端の dApp の設計パターンを詳しく説明したものです。Cardano へのオンボーディングはとても大変で、ほかの分野で、それがいちばん複雑な分野であっても、きわめて有能なプログラマーであったとしても、Cardano のエコシステムに入ってくるのはとても難しい。ベストプラクティスを学ぶには、大量のオープンソースの成果物が手に入る必要があるからです。しかも、全員が違うツールを使っている分断されたエコシステムでは、技法を学ぶだけでも相当に込み入ったものになります。その技法はとても非標準的で、たとえば Cardano のベストプラクティスは、ほかのどこのベストプラクティスとも大きく違います。そこで私たちは、この設計パターンのリポジトリを出して、最先端の設計パターンをすべて詳しく説明しました。ほかのチームから私にこれを教えてくれることが絶えずあって、「はい、それを書いたのは私です」となる。それが見られたのは本当にうれしいことでした。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>大きなプロジェクトで開発者をオンボーディングするときに、どのチームもこれを見せるのが、もうほぼ標準になったと思います。実際、IOG でも、これがスタッフにトピックを説明するために使われ、共有されているのを見ました。Minswap でも、SundaeSwap でも、Cardano の主要なアプリのほとんどで共有されているのを見ています。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-future">これから — レイヤー 2 と Midgard</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>ええ、すばらしい。共有してくれてありがとうございます。それはまさに、教育、あるいは教育を助ける資産がとてもとても重要だ、という点を示していると思います。おっしゃったように、ここでオンボーディングされて、オープンソースの成果物にアクセスできるようにするために。オープンソースの成果物の中に教育がたくさんなければ、プロセスをさらに複雑にしてしまいますから。あといくつか質問があります。難しいものではありません。Anastasia Labs の今後の計画、開発や新機能、新しいプロダクトについて、どうお考えですか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>もちろん、オープンソースの公共のユーティリティのスマートコントラクトを引き続き出し、ほかの開発者がその上に作ったり引き出したりできる、大きく広がり続ける成果物の集まりを作って、オンボーディングのプロセスを楽にしていきます。設計パターンのリポジトリも引き続き拡充して、最新に保ち、新しい開発者のオンボーディングを助けます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>それと、会社として大きく変わったことのひとつがあります。私たちが最初に入ってきたときの dApp エコシステムと、今の状況について振り返りをしました。人が学べるオープンソースのコードの量は大幅に増えて、今では「Cardano で開発するのは難しい、オンボーディングが難しい」と主張することがそれほど説得力を持たなくなった。人が学べるオープンソースのコードの量が飛躍的に増えたので、Cardano の最良のアプリケーションを見て、コードを見て、どう作られているかを見て、比較的早く学べます。これにはとても満足していて、では次の一歩は何か、と考えました。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>ほかのエコシステム、たとえば Ethereum を見ると、いちばん大きな改善、経済成長のいちばん大きな推進力は、コアプロトコルの変更ではありませんでした。実際、過去 3〜4 年の Ethereum のコアプロトコルの変更は比較的小さく、あまり好評でもなかった。成長のいちばん大きな触媒は、独立したチームがレイヤー 2 のソリューションを作ったことです。たとえば Polygon、Optimism、Arbitrum、zkSync。これらすべてが、Ethereum のレイヤー 1 に大量の経済成長をもたらしました。どれもセキュリティは Ethereum に頼りつつ、機能では独自の違いを出せる。これはブロックチェーンにとって重要です。ひとつにはトリレンマがあって、ひとつのブロックチェーンがすべてのアプリケーションに合うことはできないからです。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>ブロックチェーンを作るときには必ずトレードオフが要ります。セキュリティ、スケーラビリティ、分散性。あるアプリケーションはセキュリティを本当に重視し、別のアプリケーションはスケーラビリティを本当に重視する。ということは、ひとつのブロックチェーンが、その 2 つのアプリケーションにとって最良の場所にはなれない。レイヤー 2 のよいところは、レイヤー 1 を離れずに、アプリケーションが必要とする機能を持つソリューションを作れることです。たとえば、きわめて高いスループットのブロックチェーンが要る人がいれば、今のところ Cardano はその用途にあまり向いていないかもしれない。けれども Hydra やほかのレイヤー 2 のソリューションなら、エコシステムを離れずにそれを作れます。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>今作っているのが、旗艦プロダクトの Midgard です。Cardano 向けの optimistic rollup で、レイヤー 2 を作るためのフレームワークです。これを Cardano の「唯一のレイヤー 2」にしたいわけではなく、Optimism のようなものにしたい。つまり、人が自分のアプリケーションのために、あるいは自分の要件に合わせてレイヤー 2 を作るのに使える SDK です。たとえば、連合型（federated）のネットワークを持ちたい、サプライチェーンの追跡のレイヤー 2 を持ちたい、ゲームのレイヤー 2 を持ちたい。そういうものがすべて Midgard で作れます。Midgard 自体も、もちろん単独のレイヤー 2 として存在します。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>ただ、これはエコシステムの成長の大きな触媒になると考えています。突然、Cardano に経済的なセキュリティを頼る、たくさんの違ったレイヤー 2 が現れることになるからです。つまり、Cardano の上に作りたくないかもしれないアプリケーションにレイヤー 2 を売り込めれば――たとえば Meld は、清算とスループットについての懸念からエコシステムを去りましたが――レイヤー 2 の上に作ってもらえれば、実質的にその経済活動がレイヤー 1 に乗ります。レイヤー 2 は Cardano に頼り、セキュリティの対価を Cardano に払うからです。これは成長の大きな触媒になると考えていて、とても楽しみにしています。</p></div>
+</div>
+
+
+<p class="sec" id="ja-t-community">コミュニティ、締め</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>楽しみなことがたくさん進んでいますね。それでも、やることが多すぎるとは言いにくい、よい位置にまだいると思います。最後に締めとして、Anastasia Labs はコミュニティとどう関わっていますか。コミュニティが関わる方法にはどんなものがありますか。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Discord に入ってもらえますし、私には Discord、Twitter、メールのどれでも連絡できます。関わるいちばんよい方法は技術的な質問です。それを手伝うために私たちはいるのですから。オープンソースのリポジトリの使い方や、出しているツールについての質問があれば、何でも。また、エコシステムに足りていないと感じるもの、たとえば「XYZ のオープンソースのソリューションがあればいいのに、存在しない」というものがあれば、ぜひ連絡してください。十分な需要があれば、間違いなく私たちが出すものになります。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>ありがとうございます。あなたと Discord サーバーの連絡先を用意して、この動画の説明欄に必ず付けます。見てくれている皆さん、いいね、コメント、チャンネル登録を忘れずに。様子を教えてください。それと、Intersect のメンバーになることでも Cardano のエコシステムに関われますので、お忘れなく。ありがとうございました。また次回お会いしましょう。</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro <em>(推定)</em></div>
+  <div class="turn-body"><p>それでは、よい一日を。</p></div>
+</div>
+</details>
+
+<details class="part lang-en" id="en">
+<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">固有名詞の誤変換を修正済み</span><span class="l-en">Obvious proper-noun misrecognitions corrected</span></span></summary>
+<p class="sec" id="t-intro">Introduction</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Hey, everybody. It's Tex with the Open Source Office once again, and uh today we have another organization spotlight uh meeting with Philip with Anastasia Labs, and uh he's going to tell us some more about what they do. Philip, do you want to give yourself a brief introduction?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah, sure. Um my name is Philip DiSarro. I'm the CEO and founder of Anastasia Labs. Uh Anastasia Labs is an research and development firm specializing in Cardano smart contracts and dApp protocol development.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Wonderful. Well, thank you so much. Um we'll get into just a few questions to to clarify some things. Um would you be able to provide an overview of Anastasia Labs' uh main mission within the Cardano ecosystem?</p></div>
+</div>
+
+
+<p class="sec" id="t-mission">Mission: open-source production code</p>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah. So, I founded Anastasia Labs with the sole intention of increasing the availability of open-source production-grade uh dApp protocol code throughout the ecosystem. You know, one of the main pain points in Cardano was the lack of open-source production code bases to build from. Uh and and this really hurts the ecosystem in like very tangible uh financial and time uh ways.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>So, for instance, if a new team um is deciding what protocol they want to build on, right? And there are two options, one where they can start from an existing body of work and, you know, add their business specific logic and, you know, just focus on feature development and their business requirements. Or another where they have to start from the ground up, build everything including, you know, the infrastructure, that the the dApp, the base of the dApp, um from scratch, right? And there's nothing they can draw from or build on top of, then it makes it much less attractive.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>So, uh when you know, when when Anastasia Labs was founded, our main focus was just releasing tons of open-source uh smart contracts and, you know, end-to-end dApps so that new projects coming in, one, can use this as reference material for learning design patterns and, you know, learning how to build production applications, and two, so that, you know, people could build off of this existing work instead of having to, you know, uh build everything from scratch,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>uh which results in a lot of redundant spending, right? Cuz if there are 10 apps that are trying to build like very similar products, then the base, the core infrastructure of most of that product is the same, right? And then at the top, you get some deviation, right? Some might have features that others don't. Um, but you know, for to get to that point, they all wind up having to build the base, right? And however much time and money they invest into building that, uh, is redundantly spent, and could have been spent in, you know, more feature development, or, uh, hiring more devs, or more security.</p></div>
+</div>
+
+
+<p class="sec" id="t-security">Security: a formal verification toolkit</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Absolutely. Well, that sounds super important. And a few of the things that you mentioned at the tail end, they're tying to the next question. So, uh, of course, that the uh the dApps, as you mentioned, and the uh, sorry, the smart contracts, uh, of course, that tells how this integrates with the Cardano blockchain. But what are some unique features of what you are building that help enhance data reliability and security?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Right. Um, so for security, we have a lot a number of auditing tools that we are um that we've both built and are building. For instance, uh, one of our flagship uh, tooling releases is this formal verification toolkit for Cardano smart contracts. Uh, one of the great things about Cardano and building applications on Cardano is that the languages that we use, and the tooling that we use, is very well suited for formal verification, which is a mechanism you can use to mathematically prove the correctness of a program, right? And this is really important when you're building mission-critical applications like financial operating systems, right? Like lending platforms, trading platforms, all of these things, because uh at the end of the day, right, when you're building a noncustodial platform, the application logic must be airtight, cuz if there's any issues, then user funds get lost. They can be stolen by malicious actors, et cetera, right? So, that's why the ecosystem put so much importance on designing, you know, this facilitation for formal methods.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Um, but up until this point, we haven't seen a toolkit um released that has made this accessible to your everyday developer, right? Formal methods is a very hard field to break into. Typically, uh the people that are doing it are either master's uh you know, have their master's degree in formal methods or a PhD in formal methods, and uh it can be very expensive, especially for small teams on Cardano, to, you know, either hire these people or uh onboard themselves to be able to to, you know, formally prove the correctness of their protocols. Um, so what we've released is this toolkit that um basically brings down the barrier to entry, so, you know, any standard developer should be able to quickly go through the documentation and start writing proofs uh about you know, the correctness of of their dApp.</p></div>
+</div>
+
+
+<p class="sec" id="t-usecases">Use cases: plug-and-play contracts</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Wonderful. So, uh what are some primary use cases for the Anastasia Labs' products here on the Cardano ecosystem?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Right. Um so, the great thing about what we've done is that um no matter what you're building on Cardano, you should be able to derive some utility or some benefit from using the open source stuff that we've already built, right? So, to use any of our stuff, existing works, it's all free, it's all open-source.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Um, and the goal is to reduce this the redundant spending in the ecosystem. So, right, if you're considering, you know, you're starting a new project on Cardano, uh, maybe one of the common, very common things is, okay, well, you want to release a token, and you want to have some team vesting schedule, right? This has a lot of complications. One, like how do we trust that everyone is going to obey the vesting schedule? Uh, two, you know, how do we trust everyone's going to get paid, uh, that these tokens aren't going to be dumped, uh, who's custodying these funds? Uh, so it's very common that people will use smart contracts to do this vesting, right? And this means you have to hire a developer to build a smart contracts, and instead of building your actual platform, you're building like infrastructure for like vesting schedules and tokens for your team, which doesn't make much sense. Uh, so, you know, instead of doing this, you can use our existing um plug and play solution for vesting. And, in fact, large projects throughout the ecosystem like Charli3 and others uh, have done this, right? And it saved them tens of thousands of dollars from having to go build and audit their own. Um, and there are many other such applications. If you go through our GitHub, right, vesting is one, simple peer-to-peer trading is another. Uh, often people will like uh, want to trade assets um</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>that aren't standard, for instance, like NFTs or things, or have like weird trades like uh, you maybe trade a few NFTs for other NFTs or assets, uh, and this isn't facilitated on a DEX. So, what people do is they have a middleman, right? Where you'll send your assets to this middleman, and um the middleman will facilitate the trade between two parties, and this is really risky, and a lot of it's facilitated, it just uh, breeds a lot of scamming. Um, so another thing is, you know, you can use this plug and play solution to support swaps on any website, for instance. Uh, subscription payments is another one we have, staking, a lot of uh, projects in the ecosystem</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>like to have a token that you can stake for something, either rewards or a voting power or something like that. That's another plug and play solution we have. And the great thing about all of these is you don't have to know anything about Cardano to deploy them on your application. So, for instance, if you're a coffee shop or just like any web application in the world, right? And you know nothing about blockchain, but you think, "Huh, maybe I want to, you know, take accept payments in ADA, or I want to allow ADA subscriptions, or I want to, you know, have some sort of NFT functionality that tracks my coffee." Uh, all of these things, uh, you can go to our plug and play solutions in our GitHub and just plug and play them into your website without understanding Cardano or UTXO or anything.</p></div>
+</div>
+
+
+<p class="sec" id="t-adoption">Who picked it up: the design patterns repository</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>That's all super efficient and uh it's it's sounds very interesting. Uh, or sorry, I should say that sounds interesting and very efficient. Um, I I know you mentioned maybe a few uh organizations or projects that have picked up on some of your tools here. Is there any one or two that you might highlight as uh key success stories or the most notable?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah, um, so the vesting certainly has been picked up by many teams throughout the ecosystem. In fact, we don't even know all the teams at this point. Um, and a lot of the time it's like I, it it comes as a surprise to me when I find out people are using our stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>I think one of our most, probably our most um, impactful releases has been this design patterns repository, which provides detailed explanations of sort of state-of-the-art um, dApp design patterns for developers because, you know, onboarding into Cardano is very tough. And you know, even if you're, you know, an extremely competent programmer in any other field, even the most complex fields, um, breaking into the Cardano ecosystem is very difficult because the avail- you know, um, you need a large body of available open source work to be able to learn uh, best practices. And um, with a fragmented ecosystem where everyone is using different tooling, it can be very complicated to just like, you know, learn the techniques um, which are very non-standard, for instance, like the best practices in Cardano are very different than the best practices anywhere else. Uh, so we release this design patterns repository, which explains in detail all these state-of-the-art design patterns. Uh, and, yeah, I've been constantly referred to this by other teams, um, and I'm like, "Yes, I'm the dude that wrote this." So, you know, it's it's been great to see that. I think it's become pretty much standard</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>uh, for every team when onboarding developers in in large projects to show them this. In fact, um, IOG, uh, I've seen this use uh, and shared throughout IOG to explain topics to staff. I've seen this shared uh, at Minswap, at SundaeSwap, um, and on most major apps on on Cardano.</p></div>
+</div>
+
+
+<p class="sec" id="t-future">What next: Layer 2s and Midgard</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Yes. Well, great. Thank you for sharing. And and uh, I think that's really alluding to the point where education uh, or assets that help us educate are are super, super important uh, as far as, like you mentioned, getting onboarded here and having access to those open source bodies of work. If If there's not a ton of education in those open source bodies, that can just further complicate the process. Uh, we'll get a few more questions here for you. Nothing too crazy, but what would you say the future plans are for Anastasia Labs in terms of development, new features, new products?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Right. Um, so of course, we continue to um, will continue to release open-source public utilities smart contracts and uh try to create, you know, a very large expanding body of work that other developers can build on top of and draw from to make that onboarding process easier. Uh, we'll continue to expand our design patterns repository to keep it up to date and help onboarding new developers. Uh, and, you know, one of the big shifts that we've had as the company is uh, we've</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>we did um, a retrospective on the dApp ecosystem when we first came in, and where we are now. And uh, the but the amount of open-source code that people can learn from has increased um, significantly uh, to a point where now it's not so compelling to argue that, oh, it's it's hard to develop on Cardano, it's hard to onboard, uh, because the amount of open-source code that people can learn from has, you know, tremendously increased such that, you know, you can look at the best applications on Cardano, see the code, see how they're built, and and learn relatively quickly. So, we're very satisfied with this, and we thought, okay, well, what's the next step? Um, we looked at other ecosystems, for instance, Ethereum, and uh, you know, the biggest improvements um,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>the biggest drivers for economic growth in Ethereum weren't sort of core protocol changes, um, you know, in fact, people uh, the changes to the core Ethereum protocol in the past three or four years have been relatively minimal and not very well received. The biggest um, catalyst for growth were independent teams um, building Layer 2 solutions. Uh, for instance, Polygon, Optimism, Arbitrum, zkSync, all of these things have driven a massive amounts of economic growth to the Ethereum Layer 1, uh, and um, all of them rely on Ethereum for security, but allow sort of their own um, uh, a deviation in features, right? Which is important for blockchain because one there's this trilemma, right? And one blockchain can't suit every single</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>application. Uh, you need to make trade-offs whenever you're building a blockchain: uh, security, scalability, decentralization. Um, and, for instance, one application might really value security, but another might really value scalability, uh, and that means that um, one blockchain wouldn't be the best place for those two applications. The nice thing about Layer 2 solutions is they allow you to build solutions that have the features that applications need without leaving the Layer 1. Uh, so for instance, if someone needs an extremely high-throughput blockchain, um, right now, Cardano might not be very well suited to their use case. Um, but things like Hydra and other Layer 2 solutions would allow them to build that without leaving the ecosystem.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Uh, and what we're building now, Midgard, our flagship product, is a optimistic roll-up for Cardano, which uh, is a framework for building Layer 2s. So, we don't want this to be the Layer 2 on Cardano, uh, we want it to be much like Optimism uh, in that uh, it's an SDK that people can use to build Layer 2s for their applications uh, or, you know, to meet their needs. Uh, so, for instance, if you want to have like a federated network, uh, if you want to have like a supply chain tracking Layer 2, or a gaming Layer 2, uh, all of these things can be built via Midgard. Um, and Midgard itself will exist as a standalone Layer 2, of course, but uh, we think this this is really going to be a large catalyst for growth in the ecosystem because,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>all of a sudden, you're going to see a ton of different um, Layer 2s that rely on Cardano for economic security, right? And that means, you know, if you can pitch a Layer 2 to an application that might not want to build on Cardano, right, for instance, Meld uh, left the ecosystem because of some concerns with liquidations and throughput, um, if you can get them to build on a Layer 2, then uh, essentially you're getting that economic activity on the Layer 1, right? Cuz the Layer 2 relies on Cardano and pays to Cardano for security. And we think this is going to be a huge catalyst for growth, and we're very excited about this.</p></div>
+</div>
+
+
+<p class="sec" id="t-community">Community and closing</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>That That's a lot of exciting things going on, and I think we're still at a in a great position where it's hard to say that there's too much going on, right? Uh, the last part here, kind of round it out, how would you say that Anastasia Labs engages with the community? And what are some ways that the community can get involved?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah, you can join our Discord, um, you can contact me either on Discord, Twitter, or email, uh, and, yeah, the best way to engage is with technical questions cuz that's what we're here to help you do. Um, also, if you have any questions on how to use any of our open source repositories, any of the tooling that we've released, um, if you have things that, you know, um, you feel uh, are missing from the ecosystem, for instance, you'd like to have some open-source solution for XYZ, and it doesn't exist, then definitely reach out to us. And uh, if there's enough demand, for sure, it's something that we would we would release.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Great, great. Thank you. So, we'll make sure that we get some contact information uh for you and for the Discord server, and we'll make sure that we attach that in the the description here. Uh, for everyone giving us a little watch, please don't forget to like, comment, subscribe, let us know how it's going. And uh, also don't forget you can get involved here in the Cardano ecosystem by becoming a member of Intersect as well. Well, thanks so much, and we'll see y'all next time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro <em>(inferred)</em></div>
+  <div class="turn-body"><p>Have a nice one.</p></div>
+</div>
+</details>
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+  <a href="https://www.youtube.com/watch?v=JY_573d57AA"><span class="l-ja">元の録画</span><span class="l-en">Original recording</span></a>
+</nav>
+
+<footer>
+<p><span class="l-ja">Cardano note — Intersect Open Source Office · <a href="https://www.youtube.com/watch?v=JY_573d57AA">動画を見る</a><br>この回は公開されている録画にもとづくため、チャタムハウスルールの対象ではなく、発言者は実名のまま扱っています。</span><span class="l-en">Cardano note — Intersect Open Source Office · <a href="https://www.youtube.com/watch?v=JY_573d57AA">Watch the video</a><br>This session is based on a publicly published recording, so it is not covered by the Chatham House Rule and the speakers are named.</span></p>
+</footer>
+
+</div>

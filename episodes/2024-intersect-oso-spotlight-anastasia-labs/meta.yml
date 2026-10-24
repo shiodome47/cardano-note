@@ -1,0 +1,35 @@
+slug: 2024-intersect-oso-spotlight-anastasia-labs
+title: Project Spotlight — Anastasia Labs。「土台を 10 回作らない」ためのオープンソースと、次の一手としての Midgard（Philip DiSarro）
+title_en: Project Spotlight Anastasia Labs
+date: 2024                  # 要確認。依頼者の指示は「2024 年の動画」のみ。月日は YouTube のページで確認できていない（この環境からは取得できなかった）。確認できたらディレクトリ名と docs/ の表記を直す
+series: intersect-oso       # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: Open Source Office at Intersect MBO   # YouTube 上の表示名（@osointersectmbo）
+official_channel: true      # oEmbed の author_url が https://www.youtube.com/@osointersectmbo、RSS のチャンネル名が上の表示名と一致することを確認（2026-10-24）。Intersect の Open Source Office の公式チャンネル
+duration: "16:42"           # 依頼者のスクリーンショットから
+video: https://www.youtube.com/watch?v=JY_573d57AA
+
+speakers:
+  - Tex                     # 司会。Intersect の Open Source Office。冒頭で "It's Tex with the Open Source Office" と名乗る。姓は動画に出ない
+  - Philip DiSarro          # ゲスト。Anastasia Labs の CEO・創業者（本人が冒頭で名乗る）
+speaker_labels: inferred    # 字幕に話者名はない。問いと答えの形式なので割り当ては明確。末尾の "Have a nice one." だけ推定
+timestamps: none            # 素の文字起こし。時刻がないので .turn-time は付けていない。節（.sec）の id だけ付けた
+proper_nouns_corrected_in_docs: false   # 直す必要のある固有名詞の誤変換がなかった（Charli3、Minswap、SundaeSwap、Meld、Polygon、Optimism、Arbitrum、zkSync、Hydra はいずれも正しい綴り）
+
+# 原本について
+# - 依頼者から本文に貼り付けで受領した素の文字起こし（63 段落、約 2,950 語）をそのまま transcript.txt に置いた
+# - 依頼者の添え書き（「2024年のphillの動画。」）は原本から除いた
+# - 1 段落に 2 人の声が入る箇所はない
+
+# 画面について
+# - 字幕と、依頼者のスクリーンショット（動画のサムネイル、題、チャンネル名、尺）だけを受領。画面の中身は確認していない。「画面」バッジは未使用
+
+# 裏取り（2026-10-24 時点）
+# - Anastasia Labs の GitHub（github.com/Anastasia-Labs）に design-patterns、aiken-design-patterns、formal-verification、linear-vesting、direct-offer、payment-subscription、yieldfarming、midgard の各リポジトリがある
+# - Project Catalyst Fund 10 の提案 "Anastasia Labs - Open Source Production Grade DApps"（135,500 ADA）は 4 マイルストーンすべて完了。ベスティング、単一資産のステーキング、設計パターンの文書化が成果物に含まれる
+# - Philip DiSarro は Intersect の 2024 年の委員会選挙で Open Source Committee の候補者（候補者ページに「Anastasia Labs は Intersect の創設メンバー」「生産するコードはすべてオープンソースにすると誓う」）
+# - Intersect Development Update #33（2024-09-27）で Anastasia Labs が Enterprise メンバーとして紹介された
+# - MELD は 2023 年に Cardano から Avalanche のサブネットへ移った。動画の「清算とスループットの懸念」という理由は話者の説明
+# - Midgard：2026 年には Anastasia Labs が Midgard Labs として活動。2026-10-24 時点で公開テストネットは未提供（プレアルファを開発中）。このアーカイブの 2026-07-10 の回（Dave Dionisio）を参照

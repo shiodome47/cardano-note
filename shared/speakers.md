@@ -171,3 +171,17 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 
 **まとめでの書き方**：**全員が当事者**（司会 2 人は PRIME の提案者、Dave は Input Output 側で接続を手伝った人）。互いへの評価（「好かれる人たち」「天才」）、自社の実績（「6 年で 200 プロトコル」）、財務庫の位置づけ（「ソブリン・ウェルス・ファンド」）はすべて発言者に帰属させ、地の文にしない。Dave の技術説明は本人の「技術的に正確ではないかもしれない」という留保を落とさない。
 
+### 2024 Intersect Open Source Office — Project Spotlight Anastasia Labs（Philip DiSarro）
+
+**話者 2 名。字幕に話者名も時刻もない。**問いと答えが交互に来るインタビューなので割り当ては明確。
+
+| 表記 | 根拠 |
+| --- | --- |
+| **Tex**（司会、Intersect Open Source Office） | 冒頭で "It's Tex with the Open Source Office once again" と名乗る。姓は動画に出ないので Tex のまま。質問と締め（Intersect の会員募集）を担当 |
+| **Philip DiSarro**（ゲスト、Anastasia Labs CEO・創業者） | 冒頭で "my name is Philip DiSarro. I'm the CEO and founder of Anastasia Labs" と名乗る。綴りは本人の表記 Philip（このアーカイブの他の回では Dave Dionisio らが "Phil" と呼ぶ） |
+
+- **確度が低かった箇所**: 末尾の "Have a nice one." だけ。司会の "we'll see y'all next time" の後なのでゲストの返しとみて Philip DiSarro に `(推定)` 付きで割り当てた
+- **ターンの分け方**: Philip の長い答えは話題の切れ目で分けた（30 ターン、7 節）。1 段落に 2 人の声が入る箇所はない
+- **日付**: 依頼者の指示は「2024 年の動画」のみ。月日は YouTube のページから取得できず（この環境からはページが読めない、チャンネルの RSS は直近 15 本のみ）、`date: 2024` に要確認のコメントを付けた。確認できたらディレクトリ名（`2024-intersect-oso-spotlight-anastasia-labs`）と docs/ の表記を直す
+
+**まとめでの書き方**: Intersect のチャンネルがエコシステムのプロジェクトを紹介する企画なので、Anastasia Labs についての評価（「数万ドル節約」「ほぼ標準になった」「成長の触媒」）はすべて本人の発言として帰属させた。IOG・Minswap・SundaeSwap での採用は「本人が見た」と書き、各組織の発言にしない。Meld が去った理由も本人の説明として書いた。

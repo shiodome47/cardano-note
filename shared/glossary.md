@@ -240,6 +240,20 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 - **Ren**（"Ren we did deals with"）、**Silk**（"They should use Silk for that"）— 特定できず。聞こえたまま
 - **Tony from BitPay** — BitPay 共同創業者の Tony Gallippi とみられるが、動画では姓が出ない。まとめでは「とみられる」で書いた
 
+### 2024 Intersect Open Source Office — Project Spotlight Anastasia Labs（Philip DiSarro）
+
+**直すべき固有名詞の誤変換はなかった。**Charli3、Minswap、SundaeSwap、Meld、Polygon、Optimism、Arbitrum、zkSync、Hydra はいずれも各プロジェクトの綴りどおり。"roll-up" は原文のまま（表記は optimistic rollup に統一して訳す）。
+
+| 動画の中の言い方 | 訳し方 |
+| --- | --- |
+| plug and play solution | 「差し込めば使えるソリューション」。初出で原語を添える |
+| formal verification toolkit | 「形式検証のツールキット」。**要点では「正しさを数学的に示す道具」と書く** |
+| design patterns repository | 「設計パターンのリポジトリ」 |
+| redundant spending | 「重複した支出」 |
+| vesting (schedule) | 「ベスティング（段階的な付与）」。初出で説明 |
+| federated network | 「連合型（federated）のネットワーク」 |
+| trilemma | 「トリレンマ」。初出で「セキュリティ、スケーラビリティ、分散性のトレードオフ」と添える |
+
 ## Cardano の基本用語
 
 | 用語 | 説明 | 訳し方 |
@@ -384,7 +398,13 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **RealFi / USDR** | Input Output の取り組み。USDR は利回り付きのステーブルコイン。**2026-08-26 の投票でティッカーは USDrf / sUSDrf に改称と決まった**が、7 月収録の動画では USDR。各回の表記は動画のとおりにし、書き換えない。詳細は `2026RealFi` の glossary |
 | **Midgard Labs** | Anastasia Labs の「次の章」として同じチームが使う名前（ブロックチェーンのセキュリティ監査とエンジニアリング）。Midgard の開発元。創業者は Phil DiSarro、COO は Dave Dionisio（2026-07 時点）。公式: <https://midgardlabs.io> |
 | **Anastasia Labs** | Cardano の開発企業。Phil DiSarro が創業。Midgard の設計者で、Project Catalyst で Midgard の資金を受けた。2026 年には Midgard Labs として活動 |
-| **Phil DiSarro** | Anastasia Labs / Midgard Labs の創業者。Dave Dionisio によれば USDCx ブリッジの技術アーキテクト。2026-07-10 の動画には出演していない |
+| **Phil DiSarro** | Anastasia Labs / Midgard Labs の創業者。Dave Dionisio によれば USDCx ブリッジの技術アーキテクト。2026-07-10 の動画には出演していない。本人が出演しているのは 2024 年の Intersect OSO の Project Spotlight（CEO・創業者として名乗る。綴りは Philip DiSarro） |
+| **Intersect Open Source Office（OSO）** | Intersect の中でオープンソースの方針・手続きを管理する部署。YouTube チャンネル「Open Source Office at Intersect MBO」（<https://www.youtube.com/@osointersectmbo>、channel_id UC0L0qiUF_C-Q2PSoqhaBIRg）で委員会の記録と「Project Spotlight」を公開。文書: <https://committees.docs.intersectmbo.org/intersect-open-source-committee/about/open-source-office-oso>。2024 年の Anastasia Labs の回の司会は Tex（姓は動画に出ない） |
+| **Anastasia Labs の公開リポジトリ** | GitHub（<https://github.com/Anastasia-Labs>、2026-10-24 時点）: design-patterns、aiken-design-patterns、formal-verification、linear-vesting、direct-offer（ピアツーピア取引）、payment-subscription / payment-subscription-offchain、yieldfarming、midgard。2024 年の動画で「ベスティング」「P2P 取引」「サブスクリプション」「ステーキング」「形式検証ツールキット」「設計パターン」と呼ばれたものに対応するとみられるが、動画はリポジトリ名を挙げていない |
+| **Anastasia Labs の Catalyst Fund 10 提案** | "Anastasia Labs - Open Source Production Grade DApps"（135,500 ADA）。線形ベスティング、単一資産のステーキング、Merkle ツリー、ブリッジ、イールドファーミングの各コントラクトと設計パターンの文書化。4 マイルストーンすべて完了（<https://projectcatalyst.io/funds/10/developer-ecosystem-the-evolution/anastasia-labs-open-source-production-grade-dapps>） |
+| **Philip DiSarro の 2024 年 OSC 立候補** | Intersect の 2024 年委員会選挙で Open Source Committee の候補者。候補者ページに「Anastasia Labs は Intersect の創設メンバー」「生産するコードはすべてオープンソースにすると誓う」。Anastasia Labs は 2024-09-27 の Intersect Development Update #33 で Enterprise メンバーとして紹介 |
+| **Charli3** | Cardano のオラクルのプロジェクト。2024 年の動画で Philip DiSarro が「ベスティングのコントラクトを使って数万ドル節約した」例として挙げた（本人の見積もり） |
+| **MELD（Meld）** | もと Cardano の DeFi プロジェクト。2023 年に Avalanche のサブネットへ移った。2024 年の動画で Philip DiSarro は「清算とスループットの懸念で去った」と述べたが、理由は本人の説明で MELD 側の発表は未確認 |
 | **Dave Dionisio** | Midgard Labs の COO（2026-07 時点、X のプロフィール）。元 Input Output（LayerZero・Pyth・Circle の統合や PRIME の RFP に関わったと本人が語る）、FS Vector、Fannie Mae、CFPB。音声認識では "Dinesio" などとも出る（2026-09-10 の回） |
 | **CFPB** | 米国の消費者金融保護局。ドッド・フランク法で設置。Dave Dionisio の前職 |
 | **SegWit2x（ニューヨーク合意）** | 2017 年の Bitcoin のブロックサイズ拡大の試み。BitGo の Mike Belshe らが主導し、マイナーがブロックにビットを立てて支持を示す方式だったが取り下げられた。Bryan Colligan が「Bitcoin が死んだ日」と呼んだ出来事とみられる |

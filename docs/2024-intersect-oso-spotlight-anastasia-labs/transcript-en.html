@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project Spotlight Anastasia Labs (2024) — Full transcript (English)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap lang-en">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <a class="lang-toggle" href="./transcript-ja.html" aria-label="日本語訳を読む" title="日本語訳を読む">日本語</a>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Intersect Open Source Office</p>
+<h1>Full transcript (English original)</h1>
+<p class="meta">
+  <span>2024 (day to be confirmed)</span>
+  <span>YouTube</span>
+  <span>Project Spotlight</span>
+  <span>16:42</span>
+</p>
+
+<div class="note">
+<p><strong>About this page.</strong> A publicly published video on the channel of Intersect's Open Source Office (“Open Source Office at Intersect MBO”, @osointersectmbo), so the speakers are named: <code>Tex</code>, the host from the Open Source Office (surname not given in the video), and <code>Philip DiSarro</code>, CEO and founder of Anastasia Labs, who introduces himself at the start.</p>
+<p><strong>The source is a plain transcript with no timestamps and no speaker labels</strong>, in short paragraphs. The interview alternates question and answer, so the attribution is straightforward; only the closing “Have a nice one.” is marked <em>(inferred)</em>. Philip DiSarro's long answers are split into turns at changes of topic, and the Japanese page uses the same split. There is no <code>.turn-time</code> on this page because the source has none.</p>
+<p><strong>No proper-noun corrections were needed</strong>: Charli3, Minswap, SundaeSwap, Meld, Polygon, Optimism, Arbitrum, zkSync and Hydra are all spelled as the projects spell them. The wording is otherwise unchanged, hesitations included.</p>
+<p><strong>The publication date is known only as 2024.</strong> The exact day could not be read from YouTube from this environment and is marked as to be confirmed.</p>
+</div>
+
+<!--content-->
+
+<p class="sec" id="t-intro">Introduction</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Hey, everybody. It's Tex with the Open Source Office once again, and uh today we have another organization spotlight uh meeting with Philip with Anastasia Labs, and uh he's going to tell us some more about what they do. Philip, do you want to give yourself a brief introduction?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah, sure. Um my name is Philip DiSarro. I'm the CEO and founder of Anastasia Labs. Uh Anastasia Labs is an research and development firm specializing in Cardano smart contracts and dApp protocol development.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Wonderful. Well, thank you so much. Um we'll get into just a few questions to to clarify some things. Um would you be able to provide an overview of Anastasia Labs' uh main mission within the Cardano ecosystem?</p></div>
+</div>
+
+
+<p class="sec" id="t-mission">Mission: open-source production code</p>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah. So, I founded Anastasia Labs with the sole intention of increasing the availability of open-source production-grade uh dApp protocol code throughout the ecosystem. You know, one of the main pain points in Cardano was the lack of open-source production code bases to build from. Uh and and this really hurts the ecosystem in like very tangible uh financial and time uh ways.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>So, for instance, if a new team um is deciding what protocol they want to build on, right? And there are two options, one where they can start from an existing body of work and, you know, add their business specific logic and, you know, just focus on feature development and their business requirements. Or another where they have to start from the ground up, build everything including, you know, the infrastructure, that the the dApp, the base of the dApp, um from scratch, right? And there's nothing they can draw from or build on top of, then it makes it much less attractive.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>So, uh when you know, when when Anastasia Labs was founded, our main focus was just releasing tons of open-source uh smart contracts and, you know, end-to-end dApps so that new projects coming in, one, can use this as reference material for learning design patterns and, you know, learning how to build production applications, and two, so that, you know, people could build off of this existing work instead of having to, you know, uh build everything from scratch,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>uh which results in a lot of redundant spending, right? Cuz if there are 10 apps that are trying to build like very similar products, then the base, the core infrastructure of most of that product is the same, right? And then at the top, you get some deviation, right? Some might have features that others don't. Um, but you know, for to get to that point, they all wind up having to build the base, right? And however much time and money they invest into building that, uh, is redundantly spent, and could have been spent in, you know, more feature development, or, uh, hiring more devs, or more security.</p></div>
+</div>
+
+
+<p class="sec" id="t-security">Security: a formal verification toolkit</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Absolutely. Well, that sounds super important. And a few of the things that you mentioned at the tail end, they're tying to the next question. So, uh, of course, that the uh the dApps, as you mentioned, and the uh, sorry, the smart contracts, uh, of course, that tells how this integrates with the Cardano blockchain. But what are some unique features of what you are building that help enhance data reliability and security?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Right. Um, so for security, we have a lot a number of auditing tools that we are um that we've both built and are building. For instance, uh, one of our flagship uh, tooling releases is this formal verification toolkit for Cardano smart contracts. Uh, one of the great things about Cardano and building applications on Cardano is that the languages that we use, and the tooling that we use, is very well suited for formal verification, which is a mechanism you can use to mathematically prove the correctness of a program, right? And this is really important when you're building mission-critical applications like financial operating systems, right? Like lending platforms, trading platforms, all of these things, because uh at the end of the day, right, when you're building a noncustodial platform, the application logic must be airtight, cuz if there's any issues, then user funds get lost. They can be stolen by malicious actors, et cetera, right? So, that's why the ecosystem put so much importance on designing, you know, this facilitation for formal methods.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Um, but up until this point, we haven't seen a toolkit um released that has made this accessible to your everyday developer, right? Formal methods is a very hard field to break into. Typically, uh the people that are doing it are either master's uh you know, have their master's degree in formal methods or a PhD in formal methods, and uh it can be very expensive, especially for small teams on Cardano, to, you know, either hire these people or uh onboard themselves to be able to to, you know, formally prove the correctness of their protocols. Um, so what we've released is this toolkit that um basically brings down the barrier to entry, so, you know, any standard developer should be able to quickly go through the documentation and start writing proofs uh about you know, the correctness of of their dApp.</p></div>
+</div>
+
+
+<p class="sec" id="t-usecases">Use cases: plug-and-play contracts</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Wonderful. So, uh what are some primary use cases for the Anastasia Labs' products here on the Cardano ecosystem?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Right. Um so, the great thing about what we've done is that um no matter what you're building on Cardano, you should be able to derive some utility or some benefit from using the open source stuff that we've already built, right? So, to use any of our stuff, existing works, it's all free, it's all open-source.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Um, and the goal is to reduce this the redundant spending in the ecosystem. So, right, if you're considering, you know, you're starting a new project on Cardano, uh, maybe one of the common, very common things is, okay, well, you want to release a token, and you want to have some team vesting schedule, right? This has a lot of complications. One, like how do we trust that everyone is going to obey the vesting schedule? Uh, two, you know, how do we trust everyone's going to get paid, uh, that these tokens aren't going to be dumped, uh, who's custodying these funds? Uh, so it's very common that people will use smart contracts to do this vesting, right? And this means you have to hire a developer to build a smart contracts, and instead of building your actual platform, you're building like infrastructure for like vesting schedules and tokens for your team, which doesn't make much sense. Uh, so, you know, instead of doing this, you can use our existing um plug and play solution for vesting. And, in fact, large projects throughout the ecosystem like Charli3 and others uh, have done this, right? And it saved them tens of thousands of dollars from having to go build and audit their own. Um, and there are many other such applications. If you go through our GitHub, right, vesting is one, simple peer-to-peer trading is another. Uh, often people will like uh, want to trade assets um</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>that aren't standard, for instance, like NFTs or things, or have like weird trades like uh, you maybe trade a few NFTs for other NFTs or assets, uh, and this isn't facilitated on a DEX. So, what people do is they have a middleman, right? Where you'll send your assets to this middleman, and um the middleman will facilitate the trade between two parties, and this is really risky, and a lot of it's facilitated, it just uh, breeds a lot of scamming. Um, so another thing is, you know, you can use this plug and play solution to support swaps on any website, for instance. Uh, subscription payments is another one we have, staking, a lot of uh, projects in the ecosystem</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>like to have a token that you can stake for something, either rewards or a voting power or something like that. That's another plug and play solution we have. And the great thing about all of these is you don't have to know anything about Cardano to deploy them on your application. So, for instance, if you're a coffee shop or just like any web application in the world, right? And you know nothing about blockchain, but you think, "Huh, maybe I want to, you know, take accept payments in ADA, or I want to allow ADA subscriptions, or I want to, you know, have some sort of NFT functionality that tracks my coffee." Uh, all of these things, uh, you can go to our plug and play solutions in our GitHub and just plug and play them into your website without understanding Cardano or UTXO or anything.</p></div>
+</div>
+
+
+<p class="sec" id="t-adoption">Who picked it up: the design patterns repository</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>That's all super efficient and uh it's it's sounds very interesting. Uh, or sorry, I should say that sounds interesting and very efficient. Um, I I know you mentioned maybe a few uh organizations or projects that have picked up on some of your tools here. Is there any one or two that you might highlight as uh key success stories or the most notable?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah, um, so the vesting certainly has been picked up by many teams throughout the ecosystem. In fact, we don't even know all the teams at this point. Um, and a lot of the time it's like I, it it comes as a surprise to me when I find out people are using our stuff.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>I think one of our most, probably our most um, impactful releases has been this design patterns repository, which provides detailed explanations of sort of state-of-the-art um, dApp design patterns for developers because, you know, onboarding into Cardano is very tough. And you know, even if you're, you know, an extremely competent programmer in any other field, even the most complex fields, um, breaking into the Cardano ecosystem is very difficult because the avail- you know, um, you need a large body of available open source work to be able to learn uh, best practices. And um, with a fragmented ecosystem where everyone is using different tooling, it can be very complicated to just like, you know, learn the techniques um, which are very non-standard, for instance, like the best practices in Cardano are very different than the best practices anywhere else. Uh, so we release this design patterns repository, which explains in detail all these state-of-the-art design patterns. Uh, and, yeah, I've been constantly referred to this by other teams, um, and I'm like, "Yes, I'm the dude that wrote this." So, you know, it's it's been great to see that. I think it's become pretty much standard</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>uh, for every team when onboarding developers in in large projects to show them this. In fact, um, IOG, uh, I've seen this use uh, and shared throughout IOG to explain topics to staff. I've seen this shared uh, at Minswap, at SundaeSwap, um, and on most major apps on on Cardano.</p></div>
+</div>
+
+
+<p class="sec" id="t-future">What next: Layer 2s and Midgard</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Yes. Well, great. Thank you for sharing. And and uh, I think that's really alluding to the point where education uh, or assets that help us educate are are super, super important uh, as far as, like you mentioned, getting onboarded here and having access to those open source bodies of work. If If there's not a ton of education in those open source bodies, that can just further complicate the process. Uh, we'll get a few more questions here for you. Nothing too crazy, but what would you say the future plans are for Anastasia Labs in terms of development, new features, new products?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Right. Um, so of course, we continue to um, will continue to release open-source public utilities smart contracts and uh try to create, you know, a very large expanding body of work that other developers can build on top of and draw from to make that onboarding process easier. Uh, we'll continue to expand our design patterns repository to keep it up to date and help onboarding new developers. Uh, and, you know, one of the big shifts that we've had as the company is uh, we've</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>we did um, a retrospective on the dApp ecosystem when we first came in, and where we are now. And uh, the but the amount of open-source code that people can learn from has increased um, significantly uh, to a point where now it's not so compelling to argue that, oh, it's it's hard to develop on Cardano, it's hard to onboard, uh, because the amount of open-source code that people can learn from has, you know, tremendously increased such that, you know, you can look at the best applications on Cardano, see the code, see how they're built, and and learn relatively quickly. So, we're very satisfied with this, and we thought, okay, well, what's the next step? Um, we looked at other ecosystems, for instance, Ethereum, and uh, you know, the biggest improvements um,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>the biggest drivers for economic growth in Ethereum weren't sort of core protocol changes, um, you know, in fact, people uh, the changes to the core Ethereum protocol in the past three or four years have been relatively minimal and not very well received. The biggest um, catalyst for growth were independent teams um, building Layer 2 solutions. Uh, for instance, Polygon, Optimism, Arbitrum, zkSync, all of these things have driven a massive amounts of economic growth to the Ethereum Layer 1, uh, and um, all of them rely on Ethereum for security, but allow sort of their own um, uh, a deviation in features, right? Which is important for blockchain because one there's this trilemma, right? And one blockchain can't suit every single</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>application. Uh, you need to make trade-offs whenever you're building a blockchain: uh, security, scalability, decentralization. Um, and, for instance, one application might really value security, but another might really value scalability, uh, and that means that um, one blockchain wouldn't be the best place for those two applications. The nice thing about Layer 2 solutions is they allow you to build solutions that have the features that applications need without leaving the Layer 1. Uh, so for instance, if someone needs an extremely high-throughput blockchain, um, right now, Cardano might not be very well suited to their use case. Um, but things like Hydra and other Layer 2 solutions would allow them to build that without leaving the ecosystem.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Uh, and what we're building now, Midgard, our flagship product, is a optimistic roll-up for Cardano, which uh, is a framework for building Layer 2s. So, we don't want this to be the Layer 2 on Cardano, uh, we want it to be much like Optimism uh, in that uh, it's an SDK that people can use to build Layer 2s for their applications uh, or, you know, to meet their needs. Uh, so, for instance, if you want to have like a federated network, uh, if you want to have like a supply chain tracking Layer 2, or a gaming Layer 2, uh, all of these things can be built via Midgard. Um, and Midgard itself will exist as a standalone Layer 2, of course, but uh, we think this this is really going to be a large catalyst for growth in the ecosystem because,</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>all of a sudden, you're going to see a ton of different um, Layer 2s that rely on Cardano for economic security, right? And that means, you know, if you can pitch a Layer 2 to an application that might not want to build on Cardano, right, for instance, Meld uh, left the ecosystem because of some concerns with liquidations and throughput, um, if you can get them to build on a Layer 2, then uh, essentially you're getting that economic activity on the Layer 1, right? Cuz the Layer 2 relies on Cardano and pays to Cardano for security. And we think this is going to be a huge catalyst for growth, and we're very excited about this.</p></div>
+</div>
+
+
+<p class="sec" id="t-community">Community and closing</p>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>That That's a lot of exciting things going on, and I think we're still at a in a great position where it's hard to say that there's too much going on, right? Uh, the last part here, kind of round it out, how would you say that Anastasia Labs engages with the community? And what are some ways that the community can get involved?</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro</div>
+  <div class="turn-body"><p>Yeah, you can join our Discord, um, you can contact me either on Discord, Twitter, or email, uh, and, yeah, the best way to engage is with technical questions cuz that's what we're here to help you do. Um, also, if you have any questions on how to use any of our open source repositories, any of the tooling that we've released, um, if you have things that, you know, um, you feel uh, are missing from the ecosystem, for instance, you'd like to have some open-source solution for XYZ, and it doesn't exist, then definitely reach out to us. And uh, if there's enough demand, for sure, it's something that we would we would release.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who host">Tex</div>
+  <div class="turn-body"><p>Great, great. Thank you. So, we'll make sure that we get some contact information uh for you and for the Discord server, and we'll make sure that we attach that in the the description here. Uh, for everyone giving us a little watch, please don't forget to like, comment, subscribe, let us know how it's going. And uh, also don't forget you can get involved here in the Cardano ecosystem by becoming a member of Intersect as well. Well, thanks so much, and we'll see y'all next time.</p></div>
+</div>
+
+<div class="turn">
+  <div class="turn-who">Philip DiSarro <em>(inferred)</em></div>
+  <div class="turn-body"><p>Have a nice one.</p></div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label">The original English, unedited.</span>
+  <a href="./">Summary</a>
+  <a href="./transcript-ja.html">Full transcript (Japanese)</a>
+  <a href="./transcript-en.html" aria-current="page">Full transcript (English original)</a>
+  <a href="../">← All videos</a>
+</nav>
+
+<footer>
+  <p>Cardano note — Intersect Open Source Office · <a href="https://www.youtube.com/watch?v=JY_573d57AA">Watch the video</a></p>
+</footer>
+
+</div>
+</body>
+</html>

@@ -72,3 +72,13 @@ cardano-over-coffee:
   chatham_default: false
   numbered: false
   channel_url: https://x.com/coc_space   # X スペース。YouTube ではないので channel_id はなく、new_videos.py の対象外。新しい回は依頼者から受け取る
+
+intersect-oso:
+  title_ja: Intersect Open Source Office
+  title_en: Intersect Open Source Office
+  blurb_ja: Cardano の会員制組織 Intersect の Open Source Office（OSO）のチャンネル「Open Source Office at Intersect MBO」（@osointersectmbo）で公開された動画。委員会の記録のほか、エコシステムのプロジェクトを紹介する「Project Spotlight」の回があります。司会は Intersect の職員、ゲストは紹介されるプロジェクトの当事者なので、自分のプロジェクトについての評価は本人の発言として読みます。発言者は実名のまま扱います。
+  blurb_en: Videos published on "Open Source Office at Intersect MBO" (@osointersectmbo), the channel of the Open Source Office of Intersect, Cardano's member-based organisation. Besides committee recordings it runs "Project Spotlight" interviews with ecosystem projects. The host is Intersect staff and the guest speaks for their own project, so claims about that project are read as the speaker's own. Speakers are named.
+  chatham_default: false
+  numbered: false
+  channel_url: https://www.youtube.com/@osointersectmbo
+  channel_id: UC0L0qiUF_C-Q2PSoqhaBIRg   # 2026-10-24 に RSS で確認（チャンネル名 "Open Source Office at Intersect MBO"）
