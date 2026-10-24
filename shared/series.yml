@@ -82,3 +82,12 @@ intersect-oso:
   numbered: false
   channel_url: https://www.youtube.com/@osointersectmbo
   channel_id: UC0L0qiUF_C-Q2PSoqhaBIRg   # 2026-10-24 に RSS で確認（チャンネル名 "Open Source Office at Intersect MBO"）
+
+notes:
+  title_ja: ノート
+  title_en: Notes
+  blurb_ja: 動画の記録ではなく、このサイトの運営者が公開資料を読んでまとめた記事を、ここの形式に組み直したもの。全文ページはなく、まとめ 1 ページだけです。マークのない記述は末尾に挙げた一次情報に書かれていること、「補足」はこちらの解釈・たとえ・時点の裏取りです。
+  blurb_en: Not video records but the site owner's own write-ups from public sources, rebuilt in this site's format. There is no transcript, only the summary page. Unmarked statements come from the primary sources listed at the end; "added" marks our interpretation, analogies and dated verification.
+  chatham_default: false
+  numbered: false
+  channel_url: https://shiodome47.com/   # 運営者のサイト。YouTube ではないので channel_id はなく、new_videos.py の対象外

@@ -107,6 +107,31 @@ def build(d):
         note_en = ("This session is based on a publicly published recording, so it is not covered "
                    "by the Chatham House Rule and the speakers are named.")
 
+    has_tx = (d / "transcript-ja.html").exists() and (d / "transcript-en.html").exists()
+    is_article = bool(re.search(r"^platform:\s*article", meta_text, re.M))
+    if is_article:
+        note_ja = "このページは動画の記録ではなく、公開資料を読んでまとめたノートです。出典は末尾に挙げています。"
+        note_en = "This page is not a record of a video but a note built from public sources, listed at the end."
+    if has_tx:
+        transcripts = f"""<details class="part" id="ja">
+<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
+{content(d / "transcript-ja.html")}
+</details>
+
+<details class="part lang-en" id="en">
+<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">{en_label}</span><span class="l-en">{en_label_en}</span></span></summary>
+{content(d / "transcript-en.html")}
+</details>"""
+        jump_label = ('<span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span>'
+                      '<span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>')
+        jump_links = ('  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>\n'
+                      '  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>\n')
+    else:
+        transcripts = ""
+        jump_label = ('<span class="jump-label"><span class="l-ja">この回は全文のないノートなので、このページはまとめだけの 1 枚です。</span>'
+                      '<span class="l-en">This entry is a note without a transcript, so this single page holds the summary only.</span></span>')
+        jump_links = ""
+
     foot = re.search(r"<footer>(.*?)</footer>", idx, re.S).group(1).strip()
     foot = foot.replace('</span><span class="l-en">', '<br>%s</span><span class="l-en">' % note_ja, 1)
     foot = foot.replace("</span></p>", "<br>%s</span></p>" % note_en, 1)
@@ -152,22 +177,12 @@ def build(d):
 {content(d / "index.html")}
 </section>
 
-<details class="part" id="ja">
-<summary class="part-head"><h2><span class="l-ja">日本語全文</span><span class="l-en">Full transcript — Japanese</span></h2><span><span class="l-ja">英語全文を通しで訳したもの</span><span class="l-en">A translation of the English original</span></span></summary>
-{content(d / "transcript-ja.html")}
-</details>
-
-<details class="part lang-en" id="en">
-<summary class="part-head"><h2><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript — English original</span></h2><span><span class="l-ja">{en_label}</span><span class="l-en">{en_label_en}</span></span></summary>
-{content(d / "transcript-en.html")}
-</details>
+{transcripts}
 
 <nav class="jump" aria-label="Page navigation">
-  <span class="jump-label"><span class="l-ja">このページ 1 枚に、まとめ・日本語全文・英語全文（原文）の 3 つが入っています。</span><span class="l-en">This single page holds all three: the summary, the Japanese transcript, and the English original.</span></span>
+  {jump_label}
   <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
-  <a href="#ja"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
-  <a href="#en"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
-  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>{source_link}
+{jump_links}  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>{source_link}
 </nav>
 
 <footer>

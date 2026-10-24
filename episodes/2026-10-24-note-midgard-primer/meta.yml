@@ -1,0 +1,41 @@
+slug: 2026-10-24-note-midgard-primer
+title: Midgard を知るためのノート — 速さの代わりに出口で待つ、Cardano 初の optimistic rollup
+title_en: A primer on Midgard — Cardano's first optimistic rollup, where speed is paid for at the exit
+date: 2026-10-24            # 元の記事の公開日
+series: notes               # shared/series.yml のキー。動画ではなく記事
+chatham_house_rule: false
+
+platform: article           # 動画ではない。build_standalone.py はこの値で「まとめだけの 1 枚」にする
+source: https://shiodome47.com/pickup/2026-10-24-midgard-labs-osaka-meetup-prep/
+source_title: Midgard Labs の来日ミートアップに行く前に、知っておきたいこと
+author: 依頼者（サイト運営者）
+duration: none
+video: none                 # 動画はない。全文ページ（transcript-*.html）もない
+
+speakers: []                # 発言の記録ではないので話者はいない
+speaker_labels: none
+timestamps: none
+proper_nouns_corrected_in_docs: false
+
+# 原本について
+# - 依頼者から本文に貼り付けで受領した記事の全文を source.txt にそのまま置いた（Markdown のリンク表記、見出し、図の文字列を含む）
+# - 依頼者の指示で、まとめからは次を外した：なぜ書くか、イベントの日時・会場・申込、行く前のチェック、登壇者を追う SNS の案内、「Top 10」の文脈
+# - 「聞いてみたいこと」は「素朴な疑問」の折りたたみと「分かっていないこと」に組み替えた
+
+# 出典の印
+# - マークなし：記事が参照した一次情報に書かれていること。本文で出所（公式サイト、仕様書、PR #471、IOG の記事、ガバナンス提案）を添える
+# - 補足：こちらの解釈・たとえ・時点の裏取り。「画面」は使わない
+
+# 裏取り（2026-10-24 時点、こちらで一次情報に当たったもの）
+# - midgardprotocol.com：PRE-ALPHA TESTNET、Lace のみ、Tokenless · Pure ADA、soft finality 数秒・hard 3〜7 日、オペレーターの担保 50K〜200K ADA、1 時間シフト、監視者の報酬は没収額の 30〜50%、up to 300x faster、全オペレーター停止時は L1 の state queue に直接提出
+# - 技術仕様書（Working Draft 2026-06-12、著者 Philip DiSarro / Jonathan Rodriguez / George Flerovsky）：L2 取引はステーキング・ガバナンス操作なし、maturity period、escape hatch（block age → emergency period → 担保を下げて新オペレーター）、DA は Leios blobs（理想）→ マルチシグ委員会 → Mithril、「Leios blobs は mainnet 展開前に実現できると考える」、決定的な取引だから不正証明が違反箇所を単独で指せる
+# - GitHub PR #471（Draft）：公開テストネット stage 0 を 2026-11-07（ストレッチ 10-31）、10-26 validator freeze、10-28 RC、10-30 drills、curated operators / permissionless challengers、12 月に regenesis（P2）
+# - IOG「IO treasury proposals: the 5-minute overview」（2026-04-23）：Midgard テストネットは 2026 年 Q3/Q4 目標
+# - ガバナンス提案「IO & Midgard Labs: L2 Scalability Initiative」：₳10,425,871、2026-04-22 提出、2026-05-24 期限切れ。DRep は賛成 ₳1.16B、反対 ₳2.53B（明示的な反対 ₳1.93B）。「ペネトレーションテストの後、2026 年末までに mainnet」は提案本文（IO の Momentum サイト）の記述で、こちらは検索結果の要約で確認
+# - 財務庫引き出し「Midgard - Optimistic Rollups」：₳2,162,096、Intersect が Anastasia Labs のために提出、2025-07-18 提出、2025-08-07 施行
+# - Project Catalyst Fund 12「Anastasia Labs - Midgard: Cardano Layer 2」：₳500,000 要求。マイルストーンの進捗（記事では 6 のうち 5 完了）はこちらで未確認
+# - IOG「Plutus moves to Midgard Labs」（2026-09-17）：2026-10-01 から移管。Midgard Labs は他チームの Plutus コントラクトの監査・開発、Plutarch と Aiken への貢献
+# - IOG R&D セッション「Layer 2 expansion: beyond Hydra」（2025-06）：Hydra Head は少人数の固定メンバー向けのステートチャネル、Hydra Tail は中央のオペレーターが運用する rollup 風
+# - Midnight のブログ：Glacier Drop の請求処理に Hydra を使用、6 つの Hydra オペレーターのひとつが Anastasia Labs。mainnet は 2026 年 3 月末の予定（2026-02 の更新）、2026-09-28 の投稿では mainnet 稼働中
+# - IOG「Leios is coming: How it reaches Cardano mainnet」（2026-10-20）：Dijkstra ハードフォークを含む段階的な導入、初期は 3〜5 倍、その後ガバナンスで 10〜15 倍（こちらは報道の要約で確認）
+# - PRIME 提案（₳120M、2026-08 可決）：Operating Group の投票メンバー 5 人に Philip DiSarro（Midgard Labs、個人資格）

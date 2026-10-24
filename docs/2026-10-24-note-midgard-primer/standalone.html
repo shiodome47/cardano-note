@@ -1,0 +1,1920 @@
+<title>Midgard を知るためのノート — 速さの代わりに出口で待つ Cardano の optimistic rollup / A primer on Midgard, Cardano's optimistic rollup (2026-10-24)</title>
+<style>
+/* Cardano セッションのアーカイブ — 共通スタイル */
+
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+  --radius: 10px;
+  --maxw: 760px;
+  --font-ja: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Noto Sans JP",
+             system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-en: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16181a;
+    --surface: #1d2023;
+    --surface-alt: #24282c;
+    --text: #e6e3de;
+    --text-muted: #9d978d;
+    --border: #333940;
+    --accent: #6fc4ab;
+    --accent-soft: #1c2e2a;
+    --warn: #d3a662;
+    --warn-soft: #2e2718;
+  }
+}
+
+/* 明示的なテーマ指定はメディアクエリより優先する（両方向） */
+
+:root[data-theme="dark"] {
+  --bg: #16181a;
+  --surface: #1d2023;
+  --surface-alt: #24282c;
+  --text: #e6e3de;
+  --text-muted: #9d978d;
+  --border: #333940;
+  --accent: #6fc4ab;
+  --accent-soft: #1c2e2a;
+  --warn: #d3a662;
+  --warn-soft: #2e2718;
+}
+
+:root[data-theme="light"] {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --surface-alt: #f3f1ed;
+  --text: #23201c;
+  --text-muted: #6b6459;
+  --border: #e2ded7;
+  --accent: #1f6f5c;
+  --accent-soft: #e6f1ee;
+  --warn: #8a5a1f;
+  --warn-soft: #fbf1e2;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ja);
+  font-size: 16px;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 5rem;
+}
+
+/* ---- ページ右上のボタン（言語・配色） ---- */
+
+.page-tools {
+  position: absolute;
+  top: 2.3rem;
+  right: 1.25rem;
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.theme-toggle,
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.15rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.theme-toggle { width: 2.15rem; }
+
+.lang-toggle {
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.theme-toggle:focus-visible,
+.lang-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.theme-toggle svg { width: 1.05rem; height: 1.05rem; display: block; }
+
+/* ---- 言語の切り替え ---- */
+
+/* 既定は日本語。JS が動かない環境でも日本語が出る */
+.l-en { display: none; }
+:root[data-lang="en"] .l-en { display: block; }
+:root[data-lang="en"] .l-ja { display: none; }
+
+/* インライン要素として使う場合 */
+:root[data-lang="en"] span.l-en { display: inline; }
+:root[data-lang="en"] span.l-ja { display: none; }
+
+/* 全文ページの言語ボタンはリンクとして使う */
+a.lang-toggle { text-decoration: none; }
+
+/* ボタンの文言は「切り替え先」を出す */
+.lt-en { display: inline; }
+.lt-ja { display: none; }
+:root[data-lang="en"] .lt-en { display: none; }
+:root[data-lang="en"] .lt-ja { display: inline; }
+
+/* 英語表示のときは英字向けの字送りにする */
+:root[data-lang="en"] body { letter-spacing: 0; }
+:root[data-lang="en"] .l-en { font-family: var(--font-en); line-height: 1.75; }
+:root[data-lang="en"] .l-en h1,
+:root[data-lang="en"] .l-en h2,
+:root[data-lang="en"] .l-en h3 { letter-spacing: -0.01em; }
+
+/* 切り替え先のアイコンを出す。判定は配色トークンと同じ条件に揃える */
+.ic-sun { display: none; }
+.ic-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  .ic-sun { display: block; }
+  .ic-moon { display: none; }
+}
+
+:root[data-theme="dark"] .ic-sun { display: block; }
+:root[data-theme="dark"] .ic-moon { display: none; }
+:root[data-theme="light"] .ic-moon { display: block; }
+:root[data-theme="light"] .ic-sun { display: none; }
+
+@media (max-width: 560px) {
+  .page-tools { top: 1.55rem; right: 1rem; }
+}
+
+/* ---- ヘッダー ---- */
+
+.eyebrow {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+h1 {
+  padding-right: 3rem;   /* 配色トグルとの重なりを避ける */
+  font-size: 1.75rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.7;
+  margin: 0 0 1.5rem;
+}
+
+/* 言語切り替え用の span は区切りを持たない。
+   .l-ja と .l-en は同じ位置の別言語なので、英語表示のときに
+   「· ·」と余分な中黒が出てしまう。 */
+.meta span + span:not(.l-en)::before {
+  content: "·";
+  margin: 0 0.5rem;
+  opacity: 0.5;
+}
+
+/* ---- ナビ（他の版へのリンク）。本文の邪魔をしないよう末尾に置く ---- */
+
+.docnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1.1rem;
+  margin: 3.5rem 0 0;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+
+.docnav-label {
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.docnav a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.docnav a:hover,
+.docnav a:focus-visible { color: var(--accent); text-decoration: underline; }
+
+.docnav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.docnav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: default;
+}
+
+/* ---- 本文 ---- */
+
+h2 {
+  font-size: 1.5rem;
+  margin: 4.5rem 0 0;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 見出しの上に短いアクセント。全幅の罫線より節の始まりが分かりやすい */
+h2::before {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-bottom: 1.15rem;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+/* 見出し直後の 1 行。読むか飛ばすかをここで判断できるようにする */
+.deck {
+  margin: 0.75rem 0 2rem;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+h2 + p:not(.deck),
+h2 + div,
+h2 + ul,
+h2 + ol { margin-top: 1.1rem; }
+
+h3 {
+  font-size: 1.0625rem;
+  margin: 2.4rem 0 0.7rem;
+  color: var(--accent);
+  line-height: 1.6;
+}
+
+/* ---- 目次 ---- */
+
+.toc {
+  margin: 0 0 3.5rem;
+  padding: 1.3rem 1.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.toc-label {
+  margin: 0 0 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.15rem 1rem;
+}
+
+.toc li { margin: 0; }
+
+.toc a {
+  display: flex;
+  gap: 0.7rem;
+  align-items: baseline;
+  padding: 0.42rem 0.5rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.toc a:hover,
+.toc a:focus-visible { background: var(--surface-alt); color: var(--accent); }
+.toc a:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.toc .n {
+  flex: none;
+  min-width: 1.1rem;
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-muted);
+}
+
+.toc a:hover .n { color: var(--accent); }
+
+@media (max-width: 560px) {
+  .toc ol { grid-template-columns: 1fr; }
+}
+
+/* 見出しにアンカーで飛んだとき、上に余白を残す */
+h2[id] { scroll-margin-top: 1.5rem; }
+
+p { margin: 0 0 1.35rem; }
+
+a { color: var(--accent); }
+
+ul, ol { margin: 0 0 1.4rem; padding-left: 1.4rem; }
+li { margin-bottom: 0.75rem; }
+li:last-child { margin-bottom: 0; }
+
+strong { font-weight: 650; }
+:root[data-lang="en"] .l-en strong { font-weight: 700; }
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+  background: var(--surface-alt);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---- 一言でいうと ---- */
+
+.thesis {
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  margin: 0 0 2rem;
+  background: var(--surface);
+}
+
+.thesis .label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.thesis p {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
+/* ---- 補足バッジ（コール中の発言ではない内容の目印） ---- */
+
+.badge {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1.6;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  background: var(--warn-soft);
+  color: var(--warn);
+  border: 1px solid var(--warn);
+  margin-right: 0.5rem;
+  vertical-align: 0.08em;
+}
+
+/* ---- 図版 ---- */
+
+.fig {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem 1rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.figcap {
+  margin: 0.9rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.figcap strong { color: var(--text); }
+
+/* SVG 内で使う共通クラス */
+
+.d-box { fill: var(--surface-alt); stroke: var(--border); stroke-width: 1; }
+.d-box-accent { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+.d-box-warn { fill: var(--warn-soft); stroke: var(--warn); stroke-width: 1; }
+.d-box-plain { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 3; }
+
+.d-t {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-ja);
+}
+
+.d-s {
+  fill: var(--text-muted);
+  font-size: 11.5px;
+  font-weight: 400;
+  font-family: var(--font-ja);
+}
+
+.d-a { fill: var(--accent); }
+.d-w { fill: var(--warn); }
+
+.d-line { stroke: var(--text-muted); stroke-width: 1.4; fill: none; }
+.d-line-accent { stroke: var(--accent); stroke-width: 1.8; fill: none; }
+.d-head { fill: var(--text-muted); }
+.d-head-accent { fill: var(--accent); }
+
+/* ---- TL;DR ---- */
+
+.tldr {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem 0.5rem;
+  margin: 0 0 2.5rem;
+}
+
+.tldr h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* カード内・要約内の見出しにはアクセント線を出さない */
+.tldr h2::before,
+.card h2::before,
+.part-head h2::before { display: none; }
+
+.tldr ul { margin-bottom: 1rem; }
+.tldr li { margin-bottom: 1.1rem; }
+
+/* 要点の項目は「太字のリード ── 普通の文」で書く。
+   リードだけを少し強くして、目が行き先を見つけられるようにする。 */
+.tldr li > strong:first-child {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---- 折りたたみの解説 ---- */
+
+.explain {
+  margin: 1.6rem 0 2rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.explain > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  border-radius: var(--radius);
+}
+
+.explain > summary::-webkit-details-marker { display: none; }
+
+.explain > summary::before {
+  content: "";
+  flex: none;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  margin-left: 0.15rem;
+}
+
+.explain[open] > summary::before { transform: rotate(45deg); margin-left: 0; }
+.explain[open] > summary { border-radius: var(--radius) var(--radius) 0 0; }
+.explain > summary:hover { background: var(--surface-alt); }
+.explain > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .explain > summary::before { transition: transform 0.15s; }
+}
+
+.explain-body {
+  padding: 0.4rem 1.35rem 1.1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9375rem;
+}
+
+.explain-body h4 {
+  margin: 1.7rem 0 0.5rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.explain-body > p:first-child { margin-top: 0.9rem; }
+.explain-body ul, .explain-body ol { margin-bottom: 1rem; }
+.explain-body li { margin-bottom: 0.35rem; }
+
+/* ---- 用語カード ---- */
+
+.term {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem 0.2rem;
+  margin: 0 0 1rem;
+}
+
+.term-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.4rem;
+}
+
+.term-name small {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* ---- Q&A ---- */
+
+.qa {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem 0.3rem;
+  margin: 0 0 1rem;
+}
+
+.qa-q {
+  font-weight: 700;
+  margin: 0 0 0.7rem;
+  line-height: 1.65;
+}
+
+.qa-who {
+  display: block;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.3rem;
+}
+
+.qa-a { margin: 0 0 1rem; }
+
+.qa-a::before {
+  content: attr(data-by);
+  display: block;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.pending {
+  border-left: 3px solid var(--warn);
+  background: var(--warn-soft);
+}
+
+.pending .qa-a::before { color: var(--warn); }
+
+/* ---- 注記 ---- */
+
+.note {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  margin: 2rem 0;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.note p:last-child { margin-bottom: 0; }
+.note strong { color: var(--text); }
+
+/* ---- 全文ページの発言ブロック ---- */
+
+.turn {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1.1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.turn:last-child { border-bottom: none; }
+
+.turn-who {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.8;
+  padding-top: 0.1rem;
+}
+
+.turn-who.host { color: var(--text-muted); }
+
+.turn-who em {
+  display: block;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+/* 公式録音にタイムスタンプが付いている回で使う */
+.turn-time {
+  display: block;
+  font-weight: 400;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.turn-body > p:last-child { margin-bottom: 0; }
+
+.turn-body { min-width: 0; }
+
+.lang-en .turn-body { font-family: var(--font-en); line-height: 1.7; }
+
+/* 章区切り */
+.sec {
+  margin: 2.5rem 0 0.5rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--surface-alt);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- 一覧ページ ---- */
+
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+/* 通し番号を振るシリーズの番号。カードの見出しの上に小さく出す */
+.card-no {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.card h2 {
+  border: none;
+  padding: 0;
+  margin: 0 0 0.4rem;
+  font-size: 1.0625rem;
+  color: var(--text);
+}
+
+.card .meta { margin: 0 0 0.6rem; font-size: 0.8125rem; }
+.card p { margin: 0; font-size: 0.9375rem; color: var(--text-muted); line-height: 1.75; }
+
+/* ---- フッター ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ---- モバイル ---- */
+
+@media (max-width: 560px) {
+  body { font-size: 15px; }
+  .wrap { padding: 1.75rem 1rem 3.5rem; }
+  h1 { font-size: 1.4rem; }
+  h2 { font-size: 1.125rem; }
+  .turn { grid-template-columns: 1fr; gap: 0.2rem; }
+  .turn-who { padding-top: 0; }
+  .turn-who em,
+  .turn-time { display: inline; margin-left: 0.4rem; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  .docnav { display: none; }
+}
+
+/* ===== 単一ページ版（1 ファイル完結）用の追加 ===== */
+.part { scroll-margin-top: 1.5rem; }
+.part + .part { margin-top: 5rem; }
+.part-head {
+  display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+  margin: 0 0 2rem; padding: .9rem 0 .8rem;
+  border-top: 2px solid var(--accent); border-bottom: 1px solid var(--border);
+}
+.part-head h2 { border: none; padding: 0; margin: 0; font-size: 1.35rem; color: var(--text); }
+.part-head h2::before { display: none; }
+.part-head span { font-size: .8125rem; color: var(--text-muted); }
+.part > .l-ja > .thesis:first-child, .part > .l-en > .thesis:first-child { margin-top: 0; }
+
+/* 全文は畳んでおく。開くまでは、このページはまとめだけの長さで開く。 */
+details.part { display: block; }
+details.part > summary.part-head { cursor: pointer; list-style: none; margin: 0; }
+details.part > summary.part-head::-webkit-details-marker { display: none; }
+details.part[open] > summary.part-head { margin-bottom: 2rem; }
+details.part > summary.part-head::after {
+  content: "開く"; margin-left: auto; white-space: nowrap;
+  font-size: .75rem; color: var(--accent);
+  border: 1px solid var(--accent); border-radius: 999px; padding: .15rem .75rem;
+}
+details.part[open] > summary.part-head::after { content: "閉じる"; }
+:root[data-lang="en"] details.part > summary.part-head::after { content: "Open"; }
+:root[data-lang="en"] details.part[open] > summary.part-head::after { content: "Close"; }
+details.part > summary.part-head:hover { background: var(--surface-alt); }
+details.part > summary.part-head:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.jump {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem 1.1rem;
+  margin: 3.5rem 0 0; padding-top: 1.3rem;
+  border-top: 1px solid var(--border); font-size: .8125rem;
+}
+.jump-label { width: 100%; font-size: .75rem; color: var(--text-muted); margin-bottom: .45rem; }
+.jump a { color: var(--text-muted); text-decoration: none; }
+.jump a:hover, .jump a:focus-visible { color: var(--accent); text-decoration: underline; }
+.jump a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap" id="top">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<script>
+// 全文は畳んであるので、リンクや印刷で中に入るときは開いておく。
+(function () {
+  function openTo(el) {
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+  }
+  function openHash() {
+    if (!location.hash) return;
+    try { openTo(document.querySelector(location.hash)); } catch (e) {}
+  }
+  window.addEventListener('hashchange', openHash);
+  window.addEventListener('DOMContentLoaded', openHash);
+  window.addEventListener('beforeprint', function () {
+    var all = document.querySelectorAll('details');
+    for (var i = 0; i < all.length; i++) all[i].open = true;
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Notes</p>
+<h1><span class="l-ja">Midgard を知るためのノート — 速さの代わりに出口で待つ、Cardano 初の optimistic rollup</span><span class="l-en">A primer on Midgard — Cardano's first optimistic rollup, where speed is paid for at the exit</span></h1>
+<p class="meta"><span>2026-10-24</span><span><span class="l-ja">ノート（記事）</span><span class="l-en">Note (article)</span></span><span><span class="l-ja">出典は公開資料。動画の記録ではありません</span><span class="l-en">Built from public sources; not a record of a video</span></span>
+</p>
+
+<section class="part" id="summary">
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>Midgard は、取引を Cardano の外で速く安く処理し、<strong>結果の要約だけを Cardano に書き戻す</strong>レイヤー 2 です。処理したブロックを「正しいだろう」といったん受け入れ、3〜7 日の異議申し立ての期間に誰も不正を証明しなければ確定する。だから中の取引は数秒で済み、Cardano に資金を戻すときだけ数日待ちます。<br>
+  2026 年 10 月 24 日時点では、誰でも触れる公開テストネットが 11 月 7 日を目標に準備中。<strong>本番（mainnet）の時期と資金、第三者監査は、公開資料では分かりません。</strong></p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>楽観的に受け入れ、あとから覆す。</strong>オペレーターがまとめたブロックの見出しだけを Cardano に出し、一定期間に不正の証明が出なければ確定。不正が証明されれば取り消され、担保が没収される。</li>
+  <li><strong>中は数秒、出口は 3〜7 日。</strong>公式サイトの数字。待つのは Cardano が遅いからではなく、「誰かが不正を証明できる期間」を置くため。速さの代償がここに集まる。</li>
+  <li><strong>独自トークンはなく、すべて ADA。</strong>手数料も、オペレーターの担保（5 万〜20 万 ADA）も ADA。レイヤー 2 の中ではステーキングとガバナンスの操作はできない。</li>
+  <li><strong>ブロックの中身をどこに置くかは未定。</strong>仕様書は Leios の blob を「理想」とし、次にマルチシグの委員会、Mithril を挙げる。Leios の進み方に左右される。</li>
+  <li><strong>公開テストネットは 11 月 7 日目標。</strong>GitHub の作業中の文書に日程がある。IOG との共同の資金提案（約 1,043 万 ADA）は 2026 年 5 月に不成立。mainnet の時期はその後語られていない。</li>
+  <li><strong>作っているのは Midgard Labs。</strong>Anastasia Labs の同じチームで、2026 年 10 月からは Cardano のスマートコントラクト言語 Plutus の開発も IOG から引き継いだ。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">このノートの構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>作っているのは誰か — Midgard Labs と Plutus の移管</a></li>
+  <li><a href="#what"><span class="n">02</span>Midgard とは — 楽観的に受け入れ、あとから覆す</a></li>
+  <li><a href="#user"><span class="n">03</span>使う側から見た数字と制限</a></li>
+  <li><a href="#da"><span class="n">04</span>ブロックの中身をどこに置くか — まだ決め切っていない</a></li>
+  <li><a href="#stage"><span class="n">05</span>いま、どの段階か</a></li>
+  <li><a href="#relations"><span class="n">06</span>Hydra、Midnight、Leios との関係</a></li>
+  <li><a href="#overall"><span class="n">07</span>全体像</a></li>
+  <li><a href="#pending"><span class="n">08</span>分かっていないこと</a></li>
+  <li><a href="#sources"><span class="n">09</span>参照した一次情報</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 作っているのは誰か — Midgard Labs と Plutus の移管</h2>
+<p class="deck">Anastasia Labs の同じチームが名前を変えた会社。レイヤー 2 を作りながら、2026 年 10 月から Cardano のスマートコントラクト基盤も引き継いだ。</p>
+
+<p>Midgard を作っているのは <strong>Midgard Labs</strong> です。公式サイトは自らを「Anastasia Labs の背後にいるチームの次の章」と説明しています。Anastasia Labs は Cardano のスマートコントラクトの監査と開発、Plutarch や Aiken といった開発ツールへの貢献で知られたチームで、創業者・CEO は Philip DiSarro、COO は Dave Dionisio（元 Input Output）です。<span class="badge">補足</span>2 人がそれぞれ語っている動画は、このアーカイブの <a href="../2024-07-25-intersect-oso-spotlight-anastasia-labs/">2024-07-25 の回</a>（Philip DiSarro、Anastasia Labs の使命と Midgard の構想）と <a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/#midgard">2026-07-10 の回</a>（Dave Dionisio、「新しいセキュリティモデルを受け入れなくてよい」）にあります。</p>
+
+<p>もうひとつ大きな出来事があります。Input Output（IOG）は 2026 年 9 月 17 日に、Cardano のスマートコントラクト言語 <strong>Plutus の開発を 10 月 1 日付で Midgard Labs に移す</strong>と発表しました。IOG の記事は、Midgard Labs がほかのチームの Plutus コントラクトの監査と開発を手がけ、Plutarch と Aiken に貢献してきたことを理由に挙げ、専門の組織へ機能を移す 5 件目の例だとしています。つまり Midgard Labs は、レイヤー 2 を作る会社であると同時に、レイヤー 1 のスマートコントラクト基盤を引き継いだ会社です。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="Midgard Labs が担う 2 つのもの。IOG から 2026 年 10 月 1 日付で移管された Plutus と、自社で開発する Midgard">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="16" width="200" height="72" rx="8" class="d-box-plain"/>
+  <text x="116" y="44" class="d-t" text-anchor="middle">Input Output（IOG）</text>
+  <text x="116" y="68" class="d-s" text-anchor="middle">Plutus チーム（2026-09-30 まで）</text>
+
+  <line x1="220" y1="52" x2="454" y2="52" class="d-line-accent" marker-end="url(#m1)"/>
+  <text x="338" y="42" class="d-s" text-anchor="middle">2026-10-01 付で移管</text>
+  <text x="338" y="74" class="d-s" text-anchor="middle">（IOG が 2026-09-17 に発表）</text>
+
+  <rect x="464" y="16" width="200" height="72" rx="8" class="d-box-accent"/>
+  <text x="564" y="44" class="d-t" text-anchor="middle">Midgard Labs</text>
+  <text x="564" y="68" class="d-s" text-anchor="middle">旧 Anastasia Labs のチーム</text>
+
+  <text x="340" y="122" class="d-t" text-anchor="middle">Midgard Labs が担っている 2 つのもの</text>
+
+  <rect x="16" y="138" width="316" height="100" rx="8" class="d-box"/>
+  <text x="174" y="166" class="d-t" text-anchor="middle">Plutus</text>
+  <text x="174" y="190" class="d-s" text-anchor="middle">Cardano のレイヤー 1 のスマートコントラクト</text>
+  <text x="174" y="210" class="d-s" text-anchor="middle">言語と基盤。引き継いだ（2026-10 から）</text>
+
+  <rect x="348" y="138" width="316" height="100" rx="8" class="d-box-accent"/>
+  <text x="506" y="166" class="d-t" text-anchor="middle">Midgard</text>
+  <text x="506" y="190" class="d-s" text-anchor="middle">Cardano のレイヤー 2（optimistic rollup）</text>
+  <text x="506" y="210" class="d-s" text-anchor="middle">作っている。公開テストネットを準備中</text>
+
+  <text x="340" y="272" class="d-s" text-anchor="middle">出所：IOG「Plutus moves to Midgard Labs」（2026-09-17）、midgardlabs.io</text>
+</svg>
+<p class="figcap">Plutus チームの移管と、Midgard Labs が担う 2 つのもの。<span class="badge">補足</span>IOG の発表と Midgard Labs のサイトの記述から、こちらで描いたものです。</p>
+</div>
+
+<p><span class="badge">補足</span>Philip DiSarro は、AlphaGrowth が運営する財務庫プログラム PRIME（1 億 2,000 万 ADA、2026 年 8 月に可決）の運営グループに、個人資格の投票メンバーとして名を連ねています。Cardano の DeFi をめぐる発言は、レイヤー 2 の開発者であり資金配分の判断にも関わる当事者のものとして読むのがよいでしょう。PRIME の経過は <a href="../2026-09-10-cardano-over-coffee-alphagrowth-rfp/">2026-09-10 の回</a>にあります。</p>
+
+
+<h2 id="what">2. Midgard とは — 楽観的に受け入れ、あとから覆す</h2>
+<p class="deck">取引はレイヤー 2 で処理し、Cardano にはブロックの「見出し」だけを書く。正しさは、期間内に誰も不正を証明しないことで担保する。</p>
+
+<p>仕様書（2026 年 6 月 12 日版の作業草案）は Midgard を「Cardano 初の optimistic rollup」と呼びます。取引の処理をレイヤー 1（Cardano 本体）の外、つまりレイヤー 2 で行い、結果の要約だけをレイヤー 1 に書き戻す。「optimistic（楽観的）」とは、レイヤー 2 で処理した取引を「正しいだろう」といったん受け入れ、間違っていたらあとから誰かが証明して取り消す、という考え方です。</p>
+
+<div class="term">
+<p class="term-name">optimistic rollup <small>仕様書・公式サイトの言葉</small></p>
+<p>レイヤー 2 で処理した取引をまとめ（roll up）、正しいと仮定して（optimistic）レイヤー 1 に書き込み、一定期間に不正の証明が出れば巻き戻す方式。<span class="badge">補足</span>対になるのが、取引の正しさを数学的な証明ごと提出する zk rollup です。optimistic 型は証明を作る計算が要らない代わりに、異議申し立ての期間ぶん出口が遅くなります。</p>
+</div>
+
+<p>仕組みを順に追うと、次のようになります。</p>
+
+<ol>
+  <li><strong>オペレーター</strong>がレイヤー 2 の取引をまとめてブロックを作り、そのブロックの「見出し（ヘッダー）」だけをレイヤー 1 に提出する。ブロックの中身はデータ可用性（DA）層に公開する（仕様書）</li>
+  <li>オペレーターになるには ADA を担保（bond）として預ける。公式サイトでは <strong>5 万〜20 万 ADA</strong>。担当は 1 時間交代のシフト制（公式サイト）</li>
+  <li>提出されたブロックはすぐには確定しない。一定期間（仕様書では maturity period）待つ</li>
+  <li>その間に誰かがブロックの不正を見つけたら、不正証明（fraud proof）をレイヤー 1 に出す。不正が証明されるとブロックは取り消され、オペレーターの担保は没収され、見つけた人がその一部を報酬として受け取る。公式サイトでは没収額の 30〜50%</li>
+  <li>期間内に不正証明が出なければ、ブロックは確定する</li>
+</ol>
+
+<div class="term">
+<p class="term-name">不正証明 <small>fraud proof、仕様書の言葉</small></p>
+<p>「このブロックは Midgard の台帳のルールに違反している」ことをレイヤー 1 上で示す取引。仕様書は、Cardano の取引は決定的（deterministic）なので「違反した箇所だけを、取引のほかの部分やほかのブロックを見ずに指せる」と説明し、証明が小さく安く済むことを利点に挙げています。<span class="badge">補足</span>Ethereum 系の optimistic rollup では、異議申し立てが何段階かのやり取りになる設計が多く、1 回のレイヤー 1 取引で済むというのが Midgard の主張の中心です。</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="Midgard の仕組みの流れ。オペレーターがブロックの見出しをレイヤー 1 に提出し、中身を DA 層に置き、maturity period の間に不正証明が出なければ確定、出れば取り消しと担保の没収">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="16" width="200" height="90" rx="8" class="d-box"/>
+  <text x="116" y="42" class="d-t" text-anchor="middle">① オペレーター</text>
+  <text x="116" y="66" class="d-s" text-anchor="middle">L2 の取引をまとめてブロックに</text>
+  <text x="116" y="86" class="d-s" text-anchor="middle">担保 5 万〜20 万 ADA、1 時間交代</text>
+
+  <line x1="220" y1="46" x2="238" y2="46" class="d-line-accent" marker-end="url(#m2)"/>
+  <rect x="244" y="16" width="192" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="42" class="d-t" text-anchor="middle">② Cardano（L1）</text>
+  <text x="340" y="66" class="d-s" text-anchor="middle">ブロックの見出しだけを提出</text>
+  <text x="340" y="86" class="d-s" text-anchor="middle">state queue に並ぶ</text>
+
+  <line x1="116" y1="110" x2="116" y2="134" class="d-line" marker-end="url(#m2)"/>
+  <rect x="16" y="140" width="200" height="64" rx="8" class="d-box-plain"/>
+  <text x="116" y="166" class="d-t" text-anchor="middle">DA 層</text>
+  <text x="116" y="188" class="d-s" text-anchor="middle">中身を公開。監視者が読む</text>
+
+  <rect x="464" y="16" width="200" height="90" rx="8" class="d-box"/>
+  <text x="564" y="42" class="d-t" text-anchor="middle">③ 待つ</text>
+  <text x="564" y="66" class="d-s" text-anchor="middle">maturity period（仕様書）</text>
+  <text x="564" y="86" class="d-s" text-anchor="middle">公式サイト：3〜7 日</text>
+  <line x1="440" y1="46" x2="458" y2="46" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <line x1="564" y1="110" x2="564" y2="134" class="d-line-accent" marker-end="url(#m2)"/>
+  <rect x="464" y="140" width="200" height="64" rx="8" class="d-box-accent"/>
+  <text x="564" y="166" class="d-t" text-anchor="middle">⑤ 確定</text>
+  <text x="564" y="188" class="d-s" text-anchor="middle">期間内に不正証明が出なければ</text>
+
+  <line x1="516" y1="110" x2="400" y2="134" class="d-line" marker-end="url(#m2)"/>
+  <rect x="244" y="140" width="192" height="64" rx="8" class="d-box-warn"/>
+  <text x="340" y="166" class="d-t" text-anchor="middle">④ 不正証明が出た</text>
+  <text x="340" y="188" class="d-s" text-anchor="middle">取り消し。担保を没収し報酬に</text>
+
+  <rect x="16" y="226" width="648" height="86" rx="7" class="d-box-plain"/>
+  <text x="340" y="252" class="d-s" text-anchor="middle">速いのは①②：見出しの大きさは中身に関係なく一定。L1 の 1 取引で多数の L2 取引を代表（仕様書）</text>
+  <text x="340" y="274" class="d-s" text-anchor="middle">遅いのは③：資金を L1 に戻すには、不正を証明できる期間が過ぎるのを待つ</text>
+  <text x="340" y="296" class="d-s" text-anchor="middle">補足：監視する人（watcher）がいることが前提。誰も見ていなければ④は起きない</text>
+</svg>
+<p class="figcap">仕様書と公式サイトの記述を、こちらで 1 枚の流れにしたものです。数字は公式サイト（2026 年 10 月 24 日時点）。<span class="badge">補足</span>監視者についての一文は、こちらで足した注意です。</p>
+</div>
+
+<details class="explain">
+<summary>専門用語が多い節です — かみくだいた説明を開く</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<h4>そもそも「レイヤー 2」とは</h4>
+<p>土台のブロックチェーン（レイヤー 1、ここでは Cardano）の外で取引を処理し、結果だけを土台に書き戻す仕組みの総称です。土台の混雑と手数料を避けつつ、最終的な安全は土台に預けます。</p>
+<h4>なぜ「楽観的」でよいのか</h4>
+<p>全部の取引をレイヤー 1 で検証し直せば、レイヤー 2 の意味がなくなります。そこで「正しいと仮定して通し、間違いを見つけた人が証明する」形にすると、レイヤー 1 の仕事は見出しの受け取りと、ごくまれな不正証明の検証だけで済みます。その代わり、間違いを見つけるための時間と、見つける人が要ります。</p>
+<h4>身近なたとえ</h4>
+<p>ペイアプリに似ています。アプリの中では相手への支払いは即座に済み、残高を銀行口座に戻すときだけ数日かかる。Midgard でも、中の取引は数秒で「ほぼ確定」し、Cardano に戻すときだけ 3〜7 日待ちます。待っている間も残高は自分のもので、戻す途中で止まっているだけです。ただしペイアプリは運営会社を信じる仕組みで、Midgard は「誰かが不正を証明できる」ことで運営者を信じずに済ませる仕組み、という違いがあります。</p>
+<h4>一言でまとめ</h4>
+<p>「中を速く安くする代わりに、出口で待つ」。便利さの中身が前者で、後者はその代償です。</p>
+</div>
+</details>
+
+
+<h2 id="user">3. 使う側から見た数字と制限</h2>
+<p class="deck">中は数秒、出口は 3〜7 日。トークンはなく、すべて ADA。レイヤー 2 の中ではステーキングとガバナンスの操作ができない。</p>
+
+<p>公式サイトと仕様書から、使う側が押さえておきたい点を並べます。いずれも 2026 年 10 月 24 日時点の記述です。</p>
+
+<ul>
+  <li><strong>確定までの時間。</strong>公式サイトでは、ソフトな確定（レイヤー 2 の中で「ほぼ確定」）は数秒、ハードな確定（レイヤー 1 に引き出せる状態）は 3〜7 日。「3–7 day challenge window」と書かれています。</li>
+  <li><strong>トークンはない。</strong>「Tokenless · Pure ADA」。手数料も担保もすべて ADA です。</li>
+  <li><strong>レイヤー 2 でできないこと。</strong>仕様書によれば、レイヤー 2 の取引はレイヤー 1 と同じ形式ですが機能は縮小され、ステーキングとガバナンスの操作はできません。Midgard の合意形成は Ouroboros のプルーフ・オブ・ステークに基づかないため、と理由が書かれています。</li>
+  <li><strong>対応ウォレット。</strong>公式サイトでは Lace のみで、「More wallets coming soon」。</li>
+  <li><strong>オペレーターが全員止まったら。</strong>公式サイトは「利用者はレイヤー 1 の state queue に直接取引を出せる」「資金が永久に取り出せなくなることはない」と書いています。仕様書には、最後のブロックが古すぎる状態が続くと発動する「escape hatch」があり、緊急期間の間は担保の要件を下げて新しいオペレーターが入りやすくする、と書かれています。</li>
+  <li><strong>速さの主張。</strong>公式サイトは「up to 300x faster」と書いていますが、何と比べて何を測った数字かは示されていません。</li>
+</ul>
+
+<details class="explain">
+<summary>素朴な疑問 — 3〜7 日も待つのは、Cardano が遅いからでは？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>そうではありません。</strong>Cardano のレイヤー 1 の取引は通常、数十秒から数分で取り込まれます。3〜7 日は Cardano の遅さではなく、Midgard の設計が要求する待ち時間です。</p>
+<h4>なぜ待つのか</h4>
+<p>Midgard はレイヤー 2 のブロックを「正しいだろう」といったん受け入れます。もし間違ったブロックの結果で資金がレイヤー 1 に引き出されてしまうと、取り消せません。そこで、引き出す前に「誰かが不正を証明できる期間」を置き、その期間に何も出なければ安全とみなします。この期間が challenge window で、仕様書では maturity period と呼ばれます。</p>
+<h4>外から見分ける方法</h4>
+<p>公式サイトが「3〜7 日」と幅で書いているのは、この値がプロトコルのパラメータだからです。テストネットで実際に設定された値を見れば、どちら寄りかが分かります。</p>
+<h4>一次情報で示されていないこと</h4>
+<p>期間の長さをどう決めるか、だれが変えられるかは、公式サイトでは説明されていません。</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>素朴な疑問 — 急いで Cardano に戻したい人は、どうすればよいのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>その疑問は正しく、一次情報には答えがありません。</strong>「今すぐは要らない」が成り立たない人はいます。相場が動いたときにレイヤー 1 に戻したい人、急な支払いがある人です。</p>
+<h4>ほかの rollup で一般的な方法</h4>
+<p>Ethereum 系の optimistic rollup では、手数料を払うと第三者（流動性提供者）が先にレイヤー 1 で立て替え、あとで本来の引き出しを受け取る「高速出金」が一般的です。立て替える側は「ブロックが正しい」ことを自分で確かめられるので、引き受けられます。</p>
+<h4>Midgard では</h4>
+<p>公式サイト、仕様書、GitHub のいずれにも、高速出金や流動性提供者の計画は見つかりませんでした（2026 年 10 月 24 日時点）。ないと決まったわけではなく、書かれていない、ということです。</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>素朴な疑問 — レイヤー 2 に置いた ADA のステーキング報酬は、どうなるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>一次情報には書かれていません。</strong>分かっているのは、仕様書が「レイヤー 2 の取引ではステーキングとガバナンスの操作ができない」としていることだけです。</p>
+<h4>考えられる形</h4>
+<p>利用者がレイヤー 2 に預けた ADA は、レイヤー 1 では Midgard のコントラクトのアドレスにまとめて置かれます。その ADA をレイヤー 1 側で委任するかどうか、報酬を誰にどう配るかは、プロトコルの設計で決まることで、利用者が自分で委任を選べる形にはなりにくい構造です。</p>
+<h4>外から見分ける方法</h4>
+<p>テストネットで、Midgard のコントラクトのアドレスに委任（ステーク）の設定があるかを見れば、方針の一端が分かります。</p>
+</div>
+</details>
+
+
+<h2 id="da">4. ブロックの中身をどこに置くか — まだ決め切っていない</h2>
+<p class="deck">仕様書は候補を 3 つ、優先順に挙げる。1 番目の「Leios の blob」は、Leios の進み方しだい。</p>
+
+<p>不正証明が機能するには、ブロックの中身を誰でも読める場所に置く必要があります。仕様書はこれを「データ可用性（data availability）層は Midgard のセキュリティにとって決定的」と書き、候補を優先順に 3 つ挙げます。</p>
+
+<div class="term">
+<p class="term-name">データ可用性層 <small>data availability layer、仕様書の言葉</small></p>
+<p>オペレーターがブロックの中身を、少なくとも maturity period の間、公開しておく場所。レイヤー 1 には見出ししか書かれないので、ここが読めなければ監視者は不正を見つけられません。<span class="badge">補足</span>rollup の設計で「何を信頼しているか」が最も現れる部分です。</p>
+</div>
+
+<ol>
+  <li><strong>Cardano の Leios の blob</strong>（仕様書が「理想的な解」と呼ぶもの）。Leios の道筋の途中に生まれるデータの置き場で、仕様書は「Midgard の mainnet 展開より前に実現できると考えており、Leios チームを支援する」と書いています</li>
+  <li>マルチシグの委員会。決められた複数の運営者の署名で中身の公開を保証する</li>
+  <li>Mithril を使う案。Cardano のステークに基づく署名の仕組み</li>
+</ol>
+
+<p>つまり、いちばん望ましい置き場は、Midgard の外側で進む Leios の設計に依存しています。<span class="badge">補足</span>Leios は Cardano 本体の処理量を増やす改良で、IOG は 2026 年 10 月 20 日に mainnet までの段階的な道筋を公開しましたが、その道筋のどの段階で blob が使えるようになるかは、こちらでは確認できていません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — Leios に blob が間に合わなかったら、何を信頼することになるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>その疑問は正しい。</strong>答えは「2 番目の候補なら、その委員会」で、仕様書の優先順位がそのまま、信頼する相手の違いになります。</p>
+<h4>候補ごとに、信頼する相手が変わる</h4>
+<ul>
+  <li><strong>Leios の blob。</strong>Cardano 本体が中身を一定期間保持する。信頼する相手は Cardano そのもので、レイヤー 1 と同じ</li>
+  <li><strong>マルチシグの委員会。</strong>決められた複数の運営者が「中身を公開している」と署名する。信頼する相手はその委員会。委員会が中身を出さなければ、監視者は不正を証明できない</li>
+  <li><strong>Mithril。</strong>Cardano のステークに基づく署名の仕組みを使う案。信頼する相手は署名に参加するステークプール</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>テストネットと mainnet で、DA 層として何が使われているかを公式が明示しているかを見れば足ります。「委員会」なら、その構成員が公表されているかまで見ます。</p>
+<h4>一次情報で示されていないこと</h4>
+<p>公開テストネット（stage 0）で何を DA 層に使うか、mainnet の初期に Leios の blob が使えない場合の計画。いずれも公開資料にはありません。</p>
+</div>
+</details>
+
+
+<h2 id="stage">5. いま、どの段階か</h2>
+<p class="deck">プレアルファのテストネット。公開テストネットは 11 月 7 日目標。IOG との共同の資金提案は 5 月に不成立で、mainnet の時期はその後語られていない。</p>
+
+<p>2026 年 10 月 24 日時点の公開資料を並べます。</p>
+
+<ul>
+  <li><strong>プレアルファ。</strong>公式サイトのバナーは PRE-ALPHA TESTNET で、対応ウォレットは Lace のみ。</li>
+  <li><strong>公開テストネット（stage 0）は 2026 年 11 月 7 日が目標。</strong>GitHub の作業中のプルリクエスト #471（Draft）に、ストレッチ目標 10 月 31 日、10 月 26 日にバリデータ（コントラクト）を凍結、28 日にリリース候補、30 日に「Cardano の再起動、DA の喪失、全オペレーターの停止」の訓練、という日程があります。stage 0 は「オペレーターは選抜制（curated）、チャレンジャー（監視して不正を証明する側）は誰でも」で、12 月に「regenesis」（やり直し）を予定。</li>
+  <li><strong>IOG の見通し。</strong>2026 年 4 月 23 日の記事で「テストネットは 2026 年 Q3/Q4 を目標」と書いていました。上の日程と概ね合っています。</li>
+  <li><strong>mainnet の時期。</strong>2026 年 4 月 22 日に IOG と Midgard Labs が共同で出した財務庫提案「L2 Scalability Initiative」（1,042 万 5,871 ADA）には、ペネトレーションテストの後、2026 年末までに mainnet、という目標が書かれていました。この提案は <strong>2026 年 5 月 24 日に期限切れ</strong>（不成立）。DRep の投票は賛成 11 億 6,000 万 ADA に対し反対 25 億 3,000 万 ADA（うち明示的な反対 19 億 3,000 万 ADA）でした。その後の mainnet の計画は、公開資料にありません。</li>
+  <li><strong>資金。</strong>Project Catalyst Fund 12 の提案（50 万 ADA）と、2025 年 8 月 7 日に施行された財務庫引き出し「Midgard - Optimistic Rollups」（216 万 2,096 ADA。Intersect が Anastasia Labs のために提出）があります。<span class="badge">補足</span>Catalyst のマイルストーンの進捗は、こちらでは確認できていません。</li>
+  <li><strong>第三者監査。</strong>公式サイト、仕様書、GitHub のいずれにも、監査やペネトレーションテストの記載は見つかりませんでした。</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Midgard の経過と予定の時系列。2025 年 8 月の財務庫引き出し、2026 年 4 月の共同提案と 5 月の期限切れ、6 月の仕様書、9 月の Plutus 移管、11 月 7 日の公開テストネット目標、12 月の regenesis">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <line x1="24" y1="150" x2="650" y2="150" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="16" y="40" width="150" height="70" rx="7" class="d-box"/>
+  <text x="91" y="64" class="d-t" text-anchor="middle">2025-08-07</text>
+  <text x="91" y="84" class="d-s" text-anchor="middle">財務庫引き出し施行</text>
+  <text x="91" y="102" class="d-s" text-anchor="middle">216 万 ADA</text>
+  <line x1="91" y1="110" x2="91" y2="146" class="d-line"/>
+
+  <rect x="172" y="190" width="172" height="90" rx="7" class="d-box-warn"/>
+  <text x="258" y="214" class="d-t" text-anchor="middle">2026-04 → 05-24</text>
+  <text x="258" y="234" class="d-s" text-anchor="middle">IOG と共同の提案</text>
+  <text x="258" y="252" class="d-s" text-anchor="middle">1,043 万 ADA、期限切れ</text>
+  <text x="258" y="270" class="d-s" text-anchor="middle">年末 mainnet の根拠が消える</text>
+  <line x1="258" y1="154" x2="258" y2="190" class="d-line"/>
+
+  <rect x="344" y="40" width="150" height="70" rx="7" class="d-box"/>
+  <text x="419" y="64" class="d-t" text-anchor="middle">2026-06 / 09</text>
+  <text x="419" y="84" class="d-s" text-anchor="middle">仕様書の草案（06-12）</text>
+  <text x="419" y="102" class="d-s" text-anchor="middle">Plutus 移管の発表（09-17）</text>
+  <line x1="419" y1="110" x2="419" y2="146" class="d-line"/>
+
+  <rect x="508" y="190" width="156" height="90" rx="7" class="d-box-accent"/>
+  <text x="586" y="214" class="d-t" text-anchor="middle">2026-11-07 目標</text>
+  <text x="586" y="234" class="d-s" text-anchor="middle">公開テストネット stage 0</text>
+  <text x="586" y="252" class="d-s" text-anchor="middle">オペレーターは選抜制</text>
+  <text x="586" y="270" class="d-s" text-anchor="middle">12 月に regenesis</text>
+  <line x1="586" y1="154" x2="586" y2="190" class="d-line"/>
+
+  <text x="340" y="24" class="d-s" text-anchor="middle">線の上は起きたこと、下は提案と予定。mainnet の日付は、どこにも置けない（2026-10-24 時点）</text>
+</svg>
+<p class="figcap">公開資料の日付をこちらで 1 本の線に並べたものです。<span class="badge">補足</span>11 月 7 日は GitHub の作業中の文書に書かれた目標で、公式の発表ではありません。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — 資金提案が不成立だったのに、なぜ開発は続いているのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>不成立だったのは共同提案だけです。</strong>2026 年 4 月の IOG との提案は通りませんでしたが、Midgard にはそれより前に通った資金があります。</p>
+<h4>通っている資金</h4>
+<ul>
+  <li><strong>2025 年 8 月の財務庫引き出し</strong>（216 万 2,096 ADA）。Intersect が Anastasia Labs のために提出し、施行済み</li>
+  <li>Project Catalyst Fund 12 の提案（50 万 ADA）</li>
+</ul>
+<h4>不成立の提案が持っていたもの</h4>
+<p>共同提案は、Hydra の本番化、Midgard の mainnet、共通部品の 3 本立てで、Midgard の部分には「ペネトレーションテストの後、2026 年末までに mainnet」という目標が入っていました。不成立で消えたのは、この目標の資金的な裏付けと、監査・テストの予算です。開発そのものは、既存の資金と Midgard Labs 自身の事業（監査、受託開発、10 月からの Plutus）で続いている、と読むのが自然ですが、Midgard Labs 自身がそう説明した資料は見つかっていません。</p>
+<h4>外から見分ける方法</h4>
+<p>mainnet の新しい目標日と、監査の予定が公表されるかどうか。どちらも 2026 年 10 月 24 日時点では出ていません。</p>
+</div>
+</details>
+
+
+<h2 id="relations">6. Hydra、Midnight、Leios との関係</h2>
+<p class="deck">Hydra は同じレイヤー 2 だが少人数の固定メンバー向け。Midnight は別のチェーン。Leios はレイヤー 1 の改良で、Midgard の置き場の候補を生む。</p>
+
+<p>名前の似た話が多いので、一次情報の説明に沿って整理します。</p>
+
+<ul>
+  <li><strong>Hydra。</strong>同じ Cardano のレイヤー 2 ですが、仕組みが違います。IOG の 2025 年 6 月の説明では、Hydra Head は「少人数の固定メンバーのためのステートチャネル」、Hydra Tail は「中央のオペレーターが運用する rollup 風の設計」。Midgard は誰でも参加できる開かれたアプリケーション向けの rollup です。<span class="badge">補足</span>Hydra は 2025 年の Midnight の NIGHT トークン配布（Glacier Drop）の請求処理に使われ、6 つの Hydra オペレーターのひとつが Anastasia Labs でした（Midnight のブログ）。</li>
+  <li><strong>Midnight。</strong>レイヤー 2 ではなく、Cardano の「パートナーチェーン」と呼ばれる別のチェーンで、プライバシーを扱います。NIGHT という独自トークンがあり、mainnet は 2026 年 3 月末の予定で、同年 9 月の運営の更新では稼働中として語られています。Midgard はトークンなしで ADA をそのまま使う、という対比になります。</li>
+  <li><strong>Leios。</strong>レイヤー 1 である Cardano 本体の合意形成を速くする改良。IOG が 2026 年 10 月 20 日に出した記事「Leios is coming: How it reaches Cardano mainnet」では、Dijkstra ハードフォークを含む段階的な導入で、初期目標は現在の 3〜5 倍、その後ガバナンスの判断で 10〜15 倍。Midgard は Leios の blob を DA 層に使いたいと言っているので、<strong>Leios が進むと Midgard の設計も前に進む</strong>関係にあります。<span class="badge">補足</span>Leios の開発者本人のデモは、このアーカイブの <a href="../2026-09-12-sebastian-nagel-leios-showcase-1k-tps/">2026-09-12 の回</a>にあります。</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="Hydra、Midgard、Midnight、Leios の位置づけ。Hydra と Midgard は Cardano のレイヤー 2、Midnight は別のチェーン、Leios はレイヤー 1 の改良">
+  <rect x="16" y="16" width="200" height="130" rx="8" class="d-box"/>
+  <text x="116" y="42" class="d-t" text-anchor="middle">Hydra（レイヤー 2）</text>
+  <text x="116" y="68" class="d-s" text-anchor="middle">Head：少人数の固定メンバー</text>
+  <text x="116" y="88" class="d-s" text-anchor="middle">のステートチャネル（IOG）</text>
+  <text x="116" y="112" class="d-s" text-anchor="middle">Tail：中央オペレーターの rollup 風</text>
+  <text x="116" y="132" class="d-s" text-anchor="middle">NIGHT 配布の請求処理に使用</text>
+
+  <rect x="240" y="16" width="200" height="130" rx="8" class="d-box-accent"/>
+  <text x="340" y="42" class="d-t" text-anchor="middle">Midgard（レイヤー 2）</text>
+  <text x="340" y="68" class="d-s" text-anchor="middle">誰でも参加できる optimistic rollup</text>
+  <text x="340" y="88" class="d-s" text-anchor="middle">トークンなし、すべて ADA</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">出口は 3〜7 日</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">DA 層は Leios の blob が理想</text>
+
+  <rect x="464" y="16" width="200" height="130" rx="8" class="d-box"/>
+  <text x="564" y="42" class="d-t" text-anchor="middle">Midnight（別のチェーン）</text>
+  <text x="564" y="68" class="d-s" text-anchor="middle">Cardano のパートナーチェーン</text>
+  <text x="564" y="88" class="d-s" text-anchor="middle">プライバシーを扱う</text>
+  <text x="564" y="112" class="d-s" text-anchor="middle">独自トークン NIGHT</text>
+  <text x="564" y="132" class="d-s" text-anchor="middle">mainnet は 2026 年に稼働</text>
+
+  <rect x="16" y="170" width="648" height="56" rx="8" class="d-box-accent"/>
+  <text x="340" y="194" class="d-t" text-anchor="middle">Cardano レイヤー 1 ＋ Leios（本体の改良）</text>
+  <text x="340" y="216" class="d-s" text-anchor="middle">IOG の 2026-10-20 の道筋：Dijkstra ハードフォークを含む段階的な導入。初期 3〜5 倍、その後 10〜15 倍</text>
+
+  <rect x="16" y="240" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="265" class="d-s" text-anchor="middle">Hydra と Midgard はレイヤー 1 の上に乗り、Midnight は横に立つ。Leios は土台そのものを太くする</text>
+</svg>
+<p class="figcap">IOG、Midnight、Midgard の各公式資料の説明をこちらで 1 枚に並べたものです。<span class="badge">補足</span>「横に立つ」「土台を太くする」はこちらの言い換えです。</p>
+</div>
+
+<details class="explain">
+<summary>素朴な疑問 — Hydra があるのに、なぜもうひとつレイヤー 2 が要るのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。一次情報の記述ではありません。</p>
+<p><strong>その疑問は正しく、答えは「向いている相手が違うから」です。</strong>IOG 自身が 2025 年 6 月に「Hydra の先」として Midgard など複数の設計を並べています。</p>
+<h4>何が違うのか</h4>
+<ul>
+  <li><strong>Hydra Head</strong> は、あらかじめ決めた少人数が開く「部屋」です。部屋の中では速いが、入れるのは最初に決めた人だけ。Midnight のトークン配布のように、運営者が決まっている大量処理には向きます</li>
+  <li><strong>Midgard</strong> は、誰でも取引を送れる「もうひとつの Cardano」のように振る舞います。DEX や支払いのような、相手が不特定の用途に向きます</li>
+</ul>
+<h4>外から見分ける方法</h4>
+<p>「使い始めるのに、誰かの許可や参加者の確定が要るか」を聞けば足ります。要るなら Hydra Head 型、要らないなら Midgard 型です。</p>
+<h4>一次情報で示されていないこと</h4>
+<p>両者を同じアプリで組み合わせる構想や、資金が両方に分散することの影響は、どちらの資料にも書かれていません。</p>
+</div>
+</details>
+
+
+<h2 id="overall">7. 全体像</h2>
+<p class="deck">決まっていること、決め切っていないこと、公開資料にないこと。この 3 つに分けると、Midgard の現在地が見える。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 342" role="img" aria-label="Midgard について、仕様で決まっていること、まだ決め切っていないこと、公開資料にないことを 3 つの箱に分けた図">
+  <rect x="16" y="16" width="200" height="200" rx="8" class="d-box-accent"/>
+  <text x="116" y="44" class="d-t" text-anchor="middle">決まっていること</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">optimistic rollup の仕組み</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">見出しだけを L1 に、中身は DA 層に</text>
+  <text x="116" y="112" class="d-s" text-anchor="middle">1 回の L1 取引で不正証明</text>
+  <text x="116" y="132" class="d-s" text-anchor="middle">トークンなし、すべて ADA</text>
+  <text x="116" y="152" class="d-s" text-anchor="middle">L2 ではステーキング・ガバナンス不可</text>
+  <text x="116" y="172" class="d-s" text-anchor="middle">escape hatch で全停止に備える</text>
+  <text x="116" y="200" class="d-s" text-anchor="middle">（仕様書 2026-06-12、公式サイト）</text>
+
+  <rect x="240" y="16" width="200" height="200" rx="8" class="d-box"/>
+  <text x="340" y="44" class="d-t" text-anchor="middle">決め切っていないこと</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">DA 層：blob、委員会、Mithril</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">待ち時間の実際の値（3〜7 日の幅）</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">オペレーターを誰でもにする時期</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">対応ウォレット（今は Lace のみ）</text>
+  <text x="340" y="152" class="d-s" text-anchor="middle">12 月の regenesis で何が変わるか</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">（仕様書、PR #471）</text>
+
+  <rect x="464" y="16" width="200" height="200" rx="8" class="d-box-warn"/>
+  <text x="564" y="44" class="d-t" text-anchor="middle">公開資料にないこと</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">mainnet の時期（5 月の不成立の後）</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">第三者監査・侵入テストの予定</text>
+  <text x="564" y="112" class="d-s" text-anchor="middle">急いで戻すための高速出金</text>
+  <text x="564" y="132" class="d-s" text-anchor="middle">L2 に置いた ADA のステーキング報酬</text>
+  <text x="564" y="152" class="d-s" text-anchor="middle">「300 倍速い」の測定条件</text>
+  <text x="564" y="200" class="d-s" text-anchor="middle">（2026-10-24 時点）</text>
+
+  <rect x="16" y="236" width="648" height="92" rx="7" class="d-box-plain"/>
+  <text x="340" y="262" class="d-t" text-anchor="middle">「中を速く安くする代わりに、出口で待つ」</text>
+  <text x="340" y="286" class="d-s" text-anchor="middle">それを誰の何を信頼して成り立たせるかが、真ん中と右の箱に残っている</text>
+  <text x="340" y="308" class="d-s" text-anchor="middle">補足：この 3 分類はこちらの整理。公開テストネット（11 月 7 日目標）で真ん中の箱のいくつかに答えが出るはず</text>
+</svg>
+<p class="figcap">3 つの箱への振り分けはこちらの整理です。<span class="badge">補足</span>左の箱は仕様書と公式サイトの記述、真ん中は仕様書と GitHub の作業中の文書、右は 2026 年 10 月 24 日時点で公開資料に見つからなかったものです。</p>
+</div>
+
+
+<h2 id="pending">8. 分かっていないこと</h2>
+<p class="deck">公開資料を読んでも答えが見つからなかったことを、素朴な疑問の形で残す。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>mainnet はいつか。「2026 年末」はまだ有効なのか。</p>
+<p class="qa-a" data-by="資金提案の不成立後は記述なし">「ペネトレーションテストの後、2026 年末までに mainnet」は、2026 年 5 月 24 日に期限切れになった共同提案の目標でした。その後の目標は、公式サイト、仕様書、GitHub のいずれにもありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記載なし</span>第三者によるセキュリティ監査やペネトレーションテストは、あるのか。予定はあるのか。</p>
+<p class="qa-a" data-by="見つからず">公式サイト、仕様書、GitHub のいずれにも記載を見つけられませんでした。利用者の資金を預かるレイヤー 2 にとって、いちばん先に知りたい点です。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">条件なし</span>「選抜制のオペレーター」から「誰でもオペレーターになれる」に移るのは、いつ、どんな条件でか。12 月の regenesis で何が変わるのか。</p>
+<p class="qa-a" data-by="PR #471 は日程のみ">公開テストネットの stage 0 が選抜制であること、12 月に regenesis を予定していることは書かれていますが、移行の条件と、regenesis の中身は書かれていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">候補のみ</span>Leios の初期の導入に blob が含まれなかったら、mainnet の初期の DA 層は何になるのか。そのとき利用者は何を信頼するのか。</p>
+<p class="qa-a" data-by="仕様書は優先順位のみ">仕様書は Leios の blob を理想とし、マルチシグの委員会と Mithril を次に挙げるだけです。stage 0 で何を使うかも書かれていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記載なし</span>一般の利用者が 3〜7 日を待たずに戻す手段（流動性提供者を介する高速出金など）は、用意されるのか。</p>
+<p class="qa-a" data-by="見つからず">ほかの optimistic rollup では一般的な仕組みですが、Midgard の公開資料には計画の記述がありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記載なし</span>レイヤー 2 に資金を置いている間、その ADA のステーキング報酬はどうなるのか。</p>
+<p class="qa-a" data-by="仕様書は「L2 で操作不可」のみ">仕様書はレイヤー 2 の取引でステーキング操作ができないとするだけで、レイヤー 1 側に置かれた資金の委任と報酬の扱いは書かれていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">根拠なし</span>公式サイトの「up to 300x faster」は、何と比べて何を測った数字か。</p>
+<p class="qa-a" data-by="条件の記載なし">測定条件は示されていません。見出しの大きさが中身に関係なく一定だという仕様書の説明は、上限がどう決まるかの説明にはなっていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未確認</span>Project Catalyst Fund 12 のマイルストーンは、どこまで完了しているのか。</p>
+<p class="qa-a" data-by="こちらで確認できず">元の記事は「6 のうち 5 完了」としていますが、こちらでは Catalyst のページを読めず、確認できていません（2026 年 10 月 24 日時点）。</p>
+</div>
+
+
+<h2 id="sources">9. 参照した一次情報</h2>
+<p class="deck">このノートが依拠した公開資料。日付は参照した時点か、資料の日付。</p>
+
+<ul>
+  <li><a href="https://midgardprotocol.com/">Midgard 公式サイト</a> — PRE-ALPHA TESTNET、Lace のみ、Tokenless · Pure ADA、ソフト確定は数秒・ハード確定は 3〜7 日、担保 50K〜200K ADA、1 時間シフト、監視者の報酬 30〜50%、up to 300x faster、全オペレーター停止時の直接提出（2026-10-24 参照）</li>
+  <li><a href="https://anastasia-labs.github.io/midgard/midgard.pdf">Midgard 技術仕様書</a>（Working Draft、2026-06-12 版。著者 Philip DiSarro、Jonathan Rodriguez、George Flerovsky） — 仕組み、maturity period、escape hatch、DA 層の 3 候補、L2 取引の制限、決定性と不正証明</li>
+  <li><a href="https://github.com/Anastasia-Labs/midgard">GitHub: Anastasia-Labs/midgard</a>（Apache-2.0）と <a href="https://github.com/Anastasia-Labs/midgard/pull/471">PR #471「P1: Midgard public testnet (stage 0)」</a>（Draft） — 2026-11-07 目標、10 月末の日程、curated operators、12 月の regenesis</li>
+  <li><a href="https://www.iog.io/news/plutus-moves-to-midgard-labs">IOG: Plutus moves to Midgard Labs</a>（2026-09-17） — 10 月 1 日付の移管</li>
+  <li><a href="https://www.iog.io/news/io-treasury-proposals-the-5-minute-overview">IOG: IO treasury proposals: the 5-minute overview</a>（2026-04-23） — 「テストネットは 2026 年 Q3/Q4 を目標」</li>
+  <li><a href="https://www.cardanocube.com/governance/gov_actions/gov_action1w0shrfxqwv95kk0v4cn34wylz25a2cmqkq5jpc0e2yrahhqava3qghg4q43">ガバナンス提案: IO &amp; Midgard Labs: L2 Scalability Initiative</a> — ₳10,425,871、2026-04-22 提出、2026-05-24 期限切れ、DRep の票数</li>
+  <li><a href="https://www.cardanocube.com/governance/gov_actions/gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqqfgyy3v">財務庫引き出し: Midgard - Optimistic Rollups</a> — ₳2,162,096、Intersect が Anastasia Labs のために提出、2025-08-07 施行</li>
+  <li><a href="https://www.catalystexplorer.com/en/proposals/anastasia-labs-midgard-cardano-layer-2-f12">Project Catalyst Fund 12: Anastasia Labs - Midgard: Cardano Layer 2</a> — ₳500,000</li>
+  <li><a href="https://www.iog.io/news/layer-2-expansion-beyond-hydra">IOG: Layer 2 expansion: beyond Hydra</a>（2025-06） — Hydra Head / Hydra Tail / Midgard の位置づけ</li>
+  <li><a href="https://midnight.network/blog/hydra-heads-overview">Midnight: Scaling infrastructure for NIGHT token distribution with Hydra Head collaborations</a> と <a href="https://midnight.network/blog/partners-operating-hydra-heads">Hydra オペレーターの紹介</a> — Glacier Drop での Hydra の利用、6 オペレーターに Anastasia Labs</li>
+  <li><a href="https://www.iog.io/news/leios-is-coming-how-it-reaches-cardano-mainnet">IOG: Leios is coming: How it reaches Cardano mainnet</a>（2026-10-20） — 段階的な導入、初期 3〜5 倍</li>
+  <li><a href="https://midgardlabs.io/">Midgard Labs 公式サイト</a> — 「Anastasia Labs の背後にいるチームの次の章」</li>
+  <li><a href="https://alphagrowth.io/cardano-prime">AlphaGrowth: Cardano PRIME</a> — 運営グループの投票メンバーに Philip DiSarro（個人資格）</li>
+  <li>元の記事: <a href="https://shiodome47.com/pickup/2026-10-24-midgard-labs-osaka-meetup-prep/">Midgard Labs の来日ミートアップに行く前に、知っておきたいこと</a>（shiodome47.com、2026-10-24）</li>
+</ul>
+
+<div class="note">
+<p><strong>このページについて。</strong>動画の記録ではなく、このサイトの運営者が 2026 年 10 月 24 日に公開した記事を、ここの形式に組み直したノートです。元の記事にあったイベントの案内、書いた動機、登壇者の SNS の案内、当日の準備は、Midgard の理解に関係しないので外しています。元の記事の「聞いてみたいこと」は、各節の「素朴な疑問」と「分かっていないこと」に組み替えました。全文ページはありません。</p>
+<p><strong>出典の 2 区分。</strong>マークのない記述は、上に挙げた一次情報（公式サイト、仕様書、GitHub、IOG の記事、ガバナンス提案）に書かれていることで、本文に出所を添えています。<span class="badge">補足</span>はこちらで足した解釈・たとえ・時点の裏取りで、一次情報にはありません。元の記事の記述で、こちらが一次情報に当たれなかったものは、その旨を書いています（Catalyst のマイルストーン、Leios の blob の時期）。</p>
+<p><strong>時点はすべて 2026 年 10 月 24 日</strong>です。公開テストネットの目標日（11 月 7 日）は GitHub の作業中の文書の記述で、公式の発表ではありません。日付が過ぎたあとの結果は、このページには足しません。</p>
+<p>このアーカイブには、同じチームの 2 人がそれぞれ語った動画の記録があります。<a href="../2024-07-25-intersect-oso-spotlight-anastasia-labs/">2024-07-25 Philip DiSarro（Intersect OSO）</a>と、<a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/">2026-07-10 Dave Dionisio（AlphaGrowth）</a>です。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>Midgard is a Layer 2 that processes transactions fast and cheaply outside Cardano and <strong>writes only a summary back to Cardano</strong>. Each block is accepted as “probably valid”; if nobody proves fraud within a 3–7 day challenge window, it is final. So transactions inside take seconds, and only moving funds back to Cardano takes days.<br>
+  As of 24 October 2026 a public testnet anyone can touch is being prepared for 7 November. <strong>Mainnet timing, funding and third-party audits cannot be read from public sources.</strong></p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Accept optimistically, overturn later.</strong> Operators post only block headers to Cardano; a block becomes final if no fraud proof arrives within the window. A proven fraud cancels the block and forfeits the operator's bond.</li>
+  <li><strong>Seconds inside, 3–7 days at the exit.</strong> The official site's figures. The wait is not because Cardano is slow; it is the period in which anyone can prove fraud. The price of speed is paid here.</li>
+  <li><strong>No token of its own; everything in ADA.</strong> Fees and operator bonds (50K–200K ADA) are ADA. Inside the Layer 2, staking and governance actions are not possible.</li>
+  <li><strong>Where block contents live is undecided.</strong> The spec calls Leios blobs the “ideal”, then multi-signature committees, then Mithril. It depends on how Leios proceeds.</li>
+  <li><strong>Public testnet targeted for 7 November.</strong> A draft document on GitHub holds the schedule. A joint funding proposal with IOG (about ₳10.4M) expired in May 2026; no mainnet date has been given since.</li>
+  <li><strong>Built by Midgard Labs.</strong> The same team as Anastasia Labs, which from October 2026 also took over development of Plutus, Cardano's smart-contract language, from IOG.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">Contents</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is building it: Midgard Labs and the Plutus handover</a></li>
+  <li><a href="#en-what"><span class="n">02</span>What Midgard is: accept optimistically, overturn later</a></li>
+  <li><a href="#en-user"><span class="n">03</span>Numbers and limits from the user's side</a></li>
+  <li><a href="#en-da"><span class="n">04</span>Where block contents live: not yet settled</a></li>
+  <li><a href="#en-stage"><span class="n">05</span>Where it stands now</a></li>
+  <li><a href="#en-relations"><span class="n">06</span>How it relates to Hydra, Midnight and Leios</a></li>
+  <li><a href="#en-overall"><span class="n">07</span>The whole picture</a></li>
+  <li><a href="#en-pending"><span class="n">08</span>What is not known</a></li>
+  <li><a href="#en-sources"><span class="n">09</span>Primary sources</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is building it: Midgard Labs and the Plutus handover</h2>
+<p class="deck">The Anastasia Labs team under a new name. It builds a Layer 2 and, since October 2026, also maintains Cardano's smart-contract foundation.</p>
+
+<p>Midgard is built by <strong>Midgard Labs</strong>, whose site calls itself “the next chapter for the team behind Anastasia Labs”. Anastasia Labs is known for auditing and writing Cardano smart contracts and for contributing to developer tooling such as Plutarch and Aiken. Its founder and CEO is Philip DiSarro; its COO is Dave Dionisio, formerly of Input Output. <span class="badge">added</span> This archive has each of them on video: <a href="../2024-07-25-intersect-oso-spotlight-anastasia-labs/">the 2024-07-25 episode</a> (Philip DiSarro on Anastasia Labs' mission and the idea of Midgard) and <a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/#en-midgard">the 2026-07-10 episode</a> (Dave Dionisio: “you don't have to accept a new security model”).</p>
+
+<p>There is one more large event. On 17 September 2026 Input Output (IOG) announced that development of <strong>Plutus, Cardano's smart-contract language, moves to Midgard Labs from 1 October</strong>. IOG's post cites Midgard Labs' record of auditing and writing Plutus contracts for other teams and contributing to Plutarch and Aiken, and calls it the fifth major function moved to a specialised partner. Midgard Labs is thus both a company building a Layer 2 and the one now maintaining the Layer 1's smart-contract foundation.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="The two things Midgard Labs carries: Plutus, handed over by IOG on 1 October 2026, and Midgard, which it builds itself">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="16" width="200" height="72" rx="8" class="d-box-plain"/>
+  <text x="116" y="44" class="d-t" text-anchor="middle">Input Output (IOG)</text>
+  <text x="116" y="68" class="d-s" text-anchor="middle">Plutus team (until 2026-09-30)</text>
+
+  <line x1="220" y1="52" x2="454" y2="52" class="d-line-accent" marker-end="url(#e1)"/>
+  <text x="338" y="42" class="d-s" text-anchor="middle">Handover effective 2026-10-01</text>
+  <text x="338" y="74" class="d-s" text-anchor="middle">(announced by IOG on 2026-09-17)</text>
+
+  <rect x="464" y="16" width="200" height="72" rx="8" class="d-box-accent"/>
+  <text x="564" y="44" class="d-t" text-anchor="middle">Midgard Labs</text>
+  <text x="564" y="68" class="d-s" text-anchor="middle">formerly the Anastasia Labs team</text>
+
+  <text x="340" y="122" class="d-t" text-anchor="middle">The two things Midgard Labs carries</text>
+
+  <rect x="16" y="138" width="316" height="100" rx="8" class="d-box"/>
+  <text x="174" y="166" class="d-t" text-anchor="middle">Plutus</text>
+  <text x="174" y="190" class="d-s" text-anchor="middle">Smart contracts on Cardano's Layer 1</text>
+  <text x="174" y="210" class="d-s" text-anchor="middle">Language and foundation; taken over 2026-10</text>
+
+  <rect x="348" y="138" width="316" height="100" rx="8" class="d-box-accent"/>
+  <text x="506" y="166" class="d-t" text-anchor="middle">Midgard</text>
+  <text x="506" y="190" class="d-s" text-anchor="middle">Cardano's Layer 2 (optimistic rollup)</text>
+  <text x="506" y="210" class="d-s" text-anchor="middle">Being built; public testnet in preparation</text>
+
+  <text x="340" y="272" class="d-s" text-anchor="middle">Sources: IOG, “Plutus moves to Midgard Labs” (2026-09-17); midgardlabs.io</text>
+</svg>
+<p class="figcap">The Plutus handover and the two things Midgard Labs carries. <span class="badge">added</span> Drawn by us from IOG's announcement and the Midgard Labs site.</p>
+</div>
+
+<p><span class="badge">added</span> Philip DiSarro also sits, in an individual capacity, among the voting members of the Operating Group of PRIME, the treasury programme run by AlphaGrowth (₳120 million, approved in August 2026). His statements on Cardano DeFi are best read as those of an interested party: a Layer 2 builder who also has a hand in allocating funds. PRIME's progress is covered in <a href="../2026-09-10-cardano-over-coffee-alphagrowth-rfp/">the 2026-09-10 episode</a>.</p>
+
+
+<h2 id="en-what">2. What Midgard is: accept optimistically, overturn later</h2>
+<p class="deck">Transactions are processed on the Layer 2; Cardano receives only block headers. Correctness rests on nobody proving fraud within the window.</p>
+
+<p>The specification (working draft dated 12 June 2026) calls Midgard “the first optimistic rollup protocol on Cardano”. Transaction processing moves off Layer 1 (Cardano itself) onto Layer 2, and only a summary of the result is written back. “Optimistic” means that Layer 2 transactions are accepted as probably valid, and if one is wrong, someone later proves it and the block is cancelled.</p>
+
+<div class="term">
+<p class="term-name">Optimistic rollup <small>the spec's and the site's term</small></p>
+<p>Transactions processed on the Layer 2 are bundled (rolled up) and written to the Layer 1 on the assumption they are valid (optimistic); a fraud proof within a set period rolls them back. <span class="badge">added</span> Its counterpart is the zk rollup, which submits a mathematical proof of validity with each batch. The optimistic kind needs no proof generation but pays for it with a slower exit, the length of the challenge window.</p>
+</div>
+
+<p>Step by step, the mechanism runs like this.</p>
+
+<ol>
+  <li>An <strong>operator</strong> bundles Layer 2 transactions into a block and submits only the block's header to the Layer 1. The block's contents are published to a data availability (DA) layer (spec)</li>
+  <li>To become an operator you post ADA as a bond. The official site gives <strong>50K–200K ADA</strong>. Operators take one-hour shifts (official site)</li>
+  <li>A submitted block is not final at once. It waits out a period the spec calls the maturity period</li>
+  <li>If anyone finds fraud in the block during that period, they submit a fraud proof to the Layer 1. A proven fraud cancels the block, forfeits the operator's bond and pays the finder part of it. The site gives 30–50% of the slashed bond</li>
+  <li>If no fraud proof arrives within the period, the block is final</li>
+</ol>
+
+<div class="term">
+<p class="term-name">Fraud proof <small>the spec's term</small></p>
+<p>A Layer 1 transaction showing that a block violates Midgard's ledger rules. Because Cardano transactions are deterministic, the spec says a proof can “pinpoint the specific site of a transaction that violated Midgard's ledger rules, without having to look at any other parts of that transaction” or any other block, which keeps proofs small and cheap. <span class="badge">added</span> Many Ethereum-side optimistic rollups resolve challenges through several rounds; a single Layer 1 transaction is the centre of Midgard's claim.</p>
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="The flow of Midgard: an operator submits a block header to the Layer 1 and the contents to a DA layer; if no fraud proof arrives during the maturity period the block is final, otherwise it is cancelled and the bond slashed">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="16" width="200" height="90" rx="8" class="d-box"/>
+  <text x="116" y="42" class="d-t" text-anchor="middle">1. Operator</text>
+  <text x="116" y="66" class="d-s" text-anchor="middle">Bundles L2 txs into a block</text>
+  <text x="116" y="86" class="d-s" text-anchor="middle">Bond 50K–200K ADA, 1-hour shifts</text>
+
+  <line x1="220" y1="46" x2="238" y2="46" class="d-line-accent" marker-end="url(#e2)"/>
+  <rect x="244" y="16" width="192" height="90" rx="8" class="d-box-accent"/>
+  <text x="340" y="42" class="d-t" text-anchor="middle">2. Cardano (L1)</text>
+  <text x="340" y="66" class="d-s" text-anchor="middle">Receives only the block header</text>
+  <text x="340" y="86" class="d-s" text-anchor="middle">queued in the state queue</text>
+
+  <line x1="116" y1="110" x2="116" y2="134" class="d-line" marker-end="url(#e2)"/>
+  <rect x="16" y="140" width="200" height="64" rx="8" class="d-box-plain"/>
+  <text x="116" y="166" class="d-t" text-anchor="middle">DA layer</text>
+  <text x="116" y="188" class="d-s" text-anchor="middle">Contents, readable by watchers</text>
+
+  <rect x="464" y="16" width="200" height="90" rx="8" class="d-box"/>
+  <text x="564" y="42" class="d-t" text-anchor="middle">3. Wait</text>
+  <text x="564" y="66" class="d-s" text-anchor="middle">maturity period (spec)</text>
+  <text x="564" y="86" class="d-s" text-anchor="middle">official site: 3–7 days</text>
+  <line x1="440" y1="46" x2="458" y2="46" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <line x1="564" y1="110" x2="564" y2="134" class="d-line-accent" marker-end="url(#e2)"/>
+  <rect x="464" y="140" width="200" height="64" rx="8" class="d-box-accent"/>
+  <text x="564" y="166" class="d-t" text-anchor="middle">5. Final</text>
+  <text x="564" y="188" class="d-s" text-anchor="middle">if no fraud proof arrived in time</text>
+
+  <line x1="516" y1="110" x2="400" y2="134" class="d-line" marker-end="url(#e2)"/>
+  <rect x="244" y="140" width="192" height="64" rx="8" class="d-box-warn"/>
+  <text x="340" y="166" class="d-t" text-anchor="middle">4. Fraud proof arrives</text>
+  <text x="340" y="188" class="d-s" text-anchor="middle">Cancelled; bond slashed, part paid</text>
+
+  <rect x="16" y="226" width="648" height="86" rx="7" class="d-box-plain"/>
+  <text x="340" y="252" class="d-s" text-anchor="middle">Fast, 1–2: a header has a fixed size, so one L1 transaction stands for many L2 ones (spec)</text>
+  <text x="340" y="274" class="d-s" text-anchor="middle">Slow part, 3: moving funds back to L1 means waiting out the period in which fraud can be proved</text>
+  <text x="340" y="296" class="d-s" text-anchor="middle">Added: this assumes watchers exist. If nobody is looking, step 4 never happens</text>
+</svg>
+<p class="figcap">The spec's and the site's descriptions arranged by us into one flow. Figures from the official site as of 24 October 2026. <span class="badge">added</span> The line about watchers is our caution.</p>
+</div>
+
+<details class="explain">
+<summary>A dense section: open a plain-language explanation</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<h4>What a “Layer 2” is</h4>
+<p>A general name for systems that process transactions outside the base blockchain (the Layer 1, here Cardano) and write only results back to it, avoiding the base chain's congestion and fees while leaving final safety with it.</p>
+<h4>Why “optimistic” is acceptable</h4>
+<p>Re-checking every transaction on the Layer 1 would defeat the purpose. Passing blocks as valid and letting whoever finds an error prove it leaves the Layer 1 with only headers to accept and the rare fraud proof to verify. The cost is time for errors to be found, and someone to find them.</p>
+<h4>An everyday comparison</h4>
+<p>A payments app. Paying another user inside the app is instant; only moving the balance back to your bank account takes days. In Midgard, transactions inside are “nearly final” in seconds, and only the move back to Cardano waits 3–7 days. The balance stays yours while it waits. The difference is that a payments app asks you to trust its operator, while Midgard lets anyone prove fraud so you need not trust the operator.</p>
+<h4>In one line</h4>
+<p>“Fast and cheap inside, in exchange for waiting at the exit.” The convenience is the first half; the second is its price.</p>
+</div>
+</details>
+
+
+<h2 id="en-user">3. Numbers and limits from the user's side</h2>
+<p class="deck">Seconds inside, 3–7 days at the exit. No token; everything in ADA. No staking or governance actions inside the Layer 2.</p>
+
+<p>From the official site and the spec, as of 24 October 2026:</p>
+
+<ul>
+  <li><strong>Time to finality.</strong> The site gives soft finality (nearly final inside the Layer 2) in seconds and hard finality (withdrawable to the Layer 1) in 3–7 days, described as a “3–7 day challenge window”.</li>
+  <li><strong>No token.</strong> “Tokenless · Pure ADA.” Fees and bonds are all ADA.</li>
+  <li><strong>What the Layer 2 cannot do.</strong> Per the spec, Layer 2 transactions have the same form as Layer 1 ones but reduced functionality: no staking or governance actions, because Midgard's consensus is not based on Ouroboros proof-of-stake.</li>
+  <li><strong>Wallets.</strong> The site lists Lace only, with “More wallets coming soon”.</li>
+  <li><strong>If every operator stops.</strong> The site says users can submit transactions directly to the Layer 1 state queue and that “funds can never be permanently stranded”. The spec describes an “escape hatch” that triggers when the last block is too old, opening an emergency period in which new operators can register with a reduced bond.</li>
+  <li><strong>The speed claim.</strong> The site says “up to 300x faster” without stating what was measured against what.</li>
+</ul>
+
+<details class="explain">
+<summary>A naive question: is the 3–7 day wait because Cardano is slow?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>No.</strong> A Cardano Layer 1 transaction is normally included within tens of seconds to minutes. The 3–7 days is a wait that Midgard's design demands, not Cardano's speed.</p>
+<h4>Why wait at all</h4>
+<p>Midgard accepts Layer 2 blocks as probably valid. If funds were withdrawn to the Layer 1 on the strength of a wrong block, that could not be undone. So a period is placed before withdrawal in which anyone can prove fraud, and if nothing arrives the block is deemed safe. That period is the challenge window, the spec's maturity period.</p>
+<h4>How to tell from outside</h4>
+<p>The site gives a range because the value is a protocol parameter. The value actually set on the testnet shows which end it leans toward.</p>
+<h4>What the primary sources do not say</h4>
+<p>How the length is decided and who can change it are not explained on the site.</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>A naive question: what if someone needs to get back to Cardano quickly?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>A fair question, and the primary sources have no answer.</strong> Not everyone can say “I don't need it right now”: someone who wants to return to the Layer 1 when the market moves, or who has a sudden payment to make.</p>
+<h4>What other rollups commonly do</h4>
+<p>Ethereum-side optimistic rollups commonly offer “fast exits”: for a fee, a third party (a liquidity provider) advances the funds on the Layer 1 and later collects the real withdrawal. The provider can check for itself that the block is valid, so it can take the risk.</p>
+<h4>In Midgard</h4>
+<p>Neither the site, the spec nor GitHub mentions fast exits or liquidity providers (as of 24 October 2026). That does not mean there will be none; it means nothing is written.</p>
+</div>
+</details>
+
+<details class="explain">
+<summary>A naive question: what happens to staking rewards on ADA parked in the Layer 2?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>The primary sources do not say.</strong> All that is known is the spec's rule that Layer 2 transactions cannot perform staking or governance actions.</p>
+<h4>What shape it could take</h4>
+<p>ADA deposited into the Layer 2 sits on the Layer 1 in Midgard's contract addresses, pooled. Whether that ADA is delegated on the Layer 1, and to whom any rewards go, is a protocol design decision; the structure makes it hard for each user to choose their own delegation.</p>
+<h4>How to tell from outside</h4>
+<p>Check on the testnet whether Midgard's contract addresses carry a stake delegation.</p>
+</div>
+</details>
+
+
+<h2 id="en-da">4. Where block contents live: not yet settled</h2>
+<p class="deck">The spec lists three candidates in order of preference. The first, Leios blobs, depends on how Leios proceeds.</p>
+
+<p>For fraud proofs to work, block contents must sit where anyone can read them. The spec calls the data availability layer “critical to Midgard's security” and lists three options in decreasing preference.</p>
+
+<div class="term">
+<p class="term-name">Data availability layer <small>the spec's term</small></p>
+<p>Where operators keep block contents public for at least the maturity period. Since the Layer 1 holds only headers, watchers cannot find fraud unless this layer is readable. <span class="badge">added</span> It is the part of any rollup design where “what you are trusting” shows most clearly.</p>
+</div>
+
+<ol>
+  <li><strong>Cardano Leios blobs</strong>, which the spec calls “the ideal solution”. A data store that appears partway along Leios' roadmap; the spec says “we believe that they are achievable before Midgard's planned deployment on mainnet, and we will support the Leios team”</li>
+  <li>Multi-signature committees, a fixed set of operators whose signatures vouch that the data is published</li>
+  <li>Mithril, Cardano's stake-based signature scheme</li>
+</ol>
+
+<p>So the preferred home for block data depends on Leios, which is designed outside Midgard. <span class="badge">added</span> Leios is the upgrade to Cardano's own throughput; IOG published a staged path to mainnet on 20 October 2026, but at which stage blobs become usable is not something we could confirm.</p>
+
+<details class="explain">
+<summary>A naive question: if Leios blobs are not ready in time, what would users be trusting?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>A fair question.</strong> The answer is “with the second option, that committee”: the spec's order of preference is also an order of what you trust.</p>
+<h4>Each option trusts a different party</h4>
+<ul>
+  <li><strong>Leios blobs.</strong> Cardano itself holds the contents for a period. You trust Cardano, the same as the Layer 1</li>
+  <li><strong>A multi-signature committee.</strong> A fixed set of operators signs that contents are published. You trust that committee; if it withholds data, watchers cannot prove fraud</li>
+  <li><strong>Mithril.</strong> A stake-based signature scheme on Cardano. You trust the stake pools taking part in signing</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Whether the project states clearly which DA layer the testnet and mainnet use. For a committee, whether its members are published.</p>
+<h4>What the primary sources do not say</h4>
+<p>What the stage 0 public testnet uses for DA, and the plan if Leios blobs are unavailable at mainnet launch. Neither appears in public material.</p>
+</div>
+</details>
+
+
+<h2 id="en-stage">5. Where it stands now</h2>
+<p class="deck">Pre-alpha testnet. Public testnet targeted for 7 November. The joint funding proposal with IOG failed in May, and no mainnet date has been given since.</p>
+
+<p>Public material as of 24 October 2026:</p>
+
+<ul>
+  <li><strong>Pre-alpha.</strong> The official site's banner reads PRE-ALPHA TESTNET, and Lace is the only supported wallet.</li>
+  <li><strong>Public testnet (stage 0) targeted for 7 November 2026.</strong> Draft pull request #471 on GitHub gives a stretch goal of 31 October, a validator (contract) freeze on 26 October, a release candidate on the 28th and drills on the 30th covering “Cardano restart, DA loss, all-operator outage”. Stage 0 has “curated operators, permissionless challengers” (anyone may watch and prove fraud) and a “regenesis” planned for December.</li>
+  <li><strong>IOG's outlook.</strong> Its article of 23 April 2026 said “the testnet is targeting a release in Q3/Q4 2026”, broadly consistent with the above.</li>
+  <li><strong>Mainnet timing.</strong> The treasury proposal “L2 Scalability Initiative” (₳10,425,871), submitted jointly by IOG and Midgard Labs on 22 April 2026, set a goal of mainnet by the end of 2026 after penetration testing. It <strong>expired on 24 May 2026</strong> without passing: DReps voted ₳1.16 billion yes against ₳2.53 billion no (₳1.93 billion explicit no). No later mainnet plan appears in public material.</li>
+  <li><strong>Funding.</strong> A Project Catalyst Fund 12 proposal (₳500,000) and a treasury withdrawal, “Midgard - Optimistic Rollups” (₳2,162,096, submitted by Intersect on behalf of Anastasia Labs), enacted on 7 August 2025. <span class="badge">added</span> We could not confirm the state of the Catalyst milestones.</li>
+  <li><strong>Third-party audit.</strong> No mention of an audit or penetration test was found on the site, in the spec or on GitHub.</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Timeline of Midgard: the treasury withdrawal enacted in August 2025, the joint proposal of April 2026 expiring in May, the June spec draft, the September Plutus handover, the 7 November public testnet target and the December regenesis">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <line x1="24" y1="150" x2="650" y2="150" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="16" y="40" width="150" height="70" rx="7" class="d-box"/>
+  <text x="91" y="64" class="d-t" text-anchor="middle">2025-08-07</text>
+  <text x="91" y="84" class="d-s" text-anchor="middle">Withdrawal enacted</text>
+  <text x="91" y="102" class="d-s" text-anchor="middle">₳2.16M</text>
+  <line x1="91" y1="110" x2="91" y2="146" class="d-line"/>
+
+  <rect x="172" y="190" width="172" height="90" rx="7" class="d-box-warn"/>
+  <text x="258" y="214" class="d-t" text-anchor="middle">2026-04 → 05-24</text>
+  <text x="258" y="234" class="d-s" text-anchor="middle">Joint proposal with IOG</text>
+  <text x="258" y="252" class="d-s" text-anchor="middle">₳10.4M, expired</text>
+  <text x="258" y="270" class="d-s" text-anchor="middle">year-end mainnet: no basis</text>
+  <line x1="258" y1="154" x2="258" y2="190" class="d-line"/>
+
+  <rect x="344" y="40" width="150" height="70" rx="7" class="d-box"/>
+  <text x="419" y="64" class="d-t" text-anchor="middle">2026-06 / 09</text>
+  <text x="419" y="84" class="d-s" text-anchor="middle">Spec draft (06-12)</text>
+  <text x="419" y="102" class="d-s" text-anchor="middle">Plutus handover (09-17)</text>
+  <line x1="419" y1="110" x2="419" y2="146" class="d-line"/>
+
+  <rect x="508" y="190" width="156" height="90" rx="7" class="d-box-accent"/>
+  <text x="586" y="214" class="d-t" text-anchor="middle">Target 2026-11-07</text>
+  <text x="586" y="234" class="d-s" text-anchor="middle">Public testnet, stage 0</text>
+  <text x="586" y="252" class="d-s" text-anchor="middle">curated operators</text>
+  <text x="586" y="270" class="d-s" text-anchor="middle">regenesis in December</text>
+  <line x1="586" y1="154" x2="586" y2="190" class="d-line"/>
+
+  <text x="340" y="24" class="d-s" text-anchor="middle">Above the line: what happened. Below: proposals and plans. No mainnet date can be placed (as of 2026-10-24)</text>
+</svg>
+<p class="figcap">Dates from public material, laid on one line by us. <span class="badge">added</span> 7 November is a target in a draft GitHub document, not an official announcement.</p>
+</div>
+
+<details class="explain">
+<summary>A naive question: the funding proposal failed, so why is development continuing?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>Only the joint proposal failed.</strong> The April 2026 proposal with IOG did not pass, but Midgard has funding that passed earlier.</p>
+<h4>Funding that passed</h4>
+<ul>
+  <li><strong>The August 2025 treasury withdrawal</strong> (₳2,162,096), submitted by Intersect on behalf of Anastasia Labs and enacted</li>
+  <li>The Project Catalyst Fund 12 proposal (₳500,000)</li>
+</ul>
+<h4>What the failed proposal carried</h4>
+<p>The joint proposal had three pillars: hardening Hydra for production, Midgard's mainnet, and shared components. Its Midgard pillar carried the goal of “mainnet by the end of 2026 after penetration testing”. What vanished with it was the financial backing for that goal and the budget for audits and testing. Development presumably continues on existing funds and Midgard Labs' own business (audits, contract work, and Plutus from October), but no Midgard Labs statement saying so has been found.</p>
+<h4>How to tell from outside</h4>
+<p>Whether a new mainnet target and an audit schedule are published. Neither has been, as of 24 October 2026.</p>
+</div>
+</details>
+
+
+<h2 id="en-relations">6. How it relates to Hydra, Midnight and Leios</h2>
+<p class="deck">Hydra is also a Layer 2 but for small fixed groups. Midnight is a separate chain. Leios upgrades the Layer 1 and may supply Midgard's data store.</p>
+
+<p>Several similar-sounding things, sorted by what the primary sources say.</p>
+
+<ul>
+  <li><strong>Hydra.</strong> Also a Cardano Layer 2, but a different mechanism. In IOG's June 2025 account, a Hydra Head is a state channel for a small, fixed group of participants, and a Hydra Tail is a rollup-inspired design run by a central operator. Midgard is a rollup for open applications anyone can join. <span class="badge">added</span> Hydra processed claims in Midnight's 2025 NIGHT distribution (the Glacier Drop), and Anastasia Labs was one of its six Hydra operators (Midnight's blog).</li>
+  <li><strong>Midnight.</strong> Not a Layer 2 but a separate chain, a Cardano “partner chain”, focused on privacy. It has its own token, NIGHT; mainnet was planned for the end of March 2026 and is described as live in the September 2026 network update. Midgard, by contrast, has no token and uses ADA as is.</li>
+  <li><strong>Leios.</strong> An upgrade that speeds up consensus on Cardano's Layer 1 itself. IOG's article of 20 October 2026, “Leios is coming: How it reaches Cardano mainnet”, describes a staged rollout including the Dijkstra hard fork, with an initial target of 3–5 times today's capacity and 10–15 times later, subject to governance. Since Midgard wants Leios blobs for its DA layer, <strong>progress on Leios moves Midgard's design forward too</strong>. <span class="badge">added</span> The Leios lead's own demo is in <a href="../2026-09-12-sebastian-nagel-leios-showcase-1k-tps/">the 2026-09-12 episode</a> of this archive.</li>
+</ul>
+
+<div class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-label="Where Hydra, Midgard, Midnight and Leios sit: Hydra and Midgard are Layer 2s on Cardano, Midnight is a separate chain, Leios is an upgrade to the Layer 1">
+  <rect x="16" y="16" width="200" height="130" rx="8" class="d-box"/>
+  <text x="116" y="42" class="d-t" text-anchor="middle">Hydra (Layer 2)</text>
+  <text x="116" y="68" class="d-s" text-anchor="middle">Head: state channel for a small</text>
+  <text x="116" y="88" class="d-s" text-anchor="middle">fixed group (IOG)</text>
+  <text x="116" y="112" class="d-s" text-anchor="middle">Tail: rollup-like, central operator</text>
+  <text x="116" y="132" class="d-s" text-anchor="middle">Used for NIGHT distribution claims</text>
+
+  <rect x="240" y="16" width="200" height="130" rx="8" class="d-box-accent"/>
+  <text x="340" y="42" class="d-t" text-anchor="middle">Midgard (Layer 2)</text>
+  <text x="340" y="68" class="d-s" text-anchor="middle">Open rollup, anyone can join</text>
+  <text x="340" y="88" class="d-s" text-anchor="middle">No token; everything in ADA</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">Exit takes 3–7 days</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">DA layer: Leios blobs preferred</text>
+
+  <rect x="464" y="16" width="200" height="130" rx="8" class="d-box"/>
+  <text x="564" y="42" class="d-t" text-anchor="middle">Midnight (separate chain)</text>
+  <text x="564" y="68" class="d-s" text-anchor="middle">A Cardano partner chain</text>
+  <text x="564" y="88" class="d-s" text-anchor="middle">Privacy-focused</text>
+  <text x="564" y="112" class="d-s" text-anchor="middle">Own token, NIGHT</text>
+  <text x="564" y="132" class="d-s" text-anchor="middle">Mainnet live in 2026</text>
+
+  <rect x="16" y="170" width="648" height="56" rx="8" class="d-box-accent"/>
+  <text x="340" y="194" class="d-t" text-anchor="middle">Cardano Layer 1 + Leios (upgrade to the base chain)</text>
+  <text x="340" y="216" class="d-s" text-anchor="middle">IOG's path of 2026-10-20: staged rollout including the Dijkstra hard fork; 3–5x at first, 10–15x later</text>
+
+  <rect x="16" y="240" width="648" height="40" rx="7" class="d-box-plain"/>
+  <text x="340" y="265" class="d-s" text-anchor="middle">Hydra and Midgard sit on the Layer 1; Midnight stands beside it; Leios thickens the base itself</text>
+</svg>
+<p class="figcap">The descriptions from IOG, Midnight and Midgard's own material, arranged by us on one sheet. <span class="badge">added</span> “Stands beside” and “thickens the base” are our paraphrases.</p>
+</div>
+
+<details class="explain">
+<summary>A naive question: Hydra exists, so why another Layer 2?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> The following is our explanation, not the wording of a primary source.</p>
+<p><strong>A fair question, and the answer is “because they suit different users”.</strong> IOG itself presented Midgard and other designs as “beyond Hydra” in June 2025.</p>
+<h4>What differs</h4>
+<ul>
+  <li><strong>A Hydra Head</strong> is a room opened by a small group chosen in advance. Fast inside, but only those chosen at the start can enter. It suits bulk processing with a known operator, such as Midnight's token distribution</li>
+  <li><strong>Midgard</strong> behaves like “another Cardano” that anyone can send transactions to. It suits uses with unknown counterparties, such as a DEX or payments</li>
+</ul>
+<h4>How to tell from outside</h4>
+<p>Ask whether you need someone's permission, or a fixed participant list, to start using it. If yes, it is the Hydra Head kind; if not, the Midgard kind.</p>
+<h4>What the primary sources do not say</h4>
+<p>Neither discusses combining the two in one application, or the effect of liquidity splitting between them.</p>
+</div>
+</details>
+
+
+<h2 id="en-overall">7. The whole picture</h2>
+<p class="deck">What is settled, what is not yet settled, and what public material does not contain. Three boxes show where Midgard stands.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 342" role="img" aria-label="Midgard sorted into three boxes: what the spec settles, what is not yet settled, and what public material does not contain">
+  <rect x="16" y="16" width="200" height="200" rx="8" class="d-box-accent"/>
+  <text x="116" y="44" class="d-t" text-anchor="middle">Settled</text>
+  <text x="116" y="72" class="d-s" text-anchor="middle">The optimistic rollup mechanism</text>
+  <text x="116" y="92" class="d-s" text-anchor="middle">Headers to L1, contents to DA</text>
+  <text x="116" y="112" class="d-s" text-anchor="middle">Fraud proof in one L1 transaction</text>
+  <text x="116" y="132" class="d-s" text-anchor="middle">No token; everything in ADA</text>
+  <text x="116" y="152" class="d-s" text-anchor="middle">No staking or governance on L2</text>
+  <text x="116" y="172" class="d-s" text-anchor="middle">Escape hatch for a full outage</text>
+  <text x="116" y="200" class="d-s" text-anchor="middle">(spec 2026-06-12, official site)</text>
+
+  <rect x="240" y="16" width="200" height="200" rx="8" class="d-box"/>
+  <text x="340" y="44" class="d-t" text-anchor="middle">Not yet settled</text>
+  <text x="340" y="72" class="d-s" text-anchor="middle">DA: blobs, committee or Mithril</text>
+  <text x="340" y="92" class="d-s" text-anchor="middle">Actual wait (3–7 day range)</text>
+  <text x="340" y="112" class="d-s" text-anchor="middle">Permissionless operators: when?</text>
+  <text x="340" y="132" class="d-s" text-anchor="middle">Wallets (Lace only for now)</text>
+  <text x="340" y="152" class="d-s" text-anchor="middle">What December's regenesis changes</text>
+  <text x="340" y="200" class="d-s" text-anchor="middle">(spec, PR #471)</text>
+
+  <rect x="464" y="16" width="200" height="200" rx="8" class="d-box-warn"/>
+  <text x="564" y="44" class="d-t" text-anchor="middle">Not in public material</text>
+  <text x="564" y="72" class="d-s" text-anchor="middle">Mainnet timing after May's failure</text>
+  <text x="564" y="92" class="d-s" text-anchor="middle">Third-party audit or pentest plans</text>
+  <text x="564" y="112" class="d-s" text-anchor="middle">Fast exits for those in a hurry</text>
+  <text x="564" y="132" class="d-s" text-anchor="middle">Staking rewards on ADA parked in L2</text>
+  <text x="564" y="152" class="d-s" text-anchor="middle">What “300x faster” measures</text>
+  <text x="564" y="200" class="d-s" text-anchor="middle">(as of 2026-10-24)</text>
+
+  <rect x="16" y="236" width="648" height="92" rx="7" class="d-box-plain"/>
+  <text x="340" y="262" class="d-t" text-anchor="middle">“Fast and cheap inside, in exchange for waiting at the exit.”</text>
+  <text x="340" y="286" class="d-s" text-anchor="middle">Whom and what you trust to make that hold is what the middle and right boxes still leave open</text>
+  <text x="340" y="308" class="d-s" text-anchor="middle">Added: the sorting is ours. The public testnet (target 7 November) should answer some of the middle box</text>
+</svg>
+<p class="figcap">The sorting into three boxes is ours. <span class="badge">added</span> The left box follows the spec and the site, the middle the spec and the draft GitHub document, the right what could not be found in public material as of 24 October 2026.</p>
+</div>
+
+
+<h2 id="en-pending">8. What is not known</h2>
+<p class="deck">Questions that public material does not answer, kept as naive questions.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When is mainnet? Does “end of 2026” still stand?</p>
+<p class="qa-a" data-by="nothing since the proposal failed">“Mainnet by the end of 2026 after penetration testing” was the goal of the joint proposal that expired on 24 May 2026. No later target appears on the site, in the spec or on GitHub.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not stated</span>Has there been, or will there be, a third-party security audit or penetration test?</p>
+<p class="qa-a" data-by="not found">Nothing on the site, in the spec or on GitHub. For a Layer 2 holding users' funds, it is the first thing one would want to know.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No conditions</span>When, and under what conditions, do “curated operators” become permissionless? What does December's regenesis change?</p>
+<p class="qa-a" data-by="PR #471 gives dates only">The PR says stage 0 is curated and that a regenesis is planned for December, but not the conditions for the transition or what the regenesis involves.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Candidates only</span>If Leios' initial rollout has no blobs, what is the DA layer at mainnet launch, and what would users then be trusting?</p>
+<p class="qa-a" data-by="the spec gives an order of preference">The spec names Leios blobs as ideal, then multi-signature committees, then Mithril. What stage 0 uses is not stated either.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not stated</span>Will ordinary users get a way to exit without the 3–7 day wait, such as fast exits through liquidity providers?</p>
+<p class="qa-a" data-by="not found">Common in other optimistic rollups, but Midgard's public material has no plan for it.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Not stated</span>What happens to staking rewards on ADA while it sits in the Layer 2?</p>
+<p class="qa-a" data-by="the spec only bars L2 staking actions">The spec says Layer 2 transactions cannot perform staking actions; how the pooled funds on the Layer 1 are delegated, and who gets any rewards, is not described.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No basis</span>What does the site's “up to 300x faster” measure, against what?</p>
+<p class="qa-a" data-by="no conditions given">No measurement conditions are stated. The spec's point that a header is the same size whatever the block holds does not explain how the ceiling is set.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unverified</span>How far along are the Project Catalyst Fund 12 milestones?</p>
+<p class="qa-a" data-by="we could not confirm">The original article says five of six are complete; we could not read the Catalyst page to confirm it (as of 24 October 2026).</p>
+</div>
+
+
+<h2 id="en-sources">9. Primary sources</h2>
+<p class="deck">The public material this note rests on. Dates are either the date consulted or the document's own.</p>
+
+<ul>
+  <li><a href="https://midgardprotocol.com/">Midgard official site</a> — PRE-ALPHA TESTNET, Lace only, Tokenless · Pure ADA, soft finality in seconds and hard in 3–7 days, bond 50K–200K ADA, 1-hour shifts, watcher reward 30–50%, up to 300x faster, direct submission if all operators stop (consulted 2026-10-24)</li>
+  <li><a href="https://anastasia-labs.github.io/midgard/midgard.pdf">Midgard technical specification</a> (working draft dated 2026-06-12; authors Philip DiSarro, Jonathan Rodriguez, George Flerovsky) — mechanism, maturity period, escape hatch, the three DA options, L2 transaction limits, determinism and fraud proofs</li>
+  <li><a href="https://github.com/Anastasia-Labs/midgard">GitHub: Anastasia-Labs/midgard</a> (Apache-2.0) and <a href="https://github.com/Anastasia-Labs/midgard/pull/471">PR #471 “P1: Midgard public testnet (stage 0)”</a> (draft) — the 2026-11-07 target, the late-October schedule, curated operators, December regenesis</li>
+  <li><a href="https://www.iog.io/news/plutus-moves-to-midgard-labs">IOG: Plutus moves to Midgard Labs</a> (2026-09-17) — handover effective 1 October</li>
+  <li><a href="https://www.iog.io/news/io-treasury-proposals-the-5-minute-overview">IOG: IO treasury proposals: the 5-minute overview</a> (2026-04-23) — “the testnet is targeting a release in Q3/Q4 2026”</li>
+  <li><a href="https://www.cardanocube.com/governance/gov_actions/gov_action1w0shrfxqwv95kk0v4cn34wylz25a2cmqkq5jpc0e2yrahhqava3qghg4q43">Governance action: IO &amp; Midgard Labs: L2 Scalability Initiative</a> — ₳10,425,871, submitted 2026-04-22, expired 2026-05-24, DRep tallies</li>
+  <li><a href="https://www.cardanocube.com/governance/gov_actions/gov_action13tfag48nf94rtjcdq7c06vhkslmxxw9h6c88sl7q5g5nnewcsvlqqfgyy3v">Treasury withdrawal: Midgard - Optimistic Rollups</a> — ₳2,162,096, submitted by Intersect on behalf of Anastasia Labs, enacted 2025-08-07</li>
+  <li><a href="https://www.catalystexplorer.com/en/proposals/anastasia-labs-midgard-cardano-layer-2-f12">Project Catalyst Fund 12: Anastasia Labs - Midgard: Cardano Layer 2</a> — ₳500,000</li>
+  <li><a href="https://www.iog.io/news/layer-2-expansion-beyond-hydra">IOG: Layer 2 expansion: beyond Hydra</a> (June 2025) — Hydra Head, Hydra Tail and Midgard</li>
+  <li><a href="https://midnight.network/blog/hydra-heads-overview">Midnight: Scaling infrastructure for NIGHT token distribution with Hydra Head collaborations</a> and <a href="https://midnight.network/blog/partners-operating-hydra-heads">the Hydra operators</a> — Hydra in the Glacier Drop; Anastasia Labs among six operators</li>
+  <li><a href="https://www.iog.io/news/leios-is-coming-how-it-reaches-cardano-mainnet">IOG: Leios is coming: How it reaches Cardano mainnet</a> (2026-10-20) — staged rollout, 3–5x at first</li>
+  <li><a href="https://midgardlabs.io/">Midgard Labs official site</a> — “the next chapter for the team behind Anastasia Labs”</li>
+  <li><a href="https://alphagrowth.io/cardano-prime">AlphaGrowth: Cardano PRIME</a> — Philip DiSarro among the Operating Group's voting members, in an individual capacity</li>
+  <li>The original article: <a href="https://shiodome47.com/pickup/2026-10-24-midgard-labs-osaka-meetup-prep/">Midgard Labs の来日ミートアップに行く前に、知っておきたいこと</a> (shiodome47.com, 2026-10-24, in Japanese)</li>
+</ul>
+
+<div class="note">
+<p><strong>About this page.</strong> Not a record of a video. It is a note the site's owner published on 24 October 2026, rebuilt in this site's format. The original's event details, the author's reasons for writing, pointers to the speakers' social accounts and the day-of checklist were dropped as unrelated to understanding Midgard. Its “questions to ask” became the naive-question folds in each section and the list of what is not known. There is no transcript page.</p>
+<p><strong>Two kinds of source.</strong> Unmarked statements come from the primary sources listed above (the official site, the spec, GitHub, IOG's articles, governance actions), with the source named in the text. <span class="badge">added</span> marks our interpretation, analogies and dated verification, which are not in the primary sources. Where the original article states something we could not check against a primary source (the Catalyst milestones, the timing of Leios blobs), we say so.</p>
+<p><strong>Everything is as of 24 October 2026.</strong> The public testnet target (7 November) is from a draft GitHub document, not an official announcement. Outcomes after that date are not added to this page.</p>
+<p>This archive has both members of the team on video: <a href="../2024-07-25-intersect-oso-spotlight-anastasia-labs/">Philip DiSarro, 2024-07-25 (Intersect OSO)</a> and <a href="../2026-07-10-alphagrowth-dose-of-alpha-midgard/">Dave Dionisio, 2026-07-10 (AlphaGrowth)</a>.</p>
+</div>
+</div>
+</section>
+
+
+
+<nav class="jump" aria-label="Page navigation">
+  <span class="jump-label"><span class="l-ja">この回は全文のないノートなので、このページはまとめだけの 1 枚です。</span><span class="l-en">This entry is a note without a transcript, so this single page holds the summary only.</span></span>
+  <a href="#summary"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="#top"><span class="l-ja">↑ 先頭へ</span><span class="l-en">↑ Back to top</span></a>
+</nav>
+
+<footer>
+<p><span class="l-ja">Cardano note — ノート · <a href="https://shiodome47.com/pickup/2026-10-24-midgard-labs-osaka-meetup-prep/">元の記事を読む</a><br>このページは動画の記録ではなく、公開資料を読んでまとめたノートです。出典は末尾に挙げています。</span><span class="l-en">Cardano note — Notes · <a href="https://shiodome47.com/pickup/2026-10-24-midgard-labs-osaka-meetup-prep/">Read the original article</a><br>This page is not a record of a video but a note built from public sources, listed at the end.</span></p>
+</footer>
+
+</div>
