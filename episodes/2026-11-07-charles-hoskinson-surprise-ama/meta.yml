@@ -1,0 +1,45 @@
+slug: 2026-11-07-charles-hoskinson-surprise-ama
+title: Surprise AMA — 「私は Cardano の CEO ではない」。Midnight は Cardano のプロジェクトだと言い、トランプとの顛末を語り、DRep にはならないと言う 3 時間
+title_en: "Surprise AMA November 7th, 2026"
+date: 2026-11-07            # 依頼者の指定。本人も「Stephen Miller が Susie Wiles に替わった」（11-06 発表）「テキサスが青くなった」（11-03）「Ledger 9 のハードフォーク」（11-06）に言及しており整合
+series: charles-hoskinson   # shared/series.yml のキー
+chatham_house_rule: false   # 公開動画。常に false
+
+platform: YouTube
+channel: Charles Hoskinson  # oEmbed の author_name。author_url は https://www.youtube.com/@charleshoskinsoncrypto
+official_channel: true      # 本人のチャンネル（IOG、Midnight Foundation、Cardano Foundation の公式チャンネルではない）。oEmbed で確認（2026-11-08）
+duration: "約 3 時間"        # 本人が末尾で「3 時間ほどやった」。実尺は要確認（字幕に時刻がない）
+video: https://www.youtube.com/watch?v=h1aLIGigpDw
+
+speakers:
+  - Charles Hoskinson       # 1 人語り。冒頭で名乗る。ワイオミング州ジレットから配信。X と YouTube に同時配信し、チャットの質問を読み上げて答える
+speaker_labels: n/a         # 1 人語り。視聴者の質問は本人の読み上げ・要約としてだけ残る
+timestamps: none            # 依頼者が修正した字幕（subtitles_corrected）。時刻なし。.turn-time は付けていない。節（.sec）の id だけ
+proper_nouns_corrected_in_docs: false   # 依頼者が修正済み。docs/ では固有名詞も言い回しもそのまま
+
+# 原本について
+# - 依頼者からアップロードで受領した修正済みの字幕（1,530 段落、約 23,500 語）をそのまま transcript.txt に置いた
+# - 段落 1402（約 1,170 語）に十数の話題が詰まっている。gen_ama.py の SPLIT で話題の境目 11 か所で分けた（1402a〜1402l）
+# - ターンは話題の切れ目で 93 に分け、22 の節（.sec）を付けた。日英で同じ分割
+# - 罵り言葉・繰り返しは英語全文ではそのまま。日本語全文では意味が通る範囲で訳し、フィラーは落とした
+
+# 画面について
+# - 字幕だけを受領。本人が話している映像と推定。「画面」バッジは未使用
+
+# 裏取り（2026-11-08 時点。本人の発言のうち日付や数字のあるもの）
+# - テキサス州 2026-11-03: 上院は Talarico（民主）が Paxton に勝利、知事は Hinojosa（民主）が Abbott に勝利、州全体の執行職を民主党が総なめ。本人の「Ted Cruz 以外すべて」と整合（Cruz は今回改選なし）
+# - オハイオ州 2026-11-03: Sherrod Brown（民主）が Husted に勝利し上院に復帰。「Schumer が銀行委員会の Tim Scott の役割を約束」は本人の発言で、報道では Warren が筆頭を譲らない見方もあり未確認
+# - ミシガン州 2026-11-03: Abdul El-Sayed（民主）が Mike Rogers に勝利
+# - 2026-11-06: トランプが Susie Wiles に代えて Stephen Miller を首席補佐官に指名（11-09 就任）
+# - Binance のハック: 2026-10-29〜30、約 63 億ドル、FBI は北朝鮮（TraderTraitor）の犯行と発表。史上最大の暗号資産の盗難。Binance は大半を補填したと発表。盗まれた資産の内訳（ADA が含まれるか）はこちらで未確認
+# - Midnight の Ledger 9 ハードフォーク: mainnet は 2026-11-06（ブロック 3,346,139）。Keccak-256、ECDSA、Schnorr 対応など
+# - Monument Bank: 2026-03-25 に Midnight 上で最大 2 億 5,000 万ポンドの小口預金のトークン化を発表。カストディ提携先の受け入れで延期、11 月ごろの展開と報道。本人は「Midnight Foundation が発表を管理」「話し合いはかなり進んでいる」
+# - Monument Health のジレットのクリニック: 2026-07-01 に Hoskinson のクリニックの建物と設備のリースを発表、2026-11-02 に開院（Mayo Clinic Care Network のメンバー）。Hoskinson のクリニックは 2026-07-31 で閉鎖（兄弟の談で約 2 億 5,000 万ドルを投じた）
+# - Learjet 60 の墜落: 2026-11-01、パームビーチ郡、9 人死亡
+# - Patrick Stewart の死去: Wikipedia に 2026-10-28 とあるが、こちらでは他の出所を確認できていない
+# - 暗号資産準備金の発表: 2025-03-02（日）にトランプが XRP・SOL・ADA を含むと投稿、3 月 7 日のホワイトハウスのサミットに Hoskinson は招かれず（Unchained が報道）。David Sacks のクリプト皇帝任命は 2024-12
+# - LayerZero の Cardano 統合: 2026-02 に発表（Pentad が承認）、エンドポイントは 2026-03 に mainnet 稼働
+# - Sebastien Guillemot: Midnight Foundation の CTO（midnight.network）。Starstream を率いる。このアーカイブの Midgard のノート（2026-10-24）に DRep としての投票理由がある
+# - ワイオミング州: Eric Barlow（共和）が 2026-11-03 に知事当選。Frontier Stable Token（FRNT）は 2025-08 発行、時価総額は 2026 年半ばの報道で約 100 万ドル
+# - Quantum Hosky: 2024 年末に本人が構想を公表。「棚上げ」はこの動画での発言
+# - 「NIGHT 保有者の 100% は Cardano 利用者」: NIGHT は Cardano のネイティブ資産として配布されたが、取引所の口座で持つ人や、CoinDesk が記載する BEP20 版の保有者は Cardano のウォレットを使っていない。本人の言い方は言い過ぎ、とまとめで補足

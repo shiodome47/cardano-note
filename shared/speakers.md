@@ -132,6 +132,17 @@ YouTube の自動字幕には**話者ラベルがない**。次の順で特定�
 - **共同司会 James の所属**は "product committee" の自称だけ。Intersect のものと読んだが、動画の中で組織名は言っていない
 
 **まとめでの書き方**: AlphaGrowth の 2 人は PRIME の運営者、Christina はその運営グループの一員なので、監査の数字・RFP の条件・互いの評価は当事者の発言として帰属させた。Phil の安全性の主張、OpenZeppelin の提案への賛否、ノードの版の情報は各参加者の見解として書いた。
+### 2026-11-07 Charles Hoskinson — Surprise AMA November 7th, 2026
+
+**1 人語り、約 3 時間。**冒頭で名乗る。本人のチャンネル（oEmbed で確認）。X と YouTube に同時配信し、チャットの質問を本人が読み上げて答える形なので、**質問者は本人が口にした名前・ハンドル以外は分からない**。まとめの `.qa` の質問者は「視聴者（本人が読み上げ）」で統一。
+
+- **原本**: 依頼者が修正した字幕（時刻なし、1,530 段落）。段落 1402 に十数の話題が詰まっていたので、生成スクリプトの SPLIT で 11 か所に分けた。ターンは話題の切れ目で 93、節は 22。日英で同じ分割
+- **書き方**: 本人のチャンネルなので、方針・評価・時期・数字はすべて「本人の見解として」。本人自身が「Cardano の CEO としての Charles Hoskinson が話しているのではない」と断っている。Input Output、Midnight Foundation、Cardano Foundation、トランプ陣営、Musk、政治家への評価は本人の発言として帰属させ、地の文にしない
+- **第三者への評価が特に多い回**: Cardano Foundation（「原罪」「エゴ」）、トランプ（「すべてが取引」）、David Sacks、Brad Garlinghouse、業界のリーダー（「魂を売った」）、Elon Musk（「いい人ではない」）、Rick McCracken（支えてくれなかった）。まとめの 3・6・7・8 節で特に注意
+- **政治の話が長い**: 3 時間の 3 分の 1 ほど。このアーカイブでは Cardano と Midnight に関わる部分を中心にし、政治と個人の話は要点だけ（7 節・8 節）。全文ページにはすべて残っている
+- **確度が低かった箇所**: 「Sebastian」（Starstream）は Sebastien Guillemot と読めるが字幕の綴りのまま。「Fred」は Frederik Gregaard とまとめで補った。Ben・Jare・Nike・Mark は名前だけ
+- **日付の根拠**: 依頼者の指定（2026-11-07）。本人の言及（Miller の首席補佐官指名 11-06、中間選挙 11-03、Ledger 9 のハードフォーク 11-06）と整合。実尺は未確認（本人の「3 時間ほどやった」のみ）
+
 ### 2026-09-13 Charles Hoskinson — Devs versus Builders
 
 **1 人語り。**冒頭で名乗る。本人のチャンネル（oEmbed で確認）。話者の割り当ての問題はない。

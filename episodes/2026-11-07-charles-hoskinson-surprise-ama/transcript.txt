@@ -1,0 +1,3059 @@
+Hi, this is Charles Hoskinson broadcasting live from rough and rugged Wyoming,
+
+up in Gillette, having a lovely time with family and friends,
+
+and uh taking care of some things that we have up here. Grand opening of my,
+
+well, Monument's clinic is uh next week, and I'll be in town for that ceremony,
+
+and we'll have a lovely time, and we'll be able to see them have a changing of the guards.
+
+So, that's fun. Figured I'd uh clean up a little bit.
+
+You know, 39 now, and uh, you know, used to be that whenever I shaved, I looked like I was 20.
+
+I'm starting to look older and fatter, so when I shaved, the trick doesn't work anymore.
+
+But that's the nature of getting older. So, I went and worked out.
+
+I said, "All right, do some planks and, you know, walk on the treadmill."
+
+Didn't have any workout clothes here, so I just worked out in my underwear.
+
+Like, "All right, we're we're doing things a little rougher these days," you know, but uh we're having fun.
+
+The world is um the world's in an interesting place. Um
+
+There is going to be over the next two years more change than we've ever seen in probably human history.
+
+Uh, AI is rapidly accelerating progress in all fields of science.
+
+And uh politically, things are going through a massive shift. It's not just Republican and Democrat, it's generational.
+
+The last time that we had a generational shift was in the '90s,
+
+uh when we had a shift from the greatest generation, uh the depression and World War II generation, to the baby boomer generation,
+
+when George H. W. Bush lost to Bill Clinton. And there was a new group of politicians that came in, and all the old guard guys died off.
+
+Uh now, all the old guard guys are in their 80s, and uh like Trump and Chuck Schumer and others.
+
+You have all these young people like Ossoff, and um, you know, you have uh new governors and and new senators all across the United States.
+
+And when you have generational shift, it's not just, hey, there's now younger people to fight for the older politics.
+
+Uh, it's younger people to bring new politics.
+
+And what we have yet to see is how AI is going to work its way into the political process.
+
+Um, and there's going to be radically new ideas, radically new approaches,
+
+um, and what it means to be a Republican, Democrat is going to shake up.
+
+So, uh it's an exciting time as much as it is a scary time, because I think everybody's tired.
+
+And everybody's just worn out.
+
+I mean, how long can you spend hating somebody? Honestly speaking.
+
+How long can you spend just every day waking up and saying,
+
+"I have enemies, and I can't kill them, and I can't get rid of them, and I just have to live with them, and and I hate them, and I hate them, and I hate them."
+
+It just doesn't do much for you, right? It's like taking poison every day
+
+and expecting somehow that that's going to have an effect
+
+and do the thing that you want. And I think people are
+
+at a point where they just want something new. And they want something different.
+
+The cryptocurrency space is no different. Uh, you know, the cryptocurrency space, we're about to go through another generational change.
+
+Um, bit of authority on it because I was there during the first to the second, the second to the third.
+
+And now we're entering the fourth generation. Uh, and what is the fourth generation?
+
+The fourth generation is the merger of TradFi and DeFi,
+
+and creating Web 2.5. Uh, it's the merger of AI into crypto. It's the merger of identity into crypto.
+
+Uh, and it's also the ability to bring ubiquitous abstraction everywhere you look.
+
+So, you don't have a Bitcoin wallet anymore, or an Ethereum wallet anymore.
+
+You just have Bill at Midnight, or Jim at Midnight, or something like that, and it just works everywhere.
+
+That's the future of cryptocurrencies. And most of the decisions
+
+that you're going to be making are going to be delegated,
+
+meaning that you'll have intention, and you declare your intention, and then you delegate it to a solver somewhere to resolve
+
+uh what you want. That's a big change,
+
+because we stopped thinking of the world in terms of Ethereum and Bitcoin and Solana,
+
+and we just start thinking in the world and say, "Well, that's a cryptocurrency."
+
+That's a crypto asset. Just like you don't really think about European servers versus
+
+Swiss servers. In fact, the only time you even care about those things is usually with the VPN,
+
+where you're selecting the country for the VPN. So,
+
+whenever there's a new generation, uh there's new winners and losers. And those new winners and losers
+
+uh basically bring uh new people into the market, old people die off,
+
+uh and all the paradigms change. Uh, so, that's exciting as well.
+
+So, we're getting a new politics in the next 24 months, and we're getting a new crypto over the next 24 months,
+
+and with it a new money system, and, you know, a new ways of approaching things. Uh, so,
+
+in fact, this livestream, I'm doing it on Omarchy,
+
+which is DHH's uh operating system. It's been built on uh Arch Linux.
+
+And, you know, I, long, long time ago, installed Arch, and it was horrible.
+
+It was just a miserable experience. Every single thing didn't work.
+
+And it would take hours to days to try to get things to work.
+
+And just when you got it to work, then everything would break again.
+
+It was horrible. So, you know, Arch was always the neckbeard of neckbeard
+
+uh Linux operating systems, that very particular, highly technical people would use, who have
+
+abundant free time to mess with things uh for forever.
+
+And now Omarchy is built on top of it, and it's the most usable operating system I've ever had.
+
+Because anything I don't like, very easy for me is just simply change.
+
+Uh, you know, I can just say, "Hey," you know, "I want to add Proton VPN to this. Go create an app for that."
+
+Uh or, "I don't like the window system." So, I'm creating something called uh Warlock
+
+uh to replace the windowing system. So, and I'm using Elm and Haskell for it.
+
+So, it's uh an age of abundance, where, if you don't like something, you just simply change it.
+
+It makes me feel, It's not pronounced Omarchy.
+
+It's Omakí. It's uh Omakase.
+
+Uh, but uh the, or I guess, you know, you could. You know, and these people, too.
+
+When are you guys just going to give in? Honestly speaking. When are you just going to give up?
+
+Get over it. Grow up. Move on.
+
+You know, as I say, there's this bright, hopeful future, and new things are coming.
+
+New operating systems, uh new
+
+uh paradigms, new science, new politics, new cryptocurrencies.
+
+And all you can do is just linger on, say, "I hate this person."
+
+Why are you here? Why are you watching this then?
+
+Why are you wasting your precious time, which you're never going to get back, being here then?
+
+What do you gain? Who's sadder, me broadcasting, or you listening to the broadcast?
+
+More broadly, when you look at the future, you have to say, you know, the only thing in the age of abundance that's still scarce is your time.
+
+That's it. It's your time. And you have to choose
+
+how to spend it. Patrick Stewart is dead.
+
+Almost all the people I grew up with that were heroes of mine, academic heroes, or uh film people, or musicians, or things, they're dead. Tom Petty's dead.
+
+Prince is dead. They were here, and now they're not.
+
+And guess what? You also will suffer the same end.
+
+And you have a finite resource. So, how do you want to spend it?
+
+You live in an age where anything you want to know how to do, you can learn
+
+for free, or for near-free, because AI can do that for you. You live in an age where
+
+anything you want to change or modify about the world around you,
+
+pretty easy to do. So,
+
+given that you have all this remarkable, absolutely remarkable capacity,
+
+why choose to spend your time in so much negativity? Oh, absolutely. I grew up with lots of people.
+
+You know, I was homeschooled, so I grew up with all the music and culture of my parents.
+
+I watched I Dream of Jeannie. I watched Lost in Space.
+
+How many of those actors are still around, Larry Hagman and all these others? Watched Gunsmoke.
+
+Grew up with my grandfather watching John Wayne movies. Is he still around?
+
+How many people are left from The Good, the Bad and the Ugly? You know,
+
+but that's your loss, man. It really is.
+
+And that's what's going to separate society. The people who live in these negative bubbles, they're going to fall further and further behind.
+
+And uh they're going to get worse and worse. Oh yeah, The Honeymooners, The Love Boat.
+
+Uh, Fantasy Island was pretty good, too. Fantasy Island was great. Ricardo Montalbán.
+
+Yeah. So, I'm going to do you a favor, Ice.
+
+I'm going to liberate you. Hang on a second.
+
+Just got to come over here. There you go.
+
+Go out and play. Live a life. "Da plane, boss. Da plane."
+
+Thank you, Nicholas. It's a new era. Ennio Morricone, yeah.
+
+He was the great composer who made all the music for The Good, the Bad and the Ugly.
+
+"What's the next big thing for Cardano in terms of new projects, or has it shifted to more projects being worked on in Midnight?"
+
+Well, you know, I built projects on Cardano, RealFi and um Pogun,
+
+and obviously Midnight is the largest project on Cardano. So, everything I do for Midnight, I'm growing a Cardano project.
+
+I don't know why
+
+every other project on Cardano seems to be a positive thing, but when we talk about Midnight, it seems to be like Cardano is being attacked, or damaged, or destroyed.
+
+Cardano needs a winner. It needs a successful project on Cardano
+
+that grows to billions of dollars and brings a lot of people in.
+
+And it needs that association. Uh this is a platform, Cardano.
+
+It lives and dies based upon its
+
+capabilities. Uh, and those capabilities are most accurately demonstrated
+
+by the projects that are built on it.
+
+If somebody says they're a director, you don't say, "Okay. Well, tell me all your technical abilities as a director."
+
+They're saying, "What movies have you made?" So, if you're Steven Spielberg, and I found I'll tell you a story.
+
+It's a great story. So, Steven Spielberg was a drop-out,
+
+and uh he decided to go back and finish his film degree,
+
+this is after he became Steven Spielberg. And um and this is a
+
+what I heard, I haven't double-checked to verify, but I I read this story, and I assume it's true. So, you guys fact-check me on this one.
+
+Uh, that for his final project to graduate, he had to submit a a student-made film.
+
+So, he submitted Schindler's List to the uh to the student-made film.
+
+So, obviously he got an A in the in the class. So, you build great things,
+
+you're a great director. If Cardano is to be a great platform, it has to have great projects on it.
+
+Full stop.
+
+So, if Midnight goes and blows up and becomes this super successful, super capable thing,
+
+that everybody knows about, and Midnight is associated or affiliated, built on Cardano,
+
+that benefits Cardano. It says, "Cardano's a viable platform to launch multi-billion-dollar projects on."
+
+Cardano's capabilities are such that you can do such a thing.
+
+And all the new users that Midnight bring in create demand for the Cardano infrastructure, create transactions on Cardano,
+
+uh create activity on Cardano.
+
+There is a minority that, for some reason,
+
+they're just having profound difficulty in their minds dealing with this reality.
+
+Profound difficulty. And they seem to think anything that involves Midnight somehow
+
+is taking from the Cardano journey and experience.
+
+So, if you apply that attitude to anything built on Cardano, because Midnight is a Cardano native asset.
+
+It was distributed using Cardano technology.
+
+100% of NIGHT holders are currently Cardano users,
+
+because they have to use a Cardano wallet to hold their Cardano native asset.
+
+If you apply that mentality to all other projects, does that mean that if a person's an Iagon user, it's harmful to Cardano? If a person's a Strike user, it's harmful to Cardano?
+
+If a person's a Liqwid user, it's harmful to Cardano?
+
+I I can't understand it. I just can't.
+
+Didn't we build Cardano to be the platform for things like Midnight?
+
+And if not that, well, then what did we build it for?
+
+It's an incoherent philosophy, and uh it's a road to ruin.
+
+So, when people ask, "Well, are you just working on Midnight?" It's like, "Well, by working on Midnight, this makes Cardano better,
+
+and it radically improves it." And maybe we can get there.
+
+"Is it possible Midnight can overtake Cardano in terms of market cap?" It absolutely is.
+
+Um, you know, it's a new generation, and sometimes the old generations, they stick around,
+
+and they have tremendous appeal, like Bitcoin. It's a first-generation technology.
+
+It's never upgraded itself. It's still first generation,
+
+uh but it's number one on CoinMarketCap. Uh, other cases in the third generation, the vast majority of the third generation has not exceeded the value
+
+of the uh second, first generation.
+
+Um, but a lot of second, first-generation coins are dead. Litecoin is obviously not a competitor to Bitcoin.
+
+Uh, not a bad community. There's plenty of good people there, but it failed to take off and displace Bitcoin from its throne.
+
+Uh, so, you know, it's hard to say, but there's a lot of traction behind Midnight right now,
+
+and it's growing by leaps and bounds, and it's running countercyclic to the market
+
+uh because it's something that people want. They want privacy. They want compliance.
+
+There's a lot of really new things, exciting things. We just hard forked with Ledger 9.
+
+Uh, you know, it's just it moves so much faster as an ecosystem than other ecosystems,
+
+and it's rapidly catching up to where it needs to be to be in the conversation
+
+of the top three to top five privacy ecosystems. So, we don't know what the price of such things is going to be and the demand
+
+of such things is going to be. We can speculate. We think it's larger than the prior generation,
+
+uh but it's hard to say. Um, if Midnight grows, I think it's going to grow Cardano
+
+considerably, because it's going to bring a ton of new people into Cardano.
+
+I don't see a reality where Midnight grows in spite of Cardano stagnating.
+
+I think there's a rising tides effect.
+
+Well, my favorite thing in a joint session of Congress was after Reagan got shot,
+
+and he came back, and he did his first speech to a joint session of the House and Senate,
+
+uh and uh it was the first time anybody'd seen him in public, basically, since he'd been shot,
+
+um at that scale. And uh he was incredibly gracious,
+
+and uh fought for the goodness of America. And he said, "Hey, America's not a sick nation,"
+
+and you know, he stood up for the American people, and brought people back into the fold.
+
+It's hard, regardless of your politics, not to be moved by that.
+
+You know, somebody who came so close to death, and was nearly assassinated by a crazy person.
+
+especially if they get rich by inflation.
+
+If we print money out of thin air to do a wealth transfer from one group of people to another group of people,
+
+that's what happened during COVID. There was a massive amount of money printing and all these wealthy companies basically got to benefit from that.
+
+All the small restaurants got wiped out and a lot of small businesses got wiped out and they were given modest subsidies.
+
+Same thing happened during 2008.
+
+You know, and so every time we have a crisis, we see a shrinking of the middle class in the United States.
+
+Um, and you feel it.
+
+You go to Walmart and it's $7 for a gallon of milk, you know.
+
+You go to fill up your truck, it's 7.50 for diesel.
+
+You go to buy the new MacBook and the top one is now $12,000.
+
+Used to be four, maybe five, now it's 12.
+
+So, did your wages go up?
+
+If you're making $50,000 are you suddenly making $100,000? Oh, well that's because you're lazy.
+
+Okay. Just all right.
+
+And that's not because they're lazy.
+
+Yes, people can certainly go and do that, but not everybody can be Jonny Kim,
+
+you know, the Navy SEAL, doctor, astronaut.
+
+Not everybody is born to be that.
+
+And when I was a young kid, you know, I
+
+learned my family's history and you know my grandfathers on both sides they had stay at home wives.
+
+You know and my grandfather on my mom's side,
+
+five kids, two girls, seven kids, Italian Catholic family.
+
+And he had a house, two cars, took care of everybody, retired a millionaire.
+
+Grandfather on the other side, poor kid in Montana, became a doctor, raised five kids, wife stayed at home.
+
+So, you could go from poor kid in Michigan, poor kid in Montana to make something of themselves.
+
+Both retired millionaires, raised five kids and seven kids respectively.
+
+And the economy permitted that type of mobility for people who had the discipline to go and do that.
+
+Do we honestly feel today in 2026, there's the same social mobility?
+
+Maybe, but you have to be extraordinarily creative and you have to get somewhat lucky to be able to get that.
+
+So, when you have the State of the Union and people talk about these things,
+
+they don't really focus on is the general welfare of all people in the nation improving?
+
+Is the infrastructure improving?
+
+Is the education improving?
+
+Is your experience with healthcare improving? And upon what metrics do we measure such things so that we believe they're objective?
+
+We have metric sets like the UN SDGs or the HDI.
+
+We measure other nations this way and we have indexes to measure the quality of education in places like Singapore, for example. They tend to come out ahead.
+
+But we never once mention such things in the State of the Union.
+
+Instead we say, "America is so great! America is so amazing! America is so refined and incredible and our greatness has never been seen."
+
+Okay.
+
+But you haven't given me how you'd measure that.
+
+If I have a board of directors, or I'm sitting on a board of directors,
+
+and a CEO says, "Okay, I'm doing a great job as a CEO." All right, well, let me see the balance sheet, the P&L, the cash flow statement,
+
+your 36-month forecast, um you know, let's talk about your business model, geopolitical threats, macroeconomic threats. Go through the whole thing.
+
+And those follow best practices according to all other businesses.
+
+Why don't we have best practices with governments that are objective and politically neutral?
+
+And if your first instinct is to say,
+
+"Well, the Democrats won't let us or the Republicans won't let us. Bah!"
+
+You're propagandized.
+
+You've been pre-programmed to say the only thing that matters is vote a certain way to keep the evil people out
+
+because as bad as the people we have, those evil people on the other side are far, far worse and will completely upend and destroy the nation.
+
+Yeah, so that's why I don't tend to watch the State of the Union much.
+
+I got all my ADA for free.
+
+I built Cardano! I I love when people make this argument,
+
+"You got all your ADA for free." Okay. It was worth zero when I got it.
+
+Zero because it hadn't launched and there was no ecosystem. And tell me, if I hadn't built Ouroboros
+
+and extended UTXO and Plutus, and spent 10 years building an ecosystem and bringing people together and doing AMAs every single day,
+
+what would the value of that?
+
+If you're so smart, why don't you launch Crawler Coin, okay? And let's take a look and see how much value is going to accrue.
+
+And it would anybody have taken that deal? Give Charles 8% of the ecosystem for him to spend 10 years building it?
+
+Vast majority of people would have said, "Yes," given the performance.
+
+You you people are just born without a brain.
+
+Before any code was written? No, it didn't go to $2 before any code.
+
+There was a fully working cryptocurrency before it launched.
+
+We spent 2 years writing code before that whiteboard video.
+
+2 years recruiting. Aggelos Kiayias was recruited the year before.
+
+We'd already set up the Edinburgh lab, we'd already set up the Tokyo Tech lab.
+
+I'd personally written why Cardano.
+
+Now, there was no whiteboard sales pitch, you're revising history.
+
+What did people buy? It wasn't an ERC-20 token.
+
+It was a completely independent network.
+
+Just, you can't fix stupid, can you?
+
+So, I can't wait to see how successful Crawler Coin is.
+
+And why don't you spend 10 years of your life, actually now 11 years of your life, fighting for Crawler Coin. Let's let's go get it done. Let's go, baby.
+
+I cannot wait to see that.
+
+Oh, man.
+
+Well, hello from Broomfield, Colorado. Can you believe they shut down the Applebee's?
+
+I was 9 years old, I went there and got riblets, the all-you-can-eat riblets for my birthday.
+
+I really want to say something about it.
+
+It's absolutely incredible. Absolutely incredible.
+
+But it's up to Ben, and and we're supposed to announce it this year. So, we'll see.
+
+We'll see. I'm I'm getting itchy about it because I I love what we've done there.
+
+All right. What would you like me to do about the ADA price?
+
+What can I do about the ADA price? You know, you let me you let me know.
+
+What what's possible? First, am I the Cardano Foundation? No.
+
+Do I have control over the Cardano treasury? No.
+
+Do I run the blockchain, meaning I run all the consensus? No.
+
+All these things are other parties, okay?
+
+Um can I negotiate on behalf of all of you ADA holders and go make deals on behalf of all of you ADA holders? No.
+
+Can't do that.
+
+So, I don't have any power in this ecosystem to act like a CEO.
+
+Okay? So, if I can't act like a CEO and I can't put on the table a business plan and you, the board, can't vote for that thing,
+
+how exactly do I have agency to impact the growth and price of the ecosystem?
+
+And this is what I don't think you people understand.
+
+You say, "Well, he's the founder." Yeah. Bill Gates is the founder of Microsoft.
+
+What agency does Bill Gates have at this juncture to influence the roadmap and direction of Microsoft?
+
+Maybe a little because he's the founder and he has some shares,
+
+but I tell you Satya Nadella and the board's infinitely more powerful than him.
+
+You're asking the wrong guy.
+
+What I can do is build on Cardano and through building on Cardano, bring people in,
+
+which is what I'm doing with RealFi and Pogun and Midnight. And some will succeed and some will fail.
+
+And when I do those things, for some reason some of you people don't seem to understand that that actually benefits the ecosystem.
+
+And you say I'm abandoning the ecosystem instead.
+
+You got to stop.
+
+You got to get out of this tailspin.
+
+It's a self-destructive tailspin
+
+and it's going to kill you. It's going to kill the ecosystem if you keep doing this.
+
+Cardano is built for things to be built on it.
+
+The best thing I can do right now is build things on it
+
+because the technology is basically done. We have Leios imminently. It's here and it's
+
+it's it's the Musashi testnet. You guys can see all the progress that's there. It's going to be forked in soon.
+
+We have on-chain governance. We have extended UTXO. We have recursive self-improvement.
+
+We have independent node developers. We have all these things going on.
+
+So, if we have all these things going on,
+
+why do I need to sit in some sort of captain's bridge and say, "Well, this is the vision for Cardano."
+
+I should just go build stuff on Cardano and if those things are successful and they bring millions of people in, that's millions of Cardano users.
+
+Will that impact the ecosystem? Of course it will.
+
+And if it doesn't, well, then we have to have a hard conversation about the nature of value to begin with in these ecosystems.
+
+That's materially untrue.
+
+And also, our smart contracts are far more secure, pound for pound, than all the other people that are getting hacked all the time.
+
+And we have Rust-based smart contracts in Aiken, we have Haskell-based ones with Plutus,
+
+you know, we got TypeScript-based contracts and now we're adding a whole bunch of ZK stuff.
+
+You see, but you guys first you can't you don't even know what you're lying about.
+
+So, first you lie and say there's no smart contracts.
+
+Okay, it's a lie. Then you say, "Okay, well there are, but you can't do anything with them." And then we show all these DApps.
+
+Things like Midnight. "Well, okay, you can do stuff, but nobody wants to use it." First, who's who's using these things anyway?
+
+Does AI?
+
+Who who matters more: AI or a human programmer?
+
+Do you really want in 2026 to sit down and create an ecosystem where a human programmer is going to spend 6 months learning how to code in your ecosystem?
+
+Or do you want an ecosystem where,
+
+when you create it, an AI agent can be productive in 30 seconds and it can write beautiful, highly secure code?
+
+And if that's the case, does the underlying language matter?
+
+We have evolved from "My developer knows the language"
+
+to we whoever writes specifications the best will have the best programs.
+
+Tell me, who has better specifications?
+
+The formal methods people like us, or the people that were basically catering to script kiddies?
+
+Which is why there's a tsunami wave of hacks that are occurring.
+
+We have a built-in advantage at the moment because of the disciplined and principled approach that we took.
+
+And developer accessibility doesn't matter anymore because agents took that all away,
+
+but you don't know that because what you did is you're just parroting something
+
+that you heard.
+
+I'm going to tell you a story about Trump.
+
+You know um, so I met with Trump's people in I think it was September of 2024.
+
+And it was over at SALT. That's Scaramucci's conference.
+
+And his transition team was there. So, I talked to them and we had a lovely conversation.
+
+And I said, "Well, if Trump wins, what do you guys want to do with crypto?" And they said, "We're thinking about appointing a crypto czar." And we went back and forth about a crypto czar
+
+and what are they're looking for. And they said, "You know, you should apply for it." And I said, "All right.
+
+Well, how's that going to work?" They said, "Well, if we win,
+
+you know, the first month is going to be real crazy and chaotic, but come down to Mar-a-Lago in December."
+
+So, I told Tam and other people at the company and
+
+then I was off doing the ketamine thing and with 40 Years of Zen, you know, Dave Asprey.
+
+And while I was there off-grid, Tam had tweeted something and said Charles was going to be the crypto czar. The crypto media picked it up, they just went crazy with it.
+
+And I come back, I was like, "Oh, fuck. You know, don't let the cat out of the bag, right?" You know, like, it's not a done deal, we're talking.
+
+So, I went and had dinner with Tim Scott in DC, and we kind of still talked about it.
+
+And then I was getting ready to go down to Mar-a-Lago to start talking to some people.
+
+Well, then all of a sudden, out of the blue, they announced David Sacks as the crypto czar.
+
+Okay.
+
+And I said, "Well, guys, well, what do you want to do?" And they said, "Well, don't worry, we're going to have an executive committee
+
+and we're going to put Bo Hines on it, and Bo is going to be the chairman or executive director, or whatever the fuck the term is.
+
+And then all the crypto leaders like the Brads and the Sergeys and the Charleses, they'll all be appointed to the commission.
+
+That's a better way of doing it because it kind of separates things a little bit."
+
+"All right, yeah, that makes sense."
+
+So, then it just became hyper-political: who's going to be on the committee, who's not going to be on the. Eventually they gave up on the committee.
+
+So, then it's like they already picked Bo.
+
+And Bo is just sitting there and he's like, "Well, what do I do then? Because I'm supposed to be the like the executive director
+
+of this like industry interface and there's no industry interface anymore."
+
+I got so tired of it. I said, "All right, I want to meet the president."
+
+And they said, "All right, well come on down to Mar-a-Lago, and there's this candlelight dinner,
+
+but you got to give us a million dollars."
+
+Okay.
+
+So, I donate a million dollars and I said, "Fine. If that's that's what it takes,
+
+I'll come on down." So, we do the Secret Service clearance and we do all the other things.
+
+The meal was supposed to be mid-February.
+
+And then they say, "Well, there's this Ukraine stuff going on, the president can't make that one. We're going to reschedule one week." And I said, "Okay, that's fine. He's the president of the United States, you can do that."
+
+So, I reclear my calendar and as I'm literally flying down to Mar-a-Lago to go have dinner with the president,
+
+then,
+
+all of a sudden, they call me and they say, "Yeah, you couldn't pass Secret Service diligence, I'm sorry. You've been disinvited from the meal."
+
+I'm like, "Excuse me?"
+
+So, something happened between the 22nd and the 1st because I was cleared by the Secret Service on the 22nd.
+
+So, what did I do? Did I go rob a bank, and all these other things? "Well, we don't know, we can't say." So, we know some people in the Secret Service, nice part about details and things.
+
+So, call them up and they say, "It's not us."
+
+So, that's lie number one.
+
+Then eventually we find the political apparatus. "Well, it's one of your tweets we think, where you tweeted about Brad Garlinghouse donating $5 million. Maybe that's that."
+
+Okay. So, start calling around, calling around and say Well, actually it turns out it wasn't that. It's lie number two.
+
+Then it might have been David Sacks was angry because you said some nasty stuff about them and there's some dossier that they that they created
+
+and they they were circulating it, like "Charles is a bad guy, there's Laura Shin's book and all this other stuff."
+
+And so, okay, maybe that's true, maybe not. It's like not story number three, right?
+
+Just story after story. So, eventually I land at Mar-a-Lago, and I just sit down with Senator Bernie Moreno,
+
+and I had breakfast with him and Tim Scott.
+
+Ironically Nancy Mace was actually the table right right over there and she was pitching herself to be governor. Didn't work out for her.
+
+And I said to Bernie and to Tim, I was like, "I don't understand what's going on.
+
+This is just crazy, you know. Am I in, am I out? Do you guys want to do something or not?" He said, "Well, you know, maybe should work more with the Senate." Okay.
+
+So, I fly back with my tail between my legs, and I'm saying to myself, "Holy shit, what what the hell happened?"
+
+And then all of a sudden, I wake up the next day. I have 150 messages,
+
+if not more, on my phone.
+
+"Congratulations! Congratulations! It's amazing, it's amazing! How did you do it? Your dinner with the president must have been so good." And I was, "What the fuck are you talking about?"
+
+And I see front page of Twitter,
+
+the president announces there's going to be a cryptocurrency reserve and ADA is in it and we're up 70%.
+
+I'm just like What the What the What? What? What?
+
+So, we're calling and calling, trying to figure all this stuff out.
+
+Well, the president had conversation with Sacks and the agreement they had was that it was going to be a Bitcoin-only reserve.
+
+Then suddenly he added more stuff in. In fact, he mentioned us before he mentioned Bitcoin and Ethereum.
+
+And it just everyone went nuts. So, then Sacks thought we had something to do with that, so he said, "I'm going to punish those guys." So, they had a White House get-together
+
+next week Friday,
+
+and we were supposed to get an invitation, and and I was like, "Well, I'm scheduled to go to Japan,
+
+should I cancel that or not?" "Oh no no, don't worry, you're going to get your invitation." Monday they say that, Tuesday they say that. Then Wednesday,
+
+they go to Laura Shin's publication Unchained,
+
+somebody at the White House.
+
+And explicitly leak out, "Charles Hoskinson is not invited to the White House."
+
+He's running around telling all these people.
+
+Not invited.
+
+So, you've put me in the reserve, the things I built,
+
+and for some reason the things I built, the US government, the US taxpayer
+
+should buy them,
+
+but I should have no place and purpose there?
+
+Okay.
+
+Chaos,
+
+absolute incompetence, asinine chaos.
+
+And it never made me feel more small
+
+as a person.
+
+You never forget these things. For 50 years, I'm never forgotten forget these things.
+
+Maybe I'll be a big guy again.
+
+Maybe I'll just stay as a small guy, who knows?
+
+But I'm always going to remember that,
+
+always,
+
+always.
+
+Everything about this man
+
+is transactional.
+
+And everything about this man is the minute you're inconvenient, toss them away,
+
+and a maelstrom of inconsistency. And any person who even comes close
+
+to him
+
+gets covered in molten tar.
+
+I
+
+have been fighting for more than a decade
+
+for making cryptocurrencies mainstream, good regulations about cryptocurrencies,
+
+getting Americans to adopt cryptocurrencies.
+
+We talk to people in the Obama administration, the first Trump
+
+administration, the Biden administration, and then the second Trump administration.
+
+It's my purpose in life to see this technology become mainstream.
+
+I don't care about your politics. I just want to see people use these things.
+
+And the whole process in the last 24 months was reduced to
+
+a transactional corruption fest.
+
+And the saddest thing is the leaders in the cryptocurrency space,
+
+even till today,
+
+didn't have the moral courage to say that.
+
+They saw Trump Coin.
+
+They saw the pay to play.
+
+They had to donate to, to go to these parties.
+
+And they said, you know what, it's okay. I have to sell my soul for access.
+
+I felt so dirty
+
+sending a donation in,
+
+which they did refund, I'll give them credit for that.
+
+But I felt so dirty.
+
+Shouldn't have to spend a million dollars go have dinner with the president, talk about something he promised to do
+
+for us.
+
+So yeah, he deserved to get his ass kicked. Deserved to get his ass kicked when Bongino
+
+and Kash Patel and Pam Bondi
+
+and Don Jr. and all these other people again and again and again, beat the drum
+
+for 24 months
+
+while they're campaigning that they're going to release the Epstein files and arrest the Epstein class.
+
+And the minute that they get into power,
+
+anybody who even asserted it was brutally punished like Thomas Massie
+
+and Marjorie Taylor Greene and Lauren Boebert and others.
+
+They deserve to lose their jobs and get their ass kicked when they say there's no new wars
+
+and they go to Iran with no strategy whatsoever.
+
+Iran can never have a nuclear weapon. I thought you destroyed it
+
+with your gay porn Midnight Hammer military operation name.
+
+We did Midnight Hammer. We had the B-2 bomber. We're the best. We're so smart. We're so capable.
+
+Oh, we're so great. They flew for 24 hours and dropped the bombs and they'll never have the nuke,
+
+but now they're two weeks away from having a nuke. Had nothing to do with that. They wanted regime change.
+
+It's not our war,
+
+but you did it.
+
+You had no strategy, no support,
+
+and now we're left with a mess, a horrible, horrible mess.
+
+Iran now has the ability to shut down
+
+the Strait of Hormuz and reopen it on demand.
+
+They didn't before, but now they do. And all of our allies in the Middle East know we can't protect them.
+
+They know at any given moment,
+
+a drone could destroy their desalination plants. And within a month,
+
+half their population will die of dehydration.
+
+And we can't protect them.
+
+No accountability.
+
+Pretend I'm on the ballot.
+
+Okay, we did.
+
+Blue wave. Well, we lost because I wasn't on the ballot.
+
+And we had bad candidates. And it's the RINOs who did it.
+
+They sent out a letter yesterday to 3,000 conservative groups saying if you criticize
+
+the president, beware. You can't blame him for this blue wave
+
+that's come. Texas is blue.
+
+It's blue.
+
+They're so incompetent
+
+that they took the stronghold of strongholds that gave us H.W. Bush and George Bush
+
+and generations of Republican leaders
+
+and turned it blue.
+
+Every level of it, not just one senator like Talarico,
+
+the governor, and every state-level official except for
+
+Ted Cruz, and the only reason Ted's still there is he wasn't on the ballot this time. He would've been
+
+annihilated, too.
+
+How bad do you have to fuck up
+
+to do that?
+
+And if it stays blue, mathematically, it's impossible
+
+for a Republican to be elected president.
+
+The Democrats are no longer talking about how do we win in 2028,
+
+it's more of a question of what's our margin,
+
+so how crazy can we be with our candidate? Can we do a Bernie Sanders-esque
+
+candidate and get that through, or do we have to do someone more moderate? It's not a question of whether they're
+
+going to win or not. They just think they are.
+
+They could have a 60-senator majority.
+
+That's filibuster-proof.
+
+This is the legacy.
+
+And I have a very small part of the experience,
+
+and I got to tell you, if that's his standard operation that he's done for all the people around him for as long,
+
+good riddance to it.
+
+It's sad because here's my lived reality,
+
+Mr. President, what you've given me
+
+in my industry after you promised to be our greatest advocate.
+
+We spent a lot of money and time
+
+getting Sherrod Brown knocked out in 2024 by Bernie Moreno.
+
+Sherrod Brown was
+
+one of the harshest critics of cryptocurrencies.
+
+He just got his job back, and Chuck Schumer promised him to take Tim Scott's role on the Banking
+
+Committee.
+
+So now all cryptocurrency regulation has to go through the senator who's got a chip on his shoulder because the cryptocurrency industry
+
+fired him 2 years ago,
+
+when he was already a critic.
+
+Is that guy going to be nice to us?
+
+Is that guy going to be fair to us? We're going to have a happy, fun, copacetic time?
+
+The talking points the Democrats used this election were:
+
+crypto equals corruption equals Trump.
+
+So imagine going into a Democrat senator's office and saying, "I'm here from the cryptocurrency
+
+industry."
+
+It's like the South Park episode with Randy visiting Jesse Jackson,
+
+"Kiss it."
+
+That's my life now.
+
+It's what they gave us.
+
+So to the people in the crypto industry, I hope all those pictures at the White House were really worth it.
+
+Really do.
+
+I hope the tens of millions of dollars you donated and spent were really worth it.
+
+You got to sit on some great committees, didn't you?
+
+And I'll be here to clean up the mess,
+
+going and talking to the people, testifying, more likely than not,
+
+and try my best just to power through.
+
+Yeah.
+
+Anyway,
+
+the world's a big place, and the United States of America is one part of it.
+
+You know, and the waves ebb and flow.
+
+We can lose part of the US, or the US as a whole, and still grow as an industry,
+
+and that's just what we're going to have to do.
+
+Yeah, they refunded me.
+
+I'd have made holy hell about that.
+
+And all for the best, I suppose.
+
+Yeah, I'm definitely disappointed in the stuff.io team. Um,
+
+I'm not even going to tell the story, but I'm pretty sad about it.
+
+And if
+
+they would like me to tell the story, I'm happy to do so.
+
+Stuff fails, you just got to
+
+"Total blessing in disguise." Yeah, you know, absolutely. You know, one of the things you learn as you get older is never ever do stuff where you have to hold your nose. Just don't
+
+do it, even if it feels like you can get something at the time.
+
+It's like Mitt Romney having dinner with Donald Trump,
+
+you know, in 2016. And uh, you know, Trump throws him away cause Romney thinks Trump's going to make him the Secretary
+
+of State, and he's just there to humiliate him. Don't do it.
+
+Don't hold your nose. Just move on. Have your integrity and principles.
+
+I love how you say my promise of having Cardano overtake Bitcoin. I never
+
+promised that.
+
+I said I'd love for it to happen, and I believe that Cardano is
+
+a better store of value than Bitcoin is for a variety of reasons. But you're crazy when you say, "Oh,
+
+Charles promised that."
+
+Promised?
+
+Where?
+
+Source? You can't find it.
+
+Because what happened is you heard someone talk about something I said, and another person talk
+
+about something I said, and another person talk about something I said, and about three derivations
+
+out, that's where you got the promise from. But it never came out of my mouth.
+
+I never promised that. I don't promise price appreciation or people overturning things. I say
+
+it's absolutely possible. In an AMA, is it capable Midnight could overtake
+
+Cardano? Absolutely.
+
+Did I promise it?
+
+No.
+
+Absolutely. Far better store of value, far better technology,
+
+uh better basis for things.
+
+It's recursively self-improving. It has
+
+principled money, uh because it's got a deflationary monetary
+
+policy like Bitcoin does.
+
+You have UTXO like Bitcoin has, but you can change it
+
+and you can deal with threats like quantum computing and other things as they come up.
+
+All right, you're gone too.
+
+"Did you keep the Hurricane?" You probably mean the Huracán. No, I sold the Huracán and the Aventador,
+
+and I still have the Urus.
+
+I love that Urus.
+
+It's a great car.
+
+It's a very practical Lamborghini.
+
+No, the idea of Midnight Passport is you link it to a wallet, and
+
+the hope is that, as wallets, you you there's, like, two flows there. One is the wallet
+
+doesn't know about it and doesn't natively support it,
+
+so when you're linking it to the wallet, um
+
+uh you get a standard experience, and the other is a bespoke experience where
+
+it's aware of it. And so, the entire UI/UX changes to reflect
+
+a wallet abstraction lens. So, you no longer have addresses. You just have
+
+charles@midnight, or boris@midnight.
+
+So, for things like Moth and Lace and other things,
+
+we really want to move to a a wallet abstraction lens. But I can't promise that for
+
+uh MetaMask, and bitcoin.com, and blockchain.com, and so forth.
+
+Can't promise that.
+
+So, you can inter You can make it interoperable, and you just click to create, but you'll use the regular wallet
+
+experience that those guys have.
+
+Just your recovery will come from Midnight Passport instead of 24 keywords.
+
+That's the point of Midnight,
+
+is the single biggest framework for institutional adoption.
+
+Black Hawk is sold.
+
+It's out there in Ukraine.
+
+Sold it about uh four months ago.
+
+I miss it, too.
+
+Well, I mean, Fred, to his credit, mentioned Midnight very briefly in as a talking
+
+point in one of his interviews, so I guess they they still talk about it a little bit, but I'm uh still
+
+a little bit miffed that there wasn't an integration of Midnight and Cardano at uh the booth.
+
+I guess we had to apply.
+
+It is what it is. You can't do anything with those guys.
+
+It's a leadership problem,
+
+and unless and until the community has a say in the leadership, it's never going to get better. The community
+
+should elect the board of the foundation, and then it's a self-fulfilling
+
+prophecy, it's a self-correcting issue.
+
+New board members, they will force KPIs and accountability, and that conservative Swiss
+
+culture will disappear rapidly.
+
+And if not, they'll just move the foundation. And um then you'll have an aggressive foundation. Say what you will,
+
+Fahmi Syed is a great leader at the Midnight Foundation,
+
+and he wants to grow Midnight, and he cares about it, and he's willing to
+
+take risks and do hard things.
+
+That's what you need for a cryptocurrency ecosystem to grow. You can't play it safe.
+
+But that's for the Cardano ecosystem to decide.
+
+"Supermarket fridges are being hacked in Europe. Is there any chance technology could run on Cardano?" Cardano's really good for
+
+establishing connection points between pre-existing things, but it's not going to make your
+
+edges secure.
+
+So, if there's firmware and old chips
+
+uh that are easy to hack into, Cardano really can't do much for that.
+
+Um now, what you can do, if they're programmable and you can upgrade the firmware and you can upgrade
+
+the chips, you could absolutely create an interface where you use smart contracts
+
+for your role-based access control,
+
+and that prevents the bad guys from getting in.
+
+Uh so, you know, everything's going to have to be upgraded, but the problem is that the vast majority
+
+of systems we have are not upgradeable.
+
+And because of reverse engineering anything, it's very easy to actually figure out how they
+
+work, and once you know how they work, you can figure out how to defeat them.
+
+Yeah, and that's the fundamental problem,
+
+and that type of attitude basically kills Cardano.
+
+If every large project that builds on Cardano is not Cardano,
+
+well, then what's the point of building large projects on Cardano?
+
+Think about, if you go to Silicon Valley, or just
+
+talk to an average cryptocurrency person, like a Solana person, they'll say, "Okay, nothing is being built on
+
+Cardano. If you launch on Cardano, your project will fail cause there's no users,
+
+you can't get investment, you can't get liquidity."
+
+So, then you have this $200 million project that's listed on Binance,
+
+that has a lot of people coming in, it's very exciting, it's reached a billion-dollar
+
+market cap on fully diluted,
+
+and it seems to be growing very rapidly.
+
+That is a counter-example to the argument that no one's building
+
+on it and no one can succeed if they build on it.
+
+And a counter-example to saying you can't get liquidity and investment
+
+if you build on Cardano.
+
+So, usually, what you do with those things is you broadcast them,
+
+you know, when they happen. You go, "Well, look at this thing."
+
+"Oh, yeah. I guess that's true. Okay."
+
+It's like if you run a television station, you say, "Nobody watches that TV
+
+station." "Well, we have uh Seinfeld and Friends and all the" "Oh,
+
+well, yeah, those are pretty popular shows.
+
+All right. I guess people watch that."
+
+You see what I'm saying? It's It's you You have to have content.
+
+You have to have product, and then it justifies the channel. It justifies
+
+the platform. So, there's a very symbiotic relationship with these things, and
+
+when you have a big winner,
+
+you you really run that winner out front and center uh to showcase that the platform
+
+is still viable. So, how do you do that? Joint marketing.
+
+So, you say, "How can we help you?
+
+We want to put a few million dollars of our budget into your budget, because your growth is our growth."
+
+And then also joint projects.
+
+So, they have Reeve, they have Veridian, they have all these things. So, how do we get Veridian
+
+to be part of Midnight Passport? How do we get Reeve on Midnight,
+
+these types of things, to enable it?
+
+Because it seems like Midnight's able to sell,
+
+but Cardano can't. So, let's sell through Midnight into Cardano.
+
+That's what a strategic relationship is, and it's mutually beneficial, because both sides get the
+
+users.
+
+Not possible
+
+because of ego. It's not on our end. We can work with anybody.
+
+It's on their end, and it's a leadership problem.
+
+If you have a proper board, the board recognizes that a new
+
+The board would basically terminate the old leadership, and then the new leaders come in.
+
+There's no ego anymore. They're not beholden to prior decisions,
+
+and and what they do is they make changes accordingly.
+
+But the problem is, the current board appoints its successor, and you, the ADA holder, have no say in their composition.
+
+So even though they assert to represent you,
+
+there is no mechanism upon which they represent you.
+
+You can fire your DRep. You can fire your Constitutional Committee member.
+
+This is a governance failure.
+
+I tried to change it, and the Swiss government stepped in and stopped us from changing it.
+
+There was a lawsuit over it and everything, and we gave up. We couldn't do anything because the Swiss government took it back.
+
+The lesson to me: never ever build anything in Switzerland ever again.
+
+There's just no rule of law there if the regulator can overrule a court ruling
+
+and unilaterally, and put an administrator in, back in, I think it was 2020 or 2021, I forget.
+
+And that administrator can basically create a thing saying, "Either you all resign,
+
+and appoint a new board, or I put this into a receivership, and it becomes property of the Swiss government."
+
+That's not a consensual resignation.
+
+It's we're going to try to make it work for the benefit of the ecosystem.
+
+Those board members who were appointed under distress are still the board members of the Cardano Foundation.
+
+That's a fact.
+
+And they can never never run away from it.
+
+It's there. It's the founding sin of the Cardano Foundation.
+
+I still have one small construction company up in Gillette, and it does local projects for the family. But we don't do any external construction anymore.
+
+That was one of the things that we shut off over the last 18 months.
+
+If you guys spam, you get banned.
+
+Is Monument Bank coming to Midnight this month? How far are they?
+
+Well, I always let the Midnight Foundation manage those announcements, but they're very substantially along in the conversations about
+
+how to bring those tokenized deposits on board. I actually have some I'm working on right now. It's almost 1,000 pages now.
+
+And it's a new concept that I I think they're going to be a big consumer of that's specifically for these types of regulated transactions.
+
+So, we're very excited. They're a phenomenal partner,
+
+great leadership, great people there, super easy to work with. And honestly speaking,
+
+there are very few people that when I meet them, and I hear their vision for their business, I'm like, "Well, how do I invest?"
+
+When I heard them, I said, "This is going to be a neobank that's going places. I think it's going to fundamentally change banking."
+
+And Monument just has great vision.
+
+And the fact that it's such a natural relationship and partnership, and we know exactly what we need to do
+
+to make them look good, and they know exactly what they need to do to make our platform show shine,
+
+that's the type of relationship you look for. And what's great is it just keeps on growing.
+
+So, you have assets to begin with, but then those assets
+
+want to be liquid, and they want to create create yield in transactions.
+
+So, obviously they'll find a path to do this. And when they do, it benefits everybody. That's a symbiotic relationship.
+
+Well, you know, how you break that narrative is you showcase the people building on it,
+
+you know, front and center. And there's a lot of great projects like Strike and others
+
+who are doing good work, and they need to be front and center, and you need to market with them and help them market
+
+so that they can break that that envelope.
+
+Nothing shows success like success.
+
+It was structural. The reason why ADA wasn't stolen was that our wallet design and
+
+how people transact on Cardano is fundamentally different from an account-based system. It's more secure.
+
+And we keep telling people again and again and again. You say, "Nothing but BS from Hoskinson."
+
+Well, I just gave you an example.
+
+Right here. Why wasn't our fund stolen? Because it's better.
+
+It's a more secure design.
+
+6.3 billion dollars, I think, if not more, was just stolen. It's the largest theft in human history.
+
+We weren't part of it
+
+because we designed things correctly. And we predicted the AI revolution, the liquid non-custodial staking revolution,
+
+and also the the necessity to have something for L2s with extended UTXO.
+
+And as a happy accident, this doesn't happen.
+
+And you say, "Well, there's nothing to show
+
+because the price isn't where you want it to be."
+
+If the price was high, you would have a completely different tune. We've run this experiment. It was called 2021.
+
+It doesn't askew the progress and the ideas and the hard work that's been invested.
+
+Maybe. Could even ban cryptocurrencies outright. That's the danger, and that's the mess I have to clean up.
+
+Ironically, I'm probably going to end up being one of the bigger leaders in this than all of the prior people
+
+because all the prior people went to the White House and took pictures with the president, and gushed over him,
+
+and said he's the greatest guy ever, and the orange Cheeto tastes great.
+
+And I was the guy on the outside.
+
+I have been, actually. I've been working with Ben over at University of Wyoming. He has a company called CellDrop,
+
+and I have a patent on a device called Stemler.
+
+And basically, what it is is it solves one of the biggest problems in autologous stem cell harvesting.
+
+So, I went through liposuction to get out fat to use for stem cells.
+
+It was horrible. It was painful process and multi-day recovery. And I'm laying with a compression garment on,
+
+so I pull out my laptop and I designed a disk
+
+with a titanium needle in it, and the titanium needle is porous
+
+and has chemokines in it. And then you put it on like a continuous glucose monitor,
+
+and it acts as a beacon for stem cells to migrate into, and then it doubles as a bioreactor.
+
+So, you leave it on for a few days. Once it absorbs enough stem cells, you take it off like you take off a continuous glucose monitor.
+
+And inside the disk, you now have a viable yield of stem cells.
+
+Now, there's no surgery, no cytotoxic materials, like lidocaine or other things like that.
+
+And it uses the same form factor of a continuous glucose monitor, which we use all the time.
+
+And it's not really painful, and people can have them on, and shower with them on, and so forth.
+
+So, I wrote up the patent, and I wrote out the design and all these other things, and I took it over to Ben.
+
+And he's a scientist at University of Wyoming.
+
+And I said, "Hey, what do you think about this?" He said, "I think we can test it."
+
+So, we've tested it, and we talked to a plastic surgeon, did these tummy tucks, so he's got sheets of fat,
+
+put in the lab and put it in. And it actually collects more stem cells than than liposuction does,
+
+by far. So, it really does seem to be a a viable thing.
+
+So, the next step is to is to really lean into the product design.
+
+And there's a firm that we're working with that did did a design for the the continuous glucose monitor,
+
+and to begin a phase one clinical trial. The thing we're fighting with the FDA about is
+
+can we skip animal trials because of the nature of the device
+
+and go straight to a phase one clinical trial? In which case, 3, 4 years, breakthrough medical device, it'll be fully approved.
+
+Otherwise, we have to use pigs and put them on and waste a year to show that it's there. Because you know safety,
+
+it's at the end of the day, a dermatology product.
+
+So, you analyze the skin, and it's extremely easy to see if there's adverse outcomes.
+
+And efficacy, it either has stem cells or it doesn't have stem cells.
+
+And placebo-controlled, it's like, okay, well, one device is loaded with chemokines, the other device is not.
+
+It's easy to have a sham device. They look exactly the same. We don't know, they don't know.
+
+So, efficacy is super easy to prove, much more so than any of these drugs that we give people.
+
+So, I'm very optimistic about it. Now, that's the beginning of a larger vision
+
+of okay, now that we have an autologous adipose-derived stem cell, how do I make that stem cell better?
+
+So, there's two paths you can go on. One is I'm going to co-culture and co-administer the cell
+
+with some material like an exosome, for example.
+
+And the hope is that can revitalize and regenerate make those stem cells younger, act younger, do younger things.
+
+So, exosomes, umbilical cord blood exosomes, are a phenomenal thing.
+
+Easy to get and ethically sourced because they come out as afterbirth, so there's nobody killed in the process of harvesting, and children are born all the time.
+
+And once you have it, it's vast those stem cells very easy to mass-manufacture, UCB, and there's no transference of genetic material.
+
+So, it's very safe.
+
+The other is to improve the ambient environment upon which the cells are injected.
+
+And there, the bet we have is hyperbarics.
+
+If you take hyperbarics, and you put people through hyperbaric therapy, they get younger.
+
+Just by every metric, you can look at. There's hundreds of research papers now.
+
+And one of the reasons seems to be it supercharges your stem cells, and revitalizes them, and they go around and fix stuff.
+
+So, Jay Leno, he had his engine blow up and horribly burned his face.
+
+If you look at some before and after pictures of the burn damage, one of the reasons why it almost fully healed without any scarring was he used hyperbarics for it.
+
+So, if you intervene soon enough with hyperbarics, it's just a miracle in terms of its regenerative capability.
+
+So, our view is if you prime the environment with hyperbarics,
+
+and you combine that with autologous adipose-derived cells, and you combine that with exosomes, those three things as a stack
+
+will probably be massively regenerative, both systemically through IV,
+
+and then locally, you know, through injections, usually orthobiologics, so you're thinking of like knees and hip and
+
+elbows and shoulders and things like that.
+
+So, definitely interested, and it's still working on it.
+
+A lot of partners, and just it's medical research. And so, it takes years, and you have to go through FDA approval,
+
+and you know, scientists got to science. AI has certainly massively helped
+
+because we can think into the AI, and test things very rapidly.
+
+But you still have to do the trials, and that's the limiting factor with all these.
+
+Yeah, you think that. Liposuction's not a good thing, man.
+
+It's tough.
+
+Yeah, it's true. The best way to get rid of it is fasting.
+
+You know, the 3/4 is the way to lose weight. And I was doing it, and I lost over 25 lb,
+
+and just a lot came up, all at the same time. You know, real tough.
+
+So, I said, "All right, I'm going to eat again." But it's like, "Man, I need to start fasting again."
+
+So, I was doing Monday through Wednesday just eat nothing,
+
+and then you know, Thursday through Sunday eat again. Just hard to do with travel.
+
+But I'll get back to it.
+
+It's funny, people say, "Don't do that. That's bad. But take GLP-1."
+
+It's like, so you just don't know you're starving, and you just live in a perpetual state of starvation?
+
+Not really not really good.
+
+It's the format, by the way, of the continuous glucose monitor. It's not a continuous glucose monitor.
+
+Well, you know, the clinic closed in that I got out of the business. I still own the building, and then
+
+I entered into a strategic partnership with Monument, which is an affiliate of Mayo Clinic, and they're taking over the building.
+
+And they hired the doctors and everything. So, there's continuity of care.
+
+And what we built is still there. It's just now it's a different manager and operator of it because they're better at operating these things than me.
+
+And they have unfair advantages. Like, they have access to Epic. We could never get it because of our scale.
+
+They have a surgery back end. They do cancer. They do other things, which are higher reimbursement rates, and so they make far more money.
+
+In some cases, the same patient they'll actually get 20% to 40% more because of the way reimbursements work.
+
+So, if the goal is good health care in Gillette,
+
+that's the way to do it.
+
+And it's the same MRI that I bought. It's the same CAT scan. It's the same facility. It's a beautiful facility.
+
+It's well run. And Mayo affiliate, that's a pretty good system.
+
+So, that's there.
+
+Will it ever come back? I don't think in that format, because the clinic distracted from the regenerative medicine business.
+
+We were entering in to do regenerative medicine, but we spent 99% of our time figuring out how do we run a health care system in rural Wyoming?
+
+And it was just so hard to do that.
+
+And you just you end up with just the most asinine meetings, and and just craziness about it.
+
+Politics with the local hospital, and this particular provider got pregnant. Now we have to do this, and now we have to do that. It was just like it's just so much stuff.
+
+You're like, "Yeah, but what does that have to do with like making people younger and healthier?" "Well, we don't do that. We do medicine."
+
+It's just a different thing.
+
+So, in many ways, very liberating to actually have that clinic be operated by them.
+
+And it's good relationship. You know, I still own the building, the infrastructure.
+
+You know, and I think Monument is going to grow and thrive in the jurisdiction. We're rooting for them, and we want them to grow and thrive in that jurisdiction.
+
+And I think they're a great check and balance
+
+to our friends at Campbell County
+
+Health, they need checks and balances for patient care.
+
+And I hope the policymakers there will share the mill levy with Monument so that Monument can be equally subsidized.
+
+Because there's an unfair competitive advantage.
+
+No, they're not baby harvesting stem cells anymore. You know, this was my biggest ethical issue.
+
+And I didn't want anything to do with it if they were embryonic stem cells. First off,
+
+pluripotent stem cells harvested from
+
+embryos, they're useless for medicine, because there's too much of a risk of a teratoma. You can create super cancer with those stem cells. They're bad.
+
+The other thing is they're not genetically compatible.
+
+They're connected to that embryo, not you.
+
+So, autologous adult stem cells, they come from your fat. They're you. They're your cells.
+
+When you cut yourself and when you get injured, that's what fixes the stuff.
+
+So, your body already has a regeneration system.
+
+It's just not very good. It's not like a salamander's or an axolotl or these things.
+
+So, why don't we take your cells
+
+and let's make them better, and then let's program them to fix you
+
+because that's what they do.
+
+You know, and what blew my mind was when it became clear that adult stem cells were a thing,
+
+you still had all these scientists that were ghouls saying, "No, no, no, but we still need to do the embryo stuff." Why?
+
+No, you've got to ethically source them.
+
+Fan of Heroes III? Huge fan of Heroes III. It's my favorite game growing up.
+
+Do you think Elon Musk is a grifter? Now, this is a classic example of a derangement syndrome.
+
+Elon Musk is
+
+he's the Howard Hughes of our generation.
+
+Didn't mean a lot to me, but my grandfather, when you talk about Howard Hughes, "Oh, yeah, Howard Hughes."
+
+Because when he grew up, like Howard Hughes was this mystical figure.
+
+He would build the biggest planes, like the Spruce Goose,
+
+and he could do all these incredible things. But then he went batshit crazy and ended up living with a bunch of Mormons,
+
+saving his urine and nail clippings. You know, it's crazy guy, right?
+
+But he's still the guy the CIA would go to to recover nuclear subs
+
+because he's that guy.
+
+And Musk,
+
+there was eras of Elon Musk's life.
+
+And when I met him, when I was at CU Boulder, he was still married to Justine.
+
+He was a hard-nosed, driven Silicon Valley entrepreneur.
+
+People generally liked him. Autistic, so he's, you know, kind of not super social.
+
+But people respected him, and said, "This guy is working on super hard problems, really interesting problems."
+
+Then there's Elon Musk the celebrity, where he became a national figure, and this was amplified by X.
+
+And it took the worst aspects of him and stretched them out in a certain way,
+
+and the best aspects of him and kind of muted them in a certain way.
+
+And then the problem was there's Elon Musk the rich guy.
+
+So, for his whole life, he was rich,
+
+but not like trillionaire rich. Even when he's a billionaire, he's not in the top 100 or top 200.
+
+When he suddenly got rich, he got really rich. He went from like 20 billion to a trillion within 36 months.
+
+Too rich too quickly, too famous too quickly.
+
+It with the wealth and the power creates a a layer of sycophantism.
+
+And so, when you do stuff, there's no consequences to the bad stuff.
+
+You probably shouldn't have 14 kids from six different women,
+
+and you probably shouldn't break up with a person that you're in a romantic relationship with and have children with over a text message.
+
+This is basic stuff, right?
+
+But there's no regulating function that's inside his inner circle to stop him from doing that because you have all these lamprey fish that are reliant on
+
+his his wealth and power.
+
+And ideas are great.
+
+I have them, he has them, other people have them.
+
+What I had to learn the hard way, and I'm still learning it, and he doesn't seem to internalize
+
+is there's a difference between a raw idea
+
+and a finished idea.
+
+And there's a journey that an idea goes on to get to a finished idea.
+
+Especially in politics, especially in religion, especially in culture.
+
+And when you're a big guy at a very high level, okay? I like to pretend I'm
+
+a big guy, but not even one one-millionth of it.
+
+Musk has billions of people who pay attention to what he says. You're like the pope.
+
+Every single thing you do and you say is scrutinized at an enormous level.
+
+So, that means you have to give
+
+complete ideas.
+
+Now, I'm not saying don't be inauthentic. That's very different.
+
+You can have controversial complete ideas.
+
+When the Pope wrote the encyclical about AI, that is a complete idea. It's very controversial.
+
+But it's a complete idea, because he understands the magnitude and the gravity of his role, and when he says something, how it impacts the lives of billions of people.
+
+As does Musk.
+
+We get the raw ideas.
+
+And some are gems,
+
+and a lot aren't.
+
+And a lot are hurtful or deeply offensive or can be politicized and will be politicized. And it's created a derangement where people now believe he's evil,
+
+and he means the worst for humanity, and every single thing he does is just to harm us, and he's a grifter and a scammer, and all these other things.
+
+I'm sorry, scammers and grifters can't make cars fly
+
+and run 98% of America's space program,
+
+uh and build the largest ISP on the planet with satellites when everybody thought it was impossible to do that.
+
+There are just things he does, categorically, that were thought to be undoable. And once he did those things,
+
+and yes, I understand engineers and scientists and other people do these things, but it's not like spontaneous generation, guys. Somebody has to lead them.
+
+That's the hard part.
+
+Bringing smart people together and making them produce something
+
+that you can use is harder than the actual thing that they do.
+
+Because there's 10,000 different ways to do it.
+
+And they all disagree with each other and hate each other, and having done it multiple times, I can tell you it's brutal managing smart people cuz they're smarter than you.
+
+So, they can outthink you. And it's hard to argue with them because they know the domain, and to fight them and be able to figure this stuff out is so hard.
+
+So, that is a unique skill, and very few people have demonstrated that at the scale, if anyone, at the scale that he has.
+
+So, you know, he's in this weird place where
+
+if I had to say, okay, America's at war and we need to re-industrialize the nation, who should be figuring that out? I'd say Elon.
+
+And he'll go build 10 million humanoid robots and get us making stuff like we did in World War II again.
+
+If I had to say like who is going to get us to Mars? Elon.
+
+If I had to say, is he a nice guy? Absolutely not.
+
+That's provable. He treats people terribly.
+
+Absolutely terribly. He's extremely bad to people around him. Steve Jobs was bad to people around him, too.
+
+Is he an ethical person?
+
+It's hard to be at that scale. The ends justify the means for these types of people. So, if you're on the wrong side of things, you're going to get hurt.
+
+Is he a family man, and good to his family? No, he's a deplorable person.
+
+How he's treated his trans daughter,
+
+I don't care that uh that you've had fights and you've hurt, that's your kid.
+
+You have to take care of them and unconditionally love them,
+
+regardless of the life choices they make. Doesn't mean you have to enable those life choices and support them, but you have to love them.
+
+And uh how he goes about that, not good.
+
+There's no one around as a regulating mechanism, as a friend, to look him in the face and say, "Look man, you got to clean up your shit.
+
+It's not good." So,
+
+what do you do with that? He's a vast person, like his interest and ambitions. And vast people,
+
+you never get to see the full one. You only see parts of them, and it's choose your own adventure. If If you want to um
+
+hate him, you can hate him. If you want to love him, you can love him. If you want to idolize him, you can idolize him. Uh you want to demonize him, you can demonize him.
+
+And you're all right at the same time, cuz he's a vast person, a force of nature.
+
+And we get them every now and then. Every 50 to 100 years, we get a Henry Ford or we get a Howard Hughes,
+
+or something like that. Unfortunately, with our culture and the enablement that the culture provides, it almost always ends up in a self-destructive end.
+
+So, it is what it is.
+
+And having been a self-made billionaire and uh living with getting rich really quickly and having a circle of sycophants around, and dealing with the consequences of that,
+
+I do have a unique perspective that most people don't on this. And I see the same patterns and things, but I see the end result of those things and patterns with him.
+
+Yeah, but unfortunately we do see the kids,
+
+and uh unfortunately we do see the ex-wives, and
+
+uh people have been very vocal about that. The fact that it took a four-hour movie to even just try to cover
+
+this, and a Walter Isaacson book that needs a sequel, that's evidence of the vastness of all of it. And you can always find something.
+
+Great societies take men like that and heal them. Sick societies take men like that and enable them.
+
+No. And she's certainly not a friend of uh of us. She hates our guts.
+
+No, it's going to be, I'm sure, Sherrod Brown. Um
+
+But Warren is still around, and it's going to be horrible. Just horrible.
+
+Yeah, this is a great idea about raw idea versus finished thought. So, DOGE,
+
+I've thought a lot, like how would I have done DOGE? And I know some people, old school people in Republican Party,
+
+who've been around GAO and things like that, and I asked them like, what would be the best approach first?
+
+And they say, "Well, look, the government's like a big mean beast, and you try to shake it, you're going to spook it, and it's going to attack you back.
+
+And we all agree it's obese and fat. No one's going to say the government's not bloated.
+
+And what you have to do is you have to say, okay, well, instead of trying to cut it by 50%, why don't we just say
+
+pick a number, 5%. Instead of growing, it's going to it's going to shrink by 5% per year,
+
+across the board, all agencies.
+
+So, the immune system of the federal government is,
+
+they say, "Oh, the minute that you want to cut 5%," they say, "Oh, of course we'll cut 5%. Um uh we'll stop feeding the children.
+
+Uh kids with cancer will now die. Uh no air traffic controllers anymore." And you're like,
+
+"Really? That's the 5% fat?
+
+Not The other 95% is even more critical than that?"
+
+"Well, yeah, of course we need to do our gay bear research in the mountains of Montana."
+
+Wait a minute! Hang on a second here. So, what you do is you say, "Look, let's get 5% more efficient."
+
+And so you you say, "Okay,
+
+every agency, uh we have 180 days, put a plan together.
+
+And then in parallel, let's build a private structure to attach itself to that agency to review the 180-day uh end-in plan.
+
+And you'll have the layoff list from and the reduction list from the private entity, one from the bureaucracy.
+
+They're not going to overlap.
+
+They're going to be different, because the bureaucracy is protecting its own growth.
+
+So then, you reconcile, and you have a return to honesty, and you say, "Okay, every year we have to cut 5%.
+
+Across the board. Military has to do it, the CIA has to do it, all the departments have to do it."
+
+A lot of that can be done with just not hiring people who retire. So, when somebody retires, don't hire the replacement and just improve efficiency.
+
+Now, if you do that, within 14 years you cut the entire federal budget in half.
+
+Pretty remarkable. And when you look at a 3 to 5% GDP growth, which is what China gets,
+
+we have those two numbers intersect, we actually have a surplus within 10 years.
+
+It's possible to do. So, what's 5% per year? It's not a lot.
+
+Feels like a lot until you start doing it. If you create the structure, processes, and procedures, then you can get where you need to go.
+
+And uh very rapidly on a department-by-department, you start to to figuring out what that waste, fraud, and abuse is.
+
+This is the worst job in the world for a guy like Elon Musk
+
+to do. Elon loves being a CEO.
+
+I'm a CEO, he's a CEO. I We think the same way in certain respects. We walk into an unhealthy organization,
+
+we say, "Well, let's start firing people.
+
+You know, let's just cut it down." Like, he walks into X, he fires 90% of the people,
+
+and he was 100% right that the vast majority of those people carried no value to the mission of the organization, and you wouldn't miss them if they were gone.
+
+So, he was right.
+
+You can't do that in a government bureaucracy. You just can't. It's not how they operate, it's not how they run.
+
+They're social animals that are owned by the people, and they don't have a profit motive, and the mission is ambiguous.
+
+Like, what is the mission of the Department of Homeland Security? It's really hard to say.
+
+"We want to keep you safe." Okay, and exactly how?
+
+What exactly is safe mean? Does safe mean I can't harm myself? "Well, not really."
+
+Like, if I drink and kind of being unsafe? "No, no, no, from from people domestically."
+
+Okay, so you're like law enforcement? "Well, in a way."
+
+Okay, what's your relationship then to the police, and all these other guys?
+
+"Well, you know, it's hard to say. There's fusion centers, there's these things. We really focus on like the terrorists."
+
+Domestic terrorists? "Well, kind of. Maybe the FBI does, kind of sort of."
+
+Right? It starts getting a little milky. And then you realize there's like 14 government agencies that do the same thing in a different way.
+
+Consolidation is the other super tool. But that takes political courage. Ronald Reagan used to say that the closest thing to immortality is a government bureaucracy.
+
+Once you start them, it's hard to get rid of them. Why do we have more than 16 intelligence agencies?
+
+Come on! Do we really need 16 or more, depending on how you count them? Can we shrink a little bit?
+
+So, that requires the political courage, and that's the big stuff. The little stuff is methodical iteration,
+
+again and again and again and again. Methodical iteration is really a system's thinker. It's an industrial engineer.
+
+It's It's a person who every day, their job is to make things a few percentage points better. Every quarter, they chase a small improvement here.
+
+Um different mindset, not really a Elon Musk. It's more of a Tim Cook
+
+type of mindset. That's what made Apple Apple uh after Steve left.
+
+Tim was an efficiency guy. Let's make the phones 5% cheaper to make.
+
+You see, and that's an endless discipline, like a Zen Master meditating every day. And you have to deal with so much bureaucracy and so many meetings and other things.
+
+Um the other thing is the absence of comparables. If I was in DOGE, at the beginning, start the process, the very first thing you do
+
+is say, okay, here's the architecture of the whole US government, and here are all the different bureaucracies and agencies.
+
+And we have to say, what's the target? So, who's number one for each of these things?
+
+Who's number one for healthcare? Who's number one for education? And what are the comparable ministries for those things? What do they look like?
+
+And how many bureaucrats and people do they have for each million people in their population?
+
+Are we comparable to them, substantially overstaffed, substantially understaffed?
+
+Is the problem because we have too few people or too many people?
+
+The other issue is there's no recognition whatsoever of
+
+AI. This is ironic, because Elon's an AI guy. He's one of the big guys in AI.
+
+And you say, okay, well, how do we introduce artificial intelligence into the workflow of the government to make the government more understandable and to make the government more efficient?
+
+I would have advocated for the construction of an open source LLM. I probably would have done it with the Allen Institute,
+
+and given them some compute from many of the uh the government labs, like Sandia or these other places, to build an LLM and an ontology of the entire US government so that you could query questions.
+
+And you could ask things like, how much money are we spending here? And make it a public good
+
+that anybody can download a cell phone app with, and then you just ask questions about how the US government works. What does this require? Every government agency
+
+has to get their data lakes right and actually have uh all their data be open. There should be no closed data.
+
+We also have an addiction, since GWOT started, of overclassifying things. There's billions of classified documents, which keep them out of the data lake, and then remove transparency from the system as a whole.
+
+So, it's a complex problem, and it's a problem that has to survive multiple administrations, and it has to be an ethos and a mindset that exists.
+
+And finally, you say, "Well, whatever is so corrupt, they'll just never do that." Pay people well.
+
+Why is it the case that the Department of Defense is larger than Walmart, Microsoft, and Google combined in terms of raw headcount,
+
+but the person at the top is paid $200,000?
+
+And the people who lead those organizations are paid tens of millions to hundreds of millions of dollars.
+
+Does that make any sense to you?
+
+So, if you have the people at the top be paid for performance and KPIs, like the people leading the bureaucracy get a big-ass bonus if they do their 5% cut,
+
+I have a belief that they'll do that,
+
+and share that wealth around. So, for the Congressmen and the Senators and the President have a bonus pool.
+
+If the US government can grow 3 to 5% per year, and our KPIs improve, every Congressman and every Senator and every President gets millions of dollars of remuneration.
+
+Would you, as a citizen of the United States, be willing to allocate .1%, .2% of the tax receipts to the people running the government if they actually do a good job?
+
+I think nine times out of 10 people would say yes. Then suddenly everybody's bipartisan.
+
+Because if they're not bipartisan, guess what happens?
+
+They lose their bonus. And they sit down, "Okay, how much is this fight that we're having worth?
+
+If we don't get this solved and the government shuts down, I lose a $5 million bonus.
+
+As much as I want to shut the government down, I think I got to figure this out with these other guys, cuz I really want that $5 million bonus."
+
+You see? Otherwise, they still make the $5 million, but it's them being stock traders and being better than Warren Buffett magically out of thin air,
+
+uh you know, through grift and corruption, right?
+
+If you pay people the right way, the corruption goes down. I saw this a lot in Africa. You know, some countries I went to, I kept getting pulled over again and again, and the police kept asking for bribes.
+
+And I'm just like, after eight times, I'm like, "Come on guys, you know. I get it's not a lot, but you got to stop doing this." And they say, "They don't pay us!
+
+Pay us like $200 a month.
+
+So, this is how we make our money from you guys." It's like, "Okay, I kind of get it.
+
+I don't like it, but I get it."
+
+Pay people well, and then suddenly you get really competent, capable people, and you'll have a lot more competition.
+
+People say, "Instead of being a CEO, I want to be a senator. That actually I'd make more money that way, and you get some super smart senators, and super smart governors, and super smart congressmen,
+
+and government efficiency really matter.
+
+As for the rest of the stuff cutting that, you know, those are talking points in the left, pancreatic uh you know, cutting pediatric cancer research, well, we don't really know.
+
+Okay, some of the raw money may have been cut, but what if it was redundant research or uh it was actually under the hood bad ideas or something?
+
+I don't know the facts and circumstances, and you don't know either.
+
+You know, and it's very easy for people to just latch onto one little thing, like, "Oh! How could you do that? It's so bad!"
+
+So, I don't comment on those things. I don't know enough about them to actually have an opinion one way or the other.
+
+Thank you so much. And it is!
+
+That's
+
+So one of the greatest open questions we'll never have answered,
+
+good old Ridley,
+
+is is Deckard a replicant or not?
+
+We'll never know. They'll leave that one open.
+
+Universal income is only feasible when you have a surplus.
+
+And so, you're Norway, yes. United States, no.
+
+That's what people don't get. If you pay somebody, you have to take it from somewhere else,
+
+okay? I can't by mandate make more bread.
+
+You have to make the bread. It has to be produced somewhere.
+
+So the Quantum Hosky program had milestones and checkpoints in it, and
+
+and one of the biggest milestones was, could we demonstrate at scale, a viable, fun, interesting four-dimensional game engine?
+
+We were not able to do that within the budget and time constraints of the program.
+
+That was the most critical because everything would be built within that game engine.
+
+So we we did a lot of prototyping, and we thought a lot about what an experience would be and these types of things,
+
+but we weren't able to crack that nut at the level that I was satisfied with.
+
+It doesn't mean that the program is dead. It means what we do is we shelf the idea.
+
+And we say, okay, we're not where we need to be.
+
+My belief is within probably about 24-36 months,
+
+AI is going to advance to the point where we can revisit that,
+
+and we can build a very substantial augmentation to existing graphics hardware
+
+that can properly render 4D space
+
+because these are highly optimized things, but they don't really work well with four-dimensional spaces.
+
+And at that juncture, I think we actually can pass that milestone, and then as for everything else,
+
+we were right about the DishBrains. We were right about various things.
+
+We think it's going to be a real good time. So, it's a product that's too early.
+
+Very much like the Apple Vision or a lot of Facebook's work with VR,
+
+there's a certain threshold you have to cross through with VR before it becomes ubiquitously
+
+useful and interesting to the consumer. We're almost there,
+
+but Facebook has spent all this money trying to push us in that direction and get it done.
+
+And so we just, when budget season comes, you have to make cuts,
+
+and we say, all right, we're not where we need to be, and we could try to force it through,
+
+or we could just organically wait, and in 2-3 years, AI can actually do
+
+all that work ++ and be far better at all of it.
+
+So, we put it up on the shelf.
+
+But I still love the idea, and I think it's going to be a huge winner.
+
+It's just it's too early. Part of my job
+
+is knowing what's ready and what's not ready, and when to do things, and the order to do things within.
+
+Yeah, we're still on target as far as I know,
+
+the last time I talked to Jare for LayerZero to come Cardano. I'm real excited about that one.
+
+It's going to make things a lot easier for us.
+
+Legends of Valour Port - Did you ever get a chance to try it out? Yeah, I did. Um, so I disassembled Legends of Valour,
+
+and I completely deconstructed the game.
+
+And I created a 540-plus-page manual, a bible for Legends of Valour,
+
+that mapped from the clue book, the map, and the reference materials to the source code, the entire game,
+
+structure by structure, and I might, I'll probably publish it.
+
+I have it floating around somewhere. Um, I don't have Slack on this computer, but,
+
+anyway, I'll probably publish it at some point,
+
+just so people can see what's under the hood for Legends of Valour. And I discovered tons of things in Legends of Valour,
+
+like, um, female characters are actually stronger than male characters.
+
+They don't tell you that, but it's in the code of the game.
+
+The combat mechanics, the damn system, all these types of things.
+
+Problem with Legends of Valour is, it's an unplayable game for a modern person,
+
+because all of our expectations of a open-world CRPG are not met.
+
+There's no minimap.
+
+There's no journal system.
+
+There's no progression. There's no levels or anything like that.
+
+There's no conveyance to the character, the person, the player about the goals of the game,
+
+how to win the game, any of these things.
+
+These are just basic expectations, uh, that people have
+
+when they play a game like this.
+
+The quests for each of the guilds are, there's only five per guild,
+
+and they're very simple, and there's not really any depth to the gameplay mechanics.
+
+There's no differentiating factor between any of the guilds,
+
+other than the fact they hate each other, so if you join one, you can't join another,
+
+okay?
+
+And, uh, a lot of things don't make sense, like, you join the thief guild, and you leave, you lose all your thief skills.
+
+So,
+
+if I'm a doctor and I said stop practicing medicine, magically, I just don't know anything about medicine anymore?
+
+It doesn't make any sense. You devoted a part of your life, and you've grown up, those skills should stay.
+
+So that it doesn't make any sense inside the game world.
+
+So there are a lot of problems with it.
+
+And so I've started working on a remastered edition,
+
+and what I've done is I I've started creating a game guide
+
+of how I want to expand the skills,
+
+and fill in the gaps, and add modern CRPG mechanics that are quality of life
+
+inside the game, uh, but keep the tone of the original game.
+
+The other issue is the game was embedded in a game world, but we don't really know what that game world is.
+
+There's the city of Mitteldorf on the isle of Wulfsbane.
+
+But okay.
+
+What's the world? Uh, so there's no broader world-making mechanics,
+
+and so you don't have any lore, you don't know really what the relationships of the
+
+gods are, the eschatology of the world, you don't really understand
+
+what the political factions are, there's just nothing to it, right?
+
+Um, so there's some problems there, and if you're going to rebuild the game,
+
+you have to go and do the yeoman's work of world building.
+
+So you have to go and construct out the entire world. It's a lot of work,
+
+uh, to do all that, but then you create internal consistency from within, and you get all the stuff to measure in.
+
+So, uh, it's just, there's a lot of that, uh, that's floating around, and, uh,
+
+I appreciate when people try to remake it, but that's really not the exercise. The exercise is
+
+how do we take something that is loyal to the canon,
+
+but then creates something innovative and new?
+
+This is what Larian did with, uh, Baldur's Gate 3.
+
+When Swen Vincke took a look at what Baldur's Gate 1 and 2 were,
+
+they were isometric games embedded in 2nd Edition Dungeons & Dragons, post-Time of Troubles,
+
+uh, heading into 3rd Edition.
+
+And they have an amazing plot, and an amazing gameplay, but
+
+it's unplayable
+
+for a modern audience. The expectations have moved on.
+
+So we who grew up with it can come back to and play it, and have a great time with it,
+
+and the enhanced editions were certainly fun,
+
+but, you know, you would just basically get
+
+a game that has a limited audience if you go and just redo that game.
+
+So they said, what made those games special?
+
+The romance system, the the very in-depth and unique NPCs, especially in Baldur's Gate 2.
+
+Um, the world itself had so much depth, and it was very interesting,
+
+the, um, Odyssey-esque, Homer-esque interplay of the gods and the mortals, and their unique relationship,
+
+and these types of things. All of those trends and themes were extraordinarily
+
+valuable. And then, having respect for the fact that the game was embedded in Ed Greenwood's canon,
+
+hundreds of books and articles, and Dungeon magazine and Dragon magazine articles,
+
+for since the 1980s.
+
+So you have more than 40 years of lore and canon,
+
+and there's an expectation that you have to be respectful of that, and it has to be an extension
+
+of that, as opposed to try to throw that away.
+
+Now, contrast that with what D&D did with, um,
+
+4th Edition, and the other D&D did, Dan and Dan, with,
+
+at the end of the day, with, um, Game of Thrones, or what Disney did with Star Wars,
+
+where they took the canon and went,
+
+and, yeah, "Take it and eat it."
+
+It's horrible, what they did. They, they, it was blatantly disrespectful.
+
+So that's why they weren't successful, cuz you alienated the fans that you need,
+
+and they offered nothing new for new people to come in.
+
+Now, Larian then created these amazing mechanics for new people
+
+people coming in. And the new people coming in, in many cases, it's the first time ever they've played 5th Edition Dungeons & Dragons,
+
+the first time ever they've played a D&D game, and the first time ever that they even consider playing a fantasy role-playing game. Normal people played it.
+
+And they fell in love with the characters, and um and it was just a masterpiece. It's probably the greatest game ever made, uh, Baldur's Gate 3, or at least it's in the top five.
+
+It's incredible when you really think about it.
+
+So if you're going to make a great game, you have to go back to the drawing board.
+
+And really, the key of a port is not can we replicate using vibe coding what was there.
+
+The key of the port is extracting the essence of what made that special.
+
+Then from that essence, saying what are the expectations of today with what we've learned and the technology that we have, and how do we marry the essence and how do we marry the technology together to create something that is familiar yet different?
+
+And if you can do that, it's magic. It's absolute magic. It's incredible and it really is a joy to play and you've brought new things to the table.
+
+The other thing is that you have to own This is why AI writing is so terrible.
+
+AI writing has no soul.
+
+It has no ownership.
+
+There's no voice inside of it.
+
+It doesn't know what it's supposed to say and express.
+
+So, everything's a slogan, everything's a headline. It's all marketing speak.
+
+You read it, and you say, "Okay, I've read this. There's a lot of words there, but you're not conveying to me anything."
+
+You read the Bible and you say, "Jesus wept." It's profound thing, right?
+
+There's depth behind this. There's a message here.
+
+And you can spend 2+ thousand years debating over the message. It's that significant.
+
+And it's that in- insightful. And it really can impact you.
+
+They even have this concept of a Holy Spirit, that you need to imbibe to even understand the message, okay? It's that big.
+
+And AI writing, you know, it's a It's just so easy to spot.
+
+So, if you're going to make a video game, video games are an extension of something you want the audience to feel. It's a social contract with them.
+
+So, in the case of Baldur's Gate 3, it was an analysis of what trauma does to people.
+
+Every one of the characters, including the player character, in their own way, was the victim of some trauma, either self-inflicted or inflicted by others, or inflicted by circumstance.
+
+Gale was a child prodigy who got into an asymmetrical relationship with Mystra which was predatory, and uh his love for her was not reflected in a way, and as a result, it seriously messed him up, and it created all kinds of horrible issues with him.
+
+And then in an attempt to try to rebalance it, he did something. Uh he got the Karsite Weave inside of him and basically turned himself into a ticking bomb, and then he was totally abandoned by the woman that he loved.
+
+And now he's bitter, and he's trying to figure out how to survive, and also what it all means.
+
+And he's lost archmage level powers, so he's this super-powerful person and the Karsite Weave is preventing him from being that.
+
+Astarion was captured and turned into a vampire and tortured for 200 years.
+
+Wyll saved Baldur's Gate, in the process of doing that made a devil's pact that got him exiled, and now he's the Blade of Frontiers trying to find a path to redemption.
+
+Shadowheart was kidnapped by a cult and reprogrammed from a Selûnite to a Sharran, and uh she's basically turned into the antithesis of everything her religion was and was tortured and abused and manipulated by that cult for 20 years. And it goes on and on and on and on and on.
+
+So, all these characters, they can break bad, go real evil,
+
+or they can have a path to restoration and find a way, despite the things that happened to them, to become better than the circumstances would provide.
+
+And the fact that that's layered onto a cRPG, and it's natural and organic, that growth and evolution, you'll never forget the lessons and the characters there.
+
+They're timeless like Gandalf is timeless or Saruman is timeless. They tell you something. They teach you something
+
+of the condition. And why people love that game so much is they see something in themselves in those characters,
+
+their own struggles in those characters.
+
+And they're trying really hard to figure out, "Well, what do I do with my life? And where do I go in my life?"
+
+And then they see these characters, and it gives them hope because those characters, as implausible as it can be, found a path out of these terrible things.
+
+Imagine being tortured and turned into a vampire and, you know, just all the horrible things that happened to Astarion and having this idea that somehow you could actually be a good person after all that.
+
+Man, that's pretty bad. You know, so that is something to say.
+
+Maybe it's your cup of tea, maybe it's not, but it's something there, and it's of great substance and of great personal meaning to people.
+
+And the game wrapped around it creates an environment where it's safe to explore those concepts without admitting them like therapy or something.
+
+And it makes you fall in love with that world.
+
+And yet it's different enough of a world that it gives you some hope that maybe the self-defeating rules that you're stuck in, uh don't apply there. That's a world of magic.
+
+You know, and so uh that's what games and books and great pieces of fiction and literature really are about, is they give you the chance to explore something.
+
+You think about Tolstoy or any of the Russian writers during the Romantic era, you have really terrible Russia, going through tons of social change, wars, all this other stuff, tons of politics, betrayals, it's a real bad situation.
+
+Now they're trying to capture just how vast and hard it is to understand and survive and thrive.
+
+When you read some of these Russian novels in the 19th century, there's so many characters.
+
+And if you're like Zinsser or Gottlieb or, you know, you're just trying to write good fiction, you say, "Well, that's too many. The reader can't keep track." The whole point
+
+is that there are too many, because this is the lived experience of people growing up in these aristocracies that are bloated,
+
+and you have to care and know about the relationships and politics of hundreds of people.
+
+Cuz if you screw up and you misstep and you piss off one of those hundreds of people, they then they become an enemy, and then they kill you,
+
+or get you exiled or arrested and gulaged.
+
+You have to keep this all in your head to be able to survive and thrive in that So, it gives you a step into their world of how exhausting that world is and hard that world is.
+
+And as a reader, you're exhausted and you can only imagine how exhausting it is.
+
+And then at the same time, you also have to have these deeply human threads of, you know, death and fear and betrayal and, you know, what do you do in those types of circumstances?
+
+So, every author has something to say, if they're a real author, and every work of fiction has something to say.
+
+So, you look at like Legends of Valour, it says nothing in its current form.
+
+The old king was deposed by the new king, go summon some demon after becoming a guild master to bring back the old king.
+
+Okay.
+
+All right. Well, maybe it's the journey. Going on that journey, I learn something. Okay, well,
+
+all the guilds are exactly identical and all the guilds, uh you know, they they uh they're just a means to an end.
+
+Okay, so go this way or that way, there's no replayability.
+
+Okay. Well, can I leave something behind in the world?
+
+No. Static world, you have no influence over it.
+
+It's not really a fun game. We have an expectation in a world of abundance, meaning we have unlimited options in terms of games and content,
+
+that when we get on the ride, the ride is an experience.
+
+It's a contract.
+
+Emotionally, it has to take you somewhere. Cognitively and intellectually, it has to take you somewhere.
+
+If you go on that journey uh for these types of things. So, that's part of the remake is to ask, "What do I want to say?"
+
+And um I've lived a lot of life, so I have a lot to say. I couldn't do this at 25, but I can do it at 40. I really can, cuz I have a lot to say and I've been through a lot, and uh experienced a lot, and uh these characters can become reflections of those things.
+
+By the way, with animated series,
+
+just like video games, you can tell better stories than you can in my view, um like Avatar: The Last Airbender with Uncle Iroh or these things, then you can tell
+
+all, generally, with blood and flesh.
+
+The reason being is that one of the hardest tasks to be effective in telling a story is the ability to disarm an audience.
+
+If you tell them something and you're too prescriptive of it, then they immediately put up their shields and say, "No, that's just not the way it is,"
+
+and they shut off, and you don't have access to their goodwill.
+
+When it's an anime, when it's a video game, when it's clearly fantasy, there's enough of a differentiator there that their expectations are lowered. They say, "Well, I don't know this world,
+
+so things can be different here."
+
+The biggest mistake you can make is use that world as an allegory for ours and then basically pretend like the rules are the same.
+
+Like there's a great example: Baldur's Gate 2 went through a remake, and one went through a remake from this studio called Beamdog Studios,
+
+and they did a great job with the enhanced editions. They took very old bad code, pre-AI, they cleaned it up, modernized it, got it running on computers, and we were all excited about that.
+
+So then they got eventually enough goodwill that they got the right to make a sequel, kind of like an intermediate game between Baldur's Gate 1 and 2 called Siege of Dragonspear or something like that.
+
+Um, and they decided that they wanted to go woke in this. They put a trans character in and all this other stuff.
+
+And what was so crazy about that is this is a world where literally there's an artifact in the game that they put in as a joke in 1998 called the Girdle of Gender Change. An ogre has it in the area between Friendly Arm Inn and Nashkel, and you find the ogre, you kill the ogre, you get the belt, you put it on, changes your gender.
+
+So, if you're trans in Baldur's Gate,
+
+that world, gender changes really not a thing.
+
+It's there's magic to do this and do it perfectly.
+
+There's even artifacts in the game to do it perfectly.
+
+So you can't tell that story the way you would tell it in real fiction here in America, you know, 2026. Doesn't make any sense.
+
+You need to tell that differently. So you'd take, well, what is the experience of shedding an identity and becoming a new identity and becoming a completely different person.
+
+Um that's a different thing, right? That's what Shadowheart went through in Baldur's Gate 3.
+
+She was Jenevelle, and the cult took her and took her all of her memories out, made her literally a different person with completely different opinions, different reactions, different presentation, different look, had to be black-haired goth girl not a white-haired girl, right?
+
+So that's a different story, but it covers those same elements, and so bad writing is you say, "I have a social agenda. I believe in a certain thing, and I'm just going to inflict this upon the person playing."
+
+Good writing is: I want you to experience what it's like to be this group of people—a refugee, a trans person, a gay person, a dictator.
+
+I want you to experience to be like somebody that you've never been like before. You never even thought about in your entire life,
+
+and I'm going to get you so interested in it that you can't put the book down, you can't put the game down. You really want to experience this. You actually want to follow it through,
+
+and if you're really a master, you go through the same feelings as that person goes through, and you come out the other side a changed person.
+
+Probably one of the greatest episodes of Star Trek: The Next Generation was The Inner Light, I think was season 6, where
+
+the Enterprise encounters a probe, and Picard gets hit by an energy beam from it, and then suddenly he wakes up as a completely different person.
+
+All right. And he lives like 30 years of this person's life. He has kids, and he has a wife, and he plays the flute, and you over the course of a Star Trek: The Next Generation episode watch Patrick Stewart basically live out someone else's life.
+
+And uh and he wakes up, and they say you've been out for like 30 minutes, and he's he's just lived 30 years in 30 minutes.
+
+Literally he gained the perspective of an entire civilization. The purpose of it was that the civilization knew that their star was going to blow up, so they built the probe as kind of a time capsule to give the perspective of their entire culture and civilization to whoever found it.
+
+And the most powerful part of that episode was at the very end when Riker comes into his private quarters Patrick Stewart's private quarters, Captain Picard's quarters, and he hands him the flute that he played. He said, "We found this in the probe."
+
+And Patrick Stewart's a great actor, so he grabbed it and, you know, held it tight.
+
+And you just think to yourself, "My God,
+
+it's all an illusion." Captain Picard was never there. He never held that flute before. He had nothing to do with it. It's just memories of a different person's life.
+
+Yet somehow when he's holding it, it's so deeply personal because it's his only connection to a world that he loved, and he plays it at the end, and it's hard not to cry. It's just like it's so powerful when you see that.
+
+That at its core is the essence of the assignment when you are writing to reveal something.
+
+And they did that in a very direct way. They're like, "We're you're the time capsule now. You're the keeper of an entire civilization. You're the last person around, and that flute you're the only person who knows even how to play it."
+
+It's magical when you really think about it.
+
+Um if you're going to make a video game, you're going to write fiction, you're going to do all these things, and you want to tell a story about something, either your own experiences or the experiences of others, you have to capture that. You have to think about: How do I do that in a way where at the end of all of it,
+
+that story becomes part of their story, and he's holding the flute that way. And that's hard to do. There's very few people can do that. AI can't,
+
+not in its current instantiation and iteration. It can write anything, it can do anything. It doesn't know how to make ownership ownership. Anime is just another medium, and like a video game or other things, it disarms the audience and it allows you to explore topics in a very
+
+non-obvious way and that still cover things that are intimately human.
+
+So it has its place and purpose as a creative medium.
+
+Oh, my God, that would be a lot of fun. I'm a Mr. Plinkett fan, I've been for a long time, and yeah, those guys are great in their analysis. But they understand good fiction, they understand the assignment,
+
+and what makes good fiction.
+
+Well, what are you going to ask?
+
+And it still can. What, you it's over? You're going to write all of it off?
+
+I think it's not a promise. It's not like it shall become.
+
+You must do it. The community must do it. I've taken it as far as I can take it. It's decentralized. There's no reason it can't.
+
+And there's a difference between promises and hopes and aspirations. I want it to become. I think it should be. It deserves to be. It earned it.
+
+But is it going to just happen magically? No, you've got to earn it.
+
+Want it be? Make it happen.
+
+I did the job.
+
+Oda Nobunaga's dead. Now you've got to live with the Tokugawa Shogunate.
+
+I'm livestreaming simultaneously to X and YouTube. Next year I hope to add some more channels to that, and I can get questions from all of them.
+
+I'm not exiled from Cardano.
+
+Sad.
+
+Is Jaeger-LeCoultre still your favorite watch brand? Yes, it is, along with Jaquet Droz.
+
+We all need to move like Mick Jagger. Nobody moves like Mick Jagger. He's filled with embalming fluid.
+
+I saw Keith Richards, and he looked like Keith Richards wearing a Keith Richards mask.
+
+I was like, "You're wearing a Halloween mask, man. Is that really your face?"
+
+But he's still he's still moves on.
+
+You see, Patrick, I can clean up nice. Clean it all out. You know, get all that out. There we go.
+
+Just got tired of having this giant white beard.
+
+Do you keep in to- touch with Alex Chepurnoy? Absolutely. Alex is a good kid.
+
+He's one of my favorite engineers, and he's really smart. He's one of the best people in the industry.
+
+A lot of integrity and no ego.
+
+I haven't decided. I've been thinking about it. A lot of people want me to do it. It's just an enormous time commitment, and I'm just tired of fighting with people, to be honest with you. The question is will I become DRep or not. I know how to do it, and we kind of have a good idea of what it would take to make it successful.
+
+A lot of people want me to do it. It's just it's a swamp, and I don't want to fight anymore. I uh
+
+I enjoy building and creating things. It's a lot of fun building Midnight. It's a lot of fun working on games. It's a lot of fun, you know, creating things and not to
+
+and to go and be a DRep, that means every single vote is a fight, and every single thing and then you've voted a certain way and then people fight, you know. Like look at the EyeOn stuff. Did anybody come out ahead on that, honestly?
+
+You know, and every day is like that, what am I creating?
+
+Now you don't understand, it's like you can't half-ass do it. You have to have opinions, and people will lose. Every time you vote against funding somebody, every time you vote to change an organization or hold an organization accountable.
+
+Like if I was a DRep, I would lead the effort to push for the board of the Cardano Foundation to be publicly elected.
+
+Now you can't just say it, you have to create consequences: fork the protocol to defund the foundation if they don't do this.
+
+That's a massive fight.
+
+I don't really want to have that fight. I just don't have the time or the energy anymore, it's so exhausting, and then it's just going to be another year or two out there in the public,
+
+and a lot of the people I thought would back me on this like the Rick McCrackens of the world, they never did. To the detriment of the ecosystem as a whole.
+
+Hard to have the fight when you don't have the support, or it takes time to build the support. That time could better be spent growing Midnight, and it could be better spent growing other projects and just living well, getting healthy, working out.
+
+You know, you guys got to build up some young leaders and get them to go out there, and I'll support them and give them the moral authority. And uh and if they're good people, believe in them.
+
+It can't always come back to me on this stuff. I spent 11 years of my life fighting and fighting and fighting and fighting and fighting and fighting and fighting, and we're fighting over a smaller and smaller pie, and that's the stakes get more vicious.
+
+Okay. So you tell me: Under what conditions does that obligation end?
+
+So the minute I create something, for the rest of time, no matter what, and what facts and circumstances, I have to support it and invest all my time and effort in into it?
+
+There's no opportunity for me to ever retire or step away, let other people take it over?
+
+What is the condition? The roadmap is complete.
+
+Everything I said is going to be built has been built. It reached four times the value of Honda.
+
+There's millions of people that have used it and millions of people continue to use it, and it is self-determining and self-governing with its ability to pick and choose its own leaders without my consent.
+
+So you tell me.
+
+You want me to pump your bags.
+
+That's what you're really saying. And the job's not done till it's pumped. Guess what? It's never done then, because somebody comes in at $3 ADA
+
+and then expects it to be 5,
+
+and then somebody comes in at $5 ADA and expects it to be 7. And if you retire at 5, you've defrauded the person at 5. If you retire at 3, you've defrauded the person at 3.
+
+So there's no winning. There's no there's no out. There's no ability to retire. The goal was simple, there's a roadmap.
+
+Byron, Basho, Shelley, etc, etc, and it's done.
+
+Recursive self-improvement, self-governance, a constitution, the community being in charge of the asset, the community having access to the treasury.
+
+I have no power over this ecosystem.
+
+There's diversified entities: Intersect, PRAGMA, independent nodes being constructed.
+
+Yet still apparently I have to go pump your bags, and if I don't, I'm a scammer.
+
+Would you sign up for that deal? Would any human being set up for? I thought slavery was made illegal. Sorry, no, it doesn't work that way.
+
+And there's no counter-argument you can provide. All these people trusted you, they understood what the assignment was. My job was to build it and decentralize it,
+
+and that's what I did. Better than any founder in the history of the cryptocurrency space.
+
+Cardano is decentralized. So much so that the founder of Cardano cannot get rid of the Cardano Foundation, even when they've betrayed the mandate of Cardano.
+
+So you're gone.
+
+And he's gone.
+
+And if you ask the same question over and over again, you're gone.
+
+Because there's more to life than Cardano. I have projects.
+
+And Charles Hoskinson talks to you, the audience.
+
+It's not Charles Hoskinson, the CEO of Cardano, talking to you. There's also Midnight, and there's the video games we work on, and my unique perspective on life, and I share it with people because there's value in the dialogue.
+
+Christ, you spend 11 years building something.
+
+Oh, kids, you got to get out of the basement.
+
+There was no distraction in Africa and I never going to apologize for trying to bank the unbanked and help people who need help.
+
+Shame on you.
+
+Sorry, if you build a system, it has to work for the least amongst us:
+
+the most vulnerable, the the poorest, the most incapable.
+
+It has to work for them, too.
+
+And if it doesn't, it's not moral.
+
+Always believed that, and I honestly believe that we've lost our way as an industry if we think the only thing that matters is
+
+transaction volume, and DeFi, and TVL, and all these other things.
+
+We're not Wall Street.
+
+We're not. And and everything that's gone wrong in cryptocurrency has been when we started trying to be Wall Street.
+
+We have to be different. We have to be better. We have to be more moral.
+
+We have to lean into the can't be evil and talk about fairness and a system that everybody is treated equally with.
+
+That is what inspires people and gets people to rally. Not that you have a 5% more transactions than some other fucking coin that no one cares about.
+
+In 20 years, it's not going to matter.
+
+You're on your deathbed and you look back at it,
+
+you can say, "You know what? I increased the TVL of the blockchain that I worked for by 32%."
+
+Or, "I took a billion people who had nothing,
+
+and I lifted them out of poverty, and gave them hope, and gave them agency, and allowed them with those tools to rise up, and not starve to death, and not succumb to the demons of human nature."
+
+What would you rather say?
+
+Distraction?
+
+You're a distraction.
+
+Go back in the timestamp, 20 minutes talking about that.
+
+Good morning from Fiji, wonderful island.
+
+Beautiful place.
+
+Uh, you know, I also answered the positive ones, too.
+
+When are the cold plunges coming back? I've got to do that, I've got a lot of cold plunges. It's just hard.
+
+I'm a Hawaii boy, man.
+
+That's cold.
+
+Nightstream has to be in market next uh in 2028,
+
+full stop. If we can't get Nightstream into market 2028, it's not real.
+
+We can't have deadlines three years out, four years out, hypothetical, hypothetical. No, it has to be done.
+
+We got the hard fork done. Ergo, "I don't know, can we do that? Can we?" Get it done.
+
+It's necessary.
+
+We got to ship. That's the difference, we ship. We ship fast. We ship deliberately. We get things done. We've got to get it done.
+
+Because for better or worse, heads of state are heads of state.
+
+They have the executive function, and you can ignore them, but they're in charge of their economies and their people.
+
+If you ignore a head of state, then you do so at your peril.
+
+It's not that you have to agree with them or be sycophantic to them,
+
+but you, at least, have to understand are they an ally or an enemy to what you're attempting to do
+
+and plan accordingly.
+
+And in many cases, heads of state are very open and actually do care about their people because they live there, and they want their country to grow and thrive. Some cases, that's not the case. They're bad, and they're corrupt, and evil. The corrupt and evil ones are the people that only think about themselves, you don't work with. And there's been a lot of meetings where I've turned down the deal even if from an optics viewpoint, it would look good, because I didn't believe the head of state had his people's best interest in mind. Nike's doing good. We're going to put him in Midnight City, so we're going to have some good fun there. No, actually that belongs to Chelsea. She has the uh cold plunge record. Fully Homomorphic Encryption does not have an Uh this is an example where people use words they don't understand. There are not unique advantages over ZK, they're fundamentally different things. Fully Homomorphic Encryption is operating on encrypted data without decrypting it. ZK is about proving something without revealing it. These are different categories. Okay? You want to combine FHE, MPC, and ZK together, and if you put those three things together, you have the ultimate privacy stack. They are complementary to each other and they're self-reinforcing. So when you put them together, it's like rebar in concrete. Makes it a much stronger structure overall. But they're all part of a broader privacy story. So it's important to understand the difference of them. And absolutely would love to have Fully Homomorphic Encryption. It's about 8,000 times too slow. Nightstream is our opener because the mathematics that Nightstream uses are very similar to the mathematics that FHE uses. Any optimization there can be carried over into the FHE world. Yeah. Okay. You can have hempcrete, you tell me what the compressive strength of hempcrete is. Would you build a house with it? No. Nah, it's nowhere near what concrete can provide. It does have place and purpose, um but it's not uh it's not useful for structural support. I don't know what you're talking about. I do! And part of loving and supporting your kid is letting your kid grow up. How terrible is it when those kids live in the basement, smoking pot, and eating Cheetos until their 30s? You want them to go to college. You want them to go to the military. You want them to actually move on with their life, get married, have their own kids, and you get proud when they go and do those things. You can't have a kid that's forever your kid. Part of being a parent is knowing when to let them grow up. You still love them. I think a ham sandwich would do a better job right now. Absolutely, if you do a good job on the socialization. As with all things in life, it depends. Starstream is coming along well. In fact, I was just talking about Sebastian. I said, "Come move to Colorado for two, four weeks, and let's figure out how to get that goddamn thing done and actually put it into Midnight faster." So he's he's going to launch an aggressive agenda, and I would love to see it into Midnight. Uh, I think we can launch Starstream before we launch Nightstream. To a massive advantage, Starstream is the platform that will realize the Nightframe. And that gets me so excited. We're really starting to get some great competitive and philosophic differentiators. Yeah, also the oversight, right? Like, who made that decision? And do they share equity? And how much funds were used for one for the other? If we had an independent board, they would ask those types of decisions. They would ask those questions. Maybe, just maybe. I don't know. A DRep should do something about that. Yes sir, it does. And actually, my good friend Governor Barlow, he's going to do some phenomenal work and continue to innovate both on the healthcare side and innovate on the AI side. And there is a wonderful president of University of Wyoming. I had dinner with General Reeves, former uh head of West Point, and now he's the president of University of Wyoming, wonderful guy too. Uh, so between having Reeves at the UW and having Barlow at the Governor's House, Wyoming's got some seriously heavy heavy hitters, and I think its best days are ahead of it. The next five years are going to be great for the state. And I'm really looking forward to it. There's a lot we need to change, um, procurement, and get rid of that atrocious stable token that has been a abject failure and a blight on the otherwise good record of the state. And it'll get done. And I think the political winds are there for it. Um, but you know, we can't just rest in the laurels. We have to make the state continue to be the best place to do these things. Um, especially now that Texas is blue, uh, we're going to get a lot of business come up north. Uh, so we're really excited about that. You know, you MAGA people Honestly speaking, how many times do you have to be kicked in the face before you grow a fucking brain? There are a lot of Latinos in Texas. Ton, especially in Southern Texas. And you know what, some are illegal and some are legal. And here's what happens. One of their family members is here illegally, they have kids, and so those kids are citizens. So then you go deport that person, you have just made six deep blue Democrats. So when you go and have this campaign of fear, "We're going to just, everybody's out. We're going to deport 20 million people." And you create a political environment where people who have never voted, not even thought about voting. They they're so far away from voting. They have like a 20% turnout, go from 20% to 60%. And when they show up, they show up en masse, and they're incredibly passionate because it's not a question that's academic, like what should the tax policy be or you know, what is a right? It's you are going to take my uncle and send him to a different country that I grew up with and I love. Local politics, the data centers, you have one governor who said, "Build as many as you want." And then you have other people say, "Hey, um I'm going to restrict that. It's because they're loud and they suck up all the power, and all these other problems." Brought a lot of new people to the the polls and dozens of other things. And we kept telling people again and again, Texas will turn blue if you don't focus on core things. And the Republican Party's response is, "Let's just keep running the same governor again and again, do the same thing again and again, and run Ken Paxton,
+
+who's just a terrible terrible candidate. He's horribly corrupt, he's anti-charismatic,
+
+he takes charisma out of the room when he comes in, um and he's just not a good guy.
+
+So you have lackluster candidates, same old politics, and an incredibly angry and evangelized base,
+
+and your response is, "It's rigged."
+
+It's rigged. Also,
+
+you have a lot of MAGA Republicans
+
+who believe the United States is a proxy state of Israel because Trump invaded Iran on behalf of Bibi's will,
+
+and they didn't release the Epstein files.
+
+And you got Talarico saying that he doesn't support Israel, and you have Ken Paxton saying it's our greatest ally.
+
+Tell me, those people who think that we're a proxy state of the nation of Israel, who are they more likely to vote for?
+
+The person who says we should support them and give them unlimited money, or the person who says what they're doing is wrong, and I don't support them, and I don't take AIPAC money?
+
+That's about 10, 20% of the MAGA voting base.
+
+Is that rigged? No.
+
+If you don't believe me, go to X, and take a look at all the memes. The MAGAtard as Anakin Skywalker
+
+fighting Trump as Obi-Wan Kenobi.
+
+What did Trump's lightsaber look like in that video?
+
+It's a real thing, Nick Fuentes' arm of the uh
+
+of the MAGA movement. Ignore it at your peril.
+
+It's the same for El-Sayed in Michigan.
+
+Now, I had dinner with Mark and he's like, "Ah, Texas will never do that, they'll never vote for that." Like this is not the same Texas that you remember, son.
+
+You're living in a bubble.
+
+It's different now.
+
+And everybody is not a monolith, they have individual beliefs, and politics can be national, they can be local,
+
+okay?
+
+Uh, so you can say it's rigged, and guess what? You're going to lose the next election. Then that's rigged, too, then you're going to lose the next election. Okay, it's all rigged. Great.
+
+Maybe, just maybe you should have a vision and a message,
+
+and you should not run on how bad other people are and how to hate people, and you should run on how to love people,
+
+and you should run on how we can get along and live in a happy, harmonious society.
+
+He said, "No, we just can't live with happy." What's the purity test then, exactly?
+
+What's the purity test?
+
+Uh who can you live with? Only people that agree with you?
+
+It's not a good society.
+
+And what does agree with you mean if you have inconsistent politics? I tell the leftists a lot, too, especially the LGBTQ.
+
+So you got the L and the B, excuse me, the L and the G, and they say you're born that way, you can't change it.
+
+Then you got the B saying it's a preference, you can go a men or women, whatever you want.
+
+And then you got the T that says you can change it.
+
+They all live in the same tent, right? And then the Q, it's just anything goes.
+
+Um, it's not intellectually coherent or consistent.
+
+Uh, it's just 1,000 tugs all at the same time, and nothing holds it together
+
+except for some loose politics.
+
+So, I tell them that, too, "You have to have a coherent philosophy of the world
+
+if you want people to agree with you, otherwise you're just using force and feelings,
+
+and that never works out well, too." So is the left in charge? No.
+
+It is a rejection coalition. And if the leaders are smart, they know that and they don't have a mandate. They should realize that their only mandate is get rid of Trump.
+
+The minute he's gone, everything resets. So, Texas can be bright red next cycle or
+
+like Georgia, it could just turn into, and Virginia, and soon to be North Carolina, and perhaps even South Carolina,
+
+a blue state.
+
+The decisions the Republican Party makes in the next two years will determine that.
+
+And Georgia, they said it's rigged, no one's liberal, and it's a red state, they took it for granted, and now it's gone.
+
+Completely gone.
+
+Texas is exactly the same.
+
+Ignore this at your peril.
+
+When you use language like it's rigged,
+
+okay, the DOJ is under the control of Trump.
+
+The Senate and Congress are under the control of Trump. Every major court is under the control of Trump, including the Supreme Court, 6-3.
+
+Okay?
+
+The Democrats are so powerful, they can rig the election across the entire United States when all three branches of the US government is under the control of the Republican Party? Okay, it's over then, right? It's over. Maybe, just maybe, they voted because they felt hurt and betrayed. They felt sold out. It was not the Democrats who had Dan Bongino, and not the Democrats who had Kash Patel, and Don Trump Jr., and others tweet and go on podcasts, and talk about how they're going to release the Epstein files and punish the Epstein class. So when you go back to that propaganda, idiotic talking point, "Well, Biden did this, and he had four years to release it." He didn't talk about it. He didn't campaign on it. Trump did. His people did. They said, "Elect us, we promise to you, we will do this." And then when they get in power, they didn't do it.
+
+Whatever Biden did or Obama didn't do is completely immaterial.
+
+If I tell you, I'm going to do X if you do Y for me, you do Y, you have every right to demand I do X.
+
+101 stuff, basic stuff.
+
+And when you get punished at the ballot box for not doing that, or doing the things you said you wouldn't do,
+
+maybe, just maybe, the self-reflection is we have to change course instead of, "We're right, they're wrong. The only reason they won is because of propaganda and cheating and this and that and the other."
+
+Great.
+
+You go from 40% to 30%, to 20%, to 10%, to nothing.
+
+And you lose all power, and you create one-party rule.
+
+Go do that. They want you to do it.
+
+They absolutely want you to do it.
+
+The people on the left are so excited. Anytime they see this stuff, they are just giddy as a schoolgirl.
+
+They were hoping that Trump would come out the next day and say that the election was rigged.
+
+They were hoping, they just wanted, they wanted it so bad, because they understood how damaging it would be, and what it would accomplish.
+
+That's facts.
+
+It's true. It's just facts.
+
+You might not like them. They might be uncomfortable, and I'm so sorry that Fox News won't give them to you.
+
+And if your response is, "Charles is a liberal and he's a Democrat, and and he's talking about the left and, because he just wants all the Democrats to win."
+
+I am not.
+
+Never have been, never will be. I'm so far away from it.
+
+My God, you have no idea how far away from it.
+
+But I know enough about life and power and politics and control and propaganda to let you know when you're thinking clearly, and when you're not.
+
+When you lose,
+
+you lose an election, you lose a game, you get divorced, you get fired from your job,
+
+when you lose a friendship, when you get arrested,
+
+when something happens that's significant in your life,
+
+that is the time for self-reflection.
+
+That is the time to take a moment, collect yourself, and say, "What is legitimately my fault?
+
+What is bad luck?"
+
+There is a person who got hit by those plane parts when that Learjet 60 crashed in Palm Beach.
+
+That's really bad luck.
+
+I mean, what are the odds that you're just driving your car and a fucking plane hits you?
+
+I mean, that's pretty, pretty rare, right?
+
+Yeah. Okay, there's bad, dumb luck. It happens.
+
+But a lot of cases, it's not dumb luck.
+
+You have some agency in the outcome.
+
+The American people gave undivided government for two years to Donald Trump.
+
+He had promises of America First and he had promises of no new foreign wars or forever wars. He had promises of transparency and accountability.
+
+And he didn't deliver those promises.
+
+He had promises of an unprecedented economy.
+
+He didn't deliver that unprecedented economy.
+
+He had promises of wise rule for the people, a populist government,
+
+made up of a broad coalition.
+
+He didn't deliver those things.
+
+Just that's what happened.
+
+So, he got fired.
+
+They can't fire him fully, but they fired him as much as they could fire him.
+
+There's a new group of people in town, and we can take that as a teachable moment, say, "What should we do differently?"
+
+So far, the only decision the president has made has been to fire Susie Wiles, and replace him with Stephen Miller, the architect of all the policies the president's had for the last two years.
+
+As a symbol that he's not going to back down, he's going to double down on bad behavior, and to threaten and bully every person in the Republican Party.
+
+So, that's that.
+
+There's lessons in all these things.
+
+And what I try to do is to take them, grow with them, and every year I learn something, and every year we try something new.
+
+Trying something new with Midnight, we're trying something new with the new Input Output. We're trying something new with all these things, and keep the old.
+
+Like I love the AMAs, I love to talk to all of you, and I love the engagement.
+
+But you try new things at the same time, too.
+
+And you do those new things.
+
+And I'm very excited about the changeover.
+
+The tagline of everything is nothing is the same anymore.
+
+New politics, new leaders, new money, new philosophy, new cryptocurrency generation, a new way of doing things.
+
+Love people for who they are.
+
+And remember my birthday wishes. I said, "Faith, family, and friends. Never forget the three Fs of things."
+
+In times of uncertainty and great change, the anchor in all of that change is are the people around you,
+
+and the things that ground you,
+
+and the family that gives you an excuse for fighting hard to keep them going.
+
+Never forget that.
+
+All right, so I've been at this for about three hours now. I'm going to call it here.
+
+Thank you, everyone. This has been a lot of fun. I've really enjoyed it, and I hope you gain something out of it.
+
+And I'll keep doing the AMAs, you know, I've been doing it for over 11 years, and it's been fun.
+
+And hopefully, I have the opportunity to keep doing it for another 11 years.
+
+Cheers.

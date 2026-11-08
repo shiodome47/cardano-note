@@ -1,0 +1,915 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Surprise AMA 2026-11-07 — 「私は Cardano の CEO ではない」 / “I am not the CEO of Cardano” (Charles Hoskinson)</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+<script>
+(function () {
+  var root = document.documentElement;
+  try {
+    var t = localStorage.getItem('theme');
+    if (t) root.dataset.theme = t;
+  } catch (e) {}
+  var lang = 'ja';
+  try {
+    lang = localStorage.getItem('lang') ||
+      ((navigator.language || 'ja').toLowerCase().indexOf('ja') === 0 ? 'ja' : 'en');
+  } catch (e) {}
+  root.dataset.lang = lang;
+  root.lang = lang;
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest && e.target.closest('.theme-toggle, button.lang-toggle');
+    if (!el) return;
+    if (el.classList.contains('theme-toggle')) {
+      var cur = root.dataset.theme ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    } else {
+      var nl = root.dataset.lang === 'en' ? 'ja' : 'en';
+      root.dataset.lang = nl;
+      root.lang = nl;
+      try { localStorage.setItem('lang', nl); } catch (e) {}
+    }
+  });
+})();
+</script>
+
+<div class="page-tools">
+  <button class="lang-toggle" type="button" aria-label="Switch language" title="Switch language">
+    <span class="lt-en">EN</span><span class="lt-ja">日本語</span>
+  </button>
+  <button class="theme-toggle" type="button" aria-label="Toggle colour scheme" title="Toggle colour scheme">
+    <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+    </svg>
+    <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4"/>
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+  </button>
+</div>
+
+<p class="eyebrow">Charles Hoskinson</p>
+<h1><span class="l-ja">Surprise AMA — 「私は Cardano の CEO ではない」。Midnight は Cardano のプロジェクトだと言い、トランプとの顛末を語り、DRep にはならないと言う 3 時間</span><span class="l-en">Surprise AMA — “I am not the CEO of Cardano”: three hours on Midnight as a Cardano project, the Trump story, and why he may not become a DRep</span></h1>
+<p class="meta">
+  <span>2026-11-07</span>
+  <span>YouTube</span>
+  <span><span class="l-ja">約 3 時間</span><span class="l-en">about 3 hours</span></span>
+  <span><span class="l-ja">Charles Hoskinson（本人のチャンネル）· 1 人語り、チャットの質問に回答</span><span class="l-en">Charles Hoskinson (own channel) · solo, answering live-chat questions</span></span>
+</p>
+
+<!--content-->
+
+<div class="l-ja">
+<div class="thesis">
+  <span class="label">一言でいうと</span>
+  <p>ワイオミングから 3 時間のライブ AMA。本人の答えの芯は<strong>「私は Cardano の CEO ではなく、できるのは Cardano の上に作ることだけ」</strong>で、Midnight・RealFi・Pogun は Cardano のプロジェクトであり、Midnight が伸びれば Cardano も伸びる、と述べています。<br>
+  同時に、トランプ陣営との 2 年間（100 万ドルの寄付、取り消された夕食、準備金への ADA 入り、ホワイトハウス不招待）を初めて詳しく語り、暗号資産業界は「魂を売った」と批判。DRep になるかは<strong>「決めていない。もう争いたくない」</strong>。すべて本人の見解です。</p>
+</div>
+
+<div class="tldr">
+<h2>この回の要点</h2>
+<ul>
+  <li><strong>Midnight は Cardano のプロジェクト。</strong>「NIGHT 保有者の 100% は Cardano 利用者」「Cardano には何十億ドルに育つ勝者が要る」。時価総額で Midnight が Cardano を抜くことは「十分あり得る」が、Cardano が停滞したまま Midnight だけ伸びる現実は見えない、と本人。</li>
+  <li><strong>「価格に私は何ができるか」。</strong>財団でも財務庫の管理者でもコンセンサスの運営者でもない。Bill Gates と Microsoft の例。ロードマップは完了し、「あなたが本当に言っているのは、袋を膨らませてくれ、だ」。</li>
+  <li><strong>DRep は未定。</strong>やるなら財団理事会の公選を求め、応じなければフォークで資金を断つ「巨大な争い」になる。「時間も気力もない。若いリーダーを育ててほしい」。</li>
+  <li><strong>トランプの話。</strong>クリプト皇帝の打診、100 万ドルを払ったマール・ア・ラーゴの夕食の取り消し、翌日の準備金発表で ADA が 70% 上昇、ホワイトハウスへの不招待のリーク。「すべてが取引」。寄付は返金された、と。</li>
+  <li><strong>技術と時期の主張。</strong>Leios は「間近」、Midnight は Ledger 9 でハードフォーク、Nightstream は「2028 年に市場に出ていなければ本物ではない」、Starstream はその前に。Monument Bank の預金トークン化の話し合いは「かなり進んでいる」。</li>
+  <li><strong>Cardano 以外も長い。</strong>クリニックは Monument Health へ、幹細胞の装置 Stemler、断食、Omarchy、ゲームと AI の文章、Musk 評、DOGE の代案。<span class="badge">補足</span>本編の 3 分の 1 ほどが政治と個人の話です。</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">この回の構成</p>
+<ol>
+  <li><a href="#who"><span class="n">01</span>話しているのは誰か、どんな配信か</a></li>
+  <li><a href="#midnight"><span class="n">02</span>「Midnight は Cardano のプロジェクトだ」— 奪うのか、追い抜くのか</a></li>
+  <li><a href="#agency"><span class="n">03</span>「私は CEO ではない」— 権限、ロードマップ、DRep、義務の終わり</a></li>
+  <li><a href="#products"><span class="n">04</span>Midnight の製品と時期 — Passport、Nightstream、Starstream、Monument Bank</a></li>
+  <li><a href="#tech"><span class="n">05</span>Cardano の技術についての主張 — Leios、スマートコントラクト、AI、Binance の盗難</a></li>
+  <li><a href="#foundation"><span class="n">06</span>Cardano Foundation への批判 — 理事会の公選と「原罪」</a></li>
+  <li><a href="#trump"><span class="n">07</span>トランプの話 — クリプト皇帝、夕食、準備金、不招待</a></li>
+  <li><a href="#beyond"><span class="n">08</span>Cardano 以外 — クリニック、幹細胞、ゲーム、Musk、DOGE</a></li>
+  <li><a href="#overall"><span class="n">09</span>全体像</a></li>
+  <li><a href="#qa"><span class="n">10</span>やり取りから</a></li>
+  <li><a href="#pending"><span class="n">11</span>答えが出なかったこと</a></li>
+</ol>
+</div>
+
+
+<h2 id="who">1. 話しているのは誰か、どんな配信か</h2>
+<p class="deck">ワイオミング州ジレットから、ひげを剃って 3 時間。X と YouTube に同時配信し、チャットの質問を読み上げて答える。</p>
+
+<p>Charles Hoskinson（Input Output の創業者、Cardano の創始者）が、自身の YouTube チャンネルから「Surprise AMA」としてライブで語った約 3 時間の 1 人語りです。ワイオミング州ジレットにいて、翌週に Monument のクリニックの開所式がある、と冒頭で言います。X と YouTube に同時配信していて、質問はチャットから本人が読み上げるので、<strong>質問者は本人が口にした名前やハンドル以外は分かりません</strong>。荒らしを何人か BAN する場面があります。</p>
+
+<p><strong>本人のチャンネルなので、方針・評価・時期はすべて個人の見解です。</strong>本人も「Cardano の CEO としての Charles Hoskinson が話しているのではない」と途中で言っています。Input Output、Midnight Foundation、Cardano Foundation、名前の挙がる政治家や企業についての発言は、このページでは「〜と述べています」の形で本人に帰属させ、地の文にしていません。<span class="badge">補足</span>政治の話が長い回ですが、このアーカイブは Cardano と Midnight に関わる部分を中心にまとめ、政治と個人の話は第 7 節と第 8 節に要点だけ置いています。日付や数字のある発言は公開資料と突き合わせ、結果を <span class="badge">補足</span> で添えました。</p>
+
+<p><span class="badge">補足</span>公開日 2026 年 11 月 7 日は依頼者の指定です。本人の発言とも整合します。「Stephen Miller が Susie Wiles に替わった」は 11 月 6 日の発表、「テキサスが青くなった」は 11 月 3 日の中間選挙、Midnight の「Ledger 9 でハードフォークした」は 11 月 6 日です。前回の配信（<a href="../2026-09-13-charles-hoskinson-devs-versus-builders/">2026-09-13 Devs versus Builders</a>）から 2 か月弱です。</p>
+
+
+<h2 id="midnight">2. 「Midnight は Cardano のプロジェクトだ」— 奪うのか、追い抜くのか</h2>
+<p class="deck">Cardano には「何十億ドルに育つ勝者」が要る。Midnight がそれだ、という本人の論理。追い抜く可能性は「十分あり得る」。</p>
+
+<p>最初の実質的な質問は「Cardano で次に来る大きなものは何か。新しいプロジェクトは Midnight に移ったのか」でした。本人の答えは、自分は Cardano の上に RealFi と Pogun を作り、「Midnight は Cardano の最大のプロジェクト」なので、Midnight のためにすることはすべて Cardano のプロジェクトを育てることだ、というものです。ほかのプロジェクトは肯定的に受け取られるのに、Midnight だけ「Cardano が攻撃されている」ように扱われるのが分からない、と。</p>
+
+<p>論理はこうです。Cardano はプラットフォームで、能力は「その上に作られたプロジェクト」で示される。監督は技術ではなく撮った映画で評価される（スピルバーグが『シンドラーのリスト』を卒業制作に出したという、本人が「裏は取っていない」と断る逸話）。<strong>Cardano には、何十億ドルに育って大勢を連れてくる勝者が要る。</strong>Midnight が成功して「Cardano の上に作られた」と知られれば、Cardano は「数十億ドル規模のプロジェクトを立ち上げられる実行可能なプラットフォーム」になり、Midnight が連れてくる利用者は Cardano の取引と需要を生む。「<strong>NIGHT 保有者の 100% は Cardano 利用者</strong>だ。Cardano のネイティブ資産を持つには Cardano のウォレットが要るから」。その考え方を当てはめるなら Iagon や Strike や Liqwid の利用者も Cardano に有害なのか、と反問します。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="本人の論理：Midnight の成功が Cardano の需要になる、という筋道と、こちらで足した例外">
+  <defs>
+    <marker id="m1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="20" width="200" height="96" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">Midnight が成功する</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">「何十億ドルに育つ勝者」</text>
+  <text x="116" y="96" class="d-s" text-anchor="middle">Ledger 9 のハードフォーク済み</text>
+  <line x1="220" y1="68" x2="238" y2="68" class="d-line-accent" marker-end="url(#m1)"/>
+  <rect x="244" y="20" width="192" height="96" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">NIGHT は Cardano の資産</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">「100% が Cardano 利用者」</text>
+  <text x="340" y="96" class="d-s" text-anchor="middle">Cardano のウォレットが要るから</text>
+  <line x1="440" y1="68" x2="458" y2="68" class="d-line-accent" marker-end="url(#m1)"/>
+  <rect x="464" y="20" width="200" height="96" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">Cardano に需要と取引</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">「Cardano は実行可能な土台」</text>
+  <text x="564" y="96" class="d-s" text-anchor="middle">と示される（本人の見通し）</text>
+
+  <rect x="16" y="140" width="648" height="60" rx="8" class="d-box-plain"/>
+  <text x="340" y="164" class="d-t" text-anchor="middle">同じ論理で：RealFi、Pogun、Iagon、Strike、Liqwid の利用者も Cardano の利用者</text>
+  <text x="340" y="186" class="d-s" text-anchor="middle">「Midnight だけが Cardano から奪っていると考えるのは、一貫性のない哲学」（本人）</text>
+
+  <rect x="16" y="220" width="648" height="66" rx="7" class="d-box-warn"/>
+  <text x="340" y="244" class="d-t" text-anchor="middle">補足：「100%」の例外</text>
+  <text x="340" y="268" class="d-s" text-anchor="middle">取引所の口座で持つ人、BEP20 版の保有者は Cardano のウォレットを使っていない。「ほとんど」が正確</text>
+</svg>
+<p class="figcap">上の 3 つの箱は本人の論理をそのまま並べたものです。<span class="badge">補足</span>下の箱はこちらの注意で、NIGHT は Cardano のネイティブ資産として配布されましたが、取引所での保有や他チェーン版の保有は Cardano のウォレットを通りません。</p>
+</div>
+
+<p>「Midnight が時価総額で Cardano を追い抜くことはあり得るか」には<strong>「十分あり得る」</strong>。新しい世代が古い世代を超えないこともある（Bitcoin は第 1 世代のまま 1 位）が、Midnight には勢いがあり「市場と逆方向に動いている」、プライバシーのエコシステムの上位 3〜5 に数えられるところまで追いついている、と。ただし価格や需要は「分からない、推測はできる」と留保し、「Cardano が停滞したまま Midnight だけ伸びる現実は見えない。上げ潮の効果がある」と結びます。<span class="badge">補足</span>Midnight の mainnet は 2026 年 11 月 6 日に Ledger 9 へハードフォークしました（ブロック 3,346,139）。「市場と逆方向」の根拠となる数字は動画では示されていません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「NIGHT 保有者の 100% は Cardano 利用者」は本当か？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>「ほとんど」なら正しく、「100%」は言い過ぎです。</strong>NIGHT は Cardano のネイティブ資産として配布され、自分で保管するには Cardano のウォレットが要ります。そこは本人の言うとおりです。</p>
+<h4>例外になる人</h4>
+<ul>
+  <li><strong>取引所の口座で持つ人。</strong>取引所が Cardano のウォレットを持っているのであって、利用者自身は Cardano に触れていません</li>
+  <li><strong>他チェーン版の保有者。</strong>価格サイトには BEP20 版の NIGHT が記載されています。そちらを持つ人は Cardano のウォレットを使いません</li>
+</ul>
+<h4>本人の言い方が成り立つ部分</h4>
+<p>Glacier Drop で請求した人は Cardano のアドレスを使い、Midnight 側の DUST の生成も NIGHT の保有に紐づくので、「Midnight の利用者の多くが Cardano のウォレットを持つ」という方向は正しいです。</p>
+<h4>外から見分ける方法</h4>
+<p>Cardano 上の NIGHT を保有するアドレスの数と、取引所に預けられた NIGHT の量を比べれば、どれだけが「Cardano 利用者」かの目安になります。動画ではどちらの数字も出ていません。</p>
+</div>
+</details>
+
+
+<h2 id="agency">3. 「私は CEO ではない」— 権限、ロードマップ、DRep、義務の終わり</h2>
+<p class="deck">価格について聞かれて、持っていない権限を並べる。ロードマップは完了し、「袋を膨らませろ」という要求に終わりはない。DRep は未定。</p>
+
+<p>「ADA の価格について私に何をしてほしいのか」と本人は問い返します。自分は Cardano Foundation ではない、財務庫を握っていない、コンセンサスを動かしていない、ADA 保有者を代表して交渉もできない。<strong>「CEO のように振る舞う権限がない」</strong>のに、どうやって成長と価格に影響する主体性を持つのか。Bill Gates は Microsoft の創業者だが、いま方向を決めるのは Satya Nadella と取締役会だ、と。できるのは Cardano の上に作って人を連れてくることで、それが RealFi、Pogun、Midnight だ。「成功するものも失敗するものもある」。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="本人が「持っていない」と列挙した権限と、「できる」と言ったことを並べた図">
+  <rect x="16" y="20" width="316" height="196" rx="8" class="d-box-warn"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">「持っていない」と本人が言う権限</text>
+  <text x="174" y="78" class="d-s" text-anchor="middle">Cardano Foundation ではない</text>
+  <text x="174" y="100" class="d-s" text-anchor="middle">財務庫を握っていない</text>
+  <text x="174" y="122" class="d-s" text-anchor="middle">コンセンサスを動かしていない</text>
+  <text x="174" y="144" class="d-s" text-anchor="middle">ADA 保有者を代表して交渉できない</text>
+  <text x="174" y="166" class="d-s" text-anchor="middle">事業計画を出し、投票してもらう場がない</text>
+  <text x="174" y="196" class="d-s" text-anchor="middle">「Bill Gates と Microsoft の関係」</text>
+
+  <rect x="348" y="20" width="316" height="196" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">「できる」と本人が言うこと</text>
+  <text x="506" y="78" class="d-s" text-anchor="middle">Cardano の上に作って人を連れてくる</text>
+  <text x="506" y="100" class="d-s" text-anchor="middle">RealFi、Pogun、Midnight</text>
+  <text x="506" y="122" class="d-s" text-anchor="middle">AMA で対話を続ける（11 年）</text>
+  <text x="506" y="144" class="d-s" text-anchor="middle">規制の議論で証言し、後始末をする</text>
+  <text x="506" y="166" class="d-s" text-anchor="middle">若いリーダーを支え、道義的な権威を与える</text>
+  <text x="506" y="196" class="d-s" text-anchor="middle">DRep になるかは「決めていない」</text>
+
+  <rect x="16" y="234" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="256" class="d-t" text-anchor="middle">「ロードマップは完了した。作ると言ったものは全部作った」— 義務が終わる条件を問い返す</text>
+  <text x="340" y="278" class="d-s" text-anchor="middle">「3 ドルで入った人は 5 を期待し、5 で入った人は 7 を期待する。引退する余地がない」（本人）</text>
+</svg>
+<p class="figcap">本人の発言を 2 列に並べたものです。<span class="badge">補足</span>「持っていない権限」は本人の整理で、たとえば Input Output の CEO として持つ影響力（開発チーム、提案の提出）はこの列挙に入っていません。</p>
+</div>
+
+<p>「技術は基本的に完成している」とも言います。Leios は「間近で、Musashi のテストネットにあり、まもなくフォークで入る」、オンチェーンのガバナンス、拡張 UTXO、再帰的な自己改善、独立したノード開発者がそろっている。だから艦橋に座ってビジョンを語るより、作るほうがいい、と。</p>
+
+<p>後半、同じ問いが「義務」の形で戻ってきます。<strong>「何かを創った瞬間から、永遠に全時間と努力を注がなければならないのか。引退する機会はないのか」</strong>。ロードマップ（Byron、Shelley、Basho……）は完了し、「ホンダの 4 倍の価値」に達し、何百万人が使い、自分の同意なしにリーダーを選べる自己統治の仕組みになった。それでも求められているのは「袋を膨らませろ（価格を上げろ）」で、それには終わりがない。「私の仕事は作って分散化することで、それをやった。Cardano の創業者が、使命を裏切った財団を排除できないほど分散化されている」。同じ質問を繰り返す人を BAN しつつ、「人生には Cardano 以外のこともある」。</p>
+
+<p>DRep になるかは<strong>「まだ決めていない」</strong>。やるなら Cardano Foundation の理事会を公選にする運動を率い、応じなければ「プロトコルをフォークして財団への資金を断つ」という結果を作らなければならない。それは「巨大な争い」で、支えてくれると思った人たち（名前を挙げたのは Rick McCracken）は支えてくれなかった、時間も気力もない、と。<span class="badge">補足</span>2026 年 7 月の報道では、本人は DRep 登録や「政党」として大きな DRep を運営する構想を語っていました。この回ではそこから後退し、「若いリーダーを育ててほしい」に変わっています。前回の配信（<a href="../2026-09-13-charles-hoskinson-devs-versus-builders/#cardano">2026-09-13</a>）の財団批判と資金の話の続きとして読めます。</p>
+
+<p>「ADA をただでもらった」という批判には、手に入れたときの価値はゼロで、Ouroboros・拡張 UTXO・Plutus を作り 10 年かけてエコシステムを築いたのは自分だ、ローンチ前に 2 年コードを書き、Aggelos Kiayias を採用し、エディンバラと東京工業大学の研究所を立ち上げていた、「エコシステムの 8% を渡して 10 年築いてもらう取引なら大多数が受けた」と反論しています。</p>
+
+
+<h2 id="products">4. Midnight の製品と時期 — Passport、Nightstream、Starstream、Monument Bank</h2>
+<p class="deck">時期を言ったのは Nightstream の「2028 年」だけ。Starstream はその前、Monument Bank は「かなり進んでいる」、Quantum Hosky は棚上げ。</p>
+
+<p>Midnight に関する具体的な話は、質問に答える形で散らばっています。まとめると次のとおりです。</p>
+
+<ul>
+  <li><strong>第 4 世代の暗号資産。</strong>冒頭の長い前置きで、TradFi と DeFi の融合（Web 2.5）、AI とアイデンティティの融合、そして「あまねく抽象化」。Bitcoin や Ethereum のウォレットではなく「Midnight の Bill」があればどこでも使え、判断は「意図を宣言してソルバーに委ねる」形になる、と。</li>
+  <li><strong>Midnight Passport。</strong>ウォレットに紐づけるもので、ウォレットが対応していなければ「標準的な体験」、対応していれば「アドレスがなくなり charles@midnight になる」作り込んだ体験。Moth や Lace はそちらへ移したいが、MetaMask や bitcoin.com、blockchain.com については「約束できない」。リカバリーが 24 語の代わりに Passport から来る。「機関の採用にとって最大の枠組み」。</li>
+  <li><strong>Nightstream は 2028 年。</strong>「2028 年に市場に出ていなければ本物ではない。3 年先、4 年先の仮定の期限は持てない」。<strong>Starstream はその前に出せる</strong>と思う、Sebastian にコロラドへ来てもらって Midnight に入れるのを速めたい、Starstream は「Nightframe を実現するプラットフォーム」だ、と。</li>
+  <li><strong>FHE と ZK。</strong>「FHE に ZK に対する独自の優位はない。別のカテゴリー」。FHE は暗号化したまま計算、ZK は明かさずに証明。FHE・MPC・ZK を合わせれば「究極のプライバシーのスタック」。FHE は「8,000 倍ほど遅すぎる」が、Nightstream の数学は FHE に近く、最適化が持ち越せる。</li>
+  <li><strong>Monument Bank。</strong>発表は Midnight Foundation に任せるが、トークン化された預金の話し合いは「かなり進んでいる」。本人は規制された取引のための「新しい概念」を書いていて「1,000 ページ近い」。彼らは「銀行を根本から変えるネオバンク」だと。</li>
+  <li><strong>LayerZero</strong> は「Jare と最後に話した限り予定どおり」。</li>
+  <li><strong>Quantum Hosky は棚上げ。</strong>4 次元のゲームエンジンを規模をもって示すというマイルストーンを予算と時間の中で達成できなかった。「死んだのではなく棚に上げた」。24〜36 か月で AI が進めば戻れる、と。</li>
+</ul>
+
+<div class="term">
+<p class="term-name">ウォレットの抽象化 <small>wallet abstraction、動画の中の言葉</small></p>
+<p>本人の説明では「アドレスがなくなり、charles@midnight のような名前だけになる」体験。<span class="badge">補足</span>利用者から鍵やアドレスの管理を隠し、名前や意図だけで操作できるようにする設計の総称です。Midnight Passport はその入口で、リカバリー（復元）を担う、というのが本人の位置づけです。</p>
+</div>
+
+<div class="term">
+<p class="term-name">FHE・MPC・ZK <small>動画の中の言葉</small></p>
+<p>本人の整理では、FHE（完全準同型暗号）は暗号化したデータを復号せずに計算する技術、ZK（ゼロ知識証明）は中身を明かさずに正しさを証明する技術、MPC（秘密計算）は複数の参加者が互いの入力を見ずに計算する技術。「別のカテゴリーで、合わせると鉄筋コンクリートのように強くなる」。<span class="badge">補足</span>Midnight は ZK を中核にしており、FHE は本人も「8,000 倍遅い」と認める将来の話です。</p>
+</div>
+
+<p><span class="badge">補足</span>裏取りの結果です。Monument Bank は 2026 年 3 月 25 日に、Midnight 上で最大 2 億 5,000 万ポンドの小口預金をトークン化すると発表し、その後カストディ提携先の受け入れのため展開を 11 月ごろに延期したと報じられています。LayerZero の Cardano 統合は 2026 年 2 月に発表され、エンドポイントは 3 月に mainnet で稼働しています。Starstream を率いる Sebastien Guillemot は Midnight Foundation の CTO で、DRep としてのレイヤー 2 への考え方は、このアーカイブの <a href="../2026-10-24-note-midgard-primer/#stage">Midgard のノート</a>にまとめてあります。Quantum Hosky は 2024 年末に本人が構想を公表したもので、「棚上げ」はこの回で初めて語られました。</p>
+
+
+<h2 id="tech">5. Cardano の技術についての主張 — Leios、スマートコントラクト、AI、Binance の盗難</h2>
+<p class="deck">「スマートコントラクトは同じ規模で比べてはるかに安全」「AI エージェントが開発者の取っつきやすさを無意味にした」「ADA が盗まれなかったのは設計のおかげ」。いずれも本人の主張。</p>
+
+<p>「Cardano にはスマートコントラクトがない、あっても使えない、使えても誰も使わない」という批判に、本人は段階ごとに反論します。Aiken による Rust ベース、Plutus による Haskell ベース、TypeScript ベースのコントラクトがあり、ZK のものを足している。「私たちのスマートコントラクトは、しょっちゅうハッキングされているほかの皆より、同じ規模で比べてはるかに安全だ」。<span class="badge">補足</span>Aiken は Rust で実装された独自のスマートコントラクト言語で、「Rust でコントラクトを書く」のではありません。安全性の比較に数字は示されていません。</p>
+
+<p>開発者の取っつきやすさについては、<strong>「AI エージェントが 30 秒で生産的になれる」なら土台の言語は重要でなく、「最良の仕様を書く者が最良のプログラムを持つ」</strong>時代になった、形式手法の自分たちには組み込みの優位がある、と述べます。<span class="badge">補足</span>前回の配信（2026-09-13）の「開発者の数はもう指標にならない」と同じ主張です。</p>
+
+<p>Binance の盗難については、<strong>「63 億ドル、史上最大の盗難。私たちは一部ではなかった。正しく設計したからだ」</strong>と言い、ADA が盗まれなかった理由を「ウォレットの設計と取引のしかたがアカウントベースと根本的に違い、より安全だから」と説明します。<span class="badge">補足</span>Binance のハックは 2026 年 10 月 29〜30 日、約 63 億ドルで、FBI は北朝鮮の TraderTraitor の犯行と発表しました。暗号資産の盗難としては史上最大です。盗まれた資産の内訳と、ADA が含まれていたかどうかは、こちらでは確認できていません。</p>
+
+<details class="explain">
+<summary>素朴な疑問 — 「UTXO だから ADA は盗まれなかった」は、本当にそう言えるのか？</summary>
+<div class="explain-body">
+<p><span class="badge">補足</span>以下はこちらで足した解説です。動画の発言ではありません。</p>
+<p><strong>その疑問は正しく、本人の説明だけでは因果は決められません。</strong>取引所のハックで何が盗まれるかは、まず取引所の鍵の管理と、どのホットウォレットが侵害されたかで決まります。</p>
+<h4>本人の言い方が成り立つ部分</h4>
+<ul>
+  <li><strong>署名の対象が違う。</strong>アカウント型では「このコントラクトに無制限の承認を与える」署名がよく使われ、それが盗まれると残高を抜かれます。UTXO 型では取引ごとに消費する出力を指定して署名するので、同じ形の「承認の乗っ取り」は起きにくい、という設計上の違いはあります</li>
+  <li><strong>コントラクトの呼び出しがない。</strong>Cardano の送金はスマートコントラクトを経由しないので、コントラクトの脆弱性を突く経路がありません</li>
+</ul>
+<h4>成り立たない部分</h4>
+<p>取引所の署名鍵そのものが盗まれれば、鍵の持ち主がどんな取引でも作れるので、UTXO かどうかは関係ありません。ADA が盗まれなかったとすれば、侵害されたウォレットに ADA がなかった、あるいは別に管理されていた、という説明も同じくらい成り立ちます。</p>
+<h4>外から見分ける方法</h4>
+<p>Binance や調査会社が公表する盗難資産の内訳を見れば足ります。ADA が含まれていないこと、そしてそれが「ウォレットの分離」によるのか「署名方式」によるのかは、内訳と侵害の経路が公表されて初めて分かります。</p>
+<h4>この動画で示されなかったこと</h4>
+<p>盗まれた資産の一覧、ADA の保管のされ方、どの経路で侵害されたか。いずれも語られていません。「63 億ドル」の出所も本人は示していません。</p>
+</div>
+</details>
+
+
+<h2 id="foundation">6. Cardano Foundation への批判 — 理事会の公選と「原罪」</h2>
+<p class="deck">ブースに Midnight がなかったことから始まり、理事会の公選、スイス当局の介入、「原罪」へ。すべて本人の発言として読む。</p>
+
+<p>Cardano Foundation への言及は、CEO の Fred（Frederik Gregaard）がインタビューで Midnight に短く触れたことへの「名誉のために言えば」から始まり、<strong>「ブースで Midnight と Cardano の統合がなかった」</strong>ことに「まだ少し腹を立てている」と続きます。「申し込まなければいけなかったようだ」。そこから、財団は「リーダーシップの問題」で、コミュニティが理事会を選出すべきだ、新しい理事は KPI と説明責任を強いる、応じなければ「財団を移す」、と。対比として、Midnight Foundation の Fahmi Syed を「リスクを取って難しいことをする覚悟がある」すばらしいリーダーだと評します。</p>
+
+<p>本人が望む財団との関係は「共同マーケティングと共同プロジェクト」です。<strong>「Midnight は売れていて Cardano は売れていないように見えるので、Midnight を通じて Cardano を売ればいい」</strong>。財団の Reeve を Midnight に載せ、Veridian を Midnight Passport の一部にする、数百万ドルの予算を相手の予算に入れる。「不可能だ。エゴのせいで。向こうの側の問題だ」。</p>
+
+<p>理事会については、現在の理事会が後任を指名し、ADA 保有者に発言権がないことを「ガバナンスの失敗」と呼びます。DRep や憲法委員会の委員は解任できるが、財団の理事は解任できない。<strong>自分は変えようとしたが、スイス政府が介入して止めた</strong>、訴訟にもなった、規制当局が管財人を送り込み「全員辞任して新しい理事会を任命するか、スイス政府の財産にするか」を迫った、「圧力の下で任命された理事がいまも理事で、それが財団の原罪だ」と述べます。時期は「2020 年か 2021 年、忘れた」。</p>
+
+<p><span class="badge">補足</span>公開記録で確認できるのは次の点です。2018 年 11 月 13 日、Cardano Foundation は議長 Michael Parsons の即時辞任と Pascal Schmid の暫定議長就任を発表しました。IOHK と Emurgo が公開書簡で批判し、コミュニティの署名運動があった後のことです。スイスの監督当局の関与や管財人の任命について、こちらで確認できる公開資料は見つかっていません。本人の説明は本人の説明として残し、時期も本人の記憶どおり「2020 年か 2021 年」のままにしています。「ブース」は、2026 年 10 月の TOKEN2049（シンガポール）で財団が出したブースのことと読めますが、本人は会議の名前を言っていません。財団への評価は本人の発言で、財団側の説明は参照していません。前回の配信（<a href="../2026-09-13-charles-hoskinson-devs-versus-builders/#cardano">2026-09-13</a>）でも同じ方向の批判があります。</p>
+
+<p>スーパーの冷蔵庫のハッキングについての質問には、Cardano は「既存のもの同士の接続点」を作るのに向くが「末端は安全にしない」、ファームウェアが更新できなければできることはない、更新できるならスマートコントラクトを役割ベースのアクセス制御に使える、と答えています。</p>
+
+
+<h2 id="trump">7. トランプの話 — クリプト皇帝、夕食、準備金、不招待</h2>
+<p class="deck">2024 年 9 月の打診から 2025 年 3 月の不招待まで。「すべてが取引」。寄付は返金され、「業界は魂を売った」。</p>
+
+<p>この回でいちばん長く、初めて詳しく語られたのがトランプ陣営との顛末です。本人の語りを時系列に並べます。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="本人が語ったトランプ陣営との経緯を時系列に並べた図。2024 年 9 月の打診から 2025 年 3 月のホワイトハウス不招待まで">
+  <defs>
+    <marker id="m2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <line x1="24" y1="160" x2="650" y2="160" class="d-line-accent" marker-end="url(#m2)"/>
+
+  <rect x="16" y="40" width="196" height="84" rx="7" class="d-box"/>
+  <text x="114" y="64" class="d-t" text-anchor="middle">2024-09 SALT 会議</text>
+  <text x="114" y="86" class="d-s" text-anchor="middle">移行チームが「クリプト皇帝」を打診</text>
+  <text x="114" y="106" class="d-s" text-anchor="middle">「応募を」「12 月に来てくれ」</text>
+  <line x1="114" y1="124" x2="114" y2="156" class="d-line"/>
+
+  <rect x="242" y="40" width="196" height="84" rx="7" class="d-box"/>
+  <text x="340" y="64" class="d-t" text-anchor="middle">2024-12 Sacks が皇帝に</text>
+  <text x="340" y="86" class="d-s" text-anchor="middle">「執行委員会に Bo Hines を」</text>
+  <text x="340" y="106" class="d-s" text-anchor="middle">委員会は結局立ち消え</text>
+  <line x1="340" y1="124" x2="340" y2="156" class="d-line"/>
+
+  <rect x="468" y="40" width="196" height="84" rx="7" class="d-box-warn"/>
+  <text x="566" y="64" class="d-t" text-anchor="middle">2025-02 夕食に 100 万ドル</text>
+  <text x="566" y="86" class="d-s" text-anchor="middle">審査通過（22 日）→ 1 週間延期</text>
+  <text x="566" y="106" class="d-s" text-anchor="middle">飛行中に「審査不合格」で取り消し</text>
+  <line x1="566" y1="124" x2="566" y2="156" class="d-line"/>
+
+  <rect x="16" y="196" width="196" height="100" rx="7" class="d-box"/>
+  <text x="114" y="220" class="d-t" text-anchor="middle">理由は三転</text>
+  <text x="114" y="242" class="d-s" text-anchor="middle">「シークレットサービスではない」</text>
+  <text x="114" y="262" class="d-s" text-anchor="middle">「Garlinghouse のツイート」→違う</text>
+  <text x="114" y="282" class="d-s" text-anchor="middle">「Sacks が怒り、文書が回った」</text>
+  <line x1="114" y1="164" x2="114" y2="196" class="d-line"/>
+
+  <rect x="242" y="196" width="196" height="100" rx="7" class="d-box-accent"/>
+  <text x="340" y="220" class="d-t" text-anchor="middle">2025-03-02 準備金の発表</text>
+  <text x="340" y="242" class="d-s" text-anchor="middle">翌朝 150 件の「おめでとう」</text>
+  <text x="340" y="262" class="d-s" text-anchor="middle">ADA が入り「70% 上昇」（本人）</text>
+  <text x="340" y="282" class="d-s" text-anchor="middle">「Sacks は我々が関与したと考えた」</text>
+  <line x1="340" y1="164" x2="340" y2="196" class="d-line"/>
+
+  <rect x="468" y="196" width="196" height="100" rx="7" class="d-box-warn"/>
+  <text x="566" y="220" class="d-t" text-anchor="middle">2025-03-07 ホワイトハウス</text>
+  <text x="566" y="242" class="d-s" text-anchor="middle">「招待は届く」と月・火</text>
+  <text x="566" y="262" class="d-s" text-anchor="middle">水曜に報道「招かれていない」</text>
+  <text x="566" y="282" class="d-s" text-anchor="middle">寄付は後に返金</text>
+  <line x1="566" y1="164" x2="566" y2="196" class="d-line"/>
+
+  <text x="340" y="320" class="d-s" text-anchor="middle">箱の中身はすべて本人の語り。公開記録で確認できた日付は図の下の補足に</text>
+</svg>
+<p class="figcap">本人の語りをこちらで時系列に並べたものです。<span class="badge">補足</span>公開記録で確認できる日付は、David Sacks のクリプト皇帝任命（2024 年 12 月）、準備金の発表（2025 年 3 月 2 日、ADA・XRP・SOL を含むと投稿）、ホワイトハウスのサミット（3 月 7 日）、Unchained による「Hoskinson は招かれていない」の報道です。「2 月 22 日に審査通過」「1 日までに取り消し」は本人の発言です。</p>
+</div>
+
+<p>本人の評価は<strong>「この男についてはすべてが取引」「近づいた人は溶けたタールをかぶる」</strong>。そして矛先は業界にも向きます。暗号資産のリーダーたちは Trump Coin とペイ・トゥ・プレイを見ながら「アクセスのために魂を売った」、「ホワイトハウスでの写真はそれだけの価値があったか」。自分は 100 万ドルの寄付で「汚れた気分」になり、返金はされた、と。</p>
+
+<p>中間選挙については、「ブルーウェーブ」は候補者や RINO のせいではなく、エプスタインのファイルを公開するという約束を破り、イランで戦略のない戦争をしたからだ、と本人の見方を述べます。テキサスは「Ted Cruz 以外すべて」青くなった。業界への影響としては、<strong>2024 年に業界が落とした Sherrod Brown が上院に戻り、Schumer が銀行委員会の Tim Scott の役割を約束した</strong>と言い、「暗号資産の規制はすべて、業界に首を切られた恨みを抱える上院議員を通ることになる」と。民主党の論点は「クリプト＝腐敗＝トランプ」だった。「私がここで後始末をすることになる」。</p>
+
+<p><span class="badge">補足</span>選挙結果は公開記録と整合します。2026 年 11 月 3 日、テキサスでは上院で James Talarico（民主）が Ken Paxton に、知事で Gina Hinojosa（民主）が Greg Abbott に勝ち、州全体の執行職を民主党が総なめにしました。Ted Cruz は今回改選ではありません。オハイオでは Sherrod Brown が Jon Husted に勝って上院に復帰、ミシガンでは Abdul El-Sayed が勝利。11 月 6 日にトランプは Susie Wiles に代えて Stephen Miller を首席補佐官に指名しました。一方、「Schumer が銀行委員会の役割を約束した」は本人の発言で、報道では Elizabeth Warren が筆頭の座を譲らないとの見方もあり、こちらでは確認できていません。イランについての発言（「核まで 2 週間」「ホルムズ海峡を開閉できる」）も本人の評価で、2026 年 11 月初めに米軍がホルムズ海峡でイランの目標を攻撃したことは報じられていますが、本人の言う数字は確認していません。</p>
+
+
+<h2 id="beyond">8. Cardano 以外 — クリニック、幹細胞、ゲーム、Musk、DOGE</h2>
+<p class="deck">3 時間の 3 分の 1 ほどは Cardano と関係のない話。要点だけを置く。</p>
+
+<ul>
+  <li><strong>クリニックは Monument Health へ。</strong>ジレットのクリニックから「退いた」。建物は所有したまま、Mayo Clinic 系の Monument と提携して運営を引き継いでもらい、医師も雇用され「ケアの継続性がある」。再生医療をやりに入ったのに「時間の 99% を田舎の医療システムの運営に使っていた」。<span class="badge">補足</span>Monument Health は 2026 年 7 月 1 日にリースを発表し、11 月 2 日に開院しました。</li>
+  <li><strong>Stemler。</strong>ワイオミング大学の Ben（CellDrop）と取り組む幹細胞採取の装置の特許。持続血糖測定器の形で、多孔質のチタンの針とケモカインで幹細胞を集める。脂肪吸引より多く集まった、FDA と動物試験の省略を交渉中、と。エクソソームと高気圧酸素療法を組み合わせる構想も。</li>
+  <li><strong>Omarchy と Warlock。</strong>配信は DHH の Arch Linux ベースの OS で行い、ウィンドウシステムの代替 Warlock を Elm と Haskell で書いている、と。</li>
+  <li><strong>ゲームと AI の文章。</strong>Legends of Valour を逆アセンブルして 540 ページの「バイブル」を作り、リマスターに着手。Baldur's Gate 3 を「正典に忠実で新しい」手本とし、「AI の文章には魂がない」。『新スタートレック』の「The Inner Light」を、物語で何かを明かすことの手本に挙げる。</li>
+  <li><strong>Elon Musk 評。</strong>「私たちの世代のハワード・ヒューズ」。詐欺師ではないが「いい人ではない」「家族によくない」。富と権力が「おべっかの層」を作り、生のアイデアを完成させずに出す、と。</li>
+  <li><strong>DOGE の代案。</strong>一律 5% ずつ毎年縮める、民間の審査組織を並走させる、統合、政府のオープンソース LLM、トップへの成果報酬。</li>
+  <li><strong>テキサスはなぜ青くなったか。</strong>強制送還の恐怖が投票率を上げた、MAGA の一部がイスラエル政策で離れた、「不正だ」と言えば次も負ける、と。</li>
+</ul>
+
+
+<h2 id="overall">9. 全体像</h2>
+<p class="deck">「争うより作る」が芯。政治で失ったもの、変わる 24 か月、作る側に回った自分、の 3 本が「DRep は未定」に収束する。</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="この回の 3 本の筋（作る側に回った、政治で失った、24 か月で変わる）が「争うより作る、DRep は未定」に収束することを示した図">
+  <defs>
+    <marker id="m3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">作る側に回った</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">「CEO ではない」。作る側へ</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">Midnight は Cardano のプロジェクト</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">ロードマップは完了（本人）</text>
+
+  <rect x="240" y="20" width="200" height="120" rx="8" class="d-box-warn"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">政治で失ったもの</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">100 万ドル、夕食、不招待</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">業界は「魂を売った」</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">Sherrod Brown の復帰、後始末</text>
+
+  <rect x="464" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">24 か月で変わる</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">世代交代の政治、第 4 世代の暗号資産</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">AI が「開発者の壁」をなくす</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">Nightstream 2028、Starstream 先行</text>
+
+  <line x1="116" y1="144" x2="116" y2="170" class="d-line-accent" marker-end="url(#m3)"/>
+  <line x1="340" y1="144" x2="340" y2="170" class="d-line-accent" marker-end="url(#m3)"/>
+  <line x1="564" y1="144" x2="564" y2="170" class="d-line-accent" marker-end="url(#m3)"/>
+
+  <rect x="16" y="176" width="648" height="64" rx="8" class="d-box-accent"/>
+  <text x="340" y="202" class="d-t" text-anchor="middle">「争うより作る」— DRep になるかは「決めていない。もう争いたくない」</text>
+  <text x="340" y="226" class="d-s" text-anchor="middle">やるなら財団理事会の公選をフォークで迫る「巨大な争い」。「若いリーダーを育ててほしい」</text>
+
+  <rect x="16" y="256" width="648" height="50" rx="7" class="d-box-plain"/>
+  <text x="340" y="278" class="d-s" text-anchor="middle">語られなかったこと：Midnight の数字（利用者、取引）、Monument Bank の時期、「安全」「逆方向」の根拠</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">3 本をこう束ねたのはこちらの読み。本人は 3 時間の中でばらばらに語っている</text>
+</svg>
+<p class="figcap">束ね方はこちらの読みです。<span class="badge">補足</span>前回の配信（2026-09-13）では「DRep か政党か」を前向きに語っていたので、この回の「未定、争いたくない」は変化として読めます。</p>
+</div>
+
+
+<h2 id="qa">10. やり取りから</h2>
+<p class="deck">チャットの質問は本人の読み上げでしか残らない。Cardano と Midnight に関わる 4 つを抜き出した。</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">視聴者（本人が読み上げ）</span>Cardano で次に来る大きなものは何か。新しいプロジェクトは Midnight に移ったのか。</p>
+<p class="qa-a" data-by="Charles Hoskinson">RealFi と Pogun を作り、Midnight は「Cardano の最大のプロジェクト」。Cardano には何十億ドルに育つ勝者が要り、<strong>「NIGHT 保有者の 100% は Cardano 利用者」</strong>。Midnight に取り組むことが Cardano をよくする、と。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">視聴者（本人が読み上げ）</span>Midnight が時価総額で Cardano を追い抜くことはあり得るか。</p>
+<p class="qa-a" data-by="Charles Hoskinson">「十分あり得る」。ただし価格も需要も「分からない、推測はできる」。<strong>Cardano が停滞したまま Midnight だけ伸びる現実は見えない</strong>、上げ潮の効果がある、と留保つき。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">視聴者（本人が読み上げ）</span>Monument Bank は今月 Midnight に来るのか。</p>
+<p class="qa-a" data-by="Charles Hoskinson">発表は Midnight Foundation に任せる。預金のトークン化の話し合いは<strong>「かなり進んでいる」</strong>。規制された取引のための「新しい概念」を 1,000 ページ近く書いている、と。時期は言わず。</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">視聴者（本人が読み上げ）</span>DRep になるのか。</p>
+<p class="qa-a" data-by="Charles Hoskinson">「決めていない」。やるなら財団理事会の公選を、フォークによる資金停止という結果を伴って迫る「巨大な争い」。<strong>「時間も気力もない」</strong>、支援者も現れなかった、若いリーダーを育ててほしい、と。</p>
+</div>
+
+
+<h2 id="pending">11. 答えが出なかったこと</h2>
+<p class="deck">数字と時期が、ほとんど出ない回。</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">数字なし</span>Midnight は「市場と逆方向に動いている」「飛躍的に伸びている」の根拠は何か。</p>
+<p class="qa-a" data-by="言い切りのみ">利用者数、取引数、価格のどれを指すかも、時点も語られていません。<span class="badge">補足</span>価格サイトの NIGHT の時価総額は 2026 年 11 月初めで約 6 億 5,000 万〜7 億ドル、完全希薄化で約 9 億〜10 億ドルです。本人の「完全希薄化で 10 億ドルに達した 2 億ドルのプロジェクト」という言い方と、おおむね合います。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">時期なし</span>Monument Bank の預金トークン化はいつ始まるのか。</p>
+<p class="qa-a" data-by="「かなり進んでいる」のみ">本人は時期を Midnight Foundation の発表に委ねました。<span class="badge">補足</span>報道では、カストディ提携先の受け入れで延期され、11 月ごろの展開とされています。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">内訳なし</span>Binance の盗難で ADA が盗まれなかったのは、設計のおかげか、保管の分け方のおかげか。</p>
+<p class="qa-a" data-by="本人は「設計」">盗まれた資産の内訳も、侵害の経路も語られていません。第 5 節の折りたたみに整理しました。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">根拠なし</span>「スマートコントラクトは同じ規模で比べてはるかに安全」は何と比べた数字か。</p>
+<p class="qa-a" data-by="言い切りのみ">ハッキングの件数や金額の比較は示されていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">未確認</span>Schumer が Sherrod Brown に銀行委員会の役割を約束した、は確認できるか。</p>
+<p class="qa-a" data-by="本人の発言">Brown の上院復帰は確認できますが、委員会の役割については報道でも見方が分かれ、こちらでは確認できていません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">記録なし</span>財団をめぐるスイス当局の介入と管財人の件は、いつ何があったのか。</p>
+<p class="qa-a" data-by="本人は「2020 年か 2021 年、忘れた」">公開記録で確認できたのは 2018 年 11 月の議長辞任までで、監督当局の関与と管財人の任命は、こちらで確認できる資料がありません。</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">名前のみ</span>「Ben と今年中に発表するもの」「stuff.io への失望」「Jare」「Nike」「Mark」。</p>
+<p class="qa-a" data-by="説明なし">Ben との「とてつもない」何かは「今年中に発表する予定」とだけ。stuff.io は「話はしない」。Jare は LayerZero の連絡相手、Nike は Midnight City に入る人、Mark は「テキサスは青くならない」と言った会食相手として名前だけ出ます。</p>
+</div>
+
+
+<div class="note">
+<p><strong>このページについて。</strong>出典は Charles Hoskinson 本人の YouTube チャンネルで公開されている動画 <a href="https://www.youtube.com/watch?v=h1aLIGigpDw">Surprise AMA November 7th, 2026</a>（約 3 時間、実尺は要確認）です。公開動画なので発言者は実名のまま書いています。質問はライブチャットから本人が読み上げたものだけが残っており、質問者は特定していません。</p>
+<p><strong>本人の見解の記録です。</strong>Input Output、Midnight Foundation、Cardano Foundation、政治家、企業についての評価は、すべて本人の発言として帰属させ、各組織の公式見解にはしていません。政治の話は長い回ですが、このアーカイブでは Cardano と Midnight に関わる部分を中心にし、それ以外は第 7 節と第 8 節に要点だけ置きました。</p>
+<p><strong>出典の 3 区分。</strong>マークのない記述は動画の中で音声で語られたものです。<span class="badge">画面</span>は画面に映っていたが口には出されなかったもの——この回は字幕だけから作っており画面は確認していないので、このマークは使っていません。<span class="badge">補足</span>はこちらで足した説明で、動画にはありません。</p>
+<p><strong>裏取りした発言</strong>（2026 年 11 月 8 日時点）。テキサス・オハイオ・ミシガンの選挙結果、Stephen Miller の首席補佐官指名、Binance のハックの規模と日付、Midnight の Ledger 9 ハードフォーク、Monument Bank の発表と延期、Monument Health の開院、2025 年の準備金発表とホワイトハウスのサミット、LayerZero の統合。確認できなかったものは第 11 節に残しています。</p>
+<p>正確な内容を確認したい場合は <a href="./transcript-en.html">英語全文</a>、通して日本語で読みたい場合は <a href="./transcript-ja.html">日本語全文</a> をご覧ください。原本には時刻がないので、全文ページにも時刻はありません。</p>
+</div>
+</div>
+
+<div class="l-en" lang="en">
+<div class="thesis">
+  <span class="label">In one line</span>
+  <p>A three-hour live AMA from Wyoming. The core of his answers is <strong>“I am not the CEO of Cardano; all I can do is build on Cardano”</strong>: Midnight, RealFi and Pogun are Cardano projects, and if Midnight grows, Cardano grows, he says.<br>
+  He also tells, in detail for the first time, his two years with the Trump camp (a $1 million donation, a cancelled dinner, ADA in the reserve, no White House invitation) and says the crypto industry “sold its soul”. On becoming a DRep: <strong>“I haven't decided. I don't want to fight anymore.”</strong> All of it is his personal view.</p>
+</div>
+
+<div class="tldr">
+<h2>Key points</h2>
+<ul>
+  <li><strong>Midnight is a Cardano project.</strong> “100% of the NIGHT holders are Cardano users”; “Cardano needs a winner that grows into tens of billions of dollars”. Midnight overtaking Cardano by market cap is “entirely possible”, but he does not see a reality where Midnight grows while Cardano stagnates.</li>
+  <li><strong>“What do you want me to do about the price?”</strong> He is not the Foundation, not the treasury's custodian, not the operator of consensus. The Bill Gates and Microsoft analogy. The roadmap is done, and “what you're really asking is pump my bags”.</li>
+  <li><strong>DRep: undecided.</strong> Doing it would mean demanding an elected Foundation board and, failing that, a fork to cut its funding: “a massive fight”. “I don't have the time or the energy. Build up young leaders.”</li>
+  <li><strong>The Trump story.</strong> An approach about the “crypto czar” role, a $1 million Mar-a-Lago dinner cancelled mid-flight, ADA up 70% on the reserve announcement the next day, and a leaked non-invitation to the White House. “Everything is transactional.” The donation was refunded, he says.</li>
+  <li><strong>Technology and timing claims.</strong> Leios is “imminent”, Midnight hard-forked to Ledger 9, Nightstream “isn't real unless it's in market by 2028”, Starstream comes before it. Talks on tokenised deposits with Monument Bank are “pretty far along”.</li>
+  <li><strong>Plenty beyond Cardano.</strong> The clinic handed to Monument Health, the Stemler stem-cell device, fasting, Omarchy, games and AI writing, a view of Musk, an alternative to DOGE. <span class="badge">added</span> Roughly a third of the stream is politics and personal matters.</li>
+</ul>
+</div>
+
+<div class="toc">
+<p class="toc-label">Contents</p>
+<ol>
+  <li><a href="#en-who"><span class="n">01</span>Who is speaking, and what kind of stream this is</a></li>
+  <li><a href="#en-midnight"><span class="n">02</span>“Midnight is a Cardano project”: stealing from it, or overtaking it?</a></li>
+  <li><a href="#en-agency"><span class="n">03</span>“I am not the CEO”: powers, the roadmap, DRep, the end of obligation</a></li>
+  <li><a href="#en-products"><span class="n">04</span>Midnight products and timing: Passport, Nightstream, Starstream, Monument Bank</a></li>
+  <li><a href="#en-tech"><span class="n">05</span>Claims about Cardano's technology: Leios, smart contracts, AI, the Binance theft</a></li>
+  <li><a href="#en-foundation"><span class="n">06</span>Criticism of the Cardano Foundation: an elected board and the “original sin”</a></li>
+  <li><a href="#en-trump"><span class="n">07</span>The Trump story: crypto czar, dinner, reserve, no invitation</a></li>
+  <li><a href="#en-beyond"><span class="n">08</span>Beyond Cardano: clinic, stem cells, games, Musk, DOGE</a></li>
+  <li><a href="#en-overall"><span class="n">09</span>The big picture</a></li>
+  <li><a href="#en-qa"><span class="n">10</span>From the Q&amp;A</a></li>
+  <li><a href="#en-pending"><span class="n">11</span>Left unanswered</a></li>
+</ol>
+</div>
+
+
+<h2 id="en-who">1. Who is speaking, and what kind of stream this is</h2>
+<p class="deck">Three hours from Gillette, Wyoming, clean-shaven. Simulcast to X and YouTube, reading questions from the chat and answering them.</p>
+
+<p>Charles Hoskinson (founder of Input Output, creator of Cardano) spoke live for about three hours on his own YouTube channel as a “Surprise AMA”, alone. He opens by saying he is in Gillette, Wyoming, with the opening ceremony of the Monument clinic the following week. The stream went out to X and YouTube at once, and he read questions from the chat himself, so <strong>the questioners are known only by the names or handles he spoke aloud</strong>. He bans a few trolls along the way.</p>
+
+<p><strong>This is his own channel, so every policy, judgement and date is a personal view.</strong> He says so himself part-way through: “this is not Charles Hoskinson the CEO of Cardano speaking.” Statements about Input Output, the Midnight Foundation, the Cardano Foundation and the politicians and companies he names are attributed to him on this page as “he says”, never stated as fact. <span class="badge">added</span> Politics takes up a long stretch of this stream. This archive focuses on the parts that concern Cardano and Midnight, and keeps the political and personal parts to the essentials in sections 7 and 8. Statements that carry dates or numbers were checked against public records, with the result shown as <span class="badge">added</span>.</p>
+
+<p><span class="badge">added</span> The publication date, 7 November 2026, was supplied by the requester and is consistent with what he says: “Stephen Miller replaced Susie Wiles” was announced on 6 November, “Texas went blue” refers to the 3 November midterms, and Midnight's “hard fork to Ledger 9” happened on 6 November. It is just under two months after his previous stream (<a href="../2026-09-13-charles-hoskinson-devs-versus-builders/">2026-09-13 Devs versus Builders</a>).</p>
+
+
+<h2 id="en-midnight">2. “Midnight is a Cardano project”: stealing from it, or overtaking it?</h2>
+<p class="deck">Cardano needs “a winner that grows into tens of billions of dollars”, and Midnight is it, in his logic. Overtaking Cardano is “entirely possible”.</p>
+
+<p>The first substantive question was “What is the next big thing for Cardano? Have new projects moved to Midnight?” His answer: he is building RealFi and Pogun on Cardano, and “Midnight is the largest project on Cardano”, so everything he does for Midnight is growing a Cardano project. He cannot understand why other projects are received positively while Midnight alone is treated as if “Cardano is under attack”.</p>
+
+<p>The logic runs like this. Cardano is a platform, and a platform's capability is shown by “the projects built on it”. A director is judged by the films they shoot, not by their technique (he tells a story about Spielberg submitting <em>Schindler's List</em> as a student project, adding that he “hasn't verified it”). <strong>Cardano needs a winner that grows into tens of billions of dollars and brings a crowd with it.</strong> If Midnight succeeds and is known to be “built on Cardano”, Cardano becomes “a viable platform for launching multi-billion-dollar projects”, and the users Midnight brings generate Cardano transactions and demand. “<strong>100% of the NIGHT holders are Cardano users</strong>, because you need a Cardano wallet to hold a Cardano native asset.” By the same reasoning, he asks, are the users of Iagon, Strike and Liqwid also harmful to Cardano?</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="His logic: Midnight's success becomes Cardano demand, with an exception added by us">
+  <defs>
+    <marker id="e1" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="20" width="200" height="96" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">Midnight succeeds</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">“a winner worth tens of billions”</text>
+  <text x="116" y="96" class="d-s" text-anchor="middle">hard-forked to Ledger 9</text>
+  <line x1="220" y1="68" x2="238" y2="68" class="d-line-accent" marker-end="url(#e1)"/>
+  <rect x="244" y="20" width="192" height="96" rx="8" class="d-box-accent"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">NIGHT is a Cardano asset</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">“100% are Cardano users”</text>
+  <text x="340" y="96" class="d-s" text-anchor="middle">you need a Cardano wallet</text>
+  <line x1="440" y1="68" x2="458" y2="68" class="d-line-accent" marker-end="url(#e1)"/>
+  <rect x="464" y="20" width="200" height="96" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">Demand for Cardano</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">“Cardano is a viable platform”</text>
+  <text x="564" y="96" class="d-s" text-anchor="middle">is demonstrated (his outlook)</text>
+
+  <rect x="16" y="140" width="648" height="60" rx="8" class="d-box-plain"/>
+  <text x="340" y="164" class="d-t" text-anchor="middle">Same logic: users of RealFi, Pogun, Iagon, Strike and Liqwid are Cardano users too</text>
+  <text x="340" y="186" class="d-s" text-anchor="middle">“Saying only Midnight steals from Cardano is an inconsistent philosophy” (his words)</text>
+
+  <rect x="16" y="220" width="648" height="66" rx="7" class="d-box-warn"/>
+  <text x="340" y="244" class="d-t" text-anchor="middle">Added: exceptions to “100%”</text>
+  <text x="340" y="268" class="d-s" text-anchor="middle">Holders on exchanges and holders of the BEP20 version use no Cardano wallet. “Most” would be accurate</text>
+</svg>
+<p class="figcap">The top three boxes lay out his logic as stated. <span class="badge">added</span> The bottom box is our caveat: NIGHT was distributed as a Cardano native asset, but holding it on an exchange or in another chain's version does not pass through a Cardano wallet.</p>
+</div>
+
+<p>Asked whether Midnight could overtake Cardano by market cap: <strong>“entirely possible”</strong>. A new generation does not always surpass the old one (Bitcoin is still first-generation and still number one), but Midnight has momentum, is “moving against the market”, and has caught up to the top three to five privacy ecosystems, he says. He hedges that price and demand are “unknowable, you can speculate”, and closes with “I don't see a reality where Cardano stagnates and Midnight grows. A rising tide lifts all boats.” <span class="badge">added</span> Midnight's mainnet hard-forked to Ledger 9 on 6 November 2026 (block 3,346,139). The video gives no figures behind “moving against the market”.</p>
+
+<details class="explain">
+<summary>A naive question: is “100% of NIGHT holders are Cardano users” really true?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>“Most” would be right; “100%” overstates it.</strong> NIGHT was distributed as a Cardano native asset, and self-custody does require a Cardano wallet. On that point he is correct.</p>
+<h4>Who is the exception</h4>
+<ul>
+  <li><strong>People holding on an exchange.</strong> The exchange has the Cardano wallet; the user never touches Cardano</li>
+  <li><strong>Holders of another chain's version.</strong> Price sites list a BEP20 version of NIGHT. Those holders use no Cardano wallet</li>
+</ul>
+<h4>Where his phrasing holds</h4>
+<p>People who claimed in the Glacier Drop used Cardano addresses, and DUST generation on the Midnight side is tied to holding NIGHT, so the direction “most Midnight users have a Cardano wallet” is right.</p>
+<h4>How to tell from outside</h4>
+<p>Compare the number of addresses holding NIGHT on Cardano with the amount of NIGHT deposited at exchanges. That gives a rough share of “Cardano users”. Neither figure appears in the video.</p>
+</div>
+</details>
+
+
+<h2 id="en-agency">3. “I am not the CEO”: powers, the roadmap, DRep, the end of obligation</h2>
+<p class="deck">Asked about the price, he lists the powers he does not have. The roadmap is done, and the demand to “pump my bags” has no end. DRep: undecided.</p>
+
+<p>“What do you want me to do about the price of ADA?” he asks back. He is not the Cardano Foundation, does not control the treasury, does not run consensus, cannot negotiate on behalf of ADA holders. <strong>“I don't have the authority to act like a CEO”</strong>, so how is he supposed to have agency over growth and price? Bill Gates founded Microsoft, but Satya Nadella and the board set its direction today, he says. What he can do is build on Cardano and bring people in, and that is RealFi, Pogun and Midnight. “Some will succeed and some will fail.”</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-label="Two columns: the powers he says he does not have, and what he says he can do">
+  <rect x="16" y="20" width="316" height="196" rx="8" class="d-box-warn"/>
+  <text x="174" y="48" class="d-t" text-anchor="middle">Powers he says he does not have</text>
+  <text x="174" y="78" class="d-s" text-anchor="middle">He is not the Cardano Foundation</text>
+  <text x="174" y="100" class="d-s" text-anchor="middle">He does not control the treasury</text>
+  <text x="174" y="122" class="d-s" text-anchor="middle">He does not run consensus</text>
+  <text x="174" y="144" class="d-s" text-anchor="middle">He cannot negotiate for ADA holders</text>
+  <text x="174" y="166" class="d-s" text-anchor="middle">No venue to submit a business plan for a vote</text>
+  <text x="174" y="196" class="d-s" text-anchor="middle">“Bill Gates and Microsoft”</text>
+
+  <rect x="348" y="20" width="316" height="196" rx="8" class="d-box-accent"/>
+  <text x="506" y="48" class="d-t" text-anchor="middle">What he says he can do</text>
+  <text x="506" y="78" class="d-s" text-anchor="middle">Build on Cardano and bring people in</text>
+  <text x="506" y="100" class="d-s" text-anchor="middle">RealFi, Pogun, Midnight</text>
+  <text x="506" y="122" class="d-s" text-anchor="middle">Keep the dialogue going in AMAs (11 years)</text>
+  <text x="506" y="144" class="d-s" text-anchor="middle">Testify on regulation, clean up the mess</text>
+  <text x="506" y="166" class="d-s" text-anchor="middle">Back young leaders, lend them moral authority</text>
+  <text x="506" y="196" class="d-s" text-anchor="middle">Becoming a DRep: “haven't decided”</text>
+
+  <rect x="16" y="234" width="648" height="52" rx="7" class="d-box-plain"/>
+  <text x="340" y="256" class="d-t" text-anchor="middle">“The roadmap is done.” When does the obligation end?</text>
+  <text x="340" y="278" class="d-s" text-anchor="middle">“Those who bought at $3 expect $5, those at $5 expect $7. There's no room to retire.” (his words)</text>
+</svg>
+<p class="figcap">His statements arranged in two columns. <span class="badge">added</span> The “powers he does not have” list is his own framing. The influence he holds as CEO of Input Output (the development team, submitting proposals) is not on it.</p>
+</div>
+
+<p>He also says “the technology is basically done”. Leios is “imminent, on the Musashi testnet, coming in a fork soon”; on-chain governance, extended UTXO, recursive self-improvement and independent node developers are all in place. So rather than sitting on the bridge preaching vision, it is better to build, he says.</p>
+
+<p>Later the same question returns as one of obligation. <strong>“From the moment you create something, do you owe it all your time and effort forever? Is there no opportunity to retire?”</strong> The roadmap (Byron, Shelley, Basho…) is complete, Cardano reached “four times the value of Honda”, millions use it, and it is a self-governing system that can pick leaders without his consent. What is still being asked is “pump my bags”, and that has no end. “My job was to build it and decentralise it, and I did. Cardano is so decentralised that its founder can't remove a foundation that betrayed its mission.” Banning people who repeat the same question, he adds: “there's more to life than Cardano.”</p>
+
+<p>On becoming a DRep: <strong>“I still haven't decided.”</strong> Doing it would mean leading a campaign for an elected Cardano Foundation board and, if the Foundation refused, creating the consequence of “forking the protocol and cutting off the Foundation's funding”. That is “a massive fight”; the people he thought would stand with him (he names Rick McCracken) did not, and he has neither the time nor the energy, he says. <span class="badge">added</span> In July 2026 reports he spoke of registering as a DRep and running a large DRep as a “political party”. This stream steps back from that to “build up young leaders”. It reads as a continuation of the Foundation criticism and funding discussion in his previous stream (<a href="../2026-09-13-charles-hoskinson-devs-versus-builders/#en-cardano">2026-09-13</a>).</p>
+
+<p>To the charge that he “got his ADA for free”, he answers that it was worth zero when he received it, that he built Ouroboros, extended UTXO and Plutus and spent ten years building the ecosystem, wrote code for two years before launch, hired Aggelos Kiayias and set up labs in Edinburgh and at Tokyo Institute of Technology, and that “most people would take the deal of giving up 8% of an ecosystem to have someone build it for ten years”.</p>
+
+
+<h2 id="en-products">4. Midnight products and timing: Passport, Nightstream, Starstream, Monument Bank</h2>
+<p class="deck">The only date given is Nightstream's “2028”. Starstream comes before it, Monument Bank is “pretty far along”, Quantum Hosky is shelved.</p>
+
+<p>Concrete talk about Midnight is scattered through the answers. Collected, it comes to this.</p>
+
+<ul>
+  <li><strong>Fourth-generation cryptocurrency.</strong> In his long opening, this means TradFi merging with DeFi (Web 2.5), AI merging with identity, and “ubiquitous abstraction”. Not a Bitcoin wallet or an Ethereum wallet but “a Midnight Bill” that works everywhere, where decisions become “declaring an intent and leaving it to solvers”.</li>
+  <li><strong>Midnight Passport.</strong> Something you attach to a wallet. A wallet that has not integrated it gives “a standard experience”; one that has gives a crafted experience where “addresses go away and it becomes charles@midnight”. He wants Moth and Lace to go that way but “can't promise” for MetaMask, bitcoin.com or blockchain.com. Recovery comes from the Passport instead of 24 words. “The biggest framework for institutional adoption.”</li>
+  <li><strong>Nightstream is 2028.</strong> “If it's not in market by 2028 it's not real. You can't have a hypothetical deadline three or four years out.” <strong>Starstream can ship before it</strong>, he thinks; he wants Sebastian to come to Colorado to speed its integration into Midnight, and Starstream is “the platform that realises Nightframe”.</li>
+  <li><strong>FHE and ZK.</strong> “FHE has no inherent advantage over ZK. They're different categories.” FHE computes on encrypted data; ZK proves without revealing. FHE, MPC and ZK together make “the ultimate privacy stack”. FHE is “about 8,000 times too slow”, but Nightstream's maths is close to FHE, so optimisations carry over.</li>
+  <li><strong>Monument Bank.</strong> He leaves announcements to the Midnight Foundation, but talks on tokenised deposits are “pretty far along”. He is writing “new concepts” for regulated transactions, “close to 1,000 pages”. They are “a neobank that fundamentally changes banking”, he says.</li>
+  <li><strong>LayerZero</strong> is “on track, last I talked to Jare”.</li>
+  <li><strong>Quantum Hosky is shelved.</strong> The milestone of showing a four-dimensional game engine at scale could not be met within budget and time. “Not dead, shelved.” If AI advances over 24 to 36 months, they can return to it, he says.</li>
+</ul>
+
+<div class="term">
+<p class="term-name">Wallet abstraction <small>his term in the video</small></p>
+<p>In his description, an experience where “addresses go away and there's just a name like charles@midnight”. <span class="badge">added</span> A general term for designs that hide key and address management from the user so that names or intents are enough to act. Midnight Passport is the entry point to it and handles recovery, in his framing.</p>
+</div>
+
+<div class="term">
+<p class="term-name">FHE, MPC, ZK <small>his terms in the video</small></p>
+<p>In his framing, FHE (fully homomorphic encryption) computes on encrypted data without decrypting it, ZK (zero-knowledge proofs) proves correctness without revealing the content, and MPC (multi-party computation) lets several parties compute without seeing each other's inputs. “Different categories; together they're like reinforced concrete.” <span class="badge">added</span> Midnight is built around ZK. FHE is a future matter that he himself calls “8,000 times slower”.</p>
+</div>
+
+<p><span class="badge">added</span> Fact-check results. Monument Bank announced on 25 March 2026 that it would tokenise up to £250 million of retail deposits on Midnight; the rollout was later reported delayed to around November pending onboarding of a custody partner. LayerZero's Cardano integration was announced in February 2026, with endpoints live on mainnet in March. Sebastien Guillemot, who leads Starstream, is CTO of the Midnight Foundation; his views on layer 2 as a DRep are summarised in this archive's <a href="../2026-10-24-note-midgard-primer/#en-stage">Midgard note</a>. Quantum Hosky was a concept he announced in late 2024; the “shelving” is first mentioned in this stream.</p>
+
+
+<h2 id="en-tech">5. Claims about Cardano's technology: Leios, smart contracts, AI, the Binance theft</h2>
+<p class="deck">“Our smart contracts are far more secure at the same scale”, “AI agents made developer onboarding irrelevant”, “ADA wasn't stolen because we designed it right”. All his claims.</p>
+
+<p>To the critique that “Cardano has no smart contracts, or if it does they're unusable, or if usable nobody uses them”, he answers stage by stage. There are Rust-based contracts through Aiken, Haskell-based through Plutus, TypeScript-based ones, and ZK ones being added. “Our smart contracts are far more secure at the same scale than everybody else who gets hacked all the time.” <span class="badge">added</span> Aiken is its own smart-contract language implemented in Rust; it is not “writing contracts in Rust”. No figures are given for the security comparison.</p>
+
+<p>On developer onboarding, he says that if <strong>“an AI agent can be productive in 30 seconds”</strong>, the underlying language no longer matters and <strong>“whoever writes the best specification has the best program”</strong>; with their formal-methods background they have a built-in advantage. <span class="badge">added</span> The same argument as “developer counts are no longer a metric” in his previous stream (2026-09-13).</p>
+
+<p>On the Binance theft he says <strong>“$6.3 billion, the largest theft in history. We weren't part of it, because we designed it right”</strong>, explaining that ADA was not stolen because “the wallet design and the way transactions work are fundamentally different from account-based and more secure”. <span class="badge">added</span> The Binance hack took place on 29–30 October 2026, around $6.3 billion, and the FBI attributed it to North Korea's TraderTraitor. It is the largest cryptocurrency theft on record. We could not confirm the breakdown of stolen assets or whether ADA was among them.</p>
+
+<details class="explain">
+<summary>A naive question: can you really say “ADA wasn't stolen because it's UTXO”?</summary>
+<div class="explain-body">
+<p><span class="badge">added</span> What follows is our explanation, not something said in the video.</p>
+<p><strong>The doubt is well founded; his explanation alone does not settle the cause.</strong> What gets stolen in an exchange hack depends first on the exchange's key management and on which hot wallets were compromised.</p>
+<h4>Where his phrasing holds</h4>
+<ul>
+  <li><strong>What gets signed differs.</strong> Account-based chains commonly use signatures that “grant this contract unlimited approval”, and stealing one drains the balance. UTXO chains sign each transaction over specific outputs, so the same kind of “approval hijack” is harder to pull off</li>
+  <li><strong>No contract call.</strong> A Cardano transfer does not pass through a smart contract, so there is no path through a contract vulnerability</li>
+</ul>
+<h4>Where it does not hold</h4>
+<p>If the exchange's signing keys themselves are stolen, the thief can build any transaction, UTXO or not. If ADA was not stolen, “the compromised wallets held no ADA” or “ADA was held separately” explain it equally well.</p>
+<h4>How to tell from outside</h4>
+<p>The breakdown of stolen assets published by Binance or by analytics firms is enough. Whether ADA is absent, and whether that is due to “wallet segregation” or to “the signing model”, only becomes clear once the breakdown and the intrusion path are published.</p>
+<h4>What the video did not show</h4>
+<p>The list of stolen assets, how ADA was held, and the intrusion path. None is discussed. He does not give a source for “$6.3 billion” either.</p>
+</div>
+</details>
+
+
+<h2 id="en-foundation">6. Criticism of the Cardano Foundation: an elected board and the “original sin”</h2>
+<p class="deck">It starts with no Midnight at the booth and goes on to an elected board, Swiss intervention and the “original sin”. All of it to be read as his statements.</p>
+
+<p>His remarks on the Cardano Foundation begin with “to his credit”, about CEO Fred (Frederik Gregaard) briefly mentioning Midnight in an interview, then move to <strong>“there was no Midnight–Cardano integration at the booth”</strong>, which he is “still a bit upset about”. “Apparently we had to apply.” From there: the Foundation has “a leadership problem”, the community should elect the board, new directors would impose KPIs and accountability, and if they refuse, “move the Foundation”. By contrast he calls Fahmi Syed of the Midnight Foundation a great leader “willing to take risks and do hard things”.</p>
+
+<p>The relationship he wants with the Foundation is “co-marketing and co-projects”. <strong>“Midnight seems to be selling and Cardano isn't, so sell Cardano through Midnight.”</strong> Put the Foundation's Reeve on Midnight, make Veridian part of Midnight Passport, put millions of dollars into their budget. “Impossible. Because of ego. The problem is on their side.”</p>
+
+<p>On the board, he calls it “a governance failure” that the sitting board appoints its successors and ADA holders have no say. DReps and Constitutional Committee members can be removed; Foundation directors cannot. <strong>He tried to change it, he says, and the Swiss government stepped in and stopped him</strong>; it went to litigation, the regulator sent in a trustee and forced a choice: “everyone resigns and a new board is appointed, or it becomes property of the Swiss government”. “Directors appointed under that pressure are still directors, and that is the Foundation's original sin.” The timing: “2020 or 2021, I forget.”</p>
+
+<p><span class="badge">added</span> What the public record shows: on 13 November 2018 the Cardano Foundation announced the immediate resignation of chairman Michael Parsons and the appointment of Pascal Schmid as interim chair, after an open letter from IOHK and Emurgo and a community petition. We found no public source on Swiss regulatory involvement or the appointment of a trustee. His account is kept as his account, with the timing left as he remembers it, “2020 or 2021”. “The booth” reads as the Foundation's booth at TOKEN2049 in Singapore in October 2026, but he does not name the conference. The assessment of the Foundation is his; the Foundation's side was not consulted. His previous stream (<a href="../2026-09-13-charles-hoskinson-devs-versus-builders/#en-cardano">2026-09-13</a>) carries criticism in the same direction.</p>
+
+<p>To a question about hacking supermarket fridges, he answers that Cardano is good at building “the connection point between existing things” but “doesn't secure the endpoint”; if firmware cannot be updated there is nothing to do, and if it can, smart contracts can serve as role-based access control.</p>
+
+
+<h2 id="en-trump">7. The Trump story: crypto czar, dinner, reserve, no invitation</h2>
+<p class="deck">From an approach in September 2024 to a non-invitation in March 2025. “Everything is transactional.” The donation was refunded; “the industry sold its soul”.</p>
+
+<p>The longest stretch of this stream, and the first time he has told it in detail, is his history with the Trump camp. His account, arranged in order:</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 330" role="img" aria-label="Timeline of his account of the Trump camp, from the September 2024 approach to the March 2025 White House non-invitation">
+  <defs>
+    <marker id="e2" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <line x1="24" y1="160" x2="650" y2="160" class="d-line-accent" marker-end="url(#e2)"/>
+
+  <rect x="16" y="40" width="196" height="84" rx="7" class="d-box"/>
+  <text x="114" y="64" class="d-t" text-anchor="middle">2024-09 SALT conference</text>
+  <text x="114" y="86" class="d-s" text-anchor="middle">“Crypto czar” floated to him</text>
+  <text x="114" y="106" class="d-s" text-anchor="middle">“Apply”, “come in December”</text>
+  <line x1="114" y1="124" x2="114" y2="156" class="d-line"/>
+
+  <rect x="242" y="40" width="196" height="84" rx="7" class="d-box"/>
+  <text x="340" y="64" class="d-t" text-anchor="middle">2024-12 Sacks named czar</text>
+  <text x="340" y="86" class="d-s" text-anchor="middle">Bo Hines: a committee seat</text>
+  <text x="340" y="106" class="d-s" text-anchor="middle">the committee never materialised</text>
+  <line x1="340" y1="124" x2="340" y2="156" class="d-line"/>
+
+  <rect x="468" y="40" width="196" height="84" rx="7" class="d-box-warn"/>
+  <text x="566" y="64" class="d-t" text-anchor="middle">2025-02 $1M for a dinner</text>
+  <text x="566" y="86" class="d-s" text-anchor="middle">vetting cleared (22nd), delayed</text>
+  <text x="566" y="106" class="d-s" text-anchor="middle">mid-flight: “failed vetting”</text>
+  <line x1="566" y1="124" x2="566" y2="156" class="d-line"/>
+
+  <rect x="16" y="196" width="196" height="100" rx="7" class="d-box"/>
+  <text x="114" y="220" class="d-t" text-anchor="middle">Three changing reasons</text>
+  <text x="114" y="242" class="d-s" text-anchor="middle">“not the Secret Service”</text>
+  <text x="114" y="262" class="d-s" text-anchor="middle">“Garlinghouse's tweet” → no</text>
+  <text x="114" y="282" class="d-s" text-anchor="middle">“Sacks angry, a memo went round”</text>
+  <line x1="114" y1="164" x2="114" y2="196" class="d-line"/>
+
+  <rect x="242" y="196" width="196" height="100" rx="7" class="d-box-accent"/>
+  <text x="340" y="220" class="d-t" text-anchor="middle">2025-03-02 the reserve</text>
+  <text x="340" y="242" class="d-s" text-anchor="middle">150 “congrats” next morning</text>
+  <text x="340" y="262" class="d-s" text-anchor="middle">ADA in, “up 70%” (his figure)</text>
+  <text x="340" y="282" class="d-s" text-anchor="middle">“Sacks blamed us for it”</text>
+  <line x1="340" y1="164" x2="340" y2="196" class="d-line"/>
+
+  <rect x="468" y="196" width="196" height="100" rx="7" class="d-box-warn"/>
+  <text x="566" y="220" class="d-t" text-anchor="middle">2025-03-07 White House</text>
+  <text x="566" y="242" class="d-s" text-anchor="middle">“invite coming”, Mon and Tue</text>
+  <text x="566" y="262" class="d-s" text-anchor="middle">Wed: report “not invited”</text>
+  <text x="566" y="282" class="d-s" text-anchor="middle">donation refunded later</text>
+  <line x1="566" y1="164" x2="566" y2="196" class="d-line"/>
+
+  <text x="340" y="320" class="d-s" text-anchor="middle">Everything in the boxes is his account. Dates confirmed in public records are listed in the caption</text>
+</svg>
+<p class="figcap">His account, arranged by us in order. <span class="badge">added</span> Dates confirmed in the public record: David Sacks's appointment as crypto czar (December 2024), the reserve announcement (2 March 2025, posted as including ADA, XRP and SOL), the White House summit (7 March), and Unchained's report that “Hoskinson is not invited”. “Cleared vetting on 22 February” and “cancelled by the 1st” are his statements.</p>
+</div>
+
+<p>His verdict: <strong>“with this guy, everything is transactional”, “everyone who gets close gets covered in hot tar”</strong>. He turns on the industry too: crypto leaders watched the Trump coin and pay-to-play and “sold their souls for access”; “was the photo in the White House worth it?” He felt “dirty” about the $1 million donation, which was refunded, he says.</p>
+
+<p>On the midterms, he gives his view that the “blue wave” was not about candidates or RINOs but about breaking the promise to release the Epstein files and fighting a strategy-free war in Iran. Texas went blue “everything except Ted Cruz”. For the industry, <strong>Sherrod Brown, whom the industry unseated in 2024, is back in the Senate and Schumer has promised him Tim Scott's role on the Banking Committee</strong>, he says; “every piece of crypto regulation will go through a senator who holds a grudge for being beheaded by the industry.” The Democrats' line was “crypto = corruption = Trump”. “I'll be the one cleaning up the mess here.”</p>
+
+<p><span class="badge">added</span> The election results match the public record. On 3 November 2026, James Talarico (D) beat Ken Paxton for the Texas Senate seat, Gina Hinojosa (D) beat Greg Abbott for governor, and Democrats swept the statewide executive offices. Ted Cruz was not up for re-election. In Ohio, Sherrod Brown beat Jon Husted to return to the Senate; in Michigan, Abdul El-Sayed won. On 6 November Trump named Stephen Miller chief of staff in place of Susie Wiles. “Schumer promised him the Banking Committee role” is his statement; reporting also suggests Elizabeth Warren will not give up the ranking seat, and we could not confirm it. His remarks on Iran (“two weeks from a nuke”, “can open and close the Strait of Hormuz”) are his assessment. US strikes on Iranian targets in the Strait of Hormuz in early November 2026 were reported, but we did not verify the figures he cites.</p>
+
+
+<h2 id="en-beyond">8. Beyond Cardano: clinic, stem cells, games, Musk, DOGE</h2>
+<p class="deck">About a third of the three hours has nothing to do with Cardano. The essentials only.</p>
+
+<ul>
+  <li><strong>The clinic goes to Monument Health.</strong> He has “stepped back” from the Gillette clinic. He keeps the building and has partnered with Monument, a Mayo Clinic affiliate, to take over operations; the doctors were hired on, so “there is continuity of care”. He went in to do regenerative medicine and found “99% of my time running a rural health system”. <span class="badge">added</span> Monument Health announced the lease on 1 July 2026 and opened on 2 November.</li>
+  <li><strong>Stemler.</strong> A patent for a stem-cell harvesting device with Ben (CellDrop) at the University of Wyoming. Shaped like a continuous glucose monitor, it uses porous titanium needles and chemokines to collect stem cells. It collected more than liposuction, and they are negotiating with the FDA to skip animal trials, he says. Also a concept combining exosomes with hyperbaric oxygen therapy.</li>
+  <li><strong>Omarchy and Warlock.</strong> The stream runs on DHH's Arch Linux-based OS, and he is writing Warlock, a window-system replacement, in Elm and Haskell, he says.</li>
+  <li><strong>Games and AI writing.</strong> He disassembled Legends of Valour into a 540-page “bible” and started a remaster. Baldur's Gate 3 is his model of “faithful to canon yet new”; “AI writing has no soul”. He cites “The Inner Light” from <em>Star Trek: The Next Generation</em> as a model for revealing something through story.</li>
+  <li><strong>On Elon Musk.</strong> “The Howard Hughes of our generation.” Not a fraud, but “not a good person”, “not good to his family”. Wealth and power build “a layer of sycophants”, and he ships raw ideas unfinished, he says.</li>
+  <li><strong>An alternative to DOGE.</strong> Cut 5% across the board every year, run a private review body alongside, consolidate, a government open-source LLM, performance pay at the top.</li>
+  <li><strong>Why Texas went blue.</strong> Fear of deportation raised turnout, part of MAGA peeled off over Israel policy, and “if you say it was rigged you lose the next one too”, he says.</li>
+</ul>
+
+
+<h2 id="en-overall">9. The big picture</h2>
+<p class="deck">“Build rather than fight” is the core. What he lost in politics, a changing 24 months and his move to the builder's side all converge on “DRep: undecided”.</p>
+
+<div class="fig">
+<svg viewBox="0 0 680 320" role="img" aria-label="The three threads of this stream (moved to the builder's side, lost in politics, 24 months of change) converging on build rather than fight, DRep undecided">
+  <defs>
+    <marker id="e3" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0,0 L9,4.5 L0,9 Z" class="d-head-accent"/>
+    </marker>
+  </defs>
+  <rect x="16" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="116" y="48" class="d-t" text-anchor="middle">Now a builder</text>
+  <text x="116" y="74" class="d-s" text-anchor="middle">“Not the CEO.” Builds Midnight</text>
+  <text x="116" y="94" class="d-s" text-anchor="middle">Midnight is a Cardano project</text>
+  <text x="116" y="114" class="d-s" text-anchor="middle">roadmap complete (his words)</text>
+
+  <rect x="240" y="20" width="200" height="120" rx="8" class="d-box-warn"/>
+  <text x="340" y="48" class="d-t" text-anchor="middle">What politics cost him</text>
+  <text x="340" y="74" class="d-s" text-anchor="middle">$1M, the dinner, no invitation</text>
+  <text x="340" y="94" class="d-s" text-anchor="middle">the industry “sold its soul”</text>
+  <text x="340" y="114" class="d-s" text-anchor="middle">Sherrod Brown is back; the clean-up</text>
+
+  <rect x="464" y="20" width="200" height="120" rx="8" class="d-box"/>
+  <text x="564" y="48" class="d-t" text-anchor="middle">24 months of change</text>
+  <text x="564" y="74" class="d-s" text-anchor="middle">new politics, 4th-gen crypto</text>
+  <text x="564" y="94" class="d-s" text-anchor="middle">AI removes the “developer wall”</text>
+  <text x="564" y="114" class="d-s" text-anchor="middle">Nightstream 2028, Starstream first</text>
+
+  <line x1="116" y1="144" x2="116" y2="170" class="d-line-accent" marker-end="url(#e3)"/>
+  <line x1="340" y1="144" x2="340" y2="170" class="d-line-accent" marker-end="url(#e3)"/>
+  <line x1="564" y1="144" x2="564" y2="170" class="d-line-accent" marker-end="url(#e3)"/>
+
+  <rect x="16" y="176" width="648" height="64" rx="8" class="d-box-accent"/>
+  <text x="340" y="202" class="d-t" text-anchor="middle">“Build rather than fight”: DRep “undecided, no more fighting”</text>
+  <text x="340" y="226" class="d-s" text-anchor="middle">Doing it means forcing an elected board by fork, “a massive fight”. “Build up young leaders”</text>
+
+  <rect x="16" y="256" width="648" height="50" rx="7" class="d-box-plain"/>
+  <text x="340" y="278" class="d-s" text-anchor="middle">Not said: Midnight's user/transaction numbers, Monument Bank's timing, the basis for “secure”</text>
+  <text x="340" y="298" class="d-s" text-anchor="middle">Bundling the three threads this way is our reading. He spreads them across three hours</text>
+</svg>
+<p class="figcap">The bundling is our reading. <span class="badge">added</span> In his previous stream (2026-09-13) he spoke positively about “a DRep or a political party”, so “undecided, don't want to fight” in this one reads as a shift.</p>
+</div>
+
+
+<h2 id="en-qa">10. From the Q&amp;A</h2>
+<p class="deck">Chat questions survive only as he read them out. Four that concern Cardano and Midnight.</p>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Viewer (read aloud by him)</span>What is the next big thing for Cardano? Have the new projects moved to Midnight?</p>
+<p class="qa-a" data-by="Charles Hoskinson">He is building RealFi and Pogun, and Midnight is “the largest project on Cardano”. Cardano needs a winner worth tens of billions, and <strong>“100% of the NIGHT holders are Cardano users”</strong>. Working on Midnight makes Cardano better, he says.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Viewer (read aloud by him)</span>Could Midnight overtake Cardano by market cap?</p>
+<p class="qa-a" data-by="Charles Hoskinson">“Entirely possible.” But price and demand are “unknowable, you can speculate”. <strong>He does not see a reality where Cardano stagnates and only Midnight grows</strong>; a rising tide lifts all boats, with that caveat.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Viewer (read aloud by him)</span>Is Monument Bank coming to Midnight this month?</p>
+<p class="qa-a" data-by="Charles Hoskinson">Announcements are for the Midnight Foundation. Talks on tokenising deposits are <strong>“pretty far along”</strong>. He is writing “new concepts” for regulated transactions, close to 1,000 pages. No date given.</p>
+</div>
+
+<div class="qa">
+<p class="qa-q"><span class="qa-who">Viewer (read aloud by him)</span>Will you become a DRep?</p>
+<p class="qa-a" data-by="Charles Hoskinson">“Haven't decided.” Doing it means a “massive fight” forcing an elected Foundation board, with a fork cutting its funding as the consequence. <strong>“I don't have the time or the energy”</strong>; backers did not show up; build up young leaders, he says.</p>
+</div>
+
+
+<h2 id="en-pending">11. Left unanswered</h2>
+<p class="deck">Claims without figures, dates without dates, and names without explanation.</p>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No figures</span>What is the basis for Midnight “moving against the market” and “growing by leaps and bounds”?</p>
+<p class="qa-a" data-by="assertion only">He does not say whether he means users, transactions or price, or as of when. <span class="badge">added</span> Price sites put NIGHT's market cap at roughly $650–700 million in early November 2026, about $0.9–1 billion fully diluted. That broadly matches his “a $200 million project that reached a billion fully diluted”.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No date</span>When does Monument Bank's deposit tokenisation start?</p>
+<p class="qa-a" data-by="“pretty far along” only">He left timing to the Midnight Foundation's announcements. <span class="badge">added</span> Reports say the rollout was delayed pending onboarding of a custody partner, with deployment expected around November.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No breakdown</span>Was ADA spared in the Binance theft because of design, or because of how custody was split?</p>
+<p class="qa-a" data-by="he says “design”">Neither the breakdown of stolen assets nor the intrusion path is discussed. Laid out in the fold in section 5.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No basis</span>“Smart contracts far more secure at the same scale”: compared with what?</p>
+<p class="qa-a" data-by="assertion only">No comparison of hack counts or amounts is given.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Unconfirmed</span>Can it be confirmed that Schumer promised Sherrod Brown a Banking Committee role?</p>
+<p class="qa-a" data-by="his statement">Brown's return to the Senate is confirmed, but reporting is divided on the committee role and we could not confirm it.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">No record</span>When and what was the Swiss intervention and trustee episode at the Foundation?</p>
+<p class="qa-a" data-by="he says “2020 or 2021, I forget”">The public record we could find ends with the chairman's resignation in November 2018. We have no sources confirming regulatory involvement or the appointment of a trustee.</p>
+</div>
+
+<div class="qa pending">
+<p class="qa-q"><span class="qa-who">Names only</span>“Something with Ben to announce this year”, “disappointment with stuff.io”, “Jare”, “Nike”, “Mark”.</p>
+<p class="qa-a" data-by="no explanation">The “tremendous” thing with Ben is only “to be announced this year”. On stuff.io he “won't talk about it”. Jare is his contact at LayerZero, Nike is someone joining Midnight City, and Mark is a dinner companion who said “Texas won't go blue”. Names only.</p>
+</div>
+
+<div class="note">
+<p><strong>About this page.</strong> The source is the video <a href="https://www.youtube.com/watch?v=h1aLIGigpDw">Surprise AMA November 7th, 2026</a> (about three hours; exact length to be confirmed), published on Charles Hoskinson's own YouTube channel. It is a public video, so the speaker is named. Only the chat questions he read aloud survive, and the questioners are not identified.</p>
+<p><strong>A record of his personal views.</strong> Assessments of Input Output, the Midnight Foundation, the Cardano Foundation, politicians and companies are attributed to him throughout and are not the official position of any organisation. Politics takes up a long stretch of the stream; this archive focuses on Cardano and Midnight and keeps the rest to the essentials in sections 7 and 8.</p>
+<p><strong>Three kinds of source.</strong> Unmarked text is what was said aloud in the video. <span class="badge">on screen</span> would mark something shown but not spoken; this page was made from the subtitles alone without checking the screen, so the mark is not used. <span class="badge">added</span> marks explanation we added that is not in the video.</p>
+<p><strong>Statements checked</strong> (as of 8 November 2026): the Texas, Ohio and Michigan election results, Stephen Miller's appointment as chief of staff, the size and date of the Binance hack, Midnight's Ledger 9 hard fork, Monument Bank's announcement and delay, Monument Health's opening, the 2025 reserve announcement and White House summit, and the LayerZero integration. What could not be confirmed is kept in section 11.</p>
+<p>For exact wording see the <a href="./transcript-en.html">English transcript</a>; to read it through in Japanese, the <a href="./transcript-ja.html">Japanese transcript</a>. The source has no timestamps, so the transcript pages carry none either.</p>
+</div>
+</div>
+<!--/content-->
+
+<nav class="docnav">
+  <span class="docnav-label"><span class="l-ja">このページは内容をまとめたものです。正確な内容は全文をご確認ください。</span><span class="l-en">This page is a summary. For exact wording, see the full transcript.</span></span>
+  <a href="./" aria-current="page"><span class="l-ja">まとめ</span><span class="l-en">Summary</span></a>
+  <a href="./transcript-ja.html"><span class="l-ja">日本語全文</span><span class="l-en">Full transcript (Japanese)</span></a>
+  <a href="./transcript-en.html"><span class="l-ja">英語全文（原文）</span><span class="l-en">Full transcript (English original)</span></a>
+  <a href="../"><span class="l-ja">← 一覧</span><span class="l-en">← All videos</span></a>
+</nav>
+
+<footer>
+  <p><span class="l-ja">Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/watch?v=h1aLIGigpDw">動画を見る</a></span><span class="l-en">Cardano note — Charles Hoskinson · <a href="https://www.youtube.com/watch?v=h1aLIGigpDw">Watch the video</a></span></p>
+</footer>
+
+</div>
+</body>
+</html>
