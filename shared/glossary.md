@@ -189,7 +189,7 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 **要点で置き換えた語**（`.thesis` / `.tldr` では平易な言葉、原語は本文の初出で渡す）: yield compression → 「利回りの圧縮」（本文で「チームが名前を考えている、と Bryan が言った語」と示す）、TVL → 「預けられた資産の総額」を初出で添える、RFP → 「提案募集（RFP）」、stale answers → 「古い答え」、competitive bidding → 「競争入札」。
 ### 2026-11-07 Charles Hoskinson — Surprise AMA November 7th, 2026
 
-本人のチャンネルのライブ配信（約 3 時間、1 人語り）。**依頼者が修正済みの字幕を受領したので、docs/ でも固有名詞・言い回しはそのまま。**時刻なし。罵り言葉は英語全文にそのまま残した。
+本人のチャンネルのライブ配信（2 時間 45 分、1 人語り）。**依頼者が修正済みの字幕を受領したので、docs/ でも固有名詞・言い回しはそのまま。**時刻なし。罵り言葉は英語全文にそのまま残した。
 
 **名前だけで特定できず聞こえたまま残したもの**: **Ben**（ワイオミング大学、CellDrop。「今年中に発表するとてつもないもの」の相手）、**Jare**（LayerZero の連絡相手）、**Nike**（Midnight City に入る人）、**Mark**（「テキサスは青くならない」と言った会食相手）、**Sebastian**（Starstream を率いる人。文脈から Sebastien Guillemot と読めるが、字幕の綴りのまま）、**Fred**（Cardano Foundation の CEO Frederik Gregaard。まとめで補った）。
 

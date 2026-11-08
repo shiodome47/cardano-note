@@ -1,5 +1,5 @@
 slug: 2026-11-07-charles-hoskinson-surprise-ama
-title: Surprise AMA — 「私は Cardano の CEO ではない」。Midnight は Cardano のプロジェクトだと言い、トランプとの顛末を語り、DRep にはならないと言う 3 時間
+title: Surprise AMA — 「私は Cardano の CEO ではない」。Midnight は Cardano のプロジェクトだと言い、トランプとの顛末を語り、DRep にはならないと言う 2 時間 45 分
 title_en: "Surprise AMA November 7th, 2026"
 date: 2026-11-07            # 依頼者の指定。本人も「Stephen Miller が Susie Wiles に替わった」（11-06 発表）「テキサスが青くなった」（11-03）「Ledger 9 のハードフォーク」（11-06）に言及しており整合
 series: charles-hoskinson   # shared/series.yml のキー
@@ -8,7 +8,7 @@ chatham_house_rule: false   # 公開動画。常に false
 platform: YouTube
 channel: Charles Hoskinson  # oEmbed の author_name。author_url は https://www.youtube.com/@charleshoskinsoncrypto
 official_channel: true      # 本人のチャンネル（IOG、Midnight Foundation、Cardano Foundation の公式チャンネルではない）。oEmbed で確認（2026-11-08）
-duration: "約 3 時間"        # 本人が末尾で「3 時間ほどやった」。実尺は要確認（字幕に時刻がない）
+duration: "2:45:00"         # 依頼者の確認（2 時間 45 分）。本人は末尾で「3 時間ほどやった」。字幕に時刻はない
 video: https://www.youtube.com/watch?v=h1aLIGigpDw
 
 speakers:
