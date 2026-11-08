@@ -767,3 +767,89 @@ footer {
   body { background: #fff; color: #000; }
   .docnav { display: none; }
 }
+
+/* ---- 図の拡大表示（assets/fig-zoom.js） ---- */
+
+.fig-zoom {
+  display: inline-flex;
+  align-items: center;
+  margin: 0.6rem 0 0;
+  padding: 0.3rem 0.75rem;
+  font: inherit;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: zoom-in;
+}
+.fig-zoom:hover { color: var(--text); border-color: var(--accent); }
+.fig-zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.fig-zoom::before { content: "⤢"; margin-right: 0.4em; }
+
+.figzoom {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+}
+.figzoom[hidden] { display: none; }
+:root.figzoom-open, :root.figzoom-open body { overflow: hidden; }
+
+.figzoom-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+.figzoom-hint {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.figzoom-btn {
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 0.6rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.figzoom-btn:hover { border-color: var(--accent); }
+.figzoom-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.figzoom-stage {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.figzoom-stage:active { cursor: grabbing; }
+.figzoom-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  overflow: visible;
+  will-change: transform;
+}
+
+@media print {
+  .fig-zoom, .figzoom { display: none !important; }
+}

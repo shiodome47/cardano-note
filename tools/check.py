@@ -115,6 +115,10 @@ def check_page(path):
                 fail(rel, "図の SVG に role / aria-label がない")
                 break
 
+    # 図のあるページは拡大表示のスクリプトを読み込む（standalone は中に埋め込む）
+    if 'class="fig"' in text and path.name == "index.html" and "assets/fig-zoom.js" not in text:
+        fail(rel, "図があるのに assets/fig-zoom.js を読み込んでいない")
+
     # ナビは末尾に置く
     if 'class="docnav"' in text and text.index('class="docnav"') < len(text) * 0.5:
         fail(rel, "docnav がページ前半にある（末尾に置く）")

@@ -15,6 +15,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
 CSS = (DOCS / "assets" / "style.css").read_text().strip()
+ZOOM_JS = (DOCS / "assets" / "fig-zoom.js").read_text().strip()
 
 # standalone.html にだけ要るスタイル。通常の 3 ページでは使わないので
 # style.css には入れず、ここで足す。
@@ -190,6 +191,10 @@ def build(d):
 </footer>
 
 </div>
+
+<script>
+{ZOOM_JS}
+</script>
 """
     d.joinpath("standalone.html").write_text(page)
     print("%s/standalone.html — %d bytes" % (d.name, len(page)))
