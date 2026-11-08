@@ -191,7 +191,7 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 
 本人のチャンネルのライブ配信（2 時間 45 分、1 人語り）。**依頼者が修正済みの字幕を受領したので、docs/ でも固有名詞・言い回しはそのまま。**時刻なし。罵り言葉は英語全文にそのまま残した。
 
-**名前だけで特定できず聞こえたまま残したもの**: **Ben**（ワイオミング大学、CellDrop。「今年中に発表するとてつもないもの」の相手）、**Jare**（LayerZero の連絡相手）、**Nike**（Midnight City に入る人）、**Mark**（「テキサスは青くならない」と言った会食相手）、**Sebastian**（Starstream を率いる人。文脈から Sebastien Guillemot と読めるが、字幕の綴りのまま）、**Fred**（Cardano Foundation の CEO Frederik Gregaard。まとめで補った）。
+**名前だけで特定できず聞こえたまま残したもの**: **Ben**（2 人いる。①ワイオミング大学の Ben、CellDrop、Stemler の相手。②「今年中に発表するとてつもないもの」の Ben は、2026-07-26 の A Dose of Alpha（姉妹サイト）で「Colossal の Ben Lamm と会社を始めた、年末に発表」と言っていたことから **Ben Lamm** と読める。推定）、**Jare**（LayerZero の連絡相手）、**Nike**（Midnight City に入る人）、**Mark**（「テキサスは青くならない」と言った会食相手）、**Sebastian**（Starstream を率いる人。文脈から Sebastien Guillemot と読めるが、字幕の綴りのまま）、**Fred**（Cardano Foundation の CEO Frederik Gregaard。まとめで補った）。
 
 **動画の言い分と公開記録が違う・確認できないもの**（docs/ では本人の言い分を残し、`補足` で添えた）
 
@@ -473,7 +473,8 @@ X スペースの録音の文字起こし。**話者名も時刻もない**の�
 | **Omarchy / Warlock** | Omarchy は DHH（David Heinemeier Hansson）が作った Arch Linux ベースの OS。Hoskinson は 2026-11-07 の配信をこれで行い、ウィンドウシステムの代替「Warlock」を Elm と Haskell で書いていると述べた。Warlock の公開資料は未確認 |
 | **Hosky / Quantum Hosky** | Hosky は 2021 年に始まった Cardano のミームトークン。Quantum Hosky は Hoskinson が 2024 年末に構想を公表した、Hosky を題材にしたゲームの企画。2026-11-07 の AMA で「4 次元のゲームエンジンを規模をもって動かす」マイルストーンに届かず「棚上げ」と述べた（「Quantum Hosky」の行も参照） |
 | **DOGE（政府効率化省）** | 2025 年にトランプ政権が設けた連邦政府の支出削減の取り組み。Elon Musk が率いた。Hoskinson は 2026-11-07 の AMA で「自分なら全省庁一律で毎年 5% 縮小、180 日計画と民間の審査組織の並走」という代案を述べた。数字はすべて本人の仮の試算 |
-| **CellDrop** | Hoskinson が 2026-11-07 の AMA で「ワイオミング大学の Ben の会社」と紹介。Stemler（幹細胞採取の装置）の共同相手。公開資料は未確認 |
+| **CellDrop** | Hoskinson が 2026-11-07 の AMA で「ワイオミング大学の Ben の会社」と紹介。Stemler（幹細胞採取の装置）の共同相手。公開資料は未確認。**Colossal の Ben Lamm とは別人** |
+| **Ben Lamm / Colossal Biosciences** | 絶滅種の復活（マンモス、ダイアウルフなど）を掲げるバイオ企業とその創業者。Hoskinson は 2026-07-26 の A Dose of Alpha で「早くから投資した。Ben とそこから会社を始め、年末に発表する」と述べた（姉妹サイト 2026RealFi の記録）。2026-11-07 の AMA の「Ben しだいだ。今年中に発表する」はこの件と読める（推定） |
 | **Legends of Valour** | 1992 年の PC ゲーム。Hoskinson は 2026-11-07 の AMA で、逆アセンブルして 540 ページの「バイブル」を作り、リマスターに着手したと述べた |
 | **SALT 会議** | SkyBridge Capital（Anthony Scaramucci）が主催する金融カンファレンス。Hoskinson は 2026-11-07 の AMA で、2024 年 9 月の SALT でトランプの移行チームから「クリプト皇帝」の話を持ちかけられたと述べた（本人の語り） |
 | **Unchained** | Laura Shin の暗号資産メディア。2025 年 3 月のホワイトハウスのサミットの前に「Hoskinson は招かれていない」と報じた。Hoskinson は 2026-11-07 の AMA で、その報道を「リーク」と呼んだ |
